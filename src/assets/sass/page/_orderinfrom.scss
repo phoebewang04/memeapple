@@ -1,0 +1,290 @@
+$colorfont:(
+    primary:#100E24,
+    secondary:#FEDA77,
+    scccess:#262B3F,
+    danger:#FFE8BB,
+    hover: #FCD15B
+);
+
+$map: (
+    key:value,
+    h2:24px,
+    h3:20px,
+    p:14px
+);
+
+
+// ----------------------------------
+
+body {
+    background-color: #100E24;
+    color: #ffff;
+}
+
+/* --------------------------返回------------------------------------------- */
+
+.return {
+    display: flex;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.return a {
+    text-decoration: none;
+    color: #ffff;
+}
+
+/* -----------------------------過程順序---------------------------------------- */
+
+
+.process {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.number {
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+}
+
+.number .circle1 {
+    background-color: #FEDA77;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+.number .circle2 {
+    background-color: #ffff;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+.number .circle3 {
+    background-color: #ffff;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+
+.number .circle1, .circle2, .circle3 p {
+    color: #100E24;
+}
+
+
+
+.number .circle2::before {
+    content: '';
+    display: block;
+    width: 390px;
+    height: 1px;
+    background-color: #ffff;
+    
+    position: absolute;
+    top: 35px;
+    right: 70px;
+
+}
+
+.number .circle2::after {
+    content: '';
+    display: block;
+    width: 390px;
+    height: 1px;
+    background-color: #ffff;
+
+    position: absolute;
+    top: 35px;
+    left: 70px;
+}
+
+
+
+
+/* --------------------------------------------------------------------- */
+
+
+.all {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    margin-bottom: 80px
+}
+
+.all .right {
+    width: 810px;
+}
+
+.all .left {
+    width: 350px;
+}
+
+
+/* ----------------------------會員輸入資料----------------------------------------- */
+
+.memberinfrom {
+    border: 1px solid #ffff;
+    padding: 10px;
+    line-height: 1.6;
+}
+
+.memberinfrom .login {
+    width: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.memberinfrom .login a {
+    text-decoration: none;
+    color: #FEDA77;
+}
+
+.memberinfrom h3 {
+    font-size: 20px;
+
+}
+
+.memberinfrom p {
+    font-size: map-get($map , p);
+}
+
+.memberinfrom .mi_dt {
+    margin-bottom: 20px;
+
+}
+
+.memberinfrom .password {
+    width: 710px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.memberinfrom input {
+    width: 700px;
+    height: 25px;
+    padding-left: 10px;
+}
+
+.memberinfrom .mi_dt .phone select {
+    width: 150px;
+    height: 30px;
+}
+
+.memberinfrom .mi_dt .phone input {
+    width: 545px;
+}
+
+
+.memberinfrom .password01 input {
+    width: 337px;
+}
+
+.memberinfrom .password02 input {
+    width: 337px;
+}
+
+
+
+/* ---------------------------確認報名資料------------------------------------------ */
+
+.confrim {
+    margin-top: 20px;
+    border: 1px solid #ffff;
+    padding: 10px;
+    line-height: 1.6;
+}
+
+.confrim h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.confrim .check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.confrim p {
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+
+
+/* --------------------------訂單明細表------------------------------------------- */
+
+
+.left .details {
+    width: 350px;
+    height: 529px;
+    border: 1px solid #ffff;
+    padding: 10px;
+    line-height: 1.6;
+    margin-left: 20px;
+}
+
+.left .details h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.left .details .list p {
+    margin-bottom: 20px;
+}
+
+.left .details select {
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    /* border-radius: 12px; */
+}
+
+.left .amount {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.left .amount .price {
+    width: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+
+.left button {
+    width: 300px;
+    height: 30px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.left .button01 {
+    width: 300px;
+    margin: 0 auto;
+}

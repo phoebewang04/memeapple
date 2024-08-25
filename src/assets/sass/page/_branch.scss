@@ -1,0 +1,196 @@
+/* @import url(./reset.css); */
+
+$colorfont:(
+    primary:#100E24,
+    secondary:#FEDA77,
+    scccess:#262B3F,
+    danger:#FFE8BB 
+);
+
+$map: (
+    key:value,
+    h2:28px,
+    h3:20px,
+    p:18px
+);
+
+
+
+/* -------------------------------------------------- */
+
+
+body {
+    background-color: map-get($colorfont , primary );  
+}
+
+
+/* -------------------------------------------------- */
+
+#wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#wrapper .slogan {
+    width: 1200px;
+    padding: 80px 0px;
+    margin: 0 auto;
+}
+
+
+#wrapper .slogan p {
+    font-size: 24px;
+    color: map-get($colorfont , danger );
+    line-height: 1.6;
+}
+
+
+.btn button {
+    width: 200px;
+    height: 48px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 40px 40px 0px 0px;
+}
+
+.btn .taipei {
+    background-color: map-get($colorfont , secondary );
+    border-top: 1px solid white;
+    border-left:1px solid white; 
+    border-right: 1px solid white;
+    border-bottom: none;
+}
+
+.btn .taichung {
+    color: map-get($colorfont , primary );
+    border-top: 1px solid white;
+    border-left:1px solid white; 
+    border-right: 1px solid white;
+    border-bottom: none;
+}
+
+
+.btn button:hover {
+    background-color: #FCD15B;
+}
+
+
+.main {
+    border:1px solid #FFFFFF;
+    margin-bottom: 80px;
+    background-color: map-get($colorfont , scccess );
+}
+
+.introduce {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    
+    margin-bottom: 80px;
+    padding-top: 80px;
+}
+
+.introduce img {
+    width: 500px;
+    height: 400px;
+}
+
+.introduce .text {
+    padding-top: 60px;
+    padding-left: 30px;
+}
+
+.introduce h2 {
+    color: #FFFFFF;
+    font-size: map-get($map , h2 );
+    padding-bottom: 40px;
+}
+
+.introduce p {
+    font-size: map-get($map, p );
+    color: #FFFFFF;
+    line-height: 2.3;
+}
+
+.theme {
+    width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+
+.theme li i  {
+    color: map-get($colorfont , secondary );
+    font-size: 48px;
+    padding: 12px;
+}
+
+
+.theme ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theme ul li a {
+    text-decoration: none;
+}
+
+.theme ul li img {
+    width: 280px;
+    height: 400px;
+}
+
+.theme .theme_name {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.theme .theme_name h3 {
+    width: 280px;
+    height: 40px;
+    background-color: map-get($colorfont , secondary );
+    color: map-get($colorfont , primary ) ;
+    font-size: map-get($map , h3);
+    text-align: center;
+    line-height: 40px;
+
+}
+
+.location {
+    width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    justify-content: space-between;
+}
+
+.location .location_text {
+    display: flex;
+    color: #FFFFFF;
+    margin-bottom: 60px;
+    
+}
+
+.location_text .location_icon {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.location .location_text p{
+    font-size: map-get($map, p );
+    text-align: center;
+}
+
+.location iframe {
+    width: 1000px;
+    height: 300px;
+}
+
+.location_text .location_icon i {
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+

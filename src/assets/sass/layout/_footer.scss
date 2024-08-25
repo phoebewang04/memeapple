@@ -1,0 +1,61 @@
+.bottom {
+    background-color: map-get($colors,  lightblue);
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.bottom img {
+    width: 100px;
+    height: 70px;
+    margin-left: 80px;
+
+    @include rwd(650px){
+        width: 70px;
+        margin:0 20px;
+    }
+}
+
+
+.bottom .bm_text{
+    color:map-get($colors,  white);
+    margin: 0 auto;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+        p{
+            font-size: 16px;
+        }
+
+    @include rwd(650px){
+        width: 160px;
+        p{
+            font-size: 6px;
+        }
+        }
+}
+
+.bottom .icon {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+    color: map-get($colors,  white);
+    margin-left: auto;
+    padding-right: 80px;
+    font-size: 20px;
+    & a{
+        color: map-get($colors,  white);
+    }
+    @include rwd(650px){
+        padding-right: 20px;
+        // font-size: 20px;  
+    }
+    @include phone{
+        padding-right: 15px;
+        
+    }
+}

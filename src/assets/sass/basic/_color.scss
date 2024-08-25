@@ -1,0 +1,22 @@
+$colors:(
+    darkblue:#100E24,  
+    white:white,        
+    black:#292929,      
+    lightyellow:#FFE8BB, 
+    gold:#FCD15B,         
+    yellow:#FEDA77,         
+    lightblue:#262B3F,
+    darkred:#870801,
+    mdnightblue:#221F3C,
+    underyellow:#FFC700,
+    underred:#B00000,
+    lightgreen: #D8FFDF,
+    green: #6EE742,
+    deadred:#B00000     
+);
+
+
+body {
+    background-color: map-get($colors, darkblue );
+    color: map-get($colors, white)
+}

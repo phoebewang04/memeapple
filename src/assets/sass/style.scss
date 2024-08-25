@@ -1,0 +1,28 @@
+@import url(../css/reset.css);
+@import './node_modules/sass-google-fonts/src/GoogleFonts.scss';
+
+
+
+@import 'basic/color';
+@import 'basic/font';
+@import 'basic/var';
+
+@import 'mixins/mixins';
+
+@import 'component/btn';
+
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/theme';
+
+@import 'page/index';
+@import 'page/backstage';
+@import 'page/bindex';
+@import 'page/branch';
+@import 'page/deadgame';
+@import 'page/orderinfrom';
+@import 'page/pay';
+@import 'page/preorder';
+
+
+

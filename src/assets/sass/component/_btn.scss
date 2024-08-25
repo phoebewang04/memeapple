@@ -1,0 +1,7 @@
+.btn{
+    @include btn(200px,true);
+}
+
+.cbtn{
+    @include btn(200px,false);
+}

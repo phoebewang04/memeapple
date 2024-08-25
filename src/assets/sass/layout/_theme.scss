@@ -1,0 +1,322 @@
+.banner_video .hospital {
+    max-width: 100%;
+}
+
+.banner {
+    max-width: 100%;
+    margin-bottom: 80px;
+}
+
+.theme_container {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    // width: 1200px;
+    margin: 0 auto;
+    // border: 1px solid white;
+}
+
+// -----主題文字介紹＋指數 start-----
+.overview {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    margin: 0 auto;
+    margin-top: 80px;
+    // border: 1px solid white;
+
+    position: relative;
+}
+
+.blood{
+    width: 226px;
+    height: 360px;
+    background-image: url('../img/blood-7.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: -25%;
+
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.overview_text {
+    //寫大小
+    width: 50%;
+    text-align: justify;
+}
+
+.number {
+    width: 40%;
+
+    &.hospital {
+        color: map-get($colors, yellow);
+    }
+}
+
+.progress_bar {
+    // width: 350px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    height: 30px;
+    margin: 12px 0;
+
+    &.hospital {
+        background-color: map-get($colors, mdnightblue);
+    }
+}
+
+.progress {
+    text-align: center;
+    line-height: 30px;
+    white-space: nowrap;
+    border-radius: 16px 0 0 16px;
+
+
+    &.hospital {
+        background-color: map-get($colors, darkred);
+        color: map-get($colors, lightyellow);
+    }
+}
+
+// -----主題文字介紹＋指數 end-----
+
+// -----遊戲資訊 start-----
+
+.gameinfo {
+    // border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    gap: 22%;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 80%;
+
+    &.hospital {
+        color: map-get($colors, yellow);
+    }
+}
+
+i.fa-clock,
+i.fa-circle-user {
+    font-size: 100px;
+}
+
+i.fa-dollar-sign {
+    font-size: 60px;
+    line-height: 100px;
+}
+
+.dollar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+
+    &.hospital {
+        background-color: map-get($colors, yellow);
+        color: map-get($colors, darkblue);
+    }
+}
+
+.game p {
+    text-align: center;
+    line-height: 1.6;
+    cursor: pointer;
+    // border: 1px solid white;
+}
+
+// -----遊戲資訊 end-----
+
+// -----亮點icon start-----
+
+.iconinfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme_icon img {
+    width: 50%;
+    // width: 220px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.theme_icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    &.hospital {
+        text-align: center;
+
+        span {
+            font-size: 20px;
+        }
+
+        p {
+            // border: 1px solid white;
+            font-size: 16px;
+            color: map-get($colors, lightyellow);
+        }
+    }
+
+}
+
+// -----亮點icon end-----
+
+
+// -----主題介紹 start-----
+
+.theme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.theme_hospital {
+    overflow: hidden;
+    width: 1140px;
+    height: 400px;
+    margin: 0 auto;
+    max-width: 85%;
+
+    margin-bottom: 30px;
+
+    &:nth-of-type(1) {
+        background-image: url('../img/hospital-1.png');
+
+        .theme_hospital_text {
+            margin: 130px 0 0 70px;
+        }
+    }
+
+    &:nth-of-type(2) {
+        background-image: url('../img/hospital-2.png');
+
+        .theme_hospital_text {
+            text-align: right;
+            margin: 130px 70px 0 0px;
+        }
+    }
+
+    &:nth-of-type(3) {
+        background-image: url('../img/hospital-3.png');
+
+        .theme_hospital_text {
+            margin: 130px 0 0 70px;
+        }
+    }
+
+    &:nth-of-type(4) {
+        background-image: url('../img/hospital-4.png');
+
+        .theme_hospital_text {
+            p {
+                // border: 1px solid white;
+                text-align: center;
+                margin: 180px;
+            }
+        }
+    }
+}
+
+// -----主題介紹 end-----
+
+// -----注意事項 start-----
+
+.small_mark {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin: 0 0 28px 9%;
+
+    & h2 {
+        color: map-get($colors, yellow);
+    }
+}
+
+.notice_text {
+    &.hospital {
+        border-radius: 24px;
+        background: #221F3C;
+        padding: 20px;
+        width: 80%;
+
+        margin: 0 auto;
+    }
+}
+
+// -----注意事項 end-----
+
+// -----該館遊戲 start-----
+.arrow {
+    // border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    overflow: hidden;
+
+    margin: 0 auto;
+
+    .fa-angle-left,
+    .fa-angle-right {
+        cursor: pointer;
+        font-size: 30px;
+        color: map-get($colors, yellow);
+    }
+
+    .wrapper {
+        overflow: hidden;
+
+    }
+
+    .carousel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+        transition: transform 0.5s ease-in-out;
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 40px;
+            text-align: center;
+
+            img {
+                max-width: 250px;
+            }
+
+            h4 {
+                margin-top: 10px;
+                color: map-get($colors, yellow);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+// -----該館遊戲 end-----

@@ -1,0 +1,202 @@
+$colorfont:(
+    primary:#100E24,
+    secondary:#FEDA77,
+    scccess:#262B3F,
+    danger:#FFE8BB 
+);
+
+
+$map: (
+    key:value,
+    h2:28px,
+    h3:20px,
+    p:18px
+);
+
+
+body {
+    background-color: map-get($colorfont , primary );
+}
+
+.return {
+    display: flex;
+    margin-left: 40px;
+    margin-top: 20px;
+  }
+  
+.return a {
+    text-decoration: none;
+    color: #ffff;
+}
+
+.return i {
+    color: #ffff;
+}
+
+.mt {
+    color: #ffff;
+    margin-top: 20px;
+    margin-left: 240px;
+    margin-bottom: 40px;
+}
+
+// ---------------------------------------------------------------------
+
+.game {
+    border: 1px solid white;
+    width: 900px;
+    height: 500px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+
+    position: relative;
+    display: none;
+}
+
+#dg_1 {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    width: 150px;
+}
+
+#dg_2 {
+    position: absolute;
+    left: 30px;
+    top: 260px;
+    width: 120px;
+    z-index: 1;
+}
+
+#dg_3 {
+    position: absolute;
+    right: 50px;
+    top: 320px;
+    width: 140px;
+    z-index: 1;
+}
+
+#dg_4 {
+    position: absolute;
+    bottom: 0px;
+    width: 902px;
+    height: 500px;
+}
+
+#dg_5 {
+    position: absolute;
+    left: 140px;
+    top: 99px;
+    width: 40px;
+}
+
+#dg_5-1 {
+    position: absolute;
+    right: 100px;
+    top: 140px;
+    width: 40px;
+}
+
+#dg_5-2 {
+    position: absolute;
+    right: 220px;
+    top: 50px;
+    width: 30px;
+}
+
+button {
+    width: 130px;
+    height: 50px;
+    border-radius: 20px;
+
+    position: absolute;
+    left: 390px;
+    bottom: 150px;
+    color: #B00000;
+    font-size: 50px;
+    font-family: "Acme", sans-serif;
+    font-weight: bold;
+    line-height: 5px;
+    // border: 3px solid red;
+   
+}
+.game .text {
+    position: absolute;
+    left: 260px;
+    top: 80px;
+    text-align: center;
+    line-height: 0.7;
+}
+
+.game .p1 {
+    color: #ffff;
+    font-family:"Jersey 10", sans-serif;
+    font-size: 150px;
+    font-weight: 700;
+}
+
+.game .p2 {
+    color: #FEDA77;
+    font-family:"Jersey 10", sans-serif;
+    font-size: 120px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+//-----------------------------------------------------------------------------
+
+.game2{
+    width: 900px;
+    height: 500px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+
+    position: relative;
+    border: 1px solid white;
+}
+
+
+#dg_6 {
+    position: absolute;
+    left: -40px;
+    top: -20px;
+    width: 230px;
+}
+
+#dg_7 {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    width: 140px;
+}
+
+#dg_8 {
+    position: absolute;
+    left: -100px;
+    bottom: -20px;
+    width: 370px;
+    z-index: 1;
+}
+
+#dg_9 {
+    position: absolute;
+    right: 90px;
+    bottom: 10px;
+    width: 260px;
+    z-index: 1;
+}
+
+#dg_11 {
+    position: absolute;
+    right: -40px;
+    bottom: -10px;
+    width: 180px;
+    z-index: 1;
+}
+
+#dg_14 {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 902px;
+}
