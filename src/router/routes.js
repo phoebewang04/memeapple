@@ -1,6 +1,6 @@
 import {createRouter} from 'vue-router'
-import Fontpage from '../views/fontpage/fontpage.vue';
-import Homepage from '../views/homepage/home.vue';
+// import Fontpage from '../views/fontpage/fontpage.vue';
+// import Homepage from '../views/homepage/home.vue';
 // 左邊是你宣告的名稱，可以跟你的 .vue檔案名稱相同。
 // 右邊是你的 .vue 檔案路徑。
 
