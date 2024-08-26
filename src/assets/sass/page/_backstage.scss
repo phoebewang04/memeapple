@@ -30,6 +30,8 @@
 
 .backstage_wrapper{
     margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
     // border: 1px solid map-get($colors, darkblue );
 }
 
@@ -49,7 +51,7 @@
 
 .backstage_selection{
     // background-color: green;
-    height: 200px;
+    max-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -128,7 +130,7 @@
 
 .backstage_panel{
     // background-color: red;
-    padding-top: 20px;
+    padding: 20px 0;
     width: calc(50% + 40px);
     align-self: flex-end;
 
