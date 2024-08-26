@@ -129,6 +129,11 @@
 .backstage_panel{
     // background-color: red;
     padding-top: 20px;
+    width: calc(50% + 40px);
+    align-self: flex-end;
+
+    display: flex;
+    justify-content: space-between;
 }
 
 .backstage_tablezone{
@@ -140,6 +145,19 @@
 
 .backstage_button{
     height: 30.8px;
+    position: static;
+    margin: 0;
+    border-width: 0.8px;
+    font-size: 16px;
+    width: 80px;
+  
+    &:active{
+      background-color: map-get( $colors, lightyellow );
+    }
+  }
+
+.backstage_button:hover{
+    border-width: 2px;
 }
 
 .backstage_table{
@@ -173,6 +191,49 @@
     color: map-get($colors, black );
 }
 
-.backstage_pagination{
+.backstage_tfoot{
     background-color: map-get($colors, lightyellow );
+}
+
+.backstage_pagination{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backstage_paginator{
+    // background-color: #fff;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+
+    & a{
+        font-size: 18px;
+        line-height: 30px;
+    }
+    
+    & a:hover{
+        font-weight: bold;
+    }
+
+    & a:active{
+        color: map-get($colors, gold );
+    }
+}
+
+.backstage_page_input{
+    font-size: 16px;
+    width: 30px;
+    margin:0 8px;
+    background-color: map-get( $colors, lightyellow );
+    border: 0;
+    text-align: center;
+}
+
+.backstage_page_input:focus{
+    outline: 1px solid map-get($colors, lightblue );
+    background-color: map-get( $colors, white );
 }

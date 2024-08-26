@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import url(../css/reset.css);
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC");
 body {
   background-color: #100E24;
   color: white;
@@ -587,6 +586,10 @@ i.fa-dollar-sign {
 
 .backstage_panel {
   padding-top: 20px;
+  width: calc(50% + 40px);
+  align-self: flex-end;
+  display: flex;
+  justify-content: space-between;
 }
 
 .backstage_tablezone {
@@ -597,6 +600,18 @@ i.fa-dollar-sign {
 
 .backstage_button {
   height: 30.8px;
+  position: static;
+  margin: 0;
+  border-width: 0.8px;
+  font-size: 16px;
+  width: 80px;
+}
+.backstage_button:active {
+  background-color: #FFE8BB;
+}
+
+.backstage_button:hover {
+  border-width: 2px;
 }
 
 .backstage_table {
@@ -630,8 +645,47 @@ i.fa-dollar-sign {
   color: #292929;
 }
 
-.backstage_pagination {
+.backstage_tfoot {
   background-color: #FFE8BB;
+}
+
+.backstage_pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backstage_paginator {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+.backstage_paginator a {
+  font-size: 18px;
+  line-height: 30px;
+}
+.backstage_paginator a:hover {
+  font-weight: bold;
+}
+.backstage_paginator a:active {
+  color: #FCD15B;
+}
+
+.backstage_page_input {
+  font-size: 16px;
+  width: 30px;
+  margin: 0 8px;
+  background-color: #FFE8BB;
+  border: 0;
+  text-align: center;
+}
+
+.backstage_page_input:focus {
+  outline: 1px solid #262B3F;
+  background-color: white;
 }
 
 /* @import url(./reset.css); */

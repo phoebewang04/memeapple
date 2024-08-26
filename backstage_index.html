@@ -59,6 +59,7 @@
                     </select>    
                 </form>
                 <div class="backstage_panel">
+                    <button class="btn backstage_button">查詢</button>
                     <button class="btn backstage_button">新增</button>
                 </div>
             </div>
@@ -144,8 +145,16 @@
                             <td>資料 2-4</td>
                             <td>資料 2-5</td>
                         </tr>
-                        <tr class="backstage_pagination">
-                            <td colspan="5" style="text-align: center;">分頁器</td>
+                        <tr class="backstage_tfoot">
+                            <td colspan="5" style="text-align: center;">
+                                <div class="backstage_pagination">
+                                    <div class="backstage_paginator">
+                                        <a href="#">&lt;</a>
+                                        <input class="backstage_page_input" type="text" value="1">
+                                        <a href="#">&gt;</a>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
