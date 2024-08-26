@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import url(../css/reset.css);
 body {
-  background-color: #100E24;
   color: white;
 }
 
@@ -311,14 +310,14 @@ a {
   gap: 22%;
 }
 
-.game {
+.theme_game {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   height: 80%;
 }
-.game.hospital {
+.theme_game.hospital {
   color: #FEDA77;
 }
 
@@ -343,10 +342,9 @@ i.fa-dollar-sign {
   color: #100E24;
 }
 
-.game p {
+.theme_game p {
   text-align: center;
   line-height: 1.6;
-  cursor: pointer;
 }
 
 .iconinfo {
@@ -658,6 +656,47 @@ i.fa-dollar-sign {
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
+=======
+}
+
+.backstage_paginator {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+.backstage_paginator a {
+  font-size: 18px;
+  line-height: 30px;
+}
+.backstage_paginator a:hover {
+  font-weight: bold;
+}
+.backstage_paginator a:active {
+  color: #FCD15B;
+}
+
+.backstage_page_input {
+  font-size: 16px;
+  width: 30px;
+  margin: 0 8px;
+  background-color: #FFE8BB;
+  border: 0;
+  text-align: center;
+}
+
+.backstage_page_input:focus {
+  outline: 1px solid #262B3F;
+  background-color: white;
+}
+
+/* @import url(./reset.css); */
+/* -------------------------------------------------- */
+body {
+  background-color: #100E24;
+>>>>>>> YY
 }
 
 .backstage_paginator {
@@ -1777,6 +1816,49 @@ zombie_btn {
 .nextstep next_btn:hover {
   background-color: #FCD15B;
   cursor: pointer;
+}
+
+.minigame_body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.parallax {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 113vh;
+  background-image: url("../img/cemetery.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.parallax #cemetery_text {
+  position: absolute;
+  top: 20%;
+  font-size: 44px;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 0 13px #4E3B8D, 0 0 10px #1f0379;
+}
+.parallax img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  pointer-events: none;
+}
+.parallax #gate-left {
+  transform: translateX(-282px);
+}
+.parallax #gate-right {
+  transform: translateX(305px);
+}
+
+.sec {
+  background-color: #000;
 }
 
 /*# sourceMappingURL=style.css.map */
