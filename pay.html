@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/pay.css">
+    <link rel="stylesheet" href="./src/assets/css/style.css">
     <title>結帳</title>
     <script src="https://kit.fontawesome.com/f484a5c220.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,19 +17,16 @@
 <body>
 
     <!-- ---------------------Header-------------------------- -->
-    <header>
-        <div class="top">
-            <div class="logo"><a href="#"><img src="./img/memelogo.png" alt=""></a></div>
-            <nav>
-                <ul>
-                    <li><a href="">線上體驗</a></li>
-                    <li><a href="">遊戲主題</a></li>
-                    <li><a href="">會員專區</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
+    <header class="top">
+        <a href="./index.html"><img src="./src/assets/img/memelogo.svg" alt=""></a>
+        <i class="fa fa-bars" aria-hidden="true" onclick="showMenuBar()"></i>
+        <ul id="menuBar">
+            <li><a href="">線上體驗</a></li>
+            <li><a href="">遊戲主題</a></li>
+            <li><a href="">會員專區</a></li>
+        </ul>
+    </header>
 
     <div id="wrapper">
 
@@ -41,22 +37,22 @@
             </a>
         </div>
 
-        <div class="process">
-            <div class="number">
+        <div class="pay_process">
+            <div class="pay_number">
                 <div class="circle1">
                     <p>1</p>
                 </div>
                 <p>填寫資料</p>
             </div>
 
-            <div class="number">
+            <div class="pay_number">
                 <div class="circle2">
                     <p>2</p>
                 </div>
                 <p>結帳</p>
             </div>
 
-            <div class="number">
+            <div class="pay_number">
                 <div class="circle3">
                     <p>3</p>
                 </div>
@@ -64,9 +60,9 @@
             </div>
         </div>
 
-        <div class="all">
+        <div class="pay_all">
 
-            <div class="right">
+            <div class="pay_right">
                 <h2>付款方式</h2>
                 <div class="paycard">
                     <p>信用卡付款</p>
@@ -91,7 +87,7 @@
             </div>
 
 
-            <div class="left">
+            <div class="pay_left">
 
                 <div class="details">
                     <h2>訂單明細</h2>
@@ -147,7 +143,7 @@
                     </div>
 
                     <div class="button01">
-                        <button>下一步</button>
+                        <button class="next_btn">下一步</button>
                     </div>
 
                 </div>
@@ -159,28 +155,26 @@
 
     </div>
 
-
+    <!-- -------------------------------footer--------------------------------------- -->
 
     <footer>
-
+        
         <div class="bottom">
 
-
-            <img src="./img/memelogo.png" alt="">
+            <div>
+                <a href="#"><img src="./src/assets/img/memelogo.svg" alt=""></a>
+            </div>
 
 
             <div class="bm_text">
-                <div class="bm_p">
-                    <p>© Copyright Meme謎因工作室</p>
-                    <p>All Rights Reserved.</p>
-                </div>
-                <p>本網站為緯育TibaMe【第93期】前端工程師專業技術養成班學員作品,僅供學習、展示之用途。</p>
+                <p>© Copyright Meme謎因工作室&nbsp;&nbsp;All Rights Reserved.</p>
+                <p>本網站為緯育TibaMe【第93期】前端工程師專業技術養成班學員作品，僅供學習、展示之用途。</p>
             </div>
 
             <div class="icon">
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-square-threads"></i>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-square-threads"></i></a>
             </div>
 
         </div>

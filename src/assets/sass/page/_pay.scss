@@ -1,7 +1,4 @@
-body {
-    background-color: #100E24;
-    color: #ffff;
-}
+/* --------------------------結帳資訊------------------------------------------- */
 
 /* --------------------------返回------------------------------------------- */
 
@@ -13,13 +10,13 @@ body {
 
 .return a {
     text-decoration: none;
-    color: #ffff;
+    color: map-get($colors , white );
 }
 
 /* -----------------------------過程順序---------------------------------------- */
 
 
-.process {
+.pay_process {
     width: 1000px;
     margin: 0 auto;
     margin-top: 40px;
@@ -28,7 +25,7 @@ body {
     justify-content: space-between;
 }
 
-.number {
+.pay_number {
     width: 70px;
     display: flex;
     flex-direction: column;
@@ -37,8 +34,8 @@ body {
     position: relative;
 }
 
-.number .circle1 {
-    background-color: #ffff;
+.pay_number .circle1 {
+    background-color: map-get($colors , white );
     width: 30px;
     height: 30px;
     border-radius: 30px;
@@ -47,8 +44,8 @@ body {
     margin-bottom: 20px;
 }
 
-.number .circle2 {
-    background-color: #FEDA77;
+.pay_number .circle2 {
+    background-color: map-get($colors , yellow );
     width: 30px;
     height: 30px;
     border-radius: 30px;
@@ -57,8 +54,8 @@ body {
     margin-bottom: 20px;
 }
 
-.number .circle3 {
-    background-color: #ffff;
+.pay_number .circle3 {
+    background-color: map-get($colors , white );
     width: 30px;
     height: 30px;
     border-radius: 30px;
@@ -68,18 +65,18 @@ body {
 }
 
 
-.number .circle1, .circle2, .circle3 p {
-    color: #100E24;
+.pay_number .circle1, .circle2, .circle3 p {
+    color: map-get($colors , darkblue );
 }
 
 
 
-.number .circle2::before {
+.pay_number .circle2::before {
     content: '';
     display: block;
     width: 390px;
     height: 1px;
-    background-color: #ffff;
+    background-color: map-get($colors , white );
     
     position: absolute;
     top: 35px;
@@ -87,12 +84,12 @@ body {
 
 }
 
-.number .circle2::after {
+.pay_number .circle2::after {
     content: '';
     display: block;
     width: 390px;
     height: 1px;
-    background-color: #ffff;
+    background-color: map-get($colors , white );
 
     position: absolute;
     top: 35px;
@@ -100,75 +97,73 @@ body {
 }
 
 
-
-
 /* --------------------------------------------------------------------- */
 
-.all {
+.pay_all {
     width: 1200px;
     margin: 0 auto;
     display: flex;
     margin-bottom: 80px
 }
 
-.all .right {
+.pay_all .pay_right {
     width: 810px;
 }
 
-.all .left {
+.pay_all .pay_left {
     width: 350px;
 }
 
 /* --------------------------------------------------------------------- */
 
-.right {
+.pay_right {
     border: 1px solid #ffff;
     padding: 10px;
     line-height: 1.6;
 }
 
-.right h2 {
-    font-size: 20px;
+.pay_right h2 {
+    font-size: map-get($fontsize , h4 );
     margin-bottom: 10px;
 }
 
-.right p {
-    font-size: 14px;
+.pay_right p {
+    font-size: map-get($fontsize , p1 );
 }
 
-.right .paycard {
+.pay_right .paycard {
     line-height: 30px;
 }
 
-.right .card_number {
- margin: 20px 0px;
+.pay_right .card_number {
+    margin: 20px 0px;
 }
 
-.right .card_number input {
+.pay_right .card_number input {
     padding-left: 10px;
     width: 700px;
     height: 30px;
 }
 
-.right .card_time {
+.pay_right .card_time {
     display: flex;
 }
 
-.right .card_time input {
+.pay_right .card_time input {
     padding-left: 10px;
     width: 200px;
     height: 30px;
 }
 
-.right .cardcode {
+.pay_right .cardcode {
     margin-left: 5px;
 }
 
-.right .cardcode input {
+.pay_right .cardcode input {
     width: 275px;
 }
 
-.left {
+.pay_left {
     width: 350px;
     height: 529px;
     border: 1px solid #ffff;
@@ -177,28 +172,28 @@ body {
     margin-left: 20px;
 }
 
-.left .details h2 {
-    font-size: 20px;
+.pay_left .details h2 {
+    font-size: map-get($fontsize , h4 );
     margin-bottom: 10px;
 }
 
-.left .details .list p {
+.pay_left .details .list p {
     margin-bottom: 20px;
 }
 
-.left .details select {
+.pay_left .details select {
     width: 200px;
     height: 30px;
     padding: 5px;
     /* border-radius: 12px; */
 }
 
-.left .amount {
+.pay_left .amount {
     margin-top: 40px;
     margin-bottom: 40px;
 }
 
-.left .amount .price {
+.pay_left .amount .price {
     width: 340px;
     display: flex;
     align-items: center;
@@ -208,14 +203,14 @@ body {
 }
 
 
-.left button {
+.pay_left next_btn {
     width: 300px;
     height: 30px;
     border-radius: 12px;
     cursor: pointer;
 }
 
-.left .button01 {
+.pay_left .button01 {
     width: 300px;
     margin: 0 auto;
 }

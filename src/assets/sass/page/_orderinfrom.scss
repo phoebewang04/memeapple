@@ -1,27 +1,8 @@
-$colorfont:(
-    primary:#100E24,
-    secondary:#FEDA77,
-    scccess:#262B3F,
-    danger:#FFE8BB,
-    hover: #FCD15B
-);
 
-$map: (
-    key:value,
-    h2:24px,
-    h3:20px,
-    p:14px
-);
+/* --------------------------預定資訊------------------------------------------- */
 
 
-// ----------------------------------
-
-body {
-    background-color: #100E24;
-    color: #ffff;
-}
-
-/* --------------------------返回------------------------------------------- */
+/* --------------------------返回------------------------------------------ */
 
 .return {
     display: flex;
@@ -31,13 +12,13 @@ body {
 
 .return a {
     text-decoration: none;
-    color: #ffff;
+    color: map-get($colors , white );
 }
 
 /* -----------------------------過程順序---------------------------------------- */
 
 
-.process {
+.order_process {
     width: 1000px;
     margin: 0 auto;
     margin-top: 40px;
@@ -46,7 +27,7 @@ body {
     justify-content: space-between;
 }
 
-.number {
+.order_number {
     width: 70px;
     display: flex;
     flex-direction: column;
@@ -55,8 +36,8 @@ body {
     position: relative;
 }
 
-.number .circle1 {
-    background-color: #FEDA77;
+.order_number .circle1 {
+    background-color: map-get($colors , yellow );
     width: 30px;
     height: 30px;
     border-radius: 30px;
@@ -65,8 +46,8 @@ body {
     margin-bottom: 20px;
 }
 
-.number .circle2 {
-    background-color: #ffff;
+.order_number .circle2 {
+    background-color: map-get($colors , white );
     width: 30px;
     height: 30px;
     border-radius: 30px;
@@ -75,8 +56,8 @@ body {
     margin-bottom: 20px;
 }
 
-.number .circle3 {
-    background-color: #ffff;
+.order_number .circle3 {
+    background-color: map-get($colors , white );
     width: 30px;
     height: 30px;
     border-radius: 30px;
@@ -86,18 +67,18 @@ body {
 }
 
 
-.number .circle1, .circle2, .circle3 p {
-    color: #100E24;
+.order_number .circle1, .circle2, .circle3 p {
+    color: map-get($colors , darkblue );
 }
 
 
 
-.number .circle2::before {
+.order_number .circle2::before {
     content: '';
     display: block;
     width: 390px;
     height: 1px;
-    background-color: #ffff;
+    background-color: map-get($colors , white );
     
     position: absolute;
     top: 35px;
@@ -105,12 +86,12 @@ body {
 
 }
 
-.number .circle2::after {
+.order_number .circle2::after {
     content: '';
     display: block;
     width: 390px;
     height: 1px;
-    background-color: #ffff;
+    background-color: map-get($colors , white );
 
     position: absolute;
     top: 35px;
@@ -123,18 +104,18 @@ body {
 /* --------------------------------------------------------------------- */
 
 
-.all {
+.order_all {
     width: 1200px;
     margin: 0 auto;
     display: flex;
     margin-bottom: 80px
 }
 
-.all .right {
+.order_all .order_right {
     width: 810px;
 }
 
-.all .left {
+.order_all .order_left {
     width: 350px;
 }
 
@@ -157,16 +138,16 @@ body {
 
 .memberinfrom .login a {
     text-decoration: none;
-    color: #FEDA77;
+    background-color: map-get($colors , yellow );
 }
 
 .memberinfrom h3 {
-    font-size: 20px;
+    font-size: map-get($fontsize , h4 );
 
 }
 
 .memberinfrom p {
-    font-size: map-get($map , p);
+    font-size: map-get($fontsize , p1);
 }
 
 .memberinfrom .mi_dt {
@@ -217,7 +198,7 @@ body {
 }
 
 .confrim h3 {
-    font-size: 20px;
+    font-size: map-get($fontsize , h4);
     margin-bottom: 10px;
 }
 
@@ -228,7 +209,7 @@ body {
 }
 
 .confrim p {
-    font-size: 14px;
+    font-size: map-get($fontsize , p1);
     padding-left: 10px;
 }
 
@@ -237,7 +218,7 @@ body {
 /* --------------------------訂單明細表------------------------------------------- */
 
 
-.left .details {
+.order_left .details {
     width: 350px;
     height: 529px;
     border: 1px solid #ffff;
@@ -246,28 +227,28 @@ body {
     margin-left: 20px;
 }
 
-.left .details h3 {
-    font-size: 20px;
+.order_left .details h3 {
+    font-size: map-get($fontsize , h4);
     margin-bottom: 10px;
 }
 
-.left .details .list p {
+.order_left .details .list p {
     margin-bottom: 20px;
 }
 
-.left .details select {
+.order_left .details select {
     width: 200px;
     height: 30px;
     padding: 5px;
     /* border-radius: 12px; */
 }
 
-.left .amount {
+.order_left .amount {
     margin-top: 40px;
     margin-bottom: 40px;
 }
 
-.left .amount .price {
+.order_left .amount .price {
     width: 340px;
     display: flex;
     align-items: center;
@@ -277,14 +258,14 @@ body {
 }
 
 
-.left button {
+.order_left next_btn {
     width: 300px;
     height: 30px;
     border-radius: 12px;
     cursor: pointer;
 }
 
-.left .button01 {
+.order_left .button01 {
     width: 300px;
     margin: 0 auto;
 }
