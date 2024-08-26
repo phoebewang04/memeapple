@@ -1,30 +1,6 @@
-/* @import url(./reset.css); */
 
-$colorfont:(
-    primary:#100E24,
-    secondary:#FEDA77,
-    scccess:#262B3F,
-    danger:#FFE8BB 
-);
+/* ---------------------分館介紹----------------------------- */
 
-$map: (
-    key:value,
-    h2:28px,
-    h3:20px,
-    p:18px
-);
-
-
-
-/* -------------------------------------------------- */
-
-
-body {
-    background-color: map-get($colorfont , primary );  
-}
-
-
-/* -------------------------------------------------- */
 
 #wrapper {
     width: 1200px;
@@ -39,13 +15,19 @@ body {
 
 
 #wrapper .slogan p {
-    font-size: 24px;
-    color: map-get($colorfont , danger );
+    font-size: map-get($fontsize , h3 );
+    color: map-get($colors , danger );
     line-height: 1.6;
 }
 
 
-.branch_btn {
+
+.branch_btn #taipei {
+    background-color: map-get($colors , yellow );
+    border-top: 1px solid white;
+    border-left:1px solid white; 
+    border-right: 1px solid white;
+    border-bottom: none;
     width: 200px;
     height: 48px;
     cursor: pointer;
@@ -53,32 +35,29 @@ body {
     border-radius: 40px 40px 0px 0px;
 }
 
-branch_btn #taipei {
-    background-color: map-get($colorfont , secondary );
+.branch_btn #taichung {
+    color: map-get($colors , darkblue );
     border-top: 1px solid white;
     border-left:1px solid white; 
     border-right: 1px solid white;
     border-bottom: none;
-}
-
-branch_btn #taichung {
-    color: map-get($colorfont , primary );
-    border-top: 1px solid white;
-    border-left:1px solid white; 
-    border-right: 1px solid white;
-    border-bottom: none;
+    width: 200px;
+    height: 48px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 40px 40px 0px 0px;
 }
 
 
-.btn button:hover {
-    background-color: #FCD15B;
+.branch_btn button:hover {
+    background-color: map-get($colors , gold );
 }
 
 
 #main {
     border:1px solid #FFFFFF;
     margin-bottom: 80px;
-    background-color: map-get($colorfont , scccess );
+    background-color: map-get($colors , lightblue );
 }
 
 .introduce {
@@ -101,15 +80,15 @@ branch_btn #taichung {
 }
 
 .introduce h2 {
-    color: #FFFFFF;
-    font-size: map-get($map , h2 );
+    color: map-get($colors , white );
+    font-size: map-get($fontsize , h3 );
     padding-bottom: 40px;
 }
 
 .introduce p {
-    font-size: map-get($map, p );
-    color: #FFFFFF;
-    line-height: 2.3;
+    font-size: map-get($fontsize, p );
+    color: map-get($colors , white );
+    line-height: map-get($lineheight , p );
 }
 
 .theme {
@@ -119,7 +98,7 @@ branch_btn #taichung {
 }
 
 .theme li i  {
-    color: map-get($colorfont , secondary );
+    color: map-get($colors , yellow );
     font-size: 48px;
     padding: 12px;
 }
@@ -149,9 +128,9 @@ branch_btn #taichung {
 .theme .theme_name h3 {
     width: 280px;
     height: 40px;
-    background-color: map-get($colorfont , secondary );
-    color: map-get($colorfont , primary ) ;
-    font-size: map-get($map , h3);
+    background-color: map-get($colors , yellow );
+    color: map-get($colors , darkblue ) ;
+    font-size: map-get($fontsize , h4);
     text-align: center;
     line-height: 40px;
 
@@ -166,7 +145,7 @@ branch_btn #taichung {
 
 .location .location_text {
     display: flex;
-    color: #FFFFFF;
+    color: map-get($colors , white );
     margin-bottom: 60px;
     
 }
@@ -176,11 +155,13 @@ branch_btn #taichung {
     display: flex;
     flex-direction: column;
     text-align: center;
+
 }
 
 .location .location_text p{
-    font-size: map-get($map, p );
+    font-size: map-get($fontsize, p );
     text-align: center;
+    line-height: 20px;
 }
 
 .location iframe {

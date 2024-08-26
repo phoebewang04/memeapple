@@ -1,5 +1,4 @@
-/* @import url(./reset.css); */
-
+<<<<<<< HEAD
 $colorfont:(
     primary:#100E24,
     secondary:#FEDA77,
@@ -7,22 +6,12 @@ $colorfont:(
     danger:#FFE8BB,
     hover: #FCD15B
 );
+=======
 
-$map: (
-    key:value,
-    h2:24px,
-    h3:20px,
-    p:14px
-);
+/* -------------------------preorder 預定主題------------------------------- */
+>>>>>>> 37423a0b6397f768e3594e483db80206e0742e5b
 
-
-
-/* -------------------------------------------------------- */
-body {
-    background-color: map-get($colorfont , primary );
-}
-
-#wrapper {
+#preorder_wrapper {
     width: 1200px;
     margin: 0 auto;
 }
@@ -30,63 +19,73 @@ body {
 /* --------------------返回------------------------------------ */
 
 .return {
+    width: 50px;
     display: flex;
     margin-left: 40px;
     margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
 .return a {
     text-decoration: none;
-    color: #ffff;
+    color: map-get($colors , white );
 }
 
 .return i {
-    color: #ffff;
+    color: map-get($colors , white );
 }
 
 /* --------------------活動資訊------------------------------------ */
 
-.toppic {
+.preorder_toppic img {
     margin-top: 40px;
     width: 1200px;
     height: 600px;
-    background-image: url(../../img/dead01.png);
-    background-position: center;
 }
 
-.infor_active {
-    height: 110px;
+
+.preorderinfor_active {
+    height: 120px;
     margin-top: 40px;
     margin-bottom: 40px;
     border: 1px solid #ffff;
     border-radius: 12px;
 }
 
-.infor_active h2 {
+.preorderinfor_active h2 {
     font-weight: bold;
-    font-size: map-get($map , h2 );
-    color: #ffff;
-    padding: 20px;
+    font-size: map-get($fontsize , h3 );
+    color: map-get($colors , white );
+    padding: 10px 20px;
 }
 
-.infor_active .infor_list ul {
+
+.preorderinfor_active .infor_list ul {
     width: 1150px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    color: #ffff;
-}
-
-.infor_active .infor_time {
-    width: 230px;
-    display: flex;
-    justify-content: space-between;
+    color: map-get($colors , white );
     
 }
 
-.infor_active .infor_list {
+.preorderinfor_active .infor_time {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.preorderinfor_active .infor_time li i {
     font-size: 20px;
+}
+
+.preorderinfor_active .infor_list {
+    font-size: map-get($fontsize , p );
+    
 }
 
 .infor_notice {
@@ -96,12 +95,12 @@ body {
 
 /* --------------------日期與時段------------------------------------ */
 
-.datetime {
+.preorder_datetime {
     border: 1px solid #ffff;
     margin-bottom: 40px;
 }
 
-.datetime .timeandele {
+.preorder_datetime .timeandele {
     width: 1100px;
     margin: 0 auto;
     display: flex;
@@ -110,23 +109,16 @@ body {
 }
 
 
-.datetime h2 {
+.preorder_datetime h2 {
     font-weight: bold;
-    font-size: map-get($map , h2 );
-    margin: 20px;
-    color: #fff;
+    font-size: map-get($fontsize , h3 );
+    padding: 10px 20px;
+    color: map-get($colors , white );
 }
 
-
-
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-}
 
 .calendar-container {
-    width: 600px;
+    width: 500px;
     border:1px solid #ffff;
     padding: 10px;
     margin: 20px;
@@ -233,23 +225,23 @@ body {
 }
 
 
-.datetime .time {
-    width: 600px;
-    height: 362px;
+.preorder_datetime .time {
+    width: 560px;
+    height: 375px;
     border: 1px solid #fff;
-    color: #fff;
+    color: map-get($colors , white );
 
 }
 
-.datetime .time h3 {
-    font-size: map-get($map , h3 );
+.preorder_datetime .time h3 {
+    font-size: map-get($fontsize , h4 );
     width: 100px;
     margin: 0 auto;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
-.datetime .time .time_ele {
+.preorder_datetime .time .time_ele {
     width: 365px;
     display: flex;
     flex-wrap: wrap;
@@ -258,7 +250,7 @@ body {
 
 }
 
-.datetime .time .time_ele .ele {
+.preorder_datetime .time .time_ele .ele {
     border: 1px solid #fff;
     background-color: #e4e1e1;
     height: 50px;
@@ -270,21 +262,21 @@ body {
     color: #100E24;
 }
 
-.datetime .time .amount {
+.preorder_datetime .time .amount {
     width: 350px;
     margin: 0 auto;
     
 }
 
-.datetime .time .amount #people {
+.preorder_datetime .time .amount #people {
     width: 350px;
     height: 40px;
     border-radius: 12px;
     padding: 10px;
 }
 
-.datetime .time .time_ele .ele:hover {
-    background-color: map-get($colorfont , hover );
+.preorder_datetime .time .time_ele .ele:hover {
+    background-color: map-get($colors , gold );
     cursor: pointer;
 }
 
@@ -294,53 +286,64 @@ body {
 /* --------------------訂購須知------------------------------------ */
 
 
-.infor_notice {
-    color: #fff;
+.preorder_infornotice {
+    color: map-get($colors , white );
     padding: 20px;
+    border:1px solid #ffff;
+}
+
+.preorder_infornotice ul li {
     line-height: 2.3;
 }
 
-.infor_notice h2 {
-    font-size: 24px;
+.preorder_infornotice h2 {
+    font-size: map-get($fontsize , h3 );
     font-weight: bold;
     padding-bottom: 20px;
 }
 
-.infor_notice .content {
+.preorder_infornotice h3 {
+    font-size: map-get($fontsize , p );
+}
+
+.preorder_infornotice .content {
     margin-left: 20px;
     display: flex;
     align-items: center;
+    height: 40px;
     
 }
 
-.infor_notice .content i {
+.preorder_infornotice .content i {
     font-size: 4px;
     margin-right: 12px;
 }
 
-.infor_notice .content p {
-    font-size: map-get($map , p );
+.preorder_infornotice .content p {
+    font-size: map-get($fontsize , p1 );
 }
 
 
 /* --------------------下一步------------------------------------ */
 
 .nextstep {
-    width: 200px;
-    margin: 0 auto;
-
+   
+   
+    margin: 80px auto;
 }
 
-button {
-    background-color: map-get($colorfont , secondary );
+.nextstep .next_btn {
+    background-color: map-get($colors , yellow );
     width: 200px;
     height: 40px;
     border-radius: 20px;
-    margin: 80px 0px;
+   
+    width: 200px;
+    // margin: 80px auto;
 }
 
 
-button:hover {
-    background-color: map-get($colorfont , hover );
+.nextstep next_btn:hover {
+    background-color: map-get($colors , gold );
     cursor: pointer;
 }

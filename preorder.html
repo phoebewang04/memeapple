@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css1/preorder.css">
+    <link rel="stylesheet" href="./src/assets/css/style.css">
     <script src="https://kit.fontawesome.com/f484a5c220.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,18 +21,14 @@
 <body>
 
     <!-- /* --------------------------header------------------------------------------- */ -->
-
-    <header>
-        <div class="top">
-            <div class="logo"><a href="#"><img src="./img/memelogo.png" alt=""></a></div>
-            <nav>
-                <ul>
-                    <li><a href="">線上體驗</a></li>
-                    <li><a href="">遊戲主題</a></li>
-                    <li><a href="">會員專區</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="top">
+        <a href="./index.html"><img src="./src/assets/img/memelogo.svg" alt=""></a>
+        <i class="fa fa-bars" aria-hidden="true" onclick="showMenuBar()"></i>
+        <ul id="menuBar">
+            <li><a href="">線上體驗</a></li>
+            <li><a href="">遊戲主題</a></li>
+            <li><a href="">會員專區</a></li>
+        </ul>
     </header>
 
     <div class="return">
@@ -47,11 +42,13 @@
     <!-- /* --------------------------中間內容------------------------------------------- */ -->
 
 
-    <div id="wrapper">
+    <div id="preorder_wrapper">
 
-        <div class="toppic"></div>
+        <div class="preorder_toppic">
+            <img src="../../src/assets/img/dead01.png" alt="">
+        </div>
 
-        <div class="infor_active">
+        <div class="preorderinfor_active">
             <h2>活動資訊</h2>
             <div class="infor_list">
                 <ul>
@@ -65,7 +62,7 @@
             </div>
         </div>
 
-        <div class="datetime">
+        <div class="preorder_datetime">
 
             <h2>選擇日期與場次</h2>
 
@@ -133,7 +130,7 @@
         <!-- /* --------------------------訂購須知------------------------------------------- */ -->
 
 
-        <div class="infor_notice">
+        <div class="preorder_infornotice">
             <h2>訂購須知</h2>
             <p> 歡迎來到我們的密室逃脫主題館！在您預訂體驗前，請仔細閱讀以下訂票須知
                 以確保您擁有一次愉快且難忘的冒險之旅：</p>
@@ -232,7 +229,7 @@
         </div>
 
         <div class="nextstep">
-            <button>下一步</button>
+            <button class="next_btn">下一步</button>
         </div>
 
 
@@ -241,33 +238,29 @@
 
     <!-- /* --------------------------footer------------------------------------------- */ -->
 
-
     <footer>
-
+        
         <div class="bottom">
 
-
-            <img src="./img/memelogo.png" alt="">
+            <div>
+                <a href="#"><img src="./src/assets/img/memelogo.svg" alt=""></a>
+            </div>
 
 
             <div class="bm_text">
-                <div class="bm_p">
-                    <p>© Copyright Meme謎因工作室</p>
-                    <p>All Rights Reserved.</p>
-                </div>
-                <p>本網站為緯育TibaMe【第93期】前端工程師專業技術養成班學員作品,僅供學習、展示之用途。</p>
+                <p>© Copyright Meme謎因工作室&nbsp;&nbsp;All Rights Reserved.</p>
+                <p>本網站為緯育TibaMe【第93期】前端工程師專業技術養成班學員作品，僅供學習、展示之用途。</p>
             </div>
 
             <div class="icon">
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-square-threads"></i>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-square-threads"></i></a>
             </div>
 
         </div>
 
     </footer>
-
 
     <!-- 日曆套件的js -->
 
