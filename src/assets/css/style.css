@@ -3,7 +3,11 @@
  * 2 | @import './node_modules/sass-google-fonts/src/GoogleFonts.scss';
  *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  *   '
+<<<<<<< HEAD
  *   style.scss 2:9  root stylesheet */
+=======
+ *   sass\style.scss 2:9  root stylesheet */
+>>>>>>> afdf37385858532de6cbc971b535675229bc1f7b
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +17,9 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
+<<<<<<< HEAD
   content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @import './node_modules/sass-google-fonts/src/GoogleFonts.scss';\d\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   style.scss 2:9  root stylesheet";
+=======
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @import './node_modules/sass-google-fonts/src/GoogleFonts.scss';\d\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   sass\\style.scss 2:9  root stylesheet";
+>>>>>>> afdf37385858532de6cbc971b535675229bc1f7b
 }
