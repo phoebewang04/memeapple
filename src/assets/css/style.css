@@ -1,10 +1,24 @@
+<<<<<<< HEAD
+/* Error: expected "{".
+ *    ,
+ * 20 | );
+ *    |  ^
+ *    '
+ *   sass\basic\_font.scss 20:2  @import
+ *   sass\style.scss 7:9         root stylesheet */
+
+<<<<<<< HEAD
+=======
 @charset "UTF-8";
 @import url(../css/reset.css);
 body {
-  background-color: #100E24;
   color: white;
 }
 
+<<<<<<< HEAD
+=======
+>>>>>>> 37423a0b6397f768e3594e483db80206e0742e5b
+>>>>>>> f4d24c5b28cf6d1048127e4ffccbba77d91c2081
 html,
 body {
   font-family: Noto Sans TC;
@@ -28,6 +42,10 @@ h4 {
 
 p {
   font-size: 18px;
+}
+
+p1 {
+  font-size: 14px;
 }
 
 h1 {
@@ -157,9 +175,19 @@ a {
 }
 
 .top a {
+=======
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+>>>>>>> dev
   display: block;
-  color: white;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: expected "{".\a    \2577 \a 20 \2502  );\d\a    \2502   ^\a    \2575 \a   sass\\basic\\_font.scss 20:2  @import\a   sass\\style.scss 7:9         root stylesheet';
 }
+<<<<<<< HEAD
 .top a:hover {
   color: #FCD15B;
 }
@@ -308,14 +336,14 @@ a {
   gap: 22%;
 }
 
-.game {
+.theme_game {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   height: 80%;
 }
-.game.hospital {
+.theme_game.hospital {
   color: #FEDA77;
 }
 
@@ -340,10 +368,9 @@ i.fa-dollar-sign {
   color: #100E24;
 }
 
-.game p {
+.theme_game p {
   text-align: center;
   line-height: 1.6;
-  cursor: pointer;
 }
 
 .iconinfo {
@@ -655,6 +682,14 @@ i.fa-dollar-sign {
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 37423a0b6397f768e3594e483db80206e0742e5b
+>>>>>>> f4d24c5b28cf6d1048127e4ffccbba77d91c2081
 }
 
 .backstage_paginator {
@@ -693,9 +728,42 @@ i.fa-dollar-sign {
 /* -------------------------------------------------- */
 body {
   background-color: #100E24;
+>>>>>>> YY
 }
 
-/* -------------------------------------------------- */
+.backstage_paginator {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+.backstage_paginator a {
+  font-size: 18px;
+  line-height: 30px;
+}
+.backstage_paginator a:hover {
+  font-weight: bold;
+}
+.backstage_paginator a:active {
+  color: #FCD15B;
+}
+
+.backstage_page_input {
+  font-size: 16px;
+  width: 30px;
+  margin: 0 8px;
+  background-color: #FFE8BB;
+  border: 0;
+  text-align: center;
+}
+
+.backstage_page_input:focus {
+  outline: 1px solid #262B3F;
+  background-color: white;
+}
+
+/* ---------------------分館介紹----------------------------- */
 #wrapper {
   width: 1200px;
   margin: 0 auto;
@@ -709,11 +777,15 @@ body {
 
 #wrapper .slogan p {
   font-size: 24px;
-  color: #FFE8BB;
   line-height: 1.6;
 }
 
-.branch_btn {
+.branch_btn #taipei {
+  background-color: #FEDA77;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: none;
   width: 200px;
   height: 48px;
   cursor: pointer;
@@ -721,23 +793,20 @@ body {
   border-radius: 40px 40px 0px 0px;
 }
 
-branch_btn #taipei {
-  background-color: #FEDA77;
-  border-top: 1px solid white;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
-  border-bottom: none;
-}
-
-branch_btn #taichung {
+.branch_btn #taichung {
   color: #100E24;
   border-top: 1px solid white;
   border-left: 1px solid white;
   border-right: 1px solid white;
   border-bottom: none;
+  width: 200px;
+  height: 48px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 40px 40px 0px 0px;
 }
 
-.btn button:hover {
+.branch_btn button:hover {
   background-color: #FCD15B;
 }
 
@@ -766,14 +835,14 @@ branch_btn #taichung {
 }
 
 .introduce h2 {
-  color: #FFFFFF;
-  font-size: 28px;
+  color: white;
+  font-size: 24px;
   padding-bottom: 40px;
 }
 
 .introduce p {
   font-size: 18px;
-  color: #FFFFFF;
+  color: white;
   line-height: 2.3;
 }
 
@@ -829,7 +898,7 @@ branch_btn #taichung {
 
 .location .location_text {
   display: flex;
-  color: #FFFFFF;
+  color: white;
   margin-bottom: 60px;
 }
 
@@ -843,6 +912,7 @@ branch_btn #taichung {
 .location .location_text p {
   font-size: 18px;
   text-align: center;
+  line-height: 20px;
 }
 
 .location iframe {
@@ -855,6 +925,7 @@ branch_btn #taichung {
   padding-bottom: 20px;
 }
 
+/* ---------------------末日庇護所主題介紹----------------------------- */
 body {
   background-color: #100E24;
 }
@@ -881,7 +952,7 @@ body {
   margin-bottom: 40px;
 }
 
-.game {
+.zombie_game {
   border: 1px solid white;
   width: 900px;
   height: 500px;
@@ -942,7 +1013,7 @@ body {
   width: 30px;
 }
 
-button {
+zombie_btn {
   width: 130px;
   height: 50px;
   border-radius: 20px;
@@ -956,7 +1027,7 @@ button {
   line-height: 5px;
 }
 
-.game .text {
+.zombie_game .text {
   position: absolute;
   left: 260px;
   top: 80px;
@@ -964,14 +1035,14 @@ button {
   line-height: 0.7;
 }
 
-.game .p1 {
+.zombie_game .p1 {
   color: white;
   font-family: "Jersey 10", sans-serif;
   font-size: 150px;
   font-weight: 700;
 }
 
-.game .p2 {
+.zombie_game .p2 {
   color: #FEDA77;
   font-family: "Jersey 10", sans-serif;
   font-size: 120px;
@@ -979,7 +1050,7 @@ button {
   letter-spacing: 2px;
 }
 
-.game2 {
+.zombie_game2 {
   width: 900px;
   height: 500px;
   margin: 0 auto;
@@ -1033,12 +1104,8 @@ button {
   width: 902px;
 }
 
-body {
-  background-color: #100E24;
-  color: white;
-}
-
-/* --------------------------返回------------------------------------------- */
+/* --------------------------預定資訊------------------------------------------- */
+/* --------------------------返回------------------------------------------ */
 .return {
   display: flex;
   margin-top: 40px;
@@ -1051,7 +1118,7 @@ body {
 }
 
 /* -----------------------------過程順序---------------------------------------- */
-.process {
+.order_process {
   width: 1000px;
   margin: 0 auto;
   margin-top: 40px;
@@ -1060,7 +1127,7 @@ body {
   justify-content: space-between;
 }
 
-.number {
+.order_number {
   width: 70px;
   display: flex;
   flex-direction: column;
@@ -1068,7 +1135,7 @@ body {
   position: relative;
 }
 
-.number .circle1 {
+.order_number .circle1 {
   background-color: #FEDA77;
   width: 30px;
   height: 30px;
@@ -1078,7 +1145,7 @@ body {
   margin-bottom: 20px;
 }
 
-.number .circle2 {
+.order_number .circle2 {
   background-color: white;
   width: 30px;
   height: 30px;
@@ -1088,7 +1155,7 @@ body {
   margin-bottom: 20px;
 }
 
-.number .circle3 {
+.order_number .circle3 {
   background-color: white;
   width: 30px;
   height: 30px;
@@ -1098,11 +1165,11 @@ body {
   margin-bottom: 20px;
 }
 
-.number .circle1, .circle2, .circle3 p {
+.order_number .circle1, .circle2, .circle3 p {
   color: #100E24;
 }
 
-.number .circle2::before {
+.order_number .circle2::before {
   content: "";
   display: block;
   width: 390px;
@@ -1113,7 +1180,7 @@ body {
   right: 70px;
 }
 
-.number .circle2::after {
+.order_number .circle2::after {
   content: "";
   display: block;
   width: 390px;
@@ -1125,18 +1192,18 @@ body {
 }
 
 /* --------------------------------------------------------------------- */
-.all {
+.order_all {
   width: 1200px;
   margin: 0 auto;
   display: flex;
   margin-bottom: 80px;
 }
 
-.all .right {
+.order_all .order_right {
   width: 810px;
 }
 
-.all .left {
+.order_all .order_left {
   width: 350px;
 }
 
@@ -1157,7 +1224,7 @@ body {
 
 .memberinfrom .login a {
   text-decoration: none;
-  color: #FEDA77;
+  background-color: #FEDA77;
 }
 
 .memberinfrom h3 {
@@ -1227,7 +1294,7 @@ body {
 }
 
 /* --------------------------訂單明細表------------------------------------------- */
-.left .details {
+.order_left .details {
   width: 350px;
   height: 529px;
   border: 1px solid white;
@@ -1236,28 +1303,28 @@ body {
   margin-left: 20px;
 }
 
-.left .details h3 {
+.order_left .details h3 {
   font-size: 20px;
   margin-bottom: 10px;
 }
 
-.left .details .list p {
+.order_left .details .list p {
   margin-bottom: 20px;
 }
 
-.left .details select {
+.order_left .details select {
   width: 200px;
   height: 30px;
   padding: 5px;
   /* border-radius: 12px; */
 }
 
-.left .amount {
+.order_left .amount {
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
-.left .amount .price {
+.order_left .amount .price {
   width: 340px;
   display: flex;
   align-items: center;
@@ -1265,23 +1332,19 @@ body {
   margin-bottom: 10px;
 }
 
-.left button {
+.order_left next_btn {
   width: 300px;
   height: 30px;
   border-radius: 12px;
   cursor: pointer;
 }
 
-.left .button01 {
+.order_left .button01 {
   width: 300px;
   margin: 0 auto;
 }
 
-body {
-  background-color: #100E24;
-  color: white;
-}
-
+/* --------------------------結帳資訊------------------------------------------- */
 /* --------------------------返回------------------------------------------- */
 .return {
   display: flex;
@@ -1295,7 +1358,7 @@ body {
 }
 
 /* -----------------------------過程順序---------------------------------------- */
-.process {
+.pay_process {
   width: 1000px;
   margin: 0 auto;
   margin-top: 40px;
@@ -1304,7 +1367,7 @@ body {
   justify-content: space-between;
 }
 
-.number {
+.pay_number {
   width: 70px;
   display: flex;
   flex-direction: column;
@@ -1312,7 +1375,7 @@ body {
   position: relative;
 }
 
-.number .circle1 {
+.pay_number .circle1 {
   background-color: white;
   width: 30px;
   height: 30px;
@@ -1322,7 +1385,7 @@ body {
   margin-bottom: 20px;
 }
 
-.number .circle2 {
+.pay_number .circle2 {
   background-color: #FEDA77;
   width: 30px;
   height: 30px;
@@ -1332,7 +1395,7 @@ body {
   margin-bottom: 20px;
 }
 
-.number .circle3 {
+.pay_number .circle3 {
   background-color: white;
   width: 30px;
   height: 30px;
@@ -1342,11 +1405,11 @@ body {
   margin-bottom: 20px;
 }
 
-.number .circle1, .circle2, .circle3 p {
+.pay_number .circle1, .circle2, .circle3 p {
   color: #100E24;
 }
 
-.number .circle2::before {
+.pay_number .circle2::before {
   content: "";
   display: block;
   width: 390px;
@@ -1357,7 +1420,7 @@ body {
   right: 70px;
 }
 
-.number .circle2::after {
+.pay_number .circle2::after {
   content: "";
   display: block;
   width: 390px;
@@ -1369,70 +1432,70 @@ body {
 }
 
 /* --------------------------------------------------------------------- */
-.all {
+.pay_all {
   width: 1200px;
   margin: 0 auto;
   display: flex;
   margin-bottom: 80px;
 }
 
-.all .right {
+.pay_all .pay_right {
   width: 810px;
 }
 
-.all .left {
+.pay_all .pay_left {
   width: 350px;
 }
 
 /* --------------------------------------------------------------------- */
-.right {
+.pay_right {
   border: 1px solid white;
   padding: 10px;
   line-height: 1.6;
 }
 
-.right h2 {
+.pay_right h2 {
   font-size: 20px;
   margin-bottom: 10px;
 }
 
-.right p {
+.pay_right p {
   font-size: 14px;
 }
 
-.right .paycard {
+.pay_right .paycard {
   line-height: 30px;
 }
 
-.right .card_number {
+.pay_right .card_number {
   margin: 20px 0px;
 }
 
-.right .card_number input {
+.pay_right .card_number input {
   padding-left: 10px;
   width: 700px;
   height: 30px;
 }
 
-.right .card_time {
+.pay_right .card_time {
   display: flex;
 }
 
-.right .card_time input {
+.pay_right .card_time input {
   padding-left: 10px;
   width: 200px;
   height: 30px;
 }
 
-.right .cardcode {
+.pay_right .cardcode {
   margin-left: 5px;
 }
 
-.right .cardcode input {
+.pay_right .cardcode input {
   width: 275px;
 }
 
-.left {
+.pay_left {
   width: 350px;
   height: 529px;
   border: 1px solid white;
@@ -1441,28 +1504,28 @@ body {
   margin-left: 20px;
 }
 
-.left .details h2 {
+.pay_left .details h2 {
   font-size: 20px;
   margin-bottom: 10px;
 }
 
-.left .details .list p {
+.pay_left .details .list p {
   margin-bottom: 20px;
 }
 
-.left .details select {
+.pay_left .details select {
   width: 200px;
   height: 30px;
   padding: 5px;
   /* border-radius: 12px; */
 }
 
-.left .amount {
+.pay_left .amount {
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
-.left .amount .price {
+.pay_left .amount .price {
   width: 340px;
   display: flex;
   align-items: center;
@@ -1470,34 +1533,41 @@ body {
   margin-bottom: 10px;
 }
 
-.left button {
+.pay_left next_btn {
   width: 300px;
   height: 30px;
   border-radius: 12px;
   cursor: pointer;
 }
 
-.left .button01 {
+.pay_left .button01 {
   width: 300px;
   margin: 0 auto;
 }
 
-/* @import url(./reset.css); */
+<<<<<<< HEAD
 /* -------------------------------------------------------- */
 body {
   background-color: #100E24;
 }
 
 #wrapper {
+=======
+/* -------------------------preorder 預定主題------------------------------- */
+#preorder_wrapper {
+>>>>>>> 37423a0b6397f768e3594e483db80206e0742e5b
   width: 1200px;
   margin: 0 auto;
 }
 
 /* --------------------返回------------------------------------ */
 .return {
+  width: 50px;
   display: flex;
   margin-left: 40px;
   margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .return a {
@@ -1510,30 +1580,28 @@ body {
 }
 
 /* --------------------活動資訊------------------------------------ */
-.toppic {
+.preorder_toppic img {
   margin-top: 40px;
   width: 1200px;
   height: 600px;
-  background-image: url(../../img/dead01.png);
-  background-position: center;
 }
 
-.infor_active {
-  height: 110px;
+.preorderinfor_active {
+  height: 120px;
   margin-top: 40px;
   margin-bottom: 40px;
   border: 1px solid white;
   border-radius: 12px;
 }
 
-.infor_active h2 {
+.preorderinfor_active h2 {
   font-weight: bold;
   font-size: 24px;
   color: white;
-  padding: 20px;
+  padding: 10px 20px;
 }
 
-.infor_active .infor_list ul {
+.preorderinfor_active .infor_list ul {
   width: 1150px;
   margin: 0 auto;
   display: flex;
@@ -1541,14 +1609,19 @@ body {
   color: white;
 }
 
-.infor_active .infor_time {
-  width: 230px;
+.preorderinfor_active .infor_time {
+  width: 210px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.infor_active .infor_list {
+.preorderinfor_active .infor_time li i {
   font-size: 20px;
+}
+
+.preorderinfor_active .infor_list {
+  font-size: 18px;
 }
 
 .infor_notice {
@@ -1556,12 +1629,12 @@ body {
 }
 
 /* --------------------日期與時段------------------------------------ */
-.datetime {
+.preorder_datetime {
   border: 1px solid white;
   margin-bottom: 40px;
 }
 
-.datetime .timeandele {
+.preorder_datetime .timeandele {
   width: 1100px;
   margin: 0 auto;
   display: flex;
@@ -1569,21 +1642,15 @@ body {
   justify-content: space-between;
 }
 
-.datetime h2 {
+.preorder_datetime h2 {
   font-weight: bold;
   font-size: 24px;
-  margin: 20px;
-  color: #fff;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
+  padding: 10px 20px;
+  color: white;
 }
 
 .calendar-container {
-  width: 600px;
+  width: 500px;
   border: 1px solid white;
   padding: 10px;
   margin: 20px;
@@ -1616,10 +1683,6 @@ body {
 
 .calendar-navigation span:last-child {
   margin-right: -10px;
-}
-
-.calendar-header .calendar-navigation span:hover {
-  background: #FCD15B;
 }
 
 .calendar-header .calendar-current-date {
@@ -1689,14 +1752,14 @@ body {
   background: #e4e1e1;
 }
 
-.datetime .time {
-  width: 600px;
-  height: 362px;
+.preorder_datetime .time {
+  width: 560px;
+  height: 375px;
   border: 1px solid #fff;
-  color: #fff;
+  color: white;
 }
 
-.datetime .time h3 {
+.preorder_datetime .time h3 {
   font-size: 20px;
   width: 100px;
   margin: 0 auto;
@@ -1704,7 +1767,7 @@ body {
   padding-bottom: 20px;
 }
 
-.datetime .time .time_ele {
+.preorder_datetime .time .time_ele {
   width: 365px;
   display: flex;
   flex-wrap: wrap;
@@ -1712,7 +1775,7 @@ body {
   padding-bottom: 20px;
 }
 
-.datetime .time .time_ele .ele {
+.preorder_datetime .time .time_ele .ele {
   border: 1px solid #fff;
   background-color: #e4e1e1;
   height: 50px;
@@ -1724,70 +1787,79 @@ body {
   color: #100E24;
 }
 
-.datetime .time .amount {
+.preorder_datetime .time .amount {
   width: 350px;
   margin: 0 auto;
 }
 
-.datetime .time .amount #people {
+.preorder_datetime .time .amount #people {
   width: 350px;
   height: 40px;
   border-radius: 12px;
   padding: 10px;
 }
 
-.datetime .time .time_ele .ele:hover {
+.preorder_datetime .time .time_ele .ele:hover {
   background-color: #FCD15B;
   cursor: pointer;
 }
 
 /* --------------------訂購須知------------------------------------ */
-.infor_notice {
-  color: #fff;
+.preorder_infornotice {
+  color: white;
   padding: 20px;
+  border: 1px solid white;
+}
+
+.preorder_infornotice ul li {
   line-height: 2.3;
 }
 
-.infor_notice h2 {
+.preorder_infornotice h2 {
   font-size: 24px;
   font-weight: bold;
   padding-bottom: 20px;
 }
 
-.infor_notice .content {
+.preorder_infornotice h3 {
+  font-size: 18px;
+}
+
+.preorder_infornotice .content {
   margin-left: 20px;
   display: flex;
   align-items: center;
+  height: 40px;
 }
 
-.infor_notice .content i {
+.preorder_infornotice .content i {
   font-size: 4px;
   margin-right: 12px;
 }
 
-.infor_notice .content p {
+.preorder_infornotice .content p {
   font-size: 14px;
 }
 
 /* --------------------下一步------------------------------------ */
 .nextstep {
-  width: 200px;
-  margin: 0 auto;
+  margin: 80px auto;
 }
 
-button {
+.nextstep .next_btn {
   background-color: #FEDA77;
   width: 200px;
   height: 40px;
   border-radius: 20px;
-  margin: 80px 0px;
+  width: 200px;
 }
 
-button:hover {
+.nextstep next_btn:hover {
   background-color: #FCD15B;
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 .main-frontpage {
   width: 100%;
   background-image: url(/src/assets/img/BG-fontpage.jpg);
@@ -2051,6 +2123,51 @@ button:hover {
   bottom: 100%;
   transition: 1s;
   transition-delay: 0.75s;
+=======
+.minigame_body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.parallax {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 113vh;
+  background-image: url("../img/cemetery.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.parallax #cemetery_text {
+  position: absolute;
+  top: 20%;
+  font-size: 44px;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 0 13px #4E3B8D, 0 0 10px #1f0379;
+}
+.parallax img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  pointer-events: none;
+}
+.parallax #gate-left {
+  transform: translateX(-282px);
+}
+.parallax #gate-right {
+  transform: translateX(305px);
+}
+
+.sec {
+  background-color: #000;
+>>>>>>> f4d24c5b28cf6d1048127e4ffccbba77d91c2081
 }
 
 /*# sourceMappingURL=style.css.map */
+=======
+>>>>>>> dev

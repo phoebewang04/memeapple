@@ -1,0 +1,51 @@
+.minigame_body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.parallax {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 113vh;
+
+    background-image: url('../img/cemetery.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+
+    #cemetery_text {
+        position: absolute;
+        top: 20%;
+        font-size: 44px;
+        font-weight: 800;
+        // color: map-get($colors, darkblue);
+        color: white;
+        text-shadow: 0 0 13px #4E3B8D, 0 0 10px #1f0379;
+    }
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-width: 100%;
+        pointer-events: none;
+    }
+
+    #gate-left {
+        
+        transform: translateX(-282px);
+    }
+
+    #gate-right {
+        
+        transform: translateX(305px);
+    }
+}
+
+.sec{
+    background-color: #000;
+}

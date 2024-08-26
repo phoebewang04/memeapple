@@ -93,9 +93,10 @@
     display: flex;
     justify-content: center;
     gap: 22%;
+
 }
 
-.game {
+.theme_game {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -129,10 +130,10 @@ i.fa-dollar-sign {
     }
 }
 
-.game p {
+.theme_game p {
     text-align: center;
     line-height: 1.6;
-    cursor: pointer;
+
     // border: 1px solid white;
 }
 
