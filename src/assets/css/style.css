@@ -595,7 +595,7 @@ i.fa-dollar-sign {
 }
 
 .backstage_tablezone {
-  margin-top: 40px;
+  margin-top: 0px;
   height: calc(100% - 250px);
   padding-bottom: 12px;
 }
