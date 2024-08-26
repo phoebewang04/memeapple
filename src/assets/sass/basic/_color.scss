@@ -17,6 +17,6 @@ $colors:(
 
 
 body {
-    background-color: map-get($colors, darkblue );
+    // background-color: map-get($colors, darkblue );
     color: map-get($colors, white)
 }
