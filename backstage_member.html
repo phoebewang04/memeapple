@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/f484a5c220.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./src/assets/css/style.css">
 
-    <title>謎因工作室最新消息</title>
+    <title>謎因工作室會員管理</title>
 </head>
 
 <body class="backstage_body">
@@ -35,37 +35,44 @@
                     <ul>
                         <li><a href="#">後台管理系統</a></li>
                         <li>&gt;</li>
-                        <li><a href="#">最新消息管理</a></li>
+                        <li><a href="#">會員資料管理</a></li>
                     </ul>
                 </nav>
-                <div class="backstage_panel panel_news" style="margin-top: 50px;">
-                    <button class="btn backstage_button">新增</button>
+                <form class="backstage_form" method="get" action="">
+                    <input class="backstage_input" type="text" placeholder="關鍵字搜尋">
+                    <select class="backstage_dropdown" name="selected">
+                        <option value="" selected>狀態篩選</option>
+                        <option value="">正常</option>
+                        <option value="">停權</option>
+                    </select>
+                </form>
+                <div class="backstage_panel">
+                    <button class="btn backstage_button">查詢</button>
                 </div>
             </div>
             <div class="backstage_tablezone">
                 <table class="backstage_table">
                     <thead class="backstage_tablehead">
                         <tr>
-                            <th class="column-header" style="width: 200px;">發佈日期</th>
-                            <th class="column-header" style="width: 150px;">發佈者</th>
-                            <th class="column-header" style="width: 500px;">主題</th>
+                            <th class="column-header" style="width: 150px;">註冊日期</th>
+                            <th class="column-header" style="width: 150px;">會員姓名</th>
+                            <th class="column-header" style="width: 300px;">E-Mail</th>
+                            <th class="column-header" style="width: 200px;">電話</th>
                             <th class="column-header" style="width: 150px;">狀態</th>
-                            <th class="column-header" style="width: 200px;">動作</th>
+                            <th class="column-header" style="width: 150px;">動作</th>
                         </tr>
                     </thead>
                     <tbody class="backstage_tablebody">
                         <tr>
-                            <td id="news_date">2024.8.26</td>
-                            <td id="news_author">郭力仁</td>
-                            <td id="news_title">切版好累啊！</td>
-                            <td id="news_status"><a href="" class="backstage_table_button">隱藏</a></td>
-                            <td id="news_action">
-                                <a href="" class="backstage_table_button">編輯</a>
-                                <a href="" class="backstage_table_button">刪除</a>
-                            </td>
+                            <td id="member_regidate">2024.8.26</td>
+                            <td id="member_name">郭力仁</td>
+                            <td id="member_email">atlaskuowork@gmail.com</td>
+                            <td id="member_phone">0911222333</td>
+                            <td id="member_status"><a href="" class="backstage_table_button">正常</a></td>
+                            <td id="member_action"><a href="" class="backstage_table_button">檢視訂單</a></td>
                         </tr>
                         <tr class="backstage_tfoot">
-                            <td colspan="5" style="text-align: center;">
+                            <td colspan="6" style="text-align: center;">
                                 <div class="backstage_pagination">
                                     <div class="backstage_paginator">
                                         <a href="#">&lt;</a>
