@@ -41,12 +41,12 @@ export default {
 <template>
 
     <header class="top backstage_header">
-        <a href="#"><h2 class="backstage_topic">謎因工作室後台管理系統</h2></a>
+        <router-link to="/BackstageIndex/"><h2 class="backstage_topic">謎因工作室後台管理系統</h2></router-link>
         <i class="fa fa-bars" aria-hidden="true" onclick="showMenuBar()"></i>
         <ul id="menuBar">
-            <li><router-link to="/NewsControl/">最新消息管理</router-link></li>
-            <li><router-link to="/MemberControl/">會員資料管理</router-link></li>
-            <li><router-link to="/BookControl/">訂單資料管理</router-link></li>
+            <li><router-link to="/NewsMenage/">最新消息管理</router-link></li>
+            <li><router-link to="/MemberMenage/">會員資料管理</router-link></li>
+            <li><router-link to="/OrderMemage/">訂單資料管理</router-link></li>
         </ul>
     </header>
     

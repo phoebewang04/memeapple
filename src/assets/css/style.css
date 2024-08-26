@@ -1915,10 +1915,14 @@ zombie_btn {
   align-items: center;
   justify-content: center;
 }
+.main-frontpage .wrapper-frontpage .content .content-btn-L img {
+  width: 30%;
+  margin-bottom: 12px;
+}
 .main-frontpage .wrapper-frontpage .content .content-btn-L a {
   position: relative;
   display: inline-block;
-  padding: 15px 30px;
+  padding: 15px 10px;
   color: #2196f3;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -1927,7 +1931,6 @@ zombie_btn {
   overflow: hidden;
   text-decoration: none;
   font-weight: bold;
-  margin-top: 40px;
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-L a:hover {
   color: #255784;
@@ -2033,10 +2036,14 @@ zombie_btn {
   align-items: center;
   justify-content: center;
 }
+.main-frontpage .wrapper-frontpage .content .content-btn-R img {
+  width: 30%;
+  margin-bottom: 12px;
+}
 .main-frontpage .wrapper-frontpage .content .content-btn-R a {
   position: relative;
   display: inline-block;
-  padding: 15px 30px;
+  padding: 15px 10px;
   color: #2196f3;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -2045,7 +2052,6 @@ zombie_btn {
   overflow: hidden;
   text-decoration: none;
   font-weight: bold;
-  margin-top: 40px;
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-R a:hover {
   color: #255784;

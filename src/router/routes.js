@@ -1,22 +1,59 @@
 import {createRouter} from 'vue-router'
+// 前台相關路由
 import Fontpage from '../views/Frontpage.vue';
-import Login from '../components/login.vue';
-// import Homepage from '../views/homepage/home.vue';
-// 左邊是你宣告的名稱，可以跟你的 .vue檔案名稱相同。
-// 右邊是你的 .vue 檔案路徑。
+import Home from '../views/HomeView.vue';
+import Minigame from '../views/Minigame.vue';
+import Login from '../views/Login.vue';
+import Branch from '../views/Branch.vue';
+
+
+// 後台相關路由
+import Backstage_index from '../views/Backstage_index.vue';
+import Backstage_member from '../views/Backstage_member.vue';
+import Backstage_order from '../views/Backstage_order.vue';
+import Backstage_news from '../views/Backstage_news.vue';
+import Backstage_newsedit from '../views/Backstage_news_edit.vue';
 
 const routes = [
   {
     path: '/',
     component: Fontpage
+  },{
+    path: '/index/',
+    component: Home
   },
   {
-    path: '/login/',
+    path: '/Minigame/',
+    component: Minigame
+  },
+  {
+    path: '/Branch/',
+    component: Branch
+  },
+  {
+    path: '/Login/',
     component: Login
   },
-//   這邊放置需要增加的頁面以及設置她可能的網址
-// path:'/後面的內容是網址'
-//  component: 這邊要帶入你在最上方宣告的元件
+  {
+    path: '/BackstageIndex/',
+    component:Backstage_index
+  },
+  {
+    path: '/OrderMemage/',
+    component:Backstage_order
+  },
+  {
+    path: '/MemberMenage/',
+    component:Backstage_member
+  },
+  {
+    path: '/NewsMenage/',
+    component:Backstage_news
+  },
+  {
+    path: '/NewsEdit/',
+    component:Backstage_newsedit
+  },
 ]
 
 export default function (history) {
