@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css1/preorder.css">
+    <script src="https://kit.fontawesome.com/f484a5c220.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Sans+TC:wght@100..900&display=swap"
+        rel="stylesheet">
+    <title>開始預訂</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+</head>
+
+<body>
+
+    <!-- /* --------------------------header------------------------------------------- */ -->
+
+    <header>
+        <div class="top">
+            <div class="logo"><a href="#"><img src="./img/memelogo.png" alt=""></a></div>
+            <nav>
+                <ul>
+                    <li><a href="">線上體驗</a></li>
+                    <li><a href="">遊戲主題</a></li>
+                    <li><a href="">會員專區</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="return">
+        <i class="fa-solid fa-chevron-left"></i>
+        <a href="#">
+            <p>返回</p>
+        </a>
+    </div>
+
+
+    <!-- /* --------------------------中間內容------------------------------------------- */ -->
+
+
+    <div id="wrapper">
+
+        <div class="toppic"></div>
+
+        <div class="infor_active">
+            <h2>活動資訊</h2>
+            <div class="infor_list">
+                <ul>
+                    <li>主題名稱 : 末日庇護所</li>
+                    <div class="infor_time">
+                        <li><i class="fa-regular fa-clock"></i></li>
+                        <li>活動時間 1小時20分鐘</li>
+                    </div>
+                    <li>地點 : 台北市密逃路88之107號</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="datetime">
+
+            <h2>選擇日期與場次</h2>
+
+            <div class="timeandele">
+                <div class="calendar-container">
+
+                    <div class="calendar-header">
+                        <p class="calendar-current-date"></p>
+                        <div class="calendar-navigation">
+                            <span id="calendar-prev" class="material-symbols-rounded">
+                                chevron_left
+                            </span>
+                            <span id="calendar-next" class="material-symbols-rounded">
+                                chevron_right
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="calendar-body">
+                        <ul class="calendar-weekdays">
+                            <li>日</li>
+                            <li>一</li>
+                            <li>二</li>
+                            <li>三</li>
+                            <li>四</li>
+                            <li>五</li>
+                            <li>六</li>
+                        </ul>
+                        <ul class="calendar-dates"></ul>
+                    </div>
+                </div>
+
+
+
+                <div class="time">
+
+                    <h3>請選擇場次</h3>
+                    <div class="time_ele">
+                        <div class="ele">10:30</div>
+                        <div class="ele">11:15</div>
+                        <div class="ele">12:55</div>
+                        <div class="ele">14:35</div>
+                        <div class="ele">16:30</div>
+                        <div class="ele">18:15</div>
+                    </div>
+
+                    <div class="amount">
+                        <select name="" id="people">
+                            <option value="">遊戲人數</option>
+                            <option value="">4人</option>
+                            <option value="">5人</option>
+                            <option value="">6人</option>
+                            <option value="">7人</option>
+                            <option value="">8人</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- /* --------------------------訂購須知------------------------------------------- */ -->
+
+
+        <div class="infor_notice">
+            <h2>訂購須知</h2>
+            <p> 歡迎來到我們的密室逃脫主題館！在您預訂體驗前，請仔細閱讀以下訂票須知
+                以確保您擁有一次愉快且難忘的冒險之旅：</p>
+            <ul>
+                <li>
+                    <div>
+                        <h3>1. 訂票方式 :</h3>
+                        <div class="content">
+                            <i class="fa-solid fa-circle"></i>
+                            <p>線上預訂：請訪問我們的網站，選擇您感興趣的主題房間和時間段進行預訂。</p>
+                        </div>
+                        <div class="content">
+                            <i class="fa-solid fa-circle"></i>
+                            <p>電話預訂：您也可以致電我們的客服中心進行預訂。</p>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li>
+                    <h3>2. 訂票規則 :</h3>
+                    <div class="content">
+                        <i class="fa-solid fa-circle"></i>
+                        <p>每個房間有固定人數限制，請根據提示選擇適當的參與人數。</p>
+                    </div>
+                    <div class="content">
+                        <i class="fa-solid fa-circle"></i>
+                        <p>預訂需提前至少24小時，確保我們有充足的時間為您準備。</p>
+                    </div>
+                </li>
+
+
+                <li>
+                    <h3>3. 取消和更改 :</h3>
+                    <div class="content">
+                        <i class="fa-solid fa-circle"></i>
+                        <p>如需取消或更改預訂，請在體驗時間的48小時前聯繫我們。</p>
+                    </div>
+                    <div class="content">
+                        <i class="fa-solid fa-circle"></i>
+                        <p>48小時內的取消將收取一定的手續費。</p>
+                    </div>
+                </li>
+
+
+                <li>
+                    <h3>4. 到達時間 :</h3>
+                    <div class="content">
+                        <i class="fa-solid fa-circle"></i>
+                        <p>請提前15分鐘到達現場，以便我們能為您講解遊戲規則和安全事項。</p>
+                    </div>
+                    <div class="content">
+                        <i class="fa-solid fa-circle"></i>
+                        <p>遲到超過15分鐘將視為自動放棄，且不退還票款。</p>
+                    </div>
+                </li>
+
+
+                <li>
+                    <h3>5. 年齡限制 :</h3>
+                    <div class="content">
+                        <i class="fa-solid fa-circle"></i>
+                        <p>部分房間有年齡限制，請在預訂前確認適合的年齡範圍。</p>
+                    </div>
+                    <div class="content">
+                        <i class="fa-solid fa-circle"></i>
+                        <p>12歲以下兒童需由成年人陪同參加。</p>
+                    </div>
+                </li>
+
+
+                <li>
+                    <h3>6. 衣著建議 :</h3>
+                    <div class="content">
+                        <i class="fa-solid fa-circle"></i>
+                        <p>建議穿著輕便、適合活動的服裝和鞋子，以便順利完成挑戰。</p>
+                    </div>
+                </li>
+
+
+                <li>
+                    <h3>7. 安全提示 :</h3>
+                    <div class="content">
+                        <i class="fa-solid fa-circle"></i>
+                        <p>請勿攜帶危險物品進入場館，並遵守現場工作人員的指示。</p>
+                    </div>
+                    <div class="content">
+                        <i class="fa-solid fa-circle"></i>
+                        <p>如在遊戲過程中遇到任何不適或緊急情況，請立即通知工作人員。</p>
+                    </div>
+                </li>
+            </ul>
+
+            <p>感謝您的配合，我們期待與您一起探索神秘的密室逃脫之旅！</p>
+
+        </div>
+
+        <div class="nextstep">
+            <button>下一步</button>
+        </div>
+
+
+    </div>
+
+
+    <!-- /* --------------------------footer------------------------------------------- */ -->
+
+
+    <footer>
+
+        <div class="bottom">
+
+
+            <img src="./img/memelogo.png" alt="">
+
+
+            <div class="bm_text">
+                <div class="bm_p">
+                    <p>© Copyright Meme謎因工作室</p>
+                    <p>All Rights Reserved.</p>
+                </div>
+                <p>本網站為緯育TibaMe【第93期】前端工程師專業技術養成班學員作品,僅供學習、展示之用途。</p>
+            </div>
+
+            <div class="icon">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-square-threads"></i>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- 日曆套件的js -->
+
+    <script src="script.js"></script>
+
+    <script> let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth();
+
+        const day = document.querySelector(".calendar-dates");
+        const currdate = document
+            .querySelector(".calendar-current-date");
+
+        const prenexIcons = document
+            .querySelectorAll(".calendar-navigation span");
+
+        const months = [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月"
+        ];
+
+        const manipulate = () => {
+
+            // Get the first day of the month
+            let dayone = new Date(year, month, 1).getDay();
+
+            // Get the last date of the month
+            let lastdate = new Date(year, month + 1, 0).getDate();
+
+            // Get the day of the last date of the month
+            let dayend = new Date(year, month, lastdate).getDay();
+
+            // Get the last date of the previous month
+            let monthlastdate = new Date(year, month, 0).getDate();
+
+            // Variable to store the generated calendar HTML
+            let lit = "";
+
+            // Loop to add the last dates of the previous month
+            for (let i = dayone; i > 0; i--) {
+                lit +=
+                    `<li class="inactive">${monthlastdate - i + 1}</li>`;
+            }
+
+            // Loop to add the dates of the current month
+            for (let i = 1; i <= lastdate; i++) {
+
+                // Check if the current date is today
+                let isToday = i === date.getDate()
+                    && month === new Date().getMonth()
+                    && year === new Date().getFullYear()
+                    ? "active"
+                    : "";
+                lit += `<li class="${isToday}">${i}</li>`;
+            }
+
+            // Loop to add the first dates of the next month
+            for (let i = dayend; i < 6; i++) {
+                lit += `<li class="inactive">${i - dayend + 1}</li>`
+            }
+
+            // Update the text of the current date element 
+            // with the formatted current month and year
+            currdate.innerText = `${months[month]} ${year}`;
+
+            // update the HTML of the dates element 
+            // with the generated calendar
+            day.innerHTML = lit;
+        }
+
+        manipulate();
+
+        // Attach a click event listener to each icon
+        prenexIcons.forEach(icon => {
+
+            // When an icon is clicked
+            icon.addEventListener("click", () => {
+
+                // Check if the icon is "calendar-prev"
+                // or "calendar-next"
+                month = icon.id === "calendar-prev" ? month - 1 : month + 1;
+
+                // Check if the month is out of range
+                if (month < 0 || month > 11) {
+
+                    // Set the date to the first day of the 
+                    // month with the new year
+                    date = new Date(year, month, new Date().getDate());
+
+                    // Set the year to the new year
+                    year = date.getFullYear();
+
+                    // Set the month to the new month
+                    month = date.getMonth();
+                } else {
+
+                    // Set the date to the current date
+                    date = new Date();
+                }
+
+                // Call the manipulate function to 
+                // update the calendar display
+                manipulate();
+            });
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
