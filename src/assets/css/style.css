@@ -595,7 +595,7 @@ i.fa-dollar-sign {
 }
 
 .backstage_tablezone {
-  margin-top: 60px;
+  margin-top: 40px;
   height: calc(100% - 250px);
   padding-bottom: 12px;
 }
@@ -632,6 +632,13 @@ i.fa-dollar-sign {
 .backstage_table td {
   border: 1px solid #FEDA77;
   line-height: 2;
+}
+.backstage_table .backstage_table_button {
+  text-decoration: underline;
+  font-weight: bold;
+}
+.backstage_table .backstage_table_button:active {
+  color: #FCD15B;
 }
 
 .backstage_tablehead {
@@ -1835,6 +1842,10 @@ button:hover {
   width: 100%;
   background-color: aqua;
   height: 675px;
+}
+
+.panel_news {
+  justify-content: end;
 }
 
 /*# sourceMappingURL=style.css.map */

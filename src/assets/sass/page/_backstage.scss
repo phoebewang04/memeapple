@@ -140,7 +140,7 @@
 
 .backstage_tablezone{
     // background-color: dimgray;
-    margin-top: 60px;
+    margin-top: 40px;
     height: calc(100% - 250px);
     padding-bottom: 12px;
 }
@@ -170,6 +170,7 @@
     border-radius: 4px;
     text-align: center;
     font-size: 14px;
+
         th{
             border: 1px solid map-get($colors, yellow );
             line-height: 2;
@@ -178,11 +179,20 @@
             border: 1px solid map-get($colors, yellow );
             line-height: 2;
         }
+        .backstage_table_button{
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        & .backstage_table_button:active{
+            color: map-get( $colors, gold );
+        }
+
 }
 
 .backstage_tablehead{
     background-color: map-get($colors, lightyellow );
     color: map-get($colors, lightblue );
+
     th{
         font-weight: bold;
     }
