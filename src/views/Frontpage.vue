@@ -1,6 +1,6 @@
 <script setup>
 import '../assets/css/style.css';
-import TopNavbar from '../components/TopNavbar.vue';
+import TopNavbar from '../components/TopNavbarBack.vue';
 import Footerbar from '../components/Footerbar.vue';
 </script>
 
