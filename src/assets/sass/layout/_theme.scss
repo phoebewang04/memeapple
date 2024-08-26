@@ -30,7 +30,7 @@
     position: relative;
 }
 
-.blood{
+.blood {
     width: 226px;
     height: 360px;
     background-image: url('../img/blood-7.png');
@@ -50,7 +50,7 @@
     text-align: justify;
 }
 
-.number {
+.theme_number {
     width: 40%;
 
     &.hospital {
@@ -183,7 +183,7 @@ i.fa-dollar-sign {
 
 // -----主題介紹 start-----
 
-.theme {
+.theme_hospital_container {
     display: flex;
     flex-direction: column;
     align-items: center;

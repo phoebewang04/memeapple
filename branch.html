@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/branch.css">
+    <link rel="stylesheet" href="./src/assets/css/style.css">
     <title>分館介紹</title>
     <script src="https://kit.fontawesome.com/f484a5c220.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,17 +18,14 @@
 
     <!-- ----------------------header---------------------- -->
 
-    <header>
-        <div class="top">
-            <div class="logo"><a href="#"><img src="./img/memelogo.png" alt=""></a></div>
-            <nav>
-                <ul>
-                    <li><a href="">線上體驗</a></li>
-                    <li><a href="">遊戲主題</a></li>
-                    <li><a href="">會員專區</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="top">
+        <a href="./index.html"><img src="./src/assets/img/memelogo.svg" alt=""></a>
+        <i class="fa fa-bars" aria-hidden="true" onclick="showMenuBar()"></i>
+        <ul id="menuBar">
+            <li><a href="">線上體驗</a></li>
+            <li><a href="">遊戲主題</a></li>
+            <li><a href="">會員專區</a></li>
+        </ul>
     </header>
 
     <!-- ----------------------中間段落---------------------- -->
@@ -42,7 +38,7 @@
             </p>
         </div>
 
-        <div class="btn">
+        <div class="branch_btn">
             <button id="taipei">台北館</button>
             <button id="taichung">台中館</button>
         </div>
@@ -131,7 +127,7 @@
         <div class="bottom">
 
 
-            <img src="./img/memelogo.png" alt="">
+            <img src="./src/assets/img/memelogo.svg" alt="">
 
 
             <div class="bm_text">

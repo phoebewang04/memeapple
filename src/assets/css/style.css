@@ -1,164 +1,38 @@
+<<<<<<< HEAD
 @charset "UTF-8";
 @import url(../css/reset.css);
 body {
   background-color: #100E24;
   color: white;
 }
+=======
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 2 | @import './node_modules/sass-google-fonts/src/GoogleFonts.scss';
+ *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+<<<<<<< HEAD
+ *   style.scss 2:9  root stylesheet */
+=======
+ *   sass\style.scss 2:9  root stylesheet */
+>>>>>>> afdf37385858532de6cbc971b535675229bc1f7b
+>>>>>>> 21ae6111107f7e38bf7a410b1bdd0d9ce3169538
 
-html, body {
-  font-family: Noto Sans TC;
-}
-
-h1 {
-  font-size: 54px;
-}
-
-h2 {
-  font-size: 28px;
-}
-
-h3 {
-  font-size: 24px;
-}
-
-h4 {
-  font-size: 20px;
-}
-
-p {
-  font-size: 18px;
-}
-
-h1 {
-  line-height: 2;
-}
-
-h2 {
-  line-height: 2;
-}
-
-h3 {
-  line-height: 2;
-}
-
-p {
-  line-height: 2.3;
-}
-
-a {
-  text-decoration: none;
-}
-
-.wrapper {
-  max-width: 1200px;
-  width: 100%;
-}
-
-.btn {
-  width: 200px;
-  font-size: 24px;
-  padding: 10px 20px;
-  font-weight: bold;
-  text-align: center;
-  background-color: #FCD15B;
-  color: #100E24;
-  cursor: pointer;
-  border-radius: 8px;
-}
-
-.cbtn {
-  width: 200px;
-  font-size: 24px;
-  padding: 10px 20px;
-  font-weight: bold;
-  text-align: center;
-  background-color: #FCD15B;
-  color: #100E24;
-  cursor: pointer;
-  border-radius: 50px;
-}
-
-.top {
-  color: white;
-  height: 70px;
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  line-height: 70px;
-}
-@media (max-width: 650px) {
-  .top {
-    position: relative;
-    height: 100px;
-  }
-}
-
-.top img {
-  width: 100px;
-  height: 70px;
-  padding-left: 80px;
-}
-@media (max-width: 650px) {
-  .top img {
-    width: 70px;
-    padding: 0;
-    margin-left: 20px;
-    height: 100px;
-  }
-}
-
-.top .fa {
-  margin-left: auto;
-  margin-top: 24px;
-  display: none;
-}
-@media (max-width: 650px) {
-  .top .fa {
-    text-align: center;
-    display: block;
-    margin-top: 35px;
-    margin-right: 10px;
-    width: 90px;
-    font-size: 25px;
-  }
-}
-
-.top ul {
-  margin-left: auto;
-  padding-right: 80px;
-  font-size: 20px;
-  display: flex;
-}
-@media (max-width: 650px) {
-  .top ul {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100px;
-    right: 0;
-    width: 100%;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    background-color: #262B3F;
-    font-size: 20px;
-    line-height: 100px;
-  }
-}
-
-.top li {
-  margin-right: 20px;
-}
-@media (max-width: 650px) {
-  .top li {
-    margin: 0;
-  }
-}
-
-.top a {
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
   display: block;
-  color: white;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+<<<<<<< HEAD
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @import './node_modules/sass-google-fonts/src/GoogleFonts.scss';\d\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   style.scss 2:9  root stylesheet";
+=======
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @import './node_modules/sass-google-fonts/src/GoogleFonts.scss';\d\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   sass\\style.scss 2:9  root stylesheet";
+>>>>>>> afdf37385858532de6cbc971b535675229bc1f7b
 }
+<<<<<<< HEAD
 .top a:hover {
   color: #FCD15B;
 }
@@ -1788,3 +1662,5 @@ button:hover {
 }
 
 /*# sourceMappingURL=style.css.map */
+=======
+>>>>>>> 21ae6111107f7e38bf7a410b1bdd0d9ce3169538
