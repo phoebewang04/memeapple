@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import url(../css/reset.css);
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC");
 body {
   background-color: #100E24;
   color: white;
@@ -658,7 +657,7 @@ body {
   line-height: 1.6;
 }
 
-.btn button {
+.branch_btn {
   width: 200px;
   height: 48px;
   cursor: pointer;
@@ -666,7 +665,7 @@ body {
   border-radius: 40px 40px 0px 0px;
 }
 
-.btn .taipei {
+branch_btn #taipei {
   background-color: #FEDA77;
   border-top: 1px solid white;
   border-left: 1px solid white;
@@ -674,7 +673,7 @@ body {
   border-bottom: none;
 }
 
-.btn .taichung {
+branch_btn #taichung {
   color: #100E24;
   border-top: 1px solid white;
   border-left: 1px solid white;
@@ -686,7 +685,7 @@ body {
   background-color: #FCD15B;
 }
 
-.main {
+#main {
   border: 1px solid #FFFFFF;
   margin-bottom: 80px;
   background-color: #262B3F;
