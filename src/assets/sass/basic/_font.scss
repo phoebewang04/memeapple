@@ -1,30 +1,32 @@
-@include google-font( 'Noto Sans TC' );
-$fontsize:(
-    "h1":  54px,
-    "h2":  28px,
-    "h3":  24px,
-    "h4":  20px,
-    "p":   18px
+// @include google-font( 'Noto Sans TC' );
+$fontsize: (
+    "h1": 54px,
+    "h2": 28px,
+    "h3": 24px,
+    "h4": 20px,
+    "p": 18px
 );
 
-$lineheight:(
-    "h1":  2,
-    "h2":  2,
-    "h3":  2,
-    "p":   2.3
+$lineheight: (
+    "h1": 2,
+    "h2": 2,
+    "h3": 2,
+    "p": 2.3
 );
 
-html,body{
+html,
+body {
     font-family: Noto Sans TC;
 }
 
-@each $k,$v in $fontsize{
-    #{$k}{
+@each $k, $v in $fontsize {
+    #{$k} {
         font-size: $v;
     }
 }
-@each $k,$v in $lineheight{
-    #{$k}{
+
+@each $k, $v in $lineheight {
+    #{$k} {
         line-height: $v;
     }
 }
