@@ -1,1 +1,53 @@
+.bindex_wrapper{
+    display: flex;
+    height: calc(100vh - 145px);
+}
+
+.backstage_dashboard{
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    background-color: black;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.backstage_daily{
+    background-color: aliceblue;
+    width: 100%;
+    height: 50%;
+}
+
+.backstage_calendar{
+    background-color: aqua;
+    width: 40%;
+    height: 100%;
+}
+
+.backstage_booking{
+    background-color: blue;
+    width: 60%;
+    height: 100%;
+}
+
+.backstage_chart{
+    background-color: lavender;
+    width: 100%;
+    height: 50%;
+}
+
+.theme_income{
+    background-color: yellow;
+    width: 70%;
+    height: 100%;
+
+}
+
+.store_income{
+    background-color: orange;
+    width: 30%;
+    height: 100%;
+}
+
 

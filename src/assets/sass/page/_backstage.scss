@@ -39,16 +39,6 @@
     background-color: map-get($colors, darkblue );
 }
 
-.backstage_daily{
-    // background-color: dimgray;
-    height: 50%;
-}
-
-.backstage_chart{
-    // background-color: lightgray;
-    height: 50%;
-}
-
 .backstage_selection{
     // background-color: green;
     max-height: 200px;
@@ -84,7 +74,7 @@
 
     // background-color: blue;
     width: 100%;
-    padding-top: 20px;
+    padding-top: 40px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -131,7 +121,7 @@
 
 .backstage_panel{
     // background-color: red;
-    padding: 20px 0;
+    padding: 40px 0;
     width: calc(50% + 40px);
     align-self: flex-end;
 
@@ -141,12 +131,13 @@
 
 .backstage_tablezone{
     // background-color: dimgray;
-    margin-top: 0px;
+    margin-top: 40px;
     height: calc(100% - 250px);
     padding-bottom: 12px;
 }
 
 .backstage_button{
+    padding: 0;
     height: 30.8px;
     position: static;
     margin: 0;
