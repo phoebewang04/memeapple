@@ -13,8 +13,8 @@ import Footerbar from '../components/Footerbar.vue';
                 <div class="wrapper">
                     <div class="join_login">
                         <div class="join_loginHeader">
-                            <button class="btn">會員登入</button>
-                            <button class="btn">會員註冊</button>
+                            <button class="btn btn_acc">會員登入</button>
+                            <button class="btn btn_join">會員註冊</button>
                         </div>
                         <div class="mainLogin">
                            <ul>
