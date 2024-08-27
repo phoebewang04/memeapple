@@ -170,7 +170,7 @@ a {
 .bottom {
   background-color: #262B3F;
   width: 100%;
-  margin: 80px auto 0;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -2203,16 +2203,6 @@ zombie_btn {
 
 .cemetery_text {
   text-align: center;
-}
-
-.order_form {
-  justify-content: space-between;
-}
-.order_form input {
-  margin-right: 0;
-}
-.order_form .backstage_dropdown {
-  margin-right: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
