@@ -694,6 +694,10 @@ i.fa-dollar-sign {
   background-color: white;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
 .bindex_wrapper {
   display: flex;
   height: calc(100vh - 145px);
@@ -745,6 +749,8 @@ i.fa-dollar-sign {
   height: 100%;
 }
 
+=======
+>>>>>>> fd4f002bb9eab14341f031e1986a9253a3cf510a
 /* ---------------------分館介紹----------------------------- */
 #wrapper {
   width: 1200px;
@@ -2009,14 +2015,10 @@ zombie_btn {
   align-items: center;
   justify-content: center;
 }
-.main-frontpage .wrapper-frontpage .content .content-btn-L img {
-  width: 30%;
-  margin-bottom: 12px;
-}
 .main-frontpage .wrapper-frontpage .content .content-btn-L a {
   position: relative;
   display: inline-block;
-  padding: 15px 10px;
+  padding: 15px 30px;
   color: #2196f3;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -2025,6 +2027,7 @@ zombie_btn {
   overflow: hidden;
   text-decoration: none;
   font-weight: bold;
+  margin-top: 40px;
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-L a:hover {
   color: #255784;
@@ -2130,14 +2133,10 @@ zombie_btn {
   align-items: center;
   justify-content: center;
 }
-.main-frontpage .wrapper-frontpage .content .content-btn-R img {
-  width: 30%;
-  margin-bottom: 12px;
-}
 .main-frontpage .wrapper-frontpage .content .content-btn-R a {
   position: relative;
   display: inline-block;
-  padding: 15px 10px;
+  padding: 15px 30px;
   color: #2196f3;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -2146,6 +2145,7 @@ zombie_btn {
   overflow: hidden;
   text-decoration: none;
   font-weight: bold;
+  margin-top: 40px;
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-R a:hover {
   color: #255784;
@@ -2253,6 +2253,10 @@ zombie_btn {
 
 .cemetery_text {
   text-align: center;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
 }
 
 .order_form {
@@ -2263,6 +2267,11 @@ zombie_btn {
 }
 .order_form .backstage_dropdown {
   margin-right: 0;
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> fd4f002bb9eab14341f031e1986a9253a3cf510a
+>>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
 }
 
 /*# sourceMappingURL=style.css.map */
