@@ -694,13 +694,6 @@ i.fa-dollar-sign {
   background-color: white;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
->>>>>>> 911caf21d56f6f4eda3c993b4315e87a45e619ec
 .bindex_wrapper {
   display: flex;
   height: calc(100vh - 145px);
@@ -2224,11 +2217,6 @@ zombie_btn {
   justify-content: center;
   align-items: center;
   height: 113vh;
-  background-image: url("../img/cemetery.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 .parallax #cemetery_text {
   position: absolute;
@@ -2260,13 +2248,11 @@ zombie_btn {
 
 .cemetery_text {
   text-align: center;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
->>>>>>> 911caf21d56f6f4eda3c993b4315e87a45e619ec
+}
+
+.aa {
+  fill: aqua;
+  stroke: white;
 }
 
 .order_form {
@@ -2277,14 +2263,6 @@ zombie_btn {
 }
 .order_form .backstage_dropdown {
   margin-right: 0;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> fd4f002bb9eab14341f031e1986a9253a3cf510a
->>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
->>>>>>> 911caf21d56f6f4eda3c993b4315e87a45e619ec
 }
 
 /*# sourceMappingURL=style.css.map */

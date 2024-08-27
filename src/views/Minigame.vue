@@ -33,7 +33,7 @@ import Footerbar from '../components/Footerbar.vue';
     </section>
 
     <div class="minigame_huarong">
-      <img src="../assets/img/cube.png" alt="">
+      <img src="./src/assets/img/cube.png" alt="">
     </div>
   </body>
 
@@ -45,9 +45,8 @@ import Footerbar from '../components/Footerbar.vue';
 <script>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { gsap } from 'gsap';
-import ScrollTrigger from '../../node_modules/gsap/ScrollTrigger';
-// import Lenis from '@studio-freight/lenis';
-import Lenis from '../../node_modules/@studio-freight/lenis';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import Lenis from '@studio-freight/lenis';
 
 gsap.registerPlugin(ScrollTrigger);
 

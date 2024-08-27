@@ -40,9 +40,9 @@ import Footerbar from '../components/Footerbar.vue';
         <ul>
             <li><i class="fa-solid fa-caret-left"></i></li>
             <div class="theme_name">
-                <li><a href="#"><img src="../assets/img/banner-hospital.png" alt="">
+                <li><router-link to="/Theme/"><img src="../assets/img/banner-hospital.png" alt="">
                         <h3>成都醫院</h3>
-                    </a></li>
+                    </router-link></li>
                 <li><a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt="">
                         <h3>時光迷宮</h3>
                     </a></li>
