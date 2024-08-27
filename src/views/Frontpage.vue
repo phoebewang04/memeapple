@@ -10,7 +10,6 @@ import Footerbar from '../components/Footerbar.vue';
   <main class="main-frontpage">
     <section class="wrapper-frontpage">
       <div class="overlay-2"></div>
-
       <!-- Logo圖片 -->
       <img src="../assets/img/memelogo.svg" alt="" class="logo">
       <section class="content">

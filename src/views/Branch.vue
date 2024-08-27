@@ -17,7 +17,6 @@ import Footerbar from '../components/Footerbar.vue';
                 探險這世界上所有的謎題吧!
             </p>
         </div>
-<<<<<<< HEAD
     </div>
 
 
@@ -63,8 +62,6 @@ import Footerbar from '../components/Footerbar.vue';
                 <i class="fa-solid fa-user-group"></i>
                 <p> 客服時間:<br><br> 10:00-18:00</p>
             </div>
-=======
->>>>>>> dev
 
         <div class="branch_btn">
             <button id="taipei" >台北館</button>
@@ -150,7 +147,7 @@ import Footerbar from '../components/Footerbar.vue';
          </div>
 
     </div>
-    
+    </div>
   <Footerbar />
 </template>
 
