@@ -29,7 +29,7 @@ export default {
         <ul id="menuBar" :class="{ 'visible': menuBarVisible }">
             <li><router-link to="/videogame/">線上體驗</router-link></li>
             <li><router-link to="/place-intro/">分館介紹</router-link></li>
-            <li><router-link to="/register/">會員專區</router-link></li>
+            <li><router-link to="/login/">會員專區</router-link></li>
         </ul>
     </header>
 </template>
