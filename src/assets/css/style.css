@@ -2203,6 +2203,19 @@ zombie_btn {
 
 .cemetery_text {
   text-align: center;
+<<<<<<< HEAD
+=======
+}
+
+.order_form {
+  justify-content: space-between;
+}
+.order_form input {
+  margin-right: 0;
+}
+.order_form .backstage_dropdown {
+  margin-right: 0;
+>>>>>>> siang
 }
 
 /*# sourceMappingURL=style.css.map */
