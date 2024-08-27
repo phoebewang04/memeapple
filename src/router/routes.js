@@ -1,10 +1,13 @@
-import {createRouter} from 'vue-router'
+import { createRouter } from 'vue-router'
 // 前台相關路由
 import Fontpage from '../views/Frontpage.vue';
 import Home from '../views/HomeView.vue';
 import Minigame from '../views/Minigame.vue';
 import Login from '../views/Login.vue';
 import Branch from '../views/Branch.vue';
+import Announcement from '../views/Announcement.vue';
+import Popupcard from '../views/Popupcard.vue';
+import Theme from '../views/Theme.vue';
 
 
 // 後台相關路由
@@ -18,7 +21,7 @@ const routes = [
   {
     path: '/',
     component: Fontpage
-  },{
+  }, {
     path: '/index/',
     component: Home
   },
@@ -35,24 +38,36 @@ const routes = [
     component: Login
   },
   {
+    path: '/Announcement/',
+    component: Announcement
+  },
+  {
+    path: '/Popupcard/',
+    component: Popupcard
+  },
+  {
     path: '/BackstageIndex/',
-    component:Backstage_index
+    component: Backstage_index
   },
   {
     path: '/OrderMemage/',
-    component:Backstage_order
+    component: Backstage_order
   },
   {
     path: '/MemberMenage/',
-    component:Backstage_member
+    component: Backstage_member
   },
   {
     path: '/NewsMenage/',
-    component:Backstage_news
+    component: Backstage_news
   },
   {
     path: '/NewsEdit/',
-    component:Backstage_newsedit
+    component: Backstage_newsedit
+  },
+  {
+    path: '/Theme/',
+    component: Theme
   },
 ]
 

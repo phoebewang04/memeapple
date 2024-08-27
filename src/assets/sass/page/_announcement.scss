@@ -1,0 +1,121 @@
+.main-announcement{
+    width: 100%;
+    height: calc(100vh - 70px - 73.58px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include rwd(1100px){
+        
+    }
+    .wrapper-announcement{
+        width: 80%;
+        margin: 0 auto;
+        @include rwd(1440px){
+            width: 90%;
+         }
+        .bread-announcement{
+            margin-bottom: 16px;
+            @include rwd(1440px){
+                margin-bottom: 60px;
+             }
+             @include rwd(1100px){
+                margin-bottom: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+             }
+            .bread-announcement-breadcrumb{
+
+                ul{
+                    display: flex;
+                    text-decoration: none;
+                    width: 40%;
+                    letter-spacing: 4px;
+                    @include rwd(1440px){
+                        width: 60%;
+                    }
+                    @include rwd(1100px){
+                        width: 100%;
+                    }
+                    @include phone{
+                        display: none;
+                    }
+                    li{
+                        color: map-get($colors, white );
+                    }
+                    a{
+                        color: map-get($colors, white );
+                    }
+                }
+            }
+        }
+        .content-announcement{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            @include rwd(1100px){
+               flex-direction: column;
+               align-items: center;
+             }
+            .content-announcement-img{
+                margin-right: 49px;
+                @include rwd(1100px){
+                    margin-right: 0px;
+                }
+                img{
+                    width: 600px;
+                    height: 600px;
+                    @include rwd(1440px){
+                        width: 500px;
+                        height: 500px;
+                    }
+                    @include rwd(1100px){
+                        width: 350px;
+                        height: 350px;
+                    }
+
+                }
+            }
+            .content-announcement-text{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                @include rwd(1100px){
+                    width: 90%;
+                }
+                h1{
+                    font-size: 32px;
+                    font-weight: 500;
+                    @include rwd(1100px){
+                        font-size: 24px;
+                    }
+                }
+                h2{
+                    font-size: 20px;
+                    font-weight: 500;
+                    @include rwd(1100px){
+                        display: none;
+                    }
+                }
+                p{
+                    @include rwd(1100px){
+                        font-size: 14px;
+                    }
+                }
+                .NewsBack{
+                    margin-top: 40px;
+                    @include rwd(1440px){
+                        margin-top: 12px;
+                    }
+                    @include rwd(1100px){
+                        width: 120px;
+                        height: 32px;
+                        font-size: 18px;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}
