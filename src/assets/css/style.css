@@ -717,6 +717,13 @@ i.fa-dollar-sign {
   font-size: 24px;
   line-height: 1.6;
 }
+@media (max-width: 430px) {
+  #wrapper .slogan p {
+    font-size: 18px;
+    width: 330px;
+    margin: 0 auto;
+  }
+}
 
 .branch_btn #taipei {
   background-color: #FEDA77;
@@ -753,6 +760,13 @@ i.fa-dollar-sign {
   margin-bottom: 80px;
   background-color: #262B3F;
 }
+@media (max-width: 430px) {
+  #main {
+    width: 330px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+  }
+}
 
 .introduce {
   width: 1000px;
@@ -761,17 +775,26 @@ i.fa-dollar-sign {
   margin-bottom: 80px;
   padding-top: 80px;
 }
+@media (max-width: 430px) {
+  .introduce {
+    flex-direction: column;
+  }
+}
 
 .introduce img {
   width: 500px;
   height: 400px;
 }
-
-.introduce .text {
-  padding-top: 60px;
-  padding-left: 30px;
+@media (max-width: 430px) {
+  .introduce img {
+    width: 300px;
+  }
 }
 
+.introduce .text {
+  padding-top: 45px;
+  padding-left: 30px;
+}
 .introduce h2 {
   color: white;
   font-size: 24px;
@@ -782,6 +805,13 @@ i.fa-dollar-sign {
   font-size: 18px;
   color: white;
   line-height: 2.3;
+}
+@media (max-width: 430px) {
+  .introduce p {
+    font-size: 14px;
+    width: 300px;
+    margin: 0 auto;
+  }
 }
 
 .theme {
@@ -794,6 +824,11 @@ i.fa-dollar-sign {
   color: #FEDA77;
   font-size: 48px;
   padding: 12px;
+}
+@media (max-width: 430px) {
+  .theme li i {
+    display: none;
+  }
 }
 
 .theme ul {
@@ -839,6 +874,11 @@ i.fa-dollar-sign {
   color: white;
   margin-bottom: 60px;
 }
+@media (max-width: 430px) {
+  .location .location_text {
+    flex-direction: column;
+  }
+}
 
 .location_text .location_icon {
   width: 300px;
@@ -852,10 +892,20 @@ i.fa-dollar-sign {
   text-align: center;
   line-height: 20px;
 }
+@media (max-width: 430px) {
+  .location .location_text p {
+    margin-bottom: 20px;
+  }
+}
 
 .location iframe {
   width: 1000px;
   height: 300px;
+}
+@media (max-width: 430px) {
+  .location iframe {
+    width: 300px;
+  }
 }
 
 .location_text .location_icon i {
@@ -2145,6 +2195,7 @@ zombie_btn {
   transform: translateX(305px);
 }
 
+<<<<<<< HEAD
 .split_text {
   font-size: 24px;
   max-width: 80%;
@@ -2153,6 +2204,10 @@ zombie_btn {
 
 .cemetery_text {
   text-align: center;
+=======
+.sec {
+  background-color: #000;
+>>>>>>> db34e2c26292782e191d2317a1e15d9ddecb6bfc
 }
 
 /*# sourceMappingURL=style.css.map */

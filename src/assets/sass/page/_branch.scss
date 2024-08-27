@@ -18,6 +18,12 @@
     font-size: map-get($fontsize , h3 );
     color: map-get($colors , danger );
     line-height: 1.6;
+
+    @include rwd(430px){
+        font-size: map-get($fontsize , p );
+        width: 330px;
+        margin: 0 auto;
+    }
 }
 
 
@@ -58,6 +64,12 @@
     border:1px solid #FFFFFF;
     margin-bottom: 80px;
     background-color: map-get($colors , lightblue );
+
+    @include rwd(430px){
+        width: 330px;
+        margin: 0 auto;
+        margin-bottom: 80px;
+    }
 }
 
 .introduce {
@@ -67,16 +79,28 @@
     
     margin-bottom: 80px;
     padding-top: 80px;
+
+    @include rwd(430px){
+        flex-direction: column;
+    }
 }
 
 .introduce img {
     width: 500px;
     height: 400px;
+
+    @include rwd(430px){
+        width: 300px;
+    }
 }
 
 .introduce .text {
-    padding-top: 60px;
+    padding-top: 45px;
     padding-left: 30px;
+
+    @include rwd(430px){
+
+    }
 }
 
 .introduce h2 {
@@ -89,6 +113,12 @@
     font-size: map-get($fontsize, p );
     color: map-get($colors , white );
     line-height: map-get($lineheight , p );
+
+    @include rwd(430px){
+        font-size: map-get($fontsize, p1 );
+        width: 300px;
+        margin: 0 auto;
+    }
 }
 
 .theme {
@@ -101,6 +131,10 @@
     color: map-get($colors , yellow );
     font-size: 48px;
     padding: 12px;
+
+    @include rwd(430px){
+        display: none;
+    }
 }
 
 
@@ -147,6 +181,10 @@
     display: flex;
     color: map-get($colors , white );
     margin-bottom: 60px;
+
+    @include rwd(430px){
+        flex-direction: column;
+    }
     
 }
 
@@ -162,11 +200,19 @@
     font-size: map-get($fontsize, p );
     text-align: center;
     line-height: 20px;
+
+    @include rwd(430px){
+        margin-bottom: 20px;
+    }
 }
 
 .location iframe {
     width: 1000px;
     height: 300px;
+
+    @include rwd(430px){
+        width: 300px;
+    }
 }
 
 .location_text .location_icon i {
