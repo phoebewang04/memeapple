@@ -84,7 +84,7 @@ a {
 .top {
   color: white;
   height: 70px;
-  margin: 0 auto;
+  margin: 0 auto 80px;
   width: 100%;
   display: flex;
   line-height: 70px;
@@ -170,7 +170,7 @@ a {
 .bottom {
   background-color: #262B3F;
   width: 100%;
-  margin: 0 auto;
+  margin: 80px auto 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -583,7 +583,7 @@ i.fa-dollar-sign {
 }
 
 .backstage_panel {
-  padding: 20px 0;
+  padding: 40px 0;
   width: calc(50% + 40px);
   align-self: flex-end;
   display: flex;
@@ -694,15 +694,17 @@ i.fa-dollar-sign {
   background-color: white;
 }
 
-/* @import url(./reset.css); */
-/* -------------------------------------------------- */
-body {
-  background-color: #100E24;
->>>>>>> YY
+.bindex_wrapper {
+  display: flex;
+  height: calc(100vh - 145px);
 }
 
-.backstage_paginator {
-  font-size: 16px;
+.backstage_dashboard {
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  background-color: black;
+  align-self: center;
   display: flex;
   flex-direction: column;
 }
@@ -2243,7 +2245,6 @@ zombie_btn {
   transform: translateX(305px);
 }
 
-<<<<<<< HEAD
 .split_text {
   font-size: 24px;
   max-width: 80%;
@@ -2252,11 +2253,16 @@ zombie_btn {
 
 .cemetery_text {
   text-align: center;
-=======
-.sec {
-  background-color: #000;
->>>>>>> f4d24c5b28cf6d1048127e4ffccbba77d91c2081
->>>>>>> 6d62a8f08502c618163e51af3fee96542c95b2ec
+}
+
+.order_form {
+  justify-content: space-between;
+}
+.order_form input {
+  margin-right: 0;
+}
+.order_form .backstage_dropdown {
+  margin-right: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
