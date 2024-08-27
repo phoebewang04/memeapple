@@ -170,7 +170,7 @@ a {
 .bottom {
   background-color: #262B3F;
   width: 100%;
-  margin: 80px auto 0;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -514,14 +514,6 @@ i.fa-dollar-sign {
   background-color: #100E24;
 }
 
-.backstage_daily {
-  height: 50%;
-}
-
-.backstage_chart {
-  height: 50%;
-}
-
 .backstage_selection {
   max-height: 200px;
   display: flex;
@@ -551,7 +543,7 @@ i.fa-dollar-sign {
 
 .backstage_form {
   width: 100%;
-  padding-top: 20px;
+  padding-top: 40px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -591,7 +583,7 @@ i.fa-dollar-sign {
 }
 
 .backstage_panel {
-  padding: 20px 0;
+  padding: 40px 0;
   width: calc(50% + 40px);
   align-self: flex-end;
   display: flex;
@@ -599,12 +591,13 @@ i.fa-dollar-sign {
 }
 
 .backstage_tablezone {
-  margin-top: 0px;
+  margin-top: 40px;
   height: calc(100% - 250px);
   padding-bottom: 12px;
 }
 
 .backstage_button {
+  padding: 0;
   height: 30.8px;
   position: static;
   margin: 0;
@@ -2203,19 +2196,6 @@ zombie_btn {
 
 .cemetery_text {
   text-align: center;
-<<<<<<< HEAD
-=======
-}
-
-.order_form {
-  justify-content: space-between;
-}
-.order_form input {
-  margin-right: 0;
-}
-.order_form .backstage_dropdown {
-  margin-right: 0;
->>>>>>> siang
 }
 
 /*# sourceMappingURL=style.css.map */
