@@ -1,27 +1,9 @@
-<<<<<<< HEAD
-/* Error: expected "{".
- *    ,
- * 20 | );
- *    |  ^
- *    '
- *   sass\basic\_font.scss 20:2  @import
- *   sass\style.scss 7:9         root stylesheet */
-
-<<<<<<< HEAD
-=======
 @charset "UTF-8";
 @import url(../css/reset.css);
 body {
   color: white;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 37423a0b6397f768e3594e483db80206e0742e5b
->>>>>>> f4d24c5b28cf6d1048127e4ffccbba77d91c2081
->>>>>>> 6d62a8f08502c618163e51af3fee96542c95b2ec
 html,
 body {
   font-family: Noto Sans TC;
@@ -178,19 +160,9 @@ a {
 }
 
 .top a {
-=======
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
->>>>>>> dev
   display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: expected "{".\a    \2577 \a 20 \2502  );\d\a    \2502   ^\a    \2575 \a   sass\\basic\\_font.scss 20:2  @import\a   sass\\style.scss 7:9         root stylesheet';
+  color: white;
 }
-<<<<<<< HEAD
 .top a:hover {
   color: #FCD15B;
 }
@@ -619,11 +591,7 @@ i.fa-dollar-sign {
 }
 
 .backstage_panel {
-<<<<<<< HEAD
   padding: 20px 0;
-=======
-  padding-top: 20px;
->>>>>>> 6d62a8f08502c618163e51af3fee96542c95b2ec
   width: calc(50% + 40px);
   align-self: flex-end;
   display: flex;
@@ -699,56 +667,6 @@ i.fa-dollar-sign {
   display: flex;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 37423a0b6397f768e3594e483db80206e0742e5b
->>>>>>> f4d24c5b28cf6d1048127e4ffccbba77d91c2081
->>>>>>> 6d62a8f08502c618163e51af3fee96542c95b2ec
-}
-
-.backstage_paginator {
-  font-size: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-}
-.backstage_paginator a {
-  font-size: 18px;
-  line-height: 30px;
-}
-.backstage_paginator a:hover {
-  font-weight: bold;
-}
-.backstage_paginator a:active {
-  color: #FCD15B;
-}
-
-.backstage_page_input {
-  font-size: 16px;
-  width: 30px;
-  margin: 0 8px;
-  background-color: #FFE8BB;
-  border: 0;
-  text-align: center;
-}
-
-.backstage_page_input:focus {
-  outline: 1px solid #262B3F;
-  background-color: white;
-}
-
-/* @import url(./reset.css); */
-/* -------------------------------------------------- */
-body {
-  background-color: #100E24;
->>>>>>> YY
 }
 
 .backstage_paginator {
@@ -799,6 +717,13 @@ body {
   font-size: 24px;
   line-height: 1.6;
 }
+@media (max-width: 430px) {
+  #wrapper .slogan p {
+    font-size: 18px;
+    width: 330px;
+    margin: 0 auto;
+  }
+}
 
 .branch_btn #taipei {
   background-color: #FEDA77;
@@ -835,6 +760,13 @@ body {
   margin-bottom: 80px;
   background-color: #262B3F;
 }
+@media (max-width: 430px) {
+  #main {
+    width: 330px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+  }
+}
 
 .introduce {
   width: 1000px;
@@ -843,17 +775,26 @@ body {
   margin-bottom: 80px;
   padding-top: 80px;
 }
+@media (max-width: 430px) {
+  .introduce {
+    flex-direction: column;
+  }
+}
 
 .introduce img {
   width: 500px;
   height: 400px;
 }
-
-.introduce .text {
-  padding-top: 60px;
-  padding-left: 30px;
+@media (max-width: 430px) {
+  .introduce img {
+    width: 300px;
+  }
 }
 
+.introduce .text {
+  padding-top: 45px;
+  padding-left: 30px;
+}
 .introduce h2 {
   color: white;
   font-size: 24px;
@@ -864,6 +805,13 @@ body {
   font-size: 18px;
   color: white;
   line-height: 2.3;
+}
+@media (max-width: 430px) {
+  .introduce p {
+    font-size: 14px;
+    width: 300px;
+    margin: 0 auto;
+  }
 }
 
 .theme {
@@ -876,6 +824,11 @@ body {
   color: #FEDA77;
   font-size: 48px;
   padding: 12px;
+}
+@media (max-width: 430px) {
+  .theme li i {
+    display: none;
+  }
 }
 
 .theme ul {
@@ -921,6 +874,11 @@ body {
   color: white;
   margin-bottom: 60px;
 }
+@media (max-width: 430px) {
+  .location .location_text {
+    flex-direction: column;
+  }
+}
 
 .location_text .location_icon {
   width: 300px;
@@ -934,10 +892,20 @@ body {
   text-align: center;
   line-height: 20px;
 }
+@media (max-width: 430px) {
+  .location .location_text p {
+    margin-bottom: 20px;
+  }
+}
 
 .location iframe {
   width: 1000px;
   height: 300px;
+}
+@media (max-width: 430px) {
+  .location iframe {
+    width: 300px;
+  }
 }
 
 .location_text .location_icon i {
@@ -1565,17 +1533,8 @@ zombie_btn {
   margin: 0 auto;
 }
 
-<<<<<<< HEAD
-/* -------------------------------------------------------- */
-body {
-  background-color: #100E24;
-}
-
-#wrapper {
-=======
 /* -------------------------preorder 預定主題------------------------------- */
 #preorder_wrapper {
->>>>>>> 37423a0b6397f768e3594e483db80206e0742e5b
   width: 1200px;
   margin: 0 auto;
 }
@@ -1879,7 +1838,6 @@ body {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
 .backstage_page_content {
   display: flex;
   flex-direction: column;
@@ -1930,8 +1888,8 @@ body {
 
 .panel_news {
   justify-content: end;
-=======
-<<<<<<< HEAD
+}
+
 .main-frontpage {
   width: 100%;
   background-image: url(/src/assets/img/BG-fontpage.jpg);
@@ -2195,7 +2153,8 @@ body {
   bottom: 100%;
   transition: 1s;
   transition-delay: 0.75s;
-=======
+}
+
 .minigame_body {
   min-height: 100vh;
   overflow-x: hidden;
@@ -2237,10 +2196,6 @@ body {
 
 .sec {
   background-color: #000;
->>>>>>> f4d24c5b28cf6d1048127e4ffccbba77d91c2081
->>>>>>> 6d62a8f08502c618163e51af3fee96542c95b2ec
 }
 
 /*# sourceMappingURL=style.css.map */
-=======
->>>>>>> dev
