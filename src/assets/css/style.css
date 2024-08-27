@@ -84,7 +84,7 @@ a {
 .top {
   color: white;
   height: 70px;
-  margin: 0 auto;
+  margin: 0 auto 80px;
   width: 100%;
   display: flex;
   line-height: 70px;
@@ -477,6 +477,27 @@ i.fa-dollar-sign {
   color: #FEDA77;
 }
 
+.join_login {
+  margin: 0 auto;
+  width: 40vw;
+}
+
+.btn_acc {
+  width: 20vw;
+  border-radius: 8px 0 0 0;
+}
+
+.btn_join {
+  width: 20vw;
+  background-color: #FEDA77;
+  border-radius: 0 8px 0 0;
+}
+
+.mainLogin {
+  background-color: #FFE8BB;
+  border-radius: 0 0 8px 8px;
+}
+
 .backstage_body {
   display: flex;
   flex-direction: column;
@@ -692,6 +713,57 @@ i.fa-dollar-sign {
 .backstage_page_input:focus {
   outline: 1px solid #262B3F;
   background-color: white;
+}
+
+.bindex_wrapper {
+  display: flex;
+  height: calc(100vh - 145px);
+}
+
+.backstage_dashboard {
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  background-color: black;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.backstage_daily {
+  background-color: aliceblue;
+  width: 100%;
+  height: 50%;
+}
+
+.backstage_calendar {
+  background-color: aqua;
+  width: 40%;
+  height: 100%;
+}
+
+.backstage_booking {
+  background-color: blue;
+  width: 60%;
+  height: 100%;
+}
+
+.backstage_chart {
+  background-color: lavender;
+  width: 100%;
+  height: 50%;
+}
+
+.theme_income {
+  background-color: yellow;
+  width: 70%;
+  height: 100%;
+}
+
+.store_income {
+  background-color: orange;
+  width: 30%;
+  height: 100%;
 }
 
 /* ---------------------分館介紹----------------------------- */
@@ -1958,10 +2030,14 @@ zombie_btn {
   align-items: center;
   justify-content: center;
 }
+.main-frontpage .wrapper-frontpage .content .content-btn-L img {
+  width: 30%;
+  margin-bottom: 12px;
+}
 .main-frontpage .wrapper-frontpage .content .content-btn-L a {
   position: relative;
   display: inline-block;
-  padding: 15px 30px;
+  padding: 15px 10px;
   color: #2196f3;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -1970,7 +2046,6 @@ zombie_btn {
   overflow: hidden;
   text-decoration: none;
   font-weight: bold;
-  margin-top: 40px;
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-L a:hover {
   color: #255784;
@@ -2076,10 +2151,14 @@ zombie_btn {
   align-items: center;
   justify-content: center;
 }
+.main-frontpage .wrapper-frontpage .content .content-btn-R img {
+  width: 30%;
+  margin-bottom: 12px;
+}
 .main-frontpage .wrapper-frontpage .content .content-btn-R a {
   position: relative;
   display: inline-block;
-  padding: 15px 30px;
+  padding: 15px 10px;
   color: #2196f3;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -2088,7 +2167,6 @@ zombie_btn {
   overflow: hidden;
   text-decoration: none;
   font-weight: bold;
-  margin-top: 40px;
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-R a:hover {
   color: #255784;
@@ -2196,6 +2274,16 @@ zombie_btn {
 
 .cemetery_text {
   text-align: center;
+}
+
+.order_form {
+  justify-content: space-between;
+}
+.order_form input {
+  margin-right: 0;
+}
+.order_form .backstage_dropdown {
+  margin-right: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
