@@ -2195,7 +2195,6 @@ zombie_btn {
   transform: translateX(305px);
 }
 
-<<<<<<< HEAD
 .split_text {
   font-size: 24px;
   max-width: 80%;
@@ -2204,13 +2203,16 @@ zombie_btn {
 
 .cemetery_text {
   text-align: center;
-=======
-.sec {
-  background-color: #000;
-<<<<<<< HEAD
-=======
->>>>>>> db34e2c26292782e191d2317a1e15d9ddecb6bfc
->>>>>>> 0ff28dde6ad40c36cc734694a4c0d60a51679f5e
+}
+
+.order_form {
+  justify-content: space-between;
+}
+.order_form input {
+  margin-right: 0;
+}
+.order_form .backstage_dropdown {
+  margin-right: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
