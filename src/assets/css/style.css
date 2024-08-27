@@ -715,6 +715,13 @@ i.fa-dollar-sign {
   background-color: white;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
+>>>>>>> 911caf21d56f6f4eda3c993b4315e87a45e619ec
 .bindex_wrapper {
   display: flex;
   height: calc(100vh - 145px);
@@ -766,6 +773,11 @@ i.fa-dollar-sign {
   height: 100%;
 }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> fd4f002bb9eab14341f031e1986a9253a3cf510a
+>>>>>>> 911caf21d56f6f4eda3c993b4315e87a45e619ec
 /* ---------------------分館介紹----------------------------- */
 #wrapper {
   width: 1200px;
@@ -2274,6 +2286,25 @@ zombie_btn {
 
 .cemetery_text {
   text-align: center;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
+}
+
+.order_form {
+  justify-content: space-between;
+}
+.order_form input {
+  margin-right: 0;
+}
+.order_form .backstage_dropdown {
+  margin-right: 0;
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> fd4f002bb9eab14341f031e1986a9253a3cf510a
+>>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
 }
 
 .order_form {
