@@ -13,6 +13,10 @@ import Backstage_member from '../views/Backstage_member.vue';
 import Backstage_order from '../views/Backstage_order.vue';
 import Backstage_news from '../views/Backstage_news.vue';
 import Backstage_newsedit from '../views/Backstage_news_edit.vue';
+import Login from "@/components/login.vue";
+// import Homepage from '../views/homepage/home.vue';
+// 左邊是你宣告的名稱，可以跟你的 .vue檔案名稱相同。
+// 右邊是你的 .vue 檔案路徑。
 
 const routes = [
   {

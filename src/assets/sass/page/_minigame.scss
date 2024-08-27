@@ -1,4 +1,5 @@
 .minigame_body {
+    background-color: #020912;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -7,7 +8,7 @@
     position: relative;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     height: 113vh;
 
     background-image: url('../img/cemetery.png');
@@ -36,16 +37,25 @@
     }
 
     #gate-left {
-        
+
         transform: translateX(-282px);
     }
 
     #gate-right {
-        
+
         transform: translateX(305px);
     }
 }
 
-.sec{
-    background-color: #000;
+.split_text {
+    // border: 1px solid white;
+    font-size: 24px;
+    max-width: 80%;
+
+    margin: 40px auto;
+}
+
+.cemetery_text {
+    text-align: center;
+
 }
