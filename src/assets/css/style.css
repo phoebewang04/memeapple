@@ -84,7 +84,7 @@ a {
 .top {
   color: white;
   height: 70px;
-  margin: 0 auto 80px;
+  margin: 0 auto;
   width: 100%;
   display: flex;
   line-height: 70px;
@@ -170,7 +170,7 @@ a {
 .bottom {
   background-color: #262B3F;
   width: 100%;
-  margin: 80px auto 0;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -479,23 +479,99 @@ i.fa-dollar-sign {
 
 .join_login {
   margin: 0 auto;
-  width: 40vw;
+  max-width: 850px;
 }
 
 .btn_acc {
-  width: 20vw;
+  width: 50%;
   border-radius: 8px 0 0 0;
+  border: 1px solid #FCD15B;
 }
 
 .btn_join {
-  width: 20vw;
+  width: 50%;
   background-color: #FEDA77;
   border-radius: 0 8px 0 0;
+  border: 1px solid #FEDA77;
 }
 
 .mainLogin {
   background-color: #FFE8BB;
-  border-radius: 0 0 8px 8px;
+}
+
+.mainLogin ul {
+  margin: 0 2.5%;
+  padding: 5px;
+  color: #292929;
+}
+
+.mainLogin li {
+  margin: 5px;
+}
+
+.mainLogin .account {
+  width: 100%;
+}
+
+.mainLogin .PWD {
+  width: 100%;
+}
+
+.btnlogin {
+  width: 100%;
+}
+
+.checkforget {
+  margin: 0 5%;
+  padding: 5px;
+  color: #292929;
+  display: flex;
+  justify-content: space-between;
+}
+
+.linef {
+  color: #292929;
+  display: flex;
+  justify-content: center;
+  margin: 0 5%;
+  align-items: center;
+}
+
+.flinetext {
+  margin: 0 3%;
+}
+
+.fline {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #292929;
+  width: 40%;
+}
+
+.outloginbtn {
+  display: flex;
+  justify-content: center;
+}
+
+.outloginbtn button {
+  max-width: 250px;
+  font-size: 18px;
+  margin: 10px 20px;
+}
+
+.btnfb {
+  background-color: #1877F2;
+  color: white;
+}
+
+.btngoogle {
+  background-color: white;
+  color: #292929;
+}
+
+.btnline {
+  background-color: #23DB35;
+  color: white;
 }
 
 .backstage_body {
@@ -715,13 +791,6 @@ i.fa-dollar-sign {
   background-color: white;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
->>>>>>> 911caf21d56f6f4eda3c993b4315e87a45e619ec
 .bindex_wrapper {
   display: flex;
   height: calc(100vh - 145px);
@@ -773,11 +842,6 @@ i.fa-dollar-sign {
   height: 100%;
 }
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> fd4f002bb9eab14341f031e1986a9253a3cf510a
->>>>>>> 911caf21d56f6f4eda3c993b4315e87a45e619ec
 /* ---------------------分館介紹----------------------------- */
 #wrapper {
   width: 1200px;
@@ -2286,25 +2350,6 @@ zombie_btn {
 
 .cemetery_text {
   text-align: center;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
-}
-
-.order_form {
-  justify-content: space-between;
-}
-.order_form input {
-  margin-right: 0;
-}
-.order_form .backstage_dropdown {
-  margin-right: 0;
-<<<<<<< HEAD
-=======
-=======
->>>>>>> fd4f002bb9eab14341f031e1986a9253a3cf510a
->>>>>>> 6c153236300b1094600ed81c700f7ace264337ac
 }
 
 .order_form {
