@@ -41,6 +41,7 @@
                             <td id="news_status"><a href="" class="backstage_table_button">隱藏</a></td>
                             <td id="news_action">
                                 <router-link to="/NewsEdit/"><a href="" class="backstage_table_button">編輯</a></router-link>
+                                &ensp;
                                 <a href="" class="backstage_table_button">刪除</a>
                             </td>
                         </tr>

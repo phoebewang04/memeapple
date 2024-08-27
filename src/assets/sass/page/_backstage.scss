@@ -7,6 +7,7 @@
 .backstage_header {
     // background-color: map-get($colors, darkblue );
     background-color: map-get($colors, darkblue );
+    margin-bottom: 0;
 
     h2{
         color: map-get($colors, gold );
@@ -25,6 +26,7 @@
 .backstage_main{
     background-color: #fff;
     width: 100%;
+    height: calc(100vh - 145px);
     flex-grow: 1;
 }
 
@@ -37,6 +39,7 @@
 
 .backstage_footer{
     background-color: map-get($colors, darkblue );
+    margin-top: 0;
 }
 
 .backstage_selection{

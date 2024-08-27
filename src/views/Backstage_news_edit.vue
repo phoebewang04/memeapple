@@ -29,22 +29,11 @@
                     <input class="backstage_title_input" type="text">
                     <h2>內容：</h2>
                     <!-- ckeditor -->
-                    <!-- <div id="editor">This is some sample content.</div>
-                    <script>
-                            ClassicEditor
-                                    .create(document.querySelector( 
-                                            '#editor'))
-                                    .then(editor=>{
-                                        console.log(editor);
-                                    })
-                                    .catch(error=>{
-                                        console.error(error);
-                                    });
-                    </script> -->
+                    
 
                     <!-- textarea -->
                     <div>
-                        <textarea name="" id=""></textarea>
+                        <textarea name="" id="">測試</textarea>
                     </div>
                     <br>
                     <button class="btn backstage_button">圖片</button>

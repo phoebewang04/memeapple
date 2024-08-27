@@ -4,7 +4,7 @@
 
 <template>
     <footer>
-        <div class="bottom">
+        <div class="bottom backstage_footer">
             <div><img src="../assets/img/memelogo.svg" alt=""></div>
             <div class="bm_text">
                 <p>© Copyright Meme謎因工作室&nbsp;&nbsp;All Rights Reserved.</p>
