@@ -170,7 +170,7 @@ a {
 .bottom {
   background-color: #262B3F;
   width: 100%;
-  margin: 0 auto;
+  margin: 80px auto 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -475,27 +475,6 @@ i.fa-dollar-sign {
 .arrow .carousel .card h4 {
   margin-top: 10px;
   color: #FEDA77;
-}
-
-.join_login {
-  margin: 0 auto;
-  width: 40vw;
-}
-
-.btn_acc {
-  width: 20vw;
-  border-radius: 8px 0 0 0;
-}
-
-.btn_join {
-  width: 20vw;
-  background-color: #FEDA77;
-  border-radius: 0 8px 0 0;
-}
-
-.mainLogin {
-  background-color: #FFE8BB;
-  border-radius: 0 0 8px 8px;
 }
 
 .backstage_body {
