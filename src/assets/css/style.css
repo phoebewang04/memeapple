@@ -170,7 +170,7 @@ a {
 .bottom {
   background-color: #262B3F;
   width: 100%;
-  margin: 0 auto;
+  margin: 80px auto 0;
   display: flex;
   align-items: center;
   justify-content: space-around;

@@ -1,0 +1,31 @@
+.wrapper{
+    
+}
+
+.join_login{
+    margin: 0 auto;
+    width: 40vw;   
+}
+
+// .join_loginHeader{
+//     border-bottom:1px solid map-get($colors , gold);
+// }
+
+.btn_acc{
+    width: 20vw;
+    border-radius: 8px 0 0 0;
+
+
+}
+
+.btn_join{
+    width: 20vw;
+    background-color:map-get($colors , yellow);
+    border-radius:0 8px 0 0;
+
+}
+
+.mainLogin{
+    background-color:map-get($colors , lightyellow);
+    border-radius: 0 0 8px 8px;
+}
