@@ -5,12 +5,31 @@
 #wrapper {
     width: 1200px;
     margin: 0 auto;
+
+    @include pad {
+        width: 800px;
+    }
+
+    @include rwd(430px){
+        width: 430px;
+    }
 }
 
 #wrapper .slogan {
     width: 1200px;
     padding: 80px 0px;
     margin: 0 auto;
+
+
+    @include pad {
+        width: 740px;
+    }
+
+    @include rwd(430px){
+        width: 330px;
+        padding: 50px 0px;
+    }
+
 }
 
 
@@ -19,13 +38,33 @@
     color: map-get($colors , danger );
     line-height: 1.6;
 
+
+    @include pad {
+        font-size: map-get($fontsize , p );
+    }
+
     @include rwd(430px){
         font-size: map-get($fontsize , p );
         width: 330px;
         margin: 0 auto;
+        line-height: 2.3;
     }
+  
 }
 
+.branch_btn {
+
+    @include pad {
+        padding-left: 29px;
+    }
+    
+    @include rwd(430px){
+        padding-left: 0px;
+        width: 400px;
+        margin: 0 auto;
+    }
+
+}
 
 
 .branch_btn #taipei {
@@ -39,6 +78,11 @@
     cursor: pointer;
     font-size: 18px;
     border-radius: 40px 40px 0px 0px;
+
+    @include rwd(430px){
+        width: 200px;
+        margin: 0 auto;
+    }
 }
 
 .branch_btn #taichung {
@@ -52,6 +96,11 @@
     cursor: pointer;
     font-size: 18px;
     border-radius: 40px 40px 0px 0px;
+
+    @include rwd(430px){
+        width: 200px;
+        margin: 0 auto;
+    }
 }
 
 
@@ -64,12 +113,19 @@
     border:1px solid #FFFFFF;
     margin-bottom: 80px;
     background-color: map-get($colors , lightblue );
-
-    @include rwd(430px){
-        width: 330px;
+    
+    @include pad {
+        width: 740px;
         margin: 0 auto;
         margin-bottom: 80px;
     }
+
+    @include rwd(430px){
+        width: 400px;
+        margin: 0 auto;
+        margin-bottom: 80px;
+    }
+
 }
 
 .introduce {
@@ -80,51 +136,118 @@
     margin-bottom: 80px;
     padding-top: 80px;
 
+    @include pad {
+        width: 700px;
+    }
+
     @include rwd(430px){
         flex-direction: column;
+        width: 350px;
+        padding-top: 40px;
+        margin-bottom: 60px;
     }
+
+  
 }
 
 .introduce img {
     width: 500px;
     height: 400px;
 
-    @include rwd(430px){
-        width: 300px;
+    @include pad {
+        width: 350px;
+        height: 350px;
     }
+
+    @include rwd(430px){
+        width: 350px;
+        height: 320px;
+    }
+
+ 
 }
 
 .introduce .text {
     padding-top: 45px;
     padding-left: 30px;
 
-    @include rwd(430px){
 
+    @include pad {
+        width: 330px;
+        padding-top: 0px;
+        padding-left: 20px;
+        
     }
+
+    @include rwd(430px){
+        padding-top: 40px;
+        padding-left: 0px;
+    }
+
+   
 }
 
 .introduce h2 {
     color: map-get($colors , white );
     font-size: map-get($fontsize , h3 );
     padding-bottom: 40px;
+
+    @include pad {
+        padding-bottom: 10px;
+    }
+
+    @include rwd(430px){
+        font-size: map-get($fontsize , p );
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    
 }
 
 .introduce p {
     font-size: map-get($fontsize, p );
     color: map-get($colors , white );
     line-height: map-get($lineheight , p );
+    
+    @include pad {
+        line-height: 2.0;
+    }
 
     @include rwd(430px){
         font-size: map-get($fontsize, p1 );
-        width: 300px;
+        width: 350px;
         margin: 0 auto;
     }
+
+   
 }
+
+
 
 .theme {
     width: 1000px;
     margin: 0 auto;
     margin-bottom: 80px;
+
+    @include pad {
+        width: 700px;
+    }
+
+    @include rwd(430px){
+        width: 300px;
+        margin-bottom: 60px;
+        height: 500px;
+    }
+
+    
+}
+
+.theme li  {
+
+    @include pad {
+        width: 200px;
+    }
 }
 
 .theme li i  {
@@ -142,6 +265,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include rwd(430px){
+        display: none;
+    }
 }
 
 .theme ul li a {
@@ -151,12 +278,21 @@
 .theme ul li img {
     width: 280px;
     height: 400px;
+
+    @include pad {
+        width: 190px;
+        height: 270px;
+    }
 }
 
 .theme .theme_name {
     width: 1000px;
     display: flex;
     justify-content: space-between;
+
+    @include pad {
+        width: 610px;
+    }
 }
 
 .theme .theme_name h3 {
@@ -168,13 +304,29 @@
     text-align: center;
     line-height: 40px;
 
+    @include pad {
+        width: 190px;
+    }
 }
+
 
 .location {
     width: 1000px;
     margin: 0 auto;
     margin-bottom: 80px;
     justify-content: space-between;
+
+    
+    @include pad {
+        width: 700px;
+    }
+
+    @include rwd(430px){
+        width: 350px;
+        margin: 0 auto;
+        margin-bottom: 60px;
+    }
+
 }
 
 .location .location_text {
@@ -184,6 +336,7 @@
 
     @include rwd(430px){
         flex-direction: column;
+        align-items: center;
     }
     
 }
@@ -201,18 +354,32 @@
     text-align: center;
     line-height: 20px;
 
-    @include rwd(430px){
-        margin-bottom: 20px;
+
+     @include pad {
+        font-size: map-get($fontsize, p1 );
     }
+
+    @include rwd(430px){
+        margin-bottom: 40px;
+    }
+    
+   
 }
 
 .location iframe {
     width: 1000px;
     height: 300px;
 
-    @include rwd(430px){
-        width: 300px;
+
+      @include pad {
+        width: 700px;
     }
+
+    @include rwd(430px){
+        width: 350px;
+    }
+
+  
 }
 
 .location_text .location_icon i {
