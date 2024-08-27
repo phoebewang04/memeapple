@@ -5,6 +5,8 @@ import Home from '../views/HomeView.vue';
 import Minigame from '../views/Minigame.vue';
 import Login from '../views/Login.vue';
 import Branch from '../views/Branch.vue';
+import Announcement from '../views/Announcement.vue';
+import Popupcard from '../views/Popupcard.vue';
 
 
 // 後台相關路由
@@ -33,6 +35,14 @@ const routes = [
   {
     path: '/Login/',
     component: Login
+  },
+  {
+    path: '/Announcement/',
+    component: Announcement
+  },
+  {
+    path: '/Popupcard/',
+    component: Popupcard
   },
   {
     path: '/BackstageIndex/',
