@@ -1,0 +1,111 @@
+
+.join_login{
+    margin: 0 auto;
+    max-width: 850px;
+   
+
+}
+
+// .join_loginHeader{
+//     border-bottom:1px solid map-get($colors , gold);
+// }
+
+.btn_acc{
+    width: 50%;
+    border-radius: 8px 0 0 0;
+    border: 1px solid map-get($colors , gold);
+
+
+}
+
+.btn_join{
+    width: 50%;
+    background-color:map-get($colors , yellow);
+    border-radius:0 8px 0 0;
+    border: 1px solid map-get($colors , yellow);
+}
+
+.mainLogin{
+    background-color:map-get($colors , lightyellow);
+}
+
+.mainLogin ul{
+    margin:0 2.5%;
+    padding: 5px;
+    color: map-get($colors , black );
+}
+
+.mainLogin li{
+    margin: 5px;
+}
+
+.mainLogin input{
+   
+}
+
+.mainLogin .account{
+    width: 100%;
+}
+
+.mainLogin .PWD{
+    width: 100%;
+}
+
+.btnlogin{
+    width: 100%;
+}
+
+.checkforget{
+    margin:0 5%;
+    padding: 5px;
+    color: map-get($colors , black );
+    display: flex;
+    justify-content: space-between;
+}
+
+.linef{
+    // max-width: 700px;
+    color: map-get($colors , black );
+    display: flex;
+    justify-content: center;
+    margin: 0 5%;
+    align-items: center;
+}
+
+.flinetext{
+    margin: 0 3%;
+}
+
+.fline{
+    content: '';
+    display: block;
+    border-bottom: 1px solid map-get($colors , black );
+    width: 40%;
+}
+
+.outloginbtn{
+    display: flex;
+    justify-content: center;
+}
+
+.outloginbtn button{
+    max-width: 250px;
+    font-size: map-get($fontsize, p );
+    margin: 10px 20px;
+}
+
+.btnfb{
+    background-color:map-get($colors, fbblue) ;
+    color: map-get($colors, white);
+}
+
+.btngoogle{
+    background-color:map-get($colors, white) ;
+    color: map-get($colors, black);
+}
+
+
+.btnline{
+    background-color:map-get($colors, linegreen) ;
+    color: map-get($colors, white);
+}

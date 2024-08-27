@@ -11,8 +11,15 @@
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@studio-freight/lenis": "^1.0.42",
+    "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
     "pinia": "^2.1.4",
+<<<<<<< HEAD
+    "split-type": "^0.3.4",
+=======
+    "swiper": "^11.1.10",
+>>>>>>> 604eae02d380ad499d5796855495bdd381dd183d
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
