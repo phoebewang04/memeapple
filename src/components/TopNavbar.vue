@@ -27,9 +27,9 @@ export default {
         <font-awesome-icon class="fa" icon="bars" @click="showMenuBar"></font-awesome-icon>
         <!-- 這是列表，透過router連結到其他 .vue 頁面 -->
         <ul id="menuBar" :class="{ 'visible': menuBarVisible }">
-            <li><router-link to="/videogame/">線上體驗</router-link></li>
-            <li><router-link to="/place-intro/">分館介紹</router-link></li>
-            <li><router-link to="/register/">會員專區</router-link></li>
+            <li><router-link to="/Minigame/">線上體驗</router-link></li>
+            <li><router-link to="/Branch/">分館介紹</router-link></li>
+            <li><router-link to="/Login/">會員專區</router-link></li>
         </ul>
     </header>
 </template>

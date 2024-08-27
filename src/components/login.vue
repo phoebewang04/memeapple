@@ -1,19 +1,13 @@
 <script setup>
 import "@/assets/css/style.css";
+import TopNavbar from '../components/TopNavbar.vue';
+import Footerbar from '../components/Footerbar.vue';
 </script>
 
 <template>
-    <div class="wrapper_out">
-        <header class="top">
-                <a href="./index.html"><img src="./img/memelogo.svg" alt=""></a>
-                <i class="fa fa-bars" aria-hidden="true" onclick="showMenuBar()"></i>
-                <ul id="menuBar">
-                    <li><a href="">線上體驗</a></li>
-                    <li><a href="">遊戲主題</a></li>
-                    <li><a href="">會員專區</a></li>
-                </ul>
-            </header>
-        
+    <TopNavbar />
+
+
             <div class="main">
         
                 <div class="wrapper">
@@ -53,32 +47,10 @@ import "@/assets/css/style.css";
                 </div>
             </div>
         
-            <footer>
-        
-                <div class="bottom">
-        
-                    <div>
-                        <a href="#"><img src="./img/memelogo.svg" alt=""></a>
-                    </div>
-        
-        
-                    <div class="bm_text">
-                        <p>© Copyright Meme謎因工作室&nbsp;&nbsp;All Rights Reserved.</p>
-                        <p>本網站為緯育TibaMe【第93期】前端工程師專業技術養成班學員作品，僅供學習、展示之用途。</p>
-                    </div>
-        
-                    <div class="icon">
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-square-threads"></i></a>
-                    </div>
-        
-                </div>
-        
-            </footer>
+    <Footerbar />
            
 
-    </div>
+   
 </template>
 
 

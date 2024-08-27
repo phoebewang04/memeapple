@@ -17,13 +17,13 @@ import Footerbar from '../components/Footerbar.vue';
         <!-- 前端按鈕 -->
         <section class="content-btn-L">
           <img src="../assets/img/BTN-yellow.png" alt="">
-          <a href="">
+          <router-link to="/index/"><a href="">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             進入前端
-          </a>
+          </a></router-link>
         </section>
         <!-- 中央內容 -->
         <section class="content-text">
@@ -42,19 +42,20 @@ import Footerbar from '../components/Footerbar.vue';
         <!-- 右側按鈕 -->
         <section class="content-btn-R">
           <img src="../assets//img/BTN-blue.png" alt="">
-          <a href="">
+          <router-link to="/BackstageIndex/"><a href="">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             進入後端
-          </a>
+          </a></router-link>
         </section>
       </section>
     </section>
   </main>
 
   <Footerbar />
+
 </template>
 <style></style>
 
