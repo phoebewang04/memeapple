@@ -5,14 +5,14 @@ let gateLeft = document.getElementById('gate-left');
 let gateRight = document.getElementById('gate-right');
 
 window.addEventListener('scroll', () => {
-    let value = window.scrollY;
+  let value = window.scrollY;
 
-    cemeteryText.style.marginTop = value * 0.7 + 'px';
-    treeLeft.style.left = value * -0.9 + 'px';
-    treeRight.style.left = value * 0.9 + 'px';
-    gateLeft.style.left = value * 0.2 + 'px';
-    gateRight.style.left = value * -0.2 + 'px';
-    
+  cemeteryText.style.marginTop = value * 0.7 + 'px';
+  treeLeft.style.left = value * -0.9 + 'px';
+  treeRight.style.left = value * 0.9 + 'px';
+  gateLeft.style.left = value * 0.2 + 'px';
+  gateRight.style.left = value * -0.2 + 'px';
+
 });
 
 //------------------------------------------
@@ -55,3 +55,24 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf);
+
+//---------------------------------------
+$('#arrondissements a').click(function () {
+  if ($(this).attr("xlink:href").substring(0, 1) == "#") {
+    var the_id = $(this).attr("xlink:href");
+    $('html, body').animate({
+      scrollTop: $(the_id).offset().top
+    }, 'slow');
+  }
+  return false;
+});/**/
+
+
+// Smoothscrolling for standards anchors
+$('a[href^="#"]').click(function () {
+  var the_id = $(this).attr("href");
+  $('html, body').animate({
+    scrollTop: $(the_id).offset().top
+  }, 'slow');
+  return false;
+});
