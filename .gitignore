@@ -13,9 +13,11 @@ dist
 dist-ssr
 coverage
 *.local
+package-lock.json
 
 /cypress/videos/
 /cypress/screenshots/
+/src/assets/css/
 
 # Editor directories and files
 .vscode/*

@@ -84,7 +84,7 @@ a {
 .top {
   color: white;
   height: 70px;
-  margin: 0 auto 80px;
+  margin: 0 auto;
   width: 100%;
   display: flex;
   line-height: 70px;
@@ -170,7 +170,7 @@ a {
 .bottom {
   background-color: #262B3F;
   width: 100%;
-  margin: 80px auto 0;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -478,7 +478,7 @@ i.fa-dollar-sign {
 }
 
 .join_login {
-  margin: 0 auto;
+  margin: 80px auto;
   max-width: 850px;
 }
 
@@ -497,6 +497,7 @@ i.fa-dollar-sign {
 
 .mainLogin {
   background-color: #FFE8BB;
+  border-radius: 0 0 8px 8px;
 }
 
 .mainLogin ul {
@@ -2204,10 +2205,15 @@ body {
 
 .main-frontpage {
   width: 100%;
+  height: calc(100vh - 70px - 73.58px);
   background-image: url(/src/assets/img/BG-fontpage.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .main-frontpage .wrapper-frontpage {
   width: 80%;
@@ -2222,7 +2228,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 70vh;
+  height: 50vh;
   background-image: url(/src/assets/img/cloud-6.png);
   background-position: 0 100%;
   background-repeat: repeat-x;
@@ -2258,10 +2264,8 @@ body {
   }
 }
 .main-frontpage .wrapper-frontpage .logo {
-  width: 25%;
-  height: auto;
-  margin-top: 180px;
-  margin-bottom: 80px;
+  width: 15%;
+  margin-top: 40px;
 }
 .main-frontpage .wrapper-frontpage .content {
   width: 100%;
@@ -2285,7 +2289,7 @@ body {
   position: relative;
   display: inline-block;
   padding: 15px 10px;
-  color: #2196f3;
+  color: #FCD15B;
   text-transform: uppercase;
   letter-spacing: 4px;
   font-size: 36px;
@@ -2295,9 +2299,9 @@ body {
   font-weight: bold;
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-L a:hover {
-  color: #255784;
-  background: #2196f3;
-  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+  color: #FFC700;
+  background: white;
+  box-shadow: 0 0 10px #fef1c7, 0 0 40px #fef1c7, 0 0 80px #fef1c7;
   transition-delay: 1s;
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-L a span {
@@ -2309,7 +2313,7 @@ body {
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #2196f3); /* 修正這裡的顏色 */
+  background: linear-gradient(90deg, transparent, #fbb824); /* 修正這裡的顏色 */
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-L a:hover span:nth-child(1) {
   left: 100%;
@@ -2320,7 +2324,7 @@ body {
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg, transparent, #2196f3);
+  background: linear-gradient(270deg, transparent, #fbb824);
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-L a:hover span:nth-child(3) {
   right: 100%;
@@ -2332,7 +2336,7 @@ body {
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, #2196f3);
+  background: linear-gradient(180deg, transparent, #fbb824);
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-L a:hover span:nth-child(2) {
   top: 100%;
@@ -2344,7 +2348,7 @@ body {
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(360deg, transparent, #2196f3);
+  background: linear-gradient(360deg, transparent, #fbb824);
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-L a:hover span:nth-child(4) {
   bottom: 100%;
@@ -2406,7 +2410,7 @@ body {
   position: relative;
   display: inline-block;
   padding: 15px 10px;
-  color: #2196f3;
+  color: #1877F2;
   text-transform: uppercase;
   letter-spacing: 4px;
   font-size: 36px;
@@ -2416,9 +2420,9 @@ body {
   font-weight: bold;
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-R a:hover {
-  color: #255784;
-  background: #2196f3;
-  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+  color: #3defff;
+  background: #85c8ff;
+  box-shadow: 0 0 10px #1765a4, 0 0 40px #1765a4, 0 0 80px #1765a4;
   transition-delay: 1s;
 }
 .main-frontpage .wrapper-frontpage .content .content-btn-R a span {
@@ -2485,6 +2489,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 113vh;
+  background-image: url("../img/cemetery.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 .parallax #cemetery_text {
   position: absolute;
@@ -2518,6 +2527,70 @@ body {
   text-align: center;
 }
 
+.loader {
+  width: 50px;
+  height: 10px;
+  position: relative;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+@keyframes fade-in {}
+@keyframes drop {
+  0% {
+    bottom: -10px;
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    bottom: -100px;
+  }
+}
+.drops {
+  -webkit-filter: url("#liquid");
+  filter: url("#liquid");
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  animation: fade-in 0.1s linear 0.4s forwards;
+}
+
+.drop1,
+.drop2 {
+  width: 21px;
+  height: 24px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.drop2 {
+  background-color: #02640e;
+}
+
+.drop1 {
+  width: 100%;
+  height: 16px;
+  bottom: 2px;
+  border-radius: 0;
+  background-color: #020912;
+}
+
+.drop2 {
+  animation: drop 1.3s cubic-bezier(1, 0.19, 0.66, 0.12) 0.5s infinite;
+}
+
 .order_form {
   justify-content: space-between;
 }
@@ -2526,9 +2599,6 @@ body {
 }
 .order_form .backstage_dropdown {
   margin-right: 0;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 }
 
 .main-announcement {
@@ -2552,7 +2622,7 @@ body {
 }
 @media (max-width: 1440px) {
   .main-announcement .wrapper-announcement .bread-announcement {
-    margin-bottom: 60px;
+    margin-bottom: 12px;
   }
 }
 @media (max-width: 1100px) {
@@ -2577,6 +2647,11 @@ body {
 @media (max-width: 1100px) {
   .main-announcement .wrapper-announcement .bread-announcement .bread-announcement-breadcrumb ul {
     width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .main-announcement .wrapper-announcement .bread-announcement .bread-announcement-breadcrumb ul {
+    display: none;
   }
 }
 @media (max-width: 430px) {
@@ -2610,13 +2685,13 @@ body {
   }
 }
 .main-announcement .wrapper-announcement .content-announcement .content-announcement-img img {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
 }
 @media (max-width: 1440px) {
   .main-announcement .wrapper-announcement .content-announcement .content-announcement-img img {
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
   }
 }
 @media (max-width: 1100px) {
@@ -2664,7 +2739,7 @@ body {
 }
 @media (max-width: 1440px) {
   .main-announcement .wrapper-announcement .content-announcement .content-announcement-text .NewsBack {
-    margin-top: 12px;
+    margin-top: 0px;
   }
 }
 @media (max-width: 1100px) {
@@ -2711,8 +2786,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: 585px;
-  height: 629px;
+  width: 409.5px;
+  height: 440.3px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2732,18 +2807,27 @@ body {
 .main-popupcard .wrapper-popupcard .card-popupcard h1 {
   font-size: 40px;
 }
+@media (max-width: 1440px) {
+  .main-popupcard .wrapper-popupcard .card-popupcard h1 {
+    line-height: 1.5;
+  }
+}
 .main-popupcard .wrapper-popupcard .card-popupcard .card-popupcard-qrcode {
   background-image: url("/src/assets/img/qrcode-base.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  width: 268px;
-  height: 268px;
+  width: 187.6px;
+  height: 187.6px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.main-popupcard .wrapper-popupcard .card-popupcard .card-popupcard-qrcode img {
+  width: 109.2px;
+  height: 109.2px;
+}
 .main-popupcard .wrapper-popupcard .card-popupcard .qrcode-time {
-  width: 50%;
+  width: 60%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -2756,14 +2840,17 @@ body {
 .main-popupcard .wrapper-popupcard .card-popupcard .qrcode-time .qrcode-time-y {
   font-size: 40px;
   font-weight: bold;
+  line-height: 1.5;
 }
 .main-popupcard .wrapper-popupcard .card-popupcard .qrcode-time .qrcode-time-m {
   font-size: 40px;
   font-weight: bold;
+  line-height: 1.5;
 }
 .main-popupcard .wrapper-popupcard .card-popupcard .qrcode-time .qrcode-time-d {
   font-size: 40px;
   font-weight: bold;
+  line-height: 1.5;
 }
 .main-popupcard .wrapper-popupcard .card-popupcard .qrcode-place {
   display: flex;
@@ -2772,12 +2859,12 @@ body {
 }
 .main-popupcard .wrapper-popupcard .card-popupcard .qrcode-place p {
   margin-right: 20px;
+  line-height: 1.5;
 }
 .main-popupcard .wrapper-popupcard .card-popupcard .qrcode-place .qrcode-vertical-line {
   border: 2px solid white; /* 設置左邊框來創建垂直線 */
-  height: 45px; /* 設置垂直線的高度 */
+  height: 32px; /* 設置垂直線的高度 */
   margin-right: 14px;
->>>>>>> 0841888cf3c83a2d004792afa4a0200b43d92434
 }
 
 /*# sourceMappingURL=style.css.map */

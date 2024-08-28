@@ -13,6 +13,9 @@ import { createPinia } from 'pinia'
 
 import createRouter from './router/routes'
 import App from './App.vue'
+import VCalendar from 'v-calendar';
+import 'v-calendar/style.css';
+
 
 // 添加Font Awesome圖標到庫中
 library.add(faBars);
@@ -26,3 +29,4 @@ app.component('font-awesome-icon', FontAwesomeIcon);
 // 以下是路由器  vue-router 相關設置
 app.use(router).mount('#app')
 app.use(createPinia())
+app.use(VCalendar, {})
