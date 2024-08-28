@@ -2523,6 +2523,7 @@ body {
   text-align: center;
 }
 
+<<<<<<< HEAD
 .loader {
   width: 50px;
   height: 10px;
@@ -2585,6 +2586,11 @@ body {
 
 .drop2 {
   animation: drop 1.3s cubic-bezier(1, 0.19, 0.66, 0.12) 0.5s infinite;
+=======
+.aa {
+  fill: aqua;
+  stroke: white;
+>>>>>>> dev
 }
 
 .order_form {

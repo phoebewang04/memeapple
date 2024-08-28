@@ -11,12 +11,17 @@
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@popperjs/core": "^2.11.8",
     "@studio-freight/lenis": "^1.0.42",
     "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
     "pinia": "^2.1.4",
     "split-type": "^0.3.4",
     "swiper": "^11.1.10",
+<<<<<<< HEAD
+=======
+    "v-calendar": "^3.1.2",
+>>>>>>> dev
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
