@@ -2486,6 +2486,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 113vh;
+  background-image: url("../img/cemetery.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 .parallax #cemetery_text {
   position: absolute;
