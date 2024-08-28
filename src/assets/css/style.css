@@ -84,7 +84,7 @@ a {
 .top {
   color: white;
   height: 70px;
-  margin: 0 auto 80px;
+  margin: 0 auto;
   width: 100%;
   display: flex;
   line-height: 70px;
@@ -170,7 +170,7 @@ a {
 .bottom {
   background-color: #262B3F;
   width: 100%;
-  margin: 80px auto 0;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -2518,6 +2518,11 @@ body {
   text-align: center;
 }
 
+.aa {
+  fill: aqua;
+  stroke: white;
+}
+
 .order_form {
   justify-content: space-between;
 }
@@ -2526,9 +2531,6 @@ body {
 }
 .order_form .backstage_dropdown {
   margin-right: 0;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 }
 
 .main-announcement {
@@ -2777,7 +2779,6 @@ body {
   border: 2px solid white; /* 設置左邊框來創建垂直線 */
   height: 45px; /* 設置垂直線的高度 */
   margin-right: 14px;
->>>>>>> 0841888cf3c83a2d004792afa4a0200b43d92434
 }
 
 /*# sourceMappingURL=style.css.map */

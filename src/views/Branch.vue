@@ -7,8 +7,8 @@ import Footerbar from '../components/Footerbar.vue';
 <!-- --------------------------------原始碼---------------------------------------------- -->
 <template>
 
-  <TopNavbar />
-    <!-- ----------------------中間段落---------------------- -->
+    <TopNavbar />
+        <!-- ----------------------中間段落---------------------- -->
 
     <div id="wrapper"> 
 
@@ -17,58 +17,11 @@ import Footerbar from '../components/Footerbar.vue';
                 探險這世界上所有的謎題吧!
             </p>
         </div>
-<<<<<<< HEAD
-    </div>
 
-
-    <div class="theme">
-        <ul>
-            <li><i class="fa-solid fa-caret-left"></i></li>
-            <div class="theme_name">
-                <li><router-link to="/Theme/"><img src="../assets/img/banner-hospital.png" alt="">
-                        <h3>成都醫院</h3>
-                    </router-link></li>
-                <li><a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt="">
-                        <h3>時光迷宮</h3>
-                    </a></li>
-                <li><a href="#"><img src="/src/assets/img/banner-dead.jpg" alt="">
-                        <h3>末日庇護所</h3>
-                    </a></li>
-            </div>
-            <li><i class="fa-solid fa-caret-right"></i></li>
-        </ul>
-    </div>
-
-
-    <div class="location">
-
-        <div class="location_text">
-
-            <div class="location_icon">
-                <i class="fa-solid fa-location-dot"></i>
-                <p> 台北館: <br><br>台北市密逃路88之107號</p>
-            </div>
-
-            <div class="location_icon">
-                <i class="fa-regular fa-paper-plane"></i>
-                <p> Email: <br><br>meme9487@gmail.com</p>
-            </div>
-
-            <div class="location_icon">
-                <i class="fa-solid fa-square-phone"></i>
-                <p> 聯絡電話:<br><br> 09123456789</p>
-            </div>
-
-            <div class="location_icon">
-                <i class="fa-solid fa-user-group"></i>
-                <p> 客服時間:<br><br> 10:00-18:00</p>
-            </div>
-=======
->>>>>>> dev
-
+        
         <div class="branch_btn">
-            <button id="taipei" >台北館</button>
-            <button id="taichung">台中館</button>
+                <button id="taipei" >台北館</button>
+                <button id="taichung">台中館</button>
         </div>
 
         <div id="main">
@@ -110,8 +63,6 @@ import Footerbar from '../components/Footerbar.vue';
 
             </div>
 
-
-
             <div class="location">
 
                 <div class="location_text">
@@ -146,12 +97,11 @@ import Footerbar from '../components/Footerbar.vue';
                 </div>
 
             </div>
-
-         </div>
-
+        </div>
     </div>
-    
-  <Footerbar />
+
+    <Footerbar />
+
 </template>
 
 
