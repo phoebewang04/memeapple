@@ -1,7 +1,7 @@
 <script setup>
 import "@/assets/css/style.css";
-import TopNavbar from '../components/TopNavbar.vue';
-import Footerbar from '../components/Footerbar.vue';
+import TopNavbar from './TopNavbar.vue';
+import Footerbar from './Footerbar.vue';
 </script>
 
 <template>

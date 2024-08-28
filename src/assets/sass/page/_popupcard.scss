@@ -30,8 +30,8 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            width: 585px;
-            height: 629px;
+            width: 409.5px;
+            height: 440.3px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -47,19 +47,26 @@
             }
             h1{
                 font-size: 40px;
+                @include rwd(1440px){
+                  line-height: 1.5;
+                }
             }
             .card-popupcard-qrcode{
                 background-image: url('/src/assets/img/qrcode-base.jpg'); 
                 background-size: cover;
                 background-repeat: no-repeat;
-                width: 268px;
-                height: 268px;
+                width: 187.6px;
+                height: 187.6px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                img{
+                    width: 109.2px;
+                    height: 109.2px;
+                }
             }
             .qrcode-time{
-                width: 50%;
+                width: 60%;
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
@@ -69,14 +76,17 @@
                 .qrcode-time-y{
                     font-size: 40px;
                     font-weight: bold;
+                    line-height: 1.5;
                 }
                 .qrcode-time-m{
                     font-size: 40px;
                     font-weight: bold;
+                    line-height: 1.5;
                 }
                 .qrcode-time-d{
                     font-size: 40px;
                     font-weight: bold;
+                    line-height: 1.5;
                 }
             }
             .qrcode-place{
@@ -85,10 +95,11 @@
                 justify-content: center;
                 p{
                     margin-right: 20px;
+                    line-height: 1.5;
                 }
                 .qrcode-vertical-line{
                     border: 2px solid white; /* 設置左邊框來創建垂直線 */
-                    height: 45px; /* 設置垂直線的高度 */
+                    height: 32px; /* 設置垂直線的高度 */
                     margin-right: 14px;
                 }
 
