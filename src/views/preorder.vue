@@ -183,6 +183,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 <!-- --------------------------------樣式版---------------------------------------------- -->
 
-<style lang="scss" scoped>
+<style scoped>
+
 
 </style>
