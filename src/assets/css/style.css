@@ -478,7 +478,7 @@ i.fa-dollar-sign {
 }
 
 .join_login {
-  margin: 0 auto;
+  margin: 80px auto;
   max-width: 850px;
 }
 
@@ -497,6 +497,7 @@ i.fa-dollar-sign {
 
 .mainLogin {
   background-color: #FFE8BB;
+  border-radius: 0 0 8px 8px;
 }
 
 .mainLogin ul {
@@ -2488,6 +2489,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 113vh;
+  background-image: url("../img/cemetery.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 .parallax #cemetery_text {
   position: absolute;
@@ -2521,9 +2527,68 @@ body {
   text-align: center;
 }
 
-.aa {
-  fill: aqua;
-  stroke: white;
+.loader {
+  width: 50px;
+  height: 10px;
+  position: relative;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+@keyframes fade-in {}
+@keyframes drop {
+  0% {
+    bottom: -10px;
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    bottom: -100px;
+  }
+}
+.drops {
+  -webkit-filter: url("#liquid");
+  filter: url("#liquid");
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  animation: fade-in 0.1s linear 0.4s forwards;
+}
+
+.drop1,
+.drop2 {
+  width: 21px;
+  height: 24px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.drop2 {
+  background-color: #02640e;
+}
+
+.drop1 {
+  width: 100%;
+  height: 16px;
+  bottom: 2px;
+  border-radius: 0;
+  background-color: #020912;
+}
+
+.drop2 {
+  animation: drop 1.3s cubic-bezier(1, 0.19, 0.66, 0.12) 0.5s infinite;
 }
 
 .order_form {

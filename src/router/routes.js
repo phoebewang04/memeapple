@@ -8,7 +8,8 @@ import Branch from '../views/Branch.vue';
 import Announcement from '../views/Announcement.vue';
 import Popupcard from '../views/Popupcard.vue';
 import Theme from '../views/Theme.vue';
-
+import preorder from '../views/preorder.vue';
+import orderinform from '../views/orderinform.vue';
 
 // 後台相關路由
 import Backstage_index from '../views/Backstage_index.vue';
@@ -68,6 +69,14 @@ const routes = [
   {
     path: '/Theme/',
     component: Theme
+  },
+  {
+    path: '/preorder/',
+    component: preorder
+  },
+  {
+    path: '/orderinform/',
+    component: orderinform
   },
 ]
 
