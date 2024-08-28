@@ -7,8 +7,8 @@ import Footerbar from '../components/Footerbar.vue';
 <!-- --------------------------------原始碼---------------------------------------------- -->
 <template>
 
-  <TopNavbar />
-    <!-- ----------------------中間段落---------------------- -->
+    <TopNavbar />
+        <!-- ----------------------中間段落---------------------- -->
 
     <div id="wrapper"> 
 
@@ -18,9 +18,10 @@ import Footerbar from '../components/Footerbar.vue';
             </p>
         </div>
 
+        
         <div class="branch_btn">
-            <button id="taipei" >台北館</button>
-            <button id="taichung">台中館</button>
+                <button id="taipei" >台北館</button>
+                <button id="taichung">台中館</button>
         </div>
 
         <div id="main">
@@ -62,8 +63,6 @@ import Footerbar from '../components/Footerbar.vue';
 
             </div>
 
-
-
             <div class="location">
 
                 <div class="location_text">
@@ -98,12 +97,11 @@ import Footerbar from '../components/Footerbar.vue';
                 </div>
 
             </div>
-
-         </div>
-
+        </div>
     </div>
-    
-  <Footerbar />
+
+    <Footerbar />
+
 </template>
 
 
