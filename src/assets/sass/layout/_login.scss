@@ -1,8 +1,7 @@
 
 .join_login{
-    margin: 0 auto;
+    margin: 80px auto;
     max-width: 850px;
-   
 
 }
 
@@ -27,6 +26,8 @@
 
 .mainLogin{
     background-color:map-get($colors , lightyellow);
+    border-radius:0 0 8px 8px;
+   
 }
 
 .mainLogin ul{
@@ -39,9 +40,9 @@
     margin: 5px;
 }
 
-.mainLogin input{
+// .mainLogin input{
    
-}
+// }
 
 .mainLogin .account{
     width: 100%;

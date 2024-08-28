@@ -478,7 +478,7 @@ i.fa-dollar-sign {
 }
 
 .join_login {
-  margin: 0 auto;
+  margin: 80px auto;
   max-width: 850px;
 }
 
@@ -497,6 +497,7 @@ i.fa-dollar-sign {
 
 .mainLogin {
   background-color: #FFE8BB;
+  border-radius: 0 0 8px 8px;
 }
 
 .mainLogin ul {

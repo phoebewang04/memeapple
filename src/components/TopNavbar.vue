@@ -32,6 +32,8 @@ export default {
             <li><router-link to="/Login/">會員專區</router-link></li>
             <li><router-link to="/Announcement/">最新消息</router-link></li>
             <li><router-link to="/Popupcard/">彈跳甲魚</router-link></li>
+            <li><router-link to="/preorder/">預定資料</router-link></li>
+            <li><router-link to="/orderinform/">資料確認</router-link></li>
         </ul>
     </header>
 </template>

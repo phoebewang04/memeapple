@@ -14,6 +14,8 @@ import { createPinia } from 'pinia'
 import createRouter from './router/routes'
 import App from './App.vue'
 
+
+
 // 添加Font Awesome圖標到庫中
 library.add(faBars);
 
