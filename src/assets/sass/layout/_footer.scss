@@ -7,36 +7,57 @@
     justify-content: space-around;
 }
 
-
 .bottom img {
     width: 100px;
     height: 70px;
     margin-left: 80px;
-
+    @include rwd(1000px){
+        margin-left: 40px;
+    }
+    @include pad{
+       margin-left: 28px;
+    }
     @include rwd(650px){
         width: 70px;
-        margin:0 20px;
+        margin-left: 20px;
     }
+    @include phone{
+        width: 50px;
+        margin-left: 12px;
+     }
 }
 
 
 .bottom .bm_text{
     color:map-get($colors,  white);
+    width: 80%;
     margin: 0 auto;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
     text-align: center;
-        p{
-            font-size: 16px;
+        @include rwd(650px){
+            width: 60%;
         }
-
-    @include rwd(650px){
-        width: 160px;
-        p{
-            font-size: 6px;
+        @include phone{
+            width: 50%;
         }
+    p{
+        font-size: 16px;
+        line-height: 1.6;
+        @include pad{
+           line-height: 1.2;
+           font-size: 12px;
         }
+        @include rwd(650px){
+            p{
+                font-size: 6px;
+            }
+        }
+        @include phone{
+            font-size: 8px;
+         }
+    }
 }
 
 .bottom .icon {
@@ -50,12 +71,15 @@
     & a{
         color: map-get($colors,  white);
     }
+    @include rwd(1100px){
+        padding-right: 40px;
+        // font-size: 20px;  
+    }
     @include rwd(650px){
         padding-right: 20px;
         // font-size: 20px;  
     }
     @include phone{
         padding-right: 15px;
-        
     }
 }
