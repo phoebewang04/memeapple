@@ -1,11 +1,11 @@
 @import url(../css/reset.css);
-// @import '../../../node_modules/sass-google-fonts/src/GoogleFonts.scss';
+@import '../../../node_modules/sass-google-fonts/src/GoogleFonts.scss';
 
 
 
 @import 'basic/color';
-@import 'basic/font';
 @import 'basic/var';
+@import 'basic/font';
 
 @import 'mixins/mixins';
 
@@ -15,6 +15,7 @@
 @import 'layout/footer';
 @import 'layout/theme';
 @import 'layout/login';
+@import 'layout/join';
 
 @import 'page/index';
 @import 'page/backstage';

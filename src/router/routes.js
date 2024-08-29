@@ -3,7 +3,8 @@ import { createRouter } from 'vue-router'
 import Fontpage from '../views/Frontpage.vue';
 import Home from '../views/HomeView.vue';
 import Minigame from '../views/Minigame.vue';
-import Login from '../views/Login.vue';
+import Login from '../components/login.vue';
+import Join from '../components/join.vue';
 import Branch from '../views/Branch.vue';
 import Announcement from '../views/Announcement.vue';
 import Popupcard from '../views/Popupcard.vue';
@@ -77,6 +78,10 @@ const routes = [
   {
     path: '/orderinform/',
     component: orderinform
+  },
+  {
+    path: '/Join/',
+    component: Join
   },
 ]
 

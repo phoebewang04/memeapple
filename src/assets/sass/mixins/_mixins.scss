@@ -26,6 +26,7 @@
     font-weight: bold;
     text-align: center;
     background-color:map-get($colors , gold);
+    border: 0;
     color : map-get($colors , darkblue);
      cursor: pointer;
      @if $radius {
@@ -35,3 +36,10 @@
     } 
  }
  
+@include phone(){
+    @each $k, $v in $fontsize {
+        #{$k} {
+            font-size: round($v /$mag);
+        }
+    }
+}

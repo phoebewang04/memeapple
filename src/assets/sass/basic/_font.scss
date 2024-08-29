@@ -1,4 +1,4 @@
-// @include google-font( 'Noto Sans TC' );
+@include google-font( 'Noto Sans TC' );
 $fontsize:(
     "h1":  54px,
     "h2":  28px,
@@ -32,3 +32,4 @@ body {
         line-height: $v;
     }
 }
+

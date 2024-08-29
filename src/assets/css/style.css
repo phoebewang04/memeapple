@@ -1,7 +1,16 @@
 @charset "UTF-8";
 @import url(../css/reset.css);
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC");
 body {
   color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  width: 100%;
 }
 
 html,
@@ -49,14 +58,26 @@ p {
   line-height: 2.3;
 }
 
-a {
-  text-decoration: none;
+@media (max-width: 430px) {
+  h1 {
+    font-size: 45px;
+  }
+  h2 {
+    font-size: 23px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 17px;
+  }
+  p {
+    font-size: 15px;
+  }
+  p1 {
+    font-size: 12px;
+  }
 }
-
-.wrapper {
-  width: 100%;
-}
-
 .btn {
   width: 200px;
   font-size: 24px;
@@ -64,6 +85,7 @@ a {
   font-weight: bold;
   text-align: center;
   background-color: #FCD15B;
+  border: 0;
   color: #100E24;
   cursor: pointer;
   border-radius: 8px;
@@ -76,6 +98,7 @@ a {
   font-weight: bold;
   text-align: center;
   background-color: #FCD15B;
+  border: 0;
   color: #100E24;
   cursor: pointer;
   border-radius: 50px;
@@ -479,20 +502,18 @@ i.fa-dollar-sign {
 
 .join_login {
   margin: 80px auto;
-  max-width: 850px;
+  max-width: 300px;
 }
 
 .btn_acc {
   width: 50%;
   border-radius: 8px 0 0 0;
-  border: 1px solid #FCD15B;
 }
 
-.btn_join {
+.btn_accj {
   width: 50%;
   background-color: #FEDA77;
   border-radius: 0 8px 0 0;
-  border: 1px solid #FEDA77;
 }
 
 .mainLogin {
@@ -507,19 +528,34 @@ i.fa-dollar-sign {
 }
 
 .mainLogin li {
-  margin: 5px;
+  margin: 5px 5px 8px;
+}
+.mainLogin li input {
+  margin-bottom: 15px;
 }
 
-.mainLogin .account {
+.mainLogin input {
+  font-size: 20px;
   width: 100%;
 }
 
-.mainLogin .PWD {
-  width: 100%;
+#onlogin {
+  width: 20px;
 }
 
 .btnlogin {
   width: 100%;
+  font-size: 24px;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #FCD15B;
+  border: 0;
+  color: #100E24;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid #292929;
+  font-size: 20px;
 }
 
 .checkforget {
@@ -553,11 +589,14 @@ i.fa-dollar-sign {
   display: flex;
   justify-content: center;
 }
-
 .outloginbtn button {
-  max-width: 250px;
-  font-size: 18px;
-  margin: 10px 20px;
+  max-width: 50px;
+  margin: 10px 20px 20px;
+  border-radius: 200%;
+  padding: 10px;
+}
+.outloginbtn i {
+  font: size 20px;
 }
 
 .btnfb {
@@ -573,6 +612,25 @@ i.fa-dollar-sign {
 .btnline {
   background-color: #23DB35;
   color: white;
+}
+
+.btn_joina {
+  width: 50%;
+  border-radius: 8px 0 0 0;
+  background-color: #FEDA77;
+}
+
+.btn_join {
+  width: 50%;
+  border-radius: 0 8px 0 0;
+}
+
+.mainJoin ul {
+  padding: 2.5px;
+}
+
+.mainJoin li input {
+  margin-bottom: 8px;
 }
 
 .backstage_body {
