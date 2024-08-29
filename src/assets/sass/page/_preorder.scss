@@ -4,6 +4,14 @@
 #preorder_wrapper {
     width: 1200px;
     margin: 0 auto;
+
+    @include rwd(820px){
+        width: 800px;
+    }
+
+    @include rwd(430px){
+        width: 380px;
+    }
 }
 
 /* --------------------返回------------------------------------ */
@@ -33,6 +41,18 @@
     margin-top: 40px;
     width: 1200px;
     height: 600px;
+
+    @include rwd(820px){
+        width: 800px;
+        height: 400px;
+        margin: 0 auto;
+    }
+
+    @include rwd(430px){
+        width: 380px;
+        height: 200px;
+        margin: 0 auto;
+    }
 }
 
 
@@ -42,6 +62,17 @@
     margin-bottom: 40px;
     border: 1px solid #ffff;
     border-radius: 12px;
+
+    @include rwd(820px){
+        width: 800px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    @include rwd(430px){
+        width: 380px;
+        height: 200px;
+    }
 }
 
 .preorderinfor_active h2 {
@@ -58,6 +89,15 @@
     display: flex;
     justify-content: space-between;
     color: map-get($colors , white );
+
+    @include rwd(820px){
+        width: 750px;
+    }
+
+    @include rwd(430px){
+        width: 350px;
+        flex-direction: column;
+    }
     
 }
 
@@ -66,6 +106,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include rwd(430px){
+        width: 220px;
+        
+    }
     
 }
 
@@ -75,6 +120,13 @@
 
 .preorderinfor_active .infor_list {
     font-size: map-get($fontsize , p );
+
+    @include rwd(430px){
+        width: 320px;
+        margin: 0 auto;
+        line-height: 2;
+        font-size: 20px;
+    }
     
 }
 
@@ -89,6 +141,16 @@
     border: 1px solid #ffff;
     margin-bottom: 40px;
     border-radius: 12px;
+
+    @include rwd(820px){
+        width: 800px;
+        margin-bottom: 20px;
+    }
+
+    @include rwd(430px){
+        width: 380px;
+        height: 930px;
+    }
 }
 
 .preorder_datetime .timeandele {
@@ -98,6 +160,15 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+
+    @include rwd(820px){
+        width: 800px;
+        flex-direction: column;
+    }
+
+    @include rwd(430px){
+        width: 380px;
+    }
 }
 
 
@@ -116,6 +187,15 @@
     border: 1px solid #fff;
     color: map-get($colors , white );
 
+    @include rwd(820px){
+        width: 700px;
+    }
+
+    @include rwd(430px){
+        width: 330px;
+        height: 440px;
+    }
+
 }
 
 .preorder_datetime .time h3 {
@@ -132,6 +212,10 @@
     flex-wrap: wrap;
     margin: 0 auto;
     padding-bottom: 20px;
+
+    @include rwd(430px){
+        width: 250px;
+    }
 
 }
 
@@ -150,7 +234,10 @@
 .preorder_datetime .time .amount {
     width: 350px;
     margin: 0 auto;
-    
+
+    @include rwd(430px){
+        width: 210px;
+    }
 }
 
 .preorder_datetime .time .amount #people {
@@ -158,6 +245,10 @@
     height: 40px;
     border-radius: 12px;
     padding: 10px;
+
+    @include rwd(430px){
+        width: 210px;
+    }
 }
 
 .preorder_datetime .time .time_ele .ele:hover {
@@ -170,12 +261,20 @@
 
 /* --------------------訂購須知------------------------------------ */
 
-
 .preorder_infornotice {
     color: map-get($colors , white );
     padding: 20px;
     border:1px solid #ffff;
     border-radius: 12px;
+
+    @include rwd(820px){
+        width: 760px;
+    }
+
+    @include rwd(430px){
+        width: 340px;
+        display: none;
+    }
 }
 
 .preorder_infornotice ul li {
