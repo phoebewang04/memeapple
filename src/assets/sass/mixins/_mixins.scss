@@ -1,37 +1,48 @@
 //=============RWD=============
-@mixin pad(){
+@mixin pad() {
     @media (max-width: $pad) {
         @content;
-        }
+    }
 }
 
-@mixin phone(){
+@mixin phone() {
     @media (max-width: $phone) {
         @content;
     }
 }
 
-@mixin rwd($rwd){
+@mixin rwd($rwd) {
     @media (max-width: $rwd) {
         @content;
-        }
+    }
 }
 
 
 //==按鈕 @include btn(字體大小, 寬度)==
-@mixin btn($w, $radius: true){
+@mixin btn($w, $radius: true) {
+    border: 0;
     width: $w;
     font-size: 24px;
     padding: 10px 20px;
     font-weight: bold;
     text-align: center;
     background-color:map-get($colors , gold);
+    border: 0;
     color : map-get($colors , darkblue);
      cursor: pointer;
      @if $radius {
         border-radius: 8px;
-    }@else{
+    }
+
+    @else {
         border-radius: 50px;
     } 
  }
  
+@include phone(){
+    @each $k, $v in $fontsize {
+        #{$k} {
+            font-size: round($v /$mag);
+        }
+    }
+}

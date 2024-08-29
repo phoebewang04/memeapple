@@ -1,12 +1,12 @@
-@include google-font( 'Noto Sans TC' );
-$fontsize:(
-    "h1":  54px,
-    "h2":  28px,
-    "h3":  24px,
-    "h4":  20px,
-    "p":   18px,
-    "p1":  14px
 
+@include google-font('Noto Sans TC');
+$fontsize: (
+    "h1": 54px,
+    "h2": 28px,
+    "h3": 24px,
+    "h4": 20px,
+    "p": 18px,
+    "p1": 14px
 );
 
 $lineheight: (
@@ -32,3 +32,4 @@ body {
         line-height: $v;
     }
 }
+

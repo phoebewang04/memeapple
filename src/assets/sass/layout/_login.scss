@@ -1,27 +1,19 @@
 
 .join_login{
     margin: 80px auto;
-    max-width: 850px;
-
+    max-width: 300px;
+ 
 }
-
-// .join_loginHeader{
-//     border-bottom:1px solid map-get($colors , gold);
-// }
 
 .btn_acc{
     width: 50%;
     border-radius: 8px 0 0 0;
-    border: 1px solid map-get($colors , gold);
-
-
 }
 
-.btn_join{
+.btn_accj{
     width: 50%;
     background-color:map-get($colors , yellow);
     border-radius:0 8px 0 0;
-    border: 1px solid map-get($colors , yellow);
 }
 
 .mainLogin{
@@ -37,23 +29,28 @@
 }
 
 .mainLogin li{
-    margin: 5px;
+    margin: 5px 5px 8px;
+    input{
+        margin-bottom: 15px;
+    }
 }
 
-// .mainLogin input{
-   
-// }
-
-.mainLogin .account{
-    width: 100%;
+.mainLogin input{
+   font-size: map-get($fontsize, h4 );
+   width: 100%;
 }
 
-.mainLogin .PWD{
-    width: 100%;
+#onlogin{
+    width: 20px;
 }
 
 .btnlogin{
-    width: 100%;
+    @include btn(100%,true);
+    border: 1px solid map-get($colors, black);
+    font-size: 20px;
+
+    
+    
 }
 
 .checkforget{
@@ -87,13 +84,19 @@
 .outloginbtn{
     display: flex;
     justify-content: center;
+
+    button{
+        max-width: 50px;
+        margin: 10px 20px 20px;
+        border-radius: 200%;
+        padding: 10px;
+    }
+
+    i{
+        font: size 20px;
+    }
 }
 
-.outloginbtn button{
-    max-width: 250px;
-    font-size: map-get($fontsize, p );
-    margin: 10px 20px;
-}
 
 .btnfb{
     background-color:map-get($colors, fbblue) ;

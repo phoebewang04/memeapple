@@ -30,7 +30,7 @@ export default {
             <li><router-link to="/index/">首頁</router-link></li>
             <li><router-link to="/Minigame/">線上體驗</router-link></li>
             <li><router-link to="/Branch/">分館介紹</router-link></li>
-            <li><router-link to="/Login/">會員專區</router-link></li>
+            <li><router-link to="/Join/">會員專區</router-link></li>
             <li><router-link to="/Announcement/">最新消息</router-link></li>
             <li><router-link to="/Popupcard/">彈跳甲魚</router-link></li> 
             <li><router-link to="/preorder/">預定資料</router-link></li>
