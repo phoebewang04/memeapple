@@ -14,7 +14,7 @@ import Footerbar from './Footerbar.vue';
                     <div class="join_login">
                         <div class="join_loginHeader">
                             <button class="btn btn_acc">會員登入</button>
-                            <button class="btn btn_join">會員註冊</button>
+                            <button class="btn btn_accj">會員註冊</button>
                         </div>
                         <div class="mainLogin">
                            <ul>
@@ -38,9 +38,9 @@ import Footerbar from './Footerbar.vue';
                                 <span class="fline"></span>
                             </div>
                             <div class="outloginbtn">
-                            <button class="btn btnfb"><i class="fa-brands fa-facebook"></i>使用Facebook登入</button>   
-                            <button class="btn btngoogle"><i class="fa-brands fa-google"></i>使用Google登入</button>
-                            <button class="btn btnline"><i class="fa-brands fa-line"></i>使用line登入</button>    
+                            <button class="btn btnfb"><i class="fa-brands fa-square-facebook"></i></button>   
+                            <button class="btn btngoogle"><i class="fa-brands fa-google"></i></button>
+                            <button class="btn btnline"><i class="fa-brands fa-line"></i></button>    
                             </div>
         
                         </div>

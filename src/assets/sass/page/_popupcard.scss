@@ -30,8 +30,8 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            width: 409.5px;
-            height: 440.3px;
+            width: 411.6px;
+            height: 441.7px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -40,6 +40,10 @@
                 background-image: url('/src/assets/img/popupcard_space-m.jpg'); 
                 width: 350px;
                 height: 631px;
+            }
+            @include phone{
+                width: 280px;
+                height: 504px;
             }
             .card-popupcard-title{
                 font-size: 16px;
