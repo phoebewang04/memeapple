@@ -5,16 +5,16 @@
 
 .backstage_dashboard{
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 145px);
     align-self: center;
-    background-color: black;
+    // background-color: black;
     align-self: center;
     display: flex;
     flex-direction: column;
 }
 
 .backstage_daily{
-    background-color: aliceblue;
+    display: flex;
     width: 100%;
     height: 50%;
 }
@@ -26,13 +26,41 @@
 }
 
 .backstage_booking{
-    background-color: blue;
+    // background-color: blue;
     width: 60%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard_table{
+
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border-radius: 0;
+    
+
+    .column-header{
+        width: 100px;
+    }
+
+    th{
+        background-color: map-get($colors, lightyellow );
+        color: map-get($colors, lightblue );
+        font-weight: bold;
+        vertical-align: middle;
+    }
+
+    td{
+        background-color: map-get( $colors , white );
+        color: map-get($colors, black );
+        vertical-align: middle;
+    }
 }
 
 .backstage_chart{
-    background-color: lavender;
+    display: flex;
     width: 100%;
     height: 50%;
 }
