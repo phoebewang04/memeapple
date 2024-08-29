@@ -41,6 +41,7 @@
 
     @include pad {
         font-size: map-get($fontsize , p );
+        line-height: 1.8;
     }
 
     @include rwd(430px){
@@ -155,8 +156,8 @@
     height: 400px;
 
     @include pad {
-        width: 350px;
-        height: 350px;
+        width: 330px;
+        height: 330px;
     }
 
     @include rwd(430px){
@@ -246,7 +247,7 @@
 .theme li  {
 
     @include pad {
-        width: 200px;
+        width: 300px;
     }
 }
 

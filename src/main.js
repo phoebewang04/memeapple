@@ -14,7 +14,7 @@ import { createPinia } from 'pinia'
 import createRouter from './router/routes'
 import App from './App.vue'
 import VCalendar from 'v-calendar';
-import 'v-calendar/style.css';
+
 
 
 // 添加Font Awesome圖標到庫中
