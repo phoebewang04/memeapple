@@ -35,7 +35,7 @@ import Footerbar from '../components/Footerbar.vue';
 
             <div class="timeandele">
 
-                <VCalendar />
+                <VCalendar title-position="left" />
 
                 <div class="time">
 
@@ -179,11 +179,76 @@ import Footerbar from '../components/Footerbar.vue';
 
 <script>
 
+import 'v-calendar/style.css';
+
 </script>
 
 <!-- --------------------------------樣式版---------------------------------------------- -->
 
-<style scoped>
+<style>
 
+.vc-bordered {
+    border-radius: 0px;
+}
+.vc-pane-container {
+  background-color: #100E24;
+  width: 520px ;
+  height: 375px;
+}
+
+.vc-header {
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+
+.vc-header .vc-arrow {
+    border-radius: 40px ;
+    width: 40px ; 
+    height: 40px;
+    color: #100E24;
+}
+
+.vc-base-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.vc-header .vc-arrow:hover{
+    background-color: #FCD15B;
+}
+
+.vc-header .vc-title {
+    background-color: #100E24;
+    color: #ffff;
+    font-size: 24px;
+}
+
+.vc-weekday {
+    color: #ffff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.vc-weeks {
+    color: #ffff;
+}
+
+.vc-day-content {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.vc-day-content:hover {
+    background-color: #FCD15B;
+}
+
+.vc-container *:focus {
+    outline: 3px solid 100E24;
+    background-color:#FCD15B;
+}
 
 </style>

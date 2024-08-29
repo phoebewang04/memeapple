@@ -88,6 +88,7 @@
 .preorder_datetime {
     border: 1px solid #ffff;
     margin-bottom: 40px;
+    border-radius: 12px;
 }
 
 .preorder_datetime .timeandele {
@@ -96,6 +97,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 
@@ -106,113 +108,6 @@
     color: map-get($colors , white );
 }
 
-
-.calendar-container {
-    width: 500px;
-    border:1px solid #ffff;
-    padding: 10px;
-    margin: 20px;
-}
-
-.calendar-container .calendar-header {
-    width: 400px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.calendar-header .calendar-navigation {
-    display: flex;
-}
-
-.calendar-header .calendar-navigation span {
-    height: 38px;
-    width: 38px;
-    margin: 0 1px;
-    cursor: pointer;
-    text-align: center;
-    line-height: 38px;
-    border-radius: 50%;
-    user-select: none;
-    background-color: #ffff;
-    font-size: 1.9rem;
-}
-
-.calendar-navigation span:last-child {
-    margin-right: -10px;
-}
-
-.calendar-header .calendar-navigation span:hover {
-    background: map-get($colorfont , hover );
-}
-
-.calendar-header .calendar-current-date {
-    font-weight: 500;
-    font-size: 1.45rem;
-    color: #fff;
-}
-
-.calendar-body {
-    padding-top: 30px;
-}
-
-.calendar-body ul {
-    list-style: none;
-    flex-wrap: wrap;
-    display: flex;
-    text-align: center;
-}
-
-.calendar-body .calendar-dates {
-    margin-bottom: 20px;
-}
-
-.calendar-body li {
-    width: calc(100% / 7);
-    font-size: 1.07rem;
-    color: #fff;
-}
-
-.calendar-body .calendar-weekdays li {
-    cursor: default;
-    font-weight: 500;
-}
-
-.calendar-body .calendar-dates li {
-    margin-top: 30px;
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
-}
-
-.calendar-dates li.inactive {
-    color: #aaa;
-}
-
-.calendar-dates li.active {
-    color: #fff;
-}
-
-.calendar-dates li::before {
-    position: absolute;
-    content: "";
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.calendar-dates li.active::before {
-    background: #6332c5;
-}
-
-.calendar-dates li:not(.active):hover::before {
-    background: #e4e1e1;
-}
 
 
 .preorder_datetime .time {
@@ -280,6 +175,7 @@
     color: map-get($colors , white );
     padding: 20px;
     border:1px solid #ffff;
+    border-radius: 12px;
 }
 
 .preorder_infornotice ul li {
@@ -317,9 +213,10 @@
 /* --------------------下一步------------------------------------ */
 
 .nextstep {
-   
-   
-    margin: 80px auto;
+    width: 200px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    margin-top: 80px;
 }
 
 .nextstep .next_btn {
@@ -329,7 +226,7 @@
     border-radius: 20px;
    
     width: 200px;
-    // margin: 80px auto;
+    
 }
 
 
