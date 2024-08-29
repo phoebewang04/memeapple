@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url(../css/reset.css);
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC");
 body {
   color: white;
 }
@@ -58,6 +59,7 @@ a {
 }
 
 .btn {
+  border: 0;
   width: 200px;
   font-size: 24px;
   padding: 10px 20px;
@@ -70,6 +72,7 @@ a {
 }
 
 .cbtn {
+  border: 0;
   width: 200px;
   font-size: 24px;
   padding: 10px 20px;
@@ -390,8 +393,10 @@ i.fa-dollar-sign {
   width: 1140px;
   height: 400px;
   margin: 0 auto;
-  max-width: 85%;
+  width: 80%;
   margin-bottom: 30px;
+  background-position: center;
+  position: relative;
 }
 .theme_hospital:nth-of-type(1) {
   background-image: url("../img/hospital-1.png");
@@ -415,9 +420,14 @@ i.fa-dollar-sign {
 .theme_hospital:nth-of-type(4) {
   background-image: url("../img/hospital-4.png");
 }
-.theme_hospital:nth-of-type(4) .theme_hospital_text p {
+.theme_hospital:nth-of-type(4) .theme_hospital_text {
+  width: 80%;
   text-align: center;
-  margin: 180px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .small_mark {
@@ -438,45 +448,98 @@ i.fa-dollar-sign {
   margin: 0 auto;
 }
 
-.arrow {
+.theme_arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80%;
-  overflow: hidden;
-  margin: 0 auto;
+  gap: 20px;
+  margin-bottom: 80px;
 }
-.arrow .fa-angle-left,
-.arrow .fa-angle-right {
+.theme_arrow .fa-angle-left,
+.theme_arrow .fa-angle-right {
   cursor: pointer;
   font-size: 30px;
   color: #FEDA77;
 }
-.arrow .wrapper {
-  overflow: hidden;
-}
-.arrow .carousel {
+.theme_arrow .theme_wrapper {
   display: flex;
+  overflow: hidden;
+  width: 880px;
+  scroll-behavior: smooth;
+}
+.theme_arrow .theme_carousel {
+  display: flex;
+  position: relative;
+  gap: 20px;
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   transition: transform 0.5s ease-in-out;
 }
-.arrow .carousel .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 40px;
+.theme_arrow .theme_carousel .theme_card {
+  padding: 10px;
+  width: 260px;
   text-align: center;
+  cursor: pointer;
 }
-.arrow .carousel .card img {
+.theme_arrow .theme_carousel .theme_card:hover {
+  background-color: #221F3C;
+  transition: 0.3s;
+}
+.theme_arrow .theme_carousel .theme_card img {
   max-width: 250px;
 }
-.arrow .carousel .card h4 {
+.theme_arrow .theme_carousel .theme_card h4 {
   margin-top: 10px;
   color: #FEDA77;
 }
 
+@media (max-width: 980px) {
+  .theme_arrow .theme_wrapper {
+    width: 580px;
+  }
+}
+@media (max-width: 750px) {
+  .overview {
+    flex-direction: column;
+  }
+  .overview_text,
+  .theme_number {
+    width: 80%;
+  }
+  .gameinfo,
+  .iconinfo {
+    flex-direction: column;
+    gap: 60px;
+  }
+}
+@media (max-width: 670px) {
+  .theme_arrow .theme_wrapper {
+    width: 280px;
+  }
+}
+@media (max-width: 500px) {
+  .theme_hospital:nth-of-type(1) .theme_hospital_text, .theme_hospital:nth-of-type(2) .theme_hospital_text, .theme_hospital:nth-of-type(3) .theme_hospital_text {
+    margin: 150px auto;
+    text-align: center;
+  }
+}
+@media (max-width: 430px) {
+  .theme_arrow {
+    gap: 0;
+  }
+  .theme_arrow .theme_wrapper {
+    width: 280px;
+  }
+}
+@media (max-width: 345px) {
+  .theme_arrow {
+    gap: 0;
+  }
+  .theme_arrow .theme_wrapper {
+    width: 280px;
+  }
+}
 .join_login {
   margin: 80px auto;
   max-width: 850px;

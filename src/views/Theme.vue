@@ -97,11 +97,12 @@ import Footerbar from '../components/Footerbar.vue';
             </div>
             <div class="theme_hospital">
                 <div class="theme_hospital_text">
-                    <p>沉寂五年的未解之謎，至今仍在黑暗中低語<br>你願意接下此次委託，揭開那些不該被遺忘的秘密嗎？</p>
+                    <p>沉寂五年的未解之謎，至今仍在黑暗中低語</p>
+                    <p>你願意接下此次委託，揭開那些不該被遺忘的秘密嗎？</p>
                 </div>
             </div>
 
-            <input type="button" value="預約偵查">
+            <input type="button" value="預約偵查" class="btn">
         </section>
 
         <section class="notice">
@@ -132,28 +133,28 @@ import Footerbar from '../components/Footerbar.vue';
                 </svg>
                 <h2>台北其他館主題</h2>
             </div>
-            <div class="arrow">
+            <div class="theme_arrow">
 
                 <i class="fa-solid fa-angle-left" id="left"></i>
-                <div class="wrapper">
-                    <ul class="carousel">
-                        <li class="card">
-                            <!-- <a href="#"> -->
+                <div class="theme_wrapper">
+                    <ul class="theme_carousel">
+                        <li class="theme_card">
+                            <a href="#">
                             <img src="../assets/img/banner-dead.jpg" alt="末日庇護所">
                             <h4>末日庇護所</h4>
-                            <!-- </a> -->
+                            </a>
                         </li>
-                        <li class="card">
-                            <!-- <a href="#"> -->
+                        <li class="theme_card">
+                            <a href="#">
                             <img src="../assets/img/banner-code.png" alt="代碼深淵">
                             <h4>代碼深淵</h4>
-                            <!-- </a> -->
+                            </a>
                         </li>
-                        <li class="card">
-                            <!-- <a href="#"> -->
+                        <li class="theme_card">
+                            <a href="#">
                             <img src="../assets/img/banner-mazeofTime.png" alt="時空迷宮">
                             <h4>時空迷宮</h4>
-                            <!-- </a> -->
+                            </a>
                         </li>
                     </ul>
                 </div>
