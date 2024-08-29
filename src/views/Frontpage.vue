@@ -9,10 +9,13 @@ import Footerbar from '../components/Footerbar.vue';
 
   <main class="main-frontpage">
     <section class="wrapper-frontpage">
-      <div class="overlay-2"></div>
+      <!-- 雲朵特效 -->
+      <!-- <div class="overlay-2"></div> -->
       <!-- Logo圖片 -->
       <img src="../assets/img/memelogo.svg" alt="" class="logo">
+      <!-- 內容部分 -->
       <section class="content">
+
         <!-- 前端按鈕 -->
         <section class="content-btn-L">
           <img src="../assets/img/BTN-yellow.png" alt="">
@@ -24,20 +27,7 @@ import Footerbar from '../components/Footerbar.vue';
             進入前端
           </a></router-link>
         </section>
-        <!-- 中央內容 -->
-        <section class="content-text">
-          
-          <div class="content-text-topic">
-            <h1>命運的骰子已經骰下</h1>
-            <p>歡迎來到 Meme謎因的迷宮</p>
-            <p>迷途的羔羊</p>
-          </div>
 
-          <div class="content-text-slogran">
-            <span>選擇你的</span>
-            <span class="content-text-slogran-red">下一步...</span>
-          </div>
-        </section>
         <!-- 右側按鈕 -->
         <section class="content-btn-R">
           <img src="../assets//img/BTN-blue.png" alt="">
@@ -50,6 +40,19 @@ import Footerbar from '../components/Footerbar.vue';
           </a></router-link>
         </section>
       </section>
+
+        <!-- 中央內容 -->
+        <section class="content-text">
+          <div class="content-text-topic">
+            <h1>命運的骰子已經骰下</h1>
+            <p>歡迎來到 Meme謎因的迷宮</p>
+          </div>
+          <!-- 中央內容標語 -->
+          <div class="content-text-slogran">
+            <span>選擇你的</span>
+            <span class="content-text-slogran-red">下一步...</span>
+          </div>
+        </section>
     </section>
   </main>
 
