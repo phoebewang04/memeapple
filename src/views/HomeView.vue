@@ -1,33 +1,81 @@
 <script setup>
-  import { onMounted } from 'vue';
-  import '../assets/css/style.css';
-  import TopNavbar from '../components/TopNavbar.vue';
-  import Footerbar from '../components/Footerbar.vue';
+import { onMounted } from 'vue';
+import '../assets/css/style.css';
+import TopNavbar from '../components/TopNavbar.vue';
+import Footerbar from '../components/Footerbar.vue';
 
-  onMounted(() =>{
-    const word = document.querySelectorAll('.homeeffect-word');
-    word.forEach(word=>{
+onMounted(() => {
+  const word = document.querySelectorAll('.homeeffect-word');
+  // 隨機顏色
+  word.forEach(word => {
     const randomTop = Math.random() * 100;
     const randomLeft = Math.random() * 100;
     const randomRight = Math.random() * 100;
     const randomBottom = Math.random() * 100;
     const randomFontSize = Math.random() * 3 + 1;
     const randomOpacity = Math.random();
-    const randomScale = Math.random() * 2 + 0.5; // 設置隨機縮放比例
+    const randomScale = Math.random() * 2 + 0.5; 
 
     word.style.top = `${randomTop}%`;
     word.style.left = `${randomLeft}%`;
     word.style.right = `${randomRight}%`;
     word.style.bottom = `${randomBottom}%`;
-
     word.style.fontSize = `${randomFontSize}em`;
     word.style.opacity = randomOpacity;
-    word.style.transform = `translate(-50%, -50%,-50%,-50%) scale(${randomScale})`;
-    });
+    word.style.transform = `translate(-50%, -50%) scale(${randomScale})`;
   });
 
+  // faq縮放
+  const questions = document.querySelectorAll('.index-question');
+
+  questions.forEach(question => {
+    question.addEventListener('click', function() {
+      const answer = this.nextElementSibling;
+
+      if (answer.style.maxHeight) {
+        answer.style.maxHeight = null;
+        this.querySelector('.indexfaq-icon i').classList.replace('fa-minus', 'fa-plus');
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        this.querySelector('.indexfaq-icon i').classList.replace('fa-plus', 'fa-minus');
+      }
+    });
+  });
+});
+</script>
+
+<!-- --------------------------------功能程式---------------------------------------------- -->
+
+<script>
+
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+
+export default {
+  components: {
+    Swiper,
+    SwiperSlide,
+    },
+
+
+    setup(){
+        const swiperInstance = Swiper.use([Pagination]);
+
+        swiperInstance.on('init', () => {
+           
+        });
+
+        return {
+            modules: [Pagination],
+        };
+    },
+};
 
 </script>
+
+
 
 <template>
   <TopNavbar />
@@ -190,16 +238,151 @@
       </section>
  
       <!-- 首頁第四部分 如何遊玩-->
-      <section class="content-p-howtoplay"></section>
+      <section class="content-p-howtoplay">
+        <!-- 內容區域 -->
+        <section class="p-howtoplay-content">
+          <h3 class="p-howtoplay-title">- 遊玩流程 - </h3>
+
+          <!-- 內容區塊 01 -->
+          <section class="p-howtoplay-content">
+            <!-- 左邊文字區塊 -->
+            <section class="p-howtoplay-content-text">
+              <!-- 上方標語 -->
+              <div class="howtoplay-content-text-slogan">
+                <span>尋找</span>
+                <img src="/src/assets/img/keyhole.svg" alt="">
+                <span>出口</span>
+              </div>
+              <!-- 下方文字 -->
+              <div class="howtoplay-content-text-lan">
+                <p>受困在無出口的密室</p>
+                <p>依靠微弱月光</p>
+                <p>尋找散落的各種線索</p> 
+              </div>
+            </section>
+            <!-- 右側圖片區塊 -->
+            <section class="p-howtoplay-img">
+              <img src="/src/assets/img/Index-howto01.jpg" alt="">
+            </section>
+          </section>
+
+          <!-- 內容區塊 02 -->
+          <section class="p-howtoplay-content">
+            <!-- 左側圖片區域 -->
+            <section class="p-howtoplay-img">
+              <img src="/src/assets/img/Index-howto02.jpg" alt="">
+            </section>
+            <!-- 右邊文字區塊 -->
+            <section class="p-howtoplay-content-text">
+              <!-- 上方標語 -->
+              <div class="howtoplay-content-text-slogan">
+                <span>解謎</span>
+                <img src="/src/assets/img/keyhole.svg" alt="">
+                <span>合作</span>
+              </div>
+              <!-- 下方文字 -->
+              <div class="howtoplay-content-text-lan">
+                <p>與夥伴分享情報</p>
+                <p>共同動腦輸入密碼</p>
+                <p>開啟機關離開密室 </p> 
+              </div>
+          </section>
+        </section>
+
+          <!-- 內容區塊 03 -->
+          <section class="p-howtoplay-content">
+            <!-- 左邊文字區塊 -->
+            <section class="p-howtoplay-content-text">
+              <!-- 上方標語 -->
+              <div class="howtoplay-content-text-slogan">
+                <span>了解</span>
+                <img src="/src/assets/img/keyhole.svg" alt="">
+                <span>真相</span>
+              </div>
+              <!-- 下方文字 -->
+              <div class="howtoplay-content-text-lan">
+                <p>事出必有因</p>
+                <p>層層謎題的牽連下</p>
+                <p>挖掘埋沒的真相</p> 
+              </div>
+            </section>
+            <!-- 右側圖片區塊 -->
+            <section class="p-howtoplay-img">
+              <img src="/src/assets/img/Index-howto03.jpg" alt="">
+            </section>
+          </section>
+      </section>
+    </section>
 
       <!-- 首頁第五部分 最新消息-->
-      <section class="content-p-announcement"></section>
+      <section class="content-p-announcement">
+        <div class="theme-announcement-index">
+          <ul>
+            <li><i class="fa-solid fa-caret-left"></i></li>
+            <div class="theme_forindex">
+
+                <li class="index-news-li">
+                  <a href="#"><img src="../assets/img/banner-hospital.png" alt="">
+                  <h3>成都醫院</h3>
+                  <p class="index-news-text">社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她</p>
+                  </a>
+                </li>
+
+                <li class="index-news-li">
+                  <a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt="">
+                    <h3>時光迷宮</h3>
+                    <p class="index-news-text">社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她</p>
+                  </a>
+                </li>
+
+                <li class="index-news-li">
+                  <a href="#"><img src="/src/assets/img/banner-dead.jpg" alt="">
+                  <h3>末日庇護所</h3>
+                  <p class="index-news-text">社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她</p>
+                 </a>
+                </li>
+            </div>    
+            <li><i class="fa-solid fa-caret-right"></i></li>
+          </ul>
+          <!-- swiper套件 -->
+          <swiper :modules="[Pagination]" :pagination="{ clickable: true }" class="mySwiper">
+              <swiper-slide> <li><a href="#"><img src="../assets/img/banner-hospital.png" alt=""><h3>成都醫院</h3></a></li></swiper-slide>
+              <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt=""><h3>時光迷宮</h3></a></li></swiper-slide>
+              <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-dead.jpg" alt=""><h3>末日庇護所</h3></a></li></swiper-slide>
+          </swiper>
+        </div>
+      </section>
 
        <!-- 首頁第六部分 FAQ -->
-      <section class="content-p-faq"></section>
+      <section class="content-p-faq">
+          <p class="index-faq-title">- 注意事項 - </p>
+          <section class="content-p-faq-contenter">
+          <!-- 第1個問題 -->
+          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?我不確定我的朋友是否會突然出席 
+            <div class="indexfaq-icon"><i class="fa-solid fa-minus"></i></div>
+          </button>
+          <!-- 第1個問題的回答 -->
+          <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
+
+          <!-- 第2個問題 -->
+          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?我不確定我的朋友是否會突然出席 
+            <div class="indexfaq-icon"><i class="fa-solid fa-minus"></i></div>
+          </button>
+          <!-- 第2個問題的回答 -->
+          <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
+
+          <!-- 第3個問題 -->
+          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?我不確定我的朋友是否會突然出席 
+            <div class="indexfaq-icon"><i class="fa-solid fa-minus"></i></div>
+          </button>
+          <!-- 第3個問題的回答 -->
+          <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
+        </section>
+      </section>
     </section>
+    <Footerbar />
   </main>
-  <!-- <Footerbar /> -->
+
 </template>
 
 
