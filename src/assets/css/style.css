@@ -738,6 +738,30 @@ i.fa-dollar-sign {
   margin-bottom: 8px;
 }
 
+.main-homepage {
+  width: 100%;
+  height: calc(100vh - 70px);
+  margin: 0 auto;
+}
+.main-homepage .wrapper-homepage {
+  width: 90%;
+  height: 100vh;
+  margin: 0 auto;
+  border: 1px solid red;
+}
+.main-homepage .wrapper-homepage .content-p-homedesign {
+  background-image: url(../../img/BG-index.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-effect {
+  border: 1px solid pink;
+}
+.main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-text {
+  margin-top: 317px;
+  margin-left: 120px;
+}
+
 .backstage_body {
   display: flex;
   flex-direction: column;
