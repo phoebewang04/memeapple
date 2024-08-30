@@ -527,7 +527,6 @@ i.fa-dollar-sign {
 }
 .notice_text.alien {
   border-radius: 24px;
-  background: #221F3C;
   padding: 20px;
   width: 80%;
   margin: 0 auto;
@@ -3422,6 +3421,24 @@ body {
 
 .iconinfo .alien h3 {
   color: #D8FFDF;
+}
+.iconinfo .alien p {
+  text-align: center;
+}
+
+.theme_marketing .alien {
+  width: 80%;
+  max-width: 1140px;
+  background-size: cover;
+}
+.theme_marketing .alien:nth-of-type(1) {
+  background-image: url("/src/assets/img/alien1.png");
+}
+.theme_marketing .alien:nth-of-type(2) {
+  background-image: url("/src/assets/img/alien2.png");
+}
+.theme_marketing .alien:nth-of-type(3) {
+  background-image: url("/src/assets/img/alien3.png");
 }
 
 .theme_lock:nth-of-type(1) {

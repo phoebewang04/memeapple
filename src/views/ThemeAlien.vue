@@ -63,46 +63,46 @@ import Footerbar from '../components/Footerbar.vue';
             <div class="theme_icon alien">
                 <img src="../assets/img/icon_alien_planet.png" alt="" style="width: 400px;">
                 <h3>仿真場景體驗</h3>
-                <p>真人互動，將恐懼推向極限<br>密閉驚悚的壓迫體驗</p>
+                <p>聲光、煙霧效果<br>打造太空旅行沉浸式體驗</p>
             </div>
             <div class="theme_icon alien">
                 <img src="../assets/img/icon_alien_ship.png" alt="" style="width: 400px;">
-                <h3>身歷其境</h3>
-                <p>精心還原醫院每個角落<br>逼真場景宛如置身其中</p>
+                <h3>多段式密室劇情</h3>
+                <p>隨劇情進展<br>分工找尋線索或駕駛飛船逃離</p>
             </div>
             <div class="theme_icon alien">
                 <img src="../assets/img/icon_alien_egg.png" alt="" style="width: 400px;">
-                <h3>海量謎題</h3>
-                <p>層層難關，精心雕琢<br>由你揭開最深的秘密</p>
+                <h3>電影等級道具</h3>
+                <p>重金打造電影級恐怖道具<br>重現驚悚太空逃生</p>
             </div>
         </section>
         <section class="theme_marketing_container">
-            <div class="theme_marketing">
+            <div class="theme_marketing alien">
                 <div class="theme_marketing_text">
-                    <h3>廢墟深處，重重謎團</h3>
-                    <p>步入禁地，調查塵封的過往<br>觸碰那被時間遺忘的秘密</p>
+                    <h3>沉浸體驗&emsp;孤立無援</h3>
+                    <p>無垠的宇宙中<br>偏移航道的飛船<br>要如何解開謎團、重回正軌？</p>
                 </div>
             </div>
-            <div class="theme_marketing">
+            <div class="theme_marketing alien">
                 <div class="theme_marketing_text">
-                    <h3>光影交錯，虛實難辨</h3>
-                    <p>詭異的筆記，失蹤者的殘骸<br>指引你走向真相的深淵</p>
+                    <h3>屏氣凝神&emsp;逃出生天</h3>
+                    <p>在理應無人的船艙找尋生機<br>卻一直聽見詭異的呼吸聲<br>轉角的陰影到底有甚麼在等你？</p>
                 </div>
             </div>
-            <div class="theme_marketing">
+            <div class="theme_marketing alien">
                 <div class="theme_marketing_text">
-                    <h3>怨念瀰漫，等待救贖</h3>
-                    <p>唯有步步為營，方能撕裂虛<br>幻的帷幕，讓真相水落石出</p>
+                    <h3>幽暗密室&emsp;危機四伏</h3>
+                    <p>船內多處被暴力破壞<br>究竟是機械故障、船員叛變<br>還是有更邪惡的東西在你身後？</p>
                 </div>
             </div>
-            <div class="theme_marketing">
+            <!-- <div class="theme_marketing">
                 <div class="theme_marketing_text">
                     <p>沉寂五年的未解之謎，至今仍在黑暗中低語</p>
                     <p>你願意接下此次委託，揭開那些不該被遺忘的秘密嗎？</p>
                 </div>
-            </div>
+            </div> -->
 
-            <input type="button" value="預約登船" class="btn">
+            <input type="button" value="預約登船" class="btn alien" style="background-color: #6EE742;">
         </section>
 
         <section class="notice">
@@ -111,27 +111,27 @@ import Footerbar from '../components/Footerbar.vue';
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 40 40" fill="none">
                     <path
                         d="M20 40C8.954 40 0 31.046 0 20C0 8.954 8.954 0 20 0C31.046 0 40 8.954 40 20C40 31.046 31.046 40 20 40ZM18 21.584V28H22V21.584C23.0528 21.1245 23.9153 20.3165 24.4424 19.2959C24.9696 18.2753 25.1292 17.1043 24.8945 15.9799C24.6598 14.8554 24.0451 13.846 23.1537 13.1215C22.2624 12.3969 21.1487 12.0014 20 12.0014C18.8513 12.0014 17.7376 12.3969 16.8463 13.1215C15.9549 13.846 15.3402 14.8554 15.1055 15.9799C14.8708 17.1043 15.0304 18.2753 15.5576 19.2959C16.0847 20.3165 16.9472 21.1245 18 21.584Z"
-                        fill="#FEDA77" />
+                        fill="#6EE742" />
                 </svg>
-                <h2>注意事項</h2>
+                <h2 style="color: #6EE742;">注意事項</h2>
             </div>
 
-            <div class="notice_text alien">
+            <div class="notice_text alien" style="color: #D8FFDF;">
                 <p>＊ 建議遊戲人數 6 ~ 7 人，容納人數 4 - 8 人。</p>
                 <p>＊ 建議穿著輕便服裝，避免穿裙子。</p>
-                <p>＊ 會有真人ＮＰＣ互動，無法調整恐怖程度，膽小誤入</p>
+                <p>＊ 會有真實生物互動，無法調整恐怖程度，膽小誤入</p>
                 <p>＊ 未滿15歲孩童需有成人陪同參與。</p>
             </div>
 
         </section>
         <section>
-            <div class="small_mark">
+            <div class="small_mark alien">
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 40 40" fill="none">
                     <path
                         d="M20 40C8.954 40 0 31.046 0 20C0 8.954 8.954 0 20 0C31.046 0 40 8.954 40 20C40 31.046 31.046 40 20 40ZM18 21.584V28H22V21.584C23.0528 21.1245 23.9153 20.3165 24.4424 19.2959C24.9696 18.2753 25.1292 17.1043 24.8945 15.9799C24.6598 14.8554 24.0451 13.846 23.1537 13.1215C22.2624 12.3969 21.1487 12.0014 20 12.0014C18.8513 12.0014 17.7376 12.3969 16.8463 13.1215C15.9549 13.846 15.3402 14.8554 15.1055 15.9799C14.8708 17.1043 15.0304 18.2753 15.5576 19.2959C16.0847 20.3165 16.9472 21.1245 18 21.584Z"
-                        fill="#FEDA77" />
+                        fill="#6EE742" />
                 </svg>
-                <h2>台中館其他主題</h2>
+                <h2 style="color: #6EE742;">台中館其他主題</h2>
             </div>
             <div class="theme_arrow">
 

@@ -16,4 +16,29 @@
     h3{
         color: map-get($colors, lightgreen );
     }
+
+    p{
+        text-align: center;
+    }
 }
+
+.theme_marketing .alien{
+    width: 80%;
+    max-width: 1140px;
+    background-size: cover;
+
+    &:nth-of-type(1) {
+        background-image: url('/src/assets/img/alien1.png');
+    }
+
+    &:nth-of-type(2) {
+        background-image: url('/src/assets/img/alien2.png');
+    }
+
+    &:nth-of-type(3) {
+        background-image: url('/src/assets/img/alien3.png');
+    }
+}
+
+// 從按鈕後就無法透過css設定，先將顏色寫在html標籤
+
