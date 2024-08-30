@@ -3,7 +3,61 @@
     import TopNavbarBack from '../components/TopNavbarBack.vue';
     import FooterbarBack from '../components/FooterbarBack.vue';
 
-    import ChartJS from '../components/ChartJS.vue';
+    import { ref } from 'vue'
+    import { Bar } from 'vue-chartjs'
+    import { Pie } from 'vue-chartjs'
+    
+    import { 
+        Chart as ChartJS, 
+        Title, 
+        Tooltip, 
+        BarElement, 
+        CategoryScale, 
+        LinearScale,
+        ArcElement 
+    } from 'chart.js'
+
+
+    ChartJS.register(Title, Tooltip, BarElement, CategoryScale, LinearScale, ArcElement)
+  
+    const chartData = ref({
+        labels: ['成都醫院', '時光迷宮', '末日庇護所', '恐怖密室', '逃出虛空', '逃離武石監'],
+        datasets: [
+            { 
+                backgroundColor: '#343B4D',
+                data: [170000, 180000, 50000, 160000, 230000, 170000] 
+            }
+        ]
+    })
+  
+    const chartOptions = ref({
+        indexAxis: 'y',  //直條圖
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: {
+                beginAtZero: true
+            }
+        },
+        width: '835px'
+    })
+
+    const pieData = ref({
+        labels: ['台北館', '台中館'],
+        datasets:[
+            {
+                backgroundColor: ['#343B4D', '#FFC700'],
+                data: [60, 40]
+            }
+        ]
+    })
+
+    const pieOptions = ref({
+        responsive: true,
+        maintainAspectRatio: false,
+        width: '355px'
+    })
+
 </script>
 
 <template>
@@ -21,10 +75,10 @@
                             <thead class="backstage_tablehead">
                                 <tr>
                                     <th class="column-header"></th>
-                                    <th >Column 1</th>
-                                    <th >Column 2</th>
-                                    <th >Column 3</th>
-                                    <th >Column 4</th>
+                                    <th >10:00 ~ 12:00</th>
+                                    <th >13:00 ~ 15:00</th>
+                                    <th >16:00 ~ 18:00</th>
+                                    <th >19:00 ~ 21:00</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,11 +130,14 @@
                     </div>
                 </div>
                 <div class="backstage_chart">
-                    <div class="theme_income">
-                        <!-- chart.js 測試 -->
-                        <ChartJS />
+                    <div class="theme_income barChart">
+                        <!-- bar -->
+                        <Bar :data="chartData" :options="chartOptions" />
                     </div>
-                    <div class="store_income"></div>
+                    <div class="store_income pieChart">
+                        <!-- pie -->
+                        <Pie :data="pieData" :options="pieOptions" /> 
+                    </div>
                 </div>
             </div>
         </div>
