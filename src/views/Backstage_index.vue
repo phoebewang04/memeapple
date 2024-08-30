@@ -3,6 +3,8 @@
     import TopNavbarBack from '../components/TopNavbarBack.vue';
     import FooterbarBack from '../components/FooterbarBack.vue';
 
+    import 'v-calendar/style.css';
+
     import { ref } from 'vue'
     import { Bar } from 'vue-chartjs'
     import { Doughnut } from 'vue-chartjs'
@@ -24,7 +26,7 @@
         labels: ['成都醫院', '時光迷宮', '末日庇護所', '恐怖密室', '逃出虛空', '逃離武石監'],
         datasets: [
             { 
-                backgroundColor: '#343B4D',
+                backgroundColor: '#3c598d',
                 data: [170000, 180000, 50000, 160000, 230000, 170000] 
             }
         ]
@@ -36,7 +38,15 @@
         maintainAspectRatio: false,
         scales: {
             x: {
-                beginAtZero: true
+                beginAtZero: true,
+                ticks:{
+                    color: '#FCD15B'
+                }
+            },
+            y: {
+                ticks:{
+                    color: '#FCD15B'
+                }
             }
         },
         width: '835px',
@@ -47,7 +57,7 @@
         Legend: { display: false },
         datasets:[
             {
-                backgroundColor: ['#343B4D', '#FFC700'],
+                backgroundColor: ['#324872', '#4f71a8'],
                 data: [60, 40]
             }
         ]
@@ -64,15 +74,17 @@
 <template>
 <TopNavbarBack />
 
- <main class="backstage_main">
+ <main class="bindex_wrapper">
         <div class="wrapper backstage_wrapper">
             <!-- 儀表板 -->
             <div class="backstage_dashboard">
                 <div class="backstage_daily">
-                    <div class="backstage_calendar"></div>
+                    <div class="backstage_calendar">
+                        <VCalendar title-position="left" style="width: 100%;" />
+                    </div>
                     <div class="backstage_booking">
                         
-                        <table class="backstage_table dashboard_table">
+                        <table class="backstage_table dashboard_table" style="width: 99%; height: 99%;">
                             <thead class="backstage_tablehead">
                                 <tr>
                                     <th class="column-header"></th>

@@ -9,12 +9,13 @@ import Footerbar from '../components/Footerbar.vue';
 <TopNavbar />
    <!-- banner -->
 
-   <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
-        width="100%" class="banner_video hospital"></video>
+   <!-- <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
+        width="100%" class="banner_video hospital"></video> -->
 
-    <!-- <img src="./src/assets/banner.png" alt="" class="banner"> -->
+    <img src="../assets/img/banner.png" alt="" class="banner">
 
     <main class="theme_container alien">
+        <div class="alien_bgi">
         <!-- -----主題文字介紹＋指數 start----- -->
         <section class="overview">
             <p class="overview_text">
@@ -37,65 +38,65 @@ import Footerbar from '../components/Footerbar.vue';
         </section>
         <!-- -----主題文字介紹＋指數 end----- -->
 
-        <section class="gameinfo">
+        <section class="gameinfo alien">
             <div class="theme_game alien">
-                <i class="fa-solid fa-clock"></i>
+                <i class="fa-solid fa-clock alien"></i>
                 <h3>遊戲時間
                 </h3>
                 <p>120分鐘<br>（含20分鐘解說）</p>
             </div>
             <div class="theme_game alien">
-                <i class="fa-solid fa-circle-user"></i>
+                <i class="fa-solid fa-circle-user alien"></i>
                 <h3>建議人數</h3>
                 <p>4－8 人</p>
             </div>
             <div class="theme_game alien">
                 <div class="dollar alien">
-                    <i class="fa-solid fa-dollar-sign"></i>
+                    <i class="fa-solid fa-dollar-sign alien"></i>
                 </div>
                 <h3>遊戲費用</h3>
                 <p>＄660－＄990 / 人<br>▲ 點此查看詳細價格</p>
             </div>
         </section>
 
-        <section class="iconinfo">
+        <section class="iconinfo alien">
             <div class="theme_icon alien">
-                <img src="../assets/img/icon-1.png" alt="">
-                <h3>極度重恐</h3>
+                <img src="../assets/img/icon_alien_planet.png" alt="" style="width: 400px;">
+                <h3>仿真場景體驗</h3>
                 <p>真人互動，將恐懼推向極限<br>密閉驚悚的壓迫體驗</p>
             </div>
             <div class="theme_icon alien">
-                <img src="../assets/img/icon-2.png" alt="">
+                <img src="../assets/img/icon_alien_ship.png" alt="" style="width: 400px;">
                 <h3>身歷其境</h3>
                 <p>精心還原醫院每個角落<br>逼真場景宛如置身其中</p>
             </div>
             <div class="theme_icon alien">
-                <img src="../assets/img/icon-3.png" alt="">
+                <img src="../assets/img/icon_alien_egg.png" alt="" style="width: 400px;">
                 <h3>海量謎題</h3>
                 <p>層層難關，精心雕琢<br>由你揭開最深的秘密</p>
             </div>
         </section>
-        <section class="theme_hospital_container">
-            <div class="theme_hospital">
-                <div class="theme_hospital_text">
+        <section class="theme_marketing_container">
+            <div class="theme_marketing">
+                <div class="theme_marketing_text">
                     <h3>廢墟深處，重重謎團</h3>
                     <p>步入禁地，調查塵封的過往<br>觸碰那被時間遺忘的秘密</p>
                 </div>
             </div>
-            <div class="theme_hospital">
-                <div class="theme_hospital_text">
+            <div class="theme_marketing">
+                <div class="theme_marketing_text">
                     <h3>光影交錯，虛實難辨</h3>
                     <p>詭異的筆記，失蹤者的殘骸<br>指引你走向真相的深淵</p>
                 </div>
             </div>
-            <div class="theme_hospital">
-                <div class="theme_hospital_text">
+            <div class="theme_marketing">
+                <div class="theme_marketing_text">
                     <h3>怨念瀰漫，等待救贖</h3>
                     <p>唯有步步為營，方能撕裂虛<br>幻的帷幕，讓真相水落石出</p>
                 </div>
             </div>
-            <div class="theme_hospital">
-                <div class="theme_hospital_text">
+            <div class="theme_marketing">
+                <div class="theme_marketing_text">
                     <p>沉寂五年的未解之謎，至今仍在黑暗中低語</p>
                     <p>你願意接下此次委託，揭開那些不該被遺忘的秘密嗎？</p>
                 </div>
@@ -130,7 +131,7 @@ import Footerbar from '../components/Footerbar.vue';
                         d="M20 40C8.954 40 0 31.046 0 20C0 8.954 8.954 0 20 0C31.046 0 40 8.954 40 20C40 31.046 31.046 40 20 40ZM18 21.584V28H22V21.584C23.0528 21.1245 23.9153 20.3165 24.4424 19.2959C24.9696 18.2753 25.1292 17.1043 24.8945 15.9799C24.6598 14.8554 24.0451 13.846 23.1537 13.1215C22.2624 12.3969 21.1487 12.0014 20 12.0014C18.8513 12.0014 17.7376 12.3969 16.8463 13.1215C15.9549 13.846 15.3402 14.8554 15.1055 15.9799C14.8708 17.1043 15.0304 18.2753 15.5576 19.2959C16.0847 20.3165 16.9472 21.1245 18 21.584Z"
                         fill="#FEDA77" />
                 </svg>
-                <h2>台北其他館主題</h2>
+                <h2>台中館其他主題</h2>
             </div>
             <div class="theme_arrow">
 
@@ -160,6 +161,7 @@ import Footerbar from '../components/Footerbar.vue';
                 <i class="fa-solid fa-angle-right" id="right"></i>
             </div>
         </section>
+        </div>
     </main>
 
     <Footerbar />

@@ -1,0 +1,19 @@
+.alien_bgi{
+    background-image: url('../img/bgi_alien.jpg');
+}
+
+.gameinfo .alien{
+    i{
+        color: map-get($colors, green );
+    }
+
+    p{
+        color: map-get($colors, lightgreen );
+    }
+}
+
+.iconinfo .alien{
+    h3{
+        color: map-get($colors, lightgreen );
+    }
+}

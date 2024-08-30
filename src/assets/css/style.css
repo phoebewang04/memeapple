@@ -525,6 +525,13 @@ i.fa-dollar-sign {
   width: 80%;
   margin: 0 auto;
 }
+.notice_text.alien {
+  border-radius: 24px;
+  background: #221F3C;
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
 
 .theme_arrow {
   display: flex;
@@ -1019,9 +1026,14 @@ i.fa-dollar-sign {
 }
 
 .backstage_calendar {
-  background-color: aqua;
   width: 40%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.backstage_calendar .vc-bordered {
+  border-color: #100E24;
 }
 
 .backstage_booking {
@@ -1037,27 +1049,32 @@ i.fa-dollar-sign {
   color: #100E24;
 }
 .backstage_booking a:hover {
-  color: #1877F2;
+  color: #4f71a8;
 }
 
 .dashboard_table {
   width: calc(100% - 4px);
-  height: calc(100% - 4px);
-  border-radius: 0;
+  height: 100%;
+  border-radius: 4px;
+  border: 3px solid #293651;
 }
 .dashboard_table .column-header {
   width: 100px;
 }
 .dashboard_table th {
-  background-color: #FFE8BB;
-  color: #262B3F;
+  background-color: #100E24;
+  color: #FCD15B;
   font-weight: bold;
   vertical-align: middle;
+  border: 1px solid #293651;
 }
 .dashboard_table td {
-  background-color: white;
-  color: #292929;
+  background-color: #100E24;
   vertical-align: middle;
+  border: 1px solid #293651;
+}
+.dashboard_table td a {
+  color: white;
 }
 
 .backstage_chart {
@@ -3390,6 +3407,21 @@ body {
   border: 2px solid white; /* 設置左邊框來創建垂直線 */
   height: 32px; /* 設置垂直線的高度 */
   margin-right: 14px;
+}
+
+.alien_bgi {
+  background-image: url("../img/bgi_alien.jpg");
+}
+
+.gameinfo .alien i {
+  color: #6EE742;
+}
+.gameinfo .alien p {
+  color: #D8FFDF;
+}
+
+.iconinfo .alien h3 {
+  color: #D8FFDF;
 }
 
 .theme_lock:nth-of-type(1) {
