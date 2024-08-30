@@ -56,6 +56,10 @@
     &.hospital {
         color: map-get($colors, yellow);
     }
+
+    &.alien {
+        color: map-get($colors, lightgreen )
+    }
 }
 
 .progress_bar {
@@ -69,6 +73,10 @@
     &.hospital {
         background-color: map-get($colors, mdnightblue);
     }
+
+    &.alien {
+        background-color: map-get($colors, black);
+    }
 }
 
 .progress {
@@ -81,6 +89,11 @@
     &.hospital {
         background-color: map-get($colors, darkred);
         color: map-get($colors, lightyellow);
+    }
+
+    &.alien {
+        background-color: map-get($colors, green);
+        color: map-get($colors, black);
     }
 }
 

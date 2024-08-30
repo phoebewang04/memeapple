@@ -9,6 +9,7 @@ import Branch from '../views/Branch.vue';
 import Announcement from '../views/Announcement.vue';
 import Popupcard from '../views/Popupcard.vue';
 import Theme from '../views/Theme.vue';
+import ThemeAlien from '../views/ThemeAlien.vue';
 import preorder from '../views/preorder.vue';
 import orderinform from '../views/orderinform.vue';
 
@@ -82,6 +83,10 @@ const routes = [
   {
     path: '/Join/',
     component: Join
+  },
+  {
+    path: '/ThemeAlien/',
+    component: ThemeAlien
   },
 ]
 

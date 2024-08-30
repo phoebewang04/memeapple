@@ -307,6 +307,9 @@ p {
 .theme_number.hospital {
   color: #FEDA77;
 }
+.theme_number.alien {
+  color: #D8FFDF;
+}
 
 .progress_bar {
   border-radius: 16px;
@@ -318,6 +321,9 @@ p {
 .progress_bar.hospital {
   background-color: #221F3C;
 }
+.progress_bar.alien {
+  background-color: #292929;
+}
 
 .progress {
   text-align: center;
@@ -328,6 +334,10 @@ p {
 .progress.hospital {
   background-color: #870801;
   color: #FFE8BB;
+}
+.progress.alien {
+  background-color: #6EE742;
+  color: #292929;
 }
 
 .gameinfo {
