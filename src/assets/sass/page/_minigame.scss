@@ -60,6 +60,140 @@
 
 }
 
+// -----map start-----
+
+.minigame_map {
+    margin: 200px 0 ;
+    text-align: center;
+}
+
+.plate_1,.plate_2,.plate_3{
+    
+    fill:#909090;
+    
+    &:nth-of-type(1):hover{
+        fill:#dea573;
+    }
+    &:nth-of-type(2):hover{
+        fill:#8fcc7c;
+    }
+    //鬼碑迷陣
+    &:nth-of-type(3):hover{
+        fill:#7cc0cc;
+    }
+}
+
+
+.coordinate{
+    animation: updown .5s linear infinite;
+@keyframes updown {
+    0% {
+        transform: translateY(0px)
+    }
+
+    50% {
+        transform: translateY(-10px)
+    }
+
+    100% {
+        transform: translateY(0px)
+    }
+}
+}
+
+.zombie_hand {
+    transform-origin: bottom center; /* 設定旋轉中心點 */
+    animation: wipeGlass 2s infinite ease-in-out; /* 動畫效果 */
+
+    @keyframes wipeGlass {
+        0% {
+          transform: rotate(0deg) translateX(0) translateY(7px); /* 初始位置 */
+        }
+        50% {
+          transform: rotate(-2deg) translateX(-10px) translateY(0px); /* 向右上方移動並旋轉 */
+        }
+        75% {
+            transform: rotate(2deg) translateX(0) translateY(10px); /* 回到初始位置 */
+          }
+        100% {
+          transform: rotate(0deg) translateX(0) translateY(7px); /* 回到初始位置 */
+        }
+      }
+}
+  
+.minigame_ghost{
+    animation: ghostupdown 2s linear infinite;
+
+    @keyframes ghostupdown {
+        0% {
+            transform: translateY(0px)
+        }
+    
+        50% {
+            transform: translateY(-30px)
+        }
+    
+        100% {
+            transform: translateY(0px)
+        }
+    }
+}
+
+.palte3_bigzombie {
+    // position: relative; /* 讓動畫相對於原位置移動 */
+    animation: zombieWalk 5s infinite; /* 設定動畫循環，來回移動 */
+    animation-timing-function: steps(5, end);
+  }
+  
+  @keyframes zombieWalk {
+    0% {
+      transform: translateX(0) scale(1, 1); /* 初始位置，正常方向 */
+    }
+    50% {
+      transform: translateX(100px) scale(1, 1); /* 往右移動80px */
+    }
+    51% {
+      transform: translateX(calc(50px + 150%)) scale(-1, 1); /* 開始翻轉，並補償位置 */
+    }
+    100% {
+      transform: translateX(145%) scale(-1, 1); /* 翻轉後回到原始位置 */
+    }
+  }
+  
+  
+
+
+
+
+
+
+
+
+// -----map end-----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 // 液體
 .loader {
     // background-color: #02640e;
@@ -75,14 +209,15 @@
     bottom: 0;
 }
 
-@keyframes fade-in {
-    // 0% {
-    //     opacity: 0;
-    // }
 
-    // 100% {
-    //     opacity: 1;
-    // }
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes drop {
@@ -142,4 +277,6 @@
 
 .drop2 {
     animation: drop 1.3s cubic-bezier(1, .19, .66, .12) .5s infinite;
-}
+ }
+
+*/

@@ -108,7 +108,7 @@
     align-items: center;
 
     @include rwd(430px){
-        width: 220px;
+        width: 230px;
         
     }
     
@@ -219,6 +219,10 @@
 
 }
 
+// .preorder_datetime .time .time_ele *:focus{
+//     background-color: map-get($colors , gold );
+// }
+
 .preorder_datetime .time .time_ele .ele {
     border: 1px solid #fff;
     background-color: #e4e1e1;
@@ -230,6 +234,7 @@
     margin: 20px;
     color: #100E24;
 }
+
 
 .preorder_datetime .time .amount {
     width: 350px;
@@ -296,6 +301,10 @@
     display: flex;
     align-items: center;
     height: 40px;
+
+    @include rwd(430px){
+        height: 60px;
+    }
     
 }
 
@@ -306,6 +315,7 @@
 
 .preorder_infornotice .content p {
     font-size: map-get($fontsize , p1 );
+
 }
 
 
@@ -323,9 +333,8 @@
     width: 200px;
     height: 40px;
     border-radius: 20px;
-   
     width: 200px;
-    
+    cursor: pointer;
 }
 
 
