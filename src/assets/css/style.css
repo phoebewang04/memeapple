@@ -1013,7 +1013,9 @@ i.fa-dollar-sign {
 .backstage_daily {
   display: flex;
   width: 100%;
-  height: 50%;
+  height: calc(50% - 8px);
+  justify-content: center;
+  margin-top: 4px;
 }
 
 .backstage_calendar {
@@ -1028,6 +1030,14 @@ i.fa-dollar-sign {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.backstage_booking a {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #100E24;
+}
+.backstage_booking a:hover {
+  color: #1877F2;
 }
 
 .dashboard_table {
@@ -1053,7 +1063,10 @@ i.fa-dollar-sign {
 .backstage_chart {
   display: flex;
   width: 100%;
-  height: 50%;
+  height: calc(50% - 8px);
+  justify-content: center;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .theme_income {
@@ -1063,7 +1076,8 @@ i.fa-dollar-sign {
 
 .store_income {
   width: 30%;
-  height: 100%;
+  height: 80%;
+  align-self: center;
 }
 
 /* ---------------------分館介紹----------------------------- */

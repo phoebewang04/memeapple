@@ -5,12 +5,12 @@
 
     import { ref } from 'vue'
     import { Bar } from 'vue-chartjs'
-    import { Pie } from 'vue-chartjs'
+    import { Doughnut } from 'vue-chartjs'
     
     import { 
         Chart as ChartJS, 
         Title, 
-        Tooltip, 
+        Tooltip,
         BarElement, 
         CategoryScale, 
         LinearScale,
@@ -39,11 +39,12 @@
                 beginAtZero: true
             }
         },
-        width: '835px'
+        width: '835px',
     })
 
-    const pieData = ref({
+    const doughnutData = ref({
         labels: ['台北館', '台中館'],
+        Legend: { display: false },
         datasets:[
             {
                 backgroundColor: ['#343B4D', '#FFC700'],
@@ -52,7 +53,7 @@
         ]
     })
 
-    const pieOptions = ref({
+    const doughnutOptions = ref({
         responsive: true,
         maintainAspectRatio: false,
         width: '355px'
@@ -84,45 +85,45 @@
                             <tbody>
                                 <tr>
                                     <th class="column-header">成都醫院</th>
-                                        <td>Cell 1</td>
-                                        <td>Cell 2</td>
-                                        <td>Cell 3</td>
-                                        <td>Cell 4</td>
+                                        <td><a href="">ABC1234567</a></td>
+                                        <td><a href=""></a></td>
+                                        <td><a href=""></a></td>
+                                        <td><a href="">ABC1234567</a></td>
                                 </tr>
                                 <tr>
                                     <th class="column-header">末日庇護所</th>
-                                        <td>Cell 7</td>
-                                        <td>Cell 8</td>
-                                        <td>Cell 9</td>
-                                        <td>Cell 10</td>
+                                        <td><a href="">ABC1234567</a></td>
+                                        <td><a href="">ABC1234567</a></td>
+                                        <td><a href=""></a></td>
+                                        <td><a href="">ABC1234567</a></td>
                                 </tr>
                                 <tr>
                                     <th class="column-header">時光迷宮</th>
-                                        <td>Cell 13</td>
-                                        <td>Cell 14</td>
-                                        <td>Cell 15</td>
-                                        <td>Cell 16</td>
+                                        <td><a href=""></a></td>
+                                        <td><a href="">ABC1234567</a></td>
+                                        <td><a href=""></a></td>
+                                        <td><a href="">ABC1234567</a></td>
                                     </tr>
                                 <tr>
                                     <th class="column-header">恐怖密室</th>
-                                        <td>Cell 19</td>
-                                        <td>Cell 20</td>
-                                        <td>Cell 21</td>
-                                        <td>Cell 22</td>    
+                                        <td><a href="">ABC1234567</a></td>
+                                        <td><a href="">ABC1234567</a></td>
+                                        <td><a href="">ABC1234567</a></td>
+                                        <td><a href=""></a></td>    
                                     </tr>
                                 <tr>
                                     <th class="column-header">逃出虛空</th>
-                                        <td>Cell 25</td>
-                                        <td>Cell 26</td>
-                                        <td>Cell 27</td>
-                                        <td>Cell 28</td>
+                                        <td><a href="">ABC1234567</a></td>
+                                        <td><a href=""></a></td>
+                                        <td><a href=""></a></td>
+                                        <td><a href=""></a></td>
                                     </tr>
                                 <tr>
                                     <th class="column-header">逃離武石監</th>
-                                        <td>Cell 31</td>
-                                        <td>Cell 32</td>
-                                        <td>Cell 33</td>
-                                        <td>Cell 34</td>
+                                        <td><a href="">ABC1234567</a></td>
+                                        <td><a href=""></a></td>
+                                        <td><a href=""></a></td>
+                                        <td><a href="">ABC1234567</a></td>
                                     </tr>
                             </tbody>
                         </table>
@@ -136,7 +137,7 @@
                     </div>
                     <div class="store_income pieChart">
                         <!-- pie -->
-                        <Pie :data="pieData" :options="pieOptions" /> 
+                        <Doughnut :data="doughnutData" :options="doughnutOptions" /> 
                     </div>
                 </div>
             </div>

@@ -16,7 +16,9 @@
 .backstage_daily{
     display: flex;
     width: 100%;
-    height: 50%;
+    height: calc(50% - 8px);
+    justify-content: center;
+    margin-top: 4px;
 }
 
 .backstage_calendar{
@@ -32,6 +34,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    a{
+        text-decoration: underline;
+        font-weight: bold;
+        color: map-get( $colors, darkblue );
+    }
+
+    a:hover{
+        color: map-get( $colors, fbblue );
+    }
 }
 
 .dashboard_table{
@@ -62,7 +74,10 @@
 .backstage_chart{
     display: flex;
     width: 100%;
-    height: 50%;
+    height: calc(50% - 8px);
+    justify-content: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 .theme_income{
@@ -75,7 +90,8 @@
 .store_income{
     // background-color: orange;
     width: 30%;
-    height: 100%;
+    height: 80%;
+    align-self: center;
 }
 
 
