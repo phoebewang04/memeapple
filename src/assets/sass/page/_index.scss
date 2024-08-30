@@ -1,24 +1,187 @@
-.main-homepage{
+.main-homepage {
     width: 100%;
     height: calc(100vh - 70px);
     margin: 0 auto;
-    .wrapper-homepage{
-        width: 90%;
-        height: 100vh;
+
+    .wrapper-homepage {
+        width: 100%;
         margin: 0 auto;
-        border: 1px solid red;
-        .content-p-homedesign{
-            
-            background-image: url(../../img/BG-index.jpg);
+
+        // 首頁第一部分  主視覺
+        .content-p-homedesign {
+            width: 100%;
+            background-image: url(/src/assets/img/BG-index.jpg);
             background-repeat: no-repeat;
             background-size: cover;
-            .content-p-homedesign-effect{
-                border: 1px solid pink;
+            padding-top: 100px;
+            padding-bottom: 100px;
+            position: relative;
+
+            .content-p-homedesign-effect {
+                width: 60%;
+                height: 300px;
+                position: absolute;
+                right: 0;
+                border: 1px solid red;
             }
-            .content-p-homedesign-text{
-                margin-top: 317px;
+
+            .homedesign-img-line{
+                position: absolute;
+            }
+
+            .content-p-homedesign-text {
+                margin-top: 250px;
                 margin-left: 120px;
+                border: 1px solid yellowgreen;
+                h1 {
+                    font-size: 40px;
+                }
+
+                h2 {
+                    font-size: 32px;
+                    font-weight: bold;
+                    color: map-get($colors, gold);
+                    margin-left: 40px;
+                }
             }
+            .content-p-homedesign-img{
+                width: 90%;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-around;
+                margin-top: 40px;
+                border: 1px solid orange;
+                .homedesign-card01{
+                    img{}
+                }
+                .homedesign-card02{
+                    margin-top: 40px;
+                    img{}
+                }
+                .homedesign-card03{
+                    margin-bottom: 40px;
+                    img{}
+                }
+            }
+        }
+
+        // 首頁第二部分  品牌故事
+        .content-p-brandstory {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            background-image: url(/src/assets/img/BG-Index-bread.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: 1px solid gold;
+
+            .content-p-brandstory-effect {}
+
+            .content-p-brandstory-contenter {
+                display: flex;
+                justify-content: space-around;
+                width: 90%;
+                margin: 0 auto;
+                padding-top: 120px;
+                padding-bottom: 140px;
+
+                .content-p-brandstory-imgarea {
+                    width: 40%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid orange;
+
+                    img {
+                        width: 70%;
+                        height: auto;
+                        display: block;
+                    }
+                }
+
+                .content-p-brandstory-textarea {
+                    width: 40%;
+                    border: 1px solid red;
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    .brandstory-textarea-year{
+                        display: flex;
+                        span{
+                            font-size: 48px;
+                            font-weight: bold;
+                        }
+                        span:nth-child(2) {
+                            color: red;
+                        }
+                    }
+                    h3{
+                        font-size: 32px;
+                        font-weight: bold;
+                    }
+                    p{
+                        font-size: 20px;
+                        line-height: 1.6;
+                    }
+                    .while-lineforhome{
+                        border-top: 4px solid #fff;
+                        width: 60%;
+                    }
+                    .content-p-brandstory-text{
+                        text-align-last: left;
+                        text-indent: 2em;
+                    }
+                    .content-p-brandstory-bottom{
+                        p{
+                            font-size: 40px;
+                            font-weight: bold;
+                        }
+                        p:nth-child(2){
+                            color: red;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        // 首頁第三部分 限時主題
+        .content-p-limitlevel {
+            width: 100%;
+            height: 100vh;
+            background-image: url(/src/assets/img/BG-Index-level.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        // 首頁第四部分 如何遊玩
+        .content-p-howtoplay {
+            width: 100%;
+            height: 200vh;
+            background-image: url(/src/assets/img/BG-Index-How1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        // 首頁第五部分 最新消息
+        .content-p-announcement {
+            width: 100%;
+            height: 100vh;
+            background-image: url(/src/assets/img/BG-Index-How2.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        // 首頁第六部分 FAQ
+        .content-p-faq {
+            width: 100%;
+            height: 100vh;
+            background-image: url(/src/assets/img/BG-Index-How1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     }
 }
