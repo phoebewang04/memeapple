@@ -256,13 +256,17 @@ p {
   }
 }
 
-.banner_video .hospital {
+.theme_banner {
   max-width: 100%;
+  margin-bottom: 80px;
+}
+
+.banner_video {
+  width: 100%;
 }
 
 .banner {
-  max-width: 100%;
-  margin-bottom: 80px;
+  width: 100%;
 }
 
 .theme_container {
@@ -3134,6 +3138,16 @@ body {
   border: 2px solid white; /* 設置左邊框來創建垂直線 */
   height: 32px; /* 設置垂直線的高度 */
   margin-right: 14px;
+}
+
+.theme_lock:nth-of-type(1) {
+  background-image: url("../img/lockbg1.png");
+}
+.theme_lock:nth-of-type(2) {
+  background-image: url("../img/lockbg2.png");
+}
+.theme_lock:nth-of-type(3) {
+  background-image: url("../img/lockbg3.png");
 }
 
 /*# sourceMappingURL=style.css.map */
