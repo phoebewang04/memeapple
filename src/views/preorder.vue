@@ -297,11 +297,9 @@ import Footerbar from '../components/Footerbar.vue';
 import 'v-calendar/style.css';
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/scrollbar';
-// import './style.css';
-
+import 'swiper/css'; // Swiper 核心样式
+import 'swiper/css/free-mode'; // Swiper 自由模式样式
+import 'swiper/css/scrollbar'; // Swiper 滚动条样式
 import { FreeMode, Scrollbar, Mousewheel } from 'swiper/modules';
 
 export default {
@@ -395,6 +393,8 @@ export default {
     background-color:#FCD15B;
 }
 
+/* ------------------------------------------------------------------------ */
+
 .swiper {
     display: none;
     @media screen and (max-width: 430px) {
@@ -406,11 +406,24 @@ export default {
     display: none;
     @media screen and (max-width: 430px) {
         display: block;
+        
     }
 }
 
 .swiper-wrapper {
     height: 480px;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+} 
+
+.swiper-scrollbar {
+    height: 30px !important;
+    background-color: red;
 }
 
 </style>
