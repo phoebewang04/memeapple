@@ -77,19 +77,19 @@ import Footerbar from '../components/Footerbar.vue';
             </div>
         </section>
         <section class="theme_marketing_container">
-            <div class="theme_marketing alien">
+            <div class="theme_alien">
                 <div class="theme_marketing_text">
                     <h3>沉浸體驗&emsp;孤立無援</h3>
                     <p>無垠的宇宙中<br>偏移航道的飛船<br>要如何解開謎團、重回正軌？</p>
                 </div>
             </div>
-            <div class="theme_marketing alien">
+            <div class="theme_alien">
                 <div class="theme_marketing_text">
                     <h3>屏氣凝神&emsp;逃出生天</h3>
-                    <p>在理應無人的船艙找尋生機<br>卻一直聽見詭異的呼吸聲<br>轉角的陰影到底有甚麼在等你？</p>
+                    <p>在理應無人的船艙找尋生機<br>卻一直聽見詭異的呼吸聲<br>轉角的陰影到底有什麼在等你？</p>
                 </div>
             </div>
-            <div class="theme_marketing alien">
+            <div class="theme_alien">
                 <div class="theme_marketing_text">
                     <h3>幽暗密室&emsp;危機四伏</h3>
                     <p>船內多處被暴力破壞<br>究竟是機械故障、船員叛變<br>還是有更邪惡的東西在你身後？</p>

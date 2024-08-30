@@ -368,7 +368,7 @@ p {
   background-color: #221F3C;
 }
 .progress_bar.alien {
-  background-color: #292929;
+  background-color: black;
 }
 
 .progress {
@@ -909,16 +909,16 @@ i.fa-dollar-sign {
   height: 30.8px;
   position: static;
   margin: 0;
-  border-width: 0.8px;
   font-size: 16px;
   width: 80px;
+  color: #221F3C;
 }
 .backstage_button:active {
   background-color: #FFE8BB;
 }
 
 .backstage_button:hover {
-  border-width: 2px;
+  border: 1px solid #292929;
 }
 
 .backstage_table {
@@ -938,12 +938,20 @@ i.fa-dollar-sign {
   border: 1px solid #FEDA77;
   line-height: 2;
 }
+.backstage_table td a {
+  color: #100E24;
+}
+.backstage_table td a :hover {
+  font-weight: bold;
+}
 .backstage_table .backstage_table_button {
   text-decoration: underline;
-  font-weight: bold;
 }
 .backstage_table .backstage_table_button:active {
   color: #FCD15B;
+}
+.backstage_table .backstage_table_button:hover {
+  font-weight: bold;
 }
 
 .backstage_tablehead {
@@ -3419,6 +3427,9 @@ body {
   color: #D8FFDF;
 }
 
+.iconinfo .alien {
+  padding-bottom: 20px;
+}
 .iconinfo .alien h3 {
   color: #D8FFDF;
 }
@@ -3426,19 +3437,37 @@ body {
   text-align: center;
 }
 
-.theme_marketing .alien {
-  width: 80%;
+.theme_alien {
+  overflow: hidden;
   max-width: 1140px;
+  height: 300px;
+  margin: 0 auto;
+  width: 80%;
+  margin-bottom: 30px;
+  background-position: center;
+  position: relative;
+}
+.theme_alien:nth-of-type(1) {
+  background-image: url("../img/alien1.png");
   background-size: cover;
 }
-.theme_marketing .alien:nth-of-type(1) {
-  background-image: url("/src/assets/img/alien1.png");
+.theme_alien:nth-of-type(1) .theme_marketing_text {
+  margin: 70px 0 0 70px;
 }
-.theme_marketing .alien:nth-of-type(2) {
-  background-image: url("/src/assets/img/alien2.png");
+.theme_alien:nth-of-type(2) {
+  background-image: url("../img/alien2.png");
+  background-size: cover;
 }
-.theme_marketing .alien:nth-of-type(3) {
-  background-image: url("/src/assets/img/alien3.png");
+.theme_alien:nth-of-type(2) .theme_marketing_text {
+  text-align: right;
+  margin: 70px 70px 0 0px;
+}
+.theme_alien:nth-of-type(3) {
+  background-image: url("../img/alien3.png");
+  background-size: cover;
+}
+.theme_alien:nth-of-type(3) .theme_marketing_text {
+  margin: 70px 0 0 70px;
 }
 
 .theme_lock:nth-of-type(1) {

@@ -144,9 +144,9 @@
     height: 30.8px;
     position: static;
     margin: 0;
-    border-width: 0.8px;
     font-size: 16px;
     width: 80px;
+    color: map-get($colors, mdnightblue);
   
     &:active{
       background-color: map-get( $colors, lightyellow );
@@ -154,7 +154,7 @@
   }
 
 .backstage_button:hover{
-    border-width: 2px;
+    border: 1px solid map-get($colors, black );
 }
 
 .backstage_table{
@@ -173,13 +173,23 @@
         td{
             border: 1px solid map-get($colors, yellow );
             line-height: 2;
+
+            a{
+                color: map-get($colors, darkblue);
+
+                :hover{
+                    font-weight: bold;
+                }
+            }
         }
         .backstage_table_button{
             text-decoration: underline;
-            font-weight: bold;
         }
         & .backstage_table_button:active{
             color: map-get( $colors, gold );
+        }
+        & .backstage_table_button:hover{
+            font-weight: bold;
         }
 
 }
