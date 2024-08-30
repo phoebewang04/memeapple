@@ -763,22 +763,57 @@ i.fa-dollar-sign {
 }
 .main-homepage .wrapper-homepage .content-p-homedesign {
   width: 100%;
-  background-image: url(/src/assets/img/BG-index.jpg);
+  background-image: url(/src/assets/img/BG-index-red.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  position: relative;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 .main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-effect {
   width: 60%;
-  height: 300px;
-  position: absolute;
-  right: 0;
+  height: 100px;
+  position: relative;
+  margin-left: 60px;
+  filter: contrast(10) blur(1px);
   border: 1px solid red;
 }
-.main-homepage .wrapper-homepage .content-p-homedesign .homedesign-img-line {
+.main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-effect .homeeffect-word {
   position: absolute;
+  animation: homeeffect-word 3s infinite ease-in-out;
+  color: #B00000;
+  font-weight: bold;
+  width: 50%;
+}
+.main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-effect .homeeffect-word:nth-child(1) {
+  animation-delay: -3s;
+}
+.main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-effect .homeeffect-word:nth-child(2) {
+  animation-delay: -2.625s;
+}
+.main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-effect .homeeffect-word:nth-child(3) {
+  animation-delay: -2.25s;
+}
+.main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-effect .homeeffect-word:nth-child(4) {
+  animation-delay: -1.875s;
+}
+.main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-effect .homeeffect-word:nth-child(5) {
+  animation-delay: -1.5s;
+}
+.main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-effect .homeeffect-word:nth-child(6) {
+  animation-delay: -1.125s;
+}
+.main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-effect .homeeffect-word:nth-child(7) {
+  animation-delay: -0.75s;
+}
+@keyframes homeeffect-word {
+  0%, 5%, 100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+  20%, 80% {
+    filter: blur(0.2em);
+    opacity: 0;
+  }
 }
 .main-homepage .wrapper-homepage .content-p-homedesign .content-p-homedesign-text {
   margin-top: 250px;
@@ -817,6 +852,7 @@ i.fa-dollar-sign {
   background-repeat: no-repeat;
   background-size: cover;
   border: 1px solid gold;
+  position: relative;
 }
 .main-homepage .wrapper-homepage .content-p-brandstory .content-p-brandstory-contenter {
   display: flex;

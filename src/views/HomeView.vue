@@ -1,12 +1,30 @@
 <script setup>
-
+  import { onMounted } from 'vue';
   import '../assets/css/style.css';
   import TopNavbar from '../components/TopNavbar.vue';
   import Footerbar from '../components/Footerbar.vue';
 
-  let canvas = document.querySelector('#homedesign-redline');
-  let context = canvas.getContext('2d');
-  
+  onMounted(() =>{
+    const word = document.querySelectorAll('.homeeffect-word');
+    word.forEach(word=>{
+    const randomTop = Math.random() * 100;
+    const randomLeft = Math.random() * 100;
+    const randomRight = Math.random() * 100;
+    const randomBottom = Math.random() * 100;
+    const randomFontSize = Math.random() * 3 + 1;
+    const randomOpacity = Math.random();
+    const randomScale = Math.random() * 2 + 0.5; // 設置隨機縮放比例
+
+    word.style.top = `${randomTop}%`;
+    word.style.left = `${randomLeft}%`;
+    word.style.right = `${randomRight}%`;
+    word.style.bottom = `${randomBottom}%`;
+
+    word.style.fontSize = `${randomFontSize}em`;
+    word.style.opacity = randomOpacity;
+    word.style.transform = `translate(-50%, -50%,-50%,-50%) scale(${randomScale})`;
+    });
+  });
 
 
 </script>
@@ -19,9 +37,15 @@
       <!-- 首頁第一部分  主視覺-->
       <section class="content-p-homedesign">
         <!-- 浮動文字特效區域 -->
-        <div class="content-p-homedesign-effect"></div>
-        <!--  紅色線條區域 -->
-        <div class="homedesign-img-line" id="homedesign-redline"></div>
+        <div class="content-p-homedesign-effect">
+          <div class="homeeffect-word"># 代碼深淵</div>
+          <div class="homeeffect-word"># 成都醫院</div>
+          <div class="homeeffect-word"># 恐怖密室</div>
+          <div class="homeeffect-word">怪談逐漸湧入...!</div>
+          <div class="homeeffect-word"># 時光迷宮</div>
+          <div class="homeeffect-word"># 逃離武石監</div>
+          <div class="homeeffect-word"># 逃出虛空</div>
+        </div>
         <!-- 文字區域 -->
         <div class="content-p-homedesign-text">
           <h1>Meme謎因</h1>

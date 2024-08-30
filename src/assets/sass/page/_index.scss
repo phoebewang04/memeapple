@@ -10,23 +10,38 @@
         // 首頁第一部分  主視覺
         .content-p-homedesign {
             width: 100%;
-            background-image: url(/src/assets/img/BG-index.jpg);
+            background-image: url(/src/assets/img/BG-index-red.jpg);
             background-repeat: no-repeat;
             background-size: cover;
-            padding-top: 100px;
-            padding-bottom: 100px;
-            position: relative;
-
+            padding-top: 80px;
+            padding-bottom: 80px;
+            $speed: 3s;
+            $wordCount: 7;
             .content-p-homedesign-effect {
                 width: 60%;
-                height: 300px;
-                position: absolute;
-                right: 0;
+                height: 100px;
+                position: relative;
+                margin-left: 60px;
+                filter: contrast(10) blur(1px);
                 border: 1px solid red;
-            }
-
-            .homedesign-img-line{
-                position: absolute;
+                .homeeffect-word {
+                    position: absolute;
+                    animation: homeeffect-word $speed infinite ease-in-out;
+                    color: map-get($colors , underred );
+                    font-weight: bold;
+                    width: 50%;
+                  
+                    @for $i from 0 to $wordCount {
+                      &:nth-child(#{$i + 1}) {
+                        animation-delay: ($speed / ($wordCount + 1) * $i) - $speed;
+                      }
+                    }
+                  
+                    @keyframes homeeffect-word {
+                      0%, 5%, 100% { filter: blur(0px); opacity: 1; }        
+                      20%, 80% { filter: blur(0.2em); opacity: 0; }        
+                    }
+                  }
             }
 
             .content-p-homedesign-text {
@@ -75,6 +90,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             border: 1px solid gold;
+            position: relative;
 
             .content-p-brandstory-effect {}
 
