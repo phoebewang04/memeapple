@@ -8,16 +8,17 @@ import Footerbar from '../components/Footerbar.vue';
 <!-- header -->
 <TopNavbar />
    <!-- banner -->
+    <div class="theme_banner">
+    <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
+        width="100%" class="banner_video"></video>
 
-   <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
-        width="100%" class="banner_video hospital"></video>
-
-    <!-- <img src="./src/assets/banner.png" alt="" class="banner"> -->
-
+    <!-- <img src="../assets/img/header.png" alt="" class="banner"> -->
+    </div>
+   
     <main class="theme_container">
         <!-- -----主題文字介紹＋指數 start----- -->
         <section class="overview">
-            <div class="blood"> </div>
+            <!-- <div class="blood"> </div> -->
             <p class="overview_text">
                 五年前，成都醫院因連環失蹤案而成為禁地，身為菁英偵探的你，收到神秘委託，必須調查此宗懸案，隨著你步入醫院，腐朽的氣息和幽暗的走廊讓人不寒而慄。這裡的每一個角落似乎都隱藏著難以解釋的秘密…</p>
 
@@ -76,27 +77,27 @@ import Footerbar from '../components/Footerbar.vue';
                 <p>層層難關，精心雕琢<br>由你揭開最深的秘密</p>
             </div>
         </section>
-        <section class="theme_hospital_container">
-            <div class="theme_hospital">
-                <div class="theme_hospital_text">
+        <section class="theme_marketing_container">
+            <div class="theme_marketing">
+                <div class="theme_marketing_text">
                     <h3>廢墟深處，重重謎團</h3>
                     <p>步入禁地，調查塵封的過往<br>觸碰那被時間遺忘的秘密</p>
                 </div>
             </div>
-            <div class="theme_hospital">
-                <div class="theme_hospital_text">
+            <div class="theme_marketing">
+                <div class="theme_marketing_text">
                     <h3>光影交錯，虛實難辨</h3>
                     <p>詭異的筆記，失蹤者的殘骸<br>指引你走向真相的深淵</p>
                 </div>
             </div>
-            <div class="theme_hospital">
-                <div class="theme_hospital_text">
+            <div class="theme_marketing">
+                <div class="theme_marketing_text">
                     <h3>怨念瀰漫，等待救贖</h3>
                     <p>唯有步步為營，方能撕裂虛<br>幻的帷幕，讓真相水落石出</p>
                 </div>
             </div>
-            <div class="theme_hospital">
-                <div class="theme_hospital_text">
+            <div class="theme_marketing">
+                <div class="theme_marketing_text">
                     <p>沉寂五年的未解之謎，至今仍在黑暗中低語</p>
                     <p>你願意接下此次委託，揭開那些不該被遺忘的秘密嗎？</p>
                 </div>
