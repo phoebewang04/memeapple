@@ -8,28 +8,30 @@ import Footerbar from '../components/Footerbar.vue';
 <!-- header -->
 <TopNavbar />
    <!-- banner -->
-    <div class="theme_banner">
-    <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
-        width="100%" class="banner_video"></video>
 
-    <!-- <img src="../assets/img/header.png" alt="" class="banner"> -->
+   <div class="theme_banner">
+    <!-- <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
+        width="100%" class="banner_video"></video> -->
+        
+        <img src="@/assets/img/header.png" alt="" class="banner">
     </div>
-   
+
+  
     <main class="theme_container">
         <!-- -----主題文字介紹＋指數 start----- -->
         <section class="overview">
-            <!-- <div class="blood"> </div> -->
+            <div class="blood"> </div>
             <p class="overview_text">
-                五年前，成都醫院因連環失蹤案而成為禁地，身為菁英偵探的你，收到神秘委託，必須調查此宗懸案，隨著你步入醫院，腐朽的氣息和幽暗的走廊讓人不寒而慄。這裡的每一個角落似乎都隱藏著難以解釋的秘密…</p>
+                武石監來了新的所長，他以其殘暴和病態的控制欲而聞名，他經常在監獄中進行秘密的實驗和虐待。再這樣下去遲早我們會死在這裡，我們必須設法越獄，重獲自由，並揭露所長的可怕秘密。</p>
 
             <div class="theme_number hospital">
                 <span>燒腦指數</span>
                 <div class="progress_bar hospital">
-                    <div class="progress hospital" style="width: 87%;">87%</div>
+                    <div class="progress hospital" style="width: 95%;">95%</div>
                 </div>
                 <span>驚嚇指數</span>
                 <div class="progress_bar hospital">
-                    <div class="progress hospital" style="width: 95%;">95%</div>
+                    <div class="progress hospital" style="width: 87%;">87%</div>
                 </div>
                 <span>推薦指數</span>
                 <div class="progress_bar hospital">
@@ -62,48 +64,48 @@ import Footerbar from '../components/Footerbar.vue';
 
         <section class="iconinfo">
             <div class="theme_icon hospital">
-                <img src="../assets/img/icon-1.png" alt="">
-                <h3>極度重恐</h3>
-                <p>真人互動，將恐懼推向極限<br>密閉驚悚的壓迫體驗</p>
+                <img src="../assets/img/prisonuniform.png" alt="">
+                <h3>角色扮演</h3>
+                <p>換上囚服，扮演逃犯與獄友<br>們共同患難逃出</p>
             </div>
             <div class="theme_icon hospital">
-                <img src="../assets/img/icon-2.png" alt="">
-                <h3>身歷其境</h3>
-                <p>精心還原醫院每個角落<br>逼真場景宛如置身其中</p>
+                <img src="../assets/img/handcuffs.png" alt="">
+                <h3>逃生道具</h3>
+                <p>逃生道具散落監獄每個角落<br>解題找出道具逃離監獄</p>
             </div>
             <div class="theme_icon hospital">
-                <img src="../assets/img/icon-3.png" alt="">
+                <img src="../assets/img/room.jpg" alt="">
                 <h3>海量謎題</h3>
-                <p>層層難關，精心雕琢<br>由你揭開最深的秘密</p>
+                <p>打造真實監獄場景<br>宛如身歷其境</p>
             </div>
         </section>
-        <section class="theme_marketing_container">
-            <div class="theme_marketing">
-                <div class="theme_marketing_text">
-                    <h3>廢墟深處，重重謎團</h3>
-                    <p>步入禁地，調查塵封的過往<br>觸碰那被時間遺忘的秘密</p>
+        <section class="theme_hospital_container">
+            <div class="theme_hospital theme_lock">
+                <div class="theme_hospital_text">
+                    <h3>陰森監獄，黑暗深處</h3>
+                    <p>冰冷牢籠、囚徒嘶啞的聲音<br>在死寂的監獄中探索隱藏於<br>冷酷牆壁下的黑暗秘密</p>
                 </div>
             </div>
-            <div class="theme_marketing">
-                <div class="theme_marketing_text">
-                    <h3>光影交錯，虛實難辨</h3>
-                    <p>詭異的筆記，失蹤者的殘骸<br>指引你走向真相的深淵</p>
+            <div class="theme_hospital theme_lock">
+                <div class="theme_hospital_text">
+                    <h3>陰影囚室，沉默線索</h3>
+                    <p>狹窄的牢房，牆壁上的刻痕<br>在囚室裡解讀那些隱藏的符號<br>發現通向自由的線索</p>
                 </div>
             </div>
-            <div class="theme_marketing">
-                <div class="theme_marketing_text">
-                    <h3>怨念瀰漫，等待救贖</h3>
-                    <p>唯有步步為營，方能撕裂虛<br>幻的帷幕，讓真相水落石出</p>
+            <div class="theme_hospital theme_lock">
+                <div class="theme_hospital_text">
+                    <h3>詭異所長，心理暗黑</h3>
+                    <p>恐怖的辦公室，獵物的相片<br>所長的變態計劃<br>在陰影中揭開他病態的秘密</p>
                 </div>
             </div>
-            <div class="theme_marketing">
-                <div class="theme_marketing_text">
+            <!-- <div class="theme_hospital">
+                <div class="theme_hospital_text">
                     <p>沉寂五年的未解之謎，至今仍在黑暗中低語</p>
                     <p>你願意接下此次委託，揭開那些不該被遺忘的秘密嗎？</p>
                 </div>
-            </div>
+            </div> -->
 
-            <input type="button" value="預約偵查" class="btn">
+            <input type="button" value="預約逃獄" class="btn">
         </section>
 
         <section class="notice">
@@ -120,7 +122,7 @@ import Footerbar from '../components/Footerbar.vue';
             <div class="notice_text hospital">
                 <p>＊ 建議遊戲人數 6 ~ 7 人，容納人數 4 - 8 人。</p>
                 <p>＊ 建議穿著輕便服裝，避免穿裙子。</p>
-                <p>＊ 會有真人ＮＰＣ互動，無法調整恐怖程度，膽小誤入</p>
+                <p>＊ 遊戲進行中禁止攝影、飲食、吸菸，現場會有置物區保管</p>
                 <p>＊ 未滿15歲孩童需有成人陪同參與。</p>
             </div>
 
