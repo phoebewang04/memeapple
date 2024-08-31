@@ -103,11 +103,7 @@ const routes = [
     path: '/Theme_Time/',
     component: Theme_Time
   },
-<<<<<<< HEAD
-  {  
-=======
   {
->>>>>>> aa2f70ec5e82e5f03c44cf50fae27bdeafad5fe2
     path: '/Membermanage/',
     component: Membermanage
   },

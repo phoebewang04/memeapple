@@ -4,9 +4,6 @@ import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 
-<<<<<<< HEAD
-</script>
-=======
 
 </script>
 
@@ -14,7 +11,6 @@ import Footerbar from '../components/Footerbar.vue';
 
 
 
->>>>>>> aa2f70ec5e82e5f03c44cf50fae27bdeafad5fe2
 
 <template>
     <TopNavbar />
@@ -101,7 +97,3 @@ import Footerbar from '../components/Footerbar.vue';
     </div>
     <Footerbar />
 </template>
-<<<<<<< HEAD
-=======
-
->>>>>>> aa2f70ec5e82e5f03c44cf50fae27bdeafad5fe2
