@@ -102,7 +102,7 @@ import Footerbar from '../components/Footerbar.vue';
                 </div>
             </div> -->
 
-            <input type="button" value="預約登船" class="btn alien" style="background-color: #6EE742;">
+            <input type="button" value="預約登船" class="btn alien" style="background-color: #6EE742;"  >
         </section>
 
         <section class="notice">

@@ -68,3 +68,7 @@
 
 // 從按鈕後就無法透過css設定，先將顏色寫在html標籤
 
+.btn .alien{
+    background-color: map-get($colors, green );
+}
+
