@@ -13,6 +13,7 @@ import ThemeAlien from '../views/ThemeAlien.vue';
 import Theme_Lock from '../views/Theme_Lock.vue';
 import preorder from '../views/preorder.vue';
 import orderinform from '../views/orderinform.vue';
+import pay from '../views/pay.vue';
 
 // 後台相關路由
 import Backstage_index from '../views/Backstage_index.vue';
@@ -93,6 +94,11 @@ const routes = [
     path: '/Theme_Lock/',
     component: Theme_Lock
   },
+  {
+    path: '/pay/',
+    component: pay
+  },
+
 ]
 
 export default function (history) {

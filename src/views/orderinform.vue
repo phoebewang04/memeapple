@@ -10,9 +10,9 @@ import Footerbar from '../components/Footerbar.vue';
 
   <TopNavbar />
 
-  <div id="wrapper">
+  <div id="order_wrapper">
 
-    <div class="return">
+    <div class="order_return">
         <i class="fa-solid fa-chevron-left"></i>
         <a href="#">
             <p>返回</p>
@@ -46,12 +46,12 @@ import Footerbar from '../components/Footerbar.vue';
 
     <div class="order_all">
 
-        <div class="order_right">
+        <div class="order_left">
 
             <div class="memberinfrom">
                 <div class="login">
                     <h3>聯絡人資料</h3>
-                    <p>已經是會員? 請 <a href="#">登入</a></p>
+                    <p>已經是會員？請 <a href="#">登入</a></p>
                 </div>
 
                 <div class="mi_dt">
@@ -104,12 +104,12 @@ import Footerbar from '../components/Footerbar.vue';
                 <h3>確認報名資料</h3>
 
                 <div class="check">
-                    <input type="checkbox">
+                    <input type="checkbox" class="box">
                     <p>我同意《末日庇護所注意事項》請閱讀《末日庇護所》頁面中下方注意事項(含取消及更改辦法)</p>
                 </div>
 
                 <div class="check">
-                    <input type="checkbox">
+                    <input type="checkbox" class="box">
                     <p>遊戲出發日 " 當日及前兩日 " 不接受取消，並不予退回款項。</p>
                 </div>
 
@@ -119,19 +119,19 @@ import Footerbar from '../components/Footerbar.vue';
 
         <!-- /* --------------------------訂單明細表------------------------------------------- */ -->
 
-        <div class="order_left">
+        <div class="order_right">
 
             <div class="details">
                 <h3>訂單明細</h3>
 
                 <div class="list">
                     <p>末日庇護所 台北館</p>
-                    <p>場次時間 :
+                    <p>場次時間：
                         <br>
-                        2024 年08 月 06 日 10:30
+                        2024 年08 月 06 日 10：30
                     </p>
-                    <p>總人數: 4 人</p>
-                    <p>訂購項目 :
+                    <p>總人數：4 人</p>
+                    <p>訂購項目：
                         <br>
                         包場訂金 2000 元 X1
                     </p>
