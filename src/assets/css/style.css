@@ -2806,8 +2806,7 @@ body {
   background-image: url("../img/cemetery.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-position: 50% 100%;
 }
 .parallax #cemetery_text {
   position: absolute;
@@ -2819,16 +2818,27 @@ body {
 }
 .parallax img {
   position: absolute;
-  top: 0;
-  left: 0;
-  max-width: 100%;
   pointer-events: none;
 }
+.parallax #tree-left {
+  top: 0;
+  left: 0;
+}
+.parallax #tree-right {
+  top: 0;
+  right: 0;
+}
+.parallax #grass {
+  bottom: 0px;
+  width: 100%;
+}
 .parallax #gate-left {
-  transform: translateX(-282px);
+  bottom: 0;
+  left: -300px;
 }
 .parallax #gate-right {
-  transform: translateX(305px);
+  bottom: 0;
+  right: -300px;
 }
 
 .split_text {
@@ -2846,16 +2856,24 @@ body {
   text-align: center;
 }
 
-.plate_1, .plate_2, .plate_3 {
+.plate_1,
+.plate_2,
+.plate_3 {
   fill: #909090;
 }
-.plate_1:nth-of-type(1):hover, .plate_2:nth-of-type(1):hover, .plate_3:nth-of-type(1):hover {
+.plate_1:nth-of-type(1):hover,
+.plate_2:nth-of-type(1):hover,
+.plate_3:nth-of-type(1):hover {
   fill: #dea573;
 }
-.plate_1:nth-of-type(2):hover, .plate_2:nth-of-type(2):hover, .plate_3:nth-of-type(2):hover {
+.plate_1:nth-of-type(2):hover,
+.plate_2:nth-of-type(2):hover,
+.plate_3:nth-of-type(2):hover {
   fill: #8fcc7c;
 }
-.plate_1:nth-of-type(3):hover, .plate_2:nth-of-type(3):hover, .plate_3:nth-of-type(3):hover {
+.plate_1:nth-of-type(3):hover,
+.plate_2:nth-of-type(3):hover,
+.plate_3:nth-of-type(3):hover {
   fill: #7cc0cc;
 }
 
@@ -2875,21 +2893,27 @@ body {
 }
 
 .zombie_hand {
-  transform-origin: bottom center; /* 設定旋轉中心點 */
-  animation: wipeGlass 2s infinite ease-in-out; /* 動畫效果 */
+  transform-origin: bottom center;
+  /* 設定旋轉中心點 */
+  animation: wipeGlass 2s infinite ease-in-out;
+  /* 動畫效果 */
 }
 @keyframes wipeGlass {
   0% {
-    transform: rotate(0deg) translateX(0) translateY(7px); /* 初始位置 */
+    transform: rotate(0deg) translateX(0) translateY(7px);
+    /* 初始位置 */
   }
   50% {
-    transform: rotate(-2deg) translateX(-10px) translateY(0px); /* 向右上方移動並旋轉 */
+    transform: rotate(-2deg) translateX(-10px) translateY(0px);
+    /* 向右上方移動並旋轉 */
   }
   75% {
-    transform: rotate(2deg) translateX(0) translateY(10px); /* 回到初始位置 */
+    transform: rotate(2deg) translateX(0) translateY(10px);
+    /* 回到初始位置 */
   }
   100% {
-    transform: rotate(0deg) translateX(0) translateY(7px); /* 回到初始位置 */
+    transform: rotate(0deg) translateX(0) translateY(7px);
+    /* 回到初始位置 */
   }
 }
 
@@ -2909,22 +2933,27 @@ body {
 }
 
 .palte3_bigzombie {
-  animation: zombieWalk 5s infinite; /* 設定動畫循環，來回移動 */
+  animation: zombieWalk 5s infinite;
+  /* 設定動畫循環，來回移動 */
   animation-timing-function: steps(5, end);
 }
 
 @keyframes zombieWalk {
   0% {
-    transform: translateX(0) scale(1, 1); /* 初始位置，正常方向 */
+    transform: translateX(0) scale(1, 1);
+    /* 初始位置，正常方向 */
   }
   50% {
-    transform: translateX(100px) scale(1, 1); /* 往右移動80px */
+    transform: translateX(100px) scale(1, 1);
+    /* 往右移動80px */
   }
   51% {
-    transform: translateX(calc(50px + 150%)) scale(-1, 1); /* 開始翻轉，並補償位置 */
+    transform: translateX(calc(50px + 150%)) scale(-1, 1);
+    /* 開始翻轉，並補償位置 */
   }
   100% {
-    transform: translateX(145%) scale(-1, 1); /* 翻轉後回到原始位置 */
+    transform: translateX(145%) scale(-1, 1);
+    /* 翻轉後回到原始位置 */
   }
 }
 /*
@@ -3386,6 +3415,10 @@ body {
 }
 .theme_lock:nth-of-type(3) {
   background-image: url("../img/lockbg3.png");
+}
+
+.wrappermmange {
+  display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */

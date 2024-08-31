@@ -28,7 +28,7 @@ export default {
         <!-- 這是列表，透過router連結到其他 .vue 頁面 -->
         <ul id="menuBar" :class="{ 'visible': menuBarVisible }">
             <li><router-link to="/index/">首頁</router-link></li>
-            <!-- <li><router-link to="/Join/">會員專區</router-link></li> -->
+            <li><router-link to="/Membermanage/">會員專區</router-link></li>
             <li><router-link to="/Minigame/">線上體驗</router-link></li>
             <li><router-link to="/Branch/">分館介紹</router-link></li>
             <li><router-link to="/Theme_Lock/">會員專區</router-link></li>

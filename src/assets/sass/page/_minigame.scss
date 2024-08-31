@@ -14,9 +14,14 @@
     background-image: url('../img/cemetery.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-position: 50% 100%;
+    // background-attachment: fixed;
 
+    // .sticky-background{
+    //     width: 100%;
+    //     // position: 50% 100%;
+    //     position: relative;
+    // }
 
     #cemetery_text {
         position: absolute;
@@ -30,20 +35,39 @@
 
     img {
         position: absolute;
-        top: 0;
-        left: 0;
-        max-width: 100%;
+        // bottom: 0;
+        // left: 0;
+        // max-width: 100%;
         pointer-events: none;
     }
 
-    #gate-left {
+    #tree-left {
+        top: 0;
+        left: 0;
+    }
 
-        transform: translateX(-282px);
+
+    #tree-right {
+        top: 0;
+        right: 0;
+    }
+
+    #grass {
+        bottom: 0px;
+        width: 100%;
+    }
+
+
+    #gate-left {
+        bottom: 0;
+        left: -300px;
+        // transform: translateX(-282px);
     }
 
     #gate-right {
-
-        transform: translateX(305px);
+        bottom: 0;
+        right: -300px;
+        // transform: translateX(305px);
     }
 }
 
@@ -63,76 +87,90 @@
 // -----map start-----
 
 .minigame_map {
-    margin: 200px 0 ;
+    margin: 200px 0;
     text-align: center;
 }
 
-.plate_1,.plate_2,.plate_3{
-    
-    fill:#909090;
-    
-    &:nth-of-type(1):hover{
-        fill:#dea573;
+.plate_1,
+.plate_2,
+.plate_3 {
+
+    fill: #909090;
+
+    &:nth-of-type(1):hover {
+        fill: #dea573;
     }
-    &:nth-of-type(2):hover{
-        fill:#8fcc7c;
+
+    &:nth-of-type(2):hover {
+        fill: #8fcc7c;
     }
+
     //鬼碑迷陣
-    &:nth-of-type(3):hover{
-        fill:#7cc0cc;
+    &:nth-of-type(3):hover {
+        fill: #7cc0cc;
     }
 }
 
 
-.coordinate{
+.coordinate {
     animation: updown .5s linear infinite;
-@keyframes updown {
-    0% {
-        transform: translateY(0px)
-    }
 
-    50% {
-        transform: translateY(-10px)
-    }
+    @keyframes updown {
+        0% {
+            transform: translateY(0px)
+        }
 
-    100% {
-        transform: translateY(0px)
+        50% {
+            transform: translateY(-10px)
+        }
+
+        100% {
+            transform: translateY(0px)
+        }
     }
-}
 }
 
 .zombie_hand {
-    transform-origin: bottom center; /* 設定旋轉中心點 */
-    animation: wipeGlass 2s infinite ease-in-out; /* 動畫效果 */
+    transform-origin: bottom center;
+    /* 設定旋轉中心點 */
+    animation: wipeGlass 2s infinite ease-in-out;
+    /* 動畫效果 */
 
     @keyframes wipeGlass {
         0% {
-          transform: rotate(0deg) translateX(0) translateY(7px); /* 初始位置 */
+            transform: rotate(0deg) translateX(0) translateY(7px);
+            /* 初始位置 */
         }
+
         50% {
-          transform: rotate(-2deg) translateX(-10px) translateY(0px); /* 向右上方移動並旋轉 */
+            transform: rotate(-2deg) translateX(-10px) translateY(0px);
+            /* 向右上方移動並旋轉 */
         }
+
         75% {
-            transform: rotate(2deg) translateX(0) translateY(10px); /* 回到初始位置 */
-          }
-        100% {
-          transform: rotate(0deg) translateX(0) translateY(7px); /* 回到初始位置 */
+            transform: rotate(2deg) translateX(0) translateY(10px);
+            /* 回到初始位置 */
         }
-      }
+
+        100% {
+            transform: rotate(0deg) translateX(0) translateY(7px);
+            /* 回到初始位置 */
+        }
+    }
 }
-  
-.minigame_ghost{
+
+.minigame_ghost {
     animation: ghostupdown 2s linear infinite;
 
     @keyframes ghostupdown {
         0% {
             transform: translateY(0px)
         }
-    
+
         50% {
             transform: translateY(-30px)
         }
-    
+
         100% {
             transform: translateY(0px)
         }
@@ -141,26 +179,34 @@
 
 .palte3_bigzombie {
     // position: relative; /* 讓動畫相對於原位置移動 */
-    animation: zombieWalk 5s infinite; /* 設定動畫循環，來回移動 */
+    animation: zombieWalk 5s infinite;
+    /* 設定動畫循環，來回移動 */
     animation-timing-function: steps(5, end);
-  }
-  
-  @keyframes zombieWalk {
+}
+
+@keyframes zombieWalk {
     0% {
-      transform: translateX(0) scale(1, 1); /* 初始位置，正常方向 */
+        transform: translateX(0) scale(1, 1);
+        /* 初始位置，正常方向 */
     }
+
     50% {
-      transform: translateX(100px) scale(1, 1); /* 往右移動80px */
+        transform: translateX(100px) scale(1, 1);
+        /* 往右移動80px */
     }
+
     51% {
-      transform: translateX(calc(50px + 150%)) scale(-1, 1); /* 開始翻轉，並補償位置 */
+        transform: translateX(calc(50px + 150%)) scale(-1, 1);
+        /* 開始翻轉，並補償位置 */
     }
+
     100% {
-      transform: translateX(145%) scale(-1, 1); /* 翻轉後回到原始位置 */
+        transform: translateX(145%) scale(-1, 1);
+        /* 翻轉後回到原始位置 */
     }
-  }
-  
-  
+}
+
+
 
 
 

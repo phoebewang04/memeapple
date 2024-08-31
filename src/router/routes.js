@@ -1,4 +1,4 @@
-import { createRouter } from 'vue-router'
+import { createRouter } from 'vue-router';
 // 前台相關路由
 import Fontpage from '../views/Frontpage.vue';
 import Home from '../views/HomeView.vue';
@@ -13,6 +13,7 @@ import ThemeAlien from '../views/ThemeAlien.vue';
 import Theme_Lock from '../views/Theme_Lock.vue';
 import preorder from '../views/preorder.vue';
 import orderinform from '../views/orderinform.vue';
+import Membermanage from '../views/Membermanage.vue';
 
 // 後台相關路由
 import Backstage_index from '../views/Backstage_index.vue';
@@ -92,6 +93,10 @@ const routes = [
   {
     path: '/Theme_Lock/',
     component: Theme_Lock
+  },
+  {
+    path: '/Membermanage/',
+    component: Membermanage
   },
 ]
 

@@ -13,7 +13,8 @@ import Lenis from '@studio-freight/lenis';
 
    <body class="minigame_body">
     <section class="parallax">
-      <div class="sticky-background"></div>
+      <!-- <img src="../assets/img/cemetery.png" class="sticky-background"> -->
+      <!-- <div class="sticky-background"></div> -->
       <h2 ref="cemeteryText" id="cemetery_text">亡者之途：墓園的詛咒</h2>
       <img src="../assets/img/tree-left.png" ref="treeLeft" id="tree-left">
       <img src="../assets/img/tree-right.png" ref="treeRight" id="tree-right">
@@ -416,11 +417,11 @@ export default {
     handleScroll() {
       let value = window.scrollY;
 
-      this.$refs.cemeteryText.style.marginTop = value * 0.7 + "px";
-      this.$refs.treeLeft.style.left = value * -0.9 + "px";
-      this.$refs.treeRight.style.left = value * 0.9 + "px";
-      this.$refs.gateLeft.style.left = value * 0.2 + "px";
-      this.$refs.gateRight.style.left = value * -0.2 + "px";
+      this.$refs.cemeteryText.style.marginTop =`translateX(${value * 0.7}px)`;
+      this.$refs.treeLeft.style.transform = `translateX(-${value * 0.2}px)`;
+      this.$refs.treeRight.style.transform =`translateX(${value * 0.9}px)`;
+      this.$refs.gateLeft.style.transform = `translateX(${value * 0.2}px)` ;
+      this.$refs.gateRight.style.transform = `translateX(-${value * 0.2}px)` ;
     },
   },
 };
