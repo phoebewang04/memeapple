@@ -5,60 +5,12 @@ import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 
 
-// var app = Vue.createApp({
-//         data(){
-//           return {
-//             currentTab: "tab1",
-//             tabs: [
-//               {
-//                 id: "tab1",
-//                 name: "頁籤一"
-//               },
-//               {
-//                 id: "tab2",
-//                 name: "頁籤二"
-//               },
-//               {
-//                 id: "tab3",
-//                 name: "頁籤三"
-//               }
-//             ]
-//           };
-//         },
-//         computed: {
-//             current_tab_component(){
-//             return this.currentTab + "_content";
-//         }
-//         }
-//       });
-
-
-//       app.component("tab1_content", {
-//         template: `
-//             <div class="a">tab1 的內容</div>
-//         `
-//         });
-
-//         app.component("tab2_content", {
-//         template: `
-//             <div class="b">tab2 的內容</div>
-//         `
-//         });
-
-//         app.component("tab3_content", {
-//         template: `
-//             <div class="c">tab3 的內容</div>
-//         `
-//         });
+</script>
 
 
 
-//       app.mount("#the_block");
-// </script>
-// {/* <div id="the_block">
-//    <button type="button" v-for="tab in tabs" :class="{active: currentTab == tab.id}" :key="tab.id" @click="currentTab = tab.id" class="btn">{{ tab.name }}</button>
-// </div>  */}
-// {/* <component v-bind:is="current_tab_component" class="tab_content"></component>  */}
+
+
 
 <template>
     <TopNavbar />
@@ -146,55 +98,3 @@ import Footerbar from '../components/Footerbar.vue';
     <Footerbar />
 </template>
 
-<!-- 
-<script type="module">
-      var app = Vue.createApp({
-        data(){
-          return {
-            currentTab: "tab1",
-            tabs: [
-              {
-                id: "tab1",
-                name: "頁籤一"
-              },
-              {
-                id: "tab2",
-                name: "頁籤二"
-              },
-              {
-                id: "tab3",
-                name: "頁籤三"
-              }
-            ]
-          };
-        },
-        computed: {
-            current_tab_component(){
-            return this.currentTab + "_content";
-        }
-        }
-      });
-
-
-      app.component("tab1_content", {
-        template: `
-            <div class="a">tab1 的內容</div>
-        `
-        });
-
-        app.component("tab2_content", {
-        template: `
-            <div class="b">tab2 的內容</div>
-        `
-        });
-
-        app.component("tab3_content", {
-        template: `
-            <div class="c">tab3 的內容</div>
-        `
-        });
-
-
-
-      app.mount("#the_block");
-    </script> -->
