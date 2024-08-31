@@ -69,22 +69,22 @@ import Footerbar from '../components/Footerbar.vue';
 
                     <div class="location_icon">
                         <i class="fa-solid fa-location-dot"></i>
-                        <p> 台北館: <br><br>台北市密逃路88之107號</p>
+                        <p> 台北館：<br><br>台北市密逃路88之107號</p>
                     </div>
 
                     <div class="location_icon">
                         <i class="fa-regular fa-paper-plane"></i>
-                        <p> Email: <br><br>meme9487@gmail.com</p>
+                        <p> Email：<br><br>meme9487@gmail.com</p>
                     </div>
 
                     <div class="location_icon">
                         <i class="fa-solid fa-square-phone"></i>
-                        <p> 聯絡電話:<br><br> 09123456789</p>
+                        <p> 聯絡電話：<br><br> 09123456789</p>
                     </div>
 
                     <div class="location_icon">
                         <i class="fa-solid fa-user-group"></i>
-                        <p> 客服時間:<br><br> 10:00-18:00</p>
+                        <p> 客服時間：<br><br> 10：00 - 18：00</p>
                     </div>
 
                 </div>

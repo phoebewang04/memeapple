@@ -1,0 +1,36 @@
+.escape_container {
+    // border: 1px solid white;
+
+    margin: auto 0;
+
+    p {
+        text-align: center;
+        margin: 0 auto;
+        width: 66%;
+        // border: 1px solid white;
+    }
+
+}
+
+.esc_bathroom {
+    max-width: 100%;
+    position: relative;
+
+    img {
+        display: block;
+        margin: 0 auto;
+        width: 80%;
+    }
+
+}
+
+.esc_bathexit {
+
+    img {
+        position: absolute;
+        width: 15%;
+        bottom: 1px;
+        left: 35%;
+        cursor: pointer;
+    }
+}

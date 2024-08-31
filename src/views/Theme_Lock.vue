@@ -79,27 +79,27 @@ import Footerbar from '../components/Footerbar.vue';
                 <p>打造真實監獄場景<br>宛如身歷其境</p>
             </div>
         </section>
-        <section class="theme_hospital_container">
-            <div class="theme_hospital theme_lock">
-                <div class="theme_hospital_text">
+        <section class="theme_marketing_container">
+            <div class="theme_marketing theme_lock">
+                <div class="theme_marketing_text">
                     <h3>陰森監獄，黑暗深處</h3>
                     <p>冰冷牢籠、囚徒嘶啞的聲音<br>在死寂的監獄中探索隱藏於<br>冷酷牆壁下的黑暗秘密</p>
                 </div>
             </div>
-            <div class="theme_hospital theme_lock">
-                <div class="theme_hospital_text">
+            <div class="theme_marketing theme_lock">
+                <div class="theme_marketing_text">
                     <h3>陰影囚室，沉默線索</h3>
                     <p>狹窄的牢房，牆壁上的刻痕<br>在囚室裡解讀那些隱藏的符號<br>發現通向自由的線索</p>
                 </div>
             </div>
-            <div class="theme_hospital theme_lock">
-                <div class="theme_hospital_text">
+            <div class="theme_marketing theme_lock">
+                <div class="theme_marketing_text">
                     <h3>詭異所長，心理暗黑</h3>
                     <p>恐怖的辦公室，獵物的相片<br>所長的變態計劃<br>在陰影中揭開他病態的秘密</p>
                 </div>
             </div>
-            <!-- <div class="theme_hospital">
-                <div class="theme_hospital_text">
+            <!-- <div class="theme_marketing">
+                <div class="theme_marketing_text">
                     <p>沉寂五年的未解之謎，至今仍在黑暗中低語</p>
                     <p>你願意接下此次委託，揭開那些不該被遺忘的秘密嗎？</p>
                 </div>

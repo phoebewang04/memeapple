@@ -1,4 +1,4 @@
-import { createRouter } from 'vue-router'
+import { createRouter } from 'vue-router';
 // 前台相關路由
 import Fontpage from '../views/Frontpage.vue';
 import Home from '../views/HomeView.vue';
@@ -13,7 +13,15 @@ import ThemeAlien from '../views/ThemeAlien.vue';
 import Theme_Lock from '../views/Theme_Lock.vue';
 import preorder from '../views/preorder.vue';
 import orderinform from '../views/orderinform.vue';
+<<<<<<< HEAD
 import Theme_Time from '../views/Theme_time.vue';
+=======
+import Membermanage from '../views/Membermanage.vue';
+import Escaperoom from '../views/Escaperoom.vue';
+
+import pay from '../views/pay.vue';
+
+>>>>>>> 2b3a921cf38407a2ee12bfa33eb5e73f0cd4bcba
 
 // 後台相關路由
 import Backstage_index from '../views/Backstage_index.vue';
@@ -95,9 +103,25 @@ const routes = [
     component: Theme_Lock
   },
   {
+<<<<<<< HEAD
     path: '/Theme_Time/',
     component: Theme_Time
   },
+=======
+    path: '/Membermanage/',
+    component: Membermanage
+  },
+  {
+    path:'/Escaperoom/', // URL 路徑
+    component: Escaperoom //指定要渲染的 Vue 元件
+  },
+  {
+    path: '/pay/',
+    component: pay
+  },
+
+
+>>>>>>> 2b3a921cf38407a2ee12bfa33eb5e73f0cd4bcba
 ]
 
 export default function (history) {
