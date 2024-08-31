@@ -22,7 +22,7 @@ onMounted(() => {
     word.style.bottom = `${randomBottom}%`;
     word.style.fontSize = `${randomFontSize}em`;
     word.style.opacity = randomOpacity;
-    word.style.transform = `translate(-50%, -50%) scale(${randomScale})`;
+    word.style.transform = `translate(-30%, -10%) scale(${randomScale})`;
   });
 
   // faq縮放

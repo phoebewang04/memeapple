@@ -5,7 +5,7 @@ import Footerbar from '../components/Footerbar.vue';
 </script>
 
 <template>
-  <TopNavbar />
+  <!-- <TopNavbar /> -->
 
   <main class="main-frontpage">
     <section class="wrapper-frontpage">
@@ -56,12 +56,12 @@ import Footerbar from '../components/Footerbar.vue';
     </section>
   </main>
 
-  <Footerbar />
+  <!-- <Footerbar /> -->
 
 </template>
 <style></style>
 
-<script>
+<!-- <script>
 export default {
   components: {
     TopNavbar
@@ -77,4 +77,4 @@ export default {
     };
   },
 };
-</script>
+</script> -->
