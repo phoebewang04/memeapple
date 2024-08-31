@@ -13,15 +13,12 @@ import ThemeAlien from '../views/ThemeAlien.vue';
 import Theme_Lock from '../views/Theme_Lock.vue';
 import preorder from '../views/preorder.vue';
 import orderinform from '../views/orderinform.vue';
-<<<<<<< HEAD
 import Theme_Time from '../views/Theme_time.vue';
-=======
 import Membermanage from '../views/Membermanage.vue';
 import Escaperoom from '../views/Escaperoom.vue';
 
 import pay from '../views/pay.vue';
 
->>>>>>> 2b3a921cf38407a2ee12bfa33eb5e73f0cd4bcba
 
 // 後台相關路由
 import Backstage_index from '../views/Backstage_index.vue';
@@ -103,11 +100,10 @@ const routes = [
     component: Theme_Lock
   },
   {
-<<<<<<< HEAD
     path: '/Theme_Time/',
     component: Theme_Time
   },
-=======
+  {
     path: '/Membermanage/',
     component: Membermanage
   },
@@ -121,7 +117,6 @@ const routes = [
   },
 
 
->>>>>>> 2b3a921cf38407a2ee12bfa33eb5e73f0cd4bcba
 ]
 
 export default function (history) {
