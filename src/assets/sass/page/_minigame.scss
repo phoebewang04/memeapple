@@ -91,14 +91,12 @@
     text-align: center;
 }
 
-.plate_1,
-.plate_2,
-.plate_3 {
+.plate_1,.plate_2,.plate_3{
+    
+    fill:#909090;
 
-    fill: #909090;
-
-    &:nth-of-type(1):hover {
-        fill: #dea573;
+    &:nth-of-type(1):hover{
+        fill:#a77ccd;
     }
 
     &:nth-of-type(2):hover {
@@ -178,9 +176,7 @@
 }
 
 .palte3_bigzombie {
-    // position: relative; /* 讓動畫相對於原位置移動 */
     animation: zombieWalk 5s infinite;
-    /* 設定動畫循環，來回移動 */
     animation-timing-function: steps(5, end);
 }
 

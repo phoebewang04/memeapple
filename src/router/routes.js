@@ -14,6 +14,10 @@ import Theme_Lock from '../views/Theme_Lock.vue';
 import preorder from '../views/preorder.vue';
 import orderinform from '../views/orderinform.vue';
 import Membermanage from '../views/Membermanage.vue';
+import Escaperoom from '../views/Escaperoom.vue';
+
+import pay from '../views/pay.vue';
+
 
 // 後台相關路由
 import Backstage_index from '../views/Backstage_index.vue';
@@ -98,6 +102,16 @@ const routes = [
     path: '/Membermanage/',
     component: Membermanage
   },
+  {
+    path:'/Escaperoom/', // URL 路徑
+    component: Escaperoom //指定要渲染的 Vue 元件
+  },
+  {
+    path: '/pay/',
+    component: pay
+  },
+
+
 ]
 
 export default function (history) {

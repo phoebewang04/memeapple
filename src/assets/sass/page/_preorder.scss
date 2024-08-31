@@ -6,7 +6,8 @@
     margin: 0 auto;
 
     @include rwd(820px){
-        width: 800px;
+        width: 780px;
+        margin: 0 auto;
     }
 
     @include rwd(430px){
@@ -16,24 +17,6 @@
 
 /* --------------------返回------------------------------------ */
 
-.return {
-    width: 50px;
-    display: flex;
-    margin-left: 40px;
-    margin-top: 20px;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
-.return a {
-    text-decoration: none;
-    color: map-get($colors , white );
-}
-
-.return i {
-    color: map-get($colors , white );
-}
 
 /* --------------------活動資訊------------------------------------ */
 
@@ -43,7 +26,7 @@
     height: 600px;
 
     @include rwd(820px){
-        width: 800px;
+        width: 780px;
         height: 400px;
         margin: 0 auto;
     }
@@ -64,7 +47,7 @@
     border-radius: 12px;
 
     @include rwd(820px){
-        width: 800px;
+        width: 780px;
         margin-bottom: 20px;
         margin-top: 20px;
     }
@@ -91,7 +74,7 @@
     color: map-get($colors , white );
 
     @include rwd(820px){
-        width: 750px;
+        width: 730px;
     }
 
     @include rwd(430px){
@@ -143,7 +126,7 @@
     border-radius: 12px;
 
     @include rwd(820px){
-        width: 800px;
+        width: 780px;
         margin-bottom: 20px;
     }
 
@@ -162,7 +145,7 @@
     margin-bottom: 20px;
 
     @include rwd(820px){
-        width: 800px;
+        width: 780px;
         flex-direction: column;
     }
 
@@ -207,7 +190,7 @@
 }
 
 .preorder_datetime .time .time_ele {
-    width: 365px;
+    width: 367px;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -273,7 +256,7 @@
     border-radius: 12px;
 
     @include rwd(820px){
-        width: 760px;
+        width: 740px;
     }
 
     @include rwd(430px){
