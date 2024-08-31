@@ -30,7 +30,7 @@
 
     img {
         position: absolute;
-        top: 0;
+        bottom: 0;
         left: 0;
         max-width: 100%;
         pointer-events: none;
@@ -70,9 +70,9 @@
 .plate_1,.plate_2,.plate_3{
     
     fill:#909090;
-    
+
     &:nth-of-type(1):hover{
-        fill:#dea573;
+        fill:#a77ccd;
     }
     &:nth-of-type(2):hover{
         fill:#8fcc7c;
@@ -140,23 +140,22 @@
 }
 
 .palte3_bigzombie {
-    // position: relative; /* 讓動畫相對於原位置移動 */
-    animation: zombieWalk 5s infinite; /* 設定動畫循環，來回移動 */
+    animation: zombieWalk 5s infinite;
     animation-timing-function: steps(5, end);
   }
   
   @keyframes zombieWalk {
     0% {
-      transform: translateX(0) scale(1, 1); /* 初始位置，正常方向 */
+      transform: translateX(0) scale(1, 1);
     }
     50% {
-      transform: translateX(100px) scale(1, 1); /* 往右移動80px */
+      transform: translateX(100px) scale(1, 1);
     }
     51% {
-      transform: translateX(calc(50px + 150%)) scale(-1, 1); /* 開始翻轉，並補償位置 */
+      transform: translateX(calc(50px + 150%)) scale(-1, 1);
     }
     100% {
-      transform: translateX(145%) scale(-1, 1); /* 翻轉後回到原始位置 */
+      transform: translateX(145%) scale(-1, 1); 
     }
   }
   
