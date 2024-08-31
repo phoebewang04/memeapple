@@ -79,7 +79,7 @@
     }
 
     &.alien {
-        background-color: map-get($colors, black);
+        background-color: black;
     }
 }
 
@@ -280,6 +280,14 @@ i.fa-dollar-sign {
     &.hospital {
         border-radius: 24px;
         background: #221F3C;
+        padding: 20px;
+        width: 80%;
+
+        margin: 0 auto;
+    }
+
+    &.alien {
+        border-radius: 24px;
         padding: 20px;
         width: 80%;
 

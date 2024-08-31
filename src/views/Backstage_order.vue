@@ -21,7 +21,7 @@
                     <input class="backstage_date" type="date">
                     <select class="backstage_dropdown" name="selected">
                         <option value="" selected>所有分館</option>
-                        <option value="">台中館</option>
+                        <option value="">台北館</option>
                         <option value="">台中館</option>
                     </select>
                     <select class="backstage_dropdown" name="selected">
@@ -29,11 +29,15 @@
                         <option value="">成都醫院</option>
                         <option value="">末日庇護所</option>
                         <option value="">時光迷宮</option>
+                        <option value="">恐怖密室</option>
+                        <option value="">逃出虛空</option>
+                        <option value="">逃離武石監</option>
                     </select>
                     <select class="backstage_dropdown" name="selected">
                         <option value="" selected>所有狀態</option>
                         <option value="">已使用</option>
                         <option value="">已預訂</option>
+                        <option value="">已取消</option>
                     </select>
                     <input class="backstage_input" type="text" placeholder="關鍵字搜尋">
                 </form>
