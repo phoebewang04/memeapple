@@ -33,11 +33,19 @@ export default {
             <li><router-link to="/Branch/">分館介紹</router-link></li>
             <li><router-link to="/Theme_Lock/">會員專區</router-link></li>
             <li><router-link to="/Announcement/">最新消息</router-link></li>
+<<<<<<< HEAD
             <li><router-link to="/Popupcard/">彈跳甲魚</router-link></li>
             <li><router-link to="/Theme/">主題介紹</router-link></li>
             <!-- <li><router-link to="/preorder/">預定資料</router-link></li> -->
             <!-- <li><router-link to="/orderinform/">資料確認</router-link></li>
              -->
+=======
+            <li><router-link to="/Popupcard/">彈跳甲魚</router-link></li> 
+            <li><router-link to="/preorder/">預定資料</router-link></li>
+            <li><router-link to="/orderinform/">資料確認</router-link></li>
+            <li><router-link to="/Theme/">主題介紹</router-link></li>
+            <li><router-link to="/pay/">結帳</router-link></li> 
+>>>>>>> 88866b8853fa234d882220a39224a292c7437582
         </ul>
     </header>
 </template>

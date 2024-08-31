@@ -13,8 +13,12 @@ import ThemeAlien from '../views/ThemeAlien.vue';
 import Theme_Lock from '../views/Theme_Lock.vue';
 import preorder from '../views/preorder.vue';
 import orderinform from '../views/orderinform.vue';
+<<<<<<< HEAD
 import Escaperoom from '../views/Escaperoom.vue';
 
+=======
+import pay from '../views/pay.vue';
+>>>>>>> 88866b8853fa234d882220a39224a292c7437582
 
 // 後台相關路由
 import Backstage_index from '../views/Backstage_index.vue';
@@ -96,9 +100,16 @@ const routes = [
     component: Theme_Lock
   },
   {
+<<<<<<< HEAD
     path:'/Escaperoom/', // URL 路徑
     component: Escaperoom //指定要渲染的 Vue 元件
   }
+=======
+    path: '/pay/',
+    component: pay
+  },
+
+>>>>>>> 88866b8853fa234d882220a39224a292c7437582
 ]
 
 export default function (history) {
