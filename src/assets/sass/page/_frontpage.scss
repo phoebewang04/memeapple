@@ -1,4 +1,4 @@
-.main-frontpage{
+.main-frontpage {
   width: 100%;
   height: calc(100vh - 70px - 73.58px);
   background-image: url(/src/assets/img/BG-fontpage.jpg);
@@ -9,19 +9,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  .wrapper-frontpage{
+  @include pad{
+    height: calc(100vh - 70px - 73.58px);
+  }
+
+  @include phone{
+    height: calc(100vh - 100px - 71.33px);
+  }
+  .wrapper-frontpage {
     width: 80%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    @include rwd(1200px){
+
+    @include rwd(1200px) {
       width: 90%;
     }
-    @include rwd(900px){
+
+    @include rwd(900px) {
       width: 100%;
     }
+
     .overlay-2 {
       position: absolute;
       top: 0;
@@ -34,73 +44,87 @@
       background-repeat: repeat-x;
       animation: cloudLoop 80s linear infinite;
       z-index: 0;
+
       // pointer-events: none;
       @-webkit-keyframes cloudLoop {
-      0% {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        opacity: 0.8;
-        filter: blur(5px);
+        0% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+          opacity: 0.8;
+          filter: blur(5px);
+        }
+
+        100% {
+          -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+          opacity: 0.5;
+        }
       }
-      100% {
-        -webkit-transform: translate3d(-50%, 0, 0);
-        transform: translate3d(-50%, 0, 0);
-        opacity: 0.5;
+
+      @keyframes cloudLoop {
+        0% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+          opacity: 0.8;
+          filter: blur(5px);
+        }
+
+        100% {
+          -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+          opacity: 0.5;
+        }
       }
     }
-    @keyframes cloudLoop {
-      0% {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        opacity: 0.8;
-        filter: blur(5px);
-      }
-      100% {
-        -webkit-transform: translate3d(-50%, 0, 0);
-        transform: translate3d(-50%, 0, 0);
-        opacity: 0.5;
-      }
-    }
-    }
-    .logo{
+
+    .logo {
       width: 25%;
-      @include rwd(900px){
+
+      @include rwd(900px) {
         width: 30%;
       }
-      @include pad{
+
+      @include pad {
         width: 40%;
+      }
     }
-    }
-    .content{
+
+    .content {
       width: 100%;
       display: flex;
       gap: 80px;
       align-items: center;
       justify-content: center;
-      @include rwd(1200px){
+
+      @include rwd(1200px) {
         gap: 40px;
       }
-      @include rwd(900px){
+
+      @include rwd(900px) {
         gap: 80px;
       }
-      @include pad{
+
+      @include pad {
         gap: 20px;
-    }
-      .content-btn-L{
-        color:#fff;
+      }
+
+      .content-btn-L {
+        color: #fff;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        img{
+
+        img {
           width: 30%;
         }
-        a{
+
+        a {
           position: relative;
           display: inline-block;
           padding: 10px 5px;
           // color: #2196f3;
-          color: map-get($colors, gold );
+          color: map-get($colors, gold);
           text-transform: uppercase;
           letter-spacing: 4px;
           font-size: 28px;
@@ -108,79 +132,93 @@
           overflow: hidden;
           text-decoration: none;
           font-weight: bold;
-          &:hover{
-            color: map-get($colors, underyellow );
-            background: map-get($colors, white );
-            box-shadow: 0 0 10px #fef1c7 ,0 0 40px #fef1c7,0 0 80px #fef1c7;
+
+          &:hover {
+            color: map-get($colors, underyellow);
+            background: map-get($colors, white);
+            box-shadow: 0 0 10px #fef1c7, 0 0 40px #fef1c7, 0 0 80px #fef1c7;
             transition-delay: 1s;
           }
-          span{
+
+          span {
             position: absolute;
             display: block;
           }
-          span:nth-child(1){
+
+          span:nth-child(1) {
             top: 0;
             left: -100%;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #fbb824); /* 修正這裡的顏色 */
+            background: linear-gradient(90deg, transparent, #fbb824);
+            /* 修正這裡的顏色 */
           }
-          &:hover span:nth-child(1){
+
+          &:hover span:nth-child(1) {
             left: 100%;
             transition: 1s;
           }
-          span:nth-child(3){
+
+          span:nth-child(3) {
             bottom: 0;
             right: -100%;
             width: 100%;
             height: 2px;
-            background: linear-gradient(270deg,transparent,#fbb824);
+            background: linear-gradient(270deg, transparent, #fbb824);
           }
-          &:hover span:nth-child(3){
+
+          &:hover span:nth-child(3) {
             right: 100%;
             transition: 1s;
             transition-delay: 0.5s;
           }
-          span:nth-child(2){
+
+          span:nth-child(2) {
             top: -100%;
             right: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(180deg,transparent,#fbb824);
+            background: linear-gradient(180deg, transparent, #fbb824);
           }
-          &:hover span:nth-child(2){
+
+          &:hover span:nth-child(2) {
             top: 100%;
             transition: 1s;
             transition-delay: 0.25s;
           }
-          span:nth-child(4){
+
+          span:nth-child(4) {
             bottom: -100%;
             right: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(360deg,transparent,#fbb824);
+            background: linear-gradient(360deg, transparent, #fbb824);
           }
-          &:hover span:nth-child(4){
+
+          &:hover span:nth-child(4) {
             bottom: 100%;
             transition: 1s;
             transition-delay: 0.75s;
           }
         }
       }
-      .content-btn-R{
-        color:#fff;
+
+      .content-btn-R {
+        color: #fff;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        img{
+
+        img {
           width: 30%;
         }
-        a{
+
+        a {
           position: relative;
           display: inline-block;
           padding: 10px 5px;
-          color: map-get($colors, fbblue );
+          color: map-get($colors, fbblue);
           text-transform: uppercase;
           letter-spacing: 4px;
           font-size: 28px;
@@ -188,59 +226,70 @@
           overflow: hidden;
           text-decoration: none;
           font-weight: bold;
-          &:hover{
+
+          &:hover {
             color: #3defff;
             background: #85c8ff;
-            box-shadow: 0 0 10px #1765a4,0 0 40px #1765a4,0 0 80px #1765a4;
+            box-shadow: 0 0 10px #1765a4, 0 0 40px #1765a4, 0 0 80px #1765a4;
             transition-delay: 1s;
           }
-          span{
+
+          span {
             position: absolute;
             display: block;
           }
-          span:nth-child(1){
+
+          span:nth-child(1) {
             top: 0;
             left: -100%;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #2196f3); /* 修正這裡的顏色 */
+            background: linear-gradient(90deg, transparent, #2196f3);
+            /* 修正這裡的顏色 */
           }
-          &:hover span:nth-child(1){
+
+          &:hover span:nth-child(1) {
             left: 100%;
             transition: 1s;
           }
-          span:nth-child(3){
+
+          span:nth-child(3) {
             bottom: 0;
             right: -100%;
             width: 100%;
             height: 2px;
-            background: linear-gradient(270deg,transparent,#2196f3);
+            background: linear-gradient(270deg, transparent, #2196f3);
           }
-          &:hover span:nth-child(3){
+
+          &:hover span:nth-child(3) {
             right: 100%;
             transition: 1s;
             transition-delay: 0.5s;
           }
-          span:nth-child(2){
+
+          span:nth-child(2) {
             top: -100%;
             right: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(180deg,transparent,#2196f3);
+            background: linear-gradient(180deg, transparent, #2196f3);
           }
-          &:hover span:nth-child(2){
+
+          &:hover span:nth-child(2) {
             top: 100%;
             transition: 1s;
             transition-delay: 0.25s;
           }
-          span:nth-child(4){
+
+          span:nth-child(4) {
             bottom: -100%;
             right: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(360deg,transparent,#2196f3);
+            background: linear-gradient(360deg, transparent, #2196f3);
           }
-          &:hover span:nth-child(4){
+
+          &:hover span:nth-child(4) {
             bottom: 100%;
             transition: 1s;
             transition-delay: 0.75s;
@@ -248,7 +297,8 @@
         }
       }
     }
-    .content-text{
+
+    .content-text {
       width: 80%;
       color: #fff;
       text-align: center;
@@ -258,52 +308,63 @@
       grid-template-rows: repeat(3, auto);
       justify-content: center;
       align-items: center;
-      .content-text-topic{
+
+      .content-text-topic {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        @include pad{
-         display: none;
+
+        @include pad {
+          display: none;
         }
-        h1{
+
+        h1 {
           font-size: 24px;
           font-weight: bold;
           line-height: 1.5;
         }
-        p{
+
+        p {
           font-size: 16px;
           font-weight: 500;
           line-height: 1.5;
         }
       }
-      .content-text-slogran{
+
+      .content-text-slogran {
         display: flex;
         align-items: center;
         justify-content: center;
-        @include rwd(900px){
+
+        @include rwd(900px) {
           flex-direction: column;
           margin-top: 40px;
         }
-        span{
+
+        span {
           font-size: 40px;
           font-weight: bold;
           margin-right: 20px;
-          @include rwd(900px){
+
+          @include rwd(900px) {
             margin-right: 180px;
             margin-bottom: 40px;
           }
-          @include pad{
+
+          @include pad {
             margin-right: 80px;
+          }
         }
-        }
-        .content-text-slogran-red{
+
+        .content-text-slogran-red {
           font-size: 48px;
           font-weight: bold;
           color: red;
           margin-left: 20px;
           margin-right: 0;
-          @include rwd(900px){
+
+          @include rwd(900px) {
             margin-left: 0;
             margin-right: 0;
             margin-bottom: 0;

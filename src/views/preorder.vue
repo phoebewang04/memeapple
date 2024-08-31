@@ -1,4 +1,4 @@
-<script setup>
+—<script setup>
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
@@ -20,12 +20,12 @@ import Footerbar from '../components/Footerbar.vue';
             <h2>活動資訊</h2>
             <div class="infor_list">
                 <ul>
-                    <li>主題名稱 : 末日庇護所</li>
+                    <li>主題名稱：末日庇護所</li>
                     <div class="infor_time">
                         <li><i class="fa-regular fa-clock"></i></li>
                         <li>活動時間 1小時20分鐘</li>
                     </div>
-                    <li>地點 : 台北市密逃路88之107號</li>
+                    <li>地點：台北市密逃路88之107號</li>
                 </ul>
             </div>
         </div>
@@ -73,7 +73,7 @@ import Footerbar from '../components/Footerbar.vue';
                     <ul>
                         <li>
                             <div>
-                                <h3>1. 訂票方式 :</h3>
+                                <h3>1. 訂票方式：</h3>
                                 <div class="content">
                                     <i class="fa-solid fa-circle"></i>
                                     <p>線上預訂：請訪問我們的網站，選擇您感興趣的主題房間和時間段進行預訂。</p>
@@ -87,7 +87,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>2. 訂票規則 :</h3>
+                            <h3>2. 訂票規則：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>每個房間有固定人數限制，請根據提示選擇適當的參與人數。</p>
@@ -100,7 +100,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>3. 取消和更改 :</h3>
+                            <h3>3. 取消和更改：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>如需取消或更改預訂，請在體驗時間的48小時前聯繫我們。</p>
@@ -113,7 +113,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>4. 到達時間 :</h3>
+                            <h3>4. 到達時間：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>請提前15分鐘到達現場，以便我們能為您講解遊戲規則和安全事項。</p>
@@ -126,7 +126,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>5. 年齡限制 :</h3>
+                            <h3>5. 年齡限制：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>部分房間有年齡限制，請在預訂前確認適合的年齡範圍。</p>
@@ -139,7 +139,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>6. 衣著建議 :</h3>
+                            <h3>6. 衣著建議：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>建議穿著輕便、適合活動的服裝和鞋子，以便順利完成挑戰。</p>
@@ -148,7 +148,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>7. 安全提示 :</h3>
+                            <h3>7. 安全提示：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>請勿攜帶危險物品進入場館，並遵守現場工作人員的指示。</p>

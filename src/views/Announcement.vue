@@ -6,27 +6,24 @@ import Footerbar from '../components/Footerbar.vue';
 
 
 <template>
-
     <TopNavbar />
-
     <main class="main-announcement">
         <section class="wrapper-announcement">
-            <!-- 麵包屑 -->
-            <section class="bread-announcement">
-                <nav class="bread-announcement-breadcrumb">
-                    <ul>
-                        <li><router-link to="/index/">首頁</router-link></li>
-                        <li>&gt;</li>
-                        <li><router-link to="/index/">最新消息</router-link></li>
-                        <li>&gt;</li>
-                        <li><router-link to="/Announcement/">成都廢院 無法驅散的幽冥殘穢</router-link></li>
-                    </ul>
-                </nav>
-            </section>
-            
             <section class="content-announcement">
                 <!-- 左邊圖像 -->
                 <section class="content-announcement-img">
+                    <!-- 麵包屑 -->
+                    <section class="bread-announcement">
+                        <nav class="bread-announcement-breadcrumb">
+                            <ul>
+                                <li><router-link to="/index/">首頁</router-link></li>
+                                <li>&gt;</li>
+                                <li><router-link to="/index/">最新消息</router-link></li>
+                                <li>&gt;</li>
+                                <li><router-link to="/Announcement/">成都廢院無法驅散的幽冥殘穢</router-link></li>
+                            </ul>
+                        </nav>
+                    </section>
                     <img src="../assets/img/AnnouncementPic01.jpg" alt="">
                 </section>
 
@@ -41,19 +38,7 @@ import Footerbar from '../components/Footerbar.vue';
                 </section>
             </section>
         </section>
-
     </main>
 
     <Footerbar />
-
 </template>
-
-<script>
-    export default {
-        
-    }
-</script>
-
-<style lang="scss" scoped>
-
-</style>

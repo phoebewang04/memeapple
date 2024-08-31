@@ -8,30 +8,28 @@ import Footerbar from '../components/Footerbar.vue';
 <!-- header -->
 <TopNavbar />
    <!-- banner -->
+    <div class="theme_banner">
+    <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
+        width="100%" class="banner_video"></video>
 
-   <div class="theme_banner">
-    <!-- <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
-        width="100%" class="banner_video"></video> -->
-        
-        <img src="@/assets/img/header.png" alt="" class="banner">
+    <!-- <img src="../assets/img/header.png" alt="" class="banner"> -->
     </div>
-
-  
+   
     <main class="theme_container">
         <!-- -----主題文字介紹＋指數 start----- -->
         <section class="overview">
-            <div class="blood"> </div>
+            <!-- <div class="blood"> </div> -->
             <p class="overview_text">
-                武石監來了新的所長，他以其殘暴和病態的控制欲而聞名，他經常在監獄中進行秘密的實驗和虐待。再這樣下去遲早我們會死在這裡，我們必須設法越獄，重獲自由，並揭露所長的可怕秘密。</p>
+                初原之火光芒驟減，不死魔物大量發生，為延續人界與驅除瘴氣。一群菁英尋火者前往「時光迷宮」尋找被諸神之王關押的普羅米修斯。你必須解開謎題與陷阱，解放普羅米修斯得到初原之火，導正世界秩序。</p>
 
             <div class="theme_number hospital">
                 <span>燒腦指數</span>
                 <div class="progress_bar hospital">
-                    <div class="progress hospital" style="width: 95%;">95%</div>
+                    <div class="progress hospital" style="width: 87%;">87%</div>
                 </div>
                 <span>驚嚇指數</span>
                 <div class="progress_bar hospital">
-                    <div class="progress hospital" style="width: 87%;">87%</div>
+                    <div class="progress hospital" style="width: 95%;">95%</div>
                 </div>
                 <span>推薦指數</span>
                 <div class="progress_bar hospital">
@@ -64,48 +62,41 @@ import Footerbar from '../components/Footerbar.vue';
 
         <section class="iconinfo">
             <div class="theme_icon hospital">
-                <img src="../assets/img/prisonuniform.png" alt="">
-                <h3>角色扮演</h3>
-                <p>換上囚服，扮演逃犯與獄友<br>們共同患難逃出</p>
+                <img src="../assets/img/theme-time-item01.png" alt="">
+                <h3>仿真陷阱道具</h3>
+                <p>透過機關設置場景<br>為了前進必須解開謎題</p>
             </div>
             <div class="theme_icon hospital">
-                <img src="../assets/img/handcuffs.png" alt="">
-                <h3>逃生道具</h3>
-                <p>逃生道具散落監獄每個角落<br>解題找出道具逃離監獄</p>
+                <img src="../assets/img/theme-time-item02.png" alt="">
+                <h3>沉浸式體驗</h3>
+                <p>實境效果和音效設計<br>讓你體驗探索地下城的感覺</p>
             </div>
             <div class="theme_icon hospital">
-                <img src="../assets/img/room.jpg" alt="">
-                <h3>海量謎題</h3>
-                <p>打造真實監獄場景<br>宛如身歷其境</p>
+                <img src="../assets/img/theme-time-item03.png" alt="">
+                <h3>精緻的場景佈置</h3>
+                <p>專業美術設計場景<br>讓你置身在陰森迷宮當中</p>
             </div>
         </section>
         <section class="theme_marketing_container">
-            <div class="theme_marketing theme_lock">
+            <div class="theme_marketing theme_time">
                 <div class="theme_marketing_text">
-                    <h3>陰森監獄，黑暗深處</h3>
-                    <p>冰冷牢籠、囚徒嘶啞的聲音<br>在死寂的監獄中探索隱藏於<br>冷酷牆壁下的黑暗秘密</p>
+                    <h3>沉浸探索，重重謎團</h3>
+                    <p>幽暗地城<br>沿著階梯向下</p>
                 </div>
             </div>
-            <div class="theme_marketing theme_lock">
+            <div class="theme_marketing theme_time">
                 <div class="theme_marketing_text">
-                    <h3>陰影囚室，沉默線索</h3>
-                    <p>狹窄的牢房，牆壁上的刻痕<br>在囚室裡解讀那些隱藏的符號<br>發現通向自由的線索</p>
+                    <h3>沉浸探索，重重謎團</h3>
+                    <p>殘缺的筆記，先遣隊的遺物<br>指引你走向被囚之處</p>
                 </div>
             </div>
-            <div class="theme_marketing theme_lock">
+            <div class="theme_marketing theme_time">
                 <div class="theme_marketing_text">
-                    <h3>詭異所長，心理暗黑</h3>
-                    <p>恐怖的辦公室，獵物的相片<br>所長的變態計劃<br>在陰影中揭開他病態的秘密</p>
+                    <h3>詭異瀰漫，等待救贖</h3>
+                    <p>唯有步步為營，方能平安<br>解放普羅米修斯</p>
                 </div>
             </div>
-            <!-- <div class="theme_marketing">
-                <div class="theme_marketing_text">
-                    <p>沉寂五年的未解之謎，至今仍在黑暗中低語</p>
-                    <p>你願意接下此次委託，揭開那些不該被遺忘的秘密嗎？</p>
-                </div>
-            </div> -->
-
-            <input type="button" value="預約逃獄" class="btn">
+            <input type="button" value="預約探索" class="btn">
         </section>
 
         <section class="notice">
@@ -122,7 +113,7 @@ import Footerbar from '../components/Footerbar.vue';
             <div class="notice_text hospital">
                 <p>＊ 建議遊戲人數 6 ~ 7 人，容納人數 4 - 8 人。</p>
                 <p>＊ 建議穿著輕便服裝，避免穿裙子。</p>
-                <p>＊ 遊戲進行中禁止攝影、飲食、吸菸，現場會有置物區保管</p>
+                <p>＊ 會有真人ＮＰＣ互動，無法調整恐怖程度，膽小誤入</p>
                 <p>＊ 未滿15歲孩童需有成人陪同參與。</p>
             </div>
 
@@ -155,8 +146,8 @@ import Footerbar from '../components/Footerbar.vue';
                         </li>
                         <li class="theme_card">
                             <a href="#">
-                            <img src="../assets/img/banner-mazeofTime.png" alt="時空迷宮">
-                            <h4>時空迷宮</h4>
+                            <img src="../assets/img/banner-hunted.png" alt="恐怖密室">
+                            <h4>恐怖密室</h4>
                             </a>
                         </li>
                     </ul>
