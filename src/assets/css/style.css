@@ -768,16 +768,17 @@ i.fa-dollar-sign {
   background-image: url(/src/assets/img/BG-index-red.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .content-p-homedesign .content-p-homedesign-effect {
-  width: 60%;
-  height: 100px;
+  width: 70%;
+  height: 150px;
   position: relative;
-  margin-left: 60px;
+  margin-top: 60px;
+  margin-left: 200px;
+  border: 1px solid yellow;
   filter: contrast(10) blur(1px);
-  border: 1px solid red;
 }
 .content-p-homedesign .content-p-homedesign-effect .homeeffect-word {
   position: absolute;
@@ -818,9 +819,8 @@ i.fa-dollar-sign {
   }
 }
 .content-p-homedesign .content-p-homedesign-text {
-  margin-top: 250px;
+  margin-top: 200px;
   margin-left: 120px;
-  border: 1px solid yellowgreen;
 }
 .content-p-homedesign .content-p-homedesign-text h1 {
   font-size: 40px;
@@ -837,7 +837,6 @@ i.fa-dollar-sign {
   display: flex;
   justify-content: space-around;
   margin-top: 40px;
-  border: 1px solid orange;
 }
 .content-p-homedesign .content-p-homedesign-img .homedesign-card02 {
   margin-top: 40px;
@@ -853,7 +852,6 @@ i.fa-dollar-sign {
   background-image: url(/src/assets/img/BG-Index-bread.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  border: 1px solid gold;
   position: relative;
 }
 .content-p-brandstory .content-p-brandstory-contenter {
@@ -862,14 +860,13 @@ i.fa-dollar-sign {
   width: 90%;
   margin: 0 auto;
   padding-top: 120px;
-  padding-bottom: 140px;
+  padding-bottom: 120px;
 }
 .content-p-brandstory .content-p-brandstory-contenter .content-p-brandstory-imgarea {
   width: 40%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid orange;
 }
 .content-p-brandstory .content-p-brandstory-contenter .content-p-brandstory-imgarea img {
   width: 70%;
@@ -878,7 +875,6 @@ i.fa-dollar-sign {
 }
 .content-p-brandstory .content-p-brandstory-contenter .content-p-brandstory-textarea {
   width: 40%;
-  border: 1px solid red;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -941,7 +937,6 @@ i.fa-dollar-sign {
   margin: 0 auto;
   padding-top: 80px;
   padding-bottom: 80px;
-  border: 1px solid yellow;
 }
 .content-p-howtoplay .p-howtoplay-content .p-howtoplay-title {
   text-align: center;
@@ -3676,6 +3671,16 @@ body {
 }
 .theme_lock:nth-of-type(3) {
   background-image: url("../img/lockbg3.png");
+}
+
+.theme_time:nth-of-type(1) {
+  background-image: url("../img/theme-time-img01.jpg");
+}
+.theme_time:nth-of-type(2) {
+  background-image: url("../img/theme-time-img02.jpg");
+}
+.theme_time:nth-of-type(3) {
+  background-image: url("../img/theme-time-img03.jpg");
 }
 
 /*# sourceMappingURL=style.css.map */
