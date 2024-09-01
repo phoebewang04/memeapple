@@ -79,7 +79,6 @@ p {
   }
 }
 .btn {
-  border: 0;
   width: 200px;
   font-size: 24px;
   padding: 10px 20px;
@@ -93,7 +92,6 @@ p {
 }
 
 .cbtn {
-  border: 0;
   width: 200px;
   font-size: 24px;
   padding: 10px 20px;
@@ -388,8 +386,10 @@ p {
 
 .gameinfo {
   display: flex;
-  justify-content: center;
-  gap: 22%;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .theme_game {
@@ -431,15 +431,20 @@ i.fa-dollar-sign {
 
 .iconinfo {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  width: 85%;
+  margin: 0 auto;
 }
 
-.theme_icon img {
-  width: 50%;
+.theme_icon_img {
+  max-width: 100%;
+}
+.theme_icon_img img {
+  width: 250px;
   transition: transform 0.3s ease;
 }
-.theme_icon img:hover {
+.theme_icon_img img:hover {
   transform: scale(1.1);
 }
 
@@ -447,6 +452,7 @@ i.fa-dollar-sign {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 12px;
 }
 .theme_icon.hospital {
@@ -668,7 +674,6 @@ i.fa-dollar-sign {
 }
 
 .btnlogin {
-  border: 0;
   width: 100%;
   font-size: 24px;
   padding: 10px 20px;
@@ -1419,20 +1424,9 @@ i.fa-dollar-sign {
 }
 
 #wrapper .slogan {
-  width: 1200px;
+  width: 75%;
   padding: 80px 0px;
   margin: 0 auto;
-}
-@media (max-width: 820px) {
-  #wrapper .slogan {
-    width: 740px;
-  }
-}
-@media (max-width: 430px) {
-  #wrapper .slogan {
-    width: 330px;
-    padding: 50px 0px;
-  }
 }
 
 #wrapper .slogan p {
@@ -3538,25 +3532,12 @@ body {
 }
 
 .minigame_map {
-  margin: 200px 0;
   text-align: center;
 }
 
-.plate_1, .plate_2, .plate_3 {
-  fill: #909090;
-}
-.plate_1:nth-of-type(1):hover, .plate_2:nth-of-type(1):hover, .plate_3:nth-of-type(1):hover {
-  fill: #a77ccd;
-}
-.plate_1:nth-of-type(2):hover, .plate_2:nth-of-type(2):hover, .plate_3:nth-of-type(2):hover {
-  fill: #8fcc7c;
-}
-.plate_1:nth-of-type(3):hover, .plate_2:nth-of-type(3):hover, .plate_3:nth-of-type(3):hover {
-  fill: #7cc0cc;
-}
-
 .coordinate {
-  animation: updown 0.5s linear infinite;
+  animation: updown 0.8s linear infinite;
+  cursor: pointer;
 }
 @keyframes updown {
   0% {
@@ -3570,31 +3551,43 @@ body {
   }
 }
 
-.zombie_hand {
+.zombie_hand g:nth-of-type(1) {
   transform-origin: bottom center;
-  /* 設定旋轉中心點 */
-  animation: wipeGlass 2s infinite ease-in-out;
-  /* 動畫效果 */
+  animation: grasp 2s infinite ease-in-out;
 }
-@keyframes wipeGlass {
+@keyframes grasp {
   0% {
     transform: rotate(0deg) translateX(0) translateY(7px);
-    /* 初始位置 */
   }
   50% {
-    transform: rotate(-2deg) translateX(-10px) translateY(0px);
-    /* 向右上方移動並旋轉 */
+    transform: rotate(-5deg) translateX(-10px) translateY(5px);
   }
   75% {
     transform: rotate(2deg) translateX(0) translateY(10px);
-    /* 回到初始位置 */
   }
   100% {
     transform: rotate(0deg) translateX(0) translateY(7px);
-    /* 回到初始位置 */
   }
 }
 
+.zombie_hand g:nth-of-type(2) {
+  animation: wavehand 2s infinite ease-in-out;
+}
+
+@keyframes wavehand {
+  50% {
+    transform: translateX(15px);
+  }
+}
+.zombie_hand g:nth-of-type(3) {
+  animation: wave 1.5s infinite ease-in-out;
+}
+
+@keyframes wave {
+  50% {
+    transform: translateX(5px) translateY(5px);
+  }
+}
 .minigame_ghost {
   animation: ghostupdown 2s linear infinite;
 }
@@ -3610,29 +3603,60 @@ body {
   }
 }
 
-.palte3_bigzombie {
-  animation: zombieWalk 5s infinite;
+.house_light {
+  fill: #FBC75D;
+  animation: discoloration 2s linear infinite;
+}
+@keyframes discoloration {
+  0% {
+    fill: #FBC75D;
+  }
+  50% {
+    fill: #2a4e28;
+  }
+  100% {
+    fill: #FBC75D;
+  }
+}
+
+.leftzombie {
+  animation: leftzombieWalk 5s infinite;
   animation-timing-function: steps(5, end);
 }
 
-@keyframes zombieWalk {
+@keyframes leftzombieWalk {
   0% {
     transform: translateX(0) scale(1, 1);
-    /* 初始位置，正常方向 */
   }
   50% {
     transform: translateX(100px) scale(1, 1);
-    /* 往右移動80px */
   }
   51% {
-    transform: translateX(calc(50px + 150%)) scale(-1, 1);
-    /* 開始翻轉，並補償位置 */
+    transform: translateX(calc(10px + 50%)) scale(-1, 1);
   }
   100% {
-    transform: translateX(145%) scale(-1, 1);
-    /* 翻轉後回到原始位置 */
+    transform: translateX(40%) scale(-1, 1);
   }
 }
+.rightzombie {
+  animation: rightzombieWalk 8s infinite;
+  animation-timing-function: steps(8, end);
+}
+@keyframes rightzombieWalk {
+  0% {
+    transform: translateX(0) scale(1, 1);
+  }
+  50% {
+    transform: translateX(-100px) scale(1, 1);
+  }
+  51% {
+    transform: translateX(calc(-10px + 150%)) scale(-1, 1);
+  }
+  100% {
+    transform: translateX(165%) scale(-1, 1);
+  }
+}
+
 /*
 // 液體
 .loader {
@@ -4142,6 +4166,67 @@ body {
 
 .wrappermmange {
   display: flex;
+}
+
+.mmangeleft {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.btn_mange {
+  border-radius: 0;
+  color: white;
+  background-color: #100E24;
+  width: 100%;
+}
+
+.mmangeright {
+  width: 80%;
+  margin: 80px 0;
+}
+
+.ordertext {
+  display: flex;
+}
+
+.ordertext_left {
+  width: 80%;
+}
+
+.ordertext_right {
+  width: 20%;
+}
+
+.order_card {
+  display: flex;
+  background-color: white;
+  color: #292929;
+  width: 80%;
+  border-radius: 8px;
+}
+
+.order_cardleft {
+  display: flex;
+}
+
+.order_cardimg {
+  max-width: 150px;
+  min-width: 150px;
+  max-height: 150px;
+}
+.order_cardimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.coupontext {
+  display: none;
+}
+
+.editmember {
+  display: none;
 }
 
 .escape_container {
