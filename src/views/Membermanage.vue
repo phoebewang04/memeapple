@@ -17,9 +17,9 @@ import Footerbar from '../components/Footerbar.vue';
     <div class="main">
         <div class="wrappermmange">
            <div class="mmangeleft">
-            <button class="btn btn_">訂單檢視</button>
-            <button class="btn btn_">優惠券</button>
-            <button class="btn btn_">會員資料修改</button>
+            <button class="btn btn_mange">訂單檢視</button>
+            <button class="btn btn_mange">優惠券</button>
+            <button class="btn btn_mange">會員資料修改</button>
         </div>
         <div class="mmangeright">
             <div class="ordertext">
@@ -27,9 +27,9 @@ import Footerbar from '../components/Footerbar.vue';
                 <h3>您的訂單</h3>
                 <div class="order_card">
                   <div class="order_cardleft">
-                    <div class="order_cardimg"></div>
+                    <div class="order_cardimg"><img src="../assets/img/banner-paper.jpg" alt=""></div>
                     <div class="order_cardtext">
-                      <p>時光迷宮</p>
+                      <p>逃離武石監</p>
                       <p>訂單編號  ABC202408070807</p>
                       <p>訂購日期  20240807</p>
                     </div>
@@ -49,9 +49,9 @@ import Footerbar from '../components/Footerbar.vue';
               </div>
               <div class="ordertext_right">
                 <ul>
-                  <li><h3>訂單查詢</h3></li>
-                  <li><h3>未使用訂單</h3></li>
-                  <li><h3>全部訂單</h3></li>
+                  <li><button class="btn btn_mange">訂單查詢</button></li>
+                  <li> <button class="btn btn_mange">未使用訂單</button></li>
+                  <li><button class="btn btn_mange">全部訂單</button></li>
                 </ul>
               </div>
             </div>
