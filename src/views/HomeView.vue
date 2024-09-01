@@ -72,7 +72,6 @@ export default {
         };
     },
 };
-
 </script>
 
 
@@ -83,9 +82,9 @@ export default {
   <main class="main-homepage">
     <section class="wrapper-homepage">
       <!-- 首頁第一部分  主視覺-->
-      <section class="content-p-homedesign">
+      <section class="content-homepage">
         <!-- 浮動文字特效區域 -->
-        <div class="content-p-homedesign-effect">
+        <div class="homepage-effect">
           <div class="homeeffect-word"># 代碼深淵</div>
           <div class="homeeffect-word"># 成都醫院</div>
           <div class="homeeffect-word"># 恐怖密室</div>
@@ -95,22 +94,22 @@ export default {
           <div class="homeeffect-word"># 逃出虛空</div>
         </div>
         <!-- 文字區域 -->
-        <div class="content-p-homedesign-text">
+        <div class="homepage-text">
           <h1>Meme謎因</h1>
           <h2>Unknow Story</h2>
         </div>
         <!-- 下方圖片區 -->
-        <div class="content-p-homedesign-img">
+        <div class="homepage-img">
           <!-- 照片1 -->
-          <div class="homedesign-card01">
+          <div class="homepage-card01">
             <img src="/src/assets/img/Index-person1.png" alt="人像1">
           </div>
           <!-- 照片2 -->
-          <div class="homedesign-card02">
+          <div class="homepage-card02">
             <img src="/src/assets/img/Index-person2.png" alt="人像2">
           </div>
           <!-- 照片3 -->
-          <div class="homedesign-card03">
+          <div class="homepage-card03">
             <img src="/src/assets/img/Index-person3.png" alt="人像3">
           </div>
         </div>
@@ -144,7 +143,6 @@ export default {
                 <p>The Secret Room</p>
             </div>
           </div>
-
         </section>
       </section>
       <!-- 首頁第三部分 限時主題 -->
@@ -238,50 +236,50 @@ export default {
       </section>
  
       <!-- 首頁第四部分 如何遊玩-->
-      <section class="content-p-howtoplay">
+      <section class="content-howtoplay">
         <!-- 內容區域 -->
-        <section class="p-howtoplay-content">
-          <h3 class="p-howtoplay-title">- 遊玩流程 - </h3>
+        <section class="howtoplay-content">
+          <h3 class="howtoplay-title">- 遊玩流程 - </h3>
 
           <!-- 內容區塊 01 -->
-          <section class="p-howtoplay-content">
+          <section class="howtoplay-box01">
             <!-- 左邊文字區塊 -->
-            <section class="p-howtoplay-content-text">
+            <section class="howtoplay-text">
               <!-- 上方標語 -->
-              <div class="howtoplay-content-text-slogan">
+              <div class="howtoplay-slogan">
                 <span>尋找</span>
                 <img src="/src/assets/img/keyhole.svg" alt="">
                 <span>出口</span>
               </div>
               <!-- 下方文字 -->
-              <div class="howtoplay-content-text-lan">
+              <div class="howtoplay-lan">
                 <p>受困在無出口的密室</p>
                 <p>依靠微弱月光</p>
                 <p>尋找散落的各種線索</p> 
               </div>
             </section>
             <!-- 右側圖片區塊 -->
-            <section class="p-howtoplay-img">
+            <section class="howtoplay-img">
               <img src="/src/assets/img/Index-howto01.jpg" alt="">
             </section>
           </section>
 
           <!-- 內容區塊 02 -->
-          <section class="p-howtoplay-content">
+          <section class="howtoplay-content">
             <!-- 左側圖片區域 -->
-            <section class="p-howtoplay-img">
+            <section class="howtoplay-img">
               <img src="/src/assets/img/Index-howto02.jpg" alt="">
             </section>
             <!-- 右邊文字區塊 -->
-            <section class="p-howtoplay-content-text">
+            <section class="howtoplay-text">
               <!-- 上方標語 -->
-              <div class="howtoplay-content-text-slogan">
+              <div class="howtoplay-slogan">
                 <span>解謎</span>
                 <img src="/src/assets/img/keyhole.svg" alt="">
                 <span>合作</span>
               </div>
               <!-- 下方文字 -->
-              <div class="howtoplay-content-text-lan">
+              <div class="howtoplay-lan">
                 <p>與夥伴分享情報</p>
                 <p>共同動腦輸入密碼</p>
                 <p>開啟機關離開密室 </p> 
@@ -290,24 +288,24 @@ export default {
         </section>
 
           <!-- 內容區塊 03 -->
-          <section class="p-howtoplay-content">
+          <section class="howtoplay-box01">
             <!-- 左邊文字區塊 -->
-            <section class="p-howtoplay-content-text">
+            <section class="howtoplay-text">
               <!-- 上方標語 -->
-              <div class="howtoplay-content-text-slogan">
+              <div class="howtoplay-slogan">
                 <span>了解</span>
                 <img src="/src/assets/img/keyhole.svg" alt="">
                 <span>真相</span>
               </div>
               <!-- 下方文字 -->
-              <div class="howtoplay-content-text-lan">
+              <div class="howtoplay-lan">
                 <p>事出必有因</p>
                 <p>層層謎題的牽連下</p>
                 <p>挖掘埋沒的真相</p> 
               </div>
             </section>
             <!-- 右側圖片區塊 -->
-            <section class="p-howtoplay-img">
+            <section class="howtoplay-img">
               <img src="/src/assets/img/Index-howto03.jpg" alt="">
             </section>
           </section>
@@ -379,6 +377,7 @@ export default {
           <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
         </section>
       </section>
+
     </section>
     <Footerbar />
   </main>

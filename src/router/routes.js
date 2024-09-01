@@ -11,9 +11,9 @@ import Popupcard from '../views/Popupcard.vue';
 import Theme from '../views/Theme.vue';
 import ThemeAlien from '../views/ThemeAlien.vue';
 import Theme_Lock from '../views/Theme_Lock.vue';
+import Theme_Time from '../views/Theme_time.vue';
 import preorder from '../views/preorder.vue';
 import orderinform from '../views/orderinform.vue';
-import Theme_Time from '../views/Theme_time.vue';
 import Membermanage from '../views/Membermanage.vue';
 import Escaperoom from '../views/Escaperoom.vue';
 
