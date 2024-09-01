@@ -15,10 +15,10 @@
 // 首頁第一部分  主視覺
 .content-homepage {
     width: 100%;
-    padding-top: 80px;
+    padding: 80px 0;
 
     .homepage-text {
-        margin-top: 200px;
+        margin-top: 147px;
         margin-left: 120px;
 
         h1 {
@@ -38,22 +38,29 @@
         margin: 0 auto;
         display: flex;
         justify-content: space-around;
+        margin-top: 128px;
+        margin-bottom: 40px;
+    }
+
+    .homepage-card01 {
+        img {
+            width: 100%;
+        }
+    }
+
+    .homepage-card02 {
         margin-top: 40px;
 
-        .homepage-card01 {
-            img {}
+        img {
+            width: 100%;
         }
+    }
 
-        .homepage-card02 {
-            margin-top: 40px;
+    .homepage-card03 {
+        margin-bottom: 40px;
 
-            img {}
-        }
-
-        .hhomepage-card03 {
-            margin-bottom: 40px;
-
-            img {}
+        img {
+            width: 100%;
         }
     }
 }
@@ -62,10 +69,10 @@
     $speed: 6s;
     $wordCount: 7;
 
-    width: 70%;
+    width: 50%;
     height: 100px;
     position: relative;
-    margin-left: 200px;
+    margin-left: 400px;
     filter: contrast(10) blur(1px);
 
     .homeeffect-word {
@@ -101,29 +108,28 @@
 }
 
 // 首頁第二部分  品牌故事
-.content-p-brandstory {
+.content-brandstory {
     width: 100%;
-    padding: 80px 0;
+    padding: 212px 0;
     margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
 
-    .content-p-brandstory-effect {}
+    .brandstory-effect {}
 
 }
 
-.content-p-brandstory-contenter {
+.brandstory-content {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     width: 90%;
     margin: 0 auto;
-    padding-top: 120px;
-    padding-bottom: 120px;
-
 }
 
-.content-p-brandstory-imgarea {
+.brandstory-img {
     width: 40%;
     display: flex;
     align-items: center;
@@ -136,7 +142,7 @@
     }
 }
 
-.content-p-brandstory-textarea {
+.brandstory-text {
     width: 40%;
     text-align: center;
     display: flex;
@@ -144,8 +150,11 @@
     align-items: center;
     justify-content: center;
 
-    .brandstory-textarea-year {
+    .brandstory-sub {}
+
+    .brandstory-title {
         display: flex;
+        margin: 40px 0;
 
         span {
             font-size: 48px;
@@ -160,11 +169,8 @@
     h3 {
         font-size: 32px;
         font-weight: bold;
-    }
-
-    p {
-        font-size: 20px;
-        line-height: 1.6;
+        margin-top: 16px;
+        margin-bottom: 40px;
     }
 
     .while-lineforhome {
@@ -172,17 +178,20 @@
         width: 60%;
     }
 
-    .content-p-brandstory-text {
-        text-align-last: left;
-        text-indent: 2em;
+    .brandstory-intro {
+        text-align: left;
+        font-size: 20px;
+        padding: 0 40px;
+        margin-bottom: 20px;
     }
 
-    .content-p-brandstory-bottom {
+    .brandstory-bottom {
         margin-top: 40px;
 
         p {
             font-size: 40px;
             font-weight: bold;
+            margin-bottom: 20px;
         }
 
         p:nth-child(2) {
@@ -192,9 +201,123 @@
 }
 
 // 首頁第三部分 限時主題
-.content-p-limitlevel {
+.content-limitlevel {
     width: 100%;
+    padding: 80px 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
+
+.limitlevel-effect {}
+
+.limitlevel-content {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .limitlevel-topic {
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 40px;
+    }
+}
+
+.limitlevel-Area {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.limitlevel-text {
+    width: 70%;
+    padding: 200px 0;
+
+    font-size: 24px;
+    border: 1px solid gold;
+    .limitlevel-sologanred {
+        color: red;
+    }
+
+    .limitlevel-sologan-1 {
+        display: flex;
+        font-size: 24px;
+        font-weight: bold;
+        margin-left: 80px;
+
+        span {
+            margin-bottom: 80px;
+        }
+    }
+
+    .limitlevel-sologan-2 {
+        display: flex;
+        font-size: 28px;
+        font-weight: bold;
+        margin-left: 180px;
+
+        span {
+            margin-bottom: 80px;
+        }
+
+    }
+
+    .limitlevel-sologan-3 {
+        display: flex;
+        font-size: 32px;
+        font-weight: bold;
+        margin-left: 120px;
+
+        span {
+            margin-bottom: 120px;
+        }
+    }
+
+    .limitlevel-sologan-4 {
+        display: flex;
+        font-size: 36px;
+        font-weight: bold;
+        margin-left: 180px;
+
+        span {
+            margin-bottom: 80px;
+        }
+    }
+}
+
+.limitlevel-img {
+    border: 1px solid red;
+    width: 40%;
+    img{
+        width: 100%;
+    }
+}
+
+.limitlevel-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-around;
+    border: 1px solid yellowgreen;
+
+    span{
+        font-size: 120px;
+        font-weight: bold;
+        color: red;
+        margin-bottom: 28px;
+    }
+
+    p{
+        font-size: 24px;
+    }
+}
+
+
+
 
 // 首頁第四部分 如何遊玩
 .content-howtoplay {
@@ -204,6 +327,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .howtoplay-content {
     width: 90%;
     margin: 0 auto;
