@@ -1,10 +1,10 @@
-.theme_banner{
+.theme_banner {
     max-width: 100%;
     margin-bottom: 80px;
 }
 
-.banner_video{
-   width: 100%;
+.banner_video {
+    width: 100%;
 }
 
 .banner {
@@ -62,7 +62,7 @@
     }
 
     &.alien {
-        color: map-get($colors, lightgreen )
+        color: map-get($colors, lightgreen)
     }
 }
 
@@ -108,8 +108,10 @@
 .gameinfo {
     // border: 1px solid white;
     display: flex;
-    justify-content: center;
-    gap: 22%;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
 
 }
 
@@ -159,25 +161,35 @@ i.fa-dollar-sign {
 // -----亮點icon start-----
 
 .iconinfo {
+    // border: 1px solid white;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    width: 85%;
+    margin: 0 auto;
 }
 
-.theme_icon img {
-    width: 50%;
-    // width: 220px;
-    transition: transform 0.3s ease;
 
-    &:hover {
-        transform: scale(1.1);
+.theme_icon_img {
+    // border: 1px solid white;
+    max-width: 100%;
+
+    img {
+        width: 250px;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 }
+
 
 .theme_icon {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 12px;
 
     &.hospital {
@@ -386,17 +398,19 @@ i.fa-dollar-sign {
     }
 }
 
-@include rwd(670px){
+@include rwd(670px) {
     .theme_arrow .theme_wrapper {
         width: 280px;
     }
 }
 
-@include rwd(500px){
+@include rwd(500px) {
     .theme_hospital {
-    
 
-        &:nth-of-type(1),&:nth-of-type(2),&:nth-of-type(3) {
+
+        &:nth-of-type(1),
+        &:nth-of-type(2),
+        &:nth-of-type(3) {
             .theme_marketing_text {
                 // border: 1px solid white;
                 margin: 150px auto;
@@ -406,19 +420,21 @@ i.fa-dollar-sign {
     }
 }
 
-@include phone(){
-    .theme_arrow{
+@include phone() {
+    .theme_arrow {
         gap: 0;
     }
+
     .theme_arrow .theme_wrapper {
         width: 280px;
     }
 }
 
-@include rwd(345px){
-    .theme_arrow{
+@include rwd(345px) {
+    .theme_arrow {
         gap: 0;
     }
+
     .theme_arrow .theme_wrapper {
         width: 280px;
     }

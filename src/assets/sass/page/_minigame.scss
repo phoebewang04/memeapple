@@ -86,32 +86,16 @@
 
 // -----map start-----
 
+
 .minigame_map {
-    margin: 200px 0;
+    // border: 1px solid wheat;
     text-align: center;
 }
 
-.plate_1,.plate_2,.plate_3{
-    
-    fill:#909090;
-
-    &:nth-of-type(1):hover{
-        fill:#a77ccd;
-    }
-
-    &:nth-of-type(2):hover {
-        fill: #8fcc7c;
-    }
-
-    //鬼碑迷陣
-    &:nth-of-type(3):hover {
-        fill: #7cc0cc;
-    }
-}
-
-
+// -----動畫－座標-----
 .coordinate {
-    animation: updown .5s linear infinite;
+    animation: updown .8s linear infinite;
+    cursor: pointer;
 
     @keyframes updown {
         0% {
@@ -128,35 +112,55 @@
     }
 }
 
-.zombie_hand {
+// -----動畫－殭屍手手-----
+.zombie_hand g:nth-of-type(1) {
     transform-origin: bottom center;
-    /* 設定旋轉中心點 */
-    animation: wipeGlass 2s infinite ease-in-out;
-    /* 動畫效果 */
 
-    @keyframes wipeGlass {
+    animation: grasp 2s infinite ease-in-out;
+
+    @keyframes grasp {
         0% {
             transform: rotate(0deg) translateX(0) translateY(7px);
-            /* 初始位置 */
         }
 
         50% {
-            transform: rotate(-2deg) translateX(-10px) translateY(0px);
-            /* 向右上方移動並旋轉 */
+            transform: rotate(-5deg) translateX(-10px) translateY(5px);
         }
 
         75% {
             transform: rotate(2deg) translateX(0) translateY(10px);
-            /* 回到初始位置 */
         }
 
         100% {
             transform: rotate(0deg) translateX(0) translateY(7px);
-            /* 回到初始位置 */
         }
     }
 }
 
+.zombie_hand g:nth-of-type(2) {
+    animation: wavehand 2s infinite ease-in-out;
+}
+
+@keyframes wavehand {
+
+
+    50% {
+        transform: translateX(15px);
+    }
+}
+
+.zombie_hand g:nth-of-type(3) {
+    animation: wave 1.5s infinite ease-in-out;
+}
+
+@keyframes wave {
+
+    50% {
+        transform: translateX(5px) translateY(5px);
+    }
+}
+
+// -----動畫－阿飄-----
 .minigame_ghost {
     animation: ghostupdown 2s linear infinite;
 
@@ -175,34 +179,79 @@
     }
 }
 
-.palte3_bigzombie {
-    animation: zombieWalk 5s infinite;
+// -----動畫－房子-----
+
+.house_light {
+    fill: #FBC75D;
+    animation: discoloration 2s linear infinite;
+    ;
+
+    @keyframes discoloration {
+        0% {
+            fill: #FBC75D;
+        }
+
+        50%{
+            fill: #2a4e28;
+        }
+
+        100%{
+            fill: #FBC75D;
+        }
+    }
+}
+
+
+.leftzombie {
+    animation: leftzombieWalk 5s infinite;
     animation-timing-function: steps(5, end);
 }
 
-@keyframes zombieWalk {
+@keyframes leftzombieWalk {
     0% {
         transform: translateX(0) scale(1, 1);
-        /* 初始位置，正常方向 */
     }
 
     50% {
         transform: translateX(100px) scale(1, 1);
-        /* 往右移動80px */
     }
 
     51% {
-        transform: translateX(calc(50px + 150%)) scale(-1, 1);
-        /* 開始翻轉，並補償位置 */
+        transform: translateX(calc(10px + 50%)) scale(-1, 1);
     }
 
     100% {
-        transform: translateX(145%) scale(-1, 1);
-        /* 翻轉後回到原始位置 */
+        transform: translateX(40%) scale(-1, 1);
     }
 }
 
+.rightzombie{
+    animation: rightzombieWalk 8s infinite;
+    animation-timing-function: steps(8, end);
 
+    @keyframes rightzombieWalk {
+        0% {
+            transform: translateX(0) scale(1, 1);
+        }
+    
+        50% {
+            transform: translateX(-100px) scale(1, 1);
+        }
+    
+        51% {
+            transform: translateX(calc(-10px + 150%)) scale(-1, 1);
+        }
+    
+        100% {
+            transform: translateX(165%) scale(-1, 1);
+        }
+    }
+
+
+
+
+
+}
 
 
 
