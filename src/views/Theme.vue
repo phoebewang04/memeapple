@@ -62,17 +62,23 @@ import Footerbar from '../components/Footerbar.vue';
 
         <section class="iconinfo">
             <div class="theme_icon hospital">
-                <img src="../assets/img/icon-1.png" alt="">
+                <div class="theme_icon_img">
+                    <img src="../assets/img/icon-1.png" alt="">
+                </div>
                 <h3>極度重恐</h3>
                 <p>真人互動，將恐懼推向極限<br>密閉驚悚的壓迫體驗</p>
             </div>
             <div class="theme_icon hospital">
+                <div class="theme_icon_img">
                 <img src="../assets/img/icon-2.png" alt="">
+                </div>
                 <h3>身歷其境</h3>
                 <p>精心還原醫院每個角落<br>逼真場景宛如置身其中</p>
             </div>
             <div class="theme_icon hospital">
+                <div class="theme_icon_img">
                 <img src="../assets/img/icon-3.png" alt="">
+                </div>
                 <h3>海量謎題</h3>
                 <p>層層難關，精心雕琢<br>由你揭開最深的秘密</p>
             </div>
