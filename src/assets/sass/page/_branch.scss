@@ -16,19 +16,9 @@
 }
 
 #wrapper .slogan {
-    width: 1200px;
+    width: 75%;
     padding: 80px 0px;
     margin: 0 auto;
-
-
-    @include pad {
-        width: 740px;
-    }
-
-    @include rwd(430px){
-        width: 330px;
-        padding: 50px 0px;
-    }
 
 }
 

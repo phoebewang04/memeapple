@@ -13,8 +13,8 @@ import Footerbar from '../components/Footerbar.vue';
     <div id="wrapper"> 
 
         <div class="slogan">
-            <p>世界的謎底存在著很多的因果關係, 透過一些方式找到其中的答案, 這個過程就稱為解謎, 而我們好是一群熱愛冒險跟, 喜好解開世界所有謎題的答案把這樣的想法和精神化成實體, 邀請你一起加入我們,
-                探險這世界上所有的謎題吧!
+            <p>世界的謎底存在著很多的因果關係，透過一些方式找到其中的答案，這個過程就稱為解謎，而我們剛好是一群熱愛冒險跟喜好解開世界所有謎題的答案的夥伴，把這樣的想法和精神化成實體，邀請你一起加入我們，
+                探險這世界上所有的謎題吧！
             </p>
         </div>
 
@@ -39,27 +39,52 @@ import Footerbar from '../components/Footerbar.vue';
 
 
             <div class="theme">
-                <ul>
+
+                <!--<ul>
                     <li><i class="fa-solid fa-caret-left"></i></li>
                     <div class="theme_name">
-                        <li><a href="#"><img src="../assets/img/banner-hospital.png" alt="">
-                                <h3>成都醫院</h3>
-                            </a></li>
-                        <li><a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt="">
-                                <h3>時光迷宮</h3>
-                            </a></li>
-                        <li><a href="#"><img src="/src/assets/img/banner-dead.jpg" alt="">
-                                <h3>末日庇護所</h3>
-                            </a></li>
+                        <li>
+                            <a href="#"><img src="../assets/img/banner-hospital.png" alt=""><h3>成都醫院</h3></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt=""><h3>時光迷宮</h3></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="/src/assets/img/banner-dead.jpg" alt=""><h3>末日庇護所</h3></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="/src/assets/img/banner-code.png" alt=""><h3>代碼深淵</h3></a>
+                        </li>
                     </div>
                     <li><i class="fa-solid fa-caret-right"></i></li>
-                </ul>
+                </ul>-->
+
+               
+                <swiper :slidesPerView="3" :spaceBetween="30" :navigation="{ nextEl: '.branch-swiper-button-next', prevEl: '.branch-swiper-button-prev',}" :modules="modules" class="mySwiper1">
+
+                    <swiper-slide> <li><a href="#"><img src="../assets/img/banner-hospital.png" alt=""><h3>成都醫院</h3></a></li></swiper-slide>
+                    <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt=""><h3>時光迷宮</h3></a></li></swiper-slide>
+                    <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-dead.jpg" alt=""><h3>末日庇護所</h3></a></li></swiper-slide>
+                    <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-code.png" alt=""><h3>代碼深淵</h3></a></li></swiper-slide>
+
+                    <div class="branch-swiper-button-prev">
+                        <li><i class="fa-solid fa-caret-left"></i></li>
+                    </div>
+                    <div class="branch-swiper-button-next">
+                        <li><i class="fa-solid fa-caret-right"></i></li>
+                    </div>
+
+                </swiper>
+
 
                 <swiper :modules="[Pagination]" :pagination="{ clickable: true }" class="mySwiper">
                     <swiper-slide> <li><a href="#"><img src="../assets/img/banner-hospital.png" alt=""><h3>成都醫院</h3></a></li></swiper-slide>
                     <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt=""><h3>時光迷宮</h3></a></li></swiper-slide>
                     <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-dead.jpg" alt=""><h3>末日庇護所</h3></a></li></swiper-slide>
+                    <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-code.png" alt=""><h3>代碼深淵</h3></a></li></swiper-slide>
+
                 </swiper>
+
 
             </div>
 
@@ -109,36 +134,108 @@ import Footerbar from '../components/Footerbar.vue';
 
 <script>
 
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+    import { Swiper, SwiperSlide } from "swiper/vue";
+    import 'swiper/css';
+    import 'swiper/css/navigation';
+    import 'swiper/css/pagination';
 
-export default {
-  components: {
-    Swiper,
-    SwiperSlide,
-    },
+    import { Pagination} from 'swiper/modules';
+    import { Navigation } from 'swiper/modules';
 
 
-    setup(){
-        const swiperInstance = Swiper.use([Pagination]);
+// export default {
+//   components: {
+//     Swiper,
+//     SwiperSlide,
+//     },
+//     setup(){
 
-        swiperInstance.on('init', () => {
-           
-        });
+//         return {
+//             modules: [Pagination],
+//             modules: [Navigation]
+//         };
+//     },
+// },
 
-        return {
-            modules: [Pagination],
-        };
-    },
-};
+    export default {
+
+        components: {
+            Swiper,
+            SwiperSlide,
+        },
+
+        data() {
+            return {
+                swiper: null,
+            };
+        },
+        mounted() {
+            this.swiper = new Swiper('.mySwiper1', {
+                navigation: {
+                    nextEl: '.branch-swiper-button-next',
+                    prevEl: '.branch-swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        },
+        methods: {
+            slideToPrev() {
+                if (this.swiper) {
+                    this.swiper.slidePrev();
+                }
+            },
+            slideToNext() {
+                if (this.swiper) {
+                    this.swiper.slideNext();
+                }
+            },
+        },
+    };
+
 
 </script>
 
 <!-- --------------------------------樣式版---------------------------------------------- -->
 
 <style scoped>
+
+    /* -------------------------------pc的swiper-------------------------------------------- */
+
+    .mySwiper1 {
+        display: block;
+        @media screen and (max-width:430px) {
+            display: none;
+        }
+    }
+
+    /* .mySwiper1 .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        /* display: flex;
+        justify-content: center;
+        align-items: center;
+    }  */
+
+
+    .mySwiper1 .swiper-slide li a {
+        text-decoration: none;
+        color: #292929;
+    }
+
+
+    .mySwiper1 li img {
+        width: 300px;
+        height: 420px;
+    }
+
+
+    /* -------------------------------RWD的swiper-------------------------------------------- */
 
     .mySwiper {
         width: 100%;
@@ -176,16 +273,18 @@ export default {
         width: 300px;
     }
 
-    ::v-deep .swiper-pagination-bullet {
+    ::v-deep .mySwiper .swiper-pagination-bullet {
          background-color: white;
     }
 
-    ::v-deep .swiper-pagination {
-        position: absolute;
-        bottom: 0px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 10;
-}
+    ::v-deep .mySwiper .swiper-pagination {
+        @media screen and (max-width: 430px){
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+    }
 
 </style>
