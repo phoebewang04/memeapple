@@ -19,15 +19,15 @@
                     </ul>
                 </nav>
                 <form class="backstage_form" method="get" action="">
-                    <input class="backstage_input" type="text" placeholder="關鍵字搜尋">
-                    <select class="backstage_dropdown" name="selected">
-                        <option value="" selected>狀態篩選</option>
-                        <option value="">正常</option>
-                        <option value="">停權</option>
+                    <input class="backstage_input" type="text" placeholder="關鍵字搜尋" v-model="keyword">
+                    <select class="backstage_dropdown" name="selected" v-model="status">
+                        <option value="所有狀態" selected>所有狀態</option>
+                        <option value="正常">正常</option>
+                        <option value="停權">停權</option>
                     </select>
                 </form>
                 <div class="backstage_panel">
-                    <button class="btn backstage_button">查詢</button>
+                    <button type="submit" class="btn backstage_button" @click="search">查詢</button>
                 </div>
             </div>
             <div class="backstage_tablezone">
@@ -43,11 +43,11 @@
                         </tr>
                     </thead>
                     <tbody class="backstage_tablebody">
-                        <tr>
-                            <td id="member_regidate">2024.8.26</td>
-                            <td id="member_name">郭力仁</td>
-                            <td id="member_email">atlaskuowork@gmail.com</td>
-                            <td id="member_phone">0911222333</td>
+                        <tr v-for = "member in member" >
+                            <td id="member_regi_date">{{ member.regi_date }}</td>
+                            <td id="member_name">{{ member.name }}</td>
+                            <td id="member_email">{{ member.email }}</td>
+                            <td id="member_phone">{{ member.phone }}</td>
                             <td id="member_status"><a href="" class="backstage_table_button">正常</a></td>
                             <td id="member_action"><a href="" class="backstage_table_button">檢視訂單</a></td>
                         </tr>
