@@ -1,8 +1,23 @@
 
 <script setup>
 import '../assets/css/style.css';
+import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
-document.addEventListener('DOMContentLoaded', function() {
+const router = useRouter();
+
+onMounted(() => {
+  triggerAnimations();
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/' && from.path !== '/') {
+    triggerAnimations();
+  }
+  next();
+});
+
+function triggerAnimations() {
 
   setTimeout(function(){
     document.querySelector('.frontpage-logo').classList.add('show');
@@ -24,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.frontpage-slogran').classList.add('show');
   }, 1000); 
   // 延遲 1000 毫秒後顯示
-});
+};
 
 </script>
 
@@ -37,28 +52,28 @@ document.addEventListener('DOMContentLoaded', function() {
       <section class="content-frontpage">
 
         <!-- 前端按鈕 -->
-        <section class="frontpage-btnL">
+        <router-link to="/index/"><section class="frontpage-btnL">
           <img src="../assets/img/BTN-yellow.png" alt="" class="glow-effect-L">
-          <router-link to="/index/"><a href="">
+          <a href="">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             進入前台
-          </a></router-link>
-        </section>
+          </a>
+        </section></router-link>
 
         <!-- 右側按鈕 -->
-        <section class="frontpage-btnR">
+        <router-link to="/BackstageIndex/"><section class="frontpage-btnR">
           <img src="../assets//img/BTN-blue.png" alt="" class="glow-effect-R">
-          <router-link to="/BackstageIndex/"><a href="">
+          <a href="">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             進入後台
-          </a></router-link>
-        </section>
+          </a>
+        </section></router-link>
       </section>
 
         <!-- 中央內容 -->

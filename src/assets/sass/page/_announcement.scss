@@ -1,200 +1,259 @@
 .main-announcement {
     width: 100%;
-    height: calc(100vh - 70px - 73.58px);
+    height: calc(100vh - 70px - 72.33px);
     display: flex;
     align-items: center;
     justify-content: center;
 
     @include pad {
-        height: calc(100vh - 70px - 73.58px);
+        height: calc(100vh - 100px - 71.33px);
     }
 
     @include phone {
         height: calc(100vh - 100px - 71.33px);
     }
 
-    .wrapper-announcement {
+}
+
+.wrapper-announcement {
+    width: 90%;
+    margin: 0 auto;
+
+    @include rwd(1280px) {
+        width: 95%;
+    }
+
+    @include pad {
         width: 80%;
-        margin: 0 auto;
+    }
 
-        .content-announcement {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
+    @include rwd(540px) {
+        width: 90%;
+    }
 
-            @include rwd(1100px) {
-                flex-direction: column;
-                align-items: center;
-            }
+    @include phone {
+        width: 95%;
+    }
 
-            .content-announcement-img {
-                width: 100%;
-                margin-right: 49px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
+}
 
-                @include rwd(1100px) {
-                    margin-right: 0px;
-                }
+.content-announcement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-                .bread-announcement {
-                    margin-bottom: 16px;
+    @include rwd(980px) {
+        flex-direction: column;
+    }
+}
 
-                    @include rwd(1440px) {
-                        margin-bottom: 20px;
-                    }
+.announcement-img {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-                    @include rwd(1100px) {
-                        margin-bottom: 16px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
+    @include rwd(1600px) {
+        width: 50%;
+    }
 
-                    @include pad {
-                        display: none;
-                    }
+    @include rwd(1024px) {
+        width: 55%;
+    }
 
-                    .bread-announcement-breadcrumb {
-                        display: flex;
+    @include rwd(980px) {
+        width: 60%;
+    }
 
-                        ul {
-                            display: flex;
-                            text-decoration: none;
-                            width: 40%;
-                            letter-spacing: 2px;
-                            width: 100%;
+}
 
-                            @include rwd(500px) {
-                                display: none;
-                            }
+.announcementPic {
+    width: 80%;
+    height: auto;
+    display: block;
 
-                            li {
-                                color: map-get($colors, white);
-                            }
+    @include rwd(1400px) {
+        width: 60%;
+    }
 
-                            a {
-                                color: map-get($colors, white);
-                            }
-                        }
-                    }
-                }
+    @include rwd(980px) {
+        width: 60%;
+    }
 
-                img {
-                    width: 100%;
-                    height: auto;
-                    display: block;
+    @include pad {
+        width: 70%;
+    }
 
-                    @include rwd(1200px) {
-                        width: 80%;
-                    }
+    @include phone {
+        width: 80%;
+    }
+}
 
-                    @include pad {
-                        width: 50%;
-                    }
-                }
-            }
+.announcement-text {
+    width: 40%;
+    margin-top: 60px;
+    text-align: center;
 
-            .content-announcement-text {
-                text-align: center;
-                margin-top: 20px;
+    @include rwd(1660px) {
+        width: 50%;
+        margin-top: 20px;
+    }
 
-                @include rwd(1100px) {
-                    width: 70%;
-                }
+    @include rwd(1280px) {
+        width: 50%;
+        margin-top: 20px;
+    }
 
-                @include pad {
-                    width: 80%;
-                }
+    @include rwd(980px) {
+        width: 90%;
+    }
 
-                @include phone {
-                    width: 90%;
-                    margin-top: 16px;
-                }
+    @include pad {
+        width: 80%;
+    }
 
-                @include rwd(380px) {
-                    margin-top: 8px;
-                }
+    @include rwd(540px) {
+        margin-top: 8px;
+        width: 90%;
+    }
 
-                h1 {
-                    font-size: 32px;
-                    font-weight: 500;
-                    line-height: 1.5;
-                    margin-bottom: 24px;
+    @include phone {
+        width: 90%;
+        margin-top: 16px;
+    }
 
-                    @include rwd(1100px) {
-                        font-size: 20px;
-                        line-height: 1;
-                    }
+    @include rwd(380px) {
+        margin-top: 8px;
+    }
 
-                    @include pad {
-                        font-size: 20px;
-                        margin-bottom: 16px;
-                    }
+    h1 {
+        font-size: 32px;
+        font-weight: 500;
+        margin-bottom: 40px;
 
-                    @include phone {
-                        margin-bottom: 12px;
-                    }
-
-                    @include rwd(375px) {
-                        margin-bottom: 8px;
-                    }
-                }
-
-                h2 {
-                    font-size: 20px;
-                    font-weight: 500;
-
-                    @include rwd(1100px) {
-                        display: none;
-                    }
-                }
-
-                p {
-                    line-height: 1.5;
-                    margin-bottom: 18px;
-                    text-align-last: left;
-                    text-indent: 2em;
-
-                    @include rwd(1100px) {
-                        font-size: 18px;
-                        margin-bottom: 12px;
-                    }
-
-                    @include pad {
-                        font-size: 16px;
-                        line-height: 1.3;
-                        margin-bottom: 8px;
-                    }
-
-                    @include phone {
-                        font-size: 14px;
-                        margin-bottom: 12px;
-                    }
-
-                    @include rwd(380px) {
-                        margin-bottom: 8px;
-                    }
-
-                }
-
-                .NewsBack {
-                    @include rwd(1100px) {
-                        width: 120px;
-                        height: 32px;
-                        font-size: 18px;
-                        padding: 0;
-                    }
-
-                    @include phone {
-                        width: 100px;
-                        height: 28px;
-                    }
-                }
-            }
+        @include rwd(1280px) {
+            font-size: 28px;
+            margin-bottom: 18px;
         }
+
+        @include pad {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        @include rwd(540px) {
+            margin-bottom: 8px;
+        }
+
+        @include phone {
+            margin-bottom: 4px;
+        }
+
+        @include rwd(375px) {
+            margin-bottom: 8px;
+        }
+    }
+
+    p {
+        font-size: 20px;
+        margin-bottom: 18px;
+        text-align-last: left;
+
+        @include rwd(1440px) {
+            font-size: 18px;
+            margin-bottom: 8px;
+            padding: 0 20px;
+        }
+
+        @include pad {
+            font-size: 16px;
+            margin-bottom: 8px;
+            padding: 0 8px;
+        }
+
+        @include rwd(540px) {
+            line-height: 1.3;
+        }
+
+        @include phone {
+            font-size: 14px;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            padding: 0;
+        }
+
+        @include rwd(380px) {
+            margin-bottom: 8px;
+        }
+
+    }
+}
+
+.announcement-bread {
+    margin-bottom: 28px;
+    margin-right: auto;
+    margin-left: 80px;
+
+    @include rwd(1440px) {
+        margin-left: 80px;
+    }
+
+    @include rwd(1280px) {
+        margin-left: 120px;
+    }
+
+    @include rwd(1024px) {
+        margin-left: 80px;
+    }
+
+    @include rwd(980px) {
+        display: none;
+    }
+
+}
+
+
+.announcement-crumb {
+    display: flex;
+
+    ul {
+        display: flex;
+        text-decoration: none;
+        width: 40%;
+        letter-spacing: 2px;
+        width: 100%;
+
+        li {
+            color: map-get($colors, white);
+        }
+
+        a {
+            color: map-get($colors, white);
+        }
+    }
+}
+
+
+
+.NewsBack {
+
+    width: 160px;
+    text-align: center;
+
+    @include rwd(1280px) {
+        width: 120px;
+        height: 32px;
+        font-size: 18px;
+        padding: 0;
+        margin-top: 12px;
+    }
+
+    @include rwd(540px) {
+        margin-top: 0;
+    }
+
+    @include phone {
+        width: 100px;
+        height: 28px;
     }
 }
