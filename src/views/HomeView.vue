@@ -186,8 +186,39 @@ export default {
             <!-- 右側內容 -->
             <section class="limitlevel-img">
               <img src="/src/assets/img/cagebird.png" alt="">
-
-
+               <!-- 標語 -->
+               <div class="limitlevel-imgtext">
+                  <p>かごめかごめ</p>
+                  <p>籠の中の鳥は </p>
+                  <p>いついつ出やる</p>
+                  <p>夜明けの晩に</p>
+                  <p>鶴と亀が滑った</p>
+                  <p>後ろの正面だあれ？</p>
+                  
+                <!-- 關卡資訊 -->
+                <div class="limitlevel-info">
+                  <!-- 遊玩難度 -->
+                  <div class="limitlevel-level">
+                    <!-- icon -->
+                    <img src="" alt="">
+                    <p>3 Star</p>
+                  </div>
+                  <!-- 遊玩人數 -->
+                   <div class="limitlevel-people">
+                    <!-- icon -->
+                    <img src="" alt="">
+                    <p>4 - 8</p>
+                   </div>
+                  <!-- 遊玩時間 -->
+                  <div class="limitlevel-time">
+                    <!-- icon -->
+                    <img src="" alt="">
+                    <p>60 mins</p>
+                   </div>
+                </div>
+                    <!-- 預定按鈕 -->
+                    <button type="button" class="btn">立即預定</button>
+                </div>
 
             </section>
           </section>

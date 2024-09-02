@@ -1,7 +1,17 @@
 <script setup>
+// import { useRouter,useRoute } from 'vue-router';
+// const router = useRouter()
+// const route = useRoute()
+// console.log(router);
+// console.log(route.query);
+
+// ajax
+
+
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
+
 </script>
 
 

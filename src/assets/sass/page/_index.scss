@@ -7,15 +7,15 @@
 .wrapper-homepage {
     width: 100%;
     margin: 0 auto;
-    background-image: url(/src/assets/img/Index_BG.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 // 首頁第一部分  主視覺
 .content-homepage {
     width: 100%;
     padding: 80px 0;
+    background-image: url(/src/assets/img/BG-index.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 
     .homepage-text {
         margin-top: 147px;
@@ -110,8 +110,11 @@
 // 首頁第二部分  品牌故事
 .content-brandstory {
     width: 100%;
-    padding: 212px 0;
+    padding: 90px 0;
     margin: 0 auto;
+    background-image: url(/src/assets/img/BG-Index-bread.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -191,7 +194,6 @@
         p {
             font-size: 40px;
             font-weight: bold;
-            margin-bottom: 20px;
         }
 
         p:nth-child(2) {
@@ -203,12 +205,15 @@
 // 首頁第三部分 限時主題
 .content-limitlevel {
     width: 100%;
-    padding: 80px 0;
+    padding: 24px 0;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    background-image: url(/src/assets/img/BG-Index-level.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .limitlevel-effect {}
@@ -230,15 +235,18 @@
 .limitlevel-Area {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .limitlevel-text {
-    width: 70%;
-    padding: 200px 0;
-
+    width: 40%;
     font-size: 24px;
     border: 1px solid gold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 40px;
+
     .limitlevel-sologanred {
         color: red;
     }
@@ -281,7 +289,7 @@
         display: flex;
         font-size: 36px;
         font-weight: bold;
-        margin-left: 180px;
+        margin-left: 60px;
 
         span {
             margin-bottom: 80px;
@@ -291,9 +299,61 @@
 
 .limitlevel-img {
     border: 1px solid red;
-    width: 40%;
-    img{
-        width: 100%;
+    width: 30%;
+    text-align: center;
+    position: relative;
+
+    img {
+        width: 90%;
+    }
+}
+
+.limitlevel-imgtext {
+    width: 60%;
+    text-align: center;
+    position: absolute;
+    top: 60px;
+    left: 140px;
+    transform: rotate(-3deg);
+
+    p {
+        font-size: 32px;
+        line-height: 1.5;
+    }
+}
+
+.limitlevel-info {
+    display: flex;
+
+    .limitlevel-level {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
+            font-size: 18px;
+        }
+
+    }
+
+    .limitlevel-people {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
+            font-size: 18px;
+        }
+    }
+
+    .limitlevel-time {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
+            font-size: 18px;
+        }
     }
 }
 
@@ -301,23 +361,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:space-around;
+    justify-content: space-around;
     border: 1px solid yellowgreen;
 
-    span{
+    span {
         font-size: 120px;
         font-weight: bold;
         color: red;
         margin-bottom: 28px;
     }
 
-    p{
+    p {
         font-size: 24px;
     }
 }
-
-
-
 
 // 首頁第四部分 如何遊玩
 .content-howtoplay {
@@ -326,6 +383,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url(/src/assets/img/BG-Index-How1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .howtoplay-content {

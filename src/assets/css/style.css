@@ -772,14 +772,14 @@ i.fa-dollar-sign {
 .wrapper-homepage {
   width: 100%;
   margin: 0 auto;
-  background-image: url(/src/assets/img/Index_BG.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .content-homepage {
   width: 100%;
   padding: 80px 0;
+  background-image: url(/src/assets/img/BG-index.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .content-homepage .homepage-text {
   margin-top: 147px;
@@ -866,8 +866,11 @@ i.fa-dollar-sign {
 
 .content-brandstory {
   width: 100%;
-  padding: 212px 0;
+  padding: 90px 0;
   margin: 0 auto;
+  background-image: url(/src/assets/img/BG-Index-bread.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -934,7 +937,6 @@ i.fa-dollar-sign {
 .brandstory-text .brandstory-bottom p {
   font-size: 40px;
   font-weight: bold;
-  margin-bottom: 20px;
 }
 .brandstory-text .brandstory-bottom p:nth-child(2) {
   color: red;
@@ -942,12 +944,15 @@ i.fa-dollar-sign {
 
 .content-limitlevel {
   width: 100%;
-  padding: 80px 0;
+  padding: 24px 0;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  background-image: url(/src/assets/img/BG-Index-level.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .limitlevel-content {
@@ -966,14 +971,17 @@ i.fa-dollar-sign {
 .limitlevel-Area {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .limitlevel-text {
-  width: 70%;
-  padding: 200px 0;
+  width: 40%;
   font-size: 24px;
   border: 1px solid gold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 40px;
 }
 .limitlevel-text .limitlevel-sologanred {
   color: red;
@@ -1009,7 +1017,7 @@ i.fa-dollar-sign {
   display: flex;
   font-size: 36px;
   font-weight: bold;
-  margin-left: 180px;
+  margin-left: 60px;
 }
 .limitlevel-text .limitlevel-sologan-4 span {
   margin-bottom: 80px;
@@ -1017,10 +1025,53 @@ i.fa-dollar-sign {
 
 .limitlevel-img {
   border: 1px solid red;
-  width: 40%;
+  width: 30%;
+  text-align: center;
+  position: relative;
 }
 .limitlevel-img img {
-  width: 100%;
+  width: 90%;
+}
+
+.limitlevel-imgtext {
+  width: 60%;
+  text-align: center;
+  position: absolute;
+  top: 60px;
+  left: 140px;
+  transform: rotate(-3deg);
+}
+.limitlevel-imgtext p {
+  font-size: 32px;
+  line-height: 1.5;
+}
+
+.limitlevel-info {
+  display: flex;
+}
+.limitlevel-info .limitlevel-level {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.limitlevel-info .limitlevel-level p {
+  font-size: 18px;
+}
+.limitlevel-info .limitlevel-people {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.limitlevel-info .limitlevel-people p {
+  font-size: 18px;
+}
+.limitlevel-info .limitlevel-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.limitlevel-info .limitlevel-time p {
+  font-size: 18px;
 }
 
 .limitlevel-title {
@@ -1046,6 +1097,9 @@ i.fa-dollar-sign {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: url(/src/assets/img/BG-Index-How1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .howtoplay-content {
