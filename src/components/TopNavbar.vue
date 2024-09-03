@@ -39,6 +39,7 @@ export default {
             <li><router-link to="/preorder/">預定資料</router-link></li>
             <li><router-link to="/orderinform/">資料確認</router-link></li>
             <li><router-link to="/Theme/">主題介紹</router-link></li>
+            <li><router-link to="/Theme_test/">測</router-link></li>
             <li><router-link to="/pay/">結帳</router-link></li> 
         </ul>
     </header>
