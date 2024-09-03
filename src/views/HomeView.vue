@@ -14,7 +14,7 @@ onMounted(() => {
     const randomBottom = Math.random() * 100;
     const randomFontSize = Math.random() * 3 + 1;
     const randomOpacity = Math.random();
-    const randomScale = Math.random() * 2 + 0.5; 
+    const randomScale = Math.random() * 2 + 0.25; 
 
     word.style.top = `${randomTop}%`;
     word.style.left = `${randomLeft}%`;
@@ -140,7 +140,7 @@ export default {
             <!-- 底部文字 -->
             <div class="brandstory-bottom">
                 <p>The Birth of </p>
-                <p>The Secret Room</p>
+                <p>The Meme Room</p>
             </div>
           </div>
         </section>
@@ -185,7 +185,7 @@ export default {
 
             <!-- 右側內容 -->
             <section class="limitlevel-img">
-              <img src="/src/assets/img/cagebird.png" alt="">
+              <!-- <img src="/src/assets/img/cagebird.png" alt=""> -->
                <!-- 標語 -->
                <div class="limitlevel-imgtext">
                   <p>かごめかごめ</p>
@@ -194,39 +194,39 @@ export default {
                   <p>夜明けの晩に</p>
                   <p>鶴と亀が滑った</p>
                   <p>後ろの正面だあれ？</p>
-                  
+                </div>  
+
                 <!-- 關卡資訊 -->
                 <div class="limitlevel-info">
                   <!-- 遊玩難度 -->
                   <div class="limitlevel-level">
                     <!-- icon -->
-                    <img src="" alt="">
+                    <font-awesome-icon :icon="['fas', 'lock']" class="limit-icon"  />
                     <p>3 Star</p>
                   </div>
                   <!-- 遊玩人數 -->
                    <div class="limitlevel-people">
                     <!-- icon -->
-                    <img src="" alt="">
+                    <font-awesome-icon :icon="['fas', 'user-group']" class="limit-icon"  />
                     <p>4 - 8</p>
                    </div>
                   <!-- 遊玩時間 -->
                   <div class="limitlevel-time">
                     <!-- icon -->
-                    <img src="" alt="">
+                    <font-awesome-icon :icon="['far', 'clock']" class="limit-icon" />
                     <p>60 mins</p>
-                   </div>
-                </div>
-                    <!-- 預定按鈕 -->
-                    <button type="button" class="btn">立即預定</button>
+                  </div>
                 </div>
 
+                <!-- 預定按鈕 -->
+                <button type="button" class="btn linmit-btn">立即預定</button>
             </section>
           </section>
 
           <!-- 下方內容 -->
           <section class="limitlevel-title">
             <span>龍中鳥</span>
-            <p>廃校舎の不思議な部屋で、誰かが日本の童謡を歌い始める。</p>
+            <p>廃校舎の不思議な部屋で、<br class="limit-br">誰かが日本の童謡を歌い始める。</p>
           </section>
         </section>
       </section>
@@ -238,7 +238,7 @@ export default {
           <h3 class="howtoplay-title">— 遊玩流程 — </h3>
 
           <!-- 內容區塊 01 -->
-          <section class="howtoplay-box01">
+          <section class="howtoplay-box howPic1">
             <!-- 左邊文字區塊 -->
             <section class="howtoplay-text">
               <!-- 上方標語 -->
@@ -255,17 +255,17 @@ export default {
               </div>
             </section>
             <!-- 右側圖片區塊 -->
-            <section class="howtoplay-img">
+            <!-- <section class="howtoplay-img">
               <img src="/src/assets/img/Index-howto01.jpg" alt="">
-            </section>
+            </section> -->
           </section>
 
           <!-- 內容區塊 02 -->
-          <section class="howtoplay-content">
+          <section class="howtoplay-box howPic2">
             <!-- 左側圖片區域 -->
-            <section class="howtoplay-img">
+            <!-- <section class="howtoplay-img">
               <img src="/src/assets/img/Index-howto02.jpg" alt="">
-            </section>
+            </section> -->
             <!-- 右邊文字區塊 -->
             <section class="howtoplay-text">
               <!-- 上方標語 -->
@@ -284,7 +284,7 @@ export default {
         </section>
 
           <!-- 內容區塊 03 -->
-          <section class="howtoplay-box01">
+          <section class="howtoplay-box howPic3">
             <!-- 左邊文字區塊 -->
             <section class="howtoplay-text">
               <!-- 上方標語 -->
@@ -301,18 +301,21 @@ export default {
               </div>
             </section>
             <!-- 右側圖片區塊 -->
-            <section class="howtoplay-img">
+            <!-- <section class="howtoplay-img">
               <img src="/src/assets/img/Index-howto03.jpg" alt="">
-            </section>
+            </section> -->
           </section>
       </section>
     </section>
 
       <!-- 首頁第五部分 最新消息-->
-      <section class="content-p-announcement">
-        <div class="theme-announcement-index">
+      <section class="content-announcement">
+        <div class="announcement-content">
+
+          <h3 class="howtoplay-title">— 最新消息 — </h3>
           <ul>
-            <li><i class="fa-solid fa-caret-left"></i></li>
+            <div class="branch-swiper-button-prev"><li><i class="fa-solid fa-caret-left"></i></li></div>
+            
             <div class="theme_forindex">
 
                 <li class="index-news-li">
@@ -322,52 +325,54 @@ export default {
                   </a>
                 </li>
 
-                <li class="index-news-li">
+                <li class="index-news-li  news-notshow">
                   <a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt="">
                     <h3>時光迷宮</h3>
                     <p class="index-news-text"> 初原之火光芒驟減，不死魔物大量發生，為延續人界與驅除瘴氣。一群菁英尋火者前往「時光迷宮」尋找被諸神之王關押的普羅米修斯。你必須解開謎題與陷阱，解放普羅米修斯得到初原之火，導正世界秩序。</p>
                   </a>
                 </li>
 
-                <li class="index-news-li">
+                <li class="index-news-li  news-notshow">
                   <a href="#"><img src="/src/assets/img/banner-dead.jpg" alt="">
                   <h3>末日庇護所</h3>
                   <p class="index-news-text">世界末日降臨，殭屍橫行，生存成為最大的挑戰。傳說中的安全庇護所是唯一的希望，但位置隱藏在謎團之中。你必須解開線索，找到這處避難所，才能在末日災難中倖存。勇敢尋找，活下去是唯一的選擇。</p>
                  </a>
                 </li>
             </div>    
-            <li><i class="fa-solid fa-caret-right"></i></li>
+
+            <div class="branch-swiper-button-next"><li><i class="fa-solid fa-caret-right"></i></li></div>
           </ul>
+
           <!-- swiper套件 -->
-          <swiper :modules="[Pagination]" :pagination="{ clickable: true }" class="mySwiper">
+          <!-- <swiper :modules="[Pagination]" :pagination="{ clickable: true }" class="mySwiper">
               <swiper-slide> <li><a href="#"><img src="../assets/img/banner-hospital.png" alt=""><h3>成都醫院</h3></a></li></swiper-slide>
               <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt=""><h3>時光迷宮</h3></a></li></swiper-slide>
               <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-dead.jpg" alt=""><h3>末日庇護所</h3></a></li></swiper-slide>
-          </swiper>
+          </swiper> -->
         </div>
       </section>
 
-       <!-- 首頁第六部分 FAQ -->
+      <!-- 首頁第六部分 FAQ -->
       <section class="content-p-faq">
-          <p class="index-faq-title">— 注意事項 — </p>
-          <section class="content-p-faq-contenter">
+        <p class="index-faq-title">— 注意事項 — </p>
+        <section class="content-p-faq-contenter">
           <!-- 第1個問題 -->
           <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?
-            <div class="indexfaq-icon"><i class="fa-solid fa-minus"></i></div>
+            <div class="indexfaq-icon"><i class="fa-solid fa-plus"></i></div>
           </button>
           <!-- 第1個問題的回答 -->
           <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
 
           <!-- 第2個問題 -->
           <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?
-            <div class="indexfaq-icon"><i class="fa-solid fa-minus"></i></div>
+            <div class="indexfaq-icon"><i class="fa-solid fa-plus"></i></div>
           </button>
           <!-- 第2個問題的回答 -->
           <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
 
           <!-- 第3個問題 -->
           <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?
-            <div class="indexfaq-icon"><i class="fa-solid fa-minus"></i></div>
+            <div class="indexfaq-icon"><i class="fa-solid fa-plus"></i></div>
           </button>
           <!-- 第3個問題的回答 -->
           <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
