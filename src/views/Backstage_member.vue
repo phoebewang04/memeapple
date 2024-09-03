@@ -38,7 +38,7 @@
                         keyword: this.keyword,
                         status: this.status
                     };
-                    const response = await axios.get('http://localhost:5173/api/member', { params });
+                    const response = await axios.get('http://localhost:3000/api/member', { params });
                     // console.log('Response from fetchData:', response);
                     console.log(response)
                     // console.log('Updated objArray:', this.objArray);
