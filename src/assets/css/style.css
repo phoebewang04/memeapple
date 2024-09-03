@@ -4166,6 +4166,7 @@ body {
 
 .wrappermmange {
   display: flex;
+  min-height: 1100px;
 }
 
 .mmangeleft {
@@ -4183,52 +4184,134 @@ body {
 
 .mmangeright {
   width: 80%;
-  margin: 80px 0;
+  margin: 60px 0 80px;
 }
 
 .ordertext {
   display: flex;
+  display: none;
 }
 
 .ordertext_left {
   width: 80%;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
 }
-
-.ordertext_right {
-  width: 20%;
+.ordertext_left h3 {
+  margin-bottom: 20px;
 }
 
 .order_card {
   display: flex;
   background-color: white;
   color: #292929;
-  width: 80%;
   border-radius: 8px;
+  position: relative;
+}
+
+.order_cardusage p {
+  border-radius: 0 8px 0 8px;
+  color: white;
+  padding: 2px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 16px;
+}
+.order_cardusage p.onuse {
+  background-color: #087713;
+}
+.order_cardusage p.noneuse {
+  background-color: #C70000;
 }
 
 .order_cardleft {
   display: flex;
+  width: 80%;
+  border-right: 1px dashed #292929;
 }
-
-.order_cardimg {
+.order_cardleft .order_cardimg {
   max-width: 150px;
   min-width: 150px;
-  max-height: 150px;
+  max-height: 200px;
+  margin: 20px;
 }
-.order_cardimg img {
+.order_cardleft .order_cardimg img {
   width: 100%;
   height: 100%;
   object-fit: fill;
+}
+.order_cardleft .order_cardtext {
+  width: 100%;
+  margin: 20px;
+}
+.order_cardleft .order_cardtext p {
+  font-size: 20px;
+}
+.order_cardleft .order_cardtext p:nth-of-type(1) {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.order_cardright {
+  text-align: center;
+  margin: auto;
+  width: 20%;
+}
+.order_cardright .order_cardstate p:nth-of-type(2) {
+  color: #E98714;
+}
+.order_cardright .order_cardstate p:nth-of-type(3) {
+  color: #C70000;
+}
+
+.ordertext_right {
+  width: 20%;
+  border: 1px solid white;
+  border-radius: 8px;
+  height: 100%;
+  margin: 0 20px;
+}
+.ordertext_right .btn_ordera {
+  color: white;
+  background-color: #100E24;
+  width: 100%;
+}
+.ordertext_right h3 {
+  border-bottom: 1px solid white;
+  border-radius: 8px 8px 0 0;
+  text-align: center;
+  font-weight: bold;
 }
 
 .coupontext {
   display: none;
 }
-
-.editmember {
-  display: none;
+.coupontext .couponticket {
+  position: relative;
+  background: #FFE8BB;
+  width: 30%;
+  width: 300px;
+  height: 150px;
+  border-radius: 8px;
+  -webkit-mask: radial-gradient(circle at 40px 40px, transparent 20px, red 0) 50px -40px;
+}
+.coupontext .coupont {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  color: #292929;
 }
 
+.editmember h3 {
+  margin-bottom: 20px;
+}
+.editmember li {
+  margin-bottom: 10px;
+}
 .escape_container {
   margin: auto 0;
 }
