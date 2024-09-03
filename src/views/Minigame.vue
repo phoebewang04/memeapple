@@ -36,6 +36,38 @@ import Lenis from '@studio-freight/lenis';
           命運的試煉從未如此接近，當陰霧籠罩，亡靈怒吼，你是否願意成為那位踏破詛咒的尋寶者？
         </p>
       </div>
+
+     <!-- <div class="brave_text">
+      <p class="split_text_2">
+        勇者們，
+        「 好馬不吃回頭草，勇者不走回頭路 」
+      </p>
+     </div> -->
+    
+    </section>
+    <div class="envelope_container">
+      <div class="envelope_wrapper flap">
+        <div class="envelope">
+            <div class="letter">
+              <div class="letter_text">
+                <p>1、好馬不吃回頭草，勇者不走回頭路。</p>
+                <p>2、凝視地圖，選擇命運的起點，點擊座標，挑戰即將開始。</p>
+                <p>3、已得之祕寶，無再現之時，唯有黑暗再次壟罩。</p>
+              </div>
+            </div>
+            <div class="sticker"></div>
+          </div>
+      </div>
+    </div> 
+
+    <section>
+
+
+
+
+
+
+
     </section>
   
     <section class="minigame_map">
@@ -78,7 +110,7 @@ import Lenis from '@studio-freight/lenis';
       </g>
 
         <!-- 雲朵 -->
-         <g>
+         <g class="cloud">
            <path d="M121.946 85.7181C112.026 84.6225 110.852 92.1092 111.504 95.9895C107.589 96.446 100.28 99.6872 102.368 109L180.679 107.63C182.767 99.4133 174.153 95.533 169.585 94.62C169.063 86.9505 160.231 86.8593 155.881 87.7723C155.228 82.2942 151.965 72.7076 138.261 72.0228C127.297 71.475 122.816 80.9247 121.946 85.7181Z" fill="#A9C5D2"/>
            <path d="M57.9061 165.752C49.9957 164.893 49.0589 170.761 49.5793 173.803C46.4568 174.16 40.6281 176.701 42.2934 184L104.744 182.927C106.409 176.486 99.5399 173.445 95.8969 172.729C95.4806 166.718 88.4375 166.646 84.968 167.362C84.4476 163.068 81.8455 155.555 70.9166 155.018C62.1736 154.589 58.6 161.995 57.9061 165.752Z" fill="#A9C5D2"/>
            <path d="M448.451 169.089C438.28 167.964 437.076 175.653 437.745 179.638C433.73 180.107 426.236 183.436 428.377 193L508.671 191.593C510.812 183.154 501.98 179.169 497.296 178.231C496.761 170.355 487.705 170.261 483.245 171.199C482.576 165.572 479.23 155.727 465.179 155.023C453.937 154.461 449.343 164.166 448.451 169.089Z" fill="#A9C5D2"/>
@@ -165,7 +197,7 @@ import Lenis from '@studio-freight/lenis';
         </g>
         
         <!-- 蝙蝠 -->
-        <g>
+        <g class="bat">
         <path d="M406.132 188.01C397.154 181.784 389.635 181.625 387.067 182.223C395.879 184.925 399.961 193.42 400.901 197.329C408.52 196.215 413.419 200.616 414.917 202.956C417.065 200.129 419.829 201.817 420.943 203.014C421.127 201.024 423.262 201.621 424.307 202.169C424.495 200.316 425.823 197.26 429.639 199.86C429.971 196.457 432.432 189.149 439.62 187.144C439.028 183.299 439.438 173.601 445.812 165.572C441.014 167.512 429.695 172.695 429.461 178.888C429.258 184.266 423.058 190.451 420.908 189.13C420.899 188.175 420.625 186.283 419.595 186.348C419.537 186.929 419.057 187.619 418.824 187.891C418.039 187.905 417.375 188.324 417.141 188.532C416.467 188.13 415.692 187.896 415.389 187.829C414.987 188.502 415.921 189.744 416.438 190.28C416.289 190.221 416.752 195.374 406.132 188.01Z" fill="#100E24"/>
         <path d="M204.884 502.327C220.017 491.832 232.691 491.565 237.02 492.572C222.167 497.127 215.285 511.445 213.701 518.035C200.859 516.158 192.601 523.575 190.077 527.519C186.455 522.754 181.796 525.599 179.92 527.617C179.609 524.263 176.009 525.27 174.248 526.192C173.933 523.069 171.693 517.918 165.261 522.302C164.702 516.565 160.553 504.246 148.436 500.867C149.435 494.385 148.744 478.039 138 464.506C146.088 467.776 165.166 476.512 165.561 486.951C165.904 496.016 176.355 506.442 179.978 504.215C179.993 502.606 180.455 499.415 182.191 499.526C182.289 500.504 183.098 501.668 183.49 502.127C184.813 502.15 185.933 502.856 186.327 503.207C187.464 502.529 188.77 502.134 189.281 502.021C189.959 503.156 188.384 505.249 187.512 506.154C187.764 506.054 186.984 514.74 204.884 502.327Z" fill="#100E24"/>
         </g>
@@ -393,7 +425,6 @@ import Lenis from '@studio-freight/lenis';
     </section>
 
 
-
   </body>
 
    <Footerbar />
@@ -405,28 +436,42 @@ import Lenis from '@studio-freight/lenis';
 export default {
   name: "CemeterySection",
   mounted() {
-    // Split text into characters for animation
+    // 分割成單個字符
     const ghostText = new SplitType(".split_text");
+    const lineText = new SplitType(".split_text_2");
     
-    // Register GSAP plugin
     gsap.registerPlugin(ScrollTrigger);
-    
-    // Create GSAP timeline
+
     const tlGhost = gsap.timeline();
 
-    // Set up scroll-triggered animation
     tlGhost.from(".cemetery_text .char", {
       filter: "blur(20px)",
-      willchange: "filter",
-      stagger: 0.07, // interval between animations
+      willchange: "filter",//優化動畫性能
+      stagger: 0.07,
       scrollTrigger: {
         trigger: ".cemetery_text",
         start: "top center",
-        end: "bottom top+=300", // ends when the bottom of the element is 300px above the top of the viewport
+        end: "bottom top+=300",
         scrub: 1.5,
-        // markers: true, // Uncomment for debugging
+        // markers: true,
         ease: "power4.out",
-        // pin: true // Uncomment to pin the element
+        // pin: true
+      }
+    });
+
+    const tlLine = gsap.timeline();
+    tlLine.from(".brave_text .char",{
+      filter: "blur(20px)",
+      willchange: "filter",
+      scaleY: 0.1,
+      stagger: 0.8,
+      scrollTrigger:{
+        trigger:".brave_text",
+        start: "top center",
+        end: "bottom top+=300",
+        scrub: 1.5,
+        ease: "power4.out",
+        markers: true,
       }
     });
 
@@ -440,11 +485,10 @@ export default {
 
     requestAnimationFrame(raf);
 
-    // Add scroll event listener
     window.addEventListener("scroll", this.handleScroll);
   },
+  //移除之前添加的滾動事件監聽
   beforeUnmount() {
-    // Remove scroll event listener
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
@@ -458,6 +502,7 @@ export default {
       this.$refs.gateRight.style.transform = `translateX(-${value * 0.2}px)` ;
     },
   },
+  
 };
 </script>
 

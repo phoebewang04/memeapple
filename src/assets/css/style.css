@@ -1590,6 +1590,7 @@ i.fa-dollar-sign {
   width: 75%;
   padding: 80px 0px;
   margin: 0 auto;
+  text-align: center;
 }
 
 #wrapper .slogan p {
@@ -3684,18 +3685,91 @@ body {
   right: -300px;
 }
 
-.split_text {
+.split_text,
+.split_text_2 {
   font-size: 24px;
   max-width: 80%;
   margin: 40px auto;
 }
 
-.cemetery_text {
+.cemetery_text,
+.brave_text {
   text-align: center;
+}
+
+.envelope_container {
+  border: 1px solid white;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.envelope_container .envelope_wrapper {
+  background: #d8d7e5;
+  box-shadow: 0 0 40px #4F4C6B;
+}
+.envelope_container .envelope {
+  position: relative;
+  width: 300px;
+  height: 230px;
+}
+.envelope_container .envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  border-top: 130px solid #7873A7;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  transform-origin: top;
+  transition: all 0.5s ease-in-out 0.7s;
+}
+.envelope_container .envelope::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  border-top: 130px solid transparent;
+  border-right: 150px solid #555184;
+  border-bottom: 100px solid #403d64;
+  border-left: 150px solid #555184;
+}
+.envelope_container .letter {
+  position: absolute;
+  right: 20%;
+  bottom: 0;
+  width: 50%;
+  height: 80%;
+  background: #d8d7e5;
+  text-align: center;
+  transition: all 1s ease-in-out;
+  box-shadow: 0 0 5px #4F4C6B;
+}
+.envelope_container .letter .letter_text {
+  text-align: left;
+}
+.envelope_container .sticker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #FBC75D;
+  z-index: 4;
+  transform: translate(-50%, -20%) rotate(45deg);
+  transition: transfrom 0.5s ease-in-out 1s;
+  cursor: pointer;
+}
+
+.flap .sticker {
+  transform: skew(8deg);
+  transition-delay: 0.4s;
 }
 
 .minigame_map {
   text-align: center;
+  margin: 350px 0;
 }
 
 .coordinate {
@@ -3736,39 +3810,47 @@ body {
 .zombie_hand g:nth-of-type(2) {
   animation: wavehand 2s infinite ease-in-out;
 }
-
 @keyframes wavehand {
   50% {
     transform: translateX(15px);
   }
 }
+
 .zombie_hand g:nth-of-type(3) {
   animation: wave 1.5s infinite ease-in-out;
 }
-
 @keyframes wave {
   50% {
     transform: translateX(5px) translateY(5px);
   }
 }
+
 .minigame_ghost {
-  animation: ghostupdown 2s linear infinite;
+  animation: ghostupdown 4s linear infinite;
 }
 @keyframes ghostupdown {
   0% {
-    transform: translateY(0px);
+    opacity: 0;
+    transform: rotate(0deg) translate(-70px) rotate(0deg) translateX(-50px);
+  }
+  25% {
+    opacity: 1;
   }
   50% {
-    transform: translateY(-30px);
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
   }
   100% {
-    transform: translateY(0px);
+    opacity: 0;
+    transform: rotate(360deg) translate(-70px) rotate(-360deg) translateX(-50px);
   }
 }
 
 .house_light {
   fill: #FBC75D;
-  animation: discoloration 2s linear infinite;
+  animation: discoloration 2s infinite;
 }
 @keyframes discoloration {
   0% {
@@ -3786,7 +3868,6 @@ body {
   animation: leftzombieWalk 5s infinite;
   animation-timing-function: steps(5, end);
 }
-
 @keyframes leftzombieWalk {
   0% {
     transform: translateX(0) scale(1, 1);
@@ -3801,6 +3882,7 @@ body {
     transform: translateX(40%) scale(-1, 1);
   }
 }
+
 .rightzombie {
   animation: rightzombieWalk 8s infinite;
   animation-timing-function: steps(8, end);
@@ -3817,6 +3899,51 @@ body {
   }
   100% {
     transform: translateX(165%) scale(-1, 1);
+  }
+}
+
+.cloud path:nth-of-type(1) {
+  animation: cloudmove1 5s linear infinite;
+}
+@keyframes cloudmove1 {
+  0% {
+    transform: translate(0px);
+  }
+  50% {
+    transform: translate(50px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+
+.cloud path:nth-of-type(2) {
+  animation: cloudmove2 5s 1s linear infinite;
+}
+@keyframes cloudmove2 {
+  0% {
+    transform: translate(0px);
+  }
+  50% {
+    transform: translate(70px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+
+.cloud path:nth-of-type(3) {
+  animation: cloudmove3 5s 1.5s ease-in-out infinite;
+}
+@keyframes cloudmove3 {
+  0% {
+    transform: translate(0px);
+  }
+  50% {
+    transform: translate(40px);
+  }
+  100% {
+    transform: translate(0px);
   }
 }
 
@@ -4415,6 +4542,7 @@ body {
 
 .wrappermmange {
   display: flex;
+  min-height: 1100px;
 }
 
 .mmangeleft {
@@ -4432,52 +4560,134 @@ body {
 
 .mmangeright {
   width: 80%;
-  margin: 80px 0;
+  margin: 60px 0 80px;
 }
 
 .ordertext {
   display: flex;
+  display: none;
 }
 
 .ordertext_left {
   width: 80%;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
 }
-
-.ordertext_right {
-  width: 20%;
+.ordertext_left h3 {
+  margin-bottom: 20px;
 }
 
 .order_card {
   display: flex;
   background-color: white;
   color: #292929;
-  width: 80%;
   border-radius: 8px;
+  position: relative;
+}
+
+.order_cardusage p {
+  border-radius: 0 8px 0 8px;
+  color: white;
+  padding: 2px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 16px;
+}
+.order_cardusage p.onuse {
+  background-color: #087713;
+}
+.order_cardusage p.noneuse {
+  background-color: #C70000;
 }
 
 .order_cardleft {
   display: flex;
+  width: 80%;
+  border-right: 1px dashed #292929;
 }
-
-.order_cardimg {
+.order_cardleft .order_cardimg {
   max-width: 150px;
   min-width: 150px;
-  max-height: 150px;
+  max-height: 200px;
+  margin: 20px;
 }
-.order_cardimg img {
+.order_cardleft .order_cardimg img {
   width: 100%;
   height: 100%;
   object-fit: fill;
+}
+.order_cardleft .order_cardtext {
+  width: 100%;
+  margin: 20px;
+}
+.order_cardleft .order_cardtext p {
+  font-size: 20px;
+}
+.order_cardleft .order_cardtext p:nth-of-type(1) {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.order_cardright {
+  text-align: center;
+  margin: auto;
+  width: 20%;
+}
+.order_cardright .order_cardstate p:nth-of-type(2) {
+  color: #E98714;
+}
+.order_cardright .order_cardstate p:nth-of-type(3) {
+  color: #C70000;
+}
+
+.ordertext_right {
+  width: 20%;
+  border: 1px solid white;
+  border-radius: 8px;
+  height: 100%;
+  margin: 0 20px;
+}
+.ordertext_right .btn_ordera {
+  color: white;
+  background-color: #100E24;
+  width: 100%;
+}
+.ordertext_right h3 {
+  border-bottom: 1px solid white;
+  border-radius: 8px 8px 0 0;
+  text-align: center;
+  font-weight: bold;
 }
 
 .coupontext {
   display: none;
 }
-
-.editmember {
-  display: none;
+.coupontext .couponticket {
+  position: relative;
+  background: #FFE8BB;
+  width: 30%;
+  width: 300px;
+  height: 150px;
+  border-radius: 8px;
+  -webkit-mask: radial-gradient(circle at 40px 40px, transparent 20px, red 0) 50px -40px;
+}
+.coupontext .coupont {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  color: #292929;
 }
 
+.editmember h3 {
+  margin-bottom: 20px;
+}
+.editmember li {
+  margin-bottom: 10px;
+}
 .escape_container {
   margin: auto 0;
 }
@@ -4488,7 +4698,7 @@ body {
 }
 
 .esc_bathroom {
-  max-width: 100%;
+  max-width: 80%;
   position: relative;
 }
 .esc_bathroom img {
