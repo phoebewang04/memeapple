@@ -1,113 +1,137 @@
-.main-popupcard{
+.main-popupcard {
     width: 100%;
     height: calc(100vh - 70px - 73.58px);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    .background-blur {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(1, 16, 29, 0.8); /* 設置顏色和透明度 */
-        filter: blur(20px); /* 設置模糊效果 */
-        z-index: -1; /* 確保背景層在內容後面 */
-      }
-    .wrapper-popupcard{
-        width: 80%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-        @include phone{
-            width: 100%;
-        }
-        .card-popupcard{
-            background-image: url('/src/assets/img/popupcard_space.jpg'); 
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            width: 411.6px;
-            height: 441.7px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            @include pad{
-                background-image: url('/src/assets/img/popupcard_space-m.jpg'); 
-                width: 350px;
-                height: 631px;
-            }
-            @include phone{
-                width: 280px;
-                height: 504px;
-            }
-            .card-popupcard-title{
-                font-size: 16px;
-                margin-bottom: 16px;
-            }
-            h1{
-                font-size: 40px;
-                @include rwd(1440px){
-                  line-height: 1.5;
-                }
-            }
-            .card-popupcard-qrcode{
-                background-image: url('/src/assets/img/qrcode-base.jpg'); 
-                background-size: cover;
-                background-repeat: no-repeat;
-                width: 187.6px;
-                height: 187.6px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                img{
-                    width: 109.2px;
-                    height: 109.2px;
-                }
-            }
-            .qrcode-time{
-                width: 60%;
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                @include pad{
-                    width: 70%;
-                }
-                .qrcode-time-y{
-                    font-size: 40px;
-                    font-weight: bold;
-                    line-height: 1.5;
-                }
-                .qrcode-time-m{
-                    font-size: 40px;
-                    font-weight: bold;
-                    line-height: 1.5;
-                }
-                .qrcode-time-d{
-                    font-size: 40px;
-                    font-weight: bold;
-                    line-height: 1.5;
-                }
-            }
-            .qrcode-place{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                p{
-                    margin-right: 20px;
-                    line-height: 1.5;
-                }
-                .qrcode-vertical-line{
-                    border: 2px solid white; /* 設置左邊框來創建垂直線 */
-                    height: 32px; /* 設置垂直線的高度 */
-                    margin-right: 14px;
-                }
+}
 
-            }
+.background-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 16, 29, 0.8);
+    /* 設置顏色和透明度 */
+    filter: blur(20px);
+    /* 設置模糊效果 */
+    z-index: -1;
+    /* 確保背景層在內容後面 */
+}
+
+.wrapper-popupcard {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include phone {
+        width: 100%;
+    }
+
+}
+
+.popupcard-card {
+    background-image: url('/src/assets/img/popupcard_space.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 411.6px;
+    height: 441.7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include pad {
+        background-image: url('/src/assets/img/popupcard_space-m.png');
+        width: 350px;
+        height: 631px;
+    }
+
+    @include phone {
+        width: 280px;
+        height: 504px;
+    }
+
+    .popupcard-title {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    h1 {
+        font-size: 40px;
+
+        @include rwd(1440px) {
+            line-height: 1.5;
         }
     }
+
+}
+
+.popupcard-qrcode {
+    background-image: url('/src/assets/img/qrcode-base.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 187.6px;
+    height: 187.6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 109.2px;
+        height: 109.2px;
+    }
+}
+
+.qrcode-time {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    @include pad {
+        width: 70%;
+    }
+
+    .qrcode-y {
+        font-size: 40px;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+
+    .qrcode-m {
+        font-size: 40px;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+
+    .qrcode-d {
+        font-size: 40px;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+}
+
+.qrcode-place {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        margin-right: 20px;
+        line-height: 1.5;
+    }
+}
+
+.qrcode-line {
+    border: 2px solid white;
+    /* 設置左邊框來創建垂直線 */
+    height: 32px;
+    /* 設置垂直線的高度 */
+    margin-right: 14px;
 }

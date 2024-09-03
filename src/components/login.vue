@@ -30,7 +30,7 @@ import Footerbar from './Footerbar.vue';
                                 <div>
                                     <input type="checkbox" name="onlogin" id="onlogin">保持登入
                                 </div>
-                                <a href="#">忘記密碼?</a>
+                                <a href="#">忘記密碼？</a>
                             </div>
                             <div class="linef">
                                 <span class="fline"></span>

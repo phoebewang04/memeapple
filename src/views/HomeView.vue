@@ -116,120 +116,116 @@ export default {
       </section>
 
       <!-- 首頁第二部分  品牌故事-->
-      <section class="content-p-brandstory">
+      <section class="content-brandstory">
         <!-- 閃光特效區域 -->
-        <div class="content-p-brandstory-effect"></div>
+        <div class="brandstory-effect"></div>
         <!-- 內容區域 -->
-        <section class="content-p-brandstory-contenter">
+        <section class="brandstory-content">
           <!-- 左側圖片 -->
-           <div class="content-p-brandstory-imgarea">
+           <div class="brandstory-img">
               <img src="../assets/img/breadstoryimg.jpg" alt="佛萊迪大戰傑森">
            </div>
           <!-- 文字區域 -->
-          <div class="content-p-brandstory-textarea">
-            <div class="brandstory-textarea-year">
-              <span>- 19</span>
-              <span>65 -</span>
+          <div class="brandstory-text">
+            <div class="brandstory-title">
+              <span>— 品牌</span>
+              <span>故事 —</span>
             </div>
-            <p>JULY 14</p>
+            <p class="brandstory-sub">2024 MAY 14</p>
             <div class="while-lineforhome"></div>
             <h3># 流連忘返的密室逃脫體驗</h3>
-            <p class="content-p-brandstory-text">我們希望創造一個需要共同努力、交流和協作的密室逃脫環境，使團隊在挑戰中增進默契和合作精神。</p>
-            <p class="content-p-brandstory-text">透過遊戲解謎的過程，不僅增加參與者的動腦能力，更重要的是提升團隊成員之間的互助合作。</p>
-            <p class="content-p-brandstory-text">在這樣的情境下，每個成員的貢獻都至關重要!他們需要共同解決問題、分享資訊，並在壓力下作出決策，這不僅有助於提升個人的思維能力、更能促進團隊的協作和信任。</p>
+            <p class="brandstory-intro">我們希望創造一個需要共同努力、交流和協作的密室逃脫環境，使團隊在挑戰中增進默契和合作精神。</p>
+            <p class="brandstory-intro">透過遊戲解謎的過程，不僅增加參與者的動腦能力，更重要的是提升團隊成員之間的互助合作。</p>
+            <p class="brandstory-intro">在這樣的情境下，每個成員的貢獻都至關重要!他們需要共同解決問題、分享資訊，並在壓力下作出決策，這不僅有助於提升個人的思維能力、更能促進團隊的協作和信任。</p>
             <!-- 底部文字 -->
-            <div class="content-p-brandstory-bottom">
+            <div class="brandstory-bottom">
                 <p>The Birth of </p>
                 <p>The Secret Room</p>
             </div>
           </div>
         </section>
       </section>
+
       <!-- 首頁第三部分 限時主題 -->
-      <section class="content-p-limitlevel">
+      <section class="content-limitlevel">
         <!-- 羽毛特效區域 -->
-        <div class="content-p-limitlevel-effect"></div>
+        <div class="limitlevel-effect"></div>
         <!-- 內容區域 -->
-        <section class="content-p-limitlevel-content">
-          <section class="content-p-limitlevel-contentArea">
+        <section class="limitlevel-content">
+          <p class="limitlevel-topic">— 限時主題 —</p>
+          <section class="limitlevel-Area">
+            
             <!-- 左側標語 -->
-            <div class="content-p-limitlevel-content-text">
+            <section class="limitlevel-text">
               <!-- 標語1 -->
-              <div class="content-p-limitlevel-sologan-1">
+              <div class="limitlevel-sologan-1">
                 <span>「人氣YTR佐藤洋子的廢棄校舍的</span>
-                <span>探靈直播</span>
+                <span class="limitlevel-sologanred">探靈直播</span>
                 <span>」</span>
               </div>
               <!-- 標語2 -->
-              <div class="content-p-limitlevel-sologan-2">
+              <div class="limitlevel-sologan-2">
                 <span>「校舍東方的102教室傳來的</span>
-                <span>神秘歌聲</span>
+                <span  class="limitlevel-sologanred">神秘歌聲</span>
                 <span>」</span>
               </div>
               <!-- 標語3 -->
-              <div class="content-p-limitlevel-sologan-3">
+              <div class="limitlevel-sologan-3">
                 <span>「前往探查成為她的</span>
-                <span>最後身影</span>
+                <span class="limitlevel-sologanred">最後身影</span>
                 <span>」</span>
               </div>
               <!-- 標語4 -->
-              <div class="content-p-limitlevel-sologan-4">
+              <div class="limitlevel-sologan-4">
                 <span>「你們能否成功將</span>
-                <span>真正的她</span>
+                <span  class="limitlevel-sologanred">真正的她</span>
                 <span>尋回」</span>
               </div>
-            </div>
-            <!-- 右側圖像 -->
-            <div class="content-p-limitlevel-content-img">
-              <!-- 底圖 -->
-              <div class="limitlevel-content-img">
-               <!-- 圖釘 -->
-              <img src="" alt="">
-                <!-- 促銷 -->
-                <div class="limitlevel-content-img-popup">
-                  <p># 主題解禁!</p>
-                </div>
-                <!-- 標語 -->
-                <div class="limitlevel-content-img-text">
+            </section>
+
+            <!-- 右側內容 -->
+            <section class="limitlevel-img">
+              <img src="/src/assets/img/cagebird.png" alt="">
+               <!-- 標語 -->
+               <div class="limitlevel-imgtext">
                   <p>かごめかごめ</p>
                   <p>籠の中の鳥は </p>
                   <p>いついつ出やる</p>
                   <p>夜明けの晩に</p>
                   <p>鶴と亀が滑った</p>
                   <p>後ろの正面だあれ？</p>
-                </div>
+                  
                 <!-- 關卡資訊 -->
-                <div class="limitlevel-content-img-info">
+                <div class="limitlevel-info">
                   <!-- 遊玩難度 -->
-                  <div class="limitlevel-info-level">
+                  <div class="limitlevel-level">
                     <!-- icon -->
                     <img src="" alt="">
                     <p>3 Star</p>
                   </div>
                   <!-- 遊玩人數 -->
-                   <div class="limitlevel-info-people">
+                   <div class="limitlevel-people">
                     <!-- icon -->
                     <img src="" alt="">
                     <p>4 - 8</p>
                    </div>
                   <!-- 遊玩時間 -->
-                  <div class="limitlevel-info-time">
+                  <div class="limitlevel-time">
                     <!-- icon -->
                     <img src="" alt="">
                     <p>60 mins</p>
                    </div>
-                   <!-- 預定按鈕 -->
-                   <button type="button" class="btn">立即預定</button>
                 </div>
-              </div>
-              <!-- 圖釘 -->
-              <img src="" alt="">
-            </div>
+                    <!-- 預定按鈕 -->
+                    <button type="button" class="btn">立即預定</button>
+                </div>
+
+            </section>
           </section>
-          <section class="content-p-limitlevel-titleArea">
-            <span>龍</span>
-            <span>中</span>
-            <span>鳥</span>
+
+          <!-- 下方內容 -->
+          <section class="limitlevel-title">
+            <span>龍中鳥</span>
             <p>廃校舎の不思議な部屋で、誰かが日本の童謡を歌い始める。</p>
           </section>
         </section>
@@ -239,7 +235,7 @@ export default {
       <section class="content-howtoplay">
         <!-- 內容區域 -->
         <section class="howtoplay-content">
-          <h3 class="howtoplay-title">- 遊玩流程 - </h3>
+          <h3 class="howtoplay-title">— 遊玩流程 — </h3>
 
           <!-- 內容區塊 01 -->
           <section class="howtoplay-box01">
@@ -322,21 +318,21 @@ export default {
                 <li class="index-news-li">
                   <a href="#"><img src="../assets/img/banner-hospital.png" alt="">
                   <h3>成都醫院</h3>
-                  <p class="index-news-text">社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她</p>
+                  <p class="index-news-text">五年前，成都醫院因連環失蹤案而成為禁地，身為菁英偵探的你，收到神秘委託，必須調查此宗懸案，隨著你步入醫院，腐朽的氣息和幽暗的走廊讓人不寒而慄。這裡的每一個角落似乎都隱藏著難以解釋的秘密…</p>
                   </a>
                 </li>
 
                 <li class="index-news-li">
                   <a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt="">
                     <h3>時光迷宮</h3>
-                    <p class="index-news-text">社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她</p>
+                    <p class="index-news-text"> 初原之火光芒驟減，不死魔物大量發生，為延續人界與驅除瘴氣。一群菁英尋火者前往「時光迷宮」尋找被諸神之王關押的普羅米修斯。你必須解開謎題與陷阱，解放普羅米修斯得到初原之火，導正世界秩序。</p>
                   </a>
                 </li>
 
                 <li class="index-news-li">
                   <a href="#"><img src="/src/assets/img/banner-dead.jpg" alt="">
                   <h3>末日庇護所</h3>
-                  <p class="index-news-text">社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她社交達人水豚君!社交達人水豚君!社交達人社交達人水豚君社交達人水豚君她</p>
+                  <p class="index-news-text">世界末日降臨，殭屍橫行，生存成為最大的挑戰。傳說中的安全庇護所是唯一的希望，但位置隱藏在謎團之中。你必須解開線索，找到這處避難所，才能在末日災難中倖存。勇敢尋找，活下去是唯一的選擇。</p>
                  </a>
                 </li>
             </div>    
@@ -353,24 +349,24 @@ export default {
 
        <!-- 首頁第六部分 FAQ -->
       <section class="content-p-faq">
-          <p class="index-faq-title">- 注意事項 - </p>
+          <p class="index-faq-title">— 注意事項 — </p>
           <section class="content-p-faq-contenter">
           <!-- 第1個問題 -->
-          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?我不確定我的朋友是否會突然出席 
+          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?
             <div class="indexfaq-icon"><i class="fa-solid fa-minus"></i></div>
           </button>
           <!-- 第1個問題的回答 -->
           <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
 
           <!-- 第2個問題 -->
-          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?我不確定我的朋友是否會突然出席 
+          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?
             <div class="indexfaq-icon"><i class="fa-solid fa-minus"></i></div>
           </button>
           <!-- 第2個問題的回答 -->
           <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
 
           <!-- 第3個問題 -->
-          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?我不確定我的朋友是否會突然出席 
+          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?
             <div class="indexfaq-icon"><i class="fa-solid fa-minus"></i></div>
           </button>
           <!-- 第3個問題的回答 -->
