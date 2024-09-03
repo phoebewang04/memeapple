@@ -1,7 +1,62 @@
-<script setup>
+<script>
     import '../assets/css/style.css'
     import TopNavbarBack from '../components/TopNavbarBack.vue';
     import FooterbarBack from '../components/FooterbarBack.vue';
+
+    // api test
+    // 改寫Option API
+    import axios from 'axios';
+
+    export default {
+        components: {
+            TopNavbarBack,
+            FooterbarBack
+        },
+        data(){
+            return{
+                objArray: null,
+                loading: true,
+                error: null,
+                keyword: '',
+                status: ''
+            }
+        },
+        async mounted(){
+            // await this.fetchData()
+        },
+        methods: {
+            async fetchData(){
+                try {
+                    // try {
+                    //     const response = await axios.get('http://localhost:3000/api/member');
+                    //     this.objArray = response.data;
+                    // } catch (error) {
+                    //     console.error('Error fetching data:', error);
+                    // }
+
+                    const params = {
+                        keyword: this.keyword,
+                        status: this.status
+                    };
+                    const response = await axios.get('http://localhost:5173/api/member', { params });
+                    // console.log('Response from fetchData:', response);
+                    console.log(response)
+                    // console.log('Updated objArray:', this.objArray);
+                    this.objArray = response.data
+                
+                } catch (err) {
+                    // console.error('Error in fetchData:', err);
+                    this.error = 'An error occurred: ' + err.message
+                } finally {
+                    this.loading = false
+                }
+            },
+            async search(){
+                this.loading = true;
+                await this.fetchData();
+            }
+        }
+    }
 </script>
 
 <template>
@@ -31,7 +86,9 @@
                 </div>
             </div>
             <div class="backstage_tablezone">
-                <table class="backstage_table">
+                <div v-if = "loading">Loading...</div>
+                <div v-if = "error">{{ error }}</div>
+                <table v-if = "objArray" class="backstage_table">
                     <thead class="backstage_tablehead">
                         <tr>
                             <th class="column-header" style="width: 150px;">註冊日期</th>
@@ -43,11 +100,11 @@
                         </tr>
                     </thead>
                     <tbody class="backstage_tablebody">
-                        <tr v-for = "member in member" >
-                            <td id="member_regi_date">{{ member.regi_date }}</td>
-                            <td id="member_name">{{ member.name }}</td>
-                            <td id="member_email">{{ member.email }}</td>
-                            <td id="member_phone">{{ member.phone }}</td>
+                        <tr v-for = "item in objArray" :key="item.ID">
+                            <td id="member_regi_date">{{ item.REGI_DATE }}</td>
+                            <td id="member_name">{{ item.NAME }}</td>
+                            <td id="member_email">{{ item.EMAIL }}</td>
+                            <td id="member_phone">{{ item.PHONE }}</td>
                             <td id="member_status"><a href="" class="backstage_table_button">正常</a></td>
                             <td id="member_action"><a href="" class="backstage_table_button">檢視訂單</a></td>
                         </tr>
