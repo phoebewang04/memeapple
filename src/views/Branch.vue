@@ -57,19 +57,22 @@ import Footerbar from '../components/Footerbar.vue';
                         </li>
                     </div>
                     <li><i class="fa-solid fa-caret-right"></i></li>
+                    
                 </ul>-->
 
                
-                <swiper :slidesPerView="3" :spaceBetween="30" :navigation="{ nextEl: '.branch-swiper-button-next', prevEl: '.branch-swiper-button-prev',}" :modules="modules" class="mySwiper1">
+                <swiper ref="mySwiper1" :slidesPerView="3" :spaceBetween="30" class="mySwiper1">
+
+                    <div class="branch-swiper-button-prev">
+                        <li><i class="fa-solid fa-caret-left"></i></li>
+                    </div>
 
                     <swiper-slide> <li><a href="#"><img src="../assets/img/banner-hospital.png" alt=""><h3>成都醫院</h3></a></li></swiper-slide>
                     <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt=""><h3>時光迷宮</h3></a></li></swiper-slide>
                     <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-dead.jpg" alt=""><h3>末日庇護所</h3></a></li></swiper-slide>
                     <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-code.png" alt=""><h3>代碼深淵</h3></a></li></swiper-slide>
 
-                    <div class="branch-swiper-button-prev">
-                        <li><i class="fa-solid fa-caret-left"></i></li>
-                    </div>
+               
                     <div class="branch-swiper-button-next">
                         <li><i class="fa-solid fa-caret-right"></i></li>
                     </div>
@@ -138,62 +141,53 @@ import Footerbar from '../components/Footerbar.vue';
     import 'swiper/css';
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
+    import { Pagination, Navigation } from 'swiper/modules';
+    import { ref, onMounted } from 'vue';
 
-    import { Pagination} from 'swiper/modules';
-    import { Navigation } from 'swiper/modules';
+    // export default {
 
+    //     components: {
+    //         Swiper,
+    //         SwiperSlide,
+    //     },
 
-// export default {
-//   components: {
-//     Swiper,
-//     SwiperSlide,
-//     },
-//     setup(){
+    //     data() {
+    //         return {
+    //             swiper: null,
+    //         };
+    //     },
+    //     mounted() {
+    //         this.swiper = new Swiper(this.$refs.swiperRef.$el, {
+    //             modules: [Navigation, Pagination],
+    //             navigation: {
+    //                 nextEl: '.branch-swiper-button-next',
+    //                 prevEl: '.branch-swiper-button-prev',
+    //             },
+    //             pagination: {
+    //                 el: '.swiper-pagination',
+    //                 clickable: true,
+    //             },
+    //         });
+    //         console.log('Swiper initialized:', this.swiper);
+    //     },
+    // };
 
-//         return {
-//             modules: [Pagination],
-//             modules: [Navigation]
-//         };
-//     },
-// },
+    // const swiperRef = ref(null);
 
-    export default {
-
-        components: {
-            Swiper,
-            SwiperSlide,
-        },
-
-        data() {
-            return {
-                swiper: null,
-            };
-        },
-        mounted() {
-            this.swiper = new Swiper('.mySwiper1', {
-                navigation: {
-                    nextEl: '.branch-swiper-button-next',
-                    prevEl: '.branch-swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-        },
-        methods: {
-            slideToPrev() {
-                if (this.swiper) {
-                    this.swiper.slidePrev();
-                }
-            },
-            slideToNext() {
-                if (this.swiper) {
-                    this.swiper.slideNext();
-                }
-            },
-        },
-    };
+    // onMounted(() => {
+    //     const swiperInstance = new Swiper(swiperRef.value.$el, {
+    //         modules: [Navigation, Pagination],
+    //         navigation: {
+    //             nextEl: '.branch-swiper-button-next',
+    //             prevEl: '.branch-swiper-button-prev',
+    //         },
+    //         pagination: {
+    //             el: '.swiper-pagination',
+    //             clickable: true,
+    //         },
+    //     });
+    //     console.log('Swiper initialized:', swiperInstance);
+    // });
 
 
 </script>
