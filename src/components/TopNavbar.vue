@@ -36,10 +36,10 @@ export default {
             <li><router-link to="/Theme_Time/">快樂地城</router-link></li> 
             <li><router-link to="/Theme_Lock/">武石監</router-link></li>
             <li><router-link to="/ThemeAlien/">逃出虛空</router-link></li>
-            <li><router-link to="/preorder/">預定資料</router-link></li>
-            <li><router-link to="/orderinform/">資料確認</router-link></li>
+            <!-- <li><router-link to="/preorder/">預定資料</router-link></li> -->
+            <!-- <li><router-link to="/orderinform/">資料確認</router-link></li> -->
             <li><router-link to="/Theme/">主題介紹</router-link></li>
-            <li><router-link to="/pay/">結帳</router-link></li> 
+            <!-- <li><router-link to="/pay/">結帳</router-link></li>  -->
         </ul>
     </header>
 </template>
