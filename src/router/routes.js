@@ -19,6 +19,8 @@ import Escaperoom from '../views/Escaperoom.vue';
 
 import pay from '../views/pay.vue';
 
+import Theme_test from '../views/Theme_test.vue';
+
 
 // 後台相關路由
 import Backstage_index from '../views/Backstage_index.vue';
@@ -114,6 +116,10 @@ const routes = [
   {
     path: '/pay/',
     component: pay
+  },
+  {
+    path: '/Theme_test/',
+    component: Theme_test
   },
 
 

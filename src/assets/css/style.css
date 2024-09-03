@@ -1427,6 +1427,7 @@ i.fa-dollar-sign {
   width: 75%;
   padding: 80px 0px;
   margin: 0 auto;
+  text-align: center;
 }
 
 #wrapper .slogan p {
@@ -3521,18 +3522,91 @@ body {
   right: -300px;
 }
 
-.split_text {
+.split_text,
+.split_text_2 {
   font-size: 24px;
   max-width: 80%;
   margin: 40px auto;
 }
 
-.cemetery_text {
+.cemetery_text,
+.brave_text {
   text-align: center;
+}
+
+.envelope_container {
+  border: 1px solid white;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.envelope_container .envelope_wrapper {
+  background: #d8d7e5;
+  box-shadow: 0 0 40px #4F4C6B;
+}
+.envelope_container .envelope {
+  position: relative;
+  width: 300px;
+  height: 230px;
+}
+.envelope_container .envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  border-top: 130px solid #7873A7;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  transform-origin: top;
+  transition: all 0.5s ease-in-out 0.7s;
+}
+.envelope_container .envelope::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  border-top: 130px solid transparent;
+  border-right: 150px solid #555184;
+  border-bottom: 100px solid #403d64;
+  border-left: 150px solid #555184;
+}
+.envelope_container .letter {
+  position: absolute;
+  right: 20%;
+  bottom: 0;
+  width: 50%;
+  height: 80%;
+  background: #d8d7e5;
+  text-align: center;
+  transition: all 1s ease-in-out;
+  box-shadow: 0 0 5px #4F4C6B;
+}
+.envelope_container .letter .letter_text {
+  text-align: left;
+}
+.envelope_container .sticker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #FBC75D;
+  z-index: 4;
+  transform: translate(-50%, -20%) rotate(45deg);
+  transition: transfrom 0.5s ease-in-out 1s;
+  cursor: pointer;
+}
+
+.flap .sticker {
+  transform: skew(8deg);
+  transition-delay: 0.4s;
 }
 
 .minigame_map {
   text-align: center;
+  margin: 350px 0;
 }
 
 .coordinate {
@@ -3573,39 +3647,47 @@ body {
 .zombie_hand g:nth-of-type(2) {
   animation: wavehand 2s infinite ease-in-out;
 }
-
 @keyframes wavehand {
   50% {
     transform: translateX(15px);
   }
 }
+
 .zombie_hand g:nth-of-type(3) {
   animation: wave 1.5s infinite ease-in-out;
 }
-
 @keyframes wave {
   50% {
     transform: translateX(5px) translateY(5px);
   }
 }
+
 .minigame_ghost {
-  animation: ghostupdown 2s linear infinite;
+  animation: ghostupdown 4s linear infinite;
 }
 @keyframes ghostupdown {
   0% {
-    transform: translateY(0px);
+    opacity: 0;
+    transform: rotate(0deg) translate(-70px) rotate(0deg) translateX(-50px);
+  }
+  25% {
+    opacity: 1;
   }
   50% {
-    transform: translateY(-30px);
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
   }
   100% {
-    transform: translateY(0px);
+    opacity: 0;
+    transform: rotate(360deg) translate(-70px) rotate(-360deg) translateX(-50px);
   }
 }
 
 .house_light {
   fill: #FBC75D;
-  animation: discoloration 2s linear infinite;
+  animation: discoloration 2s infinite;
 }
 @keyframes discoloration {
   0% {
@@ -3623,7 +3705,6 @@ body {
   animation: leftzombieWalk 5s infinite;
   animation-timing-function: steps(5, end);
 }
-
 @keyframes leftzombieWalk {
   0% {
     transform: translateX(0) scale(1, 1);
@@ -3638,6 +3719,7 @@ body {
     transform: translateX(40%) scale(-1, 1);
   }
 }
+
 .rightzombie {
   animation: rightzombieWalk 8s infinite;
   animation-timing-function: steps(8, end);
@@ -3654,6 +3736,51 @@ body {
   }
   100% {
     transform: translateX(165%) scale(-1, 1);
+  }
+}
+
+.cloud path:nth-of-type(1) {
+  animation: cloudmove1 5s linear infinite;
+}
+@keyframes cloudmove1 {
+  0% {
+    transform: translate(0px);
+  }
+  50% {
+    transform: translate(50px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+
+.cloud path:nth-of-type(2) {
+  animation: cloudmove2 5s 1s linear infinite;
+}
+@keyframes cloudmove2 {
+  0% {
+    transform: translate(0px);
+  }
+  50% {
+    transform: translate(70px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+
+.cloud path:nth-of-type(3) {
+  animation: cloudmove3 5s 1.5s ease-in-out infinite;
+}
+@keyframes cloudmove3 {
+  0% {
+    transform: translate(0px);
+  }
+  50% {
+    transform: translate(40px);
+  }
+  100% {
+    transform: translate(0px);
   }
 }
 
@@ -4322,7 +4449,7 @@ body {
 }
 
 .esc_bathroom {
-  max-width: 100%;
+  max-width: 80%;
   position: relative;
 }
 .esc_bathroom img {
