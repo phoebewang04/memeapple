@@ -57,6 +57,12 @@
 .theme_number {
     width: 40%;
 
+    span{
+        // border: 1px solid salmon;
+        display: block;
+        margin: 20px 0;
+    }
+
     &.hospital {
         color: map-get($colors, yellow);
     }
@@ -72,7 +78,7 @@
     overflow: hidden;
     position: relative;
     height: 30px;
-    margin: 12px 0;
+    margin: 20px 0;
 
     &.hospital {
         background-color: map-get($colors, mdnightblue);
@@ -156,6 +162,20 @@ i.fa-dollar-sign {
     // border: 1px solid white;
 }
 
+.game_price{
+    cursor: pointer;
+}
+
+.theme_popup {
+    background-color:map-get($colors , midnight);
+    color: map-get($colors , white);
+  }
+  
+  .theme_popup_title {
+    font-size: 20px;
+    color: map-get($colors , yellow);
+  }
+
 // -----遊戲資訊 end-----
 
 // -----亮點icon start-----
@@ -175,7 +195,7 @@ i.fa-dollar-sign {
     max-width: 100%;
 
     img {
-        width: 250px;
+        width: 230px;
         transition: transform 0.3s ease;
 
         &:hover {
@@ -379,6 +399,12 @@ i.fa-dollar-sign {
     .theme_arrow .theme_wrapper {
         width: 580px;
     }
+
+    .theme_icon_img{
+        img{
+            width: 200px;
+        }
+    }
 }
 
 @include rwd(750px) {
@@ -440,3 +466,4 @@ i.fa-dollar-sign {
         width: 280px;
     }
 }
+

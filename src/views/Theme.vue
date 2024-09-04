@@ -2,19 +2,22 @@
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
+import Swal from 'sweetalert2';
 </script>
 
 <template>
-<!-- header -->
-<TopNavbar />
-   <!-- banner -->
+    <!-- header -->
+    <TopNavbar />
+    <!-- banner -->
     <div class="theme_banner">
-    <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
-        width="100%" class="banner_video"></video>
+        <video v-if="all_data.banner.type === 'video'" src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
+            width="100%" class="banner_video"></video>
+            <img src="../assets/img/header.png" alt="" class="banner" v-else> 
 
-    <!-- <img src="../assets/img/header.png" alt="" class="banner"> -->
+
+        <!-- <img src="../assets/img/header.png" alt="" class="banner"> -->
     </div>
-   
+
     <main class="theme_container">
         <!-- -----主題文字介紹＋指數 start----- -->
         <section class="overview">
@@ -56,7 +59,7 @@ import Footerbar from '../components/Footerbar.vue';
                     <i class="fa-solid fa-dollar-sign"></i>
                 </div>
                 <h3>遊戲費用</h3>
-                <p>＄660－＄990 / 人<br>▲ 點此查看詳細價格</p>
+                <p class="game_price" @click="showAlart">＄710－＄990 / 人<br>▲ 點此查看詳細價格</p>
             </div>
         </section>
 
@@ -70,14 +73,14 @@ import Footerbar from '../components/Footerbar.vue';
             </div>
             <div class="theme_icon hospital">
                 <div class="theme_icon_img">
-                <img src="../assets/img/icon-2.png" alt="">
+                    <img src="../assets/img/icon-2.png" alt="">
                 </div>
                 <h3>身歷其境</h3>
                 <p>精心還原醫院每個角落<br>逼真場景宛如置身其中</p>
             </div>
             <div class="theme_icon hospital">
                 <div class="theme_icon_img">
-                <img src="../assets/img/icon-3.png" alt="">
+                    <img src="../assets/img/icon-3.png" alt="">
                 </div>
                 <h3>海量謎題</h3>
                 <p>層層難關，精心雕琢<br>由你揭開最深的秘密</p>
@@ -102,7 +105,9 @@ import Footerbar from '../components/Footerbar.vue';
                     <p>唯有步步為營，方能撕裂虛<br>幻的帷幕，讓真相水落石出</p>
                 </div>
             </div>
-            <div class="theme_marketing">
+            <div class="theme_marketing" >
+                <!-- :class="item.type" -->
+                <!-- <img src="hand.jpg" alt="" v-if="item.animation === 'hand'"> -->
                 <div class="theme_marketing_text">
                     <p>沉寂五年的未解之謎，至今仍在黑暗中低語</p>
                     <p>你願意接下此次委託，揭開那些不該被遺忘的秘密嗎？</p>
@@ -147,20 +152,20 @@ import Footerbar from '../components/Footerbar.vue';
                     <ul class="theme_carousel">
                         <li class="theme_card">
                             <a href="#">
-                            <img src="../assets/img/banner-dead.jpg" alt="末日庇護所">
-                            <h4>末日庇護所</h4>
+                                <img src="../assets/img/banner-dead.jpg" alt="末日庇護所">
+                                <h4>末日庇護所</h4>
                             </a>
                         </li>
                         <li class="theme_card">
                             <a href="#">
-                            <img src="../assets/img/banner-code.png" alt="代碼深淵">
-                            <h4>代碼深淵</h4>
+                                <img src="../assets/img/banner-code.png" alt="代碼深淵">
+                                <h4>代碼深淵</h4>
                             </a>
                         </li>
                         <li class="theme_card">
                             <a href="#">
-                            <img src="../assets/img/banner-mazeofTime.png" alt="時空迷宮">
-                            <h4>時空迷宮</h4>
+                                <img src="../assets/img/banner-mazeofTime.png" alt="時空迷宮">
+                                <h4>時空迷宮</h4>
                             </a>
                         </li>
                     </ul>
@@ -173,3 +178,84 @@ import Footerbar from '../components/Footerbar.vue';
     <Footerbar />
 
 </template>
+
+<script>
+// import all_data from 'xxx.js'
+export default {
+    data() {
+        console.log(this.$route.query);
+        console.log(this.$route.query.id);
+        return {
+            // all_data: all_data[this.$route.query.id]
+            all_data: {
+                
+                banner: {
+                    type: 'video',
+                    src: '../assets/img/banner.mp4'
+                    // type:'img',
+                    // src:'../assets/img/banner.mp4',
+                },
+                progress: [
+                    {
+                        'title': '燒腦指數',
+                        'per': 87,
+                    },
+                    {
+                        'title': '驚嚇指數',
+                        'per': 96,
+                    },
+
+                    {
+                        'title': '推薦指數',
+                        'per': 90,
+                    }
+                ],
+
+
+                text_section: [
+                    {
+                        'title': '光影交錯，虛實難辨',
+                        'type':'left',
+
+                        'per': 87,
+                    },
+                    {
+                        'title': null,
+                        'type':'center',
+                        'animation':'hand',
+                        'per': 96,
+                    },
+
+                ],
+                note:`<p>＊ 建議遊戲人數 6 ~ 7 人，容納人數 4 - 8 人。</p>
+                <p>＊ 建議穿著輕便服裝，避免穿裙子。</p>
+                <p>＊ 會有真人ＮＰＣ互動，無法調整恐怖程度，膽小誤入</p>
+                <p>＊ 未滿15歲孩童需有成人陪同參與。</p>`,
+
+            },
+
+        }
+    },
+    methods: {
+        showAlart() {
+            Swal.fire({
+                // icon: 'success',
+                title: '詳細價格',
+                html: `
+        <br>4人－＄990元 / 人<br>
+        <br>5人－＄920元 / 人<br>
+        <br>6人－＄850元 / 人<br>
+        <br>7人－＄780元 / 人<br>
+        <br>8人－＄710元 / 人<br>
+        `,
+                showConfirmButton: false,
+                customClass: {
+                    popup: 'theme_popup',
+                    title: 'theme_popup_title',
+                }
+
+            });
+        }
+    }
+};
+</script>

@@ -56,14 +56,14 @@ import Footerbar from '../components/Footerbar.vue';
 
                 <div class="mi_dt">
                     <p>姓名</p>
-                    <input type="text" name="" id="" placeholder="請輸入姓名">
+                    <input type="text" v-model="orderName"  placeholder="請輸入姓名">
                 </div>
 
                 <p>訂單資訊會寄到您的信箱，此信箱同時會成為您的帳號，請務必確認信箱填寫正確。</p>
 
                 <div class="mi_dt">
                     <p>電子信箱</p>
-                    <input type="text" name="" id="" placeholder="請輸入正確的電子信箱格式">
+                    <input type="text" v-model="orderEmail"  placeholder="請輸入正確的電子信箱格式">
                 </div>
 
                 <div class="mi_dt">
@@ -88,7 +88,7 @@ import Footerbar from '../components/Footerbar.vue';
 
                     <div class="password02">
                         <p>請再次輸入密碼</p>
-                        <input type="password" name="" id="">
+                        <input type="password" name="" id="" placeholder="再次確認密碼">
                     </div>
                 </div>
 
@@ -175,7 +175,7 @@ import Footerbar from '../components/Footerbar.vue';
                 </div>
 
                 <div class="button01">
-                    <button class="next_btn">下一步</button>
+                    <button class="next_btn" disabled>下一步</button>
                 </div>
             </div>
         </div>
@@ -192,6 +192,18 @@ import Footerbar from '../components/Footerbar.vue';
 
 <script>
   export default {
+    data () {
+        return {
+            orderName : '',
+            orderEmail : '',
+        }
+    },
+    computed : {
+        
+    },
+    methods (){
+
+    }
     
   }
 </script>

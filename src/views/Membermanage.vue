@@ -22,7 +22,12 @@ import Footerbar from '../components/Footerbar.vue';
             <button class="btn btn_mange">會員資料修改</button>
         </div>
         <div class="mmangeright">
-            <div class="ordertext">
+          <div class="mangerightitems"> 
+          <button class="btn btn_mange">訂單檢視</button>
+          <button class="btn btn_mange">優惠券</button>
+          <button class="btn btn_mange">會員資料修改</button>
+          </div>
+          <div class="ordertext">
               <div class="ordertext_left">
                 <h3>您的訂單</h3>
                 <div class="order_card">
@@ -104,16 +109,18 @@ import Footerbar from '../components/Footerbar.vue';
                 <li><h4>生日</h4></li>
                 <li><h4>1987-08-07</h4></li>
                 <li><h4>修改密碼：</h4></li>
-                <li><input type="text" class="jeditphone" value="********"></li>
+                <li><input type="text" class="editphone" value="********"></li>
                 <li><h4>請再次輸入密碼：</h4></li>
                 <li><input type="text" class="editphone" value="********"></li>
                 <li><h4>修改姓名：</h4></li>
                 <li><input type="text" class="editphone" value="李小王"></li>
                 <li><h4>電話：</h4></li>
                 <li><input type="text" class="editphone" value="0912123123"></li>
-                <li><button class="btn btnlogin">儲存變更</button></li>
-                <li><button class="btn btnlogin">取消</button></li> 
               </ul>
+              <div>
+              <button class="btn btnedit">儲存變更</button>
+              <button class="btn btnedit">取消</button>
+              </div> 
               
             </div>
            </div> 
