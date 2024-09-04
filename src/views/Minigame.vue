@@ -495,7 +495,7 @@ export default {
     handleScroll() {
       let value = window.scrollY;
 
-      this.$refs.cemeteryText.style.marginTop =`translateX(${value * 0.7}px)`;
+      this.$refs.cemeteryText.style.marginTop =`${value * 0.6}px`;
       this.$refs.treeLeft.style.transform = `translateX(-${value * 0.2}px)`;
       this.$refs.treeRight.style.transform =`translateX(${value * 0.9}px)`;
       this.$refs.gateLeft.style.transform = `translateX(${value * 0.2}px)` ;

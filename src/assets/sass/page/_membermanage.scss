@@ -7,6 +7,9 @@
     display: flex;
     flex-direction: column;
     width: 20%;
+    @include pad(){
+    display: none;    
+    }
 }
 
 .btn_mange{
@@ -14,13 +17,35 @@
     color: map-get($colors, white);
     background-color: map-get($colors, darkblue );
     width: 100%;
+    font-size: map-get($fontsize , h4 );
 }
 
 
 .mmangeright{
     width: 80%;
     margin: 60px 0 80px;
+    @include pad(){
+        width: 100%;
+    }
+    .mangerightitems{
+        display: none;
+    
+        @include pad(){
+            display: flex;
+            margin: 0 auto 20px; 
+            button{
+                font-size: 1.2rem;
+                display: block;
+            }
+            }
+        @include rwd(500px){
+            button{
+            font-size: 0.8rem;
+            }
+            }
+    }
 }
+
 
 
 //訂單檢視
@@ -38,6 +63,9 @@
         gap:20px;
         h3{
             margin-bottom: 20px;;
+        }
+        @include pad(){
+        width: 100%;
         }
     }
 
@@ -68,6 +96,10 @@
         &.noneuse{
             background-color: map-get($colors, usered);
         }
+        @include rwd(520px){
+            font-size: 10px;
+            // padding: 0;
+        }
     }
 }
 
@@ -75,6 +107,9 @@
     display: flex;
     width: 80%;
     border-right: 1px dashed map-get($colors, black );
+    @include rwd(520px){
+        width: 75%;
+    }
     .order_cardimg{
         max-width: 150px;
         min-width: 150px;
@@ -85,30 +120,46 @@
         height: 100%;
         object-fit:fill
         }
+        @include rwd(520px){
+         margin: 5px;
+         min-width: auto;
+
+         max-width: 100px;
+         max-height: 150px;
+        }
     }
 
     .order_cardtext{
       
         width: 100%;
         margin: 20px;
+        @include rwd(520px){
+            margin: auto;
+            width: auto;
+        }
         p{
             font-size: map-get($fontsize, h4);
             &:nth-of-type(1) {
                 font-size: map-get($fontsize, h3);
                 font-weight: bold;
-                
+                @include rwd(520px){
+                    font-size: map-get($fontsize, p);
+                }   
             }
-        
+        @include rwd(520px){
+            font-size: map-get($fontsize, p1);
         }
+    }
     }
 }
 
 .order_cardright{
     text-align: center;
     margin: auto;
-    
     width: 20%;
-    
+    @include rwd(520px){
+       width: 25%
+    }
         .order_cardstate{
             p{
                 &:nth-of-type(2) {
@@ -117,10 +168,13 @@
                 &:nth-of-type(3) {
                     color: map-get($colors, usered);
                 }
+                @include rwd(520px){
+                    font-size: map-get($fontsize, p1);
+                }
             }
-            
         
         }
+   
 }
 
 .ordertext_right{
@@ -141,42 +195,72 @@
         text-align: center;
         font-weight: bold;
     }
+    @include pad(){
+     display: none;   
+    }
 }
 
 
 
 //優惠券
 .coupontext{
-    display: none;
+    // display: none;
     .couponticket{
         position: relative;
-        background: map-get($colors, lightyellow);
-        width: 30%;
-        width: 300px;
-        height: 150px;
+        // background-image: url(../img/lockbg1.png);
+        // background-size: cover;
+        // opacity: 0.6;
+        background: map-get($colors, gold);
+        width: 50%;
+        height: 200px;
         border-radius: 8px;
-        -webkit-mask: radial-gradient(circle at 40px 40px, transparent 20px, red 0) 50px -40px;
-    }
+        -webkit-mask: radial-gradient(circle at 30px 30px, transparent 30px, red 0) 85px -30px ,
+                      radial-gradient(circle at 25px 15px, transparent 5px, red 0) 90px -5px / 100% 10%;
+        -webkit-mask-composite: source-in;
+        }
     .coupont{
-        // display: none;
+        display: none;
         position: absolute;
         right: 5%;
         top:5%;
-        color: map-get($colors, black);;
+        color: map-get($colors, black);
     }
 }
 
 //會員資料管理
 .editmember{
-    // display: none;
+    display: none;
+
     h3{
-        margin-bottom: 20px;
+        margin-bottom: 30px;
+        @include rwd(500px){
+            font-size: map-get($fontsize, p1 );
+            }
     }
     li{
-        margin-bottom: 10px;
+        margin-bottom: 20px;
+        
     }
-   
-   .btnlogin{
+    .editphone{
+        padding-left: 10px;
+        outline: none;
+        width: 40%;
+        font-size: map-get($fontsize, h4 );
+        @include rwd(500px){
+            font-size: map-get($fontsize, p1 );
+            padding: 0;
+            }
+    }
     
-   }
+    
+    .btnedit{
+        margin-right: 10px;
+        @include pad(){
+        width: 100px;
+        font-size: map-get($fontsize, p1 );
+        }
+    }
+    @include pad(){
+     margin-left: 20%;
+    }
 }

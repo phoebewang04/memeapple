@@ -20,7 +20,7 @@ import Footerbar from '../components/Footerbar.vue';
     <main class="theme_container">
         <!-- -----主題文字介紹＋指數 start----- -->
         <section class="overview">
-            <div class="blood"> </div>
+            <!-- <div class="blood"> </div> -->
             <p class="overview_text">
                 武石監來了新的所長，他以其殘暴和病態的控制欲而聞名，他經常在監獄中進行秘密的實驗和虐待。再這樣下去遲早我們會死在這裡，我們必須設法越獄，重獲自由，並揭露所長的可怕秘密。</p>
 
@@ -64,17 +64,23 @@ import Footerbar from '../components/Footerbar.vue';
 
         <section class="iconinfo">
             <div class="theme_icon hospital">
-                <img src="../assets/img/prisonuniform.png" alt="">
+                <div class="theme_icon_img">
+                    <img src="../assets/img/prisonuniform.png" alt="">
+                </div>
                 <h3>角色扮演</h3>
                 <p>換上囚服，扮演逃犯與獄友<br>們共同患難逃出</p>
             </div>
             <div class="theme_icon hospital">
-                <img src="../assets/img/handcuffs.png" alt="">
+                <div class="theme_icon_img">
+                    <img src="../assets/img/handcuffs.png" alt="">
+                </div>
                 <h3>逃生道具</h3>
                 <p>逃生道具散落監獄每個角落<br>解題找出道具逃離監獄</p>
             </div>
             <div class="theme_icon hospital">
-                <img src="../assets/img/room.jpg" alt="">
+                <div class="theme_icon_img">
+                    <img src="../assets/img/room.jpg" alt="">
+                </div>
                 <h3>海量謎題</h3>
                 <p>打造真實監獄場景<br>宛如身歷其境</p>
             </div>
