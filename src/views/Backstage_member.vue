@@ -6,6 +6,9 @@
     import axios from 'axios';
 
     export default {
+        mounted(){
+            this.fetchData();
+        },
         components: {
             TopNavbarBack,
             FooterbarBack,
@@ -34,6 +37,11 @@
             }
         },
         methods: {
+            handleEnter(event){
+                if (event.keyCode === 13) {
+                    this.fetchData();
+                }
+            },
             prevPage(){
                 if (this.pageInput > 1) {
                     this.pageInput --;
@@ -105,8 +113,8 @@
                         <li><router-link to="/MemberMenage/">會員資料管理</router-link></li>
                     </ul>
                 </nav>
-                <form class="backstage_form" method="get" action="">
-                    <input class="backstage_input" type="text" placeholder="關鍵字搜尋" v-model="keyword">
+                <form class="backstage_form" method="get" action="" @submit.prevent="fetchData">
+                    <input class="backstage_input" type="text" placeholder="關鍵字搜尋" v-model="keyword" @keypress="handleEnter">
                     <select class="backstage_dropdown" name="selected" v-model="status">
                         <option value="所有狀態" selected>所有狀態</option>
                         <option value="正常">正常</option>
@@ -150,12 +158,14 @@
                                         <button @click.prevent="prevPage">&lt;</button>
                                         <input class="backstage_page_input" type="text" v-model="pageInput" @blur="handleBlur">
                                         <button @click.prevent="nextPage">&gt;</button>
-                                    </div>        
+                                    </div>
+                                    <p>共有 {{ objArray.length }} 筆，總計 {{ totalPages }} 頁 </p>        
                                 </div>                                
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                
             </div>
         </div>
     </main>
