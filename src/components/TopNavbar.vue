@@ -41,8 +41,7 @@ export default {
             <li><router-link to="/Theme/">主題介紹</router-link></li>
             <li><router-link to="/pay/">結帳</router-link></li>
             <li><router-link to="/Theme_test/">測</router-link></li>
-            <li><router-link to="/pay/">結帳</router-link></li> 
-           <li><router-link to="/pay/">結帳</router-link></li>
+          
         </ul>
     </header>
 </template>
