@@ -1450,15 +1450,19 @@ i.fa-dollar-sign {
   justify-content: center;
   align-items: center;
   width: 200px;
+  margin: 0 auto;
 }
-.backstage_paginator a {
+.backstage_paginator button {
+  background: none;
+  border: none;
+  background-color: #FFE8BB;
   font-size: 18px;
   line-height: 30px;
 }
-.backstage_paginator a:hover {
+.backstage_paginator button:hover {
   font-weight: bold;
 }
-.backstage_paginator a:active {
+.backstage_paginator button:active {
   color: #FCD15B;
 }
 

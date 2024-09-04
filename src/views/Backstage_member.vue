@@ -3,14 +3,12 @@
     import TopNavbarBack from '../components/TopNavbarBack.vue';
     import FooterbarBack from '../components/FooterbarBack.vue';
 
-    // api test
-    // 改寫Option API
     import axios from 'axios';
 
     export default {
         components: {
             TopNavbarBack,
-            FooterbarBack
+            FooterbarBack,
         },
         data(){
             return{
@@ -18,34 +16,64 @@
                 loading: true,
                 error: null,
                 keyword: '',
-                status: '所有狀態'
+                status: '所有狀態',
+                pageInput: '1',
+                pageSize: 10,
+                totalPages: '0'
             }
         },
-        async mounted(){
-            // await this.fetchData()
+        computed:{
+            paginatedData(){
+                const start = (parseInt(this.pageInput) - 1) * this.pageSize;
+                const end = start + this.pageSize;
+                this.totalPages = Math.ceil(this.objArray.length / this.pageSize); 
+                return this.objArray.slice(start, end);
+            },
+            totalPages(){
+                return this.totalPages;
+            }
         },
         methods: {
+            prevPage(){
+                if (this.pageInput > 1) {
+                    this.pageInput --;
+                    this.pageInput = this.pageInput .toString();
+                }
+                this.goToPage();
+            },
+            nextPage(){
+                console.log(this.totalPages);
+                if (this.pageInput < this.totalPages) {
+                    this.pageInput ++;
+                    this.pageInput = this.pageInput.toString();
+                }
+                this.goToPage();   
+            },
+            handleBlur(){
+                this.$nextTick(() => {
+                    this.goToPage();
+                });
+            },
+            goToPage(){
+                console.log('goToPage called');
+                const page = parseInt(this.pageInput, 10);
+                if (!isNaN(page) && page > 0 && page <= this.totalPages) {
+                    this.pageInput  = page.toString();
+                } else {
+                    this.pageInput = this.pageInput .toString();
+                }
+            },
             async fetchData(){
                 try {
-                    // try {
-                    //     const response = await axios.get('http://localhost:3000/api/member');
-                    //     this.objArray = response.data;
-                    // } catch (error) {
-                    //     console.error('Error fetching data:', error);
-                    // }
-
                     const params = {
                         keyword: this.keyword,
                         status: this.status
                     };
                     const response = await axios.get('http://localhost:3000/api/member', { params });
-                    // console.log('Response from fetchData:', response);
                     console.log(response)
-                    // console.log('Updated objArray:', this.objArray);
                     this.objArray = response.data
                 
                 } catch (err) {
-                    // console.error('Error in fetchData:', err);
                     this.error = 'An error occurred: ' + err.message
                 } finally {
                     this.loading = false
@@ -54,6 +82,10 @@
             async search(){
                 this.loading = true;
                 await this.fetchData();
+            },
+            formatDate(timestamp){
+                let date = new Date(timestamp);
+                return date.toISOString().split('T')[0];
             }
         }
     }
@@ -100,23 +132,26 @@
                         </tr>
                     </thead>
                     <tbody class="backstage_tablebody">
-                        <tr v-for = "item in objArray" :key="item.ID">
-                            <td id="member_regi_date">{{ item.REGI_DATE }}</td>
+                        <tr v-for = "item in paginatedData" :key="item.ID">
+                            <td id="member_regi_date">{{ formatDate(item.REGI_DATE) }}</td>
                             <td id="member_name">{{ item.NAME }}</td>
                             <td id="member_email">{{ item.EMAIL }}</td>
                             <td id="member_phone">{{ item.PHONE }}</td>
-                            <td id="member_status"><a href="" class="backstage_table_button">正常</a></td>
+                            <td id="member_status">
+                                <a href="" class="backstage_table_button" v-if="item.STATUS == '0'">正常</a>
+                                <a href="" class="backstage_table_button" v-if="item.STATUS == '1'">停權</a>
+                            </td>
                             <td id="member_action"><a href="" class="backstage_table_button">檢視訂單</a></td>
                         </tr>
                         <tr class="backstage_tfoot">
                             <td colspan="6" style="text-align: center;">
                                 <div class="backstage_pagination">
                                     <div class="backstage_paginator">
-                                        <a href="#">&lt;</a>
-                                        <input class="backstage_page_input" type="text" value="1">
-                                        <a href="#">&gt;</a>
-                                    </div>
-                                </div>
+                                        <button @click.prevent="prevPage">&lt;</button>
+                                        <input class="backstage_page_input" type="text" v-model="pageInput" @blur="handleBlur">
+                                        <button @click.prevent="nextPage">&gt;</button>
+                                    </div>        
+                                </div>                                
                             </td>
                         </tr>
                     </tbody>

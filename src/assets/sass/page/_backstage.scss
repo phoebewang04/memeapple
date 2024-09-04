@@ -226,17 +226,21 @@
     justify-content: center;
     align-items: center;
     width: 200px;
+    margin: 0 auto;
 
-    & a{
+    & button{
+        background: none;
+        border: none;
+        background-color: map-get($colors, lightyellow );
         font-size: 18px;
         line-height: 30px;
     }
     
-    & a:hover{
+    & button:hover{
         font-weight: bold;
     }
 
-    & a:active{
+    & button:active{
         color: map-get($colors, gold );
     }
 }
