@@ -2,17 +2,17 @@
 /* -------------------------preorder 預定主題------------------------------- */
 
 #preorder_wrapper {
-    width: 1200px;
+    width: 90%;
     margin: 0 auto;
 
-    @include rwd(820px){
-        width: 780px;
-        margin: 0 auto;
-    }
+    // @include rwd(820px){
+    //     width: 90%;
+    //     margin: 0 auto;
+    // }
 
-    @include rwd(430px){
-        width: 380px;
-    }
+    // @include rwd(430px){
+    //     width: 380px;
+    // }
 }
 
 /* --------------------返回------------------------------------ */
@@ -22,17 +22,17 @@
 
 .preorder_toppic img {
     margin-top: 40px;
-    width: 1200px;
+    width: 100%;
     height: 600px;
 
     @include rwd(820px){
-        width: 780px;
+        width: 100%;
         height: 400px;
         margin: 0 auto;
     }
 
     @include rwd(430px){
-        width: 380px;
+        width: 100%;
         height: 200px;
         margin: 0 auto;
     }
@@ -47,13 +47,13 @@
     border-radius: 12px;
 
     @include rwd(820px){
-        width: 780px;
+        width: 100%;
         margin-bottom: 20px;
         margin-top: 20px;
     }
 
     @include rwd(430px){
-        width: 380px;
+        width: 100%;
         height: 200px;
     }
 }
@@ -67,19 +67,16 @@
 
 
 .preorderinfor_active .infor_list ul {
-    width: 1150px;
+    padding: 0px 20px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     color: map-get($colors , white );
 
-    @include rwd(820px){
-        width: 730px;
-    }
-
     @include rwd(430px){
-        width: 350px;
+        padding: 0px;
         flex-direction: column;
+        font-size: map-get($fontsize , p );
     }
     
 }
@@ -91,7 +88,7 @@
     align-items: center;
 
     @include rwd(430px){
-        width: 230px;
+        width: 210px;
         
     }
     
@@ -102,10 +99,10 @@
 }
 
 .preorderinfor_active .infor_list {
-    font-size: map-get($fontsize , p );
+    font-size: map-get($fontsize , p);
 
     @include rwd(430px){
-        width: 320px;
+        width: 90%;
         margin: 0 auto;
         line-height: 2;
         font-size: 20px;
@@ -126,18 +123,17 @@
     border-radius: 12px;
 
     @include rwd(820px){
-        width: 780px;
+        width: 100%;
         margin-bottom: 20px;
     }
 
     @include rwd(430px){
-        width: 380px;
         height: 930px;
     }
 }
 
 .preorder_datetime .timeandele {
-    width: 1100px;
+    width: 85%;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -145,13 +141,9 @@
     margin-bottom: 20px;
 
     @include rwd(820px){
-        width: 780px;
         flex-direction: column;
     }
 
-    @include rwd(430px){
-        width: 380px;
-    }
 }
 
 
@@ -202,9 +194,6 @@
 
 }
 
-// .preorder_datetime .time .time_ele *:focus{
-//     background-color: map-get($colors , gold );
-// }
 
 .preorder_datetime .time .time_ele .ele {
     border: 1px solid #fff;
@@ -233,6 +222,7 @@
     height: 40px;
     border-radius: 12px;
     padding: 10px;
+    color: map-get($colors , darkblue );
 
     @include rwd(430px){
         width: 210px;
@@ -256,14 +246,15 @@
     border-radius: 12px;
 
     @include rwd(820px){
-        width: 740px;
+        // width: 740px;
     }
 
     @include rwd(430px){
-        width: 340px;
+        // width: 340px;
         display: none;
     }
 }
+
 
 .preorder_infornotice ul li {
     line-height: 2.3;
@@ -292,7 +283,7 @@
 }
 
 .preorder_infornotice .content i {
-    font-size: 4px;
+    font-size: 6px;
     margin-right: 12px;
 }
 
