@@ -32,13 +32,12 @@
     margin: 5px 5px 8px;
     input{
         margin-bottom: 15px;
+        outline: none;
+        font-size: map-get($fontsize, h4 );
+        width: 100%;
     }
 }
 
-.mainLogin input{
-   font-size: map-get($fontsize, h4 );
-   width: 100%;
-}
 
 #onlogin{
     width: 20px;

@@ -2,7 +2,10 @@
     background-color: #020912;
     min-height: 100vh;
     overflow-x: hidden;
+    box-sizing: border-box;
 }
+
+// -----視差滾動 start-----
 
 .parallax {
     position: relative;
@@ -71,6 +74,8 @@
     }
 }
 
+
+// -----分割文字 start-----
 .split_text,
 .split_text_2 {
     // border: 1px solid white;
@@ -79,140 +84,129 @@
     margin: 40px auto;
 }
 
-// .split_text_2{
-//   animation: yellowFlash 1s ease infinite;
-
-//   @keyframes yellowFlash {
-//     0%, 100% {
-//       color: #fff;
-//       text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ff0;
-//     }
-//     50% {
-//       color: #ff0;
-//       text-shadow: 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ff0, 0 0 50px #ff0;
-//     }
-//   }
-// }
-
-.cemetery_text,
-.brave_text {
-    text-align: center;
+.cemetery_text {
+text-align: center;
 }
 
+// -----入墓須知 start-----
 
 .envelope_container {
-    border: 1px solid white;
-    height: 100vh;
+    // border: 1px solid white;
+    height: 30vh;
+
     display: grid;
+    justify-content: center;
+    align-items: center;
+
     place-items: center;
+    margin-top: 80px;
+    
 
     .envelope_wrapper {
+        height: 120px;
         background: #d8d7e5;
-        box-shadow: 0 0 40px #4F4C6B;
+
+        cursor: pointer;
     }
 
     //大小
     .envelope {
         position: relative;
-        width: 300px;
-        height: 230px;
-
-        &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            z-index: 2;
-            border-top: 130px solid #7873A7;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            transform-origin: top;
-            transition: all .5s ease-in-out .7s;
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            z-index: 2;
-            width: 0;
-            height: 0;
-            border-top: 130px solid transparent;
-            border-right: 150px solid #555184;
-            border-bottom: 100px solid #403d64;
-            border-left: 150px solid #555184;
-        }
+        width: 540px;
+        height: 320px;
     }
+}
 
-    .letter {
-        position: absolute;
-        right: 20%;
-        bottom: 0;
-        width: 50%;
-        height: 80%;
-        background: #d8d7e5;
+.envelope_wrapper>.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    border-top: 210px solid #7873A7;
+    border-left: 271px solid transparent;
+    border-right: 271px solid transparent;
+    transform-origin: top;
+    transition: all .5s ease-in-out .7s;
+}
+
+.envelope::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    border-top: 210px solid transparent;
+    border-right: 271px solid #555184;
+    border-bottom: 150px solid #403d64;
+    border-left: 271px solid #555184;
+}
+
+.envelope>.letter {
+    position: absolute;
+    right: 22%;
+    bottom: 0;
+    width: 50%;
+    height: 80%;
+    background: #d8d7e5;
+    text-align: center;
+    transition: all 1s ease-in-out;
+    box-shadow: 0 0 5px #4F4C6B;
+    padding: 30px 15px 0px 15px;
+}
+
+.letter_text{
+    p {
+        color: #020912;
+        font-size: 12px;
         text-align: center;
-        transition: all 1s ease-in-out;
-        box-shadow: 0 0 5px #4F4C6B;
-
-
-        .letter_text {
-            text-align: left;
-
-        }
     }
+
+    img{
+        width: 50px;
+        margin-top: 20px;
+    }
+} 
+
+.sticker {
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    // border-radius: 50%;
+    background-color: #FBC75D;
+    z-index: 4;
+    transform: translate(-50%, -20%) rotate(45deg);
+    transition: ease-in-out .5s;
+}
+
+.flap {
 
     .sticker {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background-color: #FBC75D;
-        z-index: 4;
-        transform: translate(-50%, -20%) rotate(45deg);
-        transition: transfrom 0.5s ease-in-out 1s;
-
-        cursor: pointer;
+        transform: rotate(90deg);
+        transition:  ease-in-out .4s;
     }
+
+    .envelope::before {
+        transform: rotateX(180deg);
+        z-index: 0;
+    }
+
+    .envelope .letter {
+        bottom: 100px;
+        transform: scale(1.7);
+        transition-delay: 1s;
+    }
+
 }
-
-.flap .sticker {
-    transform: skew(8deg);
-    transition-delay: .4s;
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // -----map start-----
 
-
 .minigame_map {
     // border: 1px solid wheat;
     text-align: center;
-    margin: 350px 0;
+    margin: 250px 0;
 }
 
 // -----動畫－座標-----
@@ -234,6 +228,7 @@
         }
     }
 }
+
 
 // -----動畫－殭屍手手-----
 .zombie_hand g:nth-of-type(1) {
@@ -440,114 +435,3 @@
 
 // -----map end-----
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-// 液體
-.loader {
-    // background-color: #02640e;
-    // border: 1px solid white;
-    width: 50px;
-    height: 10px;
-    position: relative;
-    // position: fixed;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-}
-
-
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes drop {
-    0% {
-        bottom: -10px;
-        opacity: 1;
-    }
-
-    80% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-        bottom: -100px;
-    }
-}
-
-.drops {
-    -webkit-filter: url('#liquid');
-    filter: url('#liquid');
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    // z-index: 1;
-    // opacity: 0;
-    animation: fade-in .1s linear .4s forwards;
-}
-
-.drop1,
-.drop2 {
-    width: 21px;
-    height: 24px;
-    border-radius: 50%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    // background-color: #10a7c1
-}
-
-
-.drop2 {
-    background-color: #02640e
-}
-
-.drop1 {
-    width: 100%;
-    height: 16px;
-    bottom: 2px;
-    border-radius: 0;
-    background-color: #020912
-}
-
-.drop2 {
-    animation: drop 1.3s cubic-bezier(1, .19, .66, .12) .5s infinite;
- }
-
-*/

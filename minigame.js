@@ -6,12 +6,18 @@ let gateRight = document.getElementById('gate-right');
 
 window.addEventListener('scroll', () => {
   let value = window.scrollY;
+  // cemeteryText.style.marginTop = value * 0.7 + 'px';
+  // treeLeft.style.left = value * -0.9 + 'px';
+  // treeRight.style.left = value * 0.9 + 'px';
+  // gateLeft.style.left = value * 0.2 + 'px';
+  // gateRight.style.left = value * -0.2 + 'px';
 
-  cemeteryText.style.marginTop = value * 0.7 + 'px';
-  treeLeft.style.left = value * -0.9 + 'px';
-  treeRight.style.left = value * 0.9 + 'px';
-  gateLeft.style.left = value * 0.2 + 'px';
-  gateRight.style.left = value * -0.2 + 'px';
+  cemeteryText.style.top =`${value * 0.7}px`;
+  // cemeteryText.style.transform =`translateX(${value * 0.7}px)`;
+  treeLeft.style.transform = `translateX(-${value * 0.2}px)`;
+  treeRight.style.transform =`translateX(${value * 0.9}px)`;
+  gateLeft.style.transform = `translateX(${value * 0.2}px)` ;
+  gateRight.style.transform = `translateX(-${value * 0.2}px)` ;
 
 });
 

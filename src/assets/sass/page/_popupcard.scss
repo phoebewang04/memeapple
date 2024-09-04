@@ -1,10 +1,16 @@
 .main-popupcard {
     width: 100%;
     height: calc(100vh - 70px - 73.58px);
+    padding: 80px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+
+    @include pad {
+        padding: 0;
+    }
+
 }
 
 .background-blur {
@@ -36,9 +42,9 @@
 
 .popupcard-card {
     background-image: url('/src/assets/img/popupcard_space.png');
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    border-radius: 20px;
     width: 411.6px;
     height: 441.7px;
     display: flex;
@@ -52,6 +58,11 @@
         height: 631px;
     }
 
+    @include rwd(540px) {
+        width: 280px;
+        height: 504px;
+    }
+
     @include phone {
         width: 280px;
         height: 504px;
@@ -63,10 +74,18 @@
     }
 
     h1 {
-        font-size: 40px;
+        font-size: 32px;
 
         @include rwd(1440px) {
             line-height: 1.5;
+        }
+
+        @include rwd(768px) {
+            margin: 20px 0;
+        }
+
+        @include phone {
+            margin: 8px 0;
         }
     }
 
@@ -83,8 +102,9 @@
     justify-content: center;
 
     img {
-        width: 109.2px;
-        height: 109.2px;
+        // width: 109.2px;
+        // height: 109.2px;
+        width: 60%;
     }
 }
 
@@ -98,22 +118,44 @@
         width: 70%;
     }
 
+    @include rwd(768px) {
+        margin-bottom: 20px;
+    }
+
+
+    @include phone {
+        width: 90%;
+        margin: 8px 0;
+    }
+
     .qrcode-y {
         font-size: 40px;
         font-weight: bold;
         line-height: 1.5;
+
+        @include pad {
+            font-size: 28px;
+        }
     }
 
     .qrcode-m {
         font-size: 40px;
         font-weight: bold;
         line-height: 1.5;
+
+        @include pad {
+            font-size: 28px;
+        }
     }
 
     .qrcode-d {
         font-size: 40px;
         font-weight: bold;
         line-height: 1.5;
+
+        @include pad {
+            font-size: 28px;
+        }
     }
 }
 

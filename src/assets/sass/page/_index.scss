@@ -1,6 +1,6 @@
 .main-homepage {
     width: 100%;
-    height: calc(100vh - 70px - 71.33px);
+    // height: calc(100vh - 70px - 71.33px);
     margin: 0 auto;
 }
 
@@ -9,6 +9,10 @@
     margin: 0 auto;
 }
 
+
+
+
+// ===================================================================================
 // 首頁第一部分  主視覺
 .content-homepage {
     width: 100%;
@@ -16,71 +20,150 @@
     background-image: url(/src/assets/img/BG-index.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    border-bottom: 1px solid white;
+}
 
-    .homepage-text {
-        margin-top: 147px;
-        margin-left: 120px;
+.homepage-text {
+    margin-top: 147px;
+    margin-left: 120px;
+    // opacity: 0;
+    // transform: translateY(20px);
+    // transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 
-        h1 {
+    @include pad {
+        margin-top: 0px;
+        margin-left: 80px;
+    }
+
+    @include rwd(541px) {
+        margin-left: 40px;
+    }
+
+    @include phone {
+        margin-left: 20px;
+    }
+
+    h1 {
+        font-size: 60px;
+
+        @include pad {
+            font-size: 45px;
+        }
+
+        @include phone {
+            font-size: 32px;
+        }
+    }
+
+    h2 {
+        font-size: 80px;
+        font-weight: bold;
+        color: map-get($colors, gold);
+        margin-left: 40px;
+
+        @include pad {
             font-size: 60px;
         }
 
-        h2 {
-            font-size: 80px;
-            font-weight: bold;
-            color: map-get($colors, gold);
-            margin-left: 40px;
+        @include phone {
+            font-size: 45px;
+            line-height: 1.5;
+            margin-left: 0;
         }
     }
 
-    .homepage-img {
-        width: 90%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-around;
-        margin-top: 128px;
-        margin-bottom: 40px;
+    &.show{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.homepage-img {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 128px;
+
+    @include pad {
+        margin-top: 60px;
+    }
+}
+
+.homepage-card01 {
+
+    @include rwd(854px) {
+        display: none;
     }
 
-    .homepage-card01 {
-        img {
-            width: 100%;
-        }
+    img {
+        width: 100%;
+    }
+}
+
+.homepage-card02 {
+    margin-top: 40px;
+
+    @include rwd(854px) {
+        display: none;
     }
 
-    .homepage-card02 {
-        margin-top: 40px;
+    img {
+        width: 100%;
+    }
+}
 
-        img {
-            width: 100%;
-        }
+.homepage-card03 {
+    margin-bottom: 40px;
+    
+    @include rwd(854px) {
+        width: 60%;
     }
 
-    .homepage-card03 {
-        margin-bottom: 40px;
-
-        img {
-            width: 100%;
-        }
+    img {
+        width: 100%;
     }
 }
 
 .homepage-effect {
+    // 變數
     $speed: 6s;
     $wordCount: 7;
-
     width: 50%;
     height: 100px;
     position: relative;
-    margin-left: 400px;
+    margin-left: 300px;
     filter: contrast(10) blur(1px);
+
+    @include rwd(1280px) {
+        width: 65%;
+        margin-left: 80px;
+    }
+
+    @include pad {
+        width: 35%;
+        margin-left: 60px;
+    }
+
+    @include rwd(541px) {
+        // display: none;
+        margin-left: 20px;
+    }
+
+    @include phone {
+        display: none;
+    }
 
     .homeeffect-word {
         position: absolute;
         animation: homeeffect-word $speed infinite ease-in-out;
         color: map-get($colors , underred);
         font-weight: bold;
-        width: 40%;
+        width: 50%;
+
+        @include pad {
+            width: 100%;
+        }
 
         @for $i from 0 to $wordCount {
             &:nth-child(#{$i + 1}) {
@@ -107,10 +190,14 @@
     }
 }
 
+
+
+
+// ===================================================================================
 // 首頁第二部分  品牌故事
 .content-brandstory {
     width: 100%;
-    padding: 90px 0;
+    padding: 80px 0;
     margin: 0 auto;
     background-image: url(/src/assets/img/BG-Index-bread.jpg);
     background-repeat: no-repeat;
@@ -119,6 +206,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    border-bottom: 1px solid yellow;
 
     .brandstory-effect {}
 
@@ -126,38 +214,53 @@
 
 .brandstory-content {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 90%;
-    margin: 0 auto;
 }
 
 .brandstory-img {
-    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 40px;
+
+    @include rwd(854px) {
+        display: none;
+    }
 
     img {
-        width: 70%;
+        width: 80%;
         height: auto;
         display: block;
     }
 }
 
 .brandstory-text {
-    width: 40%;
+    width: 50%;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
+    @include rwd(912px) {
+        width: 80%;
+    }
+
+    @include pad {
+        width: 90%;
+    }
+
+    @include rwd(541px) {
+        width: 95%;
+    }
+
     .brandstory-sub {}
 
     .brandstory-title {
         display: flex;
-        margin: 40px 0;
+        margin-bottom: 20px;
 
         span {
             font-size: 48px;
@@ -172,8 +275,7 @@
     h3 {
         font-size: 32px;
         font-weight: bold;
-        margin-top: 16px;
-        margin-bottom: 40px;
+        margin: 20px 0;
     }
 
     .while-lineforhome {
@@ -184,16 +286,15 @@
     .brandstory-intro {
         text-align: left;
         font-size: 20px;
-        padding: 0 40px;
         margin-bottom: 20px;
     }
 
     .brandstory-bottom {
-        margin-top: 40px;
 
         p {
             font-size: 40px;
             font-weight: bold;
+            line-height: 1.5;
         }
 
         p:nth-child(2) {
@@ -202,10 +303,14 @@
     }
 }
 
+
+
+
+// ===================================================================================
 // 首頁第三部分 限時主題
 .content-limitlevel {
     width: 100%;
-    padding: 24px 0;
+    padding: 80px 0;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -214,38 +319,47 @@
     background-image: url(/src/assets/img/BG-Index-level.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    border-bottom: 1px solid orange;
 }
 
 .limitlevel-effect {}
 
 .limitlevel-content {
     width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    margin: 0 auto;
+}
 
-    .limitlevel-topic {
-        font-size: 40px;
-        font-weight: bold;
-        margin-bottom: 40px;
+.limitlevel-topic {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+
+    @include pad {
+        margin-bottom: 20px;
     }
+    
 }
 
 .limitlevel-Area {
-    width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .limitlevel-text {
-    width: 40%;
-    font-size: 24px;
-    border: 1px solid gold;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 40px;
+    // border: 1px solid gold;
+
+
+    @include rwd(1280px) {
+        margin-right: 20px;
+    }
+
+    @include pad {
+        display: none;
+    }
 
     .limitlevel-sologanred {
         color: red;
@@ -257,6 +371,11 @@
         font-weight: bold;
         margin-left: 80px;
 
+        @include rwd(1280px) {
+            font-size: 18px;
+            margin-left: 20px;
+        }
+
         span {
             margin-bottom: 80px;
         }
@@ -267,6 +386,11 @@
         font-size: 28px;
         font-weight: bold;
         margin-left: 180px;
+
+        @include rwd(1280px) {
+            font-size: 20px;
+            margin-left: 60px;
+        }
 
         span {
             margin-bottom: 80px;
@@ -280,6 +404,11 @@
         font-weight: bold;
         margin-left: 120px;
 
+        @include rwd(1280px) {
+            font-size: 24px;
+            margin-left: 32px;
+        }
+
         span {
             margin-bottom: 120px;
         }
@@ -291,6 +420,11 @@
         font-weight: bold;
         margin-left: 60px;
 
+        @include rwd(1280px) {
+            font-size: 28px;
+            margin-left: 0px;
+        }
+
         span {
             margin-bottom: 80px;
         }
@@ -298,40 +432,77 @@
 }
 
 .limitlevel-img {
-    border: 1px solid red;
     width: 30%;
+    height: auto;
     text-align: center;
-    position: relative;
+    background-image: url(/src/assets/img/Index-pic04.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // border: 1px solid red;
+
+    @include rwd(1280px) {
+        width: 40%;
+    }
+
+    @include pad {
+        width: 100%;
+        height: 50vh;
+    }
+
+    @include rwd(541px) {
+        height: 70vh;
+    }
 
     img {
-        width: 90%;
+        width: 70%;
+
+        @include pad {
+            width: 100%;
+        }
     }
 }
 
 .limitlevel-imgtext {
-    width: 60%;
-    text-align: center;
-    position: absolute;
-    top: 60px;
-    left: 140px;
     transform: rotate(-3deg);
 
     p {
-        font-size: 32px;
+        font-size: 22px;
+        text-align: left;
         line-height: 1.5;
     }
 }
 
 .limitlevel-info {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 0;
+    transform: rotate(-3deg);
+    // border: 1px solid rgb(9, 255, 230);
 
     .limitlevel-level {
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-right: 12px;
+
+        @include pad {
+            margin-right: 4px;
+        }
 
         p {
             font-size: 18px;
+            margin-left: 8px;
+
+            @include pad {
+                font-size: 16px;
+                margin-right: 4px;
+            }
         }
 
     }
@@ -340,9 +511,19 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-right: 12px;
 
+        @include pad {
+            margin-right: 4px;
+        }
         p {
             font-size: 18px;
+            margin-left: 8px;
+
+            @include pad {
+                font-size: 16px;
+                margin-right: 4px;
+            }
         }
     }
 
@@ -350,32 +531,84 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-right: 12px;
+
+        @include pad {
+            margin-right: 4px;
+        }
 
         p {
             font-size: 18px;
+            margin-left: 8px;
+
+            @include pad {
+                font-size: 16px;
+                margin-right: 4px;
+            }
         }
     }
 }
 
+// 預定按鈕
+.linmit-btn {
+    transform: rotate(-3deg);
+    width: 120px;
+    font-size: 18px;
+    padding: 6px 12px;
+}
+
+// 那些icon
+.limit-icon {
+    color: map-get($colors , underyellow);
+}
+
+// 標題
 .limitlevel-title {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    border: 1px solid yellowgreen;
+    margin-top: 20px;
+    // border: 1px solid yellowgreen;
 
     span {
         font-size: 120px;
         font-weight: bold;
         color: red;
         margin-bottom: 28px;
+
+        @include pad {
+            font-size: 60px;
+        }
     }
 
     p {
         font-size: 24px;
+
+        @include pad {
+            padding: 0 80px;
+            text-align: center;
+        }
+
+        @include rwd(541px) {
+            padding: 0 40px;
+        }
+    
     }
 }
 
+.limit-br {
+    display: none;
+
+    @include pad {
+        display: block;
+    }
+}
+
+
+
+
+// ===================================================================================
 // 首頁第四部分 如何遊玩
 .content-howtoplay {
     width: 100%;
@@ -386,13 +619,12 @@
     background-image: url(/src/assets/img/BG-Index-How1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    border-bottom: 1px solid gold;
 }
 
 .howtoplay-content {
     width: 90%;
-    margin: 0 auto;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding: 80px 0;
 
 }
 
@@ -400,15 +632,44 @@
     text-align: center;
     font-size: 40px;
     font-weight: bold;
+    margin-bottom: 40px;
 }
 
-.howtoplay-box01 {
-    width: 100%;
+.howtoplay-box {
+    margin-bottom: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid wheat;
 }
 
+.howPic1 {
+    width: 100%;
+    height: auto;
+    background-image: url(/src/assets/img/hospital-1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.howPic2 {
+    width: 100%;
+    height: auto;
+    background-image: url(/src/assets/img/alien2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+
+.howPic3 {
+    width: 100%;
+    height: auto;
+    background-image: url(/src/assets/img/hospital-3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
 
 // 文字區域
 .howtoplay-text {
@@ -417,17 +678,30 @@
     flex-direction: column;
     align-items: center;
 
+    @include rwd(1280px) {
+        width: 40%;
+    }
+
+    @include pad {
+        width: 80%;
+    }
+
+    @include phone {
+        width: 90%;
+    }
+
     .howtoplay-slogan {
-        width: 60%;
+        width: 80%;
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        margin-bottom: 40px;
+        justify-content: center;
+        margin: 40px 0;
 
         span {
             color: #FEDA77;
             font-size: 32px;
             font-weight: bold;
+            margin: 12px;
         }
     }
 
@@ -435,30 +709,35 @@
         text-align: center;
         font-size: 24px;
         font-weight: bold;
+        margin-bottom: 20px;
     }
 }
 
 // 圖片區域
 .howtoplay-img {
-    margin-top: 32px;
     text-align: center;
 
     img {
-        width: 80%;
+        width: 70%;
     }
 }
 
+
+
+
+// ===================================================================================
 // 首頁第五部分 最新消息
-.content-p-announcement {
+.content-announcement {
     width: 100%;
+    padding: 80px 0;
+    border-bottom: 1px solid greenyellow;
 }
 
-.theme-announcement-index {
+.announcement-content {
     margin: 0 auto;
-    width: 80%;
+    width: 90%;
     display: flex;
-    padding-top: 170px;
-    padding-bottom: 180px;
+    flex-direction: column;
 
     ul {
         // display: flex;
@@ -474,13 +753,18 @@
 .theme_forindex {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 將三個 li 元素水平排列 */
     gap: 40px;
-    /* 可選，設置元素之間的間距 */
+    // border: 1px solid gold;
+
+    @include pad {
+        gap: 0px;
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .index-news-li {
     text-align: center;
+
 
     h3 {
         font-size: 24px;
@@ -491,7 +775,7 @@
     }
 
     img {
-        width: 80%;
+        width: 70%;
     }
 
     p {
@@ -499,8 +783,27 @@
         text-align: left;
         font-size: 16px;
         color: map-get($colors, yellow);
-        padding-left: 40px;
-        padding-right: 40px;
+        padding: 0 40px;
+
+        @include rwd(1280px) {
+            padding: 0 20px;
+        }
+
+        @include pad {
+            padding: 0 12px;
+        }
+    }
+}
+
+.news-notshow{
+    display: block;
+
+    @include pad {
+        display: none;
+    }
+
+    @include phone {
+        display: none;
     }
 }
 
@@ -508,11 +811,14 @@
     color: #fff;
 }
 
+
+
+
+// ===================================================================================
 // 首頁第六部分 FAQ
 .content-p-faq {
     width: 100%;
-    padding-top: 200px;
-    padding-bottom: 200px;
+    padding: 80px 0;
 
 }
 
