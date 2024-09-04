@@ -18,7 +18,7 @@
                 loading: true,
                 error: null,
                 keyword: '',
-                status: ''
+                status: '所有狀態'
             }
         },
         async mounted(){
