@@ -781,41 +781,64 @@ i.fa-dollar-sign {
   background-size: cover;
   border-bottom: 1px solid white;
 }
-.content-homepage .homepage-text {
+
+.homepage-text {
   margin-top: 147px;
   margin-left: 120px;
 }
 @media (max-width: 820px) {
-  .content-homepage .homepage-text {
+  .homepage-text {
     margin-top: 0px;
     margin-left: 80px;
   }
 }
 @media (max-width: 541px) {
-  .content-homepage .homepage-text {
+  .homepage-text {
     margin-left: 40px;
   }
 }
-.content-homepage .homepage-text h1 {
+@media (max-width: 430px) {
+  .homepage-text {
+    margin-left: 20px;
+  }
+}
+.homepage-text h1 {
   font-size: 60px;
 }
 @media (max-width: 820px) {
-  .content-homepage .homepage-text h1 {
+  .homepage-text h1 {
     font-size: 45px;
   }
 }
-.content-homepage .homepage-text h2 {
+@media (max-width: 430px) {
+  .homepage-text h1 {
+    font-size: 32px;
+  }
+}
+.homepage-text h2 {
   font-size: 80px;
   font-weight: bold;
   color: #FCD15B;
   margin-left: 40px;
 }
 @media (max-width: 820px) {
-  .content-homepage .homepage-text h2 {
+  .homepage-text h2 {
     font-size: 60px;
   }
 }
-.content-homepage .homepage-img {
+@media (max-width: 430px) {
+  .homepage-text h2 {
+    font-size: 45px;
+    line-height: 1.5;
+    margin-left: 0;
+  }
+}
+.homepage-text.show {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.homepage-img {
   width: 90%;
   margin: 0 auto;
   display: flex;
@@ -823,38 +846,41 @@ i.fa-dollar-sign {
   margin-top: 128px;
 }
 @media (max-width: 820px) {
-  .content-homepage .homepage-img {
+  .homepage-img {
     margin-top: 60px;
   }
 }
+
 @media (max-width: 854px) {
-  .content-homepage .homepage-card01 {
+  .homepage-card01 {
     display: none;
   }
 }
-.content-homepage .homepage-card01 img {
+.homepage-card01 img {
   width: 100%;
 }
-.content-homepage .homepage-card02 {
+
+.homepage-card02 {
   margin-top: 40px;
 }
 @media (max-width: 854px) {
-  .content-homepage .homepage-card02 {
+  .homepage-card02 {
     display: none;
   }
 }
-.content-homepage .homepage-card02 img {
+.homepage-card02 img {
   width: 100%;
 }
-.content-homepage .homepage-card03 {
+
+.homepage-card03 {
   margin-bottom: 40px;
 }
 @media (max-width: 854px) {
-  .content-homepage .homepage-card03 {
+  .homepage-card03 {
     width: 60%;
   }
 }
-.content-homepage .homepage-card03 img {
+.homepage-card03 img {
   width: 100%;
 }
 
@@ -867,8 +893,8 @@ i.fa-dollar-sign {
 }
 @media (max-width: 1280px) {
   .homepage-effect {
-    width: 45%;
-    margin-left: 150px;
+    width: 65%;
+    margin-left: 80px;
   }
 }
 @media (max-width: 820px) {
@@ -1065,7 +1091,6 @@ i.fa-dollar-sign {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid gold;
 }
 @media (max-width: 1280px) {
   .limitlevel-text {
@@ -1153,7 +1178,6 @@ i.fa-dollar-sign {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid red;
 }
 @media (max-width: 1280px) {
   .limitlevel-img {
@@ -1202,9 +1226,20 @@ i.fa-dollar-sign {
   justify-content: center;
   margin-right: 12px;
 }
+@media (max-width: 820px) {
+  .limitlevel-info .limitlevel-level {
+    margin-right: 4px;
+  }
+}
 .limitlevel-info .limitlevel-level p {
   font-size: 18px;
   margin-left: 8px;
+}
+@media (max-width: 820px) {
+  .limitlevel-info .limitlevel-level p {
+    font-size: 16px;
+    margin-right: 4px;
+  }
 }
 .limitlevel-info .limitlevel-people {
   display: flex;
@@ -1212,9 +1247,20 @@ i.fa-dollar-sign {
   justify-content: center;
   margin-right: 12px;
 }
+@media (max-width: 820px) {
+  .limitlevel-info .limitlevel-people {
+    margin-right: 4px;
+  }
+}
 .limitlevel-info .limitlevel-people p {
   font-size: 18px;
   margin-left: 8px;
+}
+@media (max-width: 820px) {
+  .limitlevel-info .limitlevel-people p {
+    font-size: 16px;
+    margin-right: 4px;
+  }
 }
 .limitlevel-info .limitlevel-time {
   display: flex;
@@ -1222,13 +1268,27 @@ i.fa-dollar-sign {
   justify-content: center;
   margin-right: 12px;
 }
+@media (max-width: 820px) {
+  .limitlevel-info .limitlevel-time {
+    margin-right: 4px;
+  }
+}
 .limitlevel-info .limitlevel-time p {
   font-size: 18px;
   margin-left: 8px;
 }
+@media (max-width: 820px) {
+  .limitlevel-info .limitlevel-time p {
+    font-size: 16px;
+    margin-right: 4px;
+  }
+}
 
 .linmit-btn {
   transform: rotate(-3deg);
+  width: 120px;
+  font-size: 18px;
+  padding: 6px 12px;
 }
 
 .limit-icon {

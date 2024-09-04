@@ -21,85 +21,107 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-bottom: 1px solid white;
+}
 
-    .homepage-text {
-        margin-top: 147px;
-        margin-left: 120px;
+.homepage-text {
+    margin-top: 147px;
+    margin-left: 120px;
+    // opacity: 0;
+    // transform: translateY(20px);
+    // transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+
+    @include pad {
+        margin-top: 0px;
+        margin-left: 80px;
+    }
+
+    @include rwd(541px) {
+        margin-left: 40px;
+    }
+
+    @include phone {
+        margin-left: 20px;
+    }
+
+    h1 {
+        font-size: 60px;
 
         @include pad {
-            margin-top: 0px;
-            margin-left: 80px;
+            font-size: 45px;
         }
 
-        @include rwd(541px) {
-            margin-left: 40px;
+        @include phone {
+            font-size: 32px;
         }
+    }
 
-        h1 {
+    h2 {
+        font-size: 80px;
+        font-weight: bold;
+        color: map-get($colors, gold);
+        margin-left: 40px;
+
+        @include pad {
             font-size: 60px;
-
-            @include pad {
-                font-size: 45px;
-            }
         }
 
-        h2 {
-            font-size: 80px;
-            font-weight: bold;
-            color: map-get($colors, gold);
-            margin-left: 40px;
-
-            @include pad {
-                font-size: 60px;
-            }
+        @include phone {
+            font-size: 45px;
+            line-height: 1.5;
+            margin-left: 0;
         }
     }
 
-    .homepage-img {
-        width: 90%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-around;
-        margin-top: 128px;
+    &.show{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
 
-        @include pad {
-            margin-top: 60px;
-        }
+.homepage-img {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 128px;
+
+    @include pad {
+        margin-top: 60px;
+    }
+}
+
+.homepage-card01 {
+
+    @include rwd(854px) {
+        display: none;
     }
 
-    .homepage-card01 {
+    img {
+        width: 100%;
+    }
+}
 
-        @include rwd(854px) {
-            display: none;
-        }
+.homepage-card02 {
+    margin-top: 40px;
 
-        img {
-            width: 100%;
-        }
+    @include rwd(854px) {
+        display: none;
     }
 
-    .homepage-card02 {
-        margin-top: 40px;
+    img {
+        width: 100%;
+    }
+}
 
-        @include rwd(854px) {
-            display: none;
-        }
-
-        img {
-            width: 100%;
-        }
+.homepage-card03 {
+    margin-bottom: 40px;
+    
+    @include rwd(854px) {
+        width: 60%;
     }
 
-    .homepage-card03 {
-        margin-bottom: 40px;
-        
-        @include rwd(854px) {
-            width: 60%;
-        }
-
-        img {
-            width: 100%;
-        }
+    img {
+        width: 100%;
     }
 }
 
@@ -114,8 +136,8 @@
     filter: contrast(10) blur(1px);
 
     @include rwd(1280px) {
-        width: 45%;
-        margin-left: 150px;
+        width: 65%;
+        margin-left: 80px;
     }
 
     @include pad {
@@ -328,7 +350,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid gold;
+    // border: 1px solid gold;
 
 
     @include rwd(1280px) {
@@ -421,7 +443,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
+    // border: 1px solid red;
 
     @include rwd(1280px) {
         width: 40%;
@@ -469,9 +491,18 @@
         justify-content: center;
         margin-right: 12px;
 
+        @include pad {
+            margin-right: 4px;
+        }
+
         p {
             font-size: 18px;
             margin-left: 8px;
+
+            @include pad {
+                font-size: 16px;
+                margin-right: 4px;
+            }
         }
 
     }
@@ -482,9 +513,17 @@
         justify-content: center;
         margin-right: 12px;
 
+        @include pad {
+            margin-right: 4px;
+        }
         p {
             font-size: 18px;
             margin-left: 8px;
+
+            @include pad {
+                font-size: 16px;
+                margin-right: 4px;
+            }
         }
     }
 
@@ -494,9 +533,18 @@
         justify-content: center;
         margin-right: 12px;
 
+        @include pad {
+            margin-right: 4px;
+        }
+
         p {
             font-size: 18px;
             margin-left: 8px;
+
+            @include pad {
+                font-size: 16px;
+                margin-right: 4px;
+            }
         }
     }
 }
@@ -504,6 +552,9 @@
 // 預定按鈕
 .linmit-btn {
     transform: rotate(-3deg);
+    width: 120px;
+    font-size: 18px;
+    padding: 6px 12px;
 }
 
 // 那些icon

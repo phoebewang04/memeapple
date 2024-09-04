@@ -1,85 +1,67 @@
-<script setup>
-import { onMounted } from 'vue';
+<script>
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 
-onMounted(() => {
-  const word = document.querySelectorAll('.homeeffect-word');
-  // 隨機顏色
-  word.forEach(word => {
-    const randomTop = Math.random() * 100;
-    const randomLeft = Math.random() * 100;
-    const randomRight = Math.random() * 100;
-    const randomBottom = Math.random() * 100;
-    const randomFontSize = Math.random() * 3 + 1;
-    const randomOpacity = Math.random();
-    const randomScale = Math.random() * 2 + 0.25; 
-
-    word.style.top = `${randomTop}%`;
-    word.style.left = `${randomLeft}%`;
-    word.style.right = `${randomRight}%`;
-    word.style.bottom = `${randomBottom}%`;
-    word.style.fontSize = `${randomFontSize}em`;
-    word.style.opacity = randomOpacity;
-    word.style.transform = `translate(-30%, -10%) scale(${randomScale})`;
-  });
-
-  // faq縮放
-  const questions = document.querySelectorAll('.index-question');
-
-  questions.forEach(question => {
-    question.addEventListener('click', function() {
-      const answer = this.nextElementSibling;
-
-      if (answer.style.maxHeight) {
-        answer.style.maxHeight = null;
-        this.querySelector('.indexfaq-icon i').classList.replace('fa-minus', 'fa-plus');
-      } else {
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-        this.querySelector('.indexfaq-icon i').classList.replace('fa-plus', 'fa-minus');
-      }
-    });
-  });
-});
-</script>
-
-<!-- --------------------------------功能程式---------------------------------------------- -->
-
-<script>
-
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
-
 export default {
   components: {
-    Swiper,
-    SwiperSlide,
-    },
+    TopNavbar,
+    Footerbar
+  },
+  data() {
+    return {
 
+    };
+  },
+  methods: {
 
-    setup(){
-        const swiperInstance = Swiper.use([Pagination]);
+  },
+  mounted() {
+    const word = document.querySelectorAll('.homeeffect-word');
+    // 隨機顏色
+    word.forEach(word => {
+      const randomTop = Math.random() * 100;
+      const randomLeft = Math.random() * 100;
+      const randomRight = Math.random() * 100;
+      const randomBottom = Math.random() * 100;
+      const randomFontSize = Math.random() * 3 + 1;
+      const randomOpacity = Math.random();
+      const randomScale = Math.random() * 2 + 0.25; 
 
-        swiperInstance.on('init', () => {
-           
-        });
+      word.style.top = `${randomTop}%`;
+      word.style.left = `${randomLeft}%`;
+      word.style.right = `${randomRight}%`;
+      word.style.bottom = `${randomBottom}%`;
+      word.style.fontSize = `${randomFontSize}em`;
+      word.style.opacity = randomOpacity;
+      word.style.transform = `translate(-30%, -10%) scale(${randomScale})`;
+    });
 
-        return {
-            modules: [Pagination],
-        };
-    },
+    // faq縮放
+    const questions = document.querySelectorAll('.index-question');
+
+    questions.forEach(question => {
+      question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+
+        if (answer.style.maxHeight) {
+          answer.style.maxHeight = null;
+          this.querySelector('.indexfaq-icon i').classList.replace('fa-minus', 'fa-plus');
+        } else {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          this.querySelector('.indexfaq-icon i').classList.replace('fa-plus', 'fa-minus');
+        }
+      });
+    });
+  }
 };
 </script>
-
 
 
 <template>
   <TopNavbar />
 
-  <main class="main-homepage">
+  <main ref="scrollContainer" class="main-homepage"  @scroll="roll_effect">
     <section class="wrapper-homepage">
       <!-- 首頁第一部分  主視覺-->
       <section class="content-homepage">
@@ -102,15 +84,15 @@ export default {
         <div class="homepage-img">
           <!-- 照片1 -->
           <div class="homepage-card01">
-            <img src="/src/assets/img/Index-person1.png" alt="人像1">
+            <router-link to="/Theme/"><img src="/src/assets/img/Index-person1.png" alt="成都醫院"></router-link>
           </div>
           <!-- 照片2 -->
           <div class="homepage-card02">
-            <img src="/src/assets/img/Index-person2.png" alt="人像2">
+            <router-link to="/Escaperoom/"><img src="/src/assets/img/Index-person2.png" alt="恐怖密室"></router-link>
           </div>
           <!-- 照片3 -->
           <div class="homepage-card03">
-            <img src="/src/assets/img/Index-person3.png" alt="人像3">
+            <router-link to="/Theme_Lock/"><img src="/src/assets/img/Index-person3.png" alt="逃離武石監"></router-link>
           </div>
         </div>
       </section>
