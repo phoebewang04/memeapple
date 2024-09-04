@@ -30,7 +30,7 @@ export default {
             <li><router-link to="/index/">首頁</router-link></li>
             <li><router-link to="/Membermanage/">會員專區</router-link></li>
             <li><router-link to="/Minigame/">線上體驗</router-link></li>
-            <li><router-link to="/Branch/">分館介紹</router-link></li>
+            <!-- <li><router-link to="/Branch/">分館介紹</router-link></li>
             <li><router-link to="/Announcement/">最新消息</router-link></li>
             <li><router-link to="/Popupcard/">彈跳甲魚</router-link></li>
             <li><router-link to="/Theme_Time/">快樂地城</router-link></li>
@@ -40,7 +40,7 @@ export default {
             <li><router-link to="/orderinform/">資料確認</router-link></li>
             <li><router-link to="/Theme/">主題介紹</router-link></li>
             <li><router-link to="/Theme_test/">測</router-link></li>
-            <li><router-link to="/pay/">結帳</router-link></li>
+            <li><router-link to="/pay/">結帳</router-link></li> -->
         </ul>
     </header>
 </template>

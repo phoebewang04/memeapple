@@ -24,7 +24,7 @@ export default {
       const randomLeft = Math.random() * 100;
       const randomRight = Math.random() * 100;
       const randomBottom = Math.random() * 100;
-      const randomFontSize = Math.random() * 3 + 1;
+      const randomFontSize = Math.random() * 1.5 + 1;
       const randomOpacity = Math.random();
       const randomScale = Math.random() * 2 + 0.25; 
 

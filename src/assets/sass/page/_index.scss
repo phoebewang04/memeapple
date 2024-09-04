@@ -72,7 +72,7 @@
         }
     }
 
-    &.show{
+    &.show {
         opacity: 1;
         transform: translateY(0px);
     }
@@ -115,7 +115,7 @@
 
 .homepage-card03 {
     margin-bottom: 40px;
-    
+
     @include rwd(854px) {
         width: 60%;
     }
@@ -134,6 +134,7 @@
     position: relative;
     margin-left: 300px;
     filter: contrast(10) blur(1px);
+
 
     @include rwd(1280px) {
         width: 65%;
@@ -338,7 +339,7 @@
     @include pad {
         margin-bottom: 20px;
     }
-    
+
 }
 
 .limitlevel-Area {
@@ -516,6 +517,7 @@
         @include pad {
             margin-right: 4px;
         }
+
         p {
             font-size: 18px;
             margin-left: 8px;
@@ -593,7 +595,7 @@
         @include rwd(541px) {
             padding: 0 40px;
         }
-    
+
     }
 }
 
@@ -795,7 +797,7 @@
     }
 }
 
-.news-notshow{
+.news-notshow {
     display: block;
 
     @include pad {
