@@ -1,11 +1,12 @@
 <script>
     import '../assets/css/style.css'
-    import TopNavbarBack from '../components/TopNavbarBack.vue';
+    import TopNavbarBack from '../components/TopNavbarBack.vue';  
     import FooterbarBack from '../components/FooterbarBack.vue';
 
     import axios from 'axios';
 
     export default {
+        // 進入頁面時先執行搜尋載入資料
         mounted(){
             this.fetchData();
         },
@@ -26,6 +27,7 @@
             }
         },
         computed:{
+            // 分頁計算
             paginatedData(){
                 const start = (parseInt(this.pageInput) - 1) * this.pageSize;
                 const end = start + this.pageSize;
@@ -37,11 +39,13 @@
             }
         },
         methods: {
+            // 設定關鍵字查詢可透過Enter鍵觸發
             handleEnter(event){
                 if (event.keyCode === 13) {
                     this.fetchData();
                 }
             },
+            // 分頁器前一頁
             prevPage(){
                 if (this.pageInput > 1) {
                     this.pageInput --;
@@ -49,6 +53,7 @@
                 }
                 this.goToPage();
             },
+            // 分頁器下一頁
             nextPage(){
                 console.log(this.totalPages);
                 if (this.pageInput < this.totalPages) {
@@ -57,11 +62,13 @@
                 }
                 this.goToPage();   
             },
+            // 分頁器輸入頁碼跳轉
             handleBlur(){
                 this.$nextTick(() => {
                     this.goToPage();
                 });
             },
+            // 切換頁面主程式
             goToPage(){
                 console.log('goToPage called');
                 const page = parseInt(this.pageInput, 10);
@@ -71,6 +78,7 @@
                     this.pageInput = this.pageInput .toString();
                 }
             },
+            // 呼叫API執行查詢
             async fetchData(){
                 try {
                     const params = {
@@ -91,6 +99,7 @@
                 this.loading = true;
                 await this.fetchData();
             },
+            // 調整日期格式，移除時間戳記
             formatDate(timestamp){
                 let date = new Date(timestamp);
                 return date.toISOString().split('T')[0];
@@ -146,6 +155,7 @@
                             <td id="member_email">{{ item.EMAIL }}</td>
                             <td id="member_phone">{{ item.PHONE }}</td>
                             <td id="member_status">
+                                <!-- 根據狀態顯示對應狀態資訊 -->
                                 <a href="" class="backstage_table_button" v-if="item.STATUS == '0'">正常</a>
                                 <a href="" class="backstage_table_button" v-if="item.STATUS == '1'">停權</a>
                             </td>
