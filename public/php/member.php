@@ -1,45 +1,46 @@
 <?php
-// 連線到資料庫
-include("./sql.php");
-
-// 設定參數
-$status = $_GET['status'];
+// Member API
+function getMembers($db) {
+    $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+    $status = isset($_GET['status']) ? $_GET['status'] : '所有狀態';
     $statusMap = [
         '所有狀態' => '',
         '正常' => '0',
         '停權' => '1'
     ];
 
-$keyword = $_GET['keyword'];
+    // SQL
+    $sql = 'SELECT * FROM MemeStudio.MEMBER';
+    $params = [];
 
-// 設定SQL語法
-$query = "SELECT * FROM MEMBER";
-
-if ($status != '所有狀態') {
-    $statusValue = $statusMap[$status];
-    $query .= " WHERE status = :status";
-}
-if ($keyword != '') {
-    if ($status != '全部' && $status != '') {
-        $query .= " AND (NAME LIKE :keyword OR EMAIL LIKE :keyword OR PHONE LIKE :keyword)";
-    } else {
-        $query .= " WHERE (NAME LIKE :keyword OR EMAIL LIKE :keyword OR PHONE LIKE :keyword)";
+    if ($status != '所有狀態') {
+        $sql .= " WHERE status = ?";
+        $params[] = $statusMap[$status];
     }
+    if ($keyword != '') {
+        if ($status != '所有狀態') {
+            $sql .= " AND (NAME LIKE ? OR EMAIL LIKE ? OR PHONE LIKE ?)";
+        } else {
+            $sql .= " WHERE (NAME LIKE ? OR EMAIL LIKE ? OR PHONE LIKE ?)";
+        }
+        $params[] = "%$keyword%";
+        $params[] = "%$keyword%";
+        $params[] = "%$keyword%";
+    }
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute($params);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    header('Content-Type: application/json');
+    echo json_encode($results);
 }
 
-// 執行
-$statement = $pdo->prepare($query);
-if ($status != '全部') {
-    $statement->bindParam(':status', $statusMap[$status]);
+// Example usage
+try {
+    $db = new PDO('mysql:host=localhost;dbname=MemeStudio', 'username', 'password');
+    getMembers($db);
+} catch (PDOException $e) {
+    echo json_encode(['error' => $e->getMessage()]);
 }
-$statement->bindParam(':keyword', $keyword);
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-// Output data as JSON
-$data = array();
-while ($row = $result->fetch_assoc()) {
-    $data[] = $row;
-}
-echo json_encode($data, JSON_NUMERIC_CHECK);
 ?>

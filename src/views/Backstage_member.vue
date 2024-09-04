@@ -85,7 +85,8 @@
                         keyword: this.keyword,
                         status: this.status
                     };
-                    const response = await axios.get('http://localhost:3000/api/member', { params });
+                    // const response = await axios.get('http://localhost:3000/api/member', { params });
+                    const response = await axios.get('/php/member.php', { params });
                     console.log(response)
                     this.objArray = response.data
                 
