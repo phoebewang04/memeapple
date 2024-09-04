@@ -59,7 +59,7 @@
 
 
 .branch_btn #taipei {
-    background-color: map-get($colors , yellow );
+    color: map-get($colors , darkblue );
     border-top: 1px solid white;
     border-left:1px solid white; 
     border-right: 1px solid white;
@@ -94,6 +94,9 @@
     }
 }
 
+.branch_btn button.active {
+    background-color: map-get($colors , yellow );
+}
 
 .branch_btn button:hover {
     background-color: map-get($colors , gold );
@@ -226,12 +229,16 @@
     }
 
     @include rwd(430px){
-        width: 300px;
+        width: 301px;
         margin-bottom: 60px;
         height: 500px;
     }
 
     
+}
+
+.theme .branch_slide {
+    transition: transform 4.5s ease-in-out;
 }
 
 .theme li  {
@@ -245,6 +252,7 @@
     color: map-get($colors , yellow );
     font-size: 48px;
     padding: 12px;
+    cursor: pointer;
 
     @include rwd(430px){
         display: none;

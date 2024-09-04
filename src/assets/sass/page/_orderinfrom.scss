@@ -281,6 +281,11 @@
     @include rwd(820px){
         margin-bottom: 10px;
     }
+
+    @include rwd(430px){
+        border-radius: 4px;
+        color: map-get($colors , darkblue );
+    }
 }
 
 .memberinfrom .mi_dt .phone input {
@@ -334,15 +339,9 @@
     @include rwd(820px){
         font-size: map-get($fontsize , p);
     }
+
 }
 
-// input[type="checkbox" i] {
-
-//     @include rwd(430px) {
-//         width: 30px;
-//         height: 30px;
-//     }
-// }
 
 
 /* --------------------------訂單明細表------------------------------------------- */
@@ -376,12 +375,18 @@
 .order_right  .details .list p {
     font-size: map-get($fontsize , p);
     margin-bottom: 10px;
+    
 }
 
 .order_right .details select {
+    color: map-get($colors , darkblue );
     width: 200px;
     height: 30px;
     padding: 5px;
+
+    @include rwd(430px){
+        border-radius: 4px;
+    }
 }
 
 .order_right .amount {

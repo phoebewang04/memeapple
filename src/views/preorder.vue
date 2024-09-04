@@ -13,7 +13,7 @@ import Footerbar from '../components/Footerbar.vue';
     <div id="preorder_wrapper">
 
         <div class="preorder_toppic">
-            <img src="../../src/assets/img/dead01.png" alt="">
+            <img src="/src/assets/img/dead01.png" alt="">
         </div>
 
         <div class="preorderinfor_active">
@@ -35,7 +35,7 @@ import Footerbar from '../components/Footerbar.vue';
 
             <div class="timeandele">
 
-                <VCalendar title-position="left" />
+                <VCalendar :attributes="attrs" title-position="left" />
 
                 <div class="time">
 
@@ -164,28 +164,16 @@ import Footerbar from '../components/Footerbar.vue';
 
         </div>
 
-        <!-- ----------------------------------swiper------------------------------------------- -->
+        <!-- -------------------------------------手機版 滾輪畫面---------------------------------------------- -->
 
-        <swiper
-            :direction="'vertical'"
-            :slidesPerView="'auto'"
-            :freeMode="true"
-            :scrollbar="true"
-            :mousewheel="true"
-            :modules="modules"
-            class="mySwiper"
-        >
-
-    
-            <swiper-slide>
-                <div class="preorder_infornotice">
+        <div class="preorder_infornotice1" ref="parent">
                     <h2>訂購須知</h2>
                     <p> 歡迎來到我們的密室逃脫主題館！在您預訂體驗前，請仔細閱讀以下訂票須知
                         以確保您擁有一次愉快且難忘的冒險之旅：</p>
                     <ul>
                         <li>
                             <div>
-                                <h3>1. 訂票方式 :</h3>
+                                <h3>1. 訂票方式：</h3>
                                 <div class="content">
                                     <i class="fa-solid fa-circle"></i>
                                     <p>線上預訂：請訪問我們的網站，選擇您感興趣的主題房間和時間段進行預訂。</p>
@@ -199,7 +187,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>2. 訂票規則 :</h3>
+                            <h3>2. 訂票規則：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>每個房間有固定人數限制，請根據提示選擇適當的參與人數。</p>
@@ -212,7 +200,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>3. 取消和更改 :</h3>
+                            <h3>3. 取消和更改：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>如需取消或更改預訂，請在體驗時間的48小時前聯繫我們。</p>
@@ -225,7 +213,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>4. 到達時間 :</h3>
+                            <h3>4. 到達時間：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>請提前15分鐘到達現場，以便我們能為您講解遊戲規則和安全事項。</p>
@@ -238,7 +226,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>5. 年齡限制 :</h3>
+                            <h3>5. 年齡限制：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>部分房間有年齡限制，請在預訂前確認適合的年齡範圍。</p>
@@ -251,7 +239,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>6. 衣著建議 :</h3>
+                            <h3>6. 衣著建議：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>建議穿著輕便、適合活動的服裝和鞋子，以便順利完成挑戰。</p>
@@ -260,7 +248,7 @@ import Footerbar from '../components/Footerbar.vue';
 
 
                         <li>
-                            <h3>7. 安全提示 :</h3>
+                            <h3>7. 安全提示：</h3>
                             <div class="content">
                                 <i class="fa-solid fa-circle"></i>
                                 <p>請勿攜帶危險物品進入場館，並遵守現場工作人員的指示。</p>
@@ -274,14 +262,11 @@ import Footerbar from '../components/Footerbar.vue';
 
                     <p>感謝您的配合，我們期待與您一起探索神秘的密室逃脫之旅！</p>
 
-                </div>
+        </div>
 
-            </swiper-slide>
-
-        </swiper>    
-
+      
         <div class="nextstep">
-            <button class="next_btn">下一步</button>
+            <button class="next_btn" disabled>下一步</button>
         </div>
 
         <Footerbar />
@@ -293,26 +278,23 @@ import Footerbar from '../components/Footerbar.vue';
 <!-- --------------------------------功能程式---------------------------------------------- -->
 
 <script>
-
 import 'v-calendar/style.css';
+// const 
 
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css'; // Swiper 核心样式
-import 'swiper/css/free-mode'; // Swiper 自由模式样式
-import 'swiper/css/scrollbar'; // Swiper 滚动条样式
-import { FreeMode, Scrollbar, Mousewheel } from 'swiper/modules';
 
 export default {
-    components: {
-      Swiper,
-      SwiperSlide,
-    },
-    setup() {
-      return {
-        modules: [FreeMode, Scrollbar, Mousewheel],
-      };
-    },
-  };
+    data (){
+        return {
+      attrs: [
+        {
+          key: 'today',
+          highlight: true,
+          dates: new Date(), 
+        },
+      ],
+    };
+  },
+}
 
 </script>
 
@@ -379,9 +361,13 @@ export default {
     color: #ffff;
 }
 
+
 .vc-day-content {
     font-size: 18px;
-    margin-bottom: 15px;
+}
+
+.vc-day{
+    margin-bottom: 10px;
 }
 
 .vc-day-content:hover {
@@ -389,41 +375,46 @@ export default {
 }
 
 .vc-container *:focus {
-    outline: 3px solid 100E24;
+    outline: 3px solid #100E24;
     background-color:#FCD15B;
 }
 
 /* ------------------------------------------------------------------------ */
 
-.swiper {
-    display: none;
-    @media screen and (max-width: 430px) {
-        display: block;
-    }
-}
+.preorder_infornotice1 {
 
-.mySwiper .preorder_infornotice{
     display: none;
-    @media screen and (max-width: 430px) {
-        display: block;
-        
-    }
-}
-
-.swiper-wrapper {
+    
+    @media screen and (max-width:430px){
+    border: 1px solid #ffff;
+    border-radius: 12px;
+    display: block;
+    padding: 20px;
+    overflow: auto;
     height: 480px;
+    }
+
 }
 
-.swiper-slide {
-  font-size: 18px;
-  height: auto;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-} 
-
-.swiper-scrollbar {
-    height: 30px !important;
-    background-color: red;
+.preorder_infornotice1 h2 {
+    font-weight: bold;
 }
+
+
+.preorder_infornotice1 .content {
+    display: flex;
+    align-items: center;
+}
+
+.preorder_infornotice1 .content i {
+
+    @media screen and (max-width:430px) {
+          font-size: 6px;
+          height: 40px;
+          margin-right: 12px;
+    }
+    
+}
+
 
 </style>

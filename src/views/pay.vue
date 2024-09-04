@@ -127,7 +127,7 @@ import Footerbar from '../components/Footerbar.vue';
                     </div>
 
                     <div class="button01">
-                        <button class="next_btn">下一步</button>
+                        <button class="next_btn" disabled>下一步</button>
                     </div>
 
                 </div>
