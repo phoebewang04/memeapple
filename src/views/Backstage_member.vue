@@ -23,7 +23,14 @@
                 status: '所有狀態',
                 pageInput: '1',
                 pageSize: 10,
-                totalPages: '0'
+                totalPages: '0',
+                sortKey: '',
+                sortOrder: 1,
+                sortIcons: {
+                    '': '',
+                    'asc': '▲',
+                    'desc': '▼'
+                }
             }
         },
         computed:{
@@ -39,6 +46,23 @@
             }
         },
         methods: {
+            // 排序功能
+            sortBy(key){
+                this.sortOrder = this.sortKey === key ? this.sortOrder * -1 : 1;
+                this.sortKey = key;
+                this.objArray.sort((a, b) => {
+                    if (a[key] < b[key]) return -1 * this.sortOrder;
+                    if (a[key] > b[key]) return 1 * this.sortOrder;
+                    return 0;
+                });
+            },
+            // 排序後顯示icon
+            getSortIcon(key) {
+                if (this.sortKey === key) {
+                    return this.sortOrder === 1 ? this.sortIcons['asc'] : this.sortIcons['desc'];
+                }
+                return this.sortIcons[''];
+            },
             // 設定關鍵字查詢可透過Enter鍵觸發
             handleEnter(event){
                 if (event.keyCode === 13) {
@@ -85,8 +109,8 @@
                         keyword: this.keyword,
                         status: this.status
                     };
-                    // const response = await axios.get('http://localhost:3000/api/member', { params });
-                    const response = await axios.get('http://localhost/memeapple/public/php/member.php', { params });
+                    const response = await axios.get('http://localhost:3000/api/member', { params });
+                    // const response = await axios.get('http://localhost/memeapple/public/php/member.php', { params });
                     console.log(response)
                     this.objArray = response.data
                 
@@ -98,6 +122,8 @@
             },
             async search(){
                 this.loading = true;
+                this.sortKey = ''; //重置排序欄位
+                this.sortOrder = 1; //重置排序順序
                 await this.fetchData();
             },
             // 調整日期格式，移除時間戳記
@@ -141,11 +167,11 @@
                 <table v-if = "objArray" class="backstage_table">
                     <thead class="backstage_tablehead">
                         <tr>
-                            <th class="column-header" style="width: 150px;">註冊日期</th>
-                            <th class="column-header" style="width: 150px;">會員姓名</th>
-                            <th class="column-header" style="width: 300px;">E-Mail</th>
-                            <th class="column-header" style="width: 200px;">電話</th>
-                            <th class="column-header" style="width: 150px;">狀態</th>
+                            <th class="column-header" style="width: 150px;" @click="sortBy('REGI_DATE')">註冊日期 {{ getSortIcon('REGI_DATE') }}</th>
+                            <th class="column-header" style="width: 150px;" @click="sortBy('NAME')">會員姓名 {{ getSortIcon('NAME') }}</th>
+                            <th class="column-header" style="width: 300px;" @click="sortBy('EMAIL')">E-Mail {{ getSortIcon('EMAIL') }}</th>
+                            <th class="column-header" style="width: 200px;" @click="sortBy('PHONE')">電話 {{ getSortIcon('PHONE') }}</th>
+                            <th class="column-header" style="width: 150px;" @click="sortBy('STATUS')">狀態 {{ getSortIcon('STATUS') }}</th>
                             <th class="column-header" style="width: 150px;">動作</th>
                         </tr>
                     </thead>
