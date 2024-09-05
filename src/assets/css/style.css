@@ -5037,7 +5037,6 @@ body {
 .editmember li {
   margin-bottom: 20px;
 }
-<<<<<<< HEAD
 .editmember .editphone {
   padding-left: 10px;
   outline: none;
@@ -5065,18 +5064,6 @@ body {
   }
 }
 
-.escape_container {
-  margin: auto 0;
-}
-.escape_container p {
-  text-align: center;
-  margin: 0 auto;
-  width: 66%;
-}
-
-.esc_bathroom {
-  max-width: 80%;
-}
 .escaperoom_container {
   position: relative;
 }

@@ -1,4 +1,9 @@
 <?php
+// 允許跨域請求
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 // Member API
 function getMembers($db) {
     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
@@ -37,10 +42,6 @@ function getMembers($db) {
 }
 
 // Example usage
-try {
-    $db = new PDO('mysql:host=localhost;dbname=MemeStudio', 'username', 'password');
-    getMembers($db);
-} catch (PDOException $e) {
-    echo json_encode(['error' => $e->getMessage()]);
-}
+require_once 'api.php';
+getMembers($db);
 ?>
