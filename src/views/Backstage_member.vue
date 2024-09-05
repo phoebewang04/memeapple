@@ -28,19 +28,11 @@
         },
         computed:{
             // 分頁計算
-            paginatedData() {
-                if (Array.isArray(this.objArray)) {
-                    const start = (parseInt(this.pageInput) - 1) * this.pageSize;
-                    const end = start + this.pageSize;
-                    this.computedTotalPages = Math.ceil(this.objArray.length / this.pageSize);
-                    return this.objArray.slice(start, end);
-                } else {
-                    console.error('objArray is not an array');
-                    return [];
-                }
-            },
-            computedTotalPages(){
-                return this.computedTotalPages;
+            paginatedData(){
+                const start = (parseInt(this.pageInput) - 1) * this.pageSize;
+                const end = start + this.pageSize;
+                this.totalPages = Math.ceil(this.objArray.length / this.pageSize); 
+                return this.objArray.slice(start, end);
             },
             totalPages(){
                 return this.totalPages;
@@ -93,9 +85,11 @@
                         keyword: this.keyword,
                         status: this.status
                     };
+                    // const response = await axios.get('http://localhost:3000/api/member', { params });
                     const response = await axios.get('http://localhost/memeapple/public/php/member.php', { params });
                     console.log(response)
-                    this.objArray = Array.isArray(response.data) ? response.data : [];
+                    this.objArray = response.data
+                
                 } catch (err) {
                     this.error = 'An error occurred: ' + err.message
                 } finally {
@@ -144,7 +138,7 @@
             <div class="backstage_tablezone">
                 <div v-if = "loading">Loading...</div>
                 <div v-if = "error">{{ error }}</div>
-                <table v-if = "objArray && objArray.length" class="backstage_table">
+                <table v-if = "objArray" class="backstage_table">
                     <thead class="backstage_tablehead">
                         <tr>
                             <th class="column-header" style="width: 150px;">註冊日期</th>
@@ -176,7 +170,7 @@
                                         <input class="backstage_page_input" type="text" v-model="pageInput" @blur="handleBlur">
                                         <button @click.prevent="nextPage">&gt;</button>
                                     </div>
-                                    <p>共有 {{ objArray.length }} 筆，總計 {{ computedTotalPages }} 頁 </p>        
+                                    <p>共有 {{ objArray.length }} 筆，總計 {{ totalPages }} 頁 </p>        
                                 </div>                                
                             </td>
                         </tr>
