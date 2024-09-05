@@ -1,27 +1,12 @@
 <?php
+// 組合兩版CORS設定
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
 
-include_once './UserController.php';
+// Route handling
+$requestUri = $_SERVER['REQUEST_URI'];
+$requestMethod = $_SERVER['REQUEST_METHOD'];
 
-$method = $_SERVER['REQUEST_METHOD'];
-$userController = new UserController();
-
-switch($method) {
-    case 'GET':
-        if (isset($_GET['id'])) {
-            $userController->getUser($_GET['id']);
-        } else {
-            $userController->getUsers();
-        }
-        break;
-
-    case 'POST':
-        $data = json_decode(file_get_contents("php://input"));
-        $userController->createUser($data->name, $data->email);
-        break;
-
-    default:
-        echo json_encode(array("message" => "Method not supported"));
-        break;
-}
+?>
