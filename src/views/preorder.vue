@@ -1,8 +1,3 @@
-—<script setup>
-import '../assets/css/style.css';
-import TopNavbar from '../components/TopNavbar.vue';
-import Footerbar from '../components/Footerbar.vue';
-</script>
 
 <!-- --------------------------------原始碼---------------------------------------------- -->
 
@@ -266,7 +261,7 @@ import Footerbar from '../components/Footerbar.vue';
 
       
         <div class="nextstep">
-            <button class="next_btn" disabled>下一步</button>
+            <button class="btn next_btn" disabled>下一步</button>
         </div>
 
         <Footerbar />
@@ -278,11 +273,18 @@ import Footerbar from '../components/Footerbar.vue';
 <!-- --------------------------------功能程式---------------------------------------------- -->
 
 <script>
+import '../assets/css/style.css';
+import TopNavbar from '../components/TopNavbar.vue';
+import Footerbar from '../components/Footerbar.vue';
 import 'v-calendar/style.css';
 // const 
 
 
 export default {
+    components: {
+        TopNavbar,
+        Footerbar
+    },
     data (){
         return {
       attrs: [
