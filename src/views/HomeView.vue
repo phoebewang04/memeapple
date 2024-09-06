@@ -173,7 +173,7 @@ export default {
               </div>
 
               <div class="limitlevel-sologan-2">
-                <span>「補習班402教室傳來的</span>
+                <span>「402教室傳來的</span>
                 <span class="limitlevel-sologanred">神秘激光</span>
                 <span>」</span>
               </div>
