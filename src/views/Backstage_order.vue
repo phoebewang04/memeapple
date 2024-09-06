@@ -211,18 +211,18 @@
                 <table v-if = "objArray" class="backstage_table">
                     <thead class="backstage_tablehead">
                         <tr>
-                            <th class="column-header" style="width: 100px;" @click="sortBy('ORDER_DATE')">日期</th>
-                            <th class="column-header" style="width: 100px;" @click="sortBy('ORDER_TIME')">時間</th>
-                            <th class="column-header" style="width: 175px;" @click="sortBy('ORDER_ID')">訂單編號</th>
-                            <th class="column-header" style="width: 100px;" @click="sortBy('STORE_NAME')">分館</th>
-                            <th class="column-header" style="width: 100px;" @click="sortBy('THEME_NAME')">主題</th>
-                            <th class="column-header" style="width: 100px;" @click="sortBy('MEMBER_NAME')">姓名</th>
-                            <th class="column-header" style="width: 125px;" @click="sortBy('MEMBER_PHONE')">電話</th>
-                            <th class="column-header" style="width: 175px;" @click="sortBy('MEMBER_EMAIL')">E-Mail</th>
-                            <th class="column-header" style="width: 100px;" @click="sortBy('ORDER_STATUS')">狀態</th>
-                            <th class="column-header" style="width: 50px;" @click="sortBy('ORDER_ATTENDANCE')">人數</th>
-                            <th class="column-header" style="width: 100px;" @click="sortBy('TOTAL_AMOUNT')">總額</th>
-                            <th class="column-header" style="width: 100px;" @click="sortBy('PENDING_AMOUNT')">待付</th>
+                            <th class="column-header" style="width: 100px;" @click="sortBy('ORDER_DATE')">日期 {{ getSortIcon('ORDER_DATE') }}</th>
+                            <th class="column-header" style="width: 75px;" @click="sortBy('ORDER_TIME')">時間 {{ getSortIcon('ORDER_TIME') }}</th>
+                            <th class="column-header" style="width: 175px;" @click="sortBy('ORDER_ID')">訂單編號 {{ getSortIcon('ORDER_ID') }}</th>
+                            <th class="column-header" style="width: 100px;" @click="sortBy('STORE_NAME')">分館 {{ getSortIcon('STORE_NAME') }}</th>
+                            <th class="column-header" style="width: 100px;" @click="sortBy('THEME_NAME')">主題 {{ getSortIcon('THEME_NAME') }}</th>
+                            <th class="column-header" style="width: 100px;" @click="sortBy('MEMBER_NAME')">姓名 {{ getSortIcon('MEMBER_NAME') }}</th>
+                            <th class="column-header" style="width: 125px;" @click="sortBy('MEMBER_PHONE')">電話 {{ getSortIcon('MEMBER_PHONE') }}</th>
+                            <th class="column-header" style="width: 175px;" @click="sortBy('MEMBER_EMAIL')">E-Mail {{ getSortIcon('MEMBER_EMAIL') }}</th>
+                            <th class="column-header" style="width: 100px;" @click="sortBy('ORDER_STATUS')">狀態 {{ getSortIcon('ORDER_STATUS') }}</th>
+                            <th class="column-header" style="width: 75px;" @click="sortBy('ATTENDANCE')">人數 {{ getSortIcon('ATTENDANCE') }}</th>
+                            <th class="column-header" style="width: 100px;" @click="sortBy('TOTAL_AMOUNT')">總額 {{ getSortIcon('TOTAL_AMOUNT') }}</th>
+                            <th class="column-header" style="width: 100px;" @click="sortBy('PENDING_AMOUNT')">待付 {{ getSortIcon('PENDING_AMOUNT') }}</th>
                         </tr>
                     </thead>
                     <tbody class="backstage_tablebody">
