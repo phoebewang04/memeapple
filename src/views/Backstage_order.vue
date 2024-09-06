@@ -153,6 +153,10 @@
             formatDate(timestamp){
                 let date = new Date(timestamp);
                 return date.toISOString().split('T')[0];
+            },
+            // 調整時間格式
+            formatTime(time){
+                return time.substring(0, 5);
             }
         }
     }
@@ -224,7 +228,7 @@
                     <tbody class="backstage_tablebody">
                         <tr v-for = "item in paginatedData" :key="item.ID">
                             <td id="order_date">{{ formatDate(item.ORDER_DATE) }}</td>
-                            <td id="order_time">{{ item.ORDER_TIME }}</td>
+                            <td id="order_time">{{ formatTime(item.ORDER_TIME) }}</td>
                             <td id="order_ID">{{ item.ORDER_ID }}</td>
                             <td id="order_store">{{ item.STORE_NAME }}</td>
                             <td id="order_theme">{{ item.THEME_NAME }}</td>
