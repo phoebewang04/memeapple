@@ -16,9 +16,7 @@ import preorder from '../views/preorder.vue';
 import orderinform from '../views/orderinform.vue';
 import Membermanage from '../views/Membermanage.vue';
 import Escaperoom from '../views/Escaperoom.vue';
-
 import pay from '../views/pay.vue';
-
 import Theme_test from '../views/Theme_test.vue';
 
 
@@ -110,7 +108,7 @@ const routes = [
     component: Membermanage
   },
   {
-    path:'/Escaperoom/', // URL 路徑
+    path: '/Escaperoom/', // URL 路徑
     component: Escaperoom //指定要渲染的 Vue 元件
   },
   {
@@ -127,6 +125,10 @@ const routes = [
 
 export default function (history) {
   return createRouter({
+    scrollBehavior(to, from, savedPosition) {
+      return { top: 0 }
+      // ...
+    },
     history,
     routes
   })

@@ -1,8 +1,3 @@
-<script setup>
-import '../assets/css/style.css';
-import TopNavbar from '../components/TopNavbar.vue';
-import Footerbar from '../components/Footerbar.vue';
-</script>
 
 <!-- --------------------------------原始碼---------------------------------------------- -->
 <template>
@@ -179,14 +174,23 @@ import Footerbar from '../components/Footerbar.vue';
 <!-- --------------------------------功能程式---------------------------------------------- -->
 
 <script>
+import '../assets/css/style.css';
+import TopNavbar from '../components/TopNavbar.vue';
+import Footerbar from '../components/Footerbar.vue';
 
-    import { Swiper, SwiperSlide } from "swiper/vue";
-    import 'swiper/css';
-    import 'swiper/css/pagination';
-    import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/vue";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
 
 
     export default {
+        
+        components: {
+            TopNavbar,
+            Footerbar
+        },
+
         data (){
             return {
                 currentBranch: 'taipei',

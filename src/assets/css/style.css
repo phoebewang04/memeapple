@@ -296,6 +296,13 @@ p {
   }
 }
 
+.theme_container {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  margin: 0 auto;
+}
+
 .theme_banner {
   max-width: 100%;
   margin-bottom: 80px;
@@ -305,15 +312,8 @@ p {
   width: 100%;
 }
 
-.banner {
+.banner_img {
   width: 100%;
-}
-
-.theme_container {
-  display: flex;
-  flex-direction: column;
-  gap: 100px;
-  margin: 0 auto;
 }
 
 .overview {
@@ -324,6 +324,7 @@ p {
   gap: 80px;
   margin: 0 auto;
   margin-top: 80px;
+  border: 1px solid white;
   position: relative;
 }
 
@@ -341,6 +342,7 @@ p {
 }
 
 .overview_text {
+  font-size: 20px;
   width: 50%;
   text-align: justify;
 }
@@ -366,6 +368,9 @@ p {
   height: 30px;
   margin: 20px 0;
 }
+.progress_bar.hospital {
+  background-color: #221F3C;
+}
 .progress_bar.alien {
   background-color: black;
 }
@@ -386,48 +391,33 @@ p {
 }
 
 .gameinfo {
+  border: 1px solid white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80%;
   margin: 0 auto;
+  gap: 80px;
+  width: 80%;
 }
 
 .theme_game {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 20px;
-  height: 80%;
+}
+.theme_game i {
+  font-size: 100px;
 }
 .theme_game.hospital {
   color: #FEDA77;
 }
 
-i.fa-clock,
-i.fa-circle-user {
-  font-size: 100px;
-}
-
-i.fa-dollar-sign {
-  font-size: 60px;
-  line-height: 100px;
-}
-
-.dollar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  text-align: center;
-}
-.dollar.hospital {
-  background-color: #FEDA77;
-  color: #100E24;
-}
-
 .theme_game p {
   text-align: center;
   line-height: 1.6;
+  white-space: pre-line;
 }
 
 .game_price {
@@ -469,6 +459,7 @@ i.fa-dollar-sign {
   align-items: center;
   justify-content: center;
   gap: 12px;
+  white-space: pre-line;
 }
 .theme_icon.hospital {
   text-align: center;
@@ -477,7 +468,7 @@ i.fa-dollar-sign {
   font-size: 20px;
 }
 .theme_icon.hospital p {
-  font-size: 16px;
+  font-size: 18px;
   color: #FFE8BB;
 }
 
@@ -496,6 +487,7 @@ i.fa-dollar-sign {
   margin-bottom: 30px;
   background-position: center;
   position: relative;
+  white-space: pre-line;
 }
 .theme_marketing:nth-of-type(1) {
   background-image: url("../img/hospital-1.png");
@@ -2745,6 +2737,7 @@ body {
 .memberinfrom .mi_dt .phone select {
   width: 150px;
   height: 35px;
+  outline: none;
 }
 @media (max-width: 820px) {
   .memberinfrom .mi_dt .phone select {
@@ -2845,9 +2838,11 @@ body {
 
 .order_right .details select {
   color: #100E24;
-  width: 200px;
+  width: 150px;
   height: 30px;
   padding: 5px;
+  margin-left: 10px;
+  outline: none;
 }
 @media (max-width: 430px) {
   .order_right .details select {
@@ -2898,7 +2893,13 @@ body {
   height: 35px;
   border-radius: 12px;
   cursor: pointer;
-  background-color: #FCD15B;
+  background-color: lightgray;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.next_btn.active {
+  background: #FEDA77;
 }
 
 /* --------------------------結帳資訊------------------------------------------- */
@@ -3217,9 +3218,11 @@ body {
 }
 
 .pay_right .details select {
-  width: 200px;
+  width: 150px;
   height: 30px;
   padding: 5px;
+  margin-left: 10px;
+  outline: none;
 }
 
 .pay_right .amount {
@@ -3265,7 +3268,13 @@ body {
   height: 35px;
   border-radius: 12px;
   cursor: pointer;
-  background-color: #FCD15B;
+  background-color: lightgray;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.next_btn.active {
+  background: #FEDA77;
 }
 
 /* -------------------------preorder 預定主題------------------------------- */
@@ -3539,7 +3548,7 @@ body {
 
 /* --------------------下一步------------------------------------ */
 .nextstep {
-  width: 200px;
+  width: 300px;
   margin: 0 auto;
   margin-bottom: 80px;
   margin-top: 80px;
@@ -3547,11 +3556,11 @@ body {
 
 .nextstep .next_btn {
   background-color: #FEDA77;
-  width: 200px;
+  width: 300px;
   height: 40px;
   border-radius: 20px;
-  width: 200px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .nextstep next_btn:hover {
@@ -5067,6 +5076,7 @@ body {
 
 .escaperoom_container {
   position: relative;
+  overflow: hidden;
 }
 
 .scene {
@@ -5087,11 +5097,12 @@ body {
   position: absolute;
   width: 50px;
   height: 50px;
-  bottom: 2%;
+  top: 2%;
   right: 2%;
   border-radius: 50%;
   text-align: center;
   cursor: pointer;
+  z-index: 10;
   animation: bulb 1.2s linear infinite;
 }
 .esc_hint .fa-lightbulb {
@@ -5157,13 +5168,13 @@ body {
 }
 @keyframes vaguetext {
   0% {
-    filter: blur(1.5rem);
+    filter: blur(30px);
   }
   50% {
-    filter: blur(1rem);
+    filter: blur(20px);
   }
   100% {
-    filter: blur(0rem);
+    filter: blur(0px);
   }
 }
 
@@ -5189,6 +5200,69 @@ body {
   width: 5%;
   left: 21%;
   bottom: 25%;
+}
+
+.esc_bed {
+  position: relative;
+}
+
+.esc_bed_exit img[alt="Bedroom Door"] {
+  position: absolute;
+  width: 10%;
+  bottom: 24%;
+  cursor: pointer;
+}
+
+.esc_bed_icon img {
+  position: absolute;
+}
+.esc_bed_icon img[alt="Broken Window"],
+.esc_bed_icon img[alt=Window] {
+  top: 10%;
+  left: 16%;
+  width: 13%;
+}
+.esc_bed_icon img[alt=Shards] {
+  bottom: 16%;
+  left: 16%;
+  width: 5%;
+  display: none;
+}
+.esc_bed_icon img[alt=Wastepaper] {
+  bottom: 20%;
+  left: 23%;
+  width: 3%;
+  display: none;
+  cursor: pointer;
+}
+.esc_bed_icon img[alt=Wheelchair] {
+  bottom: 4%;
+  right: 3%;
+  width: 24%;
+  animation: chairmove 1.5s linear infinite;
+}
+.esc_bed_icon img[alt=Bed] {
+  bottom: 3%;
+  right: 28%;
+  width: 45%;
+  pointer-events: none;
+}
+.esc_bed_icon img[alt=Axe] {
+  width: 16%;
+  bottom: 0%;
+  right: 45%;
+  cursor: pointer;
+}
+@keyframes chairmove {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(16px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
