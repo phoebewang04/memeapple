@@ -1,6 +1,7 @@
 // -----大家都有start-----
 .escaperoom_container {
     position: relative;
+    overflow: hidden;
 }
 
 .scene {
@@ -11,6 +12,7 @@
 
 .scene.active {
     display: block;
+
 }
 
 .room img {
@@ -23,12 +25,13 @@
     position: absolute;
     width: 50px;
     height: 50px;
-    bottom: 2%;
+    top: 2%;
     right: 2%;
     border-radius: 50%;
 
     text-align: center;
     cursor: pointer;
+    z-index: 10;
 
     animation: bulb 1.2s linear infinite;
 
@@ -44,6 +47,7 @@
 
         .fa-lightbulb {
             color: map-get($colors, midnight);
+
         }
     }
 
@@ -74,7 +78,6 @@
         // width: 100%;
         margin: 0 auto;
     }
-
 }
 
 .esc_start_arrow {
@@ -86,9 +89,8 @@
     left: 0;
     right: 0;
     cursor: pointer;
-
-
     animation: vaguetext 1s linear forwards;
+
 
     p {
         text-align: center;
@@ -118,23 +120,21 @@
 
     @keyframes vaguetext {
         0% {
-            filter: blur(1.5rem);
+            filter: blur(30px);
         }
 
         50% {
-            filter: blur(1rem);
+            filter: blur(20px);
         }
 
         100% {
-            filter: blur(0rem);
+            filter: blur(0px);
         }
     }
 
 }
 
 // -----進入畫面end-----
-
-
 
 
 //----廁所start-----
@@ -154,17 +154,115 @@
     img {
         position: absolute;
         width: 20%;
-        bottom:15% ;
+        bottom: 15%;
         left: 10%;
 
         cursor: pointer;
+
     }
 
-    img:nth-of-type(1)  {
+    img:nth-of-type(1) {
         width: 5%;
         left: 21%;
-        bottom:25%;
+        bottom: 25%;
     }
 }
 
 //----廁所end-----
+
+//-----病房start-----
+
+.esc_bed {
+    position: relative;
+    
+}
+
+.esc_bed_exit {
+
+    img[alt="Bedroom Door"] {
+        position: absolute;
+        width: 10%;
+        bottom: 24%;
+
+        cursor: pointer;
+    }
+}
+
+.esc_bed_icon {
+img{
+    position: absolute;
+}
+    img[alt="Broken Window"],
+    img[alt="Window"] {
+       
+        top: 10%;
+        left: 16%;
+        width: 13%;
+    }
+
+    img[alt="Shards"]{
+        bottom: 16%;
+        left: 16%;
+        width: 5%;
+
+        display: none;
+    }
+
+    img[alt="Wastepaper"]{
+        bottom: 20%;
+        left: 23%;
+        width: 3%;
+
+        display: none;
+        cursor: pointer;
+    }
+    img[alt="Wheelchair"]{
+    //    border: 1px solid white;
+     bottom: 4%;
+     right: 3%;
+     width: 24%;
+
+     animation: chairmove 1.5s linear infinite 
+    }
+    img[alt="Bed"]{
+        bottom: 3%;
+        right: 28%;
+        width: 45%;
+        pointer-events: none;
+        
+    }
+    img[alt="Axe"]{
+        // border: 1px solid white;
+        width: 16%;
+        bottom: 0%;
+        right: 45%;
+        // transform: rotate(280deg);
+
+        cursor: pointer;
+    }
+
+    @keyframes chairmove {
+        0%{
+            transform: translateX(0px);
+        }
+        50%{
+            transform: translateX(16px);
+            
+        }
+        100%{
+            transform: translateX(0px);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+//-----病房end-----

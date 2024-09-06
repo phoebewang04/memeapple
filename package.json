@@ -16,9 +16,12 @@
     "@studio-freight/lenis": "^1.0.42",
     "@sweetalert2/themes": "^5.0.18",
     "animate.css": "^4.1.1",
+    "axios": "^1.7.7",
     "chart.js": "^4.4.4",
+    "core-js": "^3.8.3",
     "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
+    "interactjs": "^1.10.27",
     "pinia": "^2.1.4",
     "sass-google-fonts": "^1.0.1",
     "split-type": "^0.3.4",
@@ -27,19 +30,17 @@
     "v-calendar": "^3.1.2",
     "vue": "^3.3.4",
     "vue-chartjs": "^5.3.1",
-    "vue-router": "^4.2.4",
-    "axios": "^1.7.7",
-    "core-js": "^3.8.3"
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.4.6",
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@vitejs/plugin-vue": "^4.2.3",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
+    "eslint-plugin-vue": "^8.0.3",
+    "vite": "^4.4.6"
   }
 }
