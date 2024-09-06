@@ -1,12 +1,13 @@
 .main-popupcard {
-    width: 100%;
-    height: calc(100vh - 70px - 73.58px);
-    padding: 80px 0;
-    display: flex;
+    // width: 100%;
+    // display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-
+    // position: relative;
+    color: white;
+    grid-template-columns: minmax(0, 100%);
+    background-color: transparent;
+    
     @include pad {
         padding: 0;
     }
@@ -28,7 +29,7 @@
 }
 
 .wrapper-popupcard {
-    width: 80%;
+    // width: 80%;
     margin: 0 auto;
     display: flex;
     align-items: center;

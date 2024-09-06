@@ -3,7 +3,7 @@ import '../assets/js/vue.global';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
-
+import Swal from 'sweetalert2';
 
 </script>
 
@@ -16,26 +16,29 @@ import Footerbar from '../components/Footerbar.vue';
     <TopNavbar />
     <div class="main">
         <div class="wrappermmange">
-           <div class="mmangeleft">
-            <button class="btn btn_mange">訂單檢視</button>
+           <div class="mmangeleft" id="mmangeleft">
+            <button type="button" v-for="tab in tabs" :class="{active: currentTab == tab.id}" :key="tab.id" @click="currentTab = tab.id" class="btn btn_mange">{{ tab.name }}</button>
+            <!-- <button class="btn btn_mange">訂單檢視</button>
             <button class="btn btn_mange">優惠券</button>
-            <button class="btn btn_mange">會員資料修改</button>
+            <button class="btn btn_mange">會員資料修改</button> -->
         </div>
-        <div class="mmangeright">
+        <div class="mmangeright" id="mmangeright">
           <div class="mangerightitems"> 
-          <button class="btn btn_mange">訂單檢視</button>
+            <button type="button" v-for="tab in tabs" :class="{active: currentTab == tab.id}" :key="tab.id" @click="currentTab = tab.id" class="btn btn_mange">{{ tab.name }}</button>
+          <!-- <button class="btn btn_mange">訂單檢視</button>
           <button class="btn btn_mange">優惠券</button>
-          <button class="btn btn_mange">會員資料修改</button>
+          <button class="btn btn_mange">會員資料修改</button> -->
           </div>
-          <div class="ordertext">
+          
+          <div class="ordertext" v-if="currentTab =='tab1'">
               <div class="ordertext_left">
                 <h3>您的訂單</h3>
-                <div class="order_card">
+                <div class="order_card" >
                   <div class="order_cardusage">
                     <p class="onuse">已使用</p>
                     <!-- <p class="noneuse">未使用</p> -->
                   </div>
-                  <div class="order_cardleft">
+                  <div class="order_cardleft" @click="showAlert()">
                     <div class="order_cardimg"><img src="../assets/img/banner-paper.jpg" alt=""></div>
                     <div class="order_cardtext">
                       <p>逃離武石監</p>
@@ -46,8 +49,8 @@ import Footerbar from '../components/Footerbar.vue';
                   <div class="order_cardright">
                     <div class="order_cardstate">
                       <p>訂金</p><P>TWD 2,000元</P>
-                      <p>問卷填寫</p>
-                      <!-- <p>取消訂單</p> -->
+                      <button @click="orderquestion()">問卷填寫</button>
+                      <!-- <button @click="ordercancel()">取消訂單</button> -->
                     </div>
                   </div>                  
                 </div>
@@ -68,8 +71,8 @@ import Footerbar from '../components/Footerbar.vue';
                   <div class="order_cardright">
                     <div class="order_cardstate">
                       <p>訂金</p><P>TWD 2,000元</P>
-                      <!-- <p>問卷填寫</p> -->
-                      <p>取消訂單</p>
+                      <!-- <button @click="orderquestion()">問卷填寫</button> -->
+                      <button @click="ordercancel()">取消訂單</button>
                     </div>
                   </div>                  
                 </div>
@@ -86,7 +89,7 @@ import Footerbar from '../components/Footerbar.vue';
             </div>
 
 
-            <div class="coupontext">
+            <div class="coupontext" v-if="currentTab =='tab2'">
               <div class="couponticket">
                 <div class="coupont">
                   <h3>小遊戲優惠卷</h3>
@@ -99,7 +102,7 @@ import Footerbar from '../components/Footerbar.vue';
             </div>
 
 
-            <div class="editmember">
+            <div class="editmember" v-if="currentTab =='tab3'">
               <h3>會員資料修改</h3>
               <ul>
                 <li><h4>帳號</h4></li>
@@ -128,3 +131,120 @@ import Footerbar from '../components/Footerbar.vue';
     </div>
     <Footerbar />
 </template>
+
+<script>
+  export default {
+    beforeRouteLeave(to, from, next) {
+    // Close SweetAlert when leaving the route
+    Swal.close();
+    next();
+    },
+    components: {
+    TopNavbar,
+    Footerbar,
+    },
+  data(){
+    return {
+      currentTab: "tab1",
+      tabs: [
+        {
+          id: "tab1",
+          name: "訂單檢視"
+        },
+        {
+          id: "tab2",
+          name: "優惠券"
+        },
+        {
+          id: "tab3",
+          name: "會員資料修改"
+        }
+      ]
+    };
+  },
+  methods: {
+    showAlert(){
+      Swal.fire({
+                html:
+                `
+                      <main class="main-popupcard">
+                        <section class="popupcard-card">
+                            <p class="popupcard-title">請出示電子票券即可入場</p>
+                            <div class="popupcard-qrcode">
+                                <img src="/src/assets/img/qrcode_001.jpg" alt="">
+                            </div>
+                            <h1>逃出虛空</h1>
+                            <div class="qrcode-time">
+                                <p class="qrcode-y">2024 /</p>
+                                <p class="qrcode-m">08 /</p>
+                                <p class="qrcode-d">17</p>
+                            </div>
+                            <div class="qrcode-place">
+                                <p>台中館</p>
+                                <div class="qrcode-line"></div>
+                                <span>入場</span>
+                                <span>14:00</span>
+                           </div>
+                        </section>
+                      </main>
+                `,
+                showConfirmButton:false,
+                color:'#FFFFFF',
+                width:'auto',
+                backgroundcolor:'transparent',
+                customClass: 
+                    {
+                        popup: 'main-popupcard',
+                        content: 'wrapper-popupcard',
+                        title: 'popupcard-title',
+                        image: 'popupcard-qrcode',
+                        htmlContainer: 'popupcard-card',
+                        
+                    },
+                position:'center',
+            })
+    },
+    ordercancel(){
+      Swal.fire({
+      title: "確定要取消訂單？",
+      text: "按下確定將取消訂單",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: "取消",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "確定"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "取消訂單",
+            text: "您的訂單已取消完成",
+            icon: "success"
+          });
+        }
+      });
+    },
+    orderquestion(){
+      Swal.fire({
+      title: "問卷調查",
+      html: `
+      
+      `,
+      icon: "warning",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "送出"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "完成問卷",
+            text: "您已完成問券，歡迎再次光臨",
+            icon: "success"
+          });
+        }
+      });
+    },
+  },
+};
+
+</script>
