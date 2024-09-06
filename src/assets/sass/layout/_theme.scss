@@ -1,3 +1,13 @@
+.theme_container {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    // width: 1200px;
+    margin: 0 auto;
+    // border: 1px solid white;
+}
+
+// -----背景圖 start-----
 .theme_banner {
     max-width: 100%;
     margin-bottom: 80px;
@@ -7,18 +17,12 @@
     width: 100%;
 }
 
-.banner {
+.banner_img {
     width: 100%;
 }
 
-.theme_container {
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-    // width: 1200px;
-    margin: 0 auto;
-    // border: 1px solid white;
-}
+// -----背景圖 end-----
+
 
 // -----主題文字介紹＋指數 start-----
 .overview {
@@ -29,7 +33,7 @@
     gap: 80px;
     margin: 0 auto;
     margin-top: 80px;
-    // border: 1px solid white;
+    border: 1px solid white;
 
     position: relative;
 }
@@ -49,7 +53,7 @@
 }
 
 .overview_text {
-    //寫大小
+    font-size: 20px;
     width: 50%;
     text-align: justify;
 }
@@ -81,7 +85,7 @@
     margin: 20px 0;
 
     &.hospital {
-        background-color: map-get($colors, mdnightblue);
+        background-color: map-get($colors, midnight);
     }
 
     &.alien {
@@ -112,12 +116,13 @@
 // -----遊戲資訊 start-----
 
 .gameinfo {
-    // border: 1px solid white;
+    border: 1px solid white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
     margin: 0 auto;
+    gap: 80px;
+    width: 80%;
 
 }
 
@@ -125,42 +130,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 20px;
-    height: 80%;
+    
+    & i{
+        font-size: 100px;
+    }
 
     &.hospital {
         color: map-get($colors, yellow);
     }
 }
 
-i.fa-clock,
-i.fa-circle-user {
-    font-size: 100px;
-}
-
-i.fa-dollar-sign {
-    font-size: 60px;
-    line-height: 100px;
-}
-
-.dollar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    text-align: center;
-
-    &.hospital {
-        background-color: map-get($colors, yellow);
-        color: map-get($colors, darkblue);
-    }
-}
 
 .theme_game p {
     text-align: center;
     line-height: 1.6;
+    white-space: pre-line;
+}
 
     // border: 1px solid white;
-}
+
 
 .game_price{
     cursor: pointer;
@@ -212,6 +202,8 @@ i.fa-dollar-sign {
     justify-content: center;
     gap: 12px;
 
+    white-space: pre-line;
+
     &.hospital {
         text-align: center;
 
@@ -221,8 +213,9 @@ i.fa-dollar-sign {
 
         p {
             // border: 1px solid white;
-            font-size: 16px;
+            font-size: 18px;
             color: map-get($colors, lightyellow);
+            
         }
     }
 
@@ -249,6 +242,7 @@ i.fa-dollar-sign {
     margin-bottom: 30px;
     background-position: center;
     position: relative;
+    white-space: pre-line;
 
 
     &:nth-of-type(1) {
@@ -315,6 +309,7 @@ i.fa-dollar-sign {
         background: #221F3C;
         padding: 20px;
         width: 80%;
+
 
         margin: 0 auto;
     }

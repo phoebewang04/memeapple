@@ -312,9 +312,11 @@
 }
 
 .pay_right .details select {
-    width: 200px;
+    width: 150px;
     height: 30px;
     padding: 5px;
+    margin-left: 10px;
+    outline: none;
 }
 
 .pay_right .amount {
@@ -357,6 +359,12 @@
     height: 35px;
     border-radius: 12px;
     cursor: pointer;
-    background-color: map-get($colors , gold );
+    background-color: lightgray;
+    font-size: map-get($fontsize , p1 );
+    line-height: 1.2;
+}
+
+.next_btn.active {
+    background: #FEDA77;
 }
 
