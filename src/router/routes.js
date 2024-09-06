@@ -16,9 +16,7 @@ import preorder from '../views/preorder.vue';
 import orderinform from '../views/orderinform.vue';
 import Membermanage from '../views/Membermanage.vue';
 import Escaperoom from '../views/Escaperoom.vue';
-
 import pay from '../views/pay.vue';
-
 import Theme_test from '../views/Theme_test.vue';
 
 
