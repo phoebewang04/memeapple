@@ -16,11 +16,17 @@
 // 首頁第一部分  主視覺
 .content-homepage {
     width: 100%;
+    
     padding: 80px 0;
     background-image: url(/src/assets/img/BG-index.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     border-bottom: 1px solid white;
+
+    @include phone {
+        
+        padding: 46px 0;
+    }
 }
 
 .homepage-text {
@@ -72,7 +78,7 @@
         }
     }
 
-    &.show{
+    &.show {
         opacity: 1;
         transform: translateY(0px);
     }
@@ -115,7 +121,7 @@
 
 .homepage-card03 {
     margin-bottom: 40px;
-    
+
     @include rwd(854px) {
         width: 60%;
     }
@@ -128,12 +134,13 @@
 .homepage-effect {
     // 變數
     $speed: 6s;
-    $wordCount: 7;
+    $wordCount: 8;
     width: 50%;
     height: 100px;
     position: relative;
     margin-left: 300px;
     filter: contrast(10) blur(1px);
+
 
     @include rwd(1280px) {
         width: 65%;
@@ -208,6 +215,10 @@
     position: relative;
     border-bottom: 1px solid yellow;
 
+    @include phone {
+        padding: 26px 0;
+    }
+
     .brandstory-effect {}
 
 }
@@ -262,9 +273,17 @@
         display: flex;
         margin-bottom: 20px;
 
+        @include phone {
+            margin-bottom: 8px;
+        }
+
         span {
             font-size: 48px;
             font-weight: bold;
+
+            @include phone {
+                font-size: 36px;
+            }
         }
 
         span:nth-child(2) {
@@ -276,6 +295,11 @@
         font-size: 32px;
         font-weight: bold;
         margin: 20px 0;
+
+        @include phone {
+            font-size: 26px;
+            margin: 8px 0;
+        }
     }
 
     .while-lineforhome {
@@ -287,14 +311,27 @@
         text-align: left;
         font-size: 20px;
         margin-bottom: 20px;
+
+        @include phone {
+            font-size: 16px;
+            margin-bottom: 0;
+        }
     }
 
     .brandstory-bottom {
+
+        @include phone {
+           margin-top: 12px;
+        }
 
         p {
             font-size: 40px;
             font-weight: bold;
             line-height: 1.5;
+
+            @include phone {
+                font-size: 28px;
+            }
         }
 
         p:nth-child(2) {
@@ -319,7 +356,20 @@
     background-image: url(/src/assets/img/BG-Index-level.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    border-bottom: 1px solid orange;
+    position: relative;
+
+    @include phone {
+        padding: 60px 0;
+    }
+}
+
+.limit_video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .limitlevel-effect {}
@@ -327,6 +377,8 @@
 .limitlevel-content {
     width: 90%;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .limitlevel-topic {
@@ -338,7 +390,7 @@
     @include pad {
         margin-bottom: 20px;
     }
-    
+
 }
 
 .limitlevel-Area {
@@ -350,16 +402,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // border: 1px solid gold;
-
 
     @include rwd(1280px) {
         margin-right: 20px;
     }
 
-    @include pad {
-        display: none;
-    }
+    @include pad {}
 
     .limitlevel-sologanred {
         color: red;
@@ -376,8 +424,18 @@
             margin-left: 20px;
         }
 
+        @include phone {
+            margin-left: 40px;
+        }
+        
+
         span {
-            margin-bottom: 80px;
+            margin-bottom: 60px;
+            margin-top: 40px;
+
+            @include phone {
+                margin-bottom: 30px;
+            }
         }
     }
 
@@ -392,8 +450,16 @@
             margin-left: 60px;
         }
 
+        @include phone {
+            margin-left: 0px;
+        }
+
         span {
             margin-bottom: 80px;
+
+            @include phone {
+                margin-bottom: 40px;
+            }
         }
 
     }
@@ -409,8 +475,16 @@
             margin-left: 32px;
         }
 
+        @include phone {
+            font-size: 16px;
+            margin-left: 0px;
+        }
+
         span {
-            margin-bottom: 120px;
+            
+            @include phone {
+             
+            }
         }
     }
 
@@ -425,8 +499,17 @@
             margin-left: 0px;
         }
 
+        @include phone {
+            font-size: 24px;
+            margin-left: 0px;
+        }
+
         span {
-            margin-bottom: 80px;
+            margin-top: 80px;
+
+            @include phone {
+                margin-top: 40px;
+            }
         }
     }
 }
@@ -469,9 +552,10 @@
 
 .limitlevel-imgtext {
     transform: rotate(-3deg);
+    width: 55%;
 
     p {
-        font-size: 22px;
+        font-size: 16px;
         text-align: left;
         line-height: 1.5;
     }
@@ -481,7 +565,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 8px 0;
+    margin: 20px 0;
     transform: rotate(-3deg);
     // border: 1px solid rgb(9, 255, 230);
 
@@ -516,6 +600,7 @@
         @include pad {
             margin-right: 4px;
         }
+
         p {
             font-size: 18px;
             margin-left: 8px;
@@ -572,13 +657,224 @@
     // border: 1px solid yellowgreen;
 
     span {
-        font-size: 120px;
+        $spanSize: 4px;
+        font-size: 32px;
         font-weight: bold;
         color: red;
-        margin-bottom: 28px;
+        margin-bottom: 60px;
+        position: relative;
+        transform: scale(2);
+        padding: $spanSize;
+        letter-spacing: 2px;
+        text-transform: uppercase;
 
         @include pad {
-            font-size: 60px;
+            font-size: 28px;
+            transform: scale(1.5);
+        }
+
+        @include phone {
+            font-size: 40px;
+            transform: scale(1.7);
+        }
+
+
+        &::before,
+        &::after {
+            padding: $spanSize;
+            color: white;
+            content: attr(data-text);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: black;
+            overflow: hidden;
+            top: 0;
+        }
+
+        &::before {
+            left: 3px;
+            text-shadow: -2px 0 red;
+            animation: glitch-1 2s linear infinite reverse;
+        }
+
+        &::after {
+            left: -3px;
+            text-shadow: -2px 0 blue;
+            animation: glitch-2 2s linear infinite reverse;
+
+        }
+
+        @keyframes glitch-1 {
+            0% {
+                clip: rect(132px, auto, 101px, $spanSize);
+            }
+
+            5% {
+                clip: rect(17px, auto, 94px, $spanSize);
+            }
+
+            10% {
+                clip: rect(40px, auto, 66px, $spanSize);
+            }
+
+            15% {
+                clip: rect(87px, auto, 82px, $spanSize);
+            }
+
+            20% {
+                clip: rect(137px, auto, 61px, $spanSize);
+            }
+
+            25% {
+                clip: rect(34px, auto, 14px, $spanSize);
+            }
+
+            30% {
+                clip: rect(133px, auto, 74px, $spanSize);
+            }
+
+            35% {
+                clip: rect(76px, auto, 107px, $spanSize);
+            }
+
+            40% {
+                clip: rect(59px, auto, 130px, $spanSize);
+            }
+
+            45% {
+                clip: rect(29px, auto, 84px, $spanSize);
+            }
+
+            50% {
+                clip: rect(22px, auto, 67px, $spanSize);
+            }
+
+            55% {
+                clip: rect(67px, auto, 62px, $spanSize);
+            }
+
+            60% {
+                clip: rect(10px, auto, 105px, $spanSize);
+            }
+
+            65% {
+                clip: rect(78px, auto, 115px, $spanSize);
+            }
+
+            70% {
+                clip: rect(105px, auto, 13px, $spanSize);
+            }
+
+            75% {
+                clip: rect(15px, auto, 75px, $spanSize);
+            }
+
+            80% {
+                clip: rect(66px, auto, 39px, $spanSize);
+            }
+
+            85% {
+                clip: rect(133px, auto, 73px, $spanSize);
+            }
+
+            90% {
+                clip: rect(36px, auto, 128px, $spanSize);
+            }
+
+            95% {
+                clip: rect(68px, auto, 103px, $spanSize);
+            }
+
+            100% {
+                clip: rect(14px, auto, 100px, $spanSize);
+            }
+        }
+
+        @keyframes glitch-2 {
+            0% {
+                clip: rect(129px, auto, 36px, $spanSize);
+            }
+
+            5% {
+                clip: rect(36px, auto, 4px, $spanSize);
+            }
+
+            10% {
+                clip: rect(85px, auto, 66px, $spanSize);
+            }
+
+            15% {
+                clip: rect(91px, auto, 91px, $spanSize);
+            }
+
+            20% {
+                clip: rect(148px, auto, 138px, $spanSize);
+            }
+
+            25% {
+                clip: rect(38px, auto, 122px, $spanSize);
+            }
+
+            30% {
+                clip: rect(69px, auto, 54px, $spanSize);
+            }
+
+            35% {
+                clip: rect(98px, auto, 71px, $spanSize);
+            }
+
+            40% {
+                clip: rect(146px, auto, 34px, $spanSize);
+            }
+
+            45% {
+                clip: rect(134px, auto, 43px, $spanSize);
+            }
+
+            50% {
+                clip: rect(102px, auto, 80px, $spanSize);
+            }
+
+            55% {
+                clip: rect(119px, auto, 44px, $spanSize);
+            }
+
+            60% {
+                clip: rect(106px, auto, 99px, $spanSize);
+            }
+
+            65% {
+                clip: rect(141px, auto, 74px, $spanSize);
+            }
+
+            70% {
+                clip: rect(20px, auto, 78px, $spanSize);
+            }
+
+            75% {
+                clip: rect(133px, auto, 79px, $spanSize);
+            }
+
+            80% {
+                clip: rect(78px, auto, 52px, $spanSize);
+            }
+
+            85% {
+                clip: rect(35px, auto, 39px, $spanSize);
+            }
+
+            90% {
+                clip: rect(67px, auto, 70px, $spanSize);
+            }
+
+            95% {
+                clip: rect(71px, auto, 103px, $spanSize);
+            }
+
+            100% {
+                clip: rect(83px, auto, 40px, $spanSize);
+            }
         }
     }
 
@@ -593,7 +889,12 @@
         @include rwd(541px) {
             padding: 0 40px;
         }
-    
+
+        @include phone {
+            font-size: 18px;
+            padding: 0 20px;
+        }
+
     }
 }
 
@@ -626,6 +927,10 @@
     width: 90%;
     padding: 80px 0;
 
+    @include phone {
+        padding: 40px 0;
+    }
+
 }
 
 .howtoplay-title {
@@ -633,6 +938,10 @@
     font-size: 40px;
     font-weight: bold;
     margin-bottom: 40px;
+
+    @include phone {
+        margin-bottom: 20px;
+    }
 }
 
 .howtoplay-box {
@@ -641,6 +950,10 @@
     align-items: center;
     justify-content: center;
     border: 1px solid wheat;
+
+    @include phone {
+        margin-bottom: 20px;
+    }
 }
 
 .howPic1 {
@@ -697,6 +1010,10 @@
         justify-content: center;
         margin: 40px 0;
 
+        @include phone {
+            margin: 16px 0;
+        }
+
         span {
             color: #FEDA77;
             font-size: 32px;
@@ -710,6 +1027,12 @@
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 20px;
+
+        p{
+            @include phone {
+               line-height: 1.6;
+            }
+        }
     }
 }
 
@@ -731,6 +1054,21 @@
     width: 100%;
     padding: 80px 0;
     border-bottom: 1px solid greenyellow;
+
+    @include phone {
+        padding: 40px 0;
+     }
+}
+
+.announcement-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 40px;
+
+    @include phone {
+        margin-bottom: 12px;
+    }
 }
 
 .announcement-content {
@@ -770,8 +1108,11 @@
         font-size: 24px;
         font-weight: bold;
         color: map-get($colors, yellow);
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin: 20px 0;
+
+        @include phone {
+            margin: 8px 0;
+        }
     }
 
     img {
@@ -795,7 +1136,7 @@
     }
 }
 
-.news-notshow{
+.news-notshow {
     display: block;
 
     @include pad {
@@ -820,6 +1161,10 @@
     width: 100%;
     padding: 80px 0;
 
+    @include phone {
+        padding: 20px 0;
+    }
+
 }
 
 .index-faq-title {
@@ -831,6 +1176,10 @@
 .content-p-faq-contenter {
     width: 80%;
     margin: 0 auto;
+
+    @include phone {
+        width: 90%;
+    }
 
     .index-active-faq {
         background-color: map-get($colors, yellow);
@@ -846,9 +1195,13 @@
         padding: 12px;
         font-size: 20px;
         font-weight: bold;
-        margin-bottom: 20px;
         cursor: pointer;
         transition: 0.4s;
+
+        @include phone {
+            font-size: 16px;
+            text-align: left;
+        }
     }
 
     .index-answer {

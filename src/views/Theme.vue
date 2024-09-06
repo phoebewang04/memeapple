@@ -1,8 +1,9 @@
 <script setup>
+import { all_data } from '../assets/js/all_data.js';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
-import Swal from 'sweetalert2';
+import themeAlart from 'sweetalert2';
 </script>
 
 <template>
@@ -10,111 +11,73 @@ import Swal from 'sweetalert2';
     <TopNavbar />
     <!-- banner -->
     <div class="theme_banner">
-        <video v-if="all_data.banner.type === 'video'" src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
-            width="100%" class="banner_video"></video>
-            <img src="../assets/img/header.png" alt="" class="banner" v-else> 
+        <!-- <video v-if="all_data.banner.type === 'video'" :src="all_data.banner.src" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
+            width="100%" class="banner_video"></video> -->
 
+        <!-- <video v-if="all_data.banner.type === 'video'" src="../assets/img/banner_hospital.mp4" playsinline=""
+            autoplay="" muted="" loop="" type="video/mp4" height="100%" width="100%" class="banner_video"></video>
+        <img v-else :src="all_data.banner.src" alt="" class="banner_img"> -->
 
-        <!-- <img src="../assets/img/header.png" alt="" class="banner"> -->
+        <div v-if="all_data && all_data.banner" class="theme_banner">
+        <video v-if="all_data.banner.type === 'video'" :src="all_data.banner.src" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%" width="100%" class="banner_video"></video>
+        <img v-else :src="all_data.banner.src" alt="" class="banner_img">
     </div>
+    </div>
+    
 
     <main class="theme_container">
         <!-- -----主題文字介紹＋指數 start----- -->
         <section class="overview">
             <!-- <div class="blood"> </div> -->
-            <p class="overview_text">
-                五年前，成都醫院因連環失蹤案而成為禁地，身為菁英偵探的你，收到神秘委託，必須調查此宗懸案，隨著你步入醫院，腐朽的氣息和幽暗的走廊讓人不寒而慄。這裡的每一個角落似乎都隱藏著難以解釋的秘密…</p>
+            <p class="overview_text">{{ all_data.overviewText }}</p>
 
-            <div class="theme_number hospital">
-                <span>燒腦指數</span>
-                <div class="progress_bar hospital">
-                    <div class="progress hospital" style="width: 87%;">87%</div>
-                </div>
-                <span>驚嚇指數</span>
-                <div class="progress_bar hospital">
-                    <div class="progress hospital" style="width: 95%;">95%</div>
-                </div>
-                <span>推薦指數</span>
-                <div class="progress_bar hospital">
-                    <div class="progress hospital" style="width: 90%;">90%</div>
+            <div :class="['theme_number', themeClass]">
+                <div v-for="(bar, index) in all_data.bar" :key="index">
+                    <span>{{ bar.title }}</span>
+                    <div :class="['progress_bar', themeClass]">
+                        <div :class="['progress', themeClass]" :style="{ width: bar.per + '%' }">{{ bar.per }}%</div>
+                    </div>
                 </div>
             </div>
         </section>
         <!-- -----主題文字介紹＋指數 end----- -->
 
+        <!-- -----遊戲資訊 start----- -->
         <section class="gameinfo">
-            <div class="theme_game hospital">
-                <i class="fa-solid fa-clock"></i>
-                <h3>遊戲時間
-                </h3>
-                <p>120分鐘<br>（含20分鐘解說）</p>
-            </div>
-            <div class="theme_game hospital">
-                <i class="fa-solid fa-circle-user"></i>
-                <h3>建議人數</h3>
-                <p>4－8 人</p>
-            </div>
-            <div class="theme_game hospital">
-                <div class="dollar hospital">
-                    <i class="fa-solid fa-dollar-sign"></i>
-                </div>
-                <h3>遊戲費用</h3>
-                <p class="game_price" @click="showAlart">＄710－＄990 / 人<br>▲ 點此查看詳細價格</p>
+            <div v-for="(gameData, index) in all_data.gameData" :key="index" :class="['theme_game', themeClass]">
+                <i :class="gameData.icon"></i>
+                <h3>{{ gameData.title }}</h3>
+                <p v-if="gameData.clickable" class="game_price" @click="showAlart" v-html="gameData.content"></p>
+                <p v-else v-html="gameData.content"></p>
             </div>
         </section>
+        <!-- -----遊戲資訊 end----- -->
 
+        <!-- -----小圖 start----- -->
         <section class="iconinfo">
-            <div class="theme_icon hospital">
+            <div v-for="(iconData, index) in all_data.iconData" :key="index" :class="['theme_icon', themeClass]">
                 <div class="theme_icon_img">
-                    <img src="../assets/img/icon-1.png" alt="">
+                    <!-- <img src="../assets/img/icon-1.png" alt=""> -->
+                    <img :src="all_data.iconData.src" alt="">
                 </div>
-                <h3>極度重恐</h3>
-                <p>真人互動，將恐懼推向極限<br>密閉驚悚的壓迫體驗</p>
-            </div>
-            <div class="theme_icon hospital">
-                <div class="theme_icon_img">
-                    <img src="../assets/img/icon-2.png" alt="">
-                </div>
-                <h3>身歷其境</h3>
-                <p>精心還原醫院每個角落<br>逼真場景宛如置身其中</p>
-            </div>
-            <div class="theme_icon hospital">
-                <div class="theme_icon_img">
-                    <img src="../assets/img/icon-3.png" alt="">
-                </div>
-                <h3>海量謎題</h3>
-                <p>層層難關，精心雕琢<br>由你揭開最深的秘密</p>
+                <h3>{{ iconData.title }}</h3>
+                <p>{{ iconData.content }}</p>
             </div>
         </section>
-        <section class="theme_marketing_container">
-            <div class="theme_marketing">
-                <div class="theme_marketing_text">
-                    <h3>廢墟深處，重重謎團</h3>
-                    <p>步入禁地，調查塵封的過往<br>觸碰那被時間遺忘的秘密</p>
-                </div>
-            </div>
-            <div class="theme_marketing">
-                <div class="theme_marketing_text">
-                    <h3>光影交錯，虛實難辨</h3>
-                    <p>詭異的筆記，失蹤者的殘骸<br>指引你走向真相的深淵</p>
-                </div>
-            </div>
-            <div class="theme_marketing">
-                <div class="theme_marketing_text">
-                    <h3>怨念瀰漫，等待救贖</h3>
-                    <p>唯有步步為營，方能撕裂虛<br>幻的帷幕，讓真相水落石出</p>
-                </div>
-            </div>
-            <div class="theme_marketing" >
-                <!-- :class="item.type" -->
-                <!-- <img src="hand.jpg" alt="" v-if="item.animation === 'hand'"> -->
-                <div class="theme_marketing_text">
-                    <p>沉寂五年的未解之謎，至今仍在黑暗中低語</p>
-                    <p>你願意接下此次委託，揭開那些不該被遺忘的秘密嗎？</p>
-                </div>
-            </div>
+        <!-- -----小圖 end----- -->
 
-            <input type="button" value="預約偵查" class="btn">
+        <!-- -----行銷亮點 start----- -->
+        <section class="theme_marketing_container">
+            <div v-for="(textSec, index) in all_data.textSec" :key="index" :class="'theme_marketing'">
+                <div class="theme_marketing_text">
+                    <h3>{{ textSec.title }}</h3>
+                    <p>{{ textSec.content }}</p>
+                    <!-- <img src="hand.jpg" alt="" v-if="bar.animation === 'hand'"> -->
+                </div>
+            </div>
+            <!-- -----行銷亮點 end----- -->
+
+            <input type="button" :value="all_data.btn" class="btn">
         </section>
 
         <section class="notice">
@@ -128,14 +91,14 @@ import Swal from 'sweetalert2';
                 <h2>注意事項</h2>
             </div>
 
-            <div class="notice_text hospital">
-                <p>＊ 建議遊戲人數 6 ~ 7 人，容納人數 4 - 8 人。</p>
-                <p>＊ 建議穿著輕便服裝，避免穿裙子。</p>
-                <p>＊ 會有真人ＮＰＣ互動，無法調整恐怖程度，膽小誤入</p>
-                <p>＊ 未滿15歲孩童需有成人陪同參與。</p>
-            </div>
+            <!-- <div :class="['notice_text', themeClass]">
+                <p v-for="(paragraph, index) in Object.values(all_data.notice[0])" :key="index">
+                    {{ paragraph }}
+                </p>
+            </div> -->
 
         </section>
+
         <section>
             <div class="small_mark">
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 40 40" fill="none">
@@ -150,22 +113,10 @@ import Swal from 'sweetalert2';
                 <i class="fa-solid fa-angle-left" id="left"></i>
                 <div class="theme_wrapper">
                     <ul class="theme_carousel">
-                        <li class="theme_card">
+                        <li v-for="(card, index) in all_data.otherTheme" :key="index" class="theme_card">
                             <a href="#">
-                                <img src="../assets/img/banner-dead.jpg" alt="末日庇護所">
-                                <h4>末日庇護所</h4>
-                            </a>
-                        </li>
-                        <li class="theme_card">
-                            <a href="#">
-                                <img src="../assets/img/banner-code.png" alt="代碼深淵">
-                                <h4>代碼深淵</h4>
-                            </a>
-                        </li>
-                        <li class="theme_card">
-                            <a href="#">
-                                <img src="../assets/img/banner-mazeofTime.png" alt="時空迷宮">
-                                <h4>時空迷宮</h4>
+                                <img :src="card.src" :alt="card.title">
+                                <h4>{{ card.title}}</h4>
                             </a>
                         </li>
                     </ul>
@@ -183,62 +134,18 @@ import Swal from 'sweetalert2';
 // import all_data from 'xxx.js'
 export default {
     data() {
-        console.log(this.$route.query);
-        console.log(this.$route.query.id);
+        // console.log(this.$route.query);
+        // console.log(this.$route.query.id);
+       
         return {
+            themeClass: 'hospital',
+            all_data  // 使用引入的 all_data
             // all_data: all_data[this.$route.query.id]
-            all_data: {
-                
-                banner: {
-                    type: 'video',
-                    src: '../assets/img/banner.mp4'
-                    // type:'img',
-                    // src:'../assets/img/banner.mp4',
-                },
-                progress: [
-                    {
-                        'title': '燒腦指數',
-                        'per': 87,
-                    },
-                    {
-                        'title': '驚嚇指數',
-                        'per': 96,
-                    },
-
-                    {
-                        'title': '推薦指數',
-                        'per': 90,
-                    }
-                ],
-
-
-                text_section: [
-                    {
-                        'title': '光影交錯，虛實難辨',
-                        'type':'left',
-
-                        'per': 87,
-                    },
-                    {
-                        'title': null,
-                        'type':'center',
-                        'animation':'hand',
-                        'per': 96,
-                    },
-
-                ],
-                note:`<p>＊ 建議遊戲人數 6 ~ 7 人，容納人數 4 - 8 人。</p>
-                <p>＊ 建議穿著輕便服裝，避免穿裙子。</p>
-                <p>＊ 會有真人ＮＰＣ互動，無法調整恐怖程度，膽小誤入</p>
-                <p>＊ 未滿15歲孩童需有成人陪同參與。</p>`,
-
-            },
-
         }
     },
     methods: {
         showAlart() {
-            Swal.fire({
+            themeAlart.fire({
                 // icon: 'success',
                 title: '詳細價格',
                 html: `

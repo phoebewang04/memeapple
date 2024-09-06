@@ -6,20 +6,21 @@
     align-items: center;
     justify-content: center;
     line-height: 70px;
-    color:map-get($colors,  white);
-    @include rwd(650px){
+    color: map-get($colors, white);
+
+    @include rwd(650px) {
         position: relative;
         height: 100px;
     }
 }
-
 
 .top img {
     width: 100px;
     height: 70px;
     padding-left: 80px;
     display: block;
-    @include rwd(650px){
+
+    @include rwd(650px) {
         width: 70px;
         padding: 0;
         margin-left: 20px;
@@ -29,12 +30,11 @@
 
 .top .fa {
     margin-left: auto;
-    // margin-top: 24px;
     display: none;
-    @include rwd(650px){
+
+    @include rwd(650px) {
         text-align: center;
         display: block;
-        // margin-top: 35px;
         margin-right: 10px;
         width: 90px;
         font-size: 25px;
@@ -46,7 +46,8 @@
     padding-right: 80px;
     font-size: 20px;
     display: flex;
-    @include rwd(650px){
+
+    @include rwd(650px) {
         display: none;
         flex-direction: column;
         position: absolute;
@@ -56,7 +57,7 @@
         text-align: center;
         padding: 0;
         margin: 0;
-        background-color:map-get($colors,  lightblue) ;
+        background-color: map-get($colors, lightblue);
         font-size: 20px;
         line-height: 100px;
         z-index: 5;
@@ -65,15 +66,34 @@
 
 .top li {
     margin-right: 20px;
-    @include rwd(650px){
+
+    @include rwd(650px) {
         margin: 0;
     }
 }
 
 .top a {
-    color:map-get($colors,  white);
+    color: map-get($colors, white);
     display: block;
-    &:hover{
-        color: map-get($colors,  gold);
+
+    &:hover {
+        color: map-get($colors, gold);
     }
+}
+
+#menuBar {
+    display: none;
+}
+
+#menuBar.visible {
+    display: block;
+}
+
+@media (min-width: 651px) {
+  #menuBar {
+    display: flex;
+  }
+  #menuBar.visible {
+    display: flex;
+  }
 }

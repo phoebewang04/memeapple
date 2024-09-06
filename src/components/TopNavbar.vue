@@ -1,33 +1,33 @@
 <script>
-import { ref } from 'vue';
 import '../assets/css/style.css'
 
 export default {
-    setup() {
-    const menuBarVisible = ref(false);
-
-    const showMenuBar = () => {
-      console.log('Menu bar icon clicked');
-      menuBarVisible.value = !menuBarVisible.value;
+  data(){
+    return{
+      visible_active:false
     };
-
-    return {
-      menuBarVisible,
-      showMenuBar
-    };
+  },
+  methods: {
+    showMenuBar(){
+      if(window.innerWidth <= 650){
+        this.visible_active = !this.visible_active;
+      }
+    }
+  },
+  created(){
+      if(window.innerWidth > 650){
+        this.visible_active = true;
+      }
   }
 };
 </script>
 
 <template>
     <header class="top">
-        <!-- 這是logo，點了之後回到index.html -->
-        <router-link to="/"><img src="../assets/img/memelogo.svg" alt=""></router-link>
-        <!-- <i class="fa fa-bars" aria-hidden="true" @click="showMenuBar()"></i> -->
+        <router-link to="/index/"><img src="../assets/img/memelogo.svg" alt=""></router-link>
         <font-awesome-icon class="fa" icon="bars" @click="showMenuBar"></font-awesome-icon>
-        <!-- 這是列表，透過router連結到其他 .vue 頁面 -->
-        <ul id="menuBar" :class="{ 'visible': menuBarVisible }">
-            <li><router-link to="/index/">首頁</router-link></li>
+        <ul id="menuBar" :class="{ visible: visible_active }">
+            <li><router-link to="/">前後台分流頁</router-link></li>
             <li><router-link to="/Membermanage/">會員專區</router-link></li>
             <li><router-link to="/Minigame/">線上體驗</router-link></li>
             <li><router-link to="/Branch/">分館介紹</router-link></li>

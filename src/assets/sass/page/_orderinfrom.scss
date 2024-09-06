@@ -277,6 +277,7 @@
 .memberinfrom .mi_dt .phone select {
     width: 150px;
     height: 35px;
+    outline: none;
 
     @include rwd(820px){
         margin-bottom: 10px;
@@ -380,9 +381,11 @@
 
 .order_right .details select {
     color: map-get($colors , darkblue );
-    width: 200px;
+    width: 150px;
     height: 30px;
     padding: 5px;
+    margin-left: 10px;
+    outline: none;
 
     @include rwd(430px){
         border-radius: 4px;
@@ -429,5 +432,11 @@
     height: 35px;
     border-radius: 12px;
     cursor: pointer;
-    background-color: map-get($colors , gold );
+    background-color: lightgray;
+    font-size: map-get($fontsize , p1 );
+    line-height: 1.2;
+}
+
+.next_btn.active {
+    background: #FEDA77;
 }
