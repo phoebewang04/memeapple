@@ -18,6 +18,9 @@ import createRouter from './router/routes'
 import VCalendar from 'v-calendar';
 // 基礎
 import App from './App.vue'
+// AOS Import
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 // 添加Font Awesome圖標到庫中
@@ -31,5 +34,8 @@ const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon);
 // 以下是路由器  vue-router 相關設置
 app.use(router).mount('#app')
+// AOS 初始化
+app.use(AOS)
+AOS.init();
 app.use(createPinia())
 app.use(VCalendar, {})

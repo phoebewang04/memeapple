@@ -16,6 +16,7 @@
     "@studio-freight/lenis": "^1.0.42",
     "@sweetalert2/themes": "^5.0.18",
     "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
     "axios": "^1.7.7",
     "chart.js": "^4.4.4",
     "core-js": "^3.8.3",

@@ -16,7 +16,7 @@
 // 首頁第一部分  主視覺
 .content-homepage {
     width: 100%;
-    
+
     padding: 80px 0;
     background-image: url(/src/assets/img/BG-index.jpg);
     background-repeat: no-repeat;
@@ -24,7 +24,7 @@
     border-bottom: 1px solid white;
 
     @include phone {
-        
+
         padding: 46px 0;
     }
 }
@@ -321,7 +321,7 @@
     .brandstory-bottom {
 
         @include phone {
-           margin-top: 12px;
+            margin-top: 12px;
         }
 
         p {
@@ -353,7 +353,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    background-image: url(/src/assets/img/BG-Index-level.jpg);
+    background-image: url(/src/assets/img/Abyss_small2-0.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -396,6 +396,11 @@
 .limitlevel-Area {
     display: flex;
     justify-content: center;
+    margin: 80px 0;
+
+    @include phone {
+        margin: 20px 0;
+    }
 }
 
 .limitlevel-text {
@@ -407,7 +412,9 @@
         margin-right: 20px;
     }
 
-    @include pad {}
+    @include pad {
+        display: none;
+    }
 
     .limitlevel-sologanred {
         color: red;
@@ -427,7 +434,7 @@
         @include phone {
             margin-left: 40px;
         }
-        
+
 
         span {
             margin-bottom: 60px;
@@ -481,10 +488,8 @@
         }
 
         span {
-            
-            @include phone {
-             
-            }
+
+            @include phone {}
         }
     }
 
@@ -516,7 +521,7 @@
 
 .limitlevel-img {
     width: 30%;
-    height: auto;
+    height: 70vh;
     text-align: center;
     background-image: url(/src/assets/img/Index-pic04.png);
     background-size: contain;
@@ -1028,9 +1033,9 @@
         font-weight: bold;
         margin-bottom: 20px;
 
-        p{
+        p {
             @include phone {
-               line-height: 1.6;
+                line-height: 1.6;
             }
         }
     }
@@ -1057,7 +1062,7 @@
 
     @include phone {
         padding: 40px 0;
-     }
+    }
 }
 
 .announcement-title {

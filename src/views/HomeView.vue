@@ -2,6 +2,8 @@
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default {
   components: {
@@ -35,6 +37,8 @@ export default {
 
   },
   mounted() {
+    AOS.init();
+
     const word = document.querySelectorAll('.homeeffect-word');
     // 隨機顏色
     word.forEach(word => {
@@ -96,7 +100,7 @@ export default {
         </div>
         <!-- 文字區域 -->
         <div class="homepage-text">
-          <h1>Meme謎因</h1>
+          <h1 data-aos="fade-up">Meme謎因</h1>
           <h2>Unknow Story</h2>
         </div>
         <!-- 下方圖片區 -->
@@ -149,22 +153,22 @@ export default {
 
       <!-- 首頁第三部分 限時主題 -->
       <section class="content-limitlevel">
-        <video src="../assets/img/Abyss_small2.mp4" playsinline autoplay muted loop type="video/mp4"
-          class="limit_video"></video>
+        <!-- <video src="../assets/img/Abyss_small2.mp4" playsinline autoplay muted loop type="video/mp4"
+          class="limit_video"></video> -->
         <!-- 羽毛特效區域 -->
         <div class="limitlevel-effect"></div>
         <!-- 內容區域 -->
         <section class="limitlevel-content">
           <p class="limitlevel-topic">— 限時主題 —</p>
+
+          <!-- 下方內容 -->
+          <section class="limitlevel-title">
+            <span data-text="代碼深淵">代碼深淵</span>
+          </section>
+
           <section class="limitlevel-Area">
             <!-- 左側標語 -->
             <section class="limitlevel-text">
-
-              <!-- 下方內容 -->
-              <section class="limitlevel-title">
-                <span data-text="代碼深淵">代碼深淵</span>
-                <p>引き返せない深淵、<br class="limit-br">生存競争が始まる</p>
-              </section>
 
               <div class="limitlevel-sologan-1">
                 <span>「藍光閃現虛實</span>
@@ -190,32 +194,32 @@ export default {
               </div>
             </section>
 
-            <!-- <section class="limitlevel-img">
-               <div class="limitlevel-imgtext">
-                  <p>JavaScriptは大丈夫ですか？</p>
-                  <p>青い光が一瞬にして爆発した </p>
-                  <p>複雑なコードの異世界。</p>
-                  <p>未知の危険と神秘的な力</p>
-                  <p>現実世界に戻る方法を見つけてください</p>
-                  <p> あるいは永遠に暗号の深淵に迷い込んでしまう</p>
-                </div>  
+            <section class="limitlevel-img">
+              <div class="limitlevel-imgtext">
+                <p>JavaScriptは大丈夫ですか？</p>
+                <p>青い光が一瞬にして爆発した </p>
+                <p>複雑なコードの異世界。</p>
+                <p>未知の危険と神秘的な力</p>
+                <p>現実世界に戻る方法を見つけてください</p>
+                <p> あるいは永遠に暗号の深淵に迷い込んでしまう</p>
+              </div>
 
-                <div class="limitlevel-info">
-                  <div class="limitlevel-level">
-                    <font-awesome-icon :icon="['fas', 'lock']" class="limit-icon"  />
-                    <p>3 Star</p>
-                  </div>
-                   <div class="limitlevel-people">
-                    <font-awesome-icon :icon="['fas', 'user-group']" class="limit-icon"  />
-                    <p>4 - 8</p>
-                   </div>
-                  <div class="limitlevel-time">
-                    <font-awesome-icon :icon="['far', 'clock']" class="limit-icon" />
-                    <p>60 mins</p>
-                  </div>
+              <div class="limitlevel-info">
+                <div class="limitlevel-level">
+                  <font-awesome-icon :icon="['fas', 'lock']" class="limit-icon" />
+                  <p>3 Star</p>
                 </div>
-                <router-link to="/preorder/"><button type="button" class="btn linmit-btn">立即預定</button></router-link>
-            </section> -->
+                <div class="limitlevel-people">
+                  <font-awesome-icon :icon="['fas', 'user-group']" class="limit-icon" />
+                  <p>4 - 8</p>
+                </div>
+                <div class="limitlevel-time">
+                  <font-awesome-icon :icon="['far', 'clock']" class="limit-icon" />
+                  <p>60 mins</p>
+                </div>
+              </div>
+              <router-link to="/preorder/"><button type="button" class="btn linmit-btn">立即預定</button></router-link>
+            </section>
           </section>
         </section>
       </section>
