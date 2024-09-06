@@ -10,7 +10,25 @@ export default {
   },
   data() {
     return {
+      faqs: [
+        {
+          question: "請問可以在開始前增加人數嗎?",
+          answer: "可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!"
+        },
+        {
+          question: "請問有心血管疾病適合遊玩嗎?",
+          answer: "由於本館部分主題具有恐怖成分，且可能需要耗費體力，為了您的身體健康建議與醫生諮詢，並主動告知服務人員，服務人員將會安排安全路線給您！"
+        },
+        {
+          question: "請問遊戲主題會定期更新嗎?",
+          answer: "為了確保玩家們每次遊玩體驗皆不同，因此同一遊戲主題關卡配置仍會定期更新配置，而主題也會隨季節推出不同主題！"
+        },
+        {
+          question: "請問去年的絕體絕命東京殘響主題是否還會再次推出?",
+          answer: "很遺憾該主題已經下架，誠摯推薦您持續關注我們，敬請期待其他主題推出！"
+        },
 
+      ]
     };
   },
   methods: {
@@ -26,7 +44,7 @@ export default {
       const randomBottom = Math.random() * 100;
       const randomFontSize = Math.random() * 1.5 + 1;
       const randomOpacity = Math.random();
-      const randomScale = Math.random() * 2 + 0.25; 
+      const randomScale = Math.random() * 2 + 0.25;
 
       word.style.top = `${randomTop}%`;
       word.style.left = `${randomLeft}%`;
@@ -41,7 +59,7 @@ export default {
     const questions = document.querySelectorAll('.index-question');
 
     questions.forEach(question => {
-      question.addEventListener('click', function() {
+      question.addEventListener('click', function () {
         const answer = this.nextElementSibling;
 
         if (answer.style.maxHeight) {
@@ -61,7 +79,7 @@ export default {
 <template>
   <TopNavbar />
 
-  <main ref="scrollContainer" class="main-homepage"  @scroll="roll_effect">
+  <main ref="scrollContainer" class="main-homepage" @scroll="roll_effect">
     <section class="wrapper-homepage">
       <!-- 首頁第一部分  主視覺-->
       <section class="content-homepage">
@@ -74,6 +92,7 @@ export default {
           <div class="homeeffect-word"># 時光迷宮</div>
           <div class="homeeffect-word"># 逃離武石監</div>
           <div class="homeeffect-word"># 逃出虛空</div>
+          <div class="homeeffect-word"># 末日庇護所</div>
         </div>
         <!-- 文字區域 -->
         <div class="homepage-text">
@@ -104,9 +123,9 @@ export default {
         <!-- 內容區域 -->
         <section class="brandstory-content">
           <!-- 左側圖片 -->
-           <div class="brandstory-img">
-              <img src="../assets/img/breadstoryimg.jpg" alt="佛萊迪大戰傑森">
-           </div>
+          <div class="brandstory-img">
+            <img src="../assets/img/breadstoryimg.jpg" alt="佛萊迪大戰傑森">
+          </div>
           <!-- 文字區域 -->
           <div class="brandstory-text">
             <div class="brandstory-title">
@@ -121,8 +140,8 @@ export default {
             <p class="brandstory-intro">在這樣的情境下，每個成員的貢獻都至關重要!他們需要共同解決問題、分享資訊，並在壓力下作出決策，這不僅有助於提升個人的思維能力、更能促進團隊的協作和信任。</p>
             <!-- 底部文字 -->
             <div class="brandstory-bottom">
-                <p>The Birth of </p>
-                <p>The Meme Room</p>
+              <p>The Birth of </p>
+              <p>The Meme Room</p>
             </div>
           </div>
         </section>
@@ -130,89 +149,77 @@ export default {
 
       <!-- 首頁第三部分 限時主題 -->
       <section class="content-limitlevel">
+        <video src="../assets/img/Abyss_small2.mp4" playsinline autoplay muted loop type="video/mp4"
+          class="limit_video"></video>
         <!-- 羽毛特效區域 -->
         <div class="limitlevel-effect"></div>
         <!-- 內容區域 -->
         <section class="limitlevel-content">
           <p class="limitlevel-topic">— 限時主題 —</p>
           <section class="limitlevel-Area">
-            
             <!-- 左側標語 -->
             <section class="limitlevel-text">
-              <!-- 標語1 -->
+
+              <!-- 下方內容 -->
+              <section class="limitlevel-title">
+                <span data-text="代碼深淵">代碼深淵</span>
+                <p>引き返せない深淵、<br class="limit-br">生存競争が始まる</p>
+              </section>
+
               <div class="limitlevel-sologan-1">
-                <span>「人氣YTR佐藤洋子的廢棄校舍的</span>
-                <span class="limitlevel-sologanred">探靈直播</span>
+                <span>「藍光閃現虛實</span>
+                <span class="limitlevel-sologanred">界限消失</span>
                 <span>」</span>
               </div>
-              <!-- 標語2 -->
+
               <div class="limitlevel-sologan-2">
-                <span>「校舍東方的102教室傳來的</span>
-                <span  class="limitlevel-sologanred">神秘歌聲</span>
+                <span>「補習班402教室傳來的</span>
+                <span class="limitlevel-sologanred">神秘激光</span>
                 <span>」</span>
               </div>
-              <!-- 標語3 -->
+
               <div class="limitlevel-sologan-3">
-                <span>「前往探查成為她的</span>
-                <span class="limitlevel-sologanred">最後身影</span>
+                <span>「你們能否成功</span>
+                <span class="limitlevel-sologanred">脫離深淵?</span>
                 <span>」</span>
               </div>
-              <!-- 標語4 -->
+
               <div class="limitlevel-sologan-4">
-                <span>「你們能否成功將</span>
-                <span  class="limitlevel-sologanred">真正的她</span>
-                <span>尋回」</span>
+                <span>「2024年10月01日</span>
+                <span class="limitlevel-sologanred">預約逃離</span>
               </div>
             </section>
 
-            <!-- 右側內容 -->
-            <section class="limitlevel-img">
-              <!-- <img src="/src/assets/img/cagebird.png" alt=""> -->
-               <!-- 標語 -->
+            <!-- <section class="limitlevel-img">
                <div class="limitlevel-imgtext">
-                  <p>かごめかごめ</p>
-                  <p>籠の中の鳥は </p>
-                  <p>いついつ出やる</p>
-                  <p>夜明けの晩に</p>
-                  <p>鶴と亀が滑った</p>
-                  <p>後ろの正面だあれ？</p>
+                  <p>JavaScriptは大丈夫ですか？</p>
+                  <p>青い光が一瞬にして爆発した </p>
+                  <p>複雑なコードの異世界。</p>
+                  <p>未知の危険と神秘的な力</p>
+                  <p>現実世界に戻る方法を見つけてください</p>
+                  <p> あるいは永遠に暗号の深淵に迷い込んでしまう</p>
                 </div>  
 
-                <!-- 關卡資訊 -->
                 <div class="limitlevel-info">
-                  <!-- 遊玩難度 -->
                   <div class="limitlevel-level">
-                    <!-- icon -->
                     <font-awesome-icon :icon="['fas', 'lock']" class="limit-icon"  />
                     <p>3 Star</p>
                   </div>
-                  <!-- 遊玩人數 -->
                    <div class="limitlevel-people">
-                    <!-- icon -->
                     <font-awesome-icon :icon="['fas', 'user-group']" class="limit-icon"  />
                     <p>4 - 8</p>
                    </div>
-                  <!-- 遊玩時間 -->
                   <div class="limitlevel-time">
-                    <!-- icon -->
                     <font-awesome-icon :icon="['far', 'clock']" class="limit-icon" />
                     <p>60 mins</p>
                   </div>
                 </div>
-
-                <!-- 預定按鈕 -->
-                <button type="button" class="btn linmit-btn">立即預定</button>
-            </section>
-          </section>
-
-          <!-- 下方內容 -->
-          <section class="limitlevel-title">
-            <span>龍中鳥</span>
-            <p>廃校舎の不思議な部屋で、<br class="limit-br">誰かが日本の童謡を歌い始める。</p>
+                <router-link to="/preorder/"><button type="button" class="btn linmit-btn">立即預定</button></router-link>
+            </section> -->
           </section>
         </section>
       </section>
- 
+
       <!-- 首頁第四部分 如何遊玩-->
       <section class="content-howtoplay">
         <!-- 內容區域 -->
@@ -233,7 +240,7 @@ export default {
               <div class="howtoplay-lan">
                 <p>受困在無出口的密室</p>
                 <p>依靠微弱月光</p>
-                <p>尋找散落的各種線索</p> 
+                <p>尋找散落的各種線索</p>
               </div>
             </section>
             <!-- 右側圖片區塊 -->
@@ -260,10 +267,10 @@ export default {
               <div class="howtoplay-lan">
                 <p>與夥伴分享情報</p>
                 <p>共同動腦輸入密碼</p>
-                <p>開啟機關離開密室 </p> 
+                <p>開啟機關離開密室 </p>
               </div>
+            </section>
           </section>
-        </section>
 
           <!-- 內容區塊 03 -->
           <section class="howtoplay-box howPic3">
@@ -279,7 +286,7 @@ export default {
               <div class="howtoplay-lan">
                 <p>事出必有因</p>
                 <p>層層謎題的牽連下</p>
-                <p>挖掘埋沒的真相</p> 
+                <p>挖掘埋沒的真相</p>
               </div>
             </section>
             <!-- 右側圖片區塊 -->
@@ -287,42 +294,49 @@ export default {
               <img src="/src/assets/img/Index-howto03.jpg" alt="">
             </section> -->
           </section>
+        </section>
       </section>
-    </section>
 
       <!-- 首頁第五部分 最新消息-->
       <section class="content-announcement">
         <div class="announcement-content">
 
-          <h3 class="howtoplay-title">— 最新消息 — </h3>
+          <h3 class="announcement-title">— 最新消息 — </h3>
           <ul>
-            <div class="branch-swiper-button-prev"><li><i class="fa-solid fa-caret-left"></i></li></div>
-            
+            <div class="branch-swiper-button-prev">
+              <li><i class="fa-solid fa-caret-left"></i></li>
+            </div>
+
             <div class="theme_forindex">
 
-                <li class="index-news-li">
-                  <a href="#"><img src="../assets/img/banner-hospital.png" alt="">
+              <li class="index-news-li">
+                <a href="#"><img src="../assets/img/banner-hospital.png" alt="">
                   <h3>成都醫院</h3>
-                  <p class="index-news-text">五年前，成都醫院因連環失蹤案而成為禁地，身為菁英偵探的你，收到神秘委託，必須調查此宗懸案，隨著你步入醫院，腐朽的氣息和幽暗的走廊讓人不寒而慄。這裡的每一個角落似乎都隱藏著難以解釋的秘密…</p>
-                  </a>
-                </li>
+                  <p class="index-news-text">
+                    五年前，成都醫院因連環失蹤案而成為禁地，身為菁英偵探的你，收到神秘委託，必須調查此宗懸案，隨著你步入醫院，腐朽的氣息和幽暗的走廊讓人不寒而慄。這裡的每一個角落似乎都隱藏著難以解釋的秘密…</p>
+                </a>
+              </li>
 
-                <li class="index-news-li  news-notshow">
-                  <a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt="">
-                    <h3>時光迷宮</h3>
-                    <p class="index-news-text"> 初原之火光芒驟減，不死魔物大量發生，為延續人界與驅除瘴氣。一群菁英尋火者前往「時光迷宮」尋找被諸神之王關押的普羅米修斯。你必須解開謎題與陷阱，解放普羅米修斯得到初原之火，導正世界秩序。</p>
-                  </a>
-                </li>
+              <li class="index-news-li  news-notshow">
+                <a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt="">
+                  <h3>時光迷宮</h3>
+                  <p class="index-news-text">
+                    初原之火光芒驟減，不死魔物大量發生，為延續人界與驅除瘴氣。一群菁英尋火者前往「時光迷宮」尋找被諸神之王關押的普羅米修斯。你必須解開謎題與陷阱，解放普羅米修斯得到初原之火，導正世界秩序。</p>
+                </a>
+              </li>
 
-                <li class="index-news-li  news-notshow">
-                  <a href="#"><img src="/src/assets/img/banner-dead.jpg" alt="">
+              <li class="index-news-li  news-notshow">
+                <a href="#"><img src="/src/assets/img/banner-dead.jpg" alt="">
                   <h3>末日庇護所</h3>
-                  <p class="index-news-text">世界末日降臨，殭屍橫行，生存成為最大的挑戰。傳說中的安全庇護所是唯一的希望，但位置隱藏在謎團之中。你必須解開線索，找到這處避難所，才能在末日災難中倖存。勇敢尋找，活下去是唯一的選擇。</p>
-                 </a>
-                </li>
-            </div>    
+                  <p class="index-news-text">
+                    世界末日降臨，殭屍橫行，生存成為最大的挑戰。傳說中的安全庇護所是唯一的希望，但位置隱藏在謎團之中。你必須解開線索，找到這處避難所，才能在末日災難中倖存。勇敢尋找，活下去是唯一的選擇。</p>
+                </a>
+              </li>
+            </div>
 
-            <div class="branch-swiper-button-next"><li><i class="fa-solid fa-caret-right"></i></li></div>
+            <div class="branch-swiper-button-next">
+              <li><i class="fa-solid fa-caret-right"></i></li>
+            </div>
           </ul>
 
           <!-- swiper套件 -->
@@ -338,35 +352,20 @@ export default {
       <section class="content-p-faq">
         <p class="index-faq-title">— 注意事項 — </p>
         <section class="content-p-faq-contenter">
-          <!-- 第1個問題 -->
-          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?
-            <div class="indexfaq-icon"><i class="fa-solid fa-plus"></i></div>
-          </button>
-          <!-- 第1個問題的回答 -->
-          <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
-
-          <!-- 第2個問題 -->
-          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?
-            <div class="indexfaq-icon"><i class="fa-solid fa-plus"></i></div>
-          </button>
-          <!-- 第2個問題的回答 -->
-          <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
-
-          <!-- 第3個問題 -->
-          <button class="index-question index-active-faq">請問可以在開始前增加人數嗎?
-            <div class="indexfaq-icon"><i class="fa-solid fa-plus"></i></div>
-          </button>
-          <!-- 第3個問題的回答 -->
-          <div class="index-answer"><p>可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!</p></div>
+          <div v-for="(faq, index) in faqs" :key="index">
+            <!-- 第1個問題 -->
+            <button class="index-question index-active-faq"> {{ faq.question }}
+              <div class="indexfaq-icon"><i class="fa-solid fa-plus"></i></div>
+            </button>
+            <!-- 第1個問題的回答 -->
+            <div class="index-answer">
+              <p>{{ faq.answer }}</p>
+            </div>
+          </div>
         </section>
       </section>
-
     </section>
     <Footerbar />
   </main>
 
 </template>
-
-
-
-
