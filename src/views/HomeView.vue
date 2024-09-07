@@ -32,12 +32,28 @@ export default {
 
       ]
     };
-  },
-  methods: {
 
   },
+  methods: {
+    handleScroll() {
+      requestAnimationFrame(() => {
+        AOS.refresh(); // 刷新 AOS
+      });
+    }
+  },
   mounted() {
-    AOS.init();
+    AOS.init({
+      duration: 1200,
+      once: false,
+      easing: 'ease',
+    });
+
+    this.$nextTick(() => {
+      setTimeout(() => {
+        AOS.refresh(); // 延时刷新 AOS
+      }, 100); // 100ms 延时
+    });
+
 
     const word = document.querySelectorAll('.homeeffect-word');
     // 隨機顏色
@@ -73,9 +89,20 @@ export default {
           answer.style.maxHeight = answer.scrollHeight + 'px';
           this.querySelector('.indexfaq-icon i').classList.replace('fa-plus', 'fa-minus');
         }
+        AOS.refresh();  // 確保 FAQ 展開時動畫正常觸發
       });
     });
-  }
+
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  updated() {
+    this.$nextTick(() => {
+      AOS.refresh(); // 手動刷新 AOS
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
 };
 </script>
 
@@ -88,7 +115,7 @@ export default {
       <!-- 首頁第一部分  主視覺-->
       <section class="content-homepage">
         <!-- 浮動文字特效區域 -->
-        <div class="homepage-effect">
+        <div class="homepage-effect" data-aos="fade-up" data-aos-delay="50">
           <div class="homeeffect-word"># 代碼深淵</div>
           <div class="homeeffect-word"># 成都醫院</div>
           <div class="homeeffect-word"># 恐怖密室</div>
@@ -101,20 +128,20 @@ export default {
         <!-- 文字區域 -->
         <div class="homepage-text">
           <h1 data-aos="fade-up">Meme謎因</h1>
-          <h2>Unknow Story</h2>
+          <h2 data-aos="fade-up" data-aos-delay="100">Unknow Story</h2>
         </div>
         <!-- 下方圖片區 -->
         <div class="homepage-img">
           <!-- 照片1 -->
-          <div class="homepage-card01">
+          <div class="homepage-card01" data-aos="fade-up" data-aos-delay="100">
             <router-link to="/Theme/"><img src="/src/assets/img/Index-person1.png" alt="成都醫院"></router-link>
           </div>
           <!-- 照片2 -->
-          <div class="homepage-card02">
+          <div class="homepage-card02" data-aos="fade-up" data-aos-delay="200">
             <router-link to="/Escaperoom/"><img src="/src/assets/img/Index-person2.png" alt="恐怖密室"></router-link>
           </div>
           <!-- 照片3 -->
-          <div class="homepage-card03">
+          <div class="homepage-card03" data-aos="fade-up" data-aos-delay="300">
             <router-link to="/Theme_Lock/"><img src="/src/assets/img/Index-person3.png" alt="逃離武石監"></router-link>
           </div>
         </div>
@@ -127,11 +154,11 @@ export default {
         <!-- 內容區域 -->
         <section class="brandstory-content">
           <!-- 左側圖片 -->
-          <div class="brandstory-img">
+          <div class="brandstory-img" data-aos="fade-up" data-aos-delay="100">
             <img src="../assets/img/breadstoryimg.jpg" alt="佛萊迪大戰傑森">
           </div>
           <!-- 文字區域 -->
-          <div class="brandstory-text">
+          <div class="brandstory-text" data-aos="fade-up" data-aos-delay="200">
             <div class="brandstory-title">
               <span>— 品牌</span>
               <span>故事 —</span>
@@ -159,10 +186,10 @@ export default {
         <div class="limitlevel-effect"></div>
         <!-- 內容區域 -->
         <section class="limitlevel-content">
-          <p class="limitlevel-topic">— 限時主題 —</p>
+          <p class="limitlevel-topic" data-aos="fade-down" data-aos-delay="100">— 限時主題 —</p>
 
           <!-- 下方內容 -->
-          <section class="limitlevel-title">
+          <section class="limitlevel-title" data-aos="fade-down" data-aos-delay="130">
             <span data-text="代碼深淵">代碼深淵</span>
           </section>
 
@@ -170,31 +197,31 @@ export default {
             <!-- 左側標語 -->
             <section class="limitlevel-text">
 
-              <div class="limitlevel-sologan-1">
+              <div class="limitlevel-sologan-1" data-aos="fade-up" data-aos-delay="150">
                 <span>「藍光閃現虛實</span>
                 <span class="limitlevel-sologanred">界限消失</span>
                 <span>」</span>
               </div>
 
-              <div class="limitlevel-sologan-2">
+              <div class="limitlevel-sologan-2" data-aos="fade-up" data-aos-delay="150">
                 <span>「402教室傳來的</span>
                 <span class="limitlevel-sologanred">神秘激光</span>
                 <span>」</span>
               </div>
 
-              <div class="limitlevel-sologan-3">
+              <div class="limitlevel-sologan-3" data-aos="fade-up" data-aos-delay="150">
                 <span>「你們能否成功</span>
                 <span class="limitlevel-sologanred">脫離深淵?</span>
                 <span>」</span>
               </div>
 
-              <div class="limitlevel-sologan-4">
+              <div class="limitlevel-sologan-4" data-aos="fade-up" data-aos-delay="150">
                 <span>「2024年10月01日</span>
                 <span class="limitlevel-sologanred">預約逃離</span>
               </div>
             </section>
 
-            <section class="limitlevel-img">
+            <section class="limitlevel-img" data-aos="fade-up" data-aos-delay="250">
               <div class="limitlevel-imgtext">
                 <p>JavaScriptは大丈夫ですか？</p>
                 <p>青い光が一瞬にして爆発した </p>
@@ -228,10 +255,10 @@ export default {
       <section class="content-howtoplay">
         <!-- 內容區域 -->
         <section class="howtoplay-content">
-          <h3 class="howtoplay-title">— 遊玩流程 — </h3>
+          <h3 class="howtoplay-title" data-aos="fade-down" data-aos-delay="100">— 遊玩流程 — </h3>
 
           <!-- 內容區塊 01 -->
-          <section class="howtoplay-box howPic1">
+          <section class="howtoplay-box howPic1" data-aos="fade-right" data-aos-delay="150">
             <!-- 左邊文字區塊 -->
             <section class="howtoplay-text">
               <!-- 上方標語 -->
@@ -254,7 +281,7 @@ export default {
           </section>
 
           <!-- 內容區塊 02 -->
-          <section class="howtoplay-box howPic2">
+          <section class="howtoplay-box howPic2" data-aos="fade-right" data-aos-delay="150">
             <!-- 左側圖片區域 -->
             <!-- <section class="howtoplay-img">
               <img src="/src/assets/img/Index-howto02.jpg" alt="">
@@ -277,7 +304,7 @@ export default {
           </section>
 
           <!-- 內容區塊 03 -->
-          <section class="howtoplay-box howPic3">
+          <section class="howtoplay-box howPic3" data-aos="fade-right" data-aos-delay="150">
             <!-- 左邊文字區塊 -->
             <section class="howtoplay-text">
               <!-- 上方標語 -->
@@ -305,40 +332,40 @@ export default {
       <section class="content-announcement">
         <div class="announcement-content">
 
-          <h3 class="announcement-title">— 最新消息 — </h3>
+          <h3 class="announcement-title" data-aos="fade-up" data-aos-delay="100">— 最新消息 — </h3>
           <ul>
-            <div class="branch-swiper-button-prev">
+            <div class="News-swiper-button-prev">
               <li><i class="fa-solid fa-caret-left"></i></li>
             </div>
 
-            <div class="theme_forindex">
+            <div class="theme_forindex" data-aos="fade-up" data-aos-delay="150">
 
               <li class="index-news-li">
-                <a href="#"><img src="../assets/img/banner-hospital.png" alt="">
-                  <h3>成都醫院</h3>
+                <a href="#"><img src="../assets/img/banner_openning.png" alt="">
+                  <h3>謎因工作室盛大開幕!</h3>
                   <p class="index-news-text">
-                    五年前，成都醫院因連環失蹤案而成為禁地，身為菁英偵探的你，收到神秘委託，必須調查此宗懸案，隨著你步入醫院，腐朽的氣息和幽暗的走廊讓人不寒而慄。這裡的每一個角落似乎都隱藏著難以解釋的秘密…</p>
+                    「加入我們的謎因密室逃脫，體驗刺激的解謎挑戰，週六和週日下午2點至4點，台北市密逃路88之107號，期待您的參與…！」</p>
                 </a>
               </li>
 
               <li class="index-news-li  news-notshow">
-                <a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt="">
-                  <h3>時光迷宮</h3>
+                <a href="#"><img src="/src/assets/img/banner_teacher.png" alt="">
+                  <h3>教師節特惠!</h3>
                   <p class="index-news-text">
-                    初原之火光芒驟減，不死魔物大量發生，為延續人界與驅除瘴氣。一群菁英尋火者前往「時光迷宮」尋找被諸神之王關押的普羅米修斯。你必須解開謎題與陷阱，解放普羅米修斯得到初原之火，導正世界秩序。</p>
+                    「教師節快樂！感謝緯育老師們無私的奉獻，您們如同燭光，照亮學生的未來。享受我們的50%折扣優惠！」</p>
                 </a>
               </li>
 
               <li class="index-news-li  news-notshow">
-                <a href="#"><img src="/src/assets/img/banner-dead.jpg" alt="">
-                  <h3>末日庇護所</h3>
+                <a href="#"><img src="/src/assets/img/banner_comingsoon.png" alt="">
+                  <h3>全新主題即將推出!</h3>
                   <p class="index-news-text">
-                    世界末日降臨，殭屍橫行，生存成為最大的挑戰。傳說中的安全庇護所是唯一的希望，但位置隱藏在謎團之中。你必須解開線索，找到這處避難所，才能在末日災難中倖存。勇敢尋找，活下去是唯一的選擇。</p>
+                    「謎因工作室將於2025年推出全新密室逃脫主題，敬請期待。更多驚喜與挑戰，等你來探索！」</p>
                 </a>
               </li>
             </div>
 
-            <div class="branch-swiper-button-next">
+            <div class="News-swiper-button-next">
               <li><i class="fa-solid fa-caret-right"></i></li>
             </div>
           </ul>
@@ -354,8 +381,8 @@ export default {
 
       <!-- 首頁第六部分 FAQ -->
       <section class="content-p-faq">
-        <p class="index-faq-title">— 注意事項 — </p>
-        <section class="content-p-faq-contenter">
+        <p class="index-faq-title" data-aos="fade-up" data-aos-delay="100">— 注意事項 — </p>
+        <section class="content-p-faq-contenter" data-aos="fade-up" data-aos-delay="200">
           <div v-for="(faq, index) in faqs" :key="index">
             <!-- 第1個問題 -->
             <button class="index-question index-active-faq"> {{ faq.question }}

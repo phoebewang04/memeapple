@@ -32,9 +32,6 @@
 .homepage-text {
     margin-top: 147px;
     margin-left: 120px;
-    // opacity: 0;
-    // transform: translateY(20px);
-    // transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 
     @include pad {
         margin-top: 0px;
@@ -76,11 +73,6 @@
             line-height: 1.5;
             margin-left: 0;
         }
-    }
-
-    &.show {
-        opacity: 1;
-        transform: translateY(0px);
     }
 }
 
@@ -144,17 +136,15 @@
 
     @include rwd(1280px) {
         width: 65%;
-        margin-left: 80px;
+        margin-left: 20px;
     }
 
     @include pad {
         width: 35%;
-        margin-left: 60px;
     }
 
     @include rwd(541px) {
         // display: none;
-        margin-left: 20px;
     }
 
     @include phone {
@@ -228,6 +218,14 @@
     justify-content: center;
     align-items: center;
     width: 90%;
+
+    @include pad {
+        width: 94%;
+    }
+
+    @include phone {
+        width: 96%;
+    }
 }
 
 .brandstory-img {
@@ -358,6 +356,22 @@
     background-size: cover;
     position: relative;
 
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 50px; /* 羽化效果的高度 */
+        background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(255, 255, 255, 0));
+        z-index: 1;
+        filter: blur(5px);
+    }
+
+    &::after {
+        bottom: 0;
+        background: linear-gradient(to top, rgb(0, 0, 0), rgba(255, 255, 255, 0));
+    }
+
     @include phone {
         padding: 60px 0;
     }
@@ -396,6 +410,7 @@
 .limitlevel-Area {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 80px 0;
 
     @include phone {
@@ -559,6 +574,11 @@
     transform: rotate(-3deg);
     width: 55%;
 
+    @include phone {
+        width: 65%;
+
+    }
+
     p {
         font-size: 16px;
         text-align: left;
@@ -570,7 +590,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px 0;
+    margin: 4px 0;
     transform: rotate(-3deg);
     // border: 1px solid rgb(9, 255, 230);
 
@@ -645,6 +665,11 @@
     width: 120px;
     font-size: 18px;
     padding: 6px 12px;
+    margin-bottom: 40px;
+
+    @include phone {
+        margin-bottom: 20px;
+    }
 }
 
 // 那些icon
@@ -922,9 +947,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url(/src/assets/img/BG-Index-How1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    // background-image: url(/src/assets/img/BG-Index-How1.jpg);
+    // background-repeat: no-repeat;
+    // background-size: cover;
     border-bottom: 1px solid gold;
 }
 
@@ -1065,6 +1090,18 @@
     }
 }
 
+// 左邊按鈕
+.News-swiper-button-prev,.News-swiper-button-next{
+    li{
+        font-size: 48px;
+        color: #FEDA77;
+        cursor: pointer;
+    }
+}
+
+// 右邊按鈕
+
+
 .announcement-title {
     text-align: center;
     font-size: 40px;
@@ -1107,7 +1144,12 @@
 
 .index-news-li {
     text-align: center;
+    transition: background-color .4s ease-in-out;
 
+    &:hover {
+        background-color: rgb(184, 117, 186);
+        font-weight: bold;
+    }
 
     h3 {
         font-size: 24px;
@@ -1122,6 +1164,7 @@
 
     img {
         width: 70%;
+        border: 2px solid white;
     }
 
     p {
@@ -1176,6 +1219,7 @@
     text-align: center;
     font-size: 40px;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .content-p-faq-contenter {
@@ -1202,6 +1246,12 @@
         font-weight: bold;
         cursor: pointer;
         transition: 0.4s;
+
+        &:hover {
+            background-color: #db6904;
+            color: #fff;
+             outline: 2px solid white;
+        }
 
         @include phone {
             font-size: 16px;

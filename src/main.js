@@ -33,9 +33,13 @@ const app = createApp(App)
 // 下面這行必須要加，由於要使用fontawesome
 app.component('font-awesome-icon', FontAwesomeIcon);
 // 以下是路由器  vue-router 相關設置
-app.use(router).mount('#app')
+app.use(router)
 // AOS 初始化
-app.use(AOS)
-AOS.init();
+// 初始化 AOS
+AOS.init({
+    duration: 1200,
+    once: false,
+  });
 app.use(createPinia())
 app.use(VCalendar, {})
+app.mount('#app')
