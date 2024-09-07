@@ -2179,6 +2179,28 @@ p {
 .backstage_calendar .vc-bordered {
   border-color: #100E24;
 }
+.backstage_calendar .vc-light {
+  background-color: #100E24;
+}
+.backstage_calendar .vc-day-content {
+  font-size: 2vh;
+}
+.backstage_calendar .vc-pane-container {
+  height: 100%;
+  max-height: 375px;
+}
+.backstage_calendar .vc-header .vc-title {
+  font-size: 2.67vh;
+}
+.backstage_calendar .vc-weekday {
+  font-size: 2.22vh;
+}
+.backstage_calendar .vc-header {
+  height: 10%;
+}
+.backstage_calendar .vc-day {
+  margin-bottom: 6px;
+}
 
 .backstage_booking {
   width: 60%;
@@ -2228,6 +2250,11 @@ p {
   justify-content: center;
   margin-top: 4px;
   margin-bottom: 4px;
+}
+@media (max-width: 1400px) {
+  .backstage_chart {
+    padding-top: 28px;
+  }
 }
 
 .theme_income {

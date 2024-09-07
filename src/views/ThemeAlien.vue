@@ -12,7 +12,7 @@ import Footerbar from '../components/Footerbar.vue';
    <!-- <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
         width="100%" class="banner_video hospital"></video> -->
 
-    <img src="../assets/img/banner.png" alt="" class="banner">
+    <img src="../assets/img/banner_alien.png" alt="" class="banner">
 
     <main class="theme_container alien">
         <div class="alien_bgi">
@@ -61,17 +61,17 @@ import Footerbar from '../components/Footerbar.vue';
 
         <section class="iconinfo alien">
             <div class="theme_icon alien">
-                <img src="../assets/img/icon_alien_planet.png" alt="" style="width: 400px;">
+                <img src="../assets/img/icon_alien_1.png" alt="" style="width: 400px;">
                 <h3>仿真場景體驗</h3>
                 <p>聲光、煙霧效果<br>打造太空旅行沉浸式體驗</p>
             </div>
             <div class="theme_icon alien">
-                <img src="../assets/img/icon_alien_ship.png" alt="" style="width: 400px;">
+                <img src="../assets/img/icon_alien_2.png" alt="" style="width: 400px;">
                 <h3>多段式密室劇情</h3>
                 <p>隨劇情進展<br>分工找尋線索或駕駛飛船逃離</p>
             </div>
             <div class="theme_icon alien">
-                <img src="../assets/img/icon_alien_egg.png" alt="" style="width: 400px;">
+                <img src="../assets/img/icon_alien_3.png" alt="" style="width: 400px;">
                 <h3>電影等級道具</h3>
                 <p>重金打造電影級恐怖道具<br>重現驚悚太空逃生</p>
             </div>

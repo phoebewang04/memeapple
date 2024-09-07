@@ -124,7 +124,7 @@
                     <swiper :modules="[Pagination]" :pagination="{ clickable: true }" class="mySwiper">
                         <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-paper.jpg" alt=""><h3>逃離武石監</h3></a></li></swiper-slide>
                         <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-hunted.png" alt=""><h3>恐怖密室</h3></a></li></swiper-slide>
-                        <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-space.png" alt=""><h3>逃出虛空</h3></a></li></swiper-slide>
+                        <swiper-slide><li><a href="#"><img src="/src/assets/img/poster_alien.png" alt=""><h3>逃出虛空</h3></a></li></swiper-slide>
                         <swiper-slide><li><a href="#"><img src="/src/assets/img/banner_comingsoon.png" alt=""><h3>coming soon</h3></a></li></swiper-slide>
                     </swiper>
 

@@ -80,7 +80,7 @@
             <div class="backstage_dashboard">
                 <div class="backstage_daily">
                     <div class="backstage_calendar">
-                        <VCalendar title-position="left" style="width: 100%;" />
+                        <VCalendar title-position="left" style="width: 100%; height: 100%;" />
                     </div>
                     <div class="backstage_booking">
                         
