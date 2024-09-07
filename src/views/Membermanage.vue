@@ -1,9 +1,4 @@
 <script setup>
-import '../assets/js/vue.global';
-import '../assets/css/style.css';
-import TopNavbar from '../components/TopNavbar.vue';
-import Footerbar from '../components/Footerbar.vue';
-import Swal from 'sweetalert2';
 
 </script>
 
@@ -133,7 +128,18 @@ import Swal from 'sweetalert2';
 </template>
 
 <script>
-  export default {
+import '../assets/js/vue.global';
+import '../assets/css/style.css';
+import TopNavbar from '../components/TopNavbar.vue';
+import Footerbar from '../components/Footerbar.vue';
+import Swal from 'sweetalert2';
+
+
+export default {
+    components:{
+      TopNavbar,
+      Footerbar,
+    },
     beforeRouteLeave(to, from, next) {
     // Close SweetAlert when leaving the route
     Swal.close();
@@ -159,7 +165,7 @@ import Swal from 'sweetalert2';
           id: "tab3",
           name: "會員資料修改"
         }
-      ]
+      ],
     };
   },
   methods: {
@@ -228,18 +234,44 @@ import Swal from 'sweetalert2';
       Swal.fire({
       title: "問卷調查",
       html: `
-      
+        <div class="star_block">
+            <span>燒腦指數</span>
+            <span class="star" :class="{'-on': task.star >=  1}" @click="$emit('taskStar',$event , index, 1)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  2}" @click="$emit('taskStar',$event , index, 2)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  3}" @click="$emit('taskStar',$event , index, 3)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  4}" @click="$emit('taskStar',$event , index, 4)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  5}" @click="$emit('taskStar',$event , index, 5)"><i class="fas fa-star"></i></span>
+        </div>
+        <div class="star_block">
+            <span>驚嚇指數</span>
+            <span class="star" :class="{'-on': task.star >=  1}" @click="$emit('taskStar',$event , index, 1)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  2}" @click="$emit('taskStar',$event , index, 2)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  3}" @click="$emit('taskStar',$event , index, 3)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  4}" @click="$emit('taskStar',$event , index, 4)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  5}" @click="$emit('taskStar',$event , index, 5)"><i class="fas fa-star"></i></span>
+        </div>
+        <div class="star_block">
+            <span>推薦指數</span>
+            <span class="star" :class="{'-on': task.star >=  1}" @click="$emit('taskStar',$event , index, 1)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  2}" @click="$emit('taskStar',$event , index, 2)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  3}" @click="$emit('taskStar',$event , index, 3)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  4}" @click="$emit('taskStar',$event , index, 4)"><i class="fas fa-star"></i></span>
+            <span class="star" :class="{'-on': task.star >=  5}" @click="$emit('taskStar',$event , index, 5)"><i class="fas fa-star"></i></span>
+        </div>
       `,
-      icon: "warning",
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "送出"
+      confirmButtonText: "送出",
+      allowOutsideClick:false,
+      allowEscapeKey:false,
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire({
             title: "完成問卷",
             text: "您已完成問券，歡迎再次光臨",
-            icon: "success"
+            icon: "success",
+            allowOutsideClick:false,
+            allowEscapeKey:false,
           });
         }
       });

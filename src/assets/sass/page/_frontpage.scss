@@ -12,6 +12,9 @@
   justify-content: center;
 }
 
+
+
+
 .wrapper-frontpage {
   width: 80%;
   margin: 0 auto;
@@ -178,16 +181,18 @@
 }
 
 // 左側按鈕DIV特效
-.glow-effect-L{
+.glow-effect-L {
   animation: glow02 2s infinite alternate;
   animation-delay: 1s;
-  filter: contrast(150%); /* 增加對比度 */
+  filter: contrast(150%);
+  /* 增加對比度 */
 }
 
 @keyframes glow02 {
   0% {
     box-shadow: 0 0 40px rgba(227, 206, 87, 0.8);
   }
+
   100% {
     box-shadow: 0 0 60px rgb(255, 253, 184, 1);
   }
@@ -298,16 +303,18 @@
 }
 
 // 右側按鈕DIV特效
-.glow-effect-R{
+.glow-effect-R {
   animation: glow01 2s infinite alternate;
   animation-delay: 1s;
-  filter: contrast(150%); /* 增加對比度 */
+  filter: contrast(150%);
+  /* 增加對比度 */
 }
 
 @keyframes glow01 {
   0% {
     box-shadow: 0 0 40px rgba(132, 182, 233, 0.8);
   }
+
   100% {
     box-shadow: 0 0 60px rgb(253, 253, 253, 1);
   }

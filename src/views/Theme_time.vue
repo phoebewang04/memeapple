@@ -9,8 +9,8 @@ import Footerbar from '../components/Footerbar.vue';
 <TopNavbar />
    <!-- banner -->
     <div class="theme_banner">
-    <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
-        width="100%" class="banner_video"></video>
+    <!-- <video src="../assets/img/banner.mp4" playsinline="" autoplay="" muted="" loop="" type="video/mp4" height="100%"
+        width="100%" class="banner_video"></video> -->
 
     <!-- <img src="../assets/img/header.png" alt="" class="banner"> -->
     </div>

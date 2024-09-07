@@ -16,7 +16,7 @@
 }
 
 #wrapper .slogan {
-    width: 75%;
+    width: 81%;
     padding: 80px 0px;
     margin: 0 auto;
     text-align: center;
@@ -26,19 +26,15 @@
 #wrapper .slogan p {
     font-size: map-get($fontsize , h3 );
     color: map-get($colors , danger );
-    line-height: 1.6;
 
 
     @include pad {
         font-size: map-get($fontsize , p );
-        line-height: 1.8;
     }
 
     @include rwd(430px){
         font-size: map-get($fontsize , p );
-        width: 330px;
         margin: 0 auto;
-        line-height: 2.3;
     }
   
 }
@@ -237,9 +233,7 @@
     
 }
 
-.theme .branch_slide {
-    transition: transform 4.5s ease-in-out;
-}
+
 
 .theme li  {
 

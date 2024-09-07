@@ -47,11 +47,11 @@
                     <div class="amount">
                     <select name="" id="people">
                         <option value="">遊戲人數</option>
-                        <option value="">4人</option>
-                        <option value="">5人</option>
-                        <option value="">6人</option>
-                        <option value="">7人</option>
-                        <option value="">8人</option>
+                        <option value="">4 人</option>
+                        <option value="">5 人</option>
+                        <option value="">6 人</option>
+                        <option value="">7 人</option>
+                        <option value="">8 人</option>
                     </select>
                     </div>
                 </div>
@@ -312,12 +312,59 @@ export default {
   width: 520px ;
   height: 375px;
 
+  @media screen and (max-width: 1100px){
+    width: 430px;
+  } 
+
+  @media screen and (max-width: 1015px){
+    width: 380px;
+  } 
+
+  @media screen and (max-width: 1000px){
+    width: 330px;
+  } 
+
+  @media screen and (max-width: 920px){
+    width: 280px;
+  } 
+
   @media screen and (max-width: 820px){
-    width: 700px;
+    width: 630px;
+  } 
+
+  @media screen and (max-width: 768px){
+    width: 586px;
+  } 
+
+  @media screen and (max-width: 680px){
+    width: 520px;
+  } 
+
+  @media screen and (max-width: 590px){
+    width: 452px;
+  } 
+
+  @media screen and (max-width: 540px){
+    width: 415px;
   } 
 
   @media screen and (max-width: 430px) {
-    width: 330px;
+    width: 328px;
+    
+  }
+
+  @media screen and (max-width: 412px) {
+    width: 315px;
+    
+  }
+
+  @media screen and (max-width: 414px) {
+    width: 316px;
+    
+  }
+
+  @media screen and (max-width: 390px) {
+    width: 298px;
     
   }
 }
@@ -369,6 +416,9 @@ export default {
 }
 
 .vc-day{
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    /* margin: 0px 20px; */
     margin-bottom: 10px;
 }
 

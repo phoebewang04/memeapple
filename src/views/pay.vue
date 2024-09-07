@@ -87,9 +87,9 @@
                         </p>
                         <label for="orderDiscount">使用優惠卷</label>
                         <select v-model="orderDiscount" disabled>
-                            <option value="discountA">優惠卷折扣 -50 元</option>
-                            <option value="discountB">優惠卷折扣 -100 元</option>
-                            <option value="discountC">優惠卷折扣 -150 元</option>
+                            <option value="discountA">優惠卷折扣 - 50 元</option>
+                            <option value="discountB">優惠卷折扣 - 100 元</option>
+                            <option value="discountC">優惠卷折扣 - 150 元</option>
                         </select>
                     </div>
 

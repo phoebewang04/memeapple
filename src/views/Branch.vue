@@ -1,11 +1,11 @@
 
-<!-- --------------------------------原始碼---------------------------------------------- -->
 <template>
 
     <TopNavbar />
-        <!-- ----------------------中間段落---------------------- -->
 
     <div id="wrapper"> 
+
+         <!-- ----------------------slogan---------------------- -->
 
         <div class="slogan">
             <p>世界的謎底存在著很多的因果關係，透過一些方式找到其中的答案，這個過程就稱為解謎，而我們剛好是一群熱愛冒險跟喜好解開世界所有謎題的答案的夥伴，把這樣的想法和精神化成實體，邀請你一起加入我們，
@@ -21,6 +21,8 @@
 
         <div id="main">
 
+            <!-- -------------------------台北館------------------------------ -->
+
             <div v-if="currentBranch === 'taipei'">
                 <div class="introduce">
                     <div>
@@ -33,14 +35,16 @@
                     </div>
                 </div>
 
+                <!-- -------------------------台北館 主題展示------------------------------ -->
+
                 <div class="theme">
 
                     <ul>
                         <li @click="leftPage"><i class="fa-solid fa-caret-left"></i></li>
                         <div class="theme_name" >
 
-                            <li v-for="(item, index) in displayedItems" :key="index" class="branch_slide">
-                                <a href="#" @click.prevent= "GoToPreorder(item)" ><img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3></a>
+                            <li v-for="(item, index) in items" :key="index" v-show="showItem(index)" >
+                                <img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3>
                             </li>
 
                         </div>
@@ -48,17 +52,19 @@
                         
                     </ul>
 
+                <!-- -------------------------台北館 手機畫面的swiper------------------------------ -->
 
-                    <swiper :modules="[Pagination]" :pagination="{ clickable: true }" class="mySwiper">
-                        <swiper-slide> <li><a href="#"><img src="../assets/img/banner-hospital.png" alt=""><h3>成都醫院</h3></a></li></swiper-slide>
-                        <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt=""><h3>時光迷宮</h3></a></li></swiper-slide>
-                        <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-dead.jpg" alt=""><h3>末日庇護所</h3></a></li></swiper-slide>
-                        <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-code.png" alt=""><h3>代碼深淵</h3></a></li></swiper-slide>
-
+                    <swiper :spaceBetween="30" :pagination="{ clickable: true,}" :modules="modules" class="mySwiper">
+                        <swiper-slide><li><img src="../assets/img/banner-hospital.png" alt=""><h3>成都醫院</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/banner-mazeofTime.png" alt=""><h3>時光迷宮</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/poster_dead.jpg" alt=""><h3>末日庇護所</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/banner-code.png" alt=""><h3>代碼深淵</h3></li></swiper-slide>
                     </swiper>
 
 
                 </div>
+
+                <!-- -------------------------台北館 聯絡資訊------------------------------ -->
 
                 <div class="location">
 
@@ -66,22 +72,22 @@
 
                         <div class="location_icon">
                             <i class="fa-solid fa-location-dot"></i>
-                            <p> 台北館：<br><br>台北市密逃路88之107號</p>
+                            <p> 台北館<br><br>台北市密逃路88之107號</p>
                         </div>
 
                         <div class="location_icon">
                             <i class="fa-solid fa-envelope"></i>
-                            <p> Email：<br><br>meme9487@gmail.com</p>
+                            <p> Email<br><br>meme9487@gmail.com</p>
                         </div>
 
                         <div class="location_icon">
                             <i class="fa-solid fa-square-phone"></i>
-                            <p> 聯絡電話：<br><br> 09123456789</p>
+                            <p> 聯絡電話<br><br> 09123456789</p>
                         </div>
 
                         <div class="location_icon">
                             <i class="fa-solid fa-user-group"></i>
-                            <p> 客服時間：<br><br> 10：00 - 18：00</p>
+                            <p> 客服時間<br><br> 10：00 - 18：00</p>
                         </div>
 
                     </div>
@@ -95,6 +101,10 @@
                 </div>
             </div>
 
+
+
+            <!-- -------------------------台中館------------------------------ -->
+
             <div v-if="currentBranch === 'taichung'">
                 <div class="introduce">
                     <div>
@@ -107,29 +117,33 @@
                     </div>
                 </div>
 
+                <!-- -------------------------台中館 主題展示------------------------------ -->
+
                 <div class="theme">
 
                     <ul>
                         <li @click="leftPage"><i class="fa-solid fa-caret-left"></i></li>
                         <div class="theme_name" >
-                            <li v-for="(item, index) in displayedItems" :key="index" class="branch_slide">
-                                <a href="#" @click.prevent= "GoToPreorder(item)"><img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3></a>
+                            <li v-for="(item, index) in items" :key="index" v-show="showItem(index)">
+                               <img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3>
                             </li>
                         </div>
                         <li @click="rightPage"><i class="fa-solid fa-caret-right"></i></li>
                         
                     </ul>
 
+                    <!-- -------------------------台中館 手機畫面的swiper------------------------------ -->
 
-                    <swiper :modules="[Pagination]" :pagination="{ clickable: true }" class="mySwiper">
-                        <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-paper.jpg" alt=""><h3>逃離武石監</h3></a></li></swiper-slide>
-                        <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-hunted.png" alt=""><h3>恐怖密室</h3></a></li></swiper-slide>
-                        <swiper-slide><li><a href="#"><img src="/src/assets/img/poster_alien.png" alt=""><h3>逃出虛空</h3></a></li></swiper-slide>
-                        <swiper-slide><li><a href="#"><img src="/src/assets/img/banner_comingsoon.png" alt=""><h3>coming soon</h3></a></li></swiper-slide>
+                    <swiper :spaceBetween="30" :pagination="{ clickable: true,}" :modules="modules" class="mySwiper">
+                        <swiper-slide><li><img src="../assets/img/banner-paper.jpg" alt=""><h3>逃離武石監</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/poster_room.png" alt=""><h3>恐怖密室</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/banner-space.png" alt=""><h3>逃出虛空</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/poster_comingsoon.png" alt=""><h3>coming soon</h3></li></swiper-slide>
                     </swiper>
 
-
                 </div>
+
+                <!-- -------------------------台中館 聯絡資訊------------------------------ -->
 
                 <div class="location">
 
@@ -137,22 +151,22 @@
 
                         <div class="location_icon">
                             <i class="fa-solid fa-location-dot"></i>
-                            <p> 台中館：<br><br>台中市北屯區路黎明路8號</p>
+                            <p> 台中館<br><br>台中市北屯區路黎明路8號</p>
                         </div>
 
                         <div class="location_icon">
                             <i class="fa-solid fa-envelope"></i>
-                            <p> Email：<br><br>meme9487@gmail.com</p>
+                            <p> Email<br><br>meme9487@gmail.com</p>
                         </div>
 
                         <div class="location_icon">
                             <i class="fa-solid fa-square-phone"></i>
-                            <p> 聯絡電話：<br><br> 09123456789</p>
+                            <p> 聯絡電話<br><br> 09123456789</p>
                         </div>
 
                         <div class="location_icon">
                             <i class="fa-solid fa-user-group"></i>
-                            <p> 客服時間：<br><br> 10：00 - 18：00</p>
+                            <p> 客服時間<br><br> 10：00 - 18：00</p>
                         </div>
 
                     </div>
@@ -178,7 +192,7 @@ import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 
-import { Swiper, SwiperSlide } from "swiper/vue";
+import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
@@ -188,34 +202,44 @@ import { Pagination } from 'swiper/modules';
         
         components: {
             TopNavbar,
-            Footerbar
+            Footerbar,
+            Swiper,
+            SwiperSlide,
         },
 
         data (){
             return {
+                modules: [Pagination],
                 currentBranch: 'taipei',
                 activeButton: 'taipei',
                 currentStartIndex: 0,
                 items: [
                     { name: "成都醫院", img: "/src/assets/img/banner-hospital.png", title: "成都醫院" },
                     { name: "時光迷宮", img: "/src/assets/img/banner-mazeofTime.png", title: "時光迷宮" },
-                    { name: "末日庇護所", img: "/src/assets/img/banner-dead.jpg", title: "末日庇護所" },
+                    { name: "末日庇護所", img: "/src/assets/img/poster_dead.jpg", title: "末日庇護所" },
                     { name: "代碼深淵", img: "/src/assets/img/banner-code.png", title: "代碼深淵" },
                     { name: "逃離武石監", img: "/src/assets/img/banner-paper.jpg", title: "逃離武石監"},
-                    { name: "恐怖密室", img: "/src/assets/img/banner-hunted.png", title: "恐怖密室"},
+                    { name: "恐怖密室", img: "/src/assets/img/poster_room.png", title: "恐怖密室"},
                     { name: "逃出虛空", img: "/src/assets/img/banner-space.png", title: "逃出虛空"},
-                    { name: "coming soon", img: "/src/assets/img/banner_comingsoon.png", title: "coming soon"}
+                    { name: "coming soon", img: "/src/assets/img/poster_comingsoon.png", title: "coming soon"}
                 ],
                 itemsPerPage: 3
             };
         },
         computed: {
-            displayedItems() {
-                const baseIndex = this.currentBranch === 'taipei' ? 0 : 4;
-                return this.items.slice(baseIndex + this.currentStartIndex, baseIndex + this.currentStartIndex + this.itemsPerPage);
+            maxIndex () {
+                return Math.floor(this.items.length / this.itemPerPage);
             }
         },
         methods : {
+
+            showItem(index){
+                const baseIndex = this.currentBranch === 'taipei' ? 0 : 4;
+                const startIndex = baseIndex + this.currentStartIndex;
+                const endIndex = startIndex + this.itemsPerPage;
+
+                return index >= startIndex && index < endIndex;
+            },
 
             taipeiBtn (){
                this.currentBranch = 'taipei';
@@ -233,30 +257,12 @@ import { Pagination } from 'swiper/modules';
                     this.currentStartIndex--;
                 }
             },
+
             rightPage (){
-                const maxIndex = this.currentBranch === 'taipei' ? 1 : 1;
+                 const maxIndex = this.currentBranch === 'taipei' ? 1 : 1;
                 if (this.currentStartIndex < maxIndex) {
                     this.currentStartIndex++;
                 }
-            },
-            GoToPreorder (item){
-                let changeImg ;
-                if (item.id === 1){
-                    changeImg = '../assets/img/dead01.png';
-                } else if (item.id === 2){
-                    changeImg = '../assets/img/dead01.png';
-                }else {
-                    changeImg = item.img;
-                }
-
-                this.$router.push({
-                    path: './preorder.vue',
-                    query :{
-                        img :changeImg,
-                        itemName : item.name
-                    }
-                });
-
             }
         }
     };
@@ -281,13 +287,13 @@ import { Pagination } from 'swiper/modules';
        }
     }
 
-    .mySwiper .swiper-slide li a {
+    .mySwiper .swiper-slide li  {
         text-decoration: none;
         color: #292929;
     }
 
 
-    .mySwiper li img {
+    .mySwiper img {
         width: 300px;
         height: 420px;
     }
@@ -308,7 +314,7 @@ import { Pagination } from 'swiper/modules';
 
     ::v-deep .mySwiper .swiper-pagination-bullet {
          background-color: white;
-    }
+    } 
 
     ::v-deep .mySwiper .swiper-pagination {
         @media screen and (max-width: 430px){

@@ -78,10 +78,6 @@ function triggerAnimations() {
 
         <!-- 中央內容 -->
         <section class="frontpage-text">
-          <!-- <div class="frontpage-topic">
-            <h1>命運的骰子已經骰下</h1>
-            <p>歡迎來到 Meme謎因的迷宮</p>
-          </div> -->
           <!-- 中央內容標語 -->
           <div class="frontpage-slogran">
             <span>選擇你的</span>
