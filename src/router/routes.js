@@ -18,6 +18,7 @@ import Membermanage from '../views/Membermanage.vue';
 import Escaperoom from '../views/Escaperoom.vue';
 import pay from '../views/pay.vue';
 import Theme_test from '../views/Theme_test.vue';
+import dead1A2Bgame from '../views/dead1A2Bgame.vue';
 
 
 // 後台相關路由
@@ -76,7 +77,7 @@ const routes = [
     component: Backstage_newsedit
   },
   {
-    path: '/Theme/',
+    path: '/Theme/:id',
     component: Theme
   },
   {
@@ -118,6 +119,10 @@ const routes = [
   {
     path: '/Theme_test/',
     component: Theme_test
+  },
+  {
+    path: '/dead1A2Bgame/',
+    component: dead1A2Bgame
   },
 
 

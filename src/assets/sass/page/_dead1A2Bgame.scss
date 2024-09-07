@@ -1,0 +1,122 @@
+$colorfont:(
+    primary:#100E24,
+    secondary:#FEDA77,
+    scccess:#262B3F,
+    danger:#FFE8BB 
+);
+
+
+$map: (
+    key:value,
+    h2:28px,
+    h3:20px,
+    p:18px
+);
+
+
+// ---------------------------遊戲主畫面-------------------------------------------
+
+.backgroundImg {
+    position: relative;
+}
+
+.backgroundImg  .deadgame1 img{
+    width: 100%;
+}
+
+.deadstar1 img {
+    width: 160px;
+}
+
+.deadstar2 img {
+    width: 130px;
+}
+
+.deadstar3 img {
+    width: 150px;
+}
+.deadstar1 {
+    position: absolute;
+    right: 160px;
+    top: 290px;
+
+    animation: blink 3s infinite;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+.deadstar2 {
+    position: absolute;
+    right: 390px;
+    top: 80px;
+
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.3;
+    }
+}
+
+.deadstar3 {
+    position: absolute;
+    left: 160px;
+    top: 310px;
+
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.6;
+    }
+}
+
+
+.deadBtn {
+    position: absolute;
+    left: 580px;
+    bottom: 120px;
+    cursor: pointer;
+
+    animation-iteration-count: infinite;
+}
+
+.deadBtn img {
+    width: 450px
+}
+
+.deadZombie1 {
+    position: absolute;
+    left: 100px;
+    bottom: 20px;
+}
+
+.deadZombie1 img {
+    width: 330px;
+}
+
+
+.deadZombie2 {
+    position: absolute;
+    right: 80px;
+    bottom: 0px;
+}
+
+.deadZombie2 img {
+    width: 300px;
+}

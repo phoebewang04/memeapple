@@ -10,6 +10,7 @@
     display: none;
 }
 
+
 .scene.active {
     display: block;
 
@@ -105,15 +106,15 @@
 
         @keyframes nextarrow {
             0% {
-                transform: translateY(0px);
+                transform: translateX(0px);
             }
 
             50% {
-                transform: translateY(-5px);
+                transform: translateX(-5px);
             }
 
             100% {
-                transform: translateY(0px);
+                transform: translateX(0px);
             }
         }
     }
@@ -239,6 +240,16 @@ img{
         // transform: rotate(280deg);
 
         cursor: pointer;
+    }
+
+    img[alt="phone"]{
+        width: 2.5%;
+        bottom: 33%;
+        left: 48%;
+        animation-iteration-count: infinite;
+
+        cursor: pointer;
+       
     }
 
     @keyframes chairmove {
