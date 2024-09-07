@@ -2,6 +2,7 @@
 @import url(../css/reset.css);
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC");
 body {
+  background-color: #100E24;
   color: white;
 }
 
@@ -2353,7 +2354,7 @@ p {
 }
 
 #wrapper .slogan {
-  width: 75%;
+  width: 81%;
   padding: 80px 0px;
   margin: 0 auto;
   text-align: center;
@@ -2361,20 +2362,16 @@ p {
 
 #wrapper .slogan p {
   font-size: 24px;
-  line-height: 1.6;
 }
 @media (max-width: 820px) {
   #wrapper .slogan p {
     font-size: 18px;
-    line-height: 1.8;
   }
 }
 @media (max-width: 430px) {
   #wrapper .slogan p {
     font-size: 18px;
-    width: 330px;
     margin: 0 auto;
-    line-height: 2.3;
   }
 }
 
@@ -2567,10 +2564,6 @@ p {
   }
 }
 
-.theme .branch_slide {
-  transition: transform 4.5s ease-in-out;
-}
-
 @media (max-width: 820px) {
   .theme li {
     width: 300px;
@@ -2715,183 +2708,101 @@ p {
   padding-bottom: 20px;
 }
 
-/* ---------------------末日庇護所主題介紹----------------------------- */
-body {
-  background-color: #100E24;
-}
-
-.return {
-  display: flex;
-  margin-left: 40px;
-  margin-top: 20px;
-}
-
-.return a {
-  text-decoration: none;
-  color: white;
-}
-
-.return i {
-  color: white;
-}
-
-.mt {
-  color: white;
-  margin-top: 20px;
-  margin-left: 240px;
-  margin-bottom: 40px;
-}
-
-.zombie_game {
-  border: 1px solid white;
-  width: 900px;
-  height: 500px;
-  margin: 0 auto;
-  margin-bottom: 80px;
+.backgroundImg {
   position: relative;
-  display: none;
 }
 
-#dg_1 {
-  position: absolute;
-  top: 10px;
-  left: 0px;
+.backgroundImg .deadgame1 img {
+  width: 100%;
+}
+
+.deadstar1 img {
+  width: 160px;
+}
+
+.deadstar2 img {
+  width: 130px;
+}
+
+.deadstar3 img {
   width: 150px;
 }
 
-#dg_2 {
+.deadstar1 {
   position: absolute;
-  left: 30px;
-  top: 260px;
-  width: 120px;
-  z-index: 1;
+  right: 160px;
+  top: 290px;
+  animation: blink 3s infinite;
 }
 
-#dg_3 {
-  position: absolute;
-  right: 50px;
-  top: 320px;
-  width: 140px;
-  z-index: 1;
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
 }
-
-#dg_4 {
+.deadstar2 {
   position: absolute;
-  bottom: 0px;
-  width: 902px;
-  height: 500px;
-}
-
-#dg_5 {
-  position: absolute;
-  left: 140px;
-  top: 99px;
-  width: 40px;
-}
-
-#dg_5-1 {
-  position: absolute;
-  right: 100px;
-  top: 140px;
-  width: 40px;
-}
-
-#dg_5-2 {
-  position: absolute;
-  right: 220px;
-  top: 50px;
-  width: 30px;
-}
-
-.zombie_btn {
-  width: 130px;
-  height: 50px;
-  border-radius: 20px;
-  position: absolute;
-  left: 390px;
-  bottom: 150px;
-  color: #B00000;
-  font-size: 50px;
-  font-family: "Acme", sans-serif;
-  font-weight: bold;
-  line-height: 5px;
-}
-
-.zombie_game .text {
-  position: absolute;
-  left: 260px;
+  right: 390px;
   top: 80px;
-  text-align: center;
-  line-height: 0.7;
+  animation: blink 2s infinite;
 }
 
-.zombie_game .p1 {
-  color: white;
-  font-family: "Jersey 10", sans-serif;
-  font-size: 150px;
-  font-weight: 700;
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
 }
-
-.zombie_game .p2 {
-  color: #FEDA77;
-  font-family: "Jersey 10", sans-serif;
-  font-size: 120px;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.zombie_game2 {
-  width: 900px;
-  height: 500px;
-  margin: 0 auto;
-  margin-bottom: 80px;
-  position: relative;
-  border: 1px solid white;
-}
-
-#dg_6 {
+.deadstar3 {
   position: absolute;
-  left: -40px;
-  top: -20px;
-  width: 230px;
+  left: 160px;
+  top: 310px;
+  animation: blink 1s infinite;
 }
 
-#dg_7 {
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.6;
+  }
+}
+.deadBtn {
   position: absolute;
-  right: -20px;
-  top: -20px;
-  width: 140px;
+  left: 580px;
+  bottom: 120px;
+  cursor: pointer;
+  animation-iteration-count: infinite;
 }
 
-#dg_8 {
-  position: absolute;
-  left: -100px;
-  bottom: -20px;
-  width: 370px;
-  z-index: 1;
+.deadBtn img {
+  width: 450px;
 }
 
-#dg_9 {
+.deadZombie1 {
   position: absolute;
-  right: 90px;
-  bottom: 10px;
-  width: 260px;
-  z-index: 1;
+  left: 100px;
+  bottom: 20px;
 }
 
-#dg_11 {
-  position: absolute;
-  right: -40px;
-  bottom: -10px;
-  width: 180px;
-  z-index: 1;
+.deadZombie1 img {
+  width: 330px;
 }
 
-#dg_14 {
+.deadZombie2 {
   position: absolute;
-  right: 0px;
+  right: 80px;
   bottom: 0px;
-  width: 902px;
+}
+
+.deadZombie2 img {
+  width: 300px;
 }
 
 /* --------------------------預定資訊------------------------------------------- */
@@ -3860,12 +3771,12 @@ body {
 }
 @media (max-width: 820px) {
   .preorder_datetime .time {
-    width: 700px;
+    width: 100%;
   }
 }
 @media (max-width: 430px) {
   .preorder_datetime .time {
-    width: 330px;
+    width: 100%;
     height: 440px;
   }
 }
@@ -3914,7 +3825,7 @@ body {
 }
 
 .preorder_datetime .time .amount #people {
-  width: 350px;
+  width: 100%;
   height: 40px;
   border-radius: 12px;
   padding: 10px;
