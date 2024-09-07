@@ -326,7 +326,7 @@ export default {
               </li>
 
               <li class="index-news-li  news-notshow">
-                <a href="#"><img src="/src/assets/img/banner-dead.jpg" alt="">
+                <a href="#"><img src="/src/assets/img/poster_dead.jpg" alt="">
                   <h3>末日庇護所</h3>
                   <p class="index-news-text">
                     世界末日降臨，殭屍橫行，生存成為最大的挑戰。傳說中的安全庇護所是唯一的希望，但位置隱藏在謎團之中。你必須解開線索，找到這處避難所，才能在末日災難中倖存。勇敢尋找，活下去是唯一的選擇。</p>

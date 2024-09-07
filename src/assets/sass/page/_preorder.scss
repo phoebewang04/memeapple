@@ -4,15 +4,6 @@
 #preorder_wrapper {
     width: 90%;
     margin: 0 auto;
-
-    // @include rwd(820px){
-    //     width: 90%;
-    //     margin: 0 auto;
-    // }
-
-    // @include rwd(430px){
-    //     width: 380px;
-    // }
 }
 
 /* --------------------返回------------------------------------ */
@@ -163,11 +154,11 @@
     color: map-get($colors , white );
 
     @include rwd(820px){
-        width: 700px;
-    }
+         width: 100%;
+     }
 
     @include rwd(430px){
-        width: 330px;
+        width: 100%;
         height: 440px;
     }
 
@@ -218,7 +209,7 @@
 }
 
 .preorder_datetime .time .amount #people {
-    width: 350px;
+    width: 100%;
     height: 40px;
     border-radius: 12px;
     padding: 10px;

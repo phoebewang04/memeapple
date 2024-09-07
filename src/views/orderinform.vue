@@ -1,5 +1,4 @@
 
-<!-- --------------------------------原始碼---------------------------------------------- -->
 
 <template>
 
@@ -13,6 +12,8 @@
             <p>返回</p>
         </a>
     </div>
+
+     <!-- ----------------------順序時間圖---------------------- -->
 
     <div class="order_process">
         <div class="order_number">
@@ -37,7 +38,7 @@
         </div>
     </div>
 
-    <!-- /* ----------------------------會員輸入資料----------------------------------------- */ -->
+    <!-- /* ----------------------------會員輸入資料欄位----------------------------------------- */ -->
 
     <div class="order_all">
 
@@ -94,7 +95,7 @@
 
             </div>
 
-            <!-- /* ---------------------------確認報名資料------------------------------------------ */ -->
+            <!-- /* ---------------------------確認報名資料欄位------------------------------------------ */ -->
 
 
             <div class="confrim">
@@ -135,9 +136,9 @@
                     </p>
                     <label for="orderDiscount">使用優惠卷</label>
                     <select name="使用優惠卷" v-model="orderDiscount" @change="selectDiscount">
-                        <option value="discountA">優惠卷折扣 -50 元</option>
-                        <option value="discountB">優惠卷折扣 -100 元</option>
-                        <option value="discountC">優惠卷折扣 -150 元</option>
+                        <option value="discountA">優惠卷折扣 - 50 元</option>
+                        <option value="discountB">優惠卷折扣 - 100 元</option>
+                        <option value="discountC">優惠卷折扣 - 150 元</option>
                     </select>
                 </div>
 
@@ -181,7 +182,6 @@
 
   </div>
 
-  <RouterView></RouterView>
 
   <Footerbar />
 
