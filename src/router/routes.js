@@ -76,7 +76,7 @@ const routes = [
     component: Backstage_newsedit
   },
   {
-    path: '/Theme/',
+    path: '/Theme/:id',
     component: Theme
   },
   {

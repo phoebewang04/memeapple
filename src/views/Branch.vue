@@ -40,7 +40,7 @@
                         <div class="theme_name" >
 
                             <li v-for="(item, index) in displayedItems" :key="index" class="branch_slide">
-                                <a href="#" @click.prevent= "GoToPreorder(item)" ><img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3></a>
+                                <RouterLink :to="`/Theme/${ index + 1 }`"><img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3></RouterLink>
                             </li>
 
                         </div>
@@ -48,9 +48,26 @@
                         
                     </ul>
 
+                    <!-- <RouterLink to="/Theme/1">
+                        <img src="../assets/img/banner-hospital.png" alt="">
+                        <h3>成都醫院</h3>
+                    </RouterLink>
+
+                    <RouterLink to="/Theme/2">
+                        <img src="../assets/img/banner-hospital.png" alt="">
+                        <h3>成都醫院123</h3>
+                    </RouterLink> -->
+
 
                     <swiper :modules="[Pagination]" :pagination="{ clickable: true }" class="mySwiper">
-                        <swiper-slide> <li><a href="#"><img src="../assets/img/banner-hospital.png" alt=""><h3>成都醫院</h3></a></li></swiper-slide>
+                        <!-- <RouterLink to="/Theme/1">
+                            <swiper-slide> 
+                            <li>
+                                <img src="../assets/img/banner-hospital.png" alt="">
+                                <h3>成都醫院</h3>
+                            </li>
+                            </swiper-slide>
+                        </RouterLink> -->
                         <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt=""><h3>時光迷宮</h3></a></li></swiper-slide>
                         <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-dead.jpg" alt=""><h3>末日庇護所</h3></a></li></swiper-slide>
                         <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-code.png" alt=""><h3>代碼深淵</h3></a></li></swiper-slide>
@@ -113,7 +130,7 @@
                         <li @click="leftPage"><i class="fa-solid fa-caret-left"></i></li>
                         <div class="theme_name" >
                             <li v-for="(item, index) in displayedItems" :key="index" class="branch_slide">
-                                <a href="#" @click.prevent= "GoToPreorder(item)"><img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3></a>
+                                <RouterLink :to="`/Theme/${ index + 5 }`"><img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3></RouterLink>
                             </li>
                         </div>
                         <li @click="rightPage"><i class="fa-solid fa-caret-right"></i></li>
