@@ -4,32 +4,50 @@ import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+// import required modules
+import { Pagination, Navigation } from 'swiper/modules';
 
 export default {
   components: {
     TopNavbar,
-    Footerbar
+    Footerbar,
+    Swiper,
+    SwiperSlide,
   },
   data() {
     return {
+      modules: [Pagination, Navigation],
       faqs: [
         {
-          question: "請問可以在開始前增加人數嗎?",
+          question: "請問可以在開始前增加人數嗎？",
           answer: "可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!"
         },
         {
-          question: "請問有心血管疾病適合遊玩嗎?",
+          question: "請問有心血管疾病適合遊玩嗎？",
           answer: "由於本館部分主題具有恐怖成分，且可能需要耗費體力，為了您的身體健康建議與醫生諮詢，並主動告知服務人員，服務人員將會安排安全路線給您！"
         },
         {
-          question: "請問遊戲主題會定期更新嗎?",
+          question: "請問遊戲過程中可以中途退出嗎？",
+          answer: "可以的，如果您感到不適或害怕，可以隨時告知工作人員，我們會協助您安全退出。"
+        },
+        {
+          question: "請問遊戲過程中可以使用手機嗎？",
+          answer: "為了確保遊戲的沉浸感和其他玩家的體驗，我們建議在遊戲過程中不要使用手機。"
+        },
+        {
+          question: "請問遊戲主題會定期更新嗎？",
           answer: "為了確保玩家們每次遊玩體驗皆不同，因此同一遊戲主題關卡配置仍會定期更新配置，而主題也會隨季節推出不同主題！"
         },
         {
-          question: "請問去年的絕體絕命東京殘響主題是否還會再次推出?",
+          question: "請問去年的絕體絕命東京殘響主題是否還會再次推出？",
           answer: "很遺憾該主題已經下架，誠摯推薦您持續關注我們，敬請期待其他主題推出！"
         },
-
       ]
     };
 
@@ -119,11 +137,11 @@ export default {
           <div class="homeeffect-word"># 代碼深淵</div>
           <div class="homeeffect-word"># 成都醫院</div>
           <div class="homeeffect-word"># 恐怖密室</div>
-          <div class="homeeffect-word">怪談逐漸湧入...!</div>
+          <div class="homeeffect-word"># 末日庇護所</div>
           <div class="homeeffect-word"># 時光迷宮</div>
           <div class="homeeffect-word"># 逃離武石監</div>
           <div class="homeeffect-word"># 逃出虛空</div>
-          <div class="homeeffect-word"># 末日庇護所</div>
+          <div class="homeeffect-word">怪談逐漸湧入...!</div>
         </div>
         <!-- 文字區域 -->
         <div class="homepage-text">
@@ -134,15 +152,15 @@ export default {
         <div class="homepage-img">
           <!-- 照片1 -->
           <div class="homepage-card01" data-aos="fade-up" data-aos-delay="100">
-            <router-link to="/Theme/"><img src="/src/assets/img/Index-person1.png" alt="成都醫院"></router-link>
+            <router-link to="/Theme/1"><img src="/src/assets/img/Index-person4.png" alt="成都醫院"></router-link>
           </div>
           <!-- 照片2 -->
           <div class="homepage-card02" data-aos="fade-up" data-aos-delay="200">
-            <router-link to="/Escaperoom/"><img src="/src/assets/img/Index-person2.png" alt="恐怖密室"></router-link>
+            <router-link to="/Theme/6"><img src="/src/assets/img/Index-person5.png" alt="恐怖密室"></router-link>
           </div>
           <!-- 照片3 -->
           <div class="homepage-card03" data-aos="fade-up" data-aos-delay="300">
-            <router-link to="/Theme_Lock/"><img src="/src/assets/img/Index-person3.png" alt="逃離武石監"></router-link>
+            <router-link to="/Theme/5"><img src="/src/assets/img/Index-person6.png" alt="逃離武石監"></router-link>
           </div>
         </div>
       </section>
@@ -155,7 +173,7 @@ export default {
         <section class="brandstory-content">
           <!-- 左側圖片 -->
           <div class="brandstory-img" data-aos="fade-up" data-aos-delay="100">
-            <img src="../assets/img/breadstoryimg.jpg" alt="佛萊迪大戰傑森">
+            <img src="../assets/img/breadstoryimg3.jpg" alt="品牌故事照片">
           </div>
           <!-- 文字區域 -->
           <div class="brandstory-text" data-aos="fade-up" data-aos-delay="200">
@@ -172,7 +190,7 @@ export default {
             <!-- 底部文字 -->
             <div class="brandstory-bottom">
               <p>The Birth of </p>
-              <p>The Meme Room</p>
+              <p>Meme Studio</p>
             </div>
           </div>
         </section>
@@ -204,20 +222,21 @@ export default {
               </div>
 
               <div class="limitlevel-sologan-2" data-aos="fade-up" data-aos-delay="150">
-                <span>「402教室傳來的</span>
+                <span>「教室傳來的</span>
                 <span class="limitlevel-sologanred">神秘激光</span>
                 <span>」</span>
               </div>
 
               <div class="limitlevel-sologan-3" data-aos="fade-up" data-aos-delay="150">
                 <span>「你們能否成功</span>
-                <span class="limitlevel-sologanred">脫離深淵?</span>
+                <span class="limitlevel-sologanred">脫離深淵？</span>
                 <span>」</span>
               </div>
 
               <div class="limitlevel-sologan-4" data-aos="fade-up" data-aos-delay="150">
                 <span>「2024年10月01日</span>
-                <span class="limitlevel-sologanred">預約逃離</span>
+                <span class="limitlevel-sologanred">預約逃離？</span>
+                <span>」</span>
               </div>
             </section>
 
@@ -331,44 +350,47 @@ export default {
       <!-- 首頁第五部分 最新消息-->
       <section class="content-announcement">
         <div class="announcement-content">
-
-          <h3 class="announcement-title" data-aos="fade-up" data-aos-delay="100">— 最新消息 — </h3>
           <ul>
-            <div class="News-swiper-button-prev">
-              <li><i class="fa-solid fa-caret-left"></i></li>
-            </div>
-
             <div class="theme_forindex" data-aos="fade-up" data-aos-delay="150">
-
+              <div class="News-swiper-button-prev">
+                <li><i class="fa-solid fa-caret-left"></i></li>
+              </div>
               <li class="index-news-li">
                 <a href="#"><img src="../assets/img/banner_openning.png" alt="">
-                  <h3>謎因工作室盛大開幕!</h3>
+                  <h3>謎因工作室盛大開幕！</h3>
                   <p class="index-news-text">
-                    「加入我們的謎因密室逃脫，體驗刺激的解謎挑戰，週六和週日下午2點至4點，台北市密逃路88之107號，期待您的參與…！」</p>
+                    預約我們的謎因密室逃脫，體驗刺激解謎挑戰！還有……Read More</p>
                 </a>
               </li>
-
               <li class="index-news-li  news-notshow">
                 <a href="#"><img src="/src/assets/img/banner_teacher.png" alt="">
-                  <h3>教師節特惠!</h3>
+                  <h3>緯育教師專屬特惠！</h3>
                   <p class="index-news-text">
-                    「教師節快樂！感謝緯育老師們無私的奉獻，您們如同燭光，照亮學生的未來。享受我們的50%折扣優惠！」</p>
+                    教師節快樂！感謝緯育老師們無私的奉獻，現在只要……Read More</p>
                 </a>
               </li>
-
               <li class="index-news-li  news-notshow">
-                <a href="#"><img src="/src/assets/img/banner_comingsoon.png" alt="">
-                  <h3>全新主題即將推出!</h3>
+                <a href="#"><img src="/src/assets/img/banner_discount.png" alt="">
+                  <h3>歡慶中秋!</h3>
                   <p class="index-news-text">
-                    「謎因工作室將於2025年推出全新密室逃脫主題，敬請期待。更多驚喜與挑戰，等你來探索！」</p>
+                    謎因工作室隆重推出中秋特惠！四人同行一人免費！還有……Read More</p>
                 </a>
               </li>
+              <div class="News-swiper-button-next">
+                <li><i class="fa-solid fa-caret-right"></i></li>
+              </div>
             </div>
-
-            <div class="News-swiper-button-next">
-              <li><i class="fa-solid fa-caret-right"></i></li>
-            </div>
-          </ul>
+          </ul> 
+          <!-- <h3 class="announcement-title" data-aos="fade-up" data-aos-delay="100">— 最新消息 — </h3>
+          <div class="News-swiper-button-prev"><li><i class="fa-solid fa-caret-left"></i></li></div>
+          <swiper :slidesPerView="1" :spaceBetween="30" :loop="true" :pagination="{ clickable: true, }" :navigation="true" :modules="modules" class="mySwiper">
+            <swiper-slide><li class="index-news-li"><a href="#"><img src="../assets/img/banner_openning.png" alt=""><h3>謎因工作室盛大開幕！</h3><p class="index-news-text">預約我們的謎因密室逃脫，體驗刺激解謎挑戰！還有……Read More</p></a></li></swiper-slide>
+            <swiper-slide><li class="index-news-li  news-notshow"><a href="#"><img src="/src/assets/img/banner_teacher.png" alt=""><h3>緯育教師專屬特惠！</h3><p class="index-news-text">教師節快樂！感謝緯育老師們無私的奉獻，現在只要……Read More</p></a></li></swiper-slide>
+            <swiper-slide><li class="index-news-li  news-notshow"><a href="#"><img src="/src/assets/img/banner_discount.png" alt=""><h3>歡慶中秋!</h3><p class="index-news-text">謎因工作室隆重推出中秋特惠！四人同行一人免費！還有……Read More</p></a></li></swiper-slide>
+          </swiper>
+          <div class="News-swiper-button-next"><li><i class="fa-solid fa-caret-right"></i></li></div> -->
+<!--  -->
+            
 
           <!-- swiper套件 -->
           <!-- <swiper :modules="[Pagination]" :pagination="{ clickable: true }" class="mySwiper">

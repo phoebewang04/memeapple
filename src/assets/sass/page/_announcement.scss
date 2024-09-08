@@ -18,49 +18,8 @@
     }
 }
 
-// 麵包屑
-.announcement-bread {
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: center;
-    // 動畫
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-
-    // border: 1px solid yellow;
-    
-
-    @include pad {
-        margin-bottom: 12px;
-    }
-
-    ul {
-        display: flex;
-    }
-
-    li {
-        margin-right: 8px;
-
-        @include pad {
-            margin-right: 4px;
-            font-size: 14px;
-        }
-    }
-
-    a {
-        color: white;
-        text-decoration: none;
-    }
-}
-
-.announcement-bread.show {
-    opacity: 1;
-    transform: translateX(0);
-}
-
 // 內容區域
-.content-announcement {
+.content-announcement-new {
     display: flex;
 
     @include pad {
@@ -72,7 +31,6 @@
 
 // 左方圖片
 .announcement-img {
-    // border: 1px solid red;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,10 +40,6 @@
     transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 
     @include pad {
-        margin-bottom: 40px;
-    }
-
-    @include rwd(541px) {
         margin-bottom: 20px;
     }
 
@@ -109,7 +63,7 @@
             width: 60%;
         }
 
-        @include rwd(541px) {
+        @include rwd(580px) {
             width: 40%;
         }
 
@@ -126,7 +80,6 @@
 
 // 右方文字
 .announcement-text {
-    // border: 1px solid cyan;
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -157,6 +110,7 @@
 
         @include pad {
             font-size: 20px;
+            text-align: center;
         }
 
         @include phone {
@@ -166,10 +120,6 @@
 
     p {
         @include pad {
-            font-size: 18px;
-        }
-
-        @include rwd(541px) {
             font-size: 16px;
         }
 
@@ -186,7 +136,6 @@
 }
 
 .NewsBack {
-    // border: 1px solid pink;
     display: flex;
     justify-content: center;
     margin-top: 60px;
@@ -196,7 +145,7 @@
     transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 
     @include pad {
-        margin-top: 20px;
+        margin-top: 12px;
     }
 
     @include rwd(541px) {
@@ -204,13 +153,8 @@
     }
 
     @include phone {
-        margin-top: 80px;
+        margin-top: 8px;
     }
-
-    @include rwd(376px) {
-        margin-top: 20px;
-    }
-
 }
 
 .NewsBack.show {

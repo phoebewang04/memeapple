@@ -118,7 +118,6 @@ p {
 @media (max-width: 650px) {
   .top {
     position: relative;
-    height: 100px;
   }
 }
 
@@ -130,10 +129,9 @@ p {
 }
 @media (max-width: 650px) {
   .top img {
-    width: 70px;
+    width: 80%;
     padding: 0;
     margin-left: 20px;
-    height: 100px;
   }
 }
 
@@ -162,7 +160,7 @@ p {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 100px;
+    top: 70px;
     right: 0;
     width: 100%;
     text-align: center;
@@ -170,7 +168,7 @@ p {
     margin: 0;
     background-color: #262B3F;
     font-size: 20px;
-    line-height: 100px;
+    line-height: 60px;
     z-index: 5;
   }
 }
@@ -1007,7 +1005,7 @@ p {
 }
 
 .homepage-effect {
-  width: 50%;
+  width: 45%;
   height: 100px;
   position: relative;
   margin-left: 300px;
@@ -1015,8 +1013,8 @@ p {
 }
 @media (max-width: 1280px) {
   .homepage-effect {
-    width: 65%;
-    margin-left: 20px;
+    width: 60%;
+    margin-left: 40px;
   }
 }
 @media (max-width: 820px) {
@@ -1032,7 +1030,7 @@ p {
 .homepage-effect .homeeffect-word {
   position: absolute;
   animation: homeeffect-word 6s infinite ease-in-out;
-  color: #B00000;
+  color: #C70000;
   font-weight: bold;
   width: 50%;
 }
@@ -1151,6 +1149,9 @@ p {
     width: 95%;
   }
 }
+.brandstory-text .brandstory-sub {
+  width: 40%;
+}
 .brandstory-text .brandstory-title {
   display: flex;
   margin-bottom: 20px;
@@ -1170,7 +1171,7 @@ p {
   }
 }
 .brandstory-text .brandstory-title span:nth-child(2) {
-  color: red;
+  color: #C70000;
 }
 .brandstory-text h3 {
   font-size: 32px;
@@ -1214,7 +1215,7 @@ p {
   }
 }
 .brandstory-text .brandstory-bottom p:nth-child(2) {
-  color: red;
+  color: #C70000;
 }
 
 .content-limitlevel {
@@ -1235,7 +1236,8 @@ p {
   position: absolute;
   left: 0;
   right: 0;
-  height: 50px; /* 羽化效果的高度 */
+  height: 50px;
+  /* 羽化效果的高度 */
   background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(255, 255, 255, 0));
   z-index: 1;
   filter: blur(5px);
@@ -1555,7 +1557,7 @@ p {
 .limitlevel-title span {
   font-size: 32px;
   font-weight: bold;
-  color: red;
+  color: #C70000;
   margin-bottom: 60px;
   position: relative;
   transform: scale(2);
@@ -1803,7 +1805,7 @@ p {
 .howPic1 {
   width: 100%;
   height: auto;
-  background-image: url(/src/assets/img/hospital-1.png);
+  background-image: url(/src/assets/img/mb_hospital_1.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -1812,7 +1814,7 @@ p {
 .howPic2 {
   width: 100%;
   height: auto;
-  background-image: url(/src/assets/img/alien2.png);
+  background-image: url(/src/assets/img/mb_Lock3.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -1821,7 +1823,7 @@ p {
 .howPic3 {
   width: 100%;
   height: auto;
-  background-image: url(/src/assets/img/hospital-3.png);
+  background-image: url(/src/assets/img/mb_hospital_3.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -1896,7 +1898,8 @@ p {
   }
 }
 
-.News-swiper-button-prev li, .News-swiper-button-next li {
+.News-swiper-button-prev li,
+.News-swiper-button-next li {
   font-size: 48px;
   color: #FEDA77;
   cursor: pointer;
@@ -1916,21 +1919,22 @@ p {
 
 .announcement-content {
   margin: 0 auto;
-  width: 90%;
+  width: 96%;
   display: flex;
   flex-direction: column;
 }
 .announcement-content ul {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   /* 左右箭頭和中間內容 */
   align-items: center;
 }
 
 .theme_forindex {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media (max-width: 820px) {
   .theme_forindex {
@@ -1941,20 +1945,21 @@ p {
 
 .index-news-li {
   text-align: center;
+  padding: 20px 0;
   transition: background-color 0.4s ease-in-out;
 }
 .index-news-li:hover {
-  background-color: rgb(184, 117, 186);
-  font-weight: bold;
+  background-color: #221F3C;
 }
 .index-news-li h3 {
   font-size: 24px;
   font-weight: bold;
   color: #FEDA77;
-  margin: 20px 0;
+  margin: 12px 0;
 }
 @media (max-width: 430px) {
   .index-news-li h3 {
+    font-size: 20px;
     margin: 8px 0;
   }
 }
@@ -2028,6 +2033,7 @@ p {
   background-color: #FEDA77;
 }
 .content-p-faq-contenter .index-question {
+  color: #100E24;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -2041,9 +2047,8 @@ p {
   transition: 0.4s;
 }
 .content-p-faq-contenter .index-question:hover {
-  background-color: #db6904;
-  color: #fff;
-  outline: 2px solid white;
+  background-color: #FFE8BB;
+  color: #221F3C;
 }
 @media (max-width: 430px) {
   .content-p-faq-contenter .index-question {
@@ -2058,6 +2063,11 @@ p {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+@media (max-width: 430px) {
+  .content-p-faq-contenter .indexfaq-icon {
+    padding-left: 12px;
+  }
 }
 
 .backstage_body {
@@ -4769,46 +4779,11 @@ p {
   }
 }
 
-.announcement-bread {
-  margin-bottom: 40px;
-  display: flex;
-  justify-content: center;
-  opacity: 0;
-  transform: translateX(-20px);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-@media (max-width: 820px) {
-  .announcement-bread {
-    margin-bottom: 12px;
-  }
-}
-.announcement-bread ul {
-  display: flex;
-}
-.announcement-bread li {
-  margin-right: 8px;
-}
-@media (max-width: 820px) {
-  .announcement-bread li {
-    margin-right: 4px;
-    font-size: 14px;
-  }
-}
-.announcement-bread a {
-  color: white;
-  text-decoration: none;
-}
-
-.announcement-bread.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.content-announcement {
+.content-announcement-new {
   display: flex;
 }
 @media (max-width: 820px) {
-  .content-announcement {
+  .content-announcement-new {
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -4824,11 +4799,6 @@ p {
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 @media (max-width: 820px) {
-  .announcement-img {
-    margin-bottom: 40px;
-  }
-}
-@media (max-width: 541px) {
   .announcement-img {
     margin-bottom: 20px;
   }
@@ -4857,7 +4827,7 @@ p {
     width: 60%;
   }
 }
-@media (max-width: 541px) {
+@media (max-width: 580px) {
   .announcement-img img {
     width: 40%;
   }
@@ -4908,6 +4878,7 @@ p {
 @media (max-width: 820px) {
   .announcement-text h1 {
     font-size: 20px;
+    text-align: center;
   }
 }
 @media (max-width: 430px) {
@@ -4916,11 +4887,6 @@ p {
   }
 }
 @media (max-width: 820px) {
-  .announcement-text p {
-    font-size: 18px;
-  }
-}
-@media (max-width: 541px) {
   .announcement-text p {
     font-size: 16px;
   }
@@ -4946,7 +4912,7 @@ p {
 }
 @media (max-width: 820px) {
   .NewsBack {
-    margin-top: 20px;
+    margin-top: 12px;
   }
 }
 @media (max-width: 541px) {
@@ -4956,12 +4922,7 @@ p {
 }
 @media (max-width: 430px) {
   .NewsBack {
-    margin-top: 80px;
-  }
-}
-@media (max-width: 376px) {
-  .NewsBack {
-    margin-top: 20px;
+    margin-top: 8px;
   }
 }
 
@@ -5125,6 +5086,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 12px;
 }
 .qrcode-place p {
   margin-right: 20px;
@@ -5132,7 +5094,7 @@ p {
 }
 
 .qrcode-line {
-  border: 2px solid white;
+  border: 1px solid white;
   /* 設置左邊框來創建垂直線 */
   height: 32px;
   /* 設置垂直線的高度 */
