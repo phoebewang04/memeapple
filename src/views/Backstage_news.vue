@@ -19,7 +19,7 @@
                     </ul>
                 </nav>
                 <div class="backstage_panel panel_news" style="margin-top: 50px;">
-                    <button class="btn backstage_button">新增</button>
+                    <router-link to="/NewsEdit/"><button class="btn backstage_button">新增</button></router-link>
                 </div>
             </div>
             <div class="backstage_tablezone">
@@ -35,10 +35,10 @@
                     </thead>
                     <tbody class="backstage_tablebody">
                         <tr>
-                            <td id="news_date">2024.8.26</td>
-                            <td id="news_author">郭力仁</td>
-                            <td id="news_title">切版好累啊！</td>
-                            <td id="news_status"><a href="" class="backstage_table_button">隱藏</a></td>
+                            <td id="news_date">2024.9.8</td>
+                            <td id="news_author">劉明讓</td>
+                            <td id="news_title">成都廢院 無法驅散的幽冥殘穢</td>
+                            <td id="news_status"><a href="" class="backstage_table_button">開啟</a></td>
                             <td id="news_action">
                                 <router-link to="/NewsEdit/"><a href="" class="backstage_table_button">編輯</a></router-link>
                                 &ensp;
