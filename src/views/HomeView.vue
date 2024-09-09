@@ -54,7 +54,7 @@ export default {
           img: "/src/assets/img/banner_openning.png",
           name: "盛大開幕",
           title: "謎因工作室盛大開幕！",
-          newstext: "預約我們的謎因密室逃脫，體驗刺激解謎挑戰！還有……Read More"
+          newstext: "謎因工作室已於 2024年6月1日 盛大開幕！誠摯邀請……Read More"
         },
         {
           img: "/src/assets/img/banner_teacher.png",
@@ -427,7 +427,6 @@ export default {
               </div>
             </div>
           </ul>
-
 
           <!-- <ul>
             <div class="theme_forindex" data-aos="fade-up" data-aos-delay="150">

@@ -52,15 +52,15 @@ function triggerAnimations() {
       <!-- 中央內容 -->
       <section class="content-announcement-new">
         <!-- 左邊圖像內容 -->
-        <section class="announcement-img"><img src="../assets/img/AnnouncementPic01.jpg" alt="" class="announcementPic">
+        <section class="announcement-img"><img src="../assets/img/banner_openning.png" alt="" class="announcementPic">
         </section>
 
         <!-- 右邊文字內容 -->
         <section class="announcement-text">
           <h1>謎因工作室盛大開幕！</h1>
-          <p>預約我們的謎因密室逃脫，體驗刺激解謎挑戰！謎因工作室將於2024年10月1日盛大開幕，邀請您一起探索神秘世界！</p>
-          <p>現在就邀請你的親朋好友們！一起體驗我們提供的優良密室逃脫服務，不管是。</p>
-          <p>「看我帶回醫院裡面的消防斧頭，這樣我就可以證明我有來過這邊!」你一臉不屑的擊破被封鎖的窗戶，再次進入月光無法觸及的漆黑深淵，無數的眼睛凝視著你，期待下一隻迷路的羔羊成為祭品。</p>
+          <p>謎因工作室已於 2024年6月1日 盛大開幕！誠摯邀請您來體驗我們全新的密室逃脫挑戰，享受刺激與驚喜的冒險之旅！</p>
+          <p>您需要依靠智慧和團隊合作來找到出口，這是測試解謎能力並與親朋好友共度難忘時光的絕佳機會。無論您是新手還是老手，我們都能為您提供難忘的體驗！</p>
+          <p>為慶祝開幕，我們特別推出限時優惠活動，現在預約，即可享受特別折扣！立即邀請親朋好友，一起來挑戰謎因工作室的密室逃脫吧！</p>
         </section>
       </section>
 

@@ -5,6 +5,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include phone {
+        padding: 80px 0;
+    }
 }
 
 .wrapper-announcement {
@@ -22,7 +26,7 @@
 .content-announcement-new {
     display: flex;
 
-    @include pad {
+    @include rwd(1100px) {
         align-items: center;
         justify-content: center;
         flex-direction: column;
@@ -31,24 +35,22 @@
 
 // 左方圖片
 .announcement-img {
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     // 動畫
     opacity: 0;
     transform: translateX(-50px);
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 
     @include pad {
         margin-bottom: 20px;
     }
 
     @include phone {
-        margin-top: 20px;
-    }
-
-    @include rwd(376px) {
-        margin-bottom: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
     img {
@@ -60,15 +62,15 @@
         }
 
         @include pad {
-            width: 60%;
+            width: 100%;
         }
 
         @include rwd(580px) {
-            width: 40%;
+            width: 80%;
         }
 
         @include phone {
-            width: 50%;
+            width: 80%;
         }
     }
 }
@@ -86,7 +88,7 @@
     // 動畫
     opacity: 0;
     transform: translateX(-80px);
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
 
     @include rwd(1200px) {
         width: 80%;
@@ -107,10 +109,22 @@
     h1 {
         font-size: 32px;
         font-weight: bold;
+        text-align: center;
+        margin-bottom: 40px;
+
+        @include rwd(1100px) {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
 
         @include pad {
             font-size: 20px;
-            text-align: center;
+
+        }
+
+        @include rwd(542px) {
+            margin-top: 12px;
+            margin-bottom: 12px;
         }
 
         @include phone {
@@ -138,7 +152,7 @@
 .NewsBack {
     display: flex;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 40px;
     // 動畫
     opacity: 0;
     transform: translateY(60px);
@@ -153,7 +167,7 @@
     }
 
     @include phone {
-        margin-top: 8px;
+        margin-top: 28px;
     }
 }
 
