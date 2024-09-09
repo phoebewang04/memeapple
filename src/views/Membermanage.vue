@@ -37,15 +37,15 @@
                     <div class="order_cardimg"><img src="../assets/img/banner-lock.jpg" alt=""></div>
                     <div class="order_cardtext">
                       <p>逃離武石監</p>
-                      <p>訂單編號  ABC202408070807</p>
-                      <p>訂購日期  20240807</p>
+                      <p>訂單編號：  ABC202408070807</p>
+                      <p>訂購日期：  2024/08/07</p>
                     </div>
                   </div>
                   <div class="order_cardright">
                     <div class="order_cardstate">
                       <p>訂金</p><P>TWD 2,000元</P>
-                      <button @click="orderquestion()">問卷填寫</button>
-                      <!-- <button @click="ordercancel()">取消訂單</button> -->
+                      <button class="questionwrite" @click="orderquestion()">問卷填寫</button>
+                      <!-- <button class="cancelorder" @click="ordercancel()">取消訂單</button> -->
                     </div>
                   </div>                  
                 </div>
@@ -59,15 +59,15 @@
                     <div class="order_cardimg"><img src="../assets/img/banner-mazeofTime.png" alt=""></div>
                     <div class="order_cardtext">
                       <p>時光迷宮</p>
-                      <p>訂單編號  ABC202409020902</p>
-                      <p>訂購日期  20240902</p>
+                      <p>訂單編號：  ABC202409020902</p>
+                      <p>訂購日期：  2024/09/02</p>
                     </div>
                   </div>
                   <div class="order_cardright">
                     <div class="order_cardstate">
                       <p>訂金</p><P>TWD 2,000元</P>
-                      <!-- <button @click="orderquestion()">問卷填寫</button> -->
-                      <button @click="ordercancel()">取消訂單</button>
+                      <!-- <button class="questionwrite" @click="orderquestion()">問卷填寫</button> -->
+                      <button class="cancelorder" @click="ordercancel()">取消訂單</button>
                     </div>
                   </div>                  
                 </div>
@@ -100,11 +100,9 @@
             <div class="editmember" v-if="currentTab =='tab3'">
               <h3>會員資料修改</h3>
               <ul>
-                <li><h4>帳號</h4></li>
+                <li><h4>帳號：</h4></li>
                 <li><h4>a123456789@yahoo.com.tw</h4></li>
-                <li><h4>E-mail</h4></li>
-                <li><h4>a123456789@yahoo.com.tw</h4></li>
-                <li><h4>生日</h4></li>
+                <li><h4>生日：</h4></li>
                 <li><h4>1987-08-07</h4></li>
                 <li><h4>修改密碼：</h4></li>
                 <li><input type="text" class="editphone" value="********"></li>
@@ -136,7 +134,9 @@ import Swal from 'sweetalert2';
 
 
 export default {
-    components:{
+  props: ["tasks"],
+  emits: ["taskStar"],
+  components:{
       TopNavbar,
       Footerbar,
     },
@@ -144,10 +144,6 @@ export default {
     // Close SweetAlert when leaving the route
     Swal.close();
     next();
-    },
-    components: {
-    TopNavbar,
-    Footerbar,
     },
   data(){
     return {
@@ -166,8 +162,22 @@ export default {
           name: "會員資料修改"
         }
       ],
+      tasks: [
+          // {
+          //   id: "aaa",
+          //   name: "123",
+          //   star: 0,
+          //   editable: false
+          // }
+        ],
     };
   },
+  beforeMount(){
+      let tasks = JSON.parse(localStorage.getItem("tasks"));
+      if(tasks){
+        this.tasks = tasks;
+      }
+    },
   methods: {
     showAlert(){
       Swal.fire({
@@ -179,7 +189,7 @@ export default {
                             <div class="popupcard-qrcode">
                                 <img src="/src/assets/img/qrcode_001.jpg" alt="">
                             </div>
-                            <h1>逃出虛空</h1>
+                            <h1>逃離武石監</h1>
                             <div class="qrcode-time">
                                 <p class="qrcode-y">2024 /</p>
                                 <p class="qrcode-m">08 /</p>
@@ -215,17 +225,21 @@ export default {
       title: "確定要取消訂單？",
       text: "按下確定將取消訂單",
       icon: "warning",
+      color:"#100E24",
       showCancelButton: true,
-      cancelButtonText: "取消",
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "確定"
+      cancelButtonText: "<span class='swalcolor'>取消</span>",
+      confirmButtonColor: "#FCD15B",
+      cancelButtonColor: "#C70000",
+      confirmButtonText: "<span class='swalcolor'>確定</span>"
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire({
             title: "取消訂單",
             text: "您的訂單已取消完成",
-            icon: "success"
+            icon: "success",
+            confirmButtonColor: "#FCD15B",
+            color:"#100E24",
+            confirmButtonText: "<span class='swalcolor'>OK</span>",
           });
         }
       });
@@ -259,11 +273,11 @@ export default {
             <span class="star" :class="{'-on': task.star >=  5}" @click="$emit('taskStar',$event , index, 5)"><i class="fas fa-star"></i></span>
         </div>
       `,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "送出",
+      confirmButtonColor: "#FCD15B",
+      confirmButtonText: "<span class='swalcolor'>送出</span>",
       allowOutsideClick:false,
       allowEscapeKey:false,
+      color:"#100E24",
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire({
@@ -272,10 +286,17 @@ export default {
             icon: "success",
             allowOutsideClick:false,
             allowEscapeKey:false,
+            confirmButtonColor: "#FCD15B",
+            confirmButtonText: "<span class='swalcolor'>OK</span>",
+            color:"#100E24",
           });
         }
       });
     },
+    taskStar(e, i, star){
+        this.tasks[i].star = star;
+        localStorage.setItem("tasks", JSON.stringify(this.tasks));
+      },
   },
 };
 
