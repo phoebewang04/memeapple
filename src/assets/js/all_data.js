@@ -108,7 +108,7 @@ export const all_data = {
             },
             {
                 id: 4,
-                src: new URL("@/assets/img/banner-code.png", import.meta.url).href,
+                src: new URL("@/assets/img/poster_code.png", import.meta.url).href,
                 title: '代碼深淵'
             }
         ],
@@ -219,7 +219,7 @@ export const all_data = {
             },
             {
                 id:4,
-                src: new URL("@/assets/img/banner-code.png", import.meta.url).href,
+                src: new URL("@/assets/img/poster_code.png", import.meta.url).href,
                 title: '代碼深淵'
             },
         ]
@@ -320,7 +320,7 @@ export const all_data = {
             },
             {
                 id:4,
-                src: new URL("@/assets/img/banner-code.png", import.meta.url).href,
+                src: new URL("@/assets/img/poster_code.png", import.meta.url).href,
                 title: '代碼深淵'
             },
         ]
@@ -421,7 +421,7 @@ export const all_data = {
             },
             {
                 // id:4,
-                src: new URL("@/assets/img/banner_comingsoon.png", import.meta.url).href,
+                src: new URL("@/assets/img/3.png", import.meta.url).href,
                 title: '籌備中！Coming Soon！'
             },
         ]
@@ -521,7 +521,7 @@ export const all_data = {
                 title: '逃出虛空'
             },
             {
-                src: new URL("@/assets/img/banner_comingsoon.png", import.meta.url).href,
+                src: new URL("@/assets/img/poster_comingsoon.png", import.meta.url).href,
                 title: '籌備中！Coming Soon！'
             },
         ]
@@ -621,7 +621,7 @@ export const all_data = {
                 title: '恐怖密室'
             },
             {
-                src: new URL("@/assets/img/banner_comingsoon.png", import.meta.url).href,
+                src: new URL("@/assets/img/3.png", import.meta.url).href,
                 title: '籌備中！Coming Soon！'
             },
 

@@ -231,7 +231,7 @@ text-align: center;
 
 
 // -----動畫－殭屍手手-----
-.zombie_hand g:nth-of-type(1) {
+.zombie_bighand{
     transform-origin: bottom center;
 
     animation: grasp 2s infinite ease-in-out;
@@ -255,10 +255,25 @@ text-align: center;
     }
 }
 
-.zombie_hand g:nth-of-type(2) {
-    animation: wavehand 2s infinite ease-in-out;
-
+.zombie_hand g:nth-of-type(1) {
+    animation: wavehand 2.4s infinite ease-in-out;
     @keyframes wavehand {
+
+
+        50% {
+            transform: translate(34px , 5px);
+        }
+        70% {
+            transform: translate(16px , 15px);
+        }
+
+    }
+}
+
+.zombie_hand g:nth-of-type(2) {
+    animation: wavehand2 2s infinite ease-in-out;
+
+    @keyframes wavehand2 {
 
 
         50% {
