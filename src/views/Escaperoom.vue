@@ -1,17 +1,3 @@
-<!-- <script setup>
-import '../assets/css/style.css';
-// import TopNavbar from '../components/TopNavbar.vue';
-// import Footerbar from '../components/Footerbar.vue';
-import secAlert from 'sweetalert2';
-import 'animate.css';
-import interact from 'interactjs';
-import bathHintImg from '../assets/img/bath_hint.png';
-import bedHintImg from '../assets/img/bed_hint.png';
-import bedHintImg2 from '../assets/img/esc_12.png';
-
-
-</script> -->
-
 <template>
   <!-- <TopNavbar /> -->
   <main class="escaperoom_container">
@@ -23,9 +9,9 @@ import bedHintImg2 from '../assets/img/esc_12.png';
     </div>
 
     <!------- 進入畫面 ------->
-    <div ref="scene0" class="scene active esc_enter_container">
+   <div ref="scene0" class="scene active esc_enter_container">
       <div class="esc_start room">
-        <img src="../assets/img/esc_start.png" alt="Enter Screen">
+        <img src="../assets/img/esc_start.png" alt="EnterScreen">
         <div class="esc_start_arrow" @click="nextScene">
           <p>穿過古老墓園，迎面而來的是一座佇立多年、陰森詭異的廢棄醫院。<br>勇者是無法回頭的，唯有在這座迷霧籠罩的醫院內，解開重重謎團，才能找到生存的出口！ <span>&#9654;</span></p>
         </div>
@@ -36,11 +22,11 @@ import bedHintImg2 from '../assets/img/esc_12.png';
     <div ref="scene1" class="scene esc_bathroom_container">
 
       <div class="esc_bath room">
-        <img src="../assets/img/esc_bathroom.png" alt="廁所">
+        <img src="../assets/img/esc_bathroom.png" alt="bathroom">
       </div>
 
       <div class="esc_bath_exit">
-        <img src="../assets/img/esc_02.png" alt="Sewer Outlet" @click="escExit('2014')">
+        <img src="../assets/img/esc_02.png" alt="SewerOutlet" @click="escExit('2014')">
       </div>
 
       <div class="esc_bath_icon">
@@ -58,11 +44,11 @@ import bedHintImg2 from '../assets/img/esc_12.png';
       </div>
 
       <div class="esc_bed_exit">
-        <img src="../assets/img/esc_01.png" alt="Bedroom Door" @click="escExit('NEXIVAN')">
+        <img src="../assets/img/esc_01.png" alt="BedroomDoor" @click="escExit('NEXIVAN')">
       </div>
 
       <div class="esc_bed_icon">
-        <img ref="brokenWindow" src="../assets/img/esc_06.png" alt="Broken Window">
+        <img ref="brokenWindow" src="../assets/img/esc_06.png" alt="BrokenWindow">
         <img ref="window" src="../assets/img/esc_05.png" alt="Window">
         <img ref="shards" src="../assets/img/esc_09.png" alt="Shards">
         <img ref="wastepaper" src="../assets/img/esc_11.png" alt="Wastepaper" @click="paperClues(1)">
@@ -76,6 +62,54 @@ import bedHintImg2 from '../assets/img/esc_12.png';
     </div>
 
 
+    <!------- 辦公室 ------->
+    <div ref="scene3" class="scene esc_office_container">
+
+<div class="esc_office room">
+  <img src="../assets/img/esc_office.png" alt="EscOffice">
+</div>
+
+<!-- Exit Door -->
+<div class="esc_office_exit">
+  <img :class="{ 'bright': isLightOn }" src="../assets/img/esc_01.png" alt="OfficeDoor" @click="escExit('0417')">
+</div>
+
+<div class="esc_office_icon">
+  <!-- 當燈開啟時顯示的元素，並增加亮度 -->
+  <img v-show="isLightOn" :class="{ 'bright': isLightOn }" src="../assets/img/esc_18.png" alt="NumberHint">
+  <img v-show="isLightOn" :class="{ 'bright': isLightOn }" src="../assets/img/esc_20.png" alt="OfficeLock" @click="lockClues('message')">
+  <img v-show="isLightOn" :class="{ 'bright': isLightOn }" src="../assets/img/esc_15.png" alt="ComputerKey">
+  <img v-show="isLightOn" :class="{ 'bright': isLightOn }" src="../assets/img/esc_16.png" alt="Eyes">
+  
+  <!-- 開關燈圖片 -->
+  <img v-show="!isLightOn" src="../assets/img/esc_14.png" alt="LightOff" @click="toggleLight">
+  <img v-show="isLightOn" :class="{ 'bright': isLightOn }" src="../assets/img/esc_13.png" alt="LightOn" @click="toggleLight">
+</div>
+
+</div>
+    <!-- <div ref="scene3" class="sce1ne esc_office_container">
+
+      <div class="esc_office room">
+        <img src="../assets/img/esc_office.png" alt="EscOffice">
+      </div>
+
+      <div class="esc_office_exit">
+        <img :class="{ 'bright': isLightOn }" src="../assets/img/esc_01.png" alt="OfficeDoor" @click="escExit('0417')">
+      </div>
+
+      <div class="esc_office_icon">
+        <img v-show="isLightOn" :class="{ 'bright': isLightOn }" src="../assets/img/esc_18.png" alt="NumberHint" ref="NumberHint">        <img v-show="!isLightOn" src="../assets/img/esc_14.png" alt="LightOff" @click="toggleLight">
+        <img v-show="isLightOn" :class="{ 'bright': isLightOn }" src="../assets/img/esc_13.png" alt="LightOn" @click="toggleLight">
+        <img  v-show="isLightOn":class="{ 'bright': isLightOn }" src="../assets//img/esc_20.png" alt="OfficeLock"
+          @click="lockClues('message')" ref="officeLock">
+        <img :class="{ 'bright': isLightOn }" src="../assets//img/esc_15.png" alt="ComputerKey" ref="ComputerKey">
+        <img :class="{ 'bright': isLightOn }" src="../assets//img/esc_16.png" alt="Eyes" ref="Eyes">
+        <img :class="{ 'bright': isLightOn }" src="../assets//img/esc_17.png" alt="OfficeBox" @click="paperClues(3)">
+        <img :class="{ 'bright': isLightOn }" src="../assets//img/esc_19.png" alt="FoldPaper" @click="paperClues(4)">
+      </div>
+    </div> -->
+
+
   </main>
   <!-- <Footerbar /> -->
 </template>
@@ -84,11 +118,12 @@ import bedHintImg2 from '../assets/img/esc_12.png';
 import '../assets/css/style.css';
 import secAlert from 'sweetalert2';
 import 'animate.css';
-import interact from 'interactjs';
+// import interact from 'interactjs';
 
 
 export default {
-  component: { secAlert, interact },
+  // component: { secAlert, interact },
+  component: { secAlert },
 
   beforeRouteLeave(to, from, next) {
     // Close SweetAlert when leaving the route
@@ -97,17 +132,27 @@ export default {
   },
   data() {
     return {
+
       currentSceneIndex: 0, //當前的場景索引
 
+      //------------辦公室------------
+      isLightOn: false, // 初始狀態：燈關著
+
+      //------------各關提示圖片+文字------------
       clueImages: [
         new URL("@/assets/img/bath_hint.png", import.meta.url).href,
         new URL("@/assets/img/bed_hint.png", import.meta.url).href,
         new URL("@/assets/img/esc_12.png", import.meta.url).href,
+        //辦公室
+        new URL("@/assets/img/office_hint_1.png", import.meta.url).href,
+        new URL("@/assets/img/office_hint_2.png", import.meta.url).href,
+        new URL("@/assets/img/office_hint_3.png", import.meta.url).href,
+
       ],
 
-      clueHint:[
-        '一坨紙團',
-      ]
+      // clueHint: ['一坨紙團',],
+
+
     };
   },
   mounted() {
@@ -117,40 +162,42 @@ export default {
     const shards = this.$refs.shards;
     const wastepaper = this.$refs.wastepaper;
 
-    interact(axe).draggable({
-      listeners: {
-        move(event) {
-          // event.dx 和 dy 是 比起上一次拖動的水平與垂直偏移量
-          const x = (parseFloat(axe.getAttribute('data-x')) || 0) + event.dx;
-          // console.log(x);
-          const y = (parseFloat(axe.getAttribute('data-y')) || 0) + event.dy;
-          // console.log(y);
 
-          // 更新斧頭的位置
-          axe.style.transform = `translate(${x}px, ${y}px)`;
-          axe.setAttribute('data-x', x);
-          axe.setAttribute('data-y', y);
-        },
-        end(event) {
-          const axeRect = axe.getBoundingClientRect();
-          const windowRect = window.getBoundingClientRect();
+    //------------斧頭------------
+    // interact(axe).draggable({
+    //   listeners: {
+    //     move(event) {
+    //       // event.dx 和 dy 是 比起上一次拖動的水平與垂直偏移量
+    //       const x = (parseFloat(axe.getAttribute('data-x')) || 0) + event.dx;
+    //       // console.log(x);
+    //       const y = (parseFloat(axe.getAttribute('data-y')) || 0) + event.dy;
+    //       // console.log(y);
 
-          // 碰撞檢測
-          if (
-            axeRect.right > windowRect.left &&
-            axeRect.left < windowRect.right &&
-            axeRect.bottom > windowRect.top &&
-            axeRect.top < windowRect.bottom
-          ) {
-            axe.style.display = 'none';
-            window.style.display = 'none';
-            brokenWindow.style.display = 'block';
-            shards.style.display = 'block';
-            wastepaper.style.display = 'block';
-          }
-        }
-      }
-    });
+    //       // 更新斧頭的位置
+    //       axe.style.transform = `translate(${x}px, ${y}px)`;
+    //       axe.setAttribute('data-x', x);
+    //       axe.setAttribute('data-y', y);
+    //     },
+    //     end(event) {
+    //       const axeRect = axe.getBoundingClientRect();
+    //       const windowRect = window.getBoundingClientRect();
+
+    //       // 碰撞檢測
+    //       if (
+    //         axeRect.right > windowRect.left &&
+    //         axeRect.left < windowRect.right &&
+    //         axeRect.bottom > windowRect.top &&
+    //         axeRect.top < windowRect.bottom
+    //       ) {
+    //         axe.style.display = 'none';
+    //         window.style.display = 'none';
+    //         brokenWindow.style.display = 'block';
+    //         shards.style.display = 'block';
+    //         wastepaper.style.display = 'block';
+    //       }
+    //     }
+    //   }
+    // });
   }
   ,
   methods: {
@@ -159,7 +206,7 @@ export default {
       if (this.transitioning) return; //避免重複觸發
       this.transitioning = true;
 
-      const scenes = [this.$refs.scene0, this.$refs.scene1, this.$refs.scene2];
+      const scenes = [this.$refs.scene0, this.$refs.scene1, this.$refs.scene2, this.$refs.scene3];
 
       //讓當前場景淡出
       const currentScene = scenes[this.currentSceneIndex];
@@ -195,7 +242,9 @@ export default {
         case 2:
           hintText = '窗戶後面好像有什麼，找看看有沒有可以擊破的東西';
           break;
-
+        case 3:
+          hintText = '這裡好暗，先找看看有沒有電燈吧';
+          break;
         default:
           hintText = '目前沒有可用的提示。';
       }
@@ -231,13 +280,13 @@ export default {
         }, 1000);
       }
     },
-    //------------紙條線索------------
+    //------------提示線索------------
 
     paperClues(index) {
       secAlert.fire({
         imageUrl: this.clueImages[index],
-        // html: '發現了線索！',
-        html: this.clueHint[index],
+        html: '發現了線索！',
+        // html: this.clueHint[index],
         showConfirmButton: false,
       });
     },
@@ -258,7 +307,7 @@ export default {
         preConfirm: (value) => {
           // 動態檢查傳入的正確密碼
           if (value !== correctPwd) {
-            secAlert.showValidationMessage('密碼錯誤，請再次輸入！');
+            secAlert.showValidationMessage('密碼錯誤，亡靈越來越近了！');
             const inputElement = document.querySelector('.swal2-input');
             if (inputElement) {
               inputElement.value = ''; // 清空輸入框
@@ -273,25 +322,46 @@ export default {
     showSuccess() {
       secAlert.fire({
         icon: 'success',
-        title: '正確!',
+        title: '密碼正確!',
         showConfirmButton: false,
         timer: 1000
       });
     },
-    // showError() {
-    //   return secAlert.fire({
-    //     icon: 'error',
-    //     title: '密碼錯誤，請再次輸入。',
-    //     input: 'text',
-    //     showConfirmButton: true,
-    //     confirmButtonText: '確認',
-    //     didOpen: () => {
-    //     // 當彈窗打開時自動清空輸入框
-    //     document.querySelector('.swal2-input').value = '';
-    //   }
-    //   });
-    // },
-    //------------出口------------
+    //------------辦公室：相框lock密碼alert------------
+    lockClues(correctPwd) {
+      secAlert.fire({
+        imageUrl: this.clueImages[5],
+        html: '發現了線索！',
+        showConfirmButton: true,
+        confirmButtonText: "繼續",
+        showCancelButton: true,
+        cancelButtonText: '取消'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.enterPwd(correctPwd).then((pwdResult) => {
+            if (pwdResult.isConfirmed) {
+              this.showSuccess();
+
+              //移除相框
+              const officeLock = this.$refs.officeLock;
+              officeLock.classList.add('animate__animated', 'animate__fadeOut');
+
+              setTimeout(() => {
+                officeLock.remove();
+              }, 1000);
+            }
+          });
+        }
+      });
+    },
+     //------------辦公室：開關燈------------
+    toggleLight() {
+      this.isLightOn = !this.isLightOn;
+    //   this.isLightOn = !this.isLightOn;
+    // this.$refs.lightOff.style.display = 'none';
+    // this.$refs.light.style.display = 'block';
+    },
+    //------------答對密碼，轉下一個場景------------
     escExit(correctPwd) {
       this.enterPwd(correctPwd).then((result) => {
         if (result.isConfirmed) {

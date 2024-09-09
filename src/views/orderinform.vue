@@ -172,10 +172,13 @@
                     </div>
                 </div>
 
-                <div class="button01">
-                    <button class="btn next_btn" :disabled="!dataValid" :class="{active: dataValid}" @click="goToNextPage">下一步</button>
-                </div>
+                <router-link to="/pay/">
+                    <div class="button01">
+                        <button class="btn next_btn" :disabled="!dataValid" :class="{active: dataValid}">下一步</button>
+                    </div>
+                </router-link>
             </div>
+            
         </div>
 
     </div>
@@ -295,7 +298,6 @@ export default {
         goToNextPage (){
             localStorage.setItem ('orderDiscount', this.orderDiscount);
             localStorage.setItem('discountPrice', this.discountPrice);
-            this.$router.push('pay.vue');
         },
         checkValid (){
             this.validName();
