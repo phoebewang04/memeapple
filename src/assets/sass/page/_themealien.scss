@@ -1,74 +1,74 @@
-.alien_bgi{
-    background-image: url('../img/bgi_alien.jpg');
-}
+// .alien_bgi{
+//     background-image: url('../img/bgi_alien.jpg');
+// }
 
-.gameinfo .alien{
-    i{
-        color: map-get($colors, green );
-    }
+// .gameinfo .alien{
+//     i{
+//         color: map-get($colors, green );
+//     }
 
-    p{
-        color: map-get($colors, lightgreen );
-    }
-}
+//     p{
+//         color: map-get($colors, lightgreen );
+//     }
+// }
 
-.iconinfo .alien{
-    padding-bottom: 20px;
+// .iconinfo .alien{
+//     padding-bottom: 20px;
     
-    h3{
-        color: map-get($colors, lightgreen );
-    }
+//     h3{
+//         color: map-get($colors, lightgreen );
+//     }
 
-    p{
-        text-align: center;
-    }
-}
+//     p{
+//         text-align: center;
+//     }
+// }
 
-// 原本用第二個class寫OK，重開後異常，吃到醫院背景圖，無法解決故直接重新命名
-.theme_alien {
-    overflow: hidden;
-    max-width: 1140px;
-    height: 300px;
-    margin: 0 auto;
-    width: 80%;
+// // 原本用第二個class寫OK，重開後異常，吃到醫院背景圖，無法解決故直接重新命名
+// .theme_alien {
+//     overflow: hidden;
+//     max-width: 1140px;
+//     height: 300px;
+//     margin: 0 auto;
+//     width: 80%;
 
-    margin-bottom: 30px;
-    background-position: center;
-    position: relative;
+//     margin-bottom: 30px;
+//     background-position: center;
+//     position: relative;
 
-    &:nth-of-type(1) {
-        background-image: url('../img/alien1.png');
-        background-size: cover;
+//     &:nth-of-type(1) {
+//         background-image: url('../img/alien1.png');
+//         background-size: cover;
 
 
-        .theme_marketing_text {
-            margin: 70px 0 0 70px;
-        }
-    }
+//         .theme_marketing_text {
+//             margin: 70px 0 0 70px;
+//         }
+//     }
 
-    &:nth-of-type(2) {
-        background-image: url('../img/alien2.png');
-        background-size: cover;
+//     &:nth-of-type(2) {
+//         background-image: url('../img/alien2.png');
+//         background-size: cover;
 
-        .theme_marketing_text {
-            text-align: right;
-            margin: 70px 70px 0 0px;
-        }
-    }
+//         .theme_marketing_text {
+//             text-align: right;
+//             margin: 70px 70px 0 0px;
+//         }
+//     }
 
-    &:nth-of-type(3) {
-        background-image: url('../img/alien3.png');
-        background-size: cover;
+//     &:nth-of-type(3) {
+//         background-image: url('../img/alien3.png');
+//         background-size: cover;
 
-        .theme_marketing_text {
-            margin: 70px 0 0 70px;
-        }
-    }
-}
+//         .theme_marketing_text {
+//             margin: 70px 0 0 70px;
+//         }
+//     }
+// }
 
 // 從按鈕後就無法透過css設定，先將顏色寫在html標籤
 
-.btn .alien{
-    background-color: map-get($colors, green );
-}
+// .btn .alien{
+//     background-color: map-get($colors, green );
+// }
 

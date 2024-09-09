@@ -123,9 +123,11 @@
                         </div>
                     </div>
 
-                    <div class="button01">
-                        <button  class=" btn next_btn" :disabled="!dataValid" :class="{active : dataValid}" >下一步</button>
-                    </div>
+                    <router-link to="/Membermanage/">
+                        <div class="button01">
+                            <button  class=" btn next_btn" :disabled="!dataValid" :class="{active : dataValid}" >下一步</button>
+                        </div>
+                    </router-link>
 
                 </div>
 

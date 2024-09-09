@@ -260,9 +260,11 @@
         </div>
 
       
-        <div class="nextstep">
-            <button class="btn next_btn" disabled>下一步</button>
-        </div>
+        <router-link to="/orderinform/"> 
+            <div class="nextstep">
+                <button class="btn next_btn" >下一步</button>
+            </div>
+         </router-link> 
 
         <Footerbar />
     
