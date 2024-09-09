@@ -8,19 +8,19 @@
     <div id="preorder_wrapper">
 
         <div class="preorder_toppic">
-            <img src="/src/assets/img/dead01.png" alt="">
+            <img v-if="theme" :src= "theme.src"  alt="">
         </div>
 
         <div class="preorderinfor_active">
             <h2>活動資訊</h2>
             <div class="infor_list">
                 <ul>
-                    <li>主題名稱：末日庇護所</li>
+                    <li v-if="theme">主題名稱：{{ theme.themeName }}</li>
                     <div class="infor_time">
                         <li><i class="fa-regular fa-clock"></i></li>
                         <li>活動時間 1小時20分鐘</li>
                     </div>
-                    <li>地點：台北市密逃路88之107號</li>
+                    <li v-if="theme">地點：{{ theme.address }}</li>
                 </ul>
             </div>
         </div>
@@ -264,7 +264,7 @@
             <div class="nextstep">
                 <button class="btn next_btn" >下一步</button>
             </div>
-         </router-link> 
+        </router-link> 
 
         <Footerbar />
     
@@ -275,6 +275,7 @@
 <!-- --------------------------------功能程式---------------------------------------------- -->
 
 <script>
+import { all_data } from '../assets/js/all_data.js';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
@@ -289,15 +290,26 @@ export default {
     },
     data (){
         return {
-      attrs: [
-        {
-          key: 'today',
-          highlight: true,
-          dates: new Date(), 
-        },
-      ],
-    };
-  },
+            all_data: all_data,
+            theme: null,
+            
+            attrs: [
+                {
+                key: 'today',
+                highlight: true,
+                dates: new Date(), 
+                },
+        ],
+        };
+    },
+
+    mounted (){
+
+        const themeId = this.$route.params.id;
+        this.theme = this.all_data[themeId]; 
+        // const addressId = this.$route.params.id;
+        // this.address = this.all_data[themeId]; 
+    }
 }
 
 </script>

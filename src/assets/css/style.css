@@ -2705,6 +2705,12 @@ p {
   }
 }
 
+.theme li {
+  transition: transform 0.3s ease;
+}
+.theme li:hover {
+  transform: scale(1.1);
+}
 @media (max-width: 820px) {
   .theme li {
     width: 300px;
@@ -2858,7 +2864,7 @@ p {
 }
 
 .deadstar1 img {
-  width: 160px;
+  width: 20%;
 }
 
 .deadstar2 img {
@@ -2870,9 +2876,10 @@ p {
 }
 
 .deadstar1 {
+  width: 20%;
   position: absolute;
-  right: 160px;
-  top: 290px;
+  right: 20%;
+  top: 0%;
   animation: blink 3s infinite;
 }
 
@@ -4689,7 +4696,7 @@ p {
   }
 }
 
-.zombie_hand g:nth-of-type(1) {
+.zombie_bighand {
   transform-origin: bottom center;
   animation: grasp 2s infinite ease-in-out;
 }
@@ -4708,10 +4715,22 @@ p {
   }
 }
 
-.zombie_hand g:nth-of-type(2) {
-  animation: wavehand 2s infinite ease-in-out;
+.zombie_hand g:nth-of-type(1) {
+  animation: wavehand 2.4s infinite ease-in-out;
 }
 @keyframes wavehand {
+  50% {
+    transform: translate(34px, 5px);
+  }
+  70% {
+    transform: translate(16px, 15px);
+  }
+}
+
+.zombie_hand g:nth-of-type(2) {
+  animation: wavehand2 2s infinite ease-in-out;
+}
+@keyframes wavehand2 {
   50% {
     transform: translateX(15px);
   }
