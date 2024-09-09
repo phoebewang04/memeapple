@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     width: 20%;
+    margin: 50px 0 80px;
     @include pad(){
     display: none;    
     }
@@ -18,6 +19,9 @@
     background-color: map-get($colors, darkblue );
     width: 100%;
     font-size: map-get($fontsize , h4 );
+    &:hover{
+        color: map-get($colors, gold);
+    }
 }
 
 
@@ -107,6 +111,7 @@
     display: flex;
     width: 80%;
     border-right: 1px dashed map-get($colors, black );
+    cursor: pointer;
     @include rwd(520px){
         width: 75%;
     }
@@ -174,6 +179,11 @@
                 border: none;
                 background-color: transparent;
                 font-size: map-get($fontsize, p);
+                cursor: pointer;
+                &:hover{
+                   font-weight: bold;
+                   text-decoration: underline; 
+                }
                 @include rwd(520px){
                     font-size: map-get($fontsize, p1);
                 }
@@ -183,8 +193,26 @@
    
 }
 
+.swalcolor{
+    color: map-get($colors, darkblue );
+    font-weight: bold;
+}
+
+.star_block {
+
+    > span.star {
+      cursor: pointer;
+      display: inline-block;
+      margin-left: 15px;
+    
+      &.-on {
+        color:#FCD15B;
+      }
+    }
+  }
+
 .ordertext_right{
-    width: 20%;
+    width: 15%;
     border: 1px solid map-get($colors, white );
     border-radius: 8px;
     height: 100%;
@@ -193,7 +221,11 @@
     .btn_ordera{
         color: map-get($colors, white);
         background-color: map-get($colors, darkblue );
+        font-size: map-get($fontsize , h4 );
         width: 100%;
+        &:hover{
+            color: map-get($colors, gold);
+        }
         }
     h3{
         border-bottom: 1px solid map-get($colors, white );
@@ -260,7 +292,7 @@
     
     
     .btnedit{
-        margin-right: 10px;
+        margin-right: 10%;
         @include pad(){
         width: 100px;
         font-size: map-get($fontsize, p1 );
