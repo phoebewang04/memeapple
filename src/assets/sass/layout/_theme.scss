@@ -3,6 +3,10 @@
     flex-direction: column;
     gap: 100px;
     margin: 0 auto;
+
+    &.dead{
+        background-image: url('../img/dead.bgpng.png');
+    }
 }
 
 // -----背景圖 start-----
@@ -99,12 +103,16 @@
         margin: 20px 0;
     }
 
-    &.hospital {
+    &.hospital,
+    &.dead,
+    &.Lock {
         color: map-get($colors, yellow);
     }
 
+    &.time {}
+
     &.alien {
-        color: map-get($colors, lightgreen)
+        color: map-get($colors, lightgreen);
     }
 }
 
@@ -116,12 +124,21 @@
     height: 30px;
     margin: 20px 0;
 
-    &.hospital {
+    &.hospital,
+    &.time,
+    &.dead,
+    &.Lock,
+    &.room
+     {
         background-color: map-get($colors, midnight);
     }
 
+    // {
+    //     background-color: map-get($colors, midnight);
+    // }
+
     &.alien {
-        background-color: black;
+        background-color: #D8FFDF;
     }
 }
 
@@ -134,7 +151,23 @@
 
     &.hospital {
         background-color: map-get($colors, darkred);
-        color: map-get($colors, lightyellow);
+    }
+
+    &.time {
+        background-color: map-get($colors, underyellow);
+        color: map-get($colors, black);
+    }
+
+    &.dead{
+        background-color: map-get($colors, underred);
+    }
+
+    &.Lock{
+        background-color: map-get($colors, usered);
+    }
+
+    &.room{
+        background-color: #8DA18D;
     }
 
     &.alien {
@@ -155,7 +188,6 @@
     margin: 0 auto;
     gap: 80px;
     width: 80%;
-
 }
 
 .theme_game {
@@ -171,6 +203,26 @@
 
     &.hospital {
         color: map-get($colors, yellow);
+    }
+
+    &.dead{
+        color: #BF9773;
+    }
+
+    &.Lock{
+        color: #ffa43d;
+    }
+
+    &.room{
+        color: #8DA18D;
+    }
+    
+    &.time {
+        color: map-get($colors, underyellow);
+    }
+
+    &.alien{
+        color: map-get($colors, green);
     }
 }
 
@@ -218,7 +270,7 @@
 
 .theme_icon_img {
     // border: 1px solid white;
-    max-width: 100%;
+    width: 100%;
 
     img {
         max-width: 230px;
@@ -240,18 +292,27 @@
 
     white-space: pre-line;
 
-    &.hospital {
-        text-align: center;
+    text-align: center;
 
-        span {
-            font-size: 20px;
-        }
+    span {
+        font-size: 20px;
+    }
 
+    p{
+        font-size: 18px;
+    }
+    
+    &.hospital,
+    &.Lock {
         p {
-            // border: 1px solid white;
-            font-size: 18px;
             color: map-get($colors, lightyellow);
+        }
+    }
 
+    &.time,
+    &.dead{
+        p{
+            color: map-get($colors, gray);
         }
     }
 
@@ -269,6 +330,7 @@
 }
 
 .theme_marketing {
+    // border: 1px solid salmon;
     overflow: hidden;
     max-width: 1140px;
     height: 400px;
@@ -277,22 +339,18 @@
 
     margin-bottom: 30px;
     background-position: center;
+    background-repeat: no-repeat;
     position: relative;
     white-space: pre-line;
 
 
     &:nth-of-type(1) {
-        // background-image: url('../img/hospital-1.png');
-
-
         .theme_marketing_text {
             margin: 130px 0 0 70px;
         }
     }
 
     &:nth-of-type(2) {
-        // background-image: url('../img/hospital-2.png');
-
         .theme_marketing_text {
             text-align: right;
             margin: 130px 70px 0 0px;
@@ -300,16 +358,12 @@
     }
 
     &:nth-of-type(3) {
-        // background-image: url('../img/hospital-3.png');
-
         .theme_marketing_text {
             margin: 130px 0 0 70px;
         }
     }
 
     &:nth-of-type(4) {
-        // background-image: url('../img/hospital-4.png');
-
         .theme_marketing_text {
             // border: 1px solid white;
             width: 80%;
@@ -340,22 +394,42 @@
 }
 
 .notice_text {
-    &.hospital {
-        border-radius: 24px;
+    border-radius: 24px;
+    padding: 20px;
+    width: 80%;
+    font-weight: 500;
+
+    margin: 0 auto;
+    background: center / cover no-repeat;
+    color: map-get($colors , black );
+
+
+    &.hospital{
+        font-weight: 400;
+        color: map-get($colors , white );
         background: #221F3C;
-        padding: 20px;
-        width: 80%;
-
-
-        margin: 0 auto;
     }
 
-    &.alien {
-        border-radius: 24px;
-        padding: 20px;
-        width: 80%;
+    &.time {
+        background-image: url('../img/noticebg_time.png');
+    }
 
-        margin: 0 auto;
+    &.dead{
+        background-image: url('../img/noticebg_dead.png');
+    }
+
+    &.Lock{
+        background: #FFE8BB;
+    }
+
+    &.room{
+        color: map-get($colors , white );
+        background-image: url('../img/noticebg_room.png');
+    }
+
+    &.alien{
+        color: map-get($colors, lightgreen);
+        background: #221F3C;
     }
 }
 
@@ -416,7 +490,7 @@
             }
 
             h4 {
-                margin-top: 10px;
+                margin-top: 22px;
                 color: map-get($colors, yellow);
             }
         }
@@ -501,7 +575,7 @@
 
     .overview {
         gap: 20px;
-        margin-top: 40px;
+        margin-top: 0px;
     }
 
     .overview_text {

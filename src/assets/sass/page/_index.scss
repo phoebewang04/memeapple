@@ -127,7 +127,7 @@
     // 變數
     $speed: 6s;
     $wordCount: 8;
-    width: 50%;
+    width: 45%;
     height: 100px;
     position: relative;
     margin-left: 300px;
@@ -135,8 +135,8 @@
 
 
     @include rwd(1280px) {
-        width: 65%;
-        margin-left: 20px;
+        width: 60%;
+        margin-left: 40px;
     }
 
     @include pad {
@@ -154,7 +154,7 @@
     .homeeffect-word {
         position: absolute;
         animation: homeeffect-word $speed infinite ease-in-out;
-        color: map-get($colors , underred);
+        color: map-get($colors , usered);
         font-weight: bold;
         width: 50%;
 
@@ -265,7 +265,9 @@
         width: 95%;
     }
 
-    .brandstory-sub {}
+    .brandstory-sub {
+        width: 40%;
+    }
 
     .brandstory-title {
         display: flex;
@@ -285,7 +287,7 @@
         }
 
         span:nth-child(2) {
-            color: red;
+            color: map-get($colors , usered);
         }
     }
 
@@ -333,7 +335,7 @@
         }
 
         p:nth-child(2) {
-            color: red;
+            color: map-get($colors , usered);
         }
     }
 }
@@ -361,7 +363,8 @@
         position: absolute;
         left: 0;
         right: 0;
-        height: 50px; /* 羽化效果的高度 */
+        height: 50px;
+        /* 羽化效果的高度 */
         background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(255, 255, 255, 0));
         z-index: 1;
         filter: blur(5px);
@@ -690,7 +693,7 @@
         $spanSize: 4px;
         font-size: 32px;
         font-weight: bold;
-        color: red;
+        color: map-get($colors, usered);
         margin-bottom: 60px;
         position: relative;
         transform: scale(2);
@@ -989,7 +992,7 @@
 .howPic1 {
     width: 100%;
     height: auto;
-    background-image: url(/src/assets/img/hospital-1.png);
+    background-image: url(/src/assets/img/mb_hospital_1.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -998,7 +1001,7 @@
 .howPic2 {
     width: 100%;
     height: auto;
-    background-image: url(/src/assets/img/alien2.png);
+    background-image: url(/src/assets/img/mb_Lock3.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -1008,7 +1011,7 @@
 .howPic3 {
     width: 100%;
     height: auto;
-    background-image: url(/src/assets/img/hospital-3.png);
+    background-image: url(/src/assets/img/mb_hospital_3.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -1091,8 +1094,9 @@
 }
 
 // 左邊按鈕
-.News-swiper-button-prev,.News-swiper-button-next{
-    li{
+.News-swiper-button-prev,
+.News-swiper-button-next {
+    li {
         font-size: 48px;
         color: #FEDA77;
         cursor: pointer;
@@ -1115,26 +1119,29 @@
 
 .announcement-content {
     margin: 0 auto;
-    width: 90%;
+    width: 96%;
     display: flex;
     flex-direction: column;
 
     ul {
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
-        display: grid;
-        grid-template-columns: auto 1fr auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // display: grid;
+        // grid-template-columns: auto 1fr auto;
         /* 左右箭頭和中間內容 */
         align-items: center;
     }
 }
 
 .theme_forindex {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    // gap: 40px;
     // border: 1px solid gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @include pad {
         gap: 0px;
@@ -1144,20 +1151,21 @@
 
 .index-news-li {
     text-align: center;
+    padding: 20px 0;
     transition: background-color .4s ease-in-out;
 
     &:hover {
-        background-color: rgb(184, 117, 186);
-        font-weight: bold;
+        background-color: map-get($colors, midnight);
     }
 
     h3 {
         font-size: 24px;
         font-weight: bold;
         color: map-get($colors, yellow);
-        margin: 20px 0;
+        margin: 12px 0;
 
         @include phone {
+            font-size: 20px;
             margin: 8px 0;
         }
     }
@@ -1235,6 +1243,7 @@
     }
 
     .index-question {
+        color: map-get($colors, darkblue);
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -1248,9 +1257,8 @@
         transition: 0.4s;
 
         &:hover {
-            background-color: #db6904;
-            color: #fff;
-             outline: 2px solid white;
+            background-color: map-get($colors , lightyellow);
+            color: map-get($colors , midnight);
         }
 
         @include phone {
@@ -1266,5 +1274,11 @@
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.2s ease-out;
+    }
+
+    .indexfaq-icon{
+        @include phone {
+            padding-left: 12px;
+        }
     }
 }

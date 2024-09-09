@@ -10,7 +10,6 @@
     display: none;
 }
 
-
 .scene.active {
     display: block;
 
@@ -148,6 +147,10 @@
         bottom: 2px;
         left: 25%;
         cursor: pointer;
+
+        &:hover {
+            filter: drop-shadow(0 0 3px white);
+        }
     }
 }
 
@@ -159,6 +162,10 @@
         left: 10%;
 
         cursor: pointer;
+
+        &:hover {
+            filter: drop-shadow(0 0 3px white);
+        }
 
     }
 
@@ -175,33 +182,38 @@
 
 .esc_bed {
     position: relative;
-    
+
 }
 
 .esc_bed_exit {
 
-    img[alt="Bedroom Door"] {
+    img[alt="BedroomDoor"] {
         position: absolute;
         width: 10%;
         bottom: 24%;
 
         cursor: pointer;
+
+        &:hover {
+            filter: drop-shadow(0 0 3px white);
+        }
     }
 }
 
 .esc_bed_icon {
-img{
-    position: absolute;
-}
-    img[alt="Broken Window"],
+    img {
+        position: absolute;
+    }
+
+    img[alt="BrokenWindow"],
     img[alt="Window"] {
-       
+
         top: 10%;
         left: 16%;
         width: 13%;
     }
 
-    img[alt="Shards"]{
+    img[alt="Shards"] {
         bottom: 16%;
         left: 16%;
         width: 5%;
@@ -209,30 +221,37 @@ img{
         display: none;
     }
 
-    img[alt="Wastepaper"]{
+    img[alt="Wastepaper"] {
         bottom: 20%;
         left: 23%;
         width: 3%;
 
         display: none;
         cursor: pointer;
-    }
-    img[alt="Wheelchair"]{
-    //    border: 1px solid white;
-     bottom: 4%;
-     right: 3%;
-     width: 24%;
 
-     animation: chairmove 1.5s linear infinite 
+        &:hover {
+            filter: drop-shadow(0 0 3px white);
+        }
     }
-    img[alt="Bed"]{
+
+    img[alt="Wheelchair"] {
+        //    border: 1px solid white;
+        bottom: 4%;
+        right: 3%;
+        width: 24%;
+
+        animation: chairmove 1.5s linear infinite
+    }
+
+    img[alt="Bed"] {
         bottom: 3%;
         right: 28%;
         width: 45%;
         pointer-events: none;
-        
+
     }
-    img[alt="Axe"]{
+
+    img[alt="Axe"] {
         // border: 1px solid white;
         width: 16%;
         bottom: 0%;
@@ -240,29 +259,198 @@ img{
         // transform: rotate(280deg);
 
         cursor: pointer;
+
+        &:hover {
+            filter: drop-shadow(0 0 3px white);
+        }
     }
 
-    img[alt="phone"]{
+    img[alt="phone"] {
         width: 2.5%;
         bottom: 33%;
         left: 48%;
         animation-iteration-count: infinite;
 
         cursor: pointer;
-       
+
+        &:hover {
+            filter: drop-shadow(0 0 3px white);
+        }
+
     }
 
     @keyframes chairmove {
-        0%{
+        0% {
             transform: translateX(0px);
         }
-        50%{
+
+        50% {
             transform: translateX(16px);
-            
+
         }
-        100%{
+
+        100% {
             transform: translateX(0px);
         }
+    }
+}
+
+//-----病房end-----
+
+//-----辦公室start-----
+
+
+.esc_office {
+    position: relative;
+    // background: #0A0C0B;
+    transition: background 0.3s ease;
+
+    // &.bright {
+    //     background: #4E5B54 !important;
+    //   }
+}
+
+.esc_office,
+.esc_office_exit img[alt="OfficeDoor"],
+.esc_office_icon img {
+    filter: brightness(0.5); // 預設亮度為 0.5
+    transition: filter 0.3s ease; // 使亮度過渡更流暢
+}
+
+
+.bright,
+.esc_office.bright {
+    // filter: brightness(0) !important;
+    .esc_office{
+        background: #4E5B54;
+    }
+    // background: #4E5B54; // 當 class "bright" 加入時，亮度變為 1
+}
+
+.hidden {
+    display: none; /* 隱藏元素 */
+  }
+
+.esc_office_exit {
+    img[alt="OfficeDoor"] {
+        position: absolute;
+        width: 10%;
+        bottom: 26%;
+
+        cursor: pointer;
+
+        &:hover {
+            filter: drop-shadow(0 0 3px white) brightness(1); // 滑鼠移上去的效果
+
+        }
+    }
+}
+
+.esc_office_icon {
+
+    img {
+        position: absolute;
+        cursor: pointer;
+    }
+
+    img[alt="OfficeLock"] {
+        // display: none;
+        width: 12%;
+        top: 12%;
+        right: 18%;
+
+        &:hover {
+            filter: drop-shadow(0 0 1.5px white);
+        }
+    }
+
+    img[alt="LightOn"],
+    img[alt="LightOff"] {
+        width: 4%;
+        top: 18%;
+        right: 21%;
+
+        cursor: pointer;
+        &:hover {
+            filter: drop-shadow(0 0 1.5px white);
+        }
+    }
+
+
+    img[alt="ComputerKey"] {
+        width: 20%;
+        top: 30%;
+        left: 42%;
+        cursor: default;
+        // display: none;
+
+    }
+
+    img[alt="Eyes"] {
+        width: 5%;
+        top: 34%;
+        left: 25%;
+        cursor: default;
+        display: none;
+
+        animation: blink 3s ease infinite;
+
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    }
+
+    img[alt="OfficeBox"] {
+        // display: none;
+        width: 18%;
+        bottom: 1%;
+        left: 15%;
+
+        &:hover {
+            filter: drop-shadow(0 0 1.5px white);
+        }
+    }
+
+    img[alt="NumberHint"] {
+        width: 80%;
+        top: 0%;
+        right: 8%;
+        cursor: default;
+        // display: none;
+    }
+
+    img[alt="FoldPaper"] {
+        width: 12%;
+        bottom: 49.8%;
+        right: 20%;
+        // display: none;
+
+        &:hover {
+            filter: drop-shadow(0 0 1.5px white);
+        }
+    }
+
+    .office_switch {
+
+        position: relative;
+
+        .light {
+            width: 60%;
+            text-align: center;
+            position: absolute;
+            top: 120px;
+        }
+
     }
 }
 
@@ -271,9 +459,4 @@ img{
 
 
 
-
-
-
-
-
-//-----病房end-----
+//-----辦公室end-----
