@@ -18,7 +18,12 @@
                         <li><router-link to="/NewsMenage/">最新消息管理</router-link></li>
                     </ul>
                 </nav>
-                <div class="backstage_panel panel_news" style="margin-top: 50px;">
+                <form class="backstage_form" action="">
+                    <input class="backstage_date" type="date">
+                    <input class="backstage_input" type="text" placeholder="關鍵字搜尋">
+                </form>
+                <div class="backstage_panel">
+                    <button type="submit" class="btn backstage_button">查詢</button>
                     <router-link to="/NewsEdit/"><button class="btn backstage_button">新增</button></router-link>
                 </div>
             </div>
