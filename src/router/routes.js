@@ -81,7 +81,7 @@ const routes = [
     component: Theme
   },
   {
-    path: '/preorder/',
+    path: '/Theme/:id/preorder',
     component: preorder
   },
   {

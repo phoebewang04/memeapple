@@ -48,15 +48,65 @@ export default {
           question: "請問去年的絕體絕命東京殘響主題是否還會再次推出？",
           answer: "很遺憾該主題已經下架，誠摯推薦您持續關注我們，敬請期待其他主題推出！"
         },
-      ]
+      ],
+      news: [
+        {
+          img: "/src/assets/img/banner_openning.png",
+          name: "盛大開幕",
+          title: "謎因工作室盛大開幕！",
+          newstext: "預約我們的謎因密室逃脫，體驗刺激解謎挑戰！還有……Read More"
+        },
+        {
+          img: "/src/assets/img/banner_teacher.png",
+          name: "教師專屬特惠",
+          title: "緯育教師專屬特惠！",
+          newstext: "教師節快樂！感謝緯育老師們無私的奉獻，現在只要……Read More"
+        },
+        {
+          img: "/src/assets/img/banner_discount.png",
+          name: "中秋特惠",
+          title: "歡慶中秋！",
+          newstext: "謎因工作室隆重推出中秋特惠！四人同行一人免費！還有……Read More"
+        },
+        {
+          img: "/src/assets/img/banner_comingsoon.png",
+          name: "全新主題",
+          title: "全新主題即將推出！",
+          newstext: "謎因工作室神祕新關卡即將於2024年11月推出！敬請期待！我們……Read More"
+        }
+      ],
+      currentIndex: 0,
+      itemsPerPage: 3 // 初始化 itemsPerPage
     };
 
+  },
+  computed: {
+    visibleNews() {
+      return this.news.slice(this.currentIndex, this.currentIndex + 3);
+    }
   },
   methods: {
     handleScroll() {
       requestAnimationFrame(() => {
         AOS.refresh(); // 刷新 AOS
       });
+    },
+    prevSlide() {
+      if (this.currentIndex > 0) {
+        this.currentIndex--;
+      }
+    },
+    nextSlide() {
+      if (this.currentIndex < this.news.length - this.itemsPerPage) {
+        this.currentIndex++;
+      }
+    },
+    updateItemsPerPage() {
+      if (window.innerWidth < 700) {
+        this.itemsPerPage = 1;
+      } else {
+        this.itemsPerPage = 3;
+      }
     }
   },
   mounted() {
@@ -72,7 +122,8 @@ export default {
       }, 100); // 100ms 延时
     });
 
-
+    this.updateItemsPerPage(); // 初始化時更新 itemsPerPage
+    window.addEventListener('resize', this.updateItemsPerPage); // 監聽窗口大小變化
     const word = document.querySelectorAll('.homeeffect-word');
     // 隨機顏色
     word.forEach(word => {
@@ -80,7 +131,7 @@ export default {
       const randomLeft = Math.random() * 100;
       const randomRight = Math.random() * 100;
       const randomBottom = Math.random() * 100;
-      const randomFontSize = Math.random() * 1.5 + 1;
+      const randomFontSize = Math.random() * 1.25 + 1;
       const randomOpacity = Math.random();
       const randomScale = Math.random() * 2 + 0.25;
 
@@ -120,6 +171,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.updateItemsPerPage); // 移除窗口大小變化監聽
   },
 };
 </script>
@@ -145,8 +197,10 @@ export default {
         </div>
         <!-- 文字區域 -->
         <div class="homepage-text">
-          <h1 data-aos="fade-up">Meme謎因</h1>
-          <h2 data-aos="fade-up" data-aos-delay="100">Unknow Story</h2>
+          <h1 data-aos="fade-up" data-text="Meme謎因">Meme謎因</h1>
+          <p data-aos="fade-up" data-aos-delay="80">謎因工作室邀請勇敢的挑戰者進入神秘世界。</p>
+          <p data-aos="fade-up" data-aos-delay="90">解開謎題背後故事，發掘內心深處智慧與勇氣。</p>
+          <p data-aos="fade-up" data-aos-delay="100">體驗逃脫密室的刺激與成就感。</p>
         </div>
         <!-- 下方圖片區 -->
         <div class="homepage-img">
@@ -186,7 +240,7 @@ export default {
             <h3># 流連忘返的密室逃脫體驗</h3>
             <p class="brandstory-intro">我們希望創造一個需要共同努力、交流和協作的密室逃脫環境，使團隊在挑戰中增進默契和合作精神。</p>
             <p class="brandstory-intro">透過遊戲解謎的過程，不僅增加參與者的動腦能力，更重要的是提升團隊成員之間的互助合作。</p>
-            <p class="brandstory-intro">在這樣的情境下，每個成員的貢獻都至關重要!他們需要共同解決問題、分享資訊，並在壓力下作出決策，這不僅有助於提升個人的思維能力、更能促進團隊的協作和信任。</p>
+            <p class="brandstory-intro">在這樣的情境下，每個成員的貢獻都至關重要！他們需要共同解決問題、分享資訊，並在壓力下作出決策，這不僅有助於提升個人的思維能力、更能促進團隊的協作和信任。</p>
             <!-- 底部文字 -->
             <div class="brandstory-bottom">
               <p>The Birth of </p>
@@ -241,16 +295,16 @@ export default {
             </section>
 
             <section class="limitlevel-img" data-aos="fade-up" data-aos-delay="250">
-              <div class="limitlevel-imgtext">
+              <!-- <div class="limitlevel-imgtext">
                 <p>JavaScriptは大丈夫ですか？</p>
                 <p>青い光が一瞬にして爆発した </p>
                 <p>複雑なコードの異世界。</p>
                 <p>未知の危険と神秘的な力</p>
                 <p>現実世界に戻る方法を見つけてください</p>
                 <p> あるいは永遠に暗号の深淵に迷い込んでしまう</p>
-              </div>
+              </div> -->
 
-              <div class="limitlevel-info">
+              <!-- <div class="limitlevel-info">
                 <div class="limitlevel-level">
                   <font-awesome-icon :icon="['fas', 'lock']" class="limit-icon" />
                   <p>3 Star</p>
@@ -263,10 +317,11 @@ export default {
                   <font-awesome-icon :icon="['far', 'clock']" class="limit-icon" />
                   <p>60 mins</p>
                 </div>
-              </div>
-              <router-link to="/preorder/"><button type="button" class="btn linmit-btn">立即預定</button></router-link>
+              </div> -->
             </section>
           </section>
+          <router-link to="/Branch/" class="linmit-link" data-aos="fade-up" data-aos-delay="50"><button type="button"
+              class="btn linmit-btn">立即預定</button></router-link>
         </section>
       </section>
 
@@ -350,54 +405,64 @@ export default {
       <!-- 首頁第五部分 最新消息-->
       <section class="content-announcement">
         <div class="announcement-content">
+          <p class="howtoplay-title" data-aos="fade-down" data-aos-delay="100">— 最新消息 — </p>
           <ul>
+            <div class="theme_forindex" data-aos="fade-up" data-aos-delay="150">
+              <!-- 輪播按鈕左方 -->
+              <div class="News-swiper-button-prev">
+                <li @click="prevSlide"><i class="fa-solid fa-caret-left"></i></li>
+              </div>
+
+              <li class="index-news-li" v-for="(newsItem, index) in visibleNews" :key="index">
+                <router-link :to="`/Announcement/`">
+                  <img :src="newsItem.img" :alt="newsItem.name">
+                  <h3>{{ newsItem.title }}</h3>
+                  <p class="index-news-text">{{ newsItem.newstext }}</p>
+                </router-link>
+              </li>
+
+              <!-- 輪播按鈕右方 -->
+              <div class="News-swiper-button-next">
+                <li @click="nextSlide"><i class="fa-solid fa-caret-right"></i></li>
+              </div>
+            </div>
+          </ul>
+
+
+          <!-- <ul>
             <div class="theme_forindex" data-aos="fade-up" data-aos-delay="150">
               <div class="News-swiper-button-prev">
                 <li><i class="fa-solid fa-caret-left"></i></li>
               </div>
+              
               <li class="index-news-li">
-                <a href="#"><img src="../assets/img/banner_openning.png" alt="">
+                <router-link to="/Announcement/"><img src="../assets/img/banner_openning.png" alt="">
                   <h3>謎因工作室盛大開幕！</h3>
                   <p class="index-news-text">
                     預約我們的謎因密室逃脫，體驗刺激解謎挑戰！還有……Read More</p>
-                </a>
+                </router-link>
               </li>
+
               <li class="index-news-li  news-notshow">
-                <a href="#"><img src="/src/assets/img/banner_teacher.png" alt="">
+                <router-link to="/Announcement/"><img src="/src/assets/img/banner_teacher.png" alt="">
                   <h3>緯育教師專屬特惠！</h3>
                   <p class="index-news-text">
                     教師節快樂！感謝緯育老師們無私的奉獻，現在只要……Read More</p>
-                </a>
+                  </router-link>
               </li>
+
               <li class="index-news-li  news-notshow">
-                <a href="#"><img src="/src/assets/img/banner_discount.png" alt="">
-                  <h3>歡慶中秋!</h3>
+                <router-link to="/Announcement/"><img src="/src/assets/img/banner_discount.png" alt="">
+                  <h3>歡慶中秋！</h3>
                   <p class="index-news-text">
                     謎因工作室隆重推出中秋特惠！四人同行一人免費！還有……Read More</p>
-                </a>
+                  </router-link>
               </li>
               <div class="News-swiper-button-next">
                 <li><i class="fa-solid fa-caret-right"></i></li>
               </div>
             </div>
-          </ul> 
-          <!-- <h3 class="announcement-title" data-aos="fade-up" data-aos-delay="100">— 最新消息 — </h3>
-          <div class="News-swiper-button-prev"><li><i class="fa-solid fa-caret-left"></i></li></div>
-          <swiper :slidesPerView="1" :spaceBetween="30" :loop="true" :pagination="{ clickable: true, }" :navigation="true" :modules="modules" class="mySwiper">
-            <swiper-slide><li class="index-news-li"><a href="#"><img src="../assets/img/banner_openning.png" alt=""><h3>謎因工作室盛大開幕！</h3><p class="index-news-text">預約我們的謎因密室逃脫，體驗刺激解謎挑戰！還有……Read More</p></a></li></swiper-slide>
-            <swiper-slide><li class="index-news-li  news-notshow"><a href="#"><img src="/src/assets/img/banner_teacher.png" alt=""><h3>緯育教師專屬特惠！</h3><p class="index-news-text">教師節快樂！感謝緯育老師們無私的奉獻，現在只要……Read More</p></a></li></swiper-slide>
-            <swiper-slide><li class="index-news-li  news-notshow"><a href="#"><img src="/src/assets/img/banner_discount.png" alt=""><h3>歡慶中秋!</h3><p class="index-news-text">謎因工作室隆重推出中秋特惠！四人同行一人免費！還有……Read More</p></a></li></swiper-slide>
-          </swiper>
-          <div class="News-swiper-button-next"><li><i class="fa-solid fa-caret-right"></i></li></div> -->
-<!--  -->
-            
-
-          <!-- swiper套件 -->
-          <!-- <swiper :modules="[Pagination]" :pagination="{ clickable: true }" class="mySwiper">
-              <swiper-slide> <li><a href="#"><img src="../assets/img/banner-hospital.png" alt=""><h3>成都醫院</h3></a></li></swiper-slide>
-              <swiper-slide> <li><a href="#"><img src="/src/assets/img/banner-mazeofTime.png" alt=""><h3>時光迷宮</h3></a></li></swiper-slide>
-              <swiper-slide><li><a href="#"><img src="/src/assets/img/banner-dead.jpg" alt=""><h3>末日庇護所</h3></a></li></swiper-slide>
-          </swiper> -->
+          </ul> -->
         </div>
       </section>
 

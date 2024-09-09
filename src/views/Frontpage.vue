@@ -77,13 +77,12 @@ function triggerAnimations() {
       </section>
 
         <!-- 中央內容 -->
-        <section class="frontpage-text">
-          <!-- 中央內容標語 -->
+        <!-- <section class="frontpage-text">
           <div class="frontpage-slogran">
             <span>選擇你的</span>
             <span class="frontpage-slogranred">下一步...</span>
           </div>
-        </section>
+        </section> -->
     </section>
   </main>
 </template>

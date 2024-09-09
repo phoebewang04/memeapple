@@ -81,8 +81,7 @@
             </div>
 
             <!-- -----行銷亮點 end----- -->
-
-            <input type="button" :value="all_data[$route.params.id].btn" class="btn">
+            <RouterLink :to="{ path: `/Theme/${$route.params.id}/preorder` }"><input type="button" :value="all_data[$route.params.id].btn" class="btn"></RouterLink>
         </section>
 
         <section class="notice">
