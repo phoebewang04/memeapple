@@ -45,13 +45,46 @@
                                 <a href="" class="backstage_table_button">刪除</a>
                             </td>
                         </tr>
+                        <tr>
+                            <td id="news_date">2024.9.8</td>
+                            <td id="news_author">郭力仁</td>
+                            <td id="news_title">謎因工作室盛大開幕</td>
+                            <td id="news_status"><a href="" class="backstage_table_button">開啟</a></td>
+                            <td id="news_action">
+                                <router-link to="/NewsEdit/"><a href="" class="backstage_table_button">編輯</a></router-link>
+                                &ensp;
+                                <a href="" class="backstage_table_button">刪除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="news_date">2024.9.8</td>
+                            <td id="news_author">汪宜潔</td>
+                            <td id="news_title">教師節特惠！</td>
+                            <td id="news_status"><a href="" class="backstage_table_button">開啟</a></td>
+                            <td id="news_action">
+                                <router-link to="/NewsEdit/"><a href="" class="backstage_table_button">編輯</a></router-link>
+                                &ensp;
+                                <a href="" class="backstage_table_button">刪除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="news_date">2024.9.8</td>
+                            <td id="news_author">林靖芸</td>
+                            <td id="news_title">全新主題即將推出！</td>
+                            <td id="news_status"><a href="" class="backstage_table_button">開啟</a></td>
+                            <td id="news_action">
+                                <router-link to="/NewsEdit/"><a href="" class="backstage_table_button">編輯</a></router-link>
+                                &ensp;
+                                <a href="" class="backstage_table_button">刪除</a>
+                            </td>
+                        </tr>
                         <tr class="backstage_tfoot">
                             <td colspan="5" style="text-align: center;">
                                 <div class="backstage_pagination">
                                     <div class="backstage_paginator">
-                                        <a href="#">&lt;</a>
+                                        <button @click.prevent="prevPage">&lt;</button>
                                         <input class="backstage_page_input" type="text" value="1">
-                                        <a href="#">&gt;</a>
+                                        <button @click.prevent="nextPage">&gt;</button>
                                     </div>
                                 </div>
                             </td>
