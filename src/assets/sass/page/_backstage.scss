@@ -26,7 +26,7 @@
 .backstage_main{
     background-color: #fff;
     width: 100%;
-    height: calc(100vh - 145px);
+    min-height: calc(100vh - 145px);
     flex-grow: 1;
 }
 
@@ -124,7 +124,8 @@
 
 .backstage_panel{
     // background-color: red;
-    padding: 40px 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: calc(50% + 40px);
     align-self: flex-end;
 
@@ -134,7 +135,7 @@
 
 .backstage_tablezone{
     // background-color: dimgray;
-    margin-top: 40px;
+    margin-top: 20px;
     height: calc(100% - 250px);
     padding-bottom: 12px;
 }
@@ -146,20 +147,25 @@
     margin: 0;
     font-size: 16px;
     width: 80px;
-    color: map-get($colors, mdnightblue);
+    background-color: map-get($colors, darkblue );
+    color: map-get($colors, yellow );
   
     &:active{
       background-color: map-get( $colors, lightyellow );
     }
+
+
   }
 
 .backstage_button:hover{
     border: 1px solid map-get($colors, black );
+    background-color: map-get($colors, yellow );
+    color: map-get($colors, darkblue );
 }
 
 .backstage_table{
     width: 100%;
-    border: 2px solid map-get($colors, yellow );
+    border: 0px;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 4px;
@@ -167,20 +173,33 @@
     font-size: 14px;
 
         th{
-            border: 1px solid map-get($colors, yellow );
-            line-height: 2;
+            background-color: map-get($colors, lightyellow );
+            line-height: 2.3;
+            border: 0;
+            border-bottom: 1px solid map-get($colors, yellow );
         }
+
         td{
-            border: 1px solid map-get($colors, yellow );
-            line-height: 2;
+            line-height: 3;
+            border: 0;
+            border-bottom: 1px solid map-get($colors, yellow );
 
-            a{
-                color: map-get($colors, darkblue);
-
-                :hover{
-                    font-weight: bold;
+            button{
+                background-color: map-get($colors, yellow );
+                border: 0px;
+                border-radius: 4px;
+                font-weight: bold;
+    
+                &:hover{
+                    background-color: map-get($colors, darkblue );
+                    color: map-get($colors, yellow );
+                }
+    
+                &:active{
+                    color: map-get($colors, white );
                 }
             }
+
         }
         .backstage_table_button{
             text-decoration: underline;
@@ -191,7 +210,6 @@
         & .backstage_table_button:hover{
             font-weight: bold;
         }
-
 }
 
 .backstage_tablehead{
@@ -206,10 +224,22 @@
 .backstage_tablebody{
     background-color: map-get($colors, white );
     color: map-get($colors, black );
+
+    // 會員狀態為停權、最新消息為隱藏時換樣式
+    button.banned{
+        background-color: gray;
+        color: map-get($colors , white );
+    }
 }
 
 .backstage_tfoot{
-    background-color: map-get($colors, lightyellow );
+    background-color: map-get($colors, white );
+
+        td{
+            // border-top: 2px solid map-get($colors, yellow );
+            border-top: 2px solid map-get($colors, lightyellow );
+            border-bottom: 0px;
+        }
 }
 
 .backstage_pagination{
@@ -217,6 +247,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 8px;
 
     & p{
         font-size: 12px;
@@ -230,23 +261,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    margin-left: 500px;
+    width: 120px;
+    margin-left: 540px;
+    border-radius: 5rem;
+    justify-content: space-between;
+    padding: 5px;
 
-    & button{
+    & button.paginator_button{
         background: none;
         border: none;
-        background-color: map-get($colors, lightyellow );
         font-size: 18px;
         line-height: 30px;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
     }
     
     & button:hover{
         font-weight: bold;
+        background-color: #343b4d;
+        color: map-get($colors, gold );
     }
 
     & button:active{
-        color: map-get($colors, gold );
+        color: map-get($colors, white );
     }
 }
 
@@ -254,12 +292,12 @@
     font-size: 16px;
     width: 30px;
     margin:0 8px;
-    background-color: map-get( $colors, lightyellow );
     border: 0;
     text-align: center;
+    cursor: pointer
 }
 
 .backstage_page_input:focus{
-    outline: 1px solid map-get($colors, lightblue );
-    background-color: map-get( $colors, white );
+    outline: 0.3px solid map-get($colors, lightblue );
+    border-radius: 4px;
 }

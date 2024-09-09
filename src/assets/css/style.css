@@ -2147,7 +2147,7 @@ p {
 .backstage_main {
   background-color: #fff;
   width: 100%;
-  height: calc(100vh - 145px);
+  min-height: calc(100vh - 145px);
   flex-grow: 1;
 }
 
@@ -2231,7 +2231,8 @@ p {
 }
 
 .backstage_panel {
-  padding: 40px 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
   width: calc(50% + 40px);
   align-self: flex-end;
   display: flex;
@@ -2239,7 +2240,7 @@ p {
 }
 
 .backstage_tablezone {
-  margin-top: 40px;
+  margin-top: 20px;
   height: calc(100% - 250px);
   padding-bottom: 12px;
 }
@@ -2251,6 +2252,8 @@ p {
   margin: 0;
   font-size: 16px;
   width: 80px;
+  background-color: #100E24;
+  color: #FEDA77;
 }
 .backstage_button:active {
   background-color: #FFE8BB;
@@ -2258,11 +2261,13 @@ p {
 
 .backstage_button:hover {
   border: 1px solid #292929;
+  background-color: #FEDA77;
+  color: #100E24;
 }
 
 .backstage_table {
   width: 100%;
-  border: 2px solid #FEDA77;
+  border: 0px;
   border-collapse: separate;
   border-spacing: 0;
   border-radius: 4px;
@@ -2270,18 +2275,28 @@ p {
   font-size: 14px;
 }
 .backstage_table th {
-  border: 1px solid #FEDA77;
-  line-height: 2;
+  background-color: #FFE8BB;
+  line-height: 2.3;
+  border: 0;
+  border-bottom: 1px solid #FEDA77;
 }
 .backstage_table td {
-  border: 1px solid #FEDA77;
-  line-height: 2;
+  line-height: 3;
+  border: 0;
+  border-bottom: 1px solid #FEDA77;
 }
-.backstage_table td a {
-  color: #100E24;
-}
-.backstage_table td a :hover {
+.backstage_table td button {
+  background-color: #FEDA77;
+  border: 0px;
+  border-radius: 4px;
   font-weight: bold;
+}
+.backstage_table td button:hover {
+  background-color: #100E24;
+  color: #FEDA77;
+}
+.backstage_table td button:active {
+  color: white;
 }
 .backstage_table .backstage_table_button {
   text-decoration: underline;
@@ -2305,9 +2320,17 @@ p {
   background-color: white;
   color: #292929;
 }
+.backstage_tablebody button.banned {
+  background-color: gray;
+  color: white;
+}
 
 .backstage_tfoot {
-  background-color: #FFE8BB;
+  background-color: white;
+}
+.backstage_tfoot td {
+  border-top: 2px solid #FFE8BB;
+  border-bottom: 0px;
 }
 
 .backstage_pagination {
@@ -2315,6 +2338,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 8px;
 }
 .backstage_pagination p {
   font-size: 12px;
@@ -2326,35 +2350,42 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  margin-left: 500px;
+  width: 120px;
+  margin-left: 540px;
+  border-radius: 5rem;
+  justify-content: space-between;
+  padding: 5px;
 }
-.backstage_paginator button {
+.backstage_paginator button.paginator_button {
   background: none;
   border: none;
-  background-color: #FFE8BB;
   font-size: 18px;
   line-height: 30px;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
 }
 .backstage_paginator button:hover {
   font-weight: bold;
+  background-color: #343b4d;
+  color: #FCD15B;
 }
 .backstage_paginator button:active {
-  color: #FCD15B;
+  color: white;
 }
 
 .backstage_page_input {
   font-size: 16px;
   width: 30px;
   margin: 0 8px;
-  background-color: #FFE8BB;
   border: 0;
   text-align: center;
+  cursor: pointer;
 }
 
 .backstage_page_input:focus {
-  outline: 1px solid #262B3F;
-  background-color: white;
+  outline: 0.3px solid #262B3F;
+  border-radius: 4px;
 }
 
 .bindex_wrapper {
@@ -2426,6 +2457,9 @@ p {
 }
 .backstage_booking a:hover {
   color: #4f71a8;
+}
+.backstage_booking a:active {
+  color: #FEDA77;
 }
 
 .dashboard_table {
@@ -4118,6 +4152,15 @@ p {
 .backstage_news_preview .backstage_panel {
   margin-left: auto;
 }
+.backstage_news_preview .backstage_panel button {
+  color: #100E24;
+  background-color: #FEDA77;
+}
+.backstage_news_preview .backstage_panel button:hover {
+  background-color: #100E24;
+  color: #FEDA77;
+  border: 0.5px solid #FCD15B;
+}
 
 .backstage_news_content {
   width: 1200px;
@@ -4151,6 +4194,7 @@ p {
 }
 
 .panel_news {
+  width: 1200px;
   justify-content: end;
 }
 

@@ -244,9 +244,9 @@
                             <td colspan="12" style="text-align: center;">
                                 <div class="backstage_pagination">
                                     <div class="backstage_paginator">
-                                        <button @click.prevent="prevPage">&lt;</button>
+                                        <button class="paginator_button" @click.prevent="prevPage">&lt;</button>
                                         <input class="backstage_page_input" type="text" v-model="pageInput" @blur="handleBlur">
-                                        <button @click.prevent="nextPage">&gt;</button>
+                                        <button class="paginator_button" @click.prevent="nextPage">&gt;</button>
                                     </div>
                                     <p>共有 {{ objArray.length }} 筆，總計 {{ totalPages }} 頁 </p>   
                                 </div>

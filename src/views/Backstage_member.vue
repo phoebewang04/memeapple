@@ -182,18 +182,20 @@
                             <td id="member_phone">{{ item.PHONE }}</td>
                             <td id="member_status">
                                 <!-- 根據狀態顯示對應狀態資訊 -->
-                                <a href="" class="backstage_table_button" v-if="item.STATUS == '0'">正常</a>
-                                <a href="" class="backstage_table_button" v-if="item.STATUS == '1'">停權</a>
+                                <button v-if="item.STATUS == '0'">正常</button>
+                                <button v-if="item.STATUS == '1'" class="banned">停權</button>
                             </td>
-                            <td id="member_action"><a href="" class="backstage_table_button">檢視訂單</a></td>
+                            <td id="member_action">
+                                <button>檢視訂單</button>
+                            </td>
                         </tr>
                         <tr class="backstage_tfoot">
                             <td colspan="6" style="text-align: center;">
                                 <div class="backstage_pagination">
                                     <div class="backstage_paginator">
-                                        <button @click.prevent="prevPage">&lt;</button>
+                                        <button class="paginator_button" @click.prevent="prevPage">&lt;</button>
                                         <input class="backstage_page_input" type="text" v-model="pageInput" @blur="handleBlur">
-                                        <button @click.prevent="nextPage">&gt;</button>
+                                        <button class="paginator_button" @click.prevent="nextPage">&gt;</button>
                                     </div>
                                     <p>共有 {{ objArray.length }} 筆，總計 {{ totalPages }} 頁 </p>        
                                 </div>                                

@@ -43,65 +43,77 @@
                             <td id="news_date">2024.9.8</td>
                             <td id="news_author">劉明讓</td>
                             <td id="news_title">成都廢院 無法驅散的幽冥殘穢</td>
-                            <td id="news_status"><a href="" class="backstage_table_button">開啟</a></td>
+                            <td id="news_status">
+                                <button @click="" class="banned">隱藏</button>
+                            </td>
                             <td id="news_action">
-                                <router-link to="/NewsEdit/"><a href="" class="backstage_table_button">編輯</a></router-link>
+                                <button @click="">編輯</button>
                                 &ensp;
-                                <a href="" class="backstage_table_button">刪除</a>
+                                <button @click="">刪除</button>
                             </td>
                         </tr>
                         <tr>
                             <td id="news_date">2024.9.8</td>
                             <td id="news_author">郭力仁</td>
                             <td id="news_title">謎因工作室盛大開幕</td>
-                            <td id="news_status"><a href="" class="backstage_table_button">開啟</a></td>
+                            <td id="news_status">
+                                <button @click="">開啟</button>
+                            </td>
                             <td id="news_action">
-                                <router-link to="/NewsEdit/"><a href="" class="backstage_table_button">編輯</a></router-link>
+                                <button @click="">編輯</button>
                                 &ensp;
-                                <a href="" class="backstage_table_button">刪除</a>
+                                <button @click="">刪除</button>
                             </td>
                         </tr>
                         <tr>
                             <td id="news_date">2024.9.8</td>
                             <td id="news_author">汪宜潔</td>
                             <td id="news_title">教師節特惠！</td>
-                            <td id="news_status"><a href="" class="backstage_table_button">開啟</a></td>
+                            <td id="news_status">
+                                <button @click="">開啟</button>
+                            </td>
                             <td id="news_action">
-                                <router-link to="/NewsEdit/"><a href="" class="backstage_table_button">編輯</a></router-link>
+                                <button @click="">編輯</button>
                                 &ensp;
-                                <a href="" class="backstage_table_button">刪除</a>
+                                <button @click="">刪除</button>
                             </td>
                         </tr>
                         <tr>
                             <td id="news_date">2024.9.8</td>
                             <td id="news_author">林靖芸</td>
                             <td id="news_title">全新主題即將推出！</td>
-                            <td id="news_status"><a href="" class="backstage_table_button">開啟</a></td>
+                            <td id="news_status">
+                                <button @click="">開啟</button>
+                            </td>
                             <td id="news_action">
-                                <router-link to="/NewsEdit/"><a href="" class="backstage_table_button">編輯</a></router-link>
+                                <button @click="">編輯</button>
                                 &ensp;
-                                <a href="" class="backstage_table_button">刪除</a>
+                                <button @click="">刪除</button>
                             </td>
                         </tr>
                         <tr>
                             <td id="news_date">2024.9.8</td>
                             <td id="news_author">黃啓祥</td>
                             <td id="news_title">歡慶中秋！</td>
-                            <td id="news_status"><a href="" class="backstage_table_button">開啟</a></td>
+                            <td id="news_status">
+                                <button @click="">開啟</button>
+                            </td>
                             <td id="news_action">
-                                <router-link to="/NewsEdit/"><a href="" class="backstage_table_button">編輯</a></router-link>
+                                <button @click="">編輯</button>
                                 &ensp;
-                                <a href="" class="backstage_table_button">刪除</a>
+                                <button @click="">刪除</button>
                             </td>
                         </tr>
                         <tr class="backstage_tfoot">
                             <td colspan="5" style="text-align: center;">
                                 <div class="backstage_pagination">
                                     <div class="backstage_paginator">
-                                        <button @click.prevent="prevPage">&lt;</button>
+                                        <button class="paginator_button" @click.prevent="prevPage">&lt;</button>
                                         <input class="backstage_page_input" type="text" value="1">
-                                        <button @click.prevent="nextPage">&gt;</button>
+                                        <button class="paginator_button" @click.prevent="nextPage">&gt;</button>
                                     </div>
+                                    <p>共有 5 筆，總計 1 頁 </p>   
+
                                 </div>
                             </td>
                         </tr>

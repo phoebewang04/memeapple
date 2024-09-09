@@ -80,6 +80,10 @@
     a:hover{
         color: #4f71a8;
     }
+
+    a:active{
+        color: map-get($colors, yellow );
+    }
 }
 
 .dashboard_table{

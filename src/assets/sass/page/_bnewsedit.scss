@@ -67,6 +67,17 @@
 
     & .backstage_panel{
         margin-left: auto;
+
+        & button{
+            color: map-get($colors, darkblue );
+            background-color: map-get($colors, yellow );
+
+            &:hover{
+                background-color: map-get($colors, darkblue );
+                color: map-get($colors, yellow );
+                border: 0.5px solid map-get($colors, gold );
+            }
+        }
     }
 }
 
