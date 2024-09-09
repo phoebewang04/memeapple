@@ -56,7 +56,7 @@
 
                     <swiper :spaceBetween="30" :pagination="{ clickable: true,}" :modules="modules" class="mySwiper">
                         <swiper-slide><li><img src="../assets/img/poster_hospital.png" alt=""><h3>成都醫院</h3></li></swiper-slide>
-                        <swiper-slide><li><img src="../assets/img/poster_mazeofTime.png" alt=""><h3>時光迷宮</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/poster_time.png" alt=""><h3>時光迷宮</h3></li></swiper-slide>
                         <swiper-slide><li><img src="../assets/img/poster_dead.jpg" alt=""><h3>末日庇護所</h3></li></swiper-slide>
                         <swiper-slide><li><img src="../assets/img/poster_code.png" alt=""><h3>代碼深淵</h3></li></swiper-slide>
                     </swiper>
@@ -135,9 +135,9 @@
                     <!-- -------------------------台中館 手機畫面的swiper------------------------------ -->
 
                     <swiper :spaceBetween="30" :pagination="{ clickable: true,}" :modules="modules" class="mySwiper">
-                        <swiper-slide><li><img src="../assets/img/banner-paper.jpg" alt=""><h3>逃離武石監</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/poster_Lock.jpg" alt=""><h3>逃離武石監</h3></li></swiper-slide>
                         <swiper-slide><li><img src="../assets/img/poster_room.png" alt=""><h3>恐怖密室</h3></li></swiper-slide>
-                        <swiper-slide><li><img src="../assets/img/banner-space.png" alt=""><h3>逃出虛空</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/poster_alien.png" alt=""><h3>逃出虛空</h3></li></swiper-slide>
                         <swiper-slide><li><img src="../assets/img/poster_comingsoon.png" alt=""><h3>coming soon</h3></li></swiper-slide>
                     </swiper>
 
