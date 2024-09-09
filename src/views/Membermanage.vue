@@ -34,7 +34,7 @@
                     <!-- <p class="noneuse">未使用</p> -->
                   </div>
                   <div class="order_cardleft" @click="showAlert()">
-                    <div class="order_cardimg"><img src="../assets/img/banner-paper.jpg" alt=""></div>
+                    <div class="order_cardimg"><img src="../assets/img/banner-lock.jpg" alt=""></div>
                     <div class="order_cardtext">
                       <p>逃離武石監</p>
                       <p>訂單編號  ABC202408070807</p>
