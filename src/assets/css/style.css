@@ -319,6 +319,9 @@ p {
   gap: 100px;
   margin: 0 auto;
 }
+.theme_container.dead {
+  background-image: url("../img/dead.bgpng.png");
+}
 
 .theme_banner {
   max-width: 100%;
@@ -396,7 +399,7 @@ p {
   font-size: 18px;
   margin: 20px 0;
 }
-.theme_number.hospital {
+.theme_number.hospital, .theme_number.dead, .theme_number.Lock {
   color: #FEDA77;
 }
 .theme_number.alien {
@@ -410,11 +413,11 @@ p {
   height: 30px;
   margin: 20px 0;
 }
-.progress_bar.hospital {
+.progress_bar.hospital, .progress_bar.time, .progress_bar.dead, .progress_bar.Lock, .progress_bar.room {
   background-color: #221F3C;
 }
 .progress_bar.alien {
-  background-color: black;
+  background-color: #D8FFDF;
 }
 
 .progress {
@@ -425,7 +428,19 @@ p {
 }
 .progress.hospital {
   background-color: #870801;
-  color: #FFE8BB;
+}
+.progress.time {
+  background-color: #FFC700;
+  color: #292929;
+}
+.progress.dead {
+  background-color: #B00000;
+}
+.progress.Lock {
+  background-color: #C70000;
+}
+.progress.room {
+  background-color: #8DA18D;
 }
 .progress.alien {
   background-color: #6EE742;
@@ -453,6 +468,21 @@ p {
 }
 .theme_game.hospital {
   color: #FEDA77;
+}
+.theme_game.dead {
+  color: #BF9773;
+}
+.theme_game.Lock {
+  color: #ffa43d;
+}
+.theme_game.room {
+  color: #8DA18D;
+}
+.theme_game.time {
+  color: #FFC700;
+}
+.theme_game.alien {
+  color: #6EE742;
 }
 
 .theme_game p {
@@ -488,7 +518,7 @@ p {
 }
 
 .theme_icon_img {
-  max-width: 100%;
+  width: 100%;
 }
 .theme_icon_img img {
   max-width: 230px;
@@ -505,16 +535,19 @@ p {
   justify-content: center;
   gap: 12px;
   white-space: pre-line;
-}
-.theme_icon.hospital {
   text-align: center;
 }
-.theme_icon.hospital span {
+.theme_icon span {
   font-size: 20px;
 }
-.theme_icon.hospital p {
+.theme_icon p {
   font-size: 18px;
+}
+.theme_icon.hospital p, .theme_icon.Lock p {
   color: #FFE8BB;
+}
+.theme_icon.time p, .theme_icon.dead p {
+  color: #8F9191;
 }
 
 .theme_marketing_container {
@@ -531,6 +564,7 @@ p {
   width: 80%;
   margin-bottom: 30px;
   background-position: center;
+  background-repeat: no-repeat;
   position: relative;
   white-space: pre-line;
 }
@@ -564,18 +598,36 @@ p {
   color: #FEDA77;
 }
 
-.notice_text.hospital {
+.notice_text {
   border-radius: 24px;
-  background: #221F3C;
   padding: 20px;
   width: 80%;
+  font-weight: 500;
   margin: 0 auto;
+  background: center/cover no-repeat;
+  color: #292929;
+}
+.notice_text.hospital {
+  font-weight: 400;
+  color: white;
+  background: #221F3C;
+}
+.notice_text.time {
+  background-image: url("../img/noticebg_time.png");
+}
+.notice_text.dead {
+  background-image: url("../img/noticebg_dead.png");
+}
+.notice_text.Lock {
+  background: #FFE8BB;
+}
+.notice_text.room {
+  color: white;
+  background-image: url("../img/noticebg_room.png");
 }
 .notice_text.alien {
-  border-radius: 24px;
-  padding: 20px;
-  width: 80%;
-  margin: 0 auto;
+  color: #D8FFDF;
+  background: #221F3C;
 }
 
 .theme_arrow {
@@ -619,7 +671,7 @@ p {
   max-width: 230px;
 }
 .theme_arrow .theme_carousel .theme_card h4 {
-  margin-top: 10px;
+  margin-top: 22px;
   color: #FEDA77;
 }
 
@@ -676,7 +728,7 @@ p {
   }
   .overview {
     gap: 20px;
-    margin-top: 40px;
+    margin-top: 0px;
   }
   .overview_text {
     font-size: 16px;
@@ -5139,64 +5191,6 @@ p {
   margin-right: 14px;
 }
 
-.alien_bgi {
-  background-image: url("../img/bgi_alien.jpg");
-}
-
-.gameinfo .alien i {
-  color: #6EE742;
-}
-.gameinfo .alien p {
-  color: #D8FFDF;
-}
-
-.iconinfo .alien {
-  padding-bottom: 20px;
-}
-.iconinfo .alien h3 {
-  color: #D8FFDF;
-}
-.iconinfo .alien p {
-  text-align: center;
-}
-
-.theme_alien {
-  overflow: hidden;
-  max-width: 1140px;
-  height: 300px;
-  margin: 0 auto;
-  width: 80%;
-  margin-bottom: 30px;
-  background-position: center;
-  position: relative;
-}
-.theme_alien:nth-of-type(1) {
-  background-image: url("../img/alien1.png");
-  background-size: cover;
-}
-.theme_alien:nth-of-type(1) .theme_marketing_text {
-  margin: 70px 0 0 70px;
-}
-.theme_alien:nth-of-type(2) {
-  background-image: url("../img/alien2.png");
-  background-size: cover;
-}
-.theme_alien:nth-of-type(2) .theme_marketing_text {
-  text-align: right;
-  margin: 70px 70px 0 0px;
-}
-.theme_alien:nth-of-type(3) {
-  background-image: url("../img/alien3.png");
-  background-size: cover;
-}
-.theme_alien:nth-of-type(3) .theme_marketing_text {
-  margin: 70px 0 0 70px;
-}
-
-.btn .alien {
-  background-color: #6EE742;
-}
-
 .theme_lock:nth-of-type(1) {
   background-image: url("../img/lockbg1.png");
 }
@@ -5599,6 +5593,9 @@ p {
   left: 25%;
   cursor: pointer;
 }
+.esc_bath_exit img:hover {
+  filter: drop-shadow(0 0 3px white);
+}
 
 .esc_bath_icon img {
   position: absolute;
@@ -5606,6 +5603,9 @@ p {
   bottom: 15%;
   left: 10%;
   cursor: pointer;
+}
+.esc_bath_icon img:hover {
+  filter: drop-shadow(0 0 3px white);
 }
 .esc_bath_icon img:nth-of-type(1) {
   width: 5%;
@@ -5617,17 +5617,20 @@ p {
   position: relative;
 }
 
-.esc_bed_exit img[alt="Bedroom Door"] {
+.esc_bed_exit img[alt=BedroomDoor] {
   position: absolute;
   width: 10%;
   bottom: 24%;
   cursor: pointer;
 }
+.esc_bed_exit img[alt=BedroomDoor]:hover {
+  filter: drop-shadow(0 0 3px white);
+}
 
 .esc_bed_icon img {
   position: absolute;
 }
-.esc_bed_icon img[alt="Broken Window"],
+.esc_bed_icon img[alt=BrokenWindow],
 .esc_bed_icon img[alt=Window] {
   top: 10%;
   left: 16%;
@@ -5645,6 +5648,9 @@ p {
   width: 3%;
   display: none;
   cursor: pointer;
+}
+.esc_bed_icon img[alt=Wastepaper]:hover {
+  filter: drop-shadow(0 0 3px white);
 }
 .esc_bed_icon img[alt=Wheelchair] {
   bottom: 4%;
@@ -5664,12 +5670,18 @@ p {
   right: 45%;
   cursor: pointer;
 }
+.esc_bed_icon img[alt=Axe]:hover {
+  filter: drop-shadow(0 0 3px white);
+}
 .esc_bed_icon img[alt=phone] {
   width: 2.5%;
   bottom: 33%;
   left: 48%;
   animation-iteration-count: infinite;
   cursor: pointer;
+}
+.esc_bed_icon img[alt=phone]:hover {
+  filter: drop-shadow(0 0 3px white);
 }
 @keyframes chairmove {
   0% {
@@ -5681,6 +5693,117 @@ p {
   100% {
     transform: translateX(0px);
   }
+}
+
+.esc_office {
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.esc_office,
+.esc_office_exit img[alt=OfficeDoor],
+.esc_office_icon img {
+  filter: brightness(0.5);
+  transition: filter 0.3s ease;
+}
+
+.bright .esc_office,
+.esc_office.bright .esc_office {
+  background: #4E5B54;
+}
+
+.hidden {
+  display: none; /* 隱藏元素 */
+}
+
+.esc_office_exit img[alt=OfficeDoor] {
+  position: absolute;
+  width: 10%;
+  bottom: 26%;
+  cursor: pointer;
+}
+.esc_office_exit img[alt=OfficeDoor]:hover {
+  filter: drop-shadow(0 0 3px white) brightness(1);
+}
+
+.esc_office_icon img {
+  position: absolute;
+  cursor: pointer;
+}
+.esc_office_icon img[alt=OfficeLock] {
+  width: 12%;
+  top: 12%;
+  right: 18%;
+}
+.esc_office_icon img[alt=OfficeLock]:hover {
+  filter: drop-shadow(0 0 1.5px white);
+}
+.esc_office_icon img[alt=LightOn],
+.esc_office_icon img[alt=LightOff] {
+  width: 4%;
+  top: 18%;
+  right: 21%;
+  cursor: pointer;
+}
+.esc_office_icon img[alt=LightOn]:hover,
+.esc_office_icon img[alt=LightOff]:hover {
+  filter: drop-shadow(0 0 1.5px white);
+}
+.esc_office_icon img[alt=ComputerKey] {
+  width: 20%;
+  top: 30%;
+  left: 42%;
+  cursor: default;
+}
+.esc_office_icon img[alt=Eyes] {
+  width: 5%;
+  top: 34%;
+  left: 25%;
+  cursor: default;
+  display: none;
+  animation: blink 3s ease infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.esc_office_icon img[alt=OfficeBox] {
+  width: 18%;
+  bottom: 1%;
+  left: 15%;
+}
+.esc_office_icon img[alt=OfficeBox]:hover {
+  filter: drop-shadow(0 0 1.5px white);
+}
+.esc_office_icon img[alt=NumberHint] {
+  width: 80%;
+  top: 0%;
+  right: 8%;
+  cursor: default;
+}
+.esc_office_icon img[alt=FoldPaper] {
+  width: 12%;
+  bottom: 49.8%;
+  right: 20%;
+}
+.esc_office_icon img[alt=FoldPaper]:hover {
+  filter: drop-shadow(0 0 1.5px white);
+}
+.esc_office_icon .office_switch {
+  position: relative;
+}
+.esc_office_icon .office_switch .light {
+  width: 60%;
+  text-align: center;
+  position: absolute;
+  top: 120px;
 }
 
 /*# sourceMappingURL=style.css.map */

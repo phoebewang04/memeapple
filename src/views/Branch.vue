@@ -44,7 +44,7 @@
                         <div class="theme_name" >
 
                             <li v-for="(item, index) in items" :key="index" v-show="showItem(index)" >
-                                <img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3>
+                                <router-link :to="`/Theme/${index + 1}`"><img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3></router-link>
                             </li>
 
                         </div>
@@ -55,10 +55,10 @@
                 <!-- -------------------------台北館 手機畫面的swiper------------------------------ -->
 
                     <swiper :spaceBetween="30" :pagination="{ clickable: true,}" :modules="modules" class="mySwiper">
-                        <swiper-slide><li><img src="../assets/img/banner-hospital.png" alt=""><h3>成都醫院</h3></li></swiper-slide>
-                        <swiper-slide><li><img src="../assets/img/banner-mazeofTime.png" alt=""><h3>時光迷宮</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/poster_hospital.png" alt=""><h3>成都醫院</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/poster_mazeofTime.png" alt=""><h3>時光迷宮</h3></li></swiper-slide>
                         <swiper-slide><li><img src="../assets/img/poster_dead.jpg" alt=""><h3>末日庇護所</h3></li></swiper-slide>
-                        <swiper-slide><li><img src="../assets/img/banner-code.png" alt=""><h3>代碼深淵</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/poster_code.png" alt=""><h3>代碼深淵</h3></li></swiper-slide>
                     </swiper>
 
 
@@ -125,7 +125,7 @@
                         <li @click="leftPage"><i class="fa-solid fa-caret-left"></i></li>
                         <div class="theme_name" >
                             <li v-for="(item, index) in items" :key="index" v-show="showItem(index)">
-                               <img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3>
+                               <router-link :to="`/Theme/${index + 1}`"><img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3></router-link>
                             </li>
                         </div>
                         <li @click="rightPage"><i class="fa-solid fa-caret-right"></i></li>
@@ -214,13 +214,13 @@ import { Pagination } from 'swiper/modules';
                 activeButton: 'taipei',
                 currentStartIndex: 0,
                 items: [
-                    { name: "成都醫院", img: "/src/assets/img/banner-hospital.png", title: "成都醫院" },
+                    { name: "成都醫院", img: "/src/assets/img/poster_hospital.png", title: "成都醫院" },
                     { name: "時光迷宮", img: "/src/assets/img/banner-mazeofTime.png", title: "時光迷宮" },
                     { name: "末日庇護所", img: "/src/assets/img/poster_dead.jpg", title: "末日庇護所" },
-                    { name: "代碼深淵", img: "/src/assets/img/banner-code.png", title: "代碼深淵" },
-                    { name: "逃離武石監", img: "/src/assets/img/banner-paper.jpg", title: "逃離武石監"},
+                    { name: "代碼深淵", img: "/src/assets/img/poster_code.png", title: "代碼深淵" },
+                    { name: "逃離武石監", img: "/src/assets/img/poster_Lock.jpg", title: "逃離武石監"},
                     { name: "恐怖密室", img: "/src/assets/img/poster_room.png", title: "恐怖密室"},
-                    { name: "逃出虛空", img: "/src/assets/img/banner-space.png", title: "逃出虛空"},
+                    { name: "逃出虛空", img: "/src/assets/img/poster_alien.png", title: "逃出虛空"},
                     { name: "coming soon", img: "/src/assets/img/poster_comingsoon.png", title: "coming soon"}
                 ],
                 itemsPerPage: 3

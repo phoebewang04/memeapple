@@ -20,7 +20,7 @@
     </div>
 
 
-    <main class="theme_container">
+    <main :class="['theme_container' , all_data[$route.params.id].themeClass]">
 
         <section class="blood_container">
             <img v-for="(image, imgIndex) in all_data[$route.params.id].bloodImage" :key="imgIndex"
@@ -111,7 +111,7 @@
                         d="M20 40C8.954 40 0 31.046 0 20C0 8.954 8.954 0 20 0C31.046 0 40 8.954 40 20C40 31.046 31.046 40 20 40ZM18 21.584V28H22V21.584C23.0528 21.1245 23.9153 20.3165 24.4424 19.2959C24.9696 18.2753 25.1292 17.1043 24.8945 15.9799C24.6598 14.8554 24.0451 13.846 23.1537 13.1215C22.2624 12.3969 21.1487 12.0014 20 12.0014C18.8513 12.0014 17.7376 12.3969 16.8463 13.1215C15.9549 13.846 15.3402 14.8554 15.1055 15.9799C14.8708 17.1043 15.0304 18.2753 15.5576 19.2959C16.0847 20.3165 16.9472 21.1245 18 21.584Z"
                         fill="#FEDA77" />
                 </svg>
-                <h2>台北其他館主題</h2>
+                <h2>{{all_data[$route.params.id].otherSeparate}}</h2>
             </div>
             <div class="theme_arrow">
 
