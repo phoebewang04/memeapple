@@ -25,7 +25,7 @@ $map: (
 }
 
 .deadstar1 img {
-    width: 160px;
+    width: 20%;
 }
 
 .deadstar2 img {
@@ -36,9 +36,10 @@ $map: (
     width: 150px;
 }
 .deadstar1 {
+    width: 20%;
     position: absolute;
-    right: 160px;
-    top: 290px;
+    right: 20%;
+    top: 0%;
 
     animation: blink 3s infinite;
 }

@@ -215,7 +215,7 @@ import { Pagination } from 'swiper/modules';
                 currentStartIndex: 0,
                 items: [
                     { name: "成都醫院", img: "/src/assets/img/poster_hospital.png", title: "成都醫院" },
-                    { name: "時光迷宮", img: "/src/assets/img/banner-mazeofTime.png", title: "時光迷宮" },
+                    { name: "時光迷宮", img: "/src/assets/img/poster_time.png", title: "時光迷宮" },
                     { name: "末日庇護所", img: "/src/assets/img/poster_dead.jpg", title: "末日庇護所" },
                     { name: "代碼深淵", img: "/src/assets/img/poster_code.png", title: "代碼深淵" },
                     { name: "逃離武石監", img: "/src/assets/img/poster_Lock.jpg", title: "逃離武石監"},

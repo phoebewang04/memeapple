@@ -104,7 +104,7 @@
 
                 <div class="check">
                     <input type="checkbox" class="box" v-model="orderCheck1" @change="checkValid">
-                    <p>我同意《末日庇護所注意事項》請閱讀《末日庇護所》頁面中下方注意事項(含取消及更改辦法)</p>
+                    <p>我同意《成都醫院注意事項》請閱讀《成都醫院》頁面中下方注意事項(含取消及更改辦法)</p>
                 </div>
 
                 <div class="check">
@@ -124,10 +124,10 @@
                 <h3>訂單明細</h3>
 
                 <div class="list">
-                    <p>末日庇護所 台北館</p>
+                    <p>成都醫院 台北館</p>
                     <p>場次時間：
                         <br>
-                        2024 年08 月 06 日 10：30
+                        2024 年 09 月 12 日 10：30
                     </p>
                     <p>總人數：4 人</p>
                     <p>訂購項目：
