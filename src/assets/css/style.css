@@ -2705,6 +2705,12 @@ p {
   }
 }
 
+.theme li {
+  transition: transform 0.3s ease;
+}
+.theme li:hover {
+  transform: scale(1.1);
+}
 @media (max-width: 820px) {
   .theme li {
     width: 300px;
@@ -2858,7 +2864,7 @@ p {
 }
 
 .deadstar1 img {
-  width: 160px;
+  width: 20%;
 }
 
 .deadstar2 img {
@@ -2870,9 +2876,10 @@ p {
 }
 
 .deadstar1 {
+  width: 20%;
   position: absolute;
-  right: 160px;
-  top: 290px;
+  right: 20%;
+  top: 0%;
   animation: blink 3s infinite;
 }
 
