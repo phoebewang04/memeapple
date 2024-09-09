@@ -78,6 +78,17 @@
                                 <a href="" class="backstage_table_button">刪除</a>
                             </td>
                         </tr>
+                        <tr>
+                            <td id="news_date">2024.9.8</td>
+                            <td id="news_author">黃啓祥</td>
+                            <td id="news_title">歡慶中秋！</td>
+                            <td id="news_status"><a href="" class="backstage_table_button">開啟</a></td>
+                            <td id="news_action">
+                                <router-link to="/NewsEdit/"><a href="" class="backstage_table_button">編輯</a></router-link>
+                                &ensp;
+                                <a href="" class="backstage_table_button">刪除</a>
+                            </td>
+                        </tr>
                         <tr class="backstage_tfoot">
                             <td colspan="5" style="text-align: center;">
                                 <div class="backstage_pagination">
