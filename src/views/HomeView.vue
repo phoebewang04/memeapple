@@ -414,7 +414,7 @@ export default {
               </div>
 
               <li class="index-news-li" v-for="(newsItem, index) in visibleNews" :key="index">
-                <router-link :to="`/Announcement/${index + 1}`">
+                <router-link :to="`/Announcement/`">
                   <img :src="newsItem.img" :alt="newsItem.name">
                   <h3>{{ newsItem.title }}</h3>
                   <p class="index-news-text">{{ newsItem.newstext }}</p>
