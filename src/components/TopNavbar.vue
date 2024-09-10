@@ -9,12 +9,12 @@ export default {
   },
   methods: {
     showMenuBar() {
-      if (window.innerWidth <= 650) {
+      if (window.innerWidth <= 700) {
         this.visible_active = !this.visible_active;
       }
     },
     handleResize() {
-      if (window.innerWidth > 650) {
+      if (window.innerWidth > 700) {
         this.visible_active = true;
       } else {
         this.visible_active = false;
