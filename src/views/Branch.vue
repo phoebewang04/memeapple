@@ -25,7 +25,7 @@
 
             <div v-if="currentBranch === 'taipei'">
                 <div class="introduce">
-                    <div>
+                    <div class="branch1">
                         <img src="../assets/img/branch1.jpg" alt="">
                     </div>
                     <div class="text">
@@ -72,12 +72,12 @@
 
                         <div class="location_icon">
                             <i class="fa-solid fa-location-dot"></i>
-                            <p> 台北館<br><br>台北市密逃路88之107號</p>
+                            <p> 台北館<br><br>台北市密逃路8之10號</p>
                         </div>
 
                         <div class="location_icon">
                             <i class="fa-solid fa-envelope"></i>
-                            <p> Email<br><br>meme9487@gmail.com</p>
+                            <p> Email<br><br>meme@gmail.com</p>
                         </div>
 
                         <div class="location_icon">
@@ -107,7 +107,7 @@
 
             <div v-if="currentBranch === 'taichung'">
                 <div class="introduce">
-                    <div>
+                    <div class="branch1">
                         <img src="../assets/img/branch2.jpg" alt="">
                     </div>
                     <div class="text">
@@ -138,7 +138,7 @@
                         <swiper-slide><router-link to="/Theme/5"><li><img src="../assets/img/poster_Lock.jpg" alt=""><h3>逃離武石監</h3></li></router-link></swiper-slide>
                         <swiper-slide><router-link to="/Theme/6"><li><img src="../assets/img/poster_room.png" alt=""><h3>恐怖密室</h3></li></router-link></swiper-slide>
                         <swiper-slide><router-link to="/Theme/7"><li><img src="../assets/img/poster_alien.png" alt=""><h3>逃出虛空</h3></li></router-link></swiper-slide>
-                        <swiper-slide><li><img src="../assets/img/poster_comingsoon.png" alt=""><h3>coming soon</h3></li></swiper-slide>
+                        <swiper-slide><li><img src="../assets/img/postercomingbranch.jpg" alt=""><h3>coming soon</h3></li></swiper-slide>
                     </swiper>
 
                 </div>
@@ -156,7 +156,7 @@
 
                         <div class="location_icon">
                             <i class="fa-solid fa-envelope"></i>
-                            <p> Email<br><br>meme9487@gmail.com</p>
+                            <p> Email<br><br>meme@gmail.com</p>
                         </div>
 
                         <div class="location_icon">
@@ -221,7 +221,7 @@ import { Pagination } from 'swiper/modules';
                     { name: "逃離武石監", img: "/src/assets/img/poster_Lock.jpg", title: "逃離武石監"},
                     { name: "恐怖密室", img: "/src/assets/img/poster_room.png", title: "恐怖密室"},
                     { name: "逃出虛空", img: "/src/assets/img/poster_alien.png", title: "逃出虛空"},
-                    { name: "coming soon", img: "/src/assets/img/poster_comingsoon.png", title: "coming soon"}
+                    { name: "coming soon", img: "/src/assets/img/postercomingbranch.jpg", title: "coming soon"}
                 ],
                 itemsPerPage: 3
             };
@@ -295,7 +295,7 @@ import { Pagination } from 'swiper/modules';
 
     .mySwiper img {
         width: 300px;
-        height: 420px;
+        height: 360px;
     }
 
     .swiper-slide {
@@ -319,7 +319,7 @@ import { Pagination } from 'swiper/modules';
     ::v-deep .mySwiper .swiper-pagination {
         @media screen and (max-width: 430px){
             position: absolute;
-            bottom: 0px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;

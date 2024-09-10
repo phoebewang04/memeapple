@@ -79,7 +79,7 @@
                         <p v-if="theme">{{ theme.themeName }} {{ theme.branch }}</p>
                         <p>場次時間：</p>
                         <p class="pp">2024 年 09 月 12 日 10：30</p>
-                        <p>總人數： <span class="pp">4 人</span></p>
+                        <p>總人數：<span class="pp" v-if="peopleAmount">{{peopleAmount }} 人</span></p>
                         <p>訂購項目：</p>
                         <p class="pp">包場訂金 2000 元 X1</p>
                         <label for="orderDiscount">使用優惠卷</label>
@@ -224,6 +224,8 @@ export default {
 
         const themeId = this.$route.params.id;
         this.theme = this.all_data[themeId]; 
+
+        this.peopleAmount = localStorage.getItem('peopleAmount') || '';
     },
 }
 </script>
