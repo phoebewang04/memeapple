@@ -318,7 +318,13 @@ p {
   margin: 0 auto;
 }
 .theme_container.dead {
-  background-image: url("../img/dead.bgpng.png");
+  background-image: url("../img/dead_bg.png");
+}
+.theme_container.room {
+  background-image: url("../img/room_bg.png");
+}
+.theme_container.alien {
+  background-image: url("../img/bgi_alien.jpg");
 }
 
 .theme_banner {
@@ -411,8 +417,11 @@ p {
   height: 30px;
   margin: 20px 0;
 }
-.progress_bar.hospital, .progress_bar.time, .progress_bar.dead, .progress_bar.Lock, .progress_bar.room {
+.progress_bar.hospital, .progress_bar.time, .progress_bar.Lock, .progress_bar.room {
   background-color: #221F3C;
+}
+.progress_bar.dead {
+  background-color: #121212;
 }
 .progress_bar.alien {
   background-color: #D8FFDF;
@@ -471,7 +480,7 @@ p {
   color: #BF9773;
 }
 .theme_game.Lock {
-  color: #ffa43d;
+  color: #C8D1E0;
 }
 .theme_game.room {
   color: #8DA18D;
@@ -4802,7 +4811,6 @@ p {
 
 .minigame_body {
   background-color: #020912;
-  min-height: 100vh;
   overflow-x: hidden;
   box-sizing: border-box;
 }
@@ -4812,7 +4820,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 113vh;
+  height: 140vh;
   background-image: url("../img/cemetery.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -4829,6 +4837,7 @@ p {
 .parallax img {
   position: absolute;
   pointer-events: none;
+  width: 100%;
 }
 .parallax #tree-left {
   top: 0;
@@ -4851,8 +4860,7 @@ p {
   right: -300px;
 }
 
-.split_text,
-.split_text_2 {
+.split_text {
   font-size: 24px;
   max-width: 80%;
   margin: 40px auto;
@@ -4956,7 +4964,13 @@ p {
 
 .minigame_map {
   text-align: center;
-  margin: 250px 0;
+  margin: 400px 0 200px 0px;
+}
+.minigame_map svg {
+  width: 100%;
+  height: auto;
+  width: 902px;
+  height: 1230px;
 }
 
 .coordinate {
@@ -5030,7 +5044,7 @@ p {
 @keyframes ghostupdown {
   0% {
     opacity: 0;
-    transform: rotate(0deg) translate(-70px) rotate(0deg) translateX(-50px);
+    transform: rotate(0deg) translate(-60px) rotate(0deg) translateX(-50px);
   }
   25% {
     opacity: 1;
@@ -5043,7 +5057,7 @@ p {
   }
   100% {
     opacity: 0;
-    transform: rotate(360deg) translate(-70px) rotate(-360deg) translateX(-50px);
+    transform: rotate(360deg) translate(-60px) rotate(-360deg) translateX(-50px);
   }
 }
 
@@ -5139,13 +5153,135 @@ p {
     transform: translate(0px);
   }
   50% {
-    transform: translate(40px);
+    transform: translate(-30px);
   }
   100% {
     transform: translate(0px);
   }
 }
 
+@media (max-width: 900px) {
+  .parallax {
+    height: 100vh;
+  }
+  .parallax #cemetery_text {
+    font-size: 40px;
+    top: 16%;
+  }
+  .parallax img {
+    width: 100%;
+  }
+  .parallax .split_text {
+    font-size: 22px;
+  }
+  .minigame_map svg {
+    width: 90%;
+    height: auto;
+  }
+}
+@media (max-width: 800px) {
+  .parallax #cemetery_text {
+    font-size: 33px;
+    top: 16%;
+  }
+  .parallax img {
+    width: 110%;
+  }
+  .split_text {
+    font-size: 22px;
+  }
+}
+@media (max-width: 700px) {
+  .parallax {
+    height: 90vh;
+  }
+  .parallax #cemetery_text {
+    font-size: 33px;
+    top: 16%;
+  }
+  .split_text {
+    font-size: 20px;
+  }
+  .envelope_container .envelope_wrapper {
+    height: 80px;
+  }
+  .envelope_container h3 {
+    font-size: 20px;
+  }
+  .envelope_container .envelope {
+    width: 360px;
+    height: 213px;
+  }
+  .envelope_wrapper > .envelope::before {
+    border-top: 140px solid #7873A7;
+    border-left: 181px solid transparent;
+    border-right: 181px solid transparent;
+  }
+  .envelope::after {
+    border-top: 140px solid transparent;
+    border-right: 181px solid #555184;
+    border-bottom: 100px solid #403d64;
+    border-left: 181px solid #555184;
+  }
+  .envelope > .letter {
+    right: 21%;
+    bottom: 0;
+    width: 50%;
+    height: 80%;
+    padding: 20px 10px 0px 10px;
+  }
+  .letter_text p {
+    font-size: 8.5px;
+  }
+  .letter_text img {
+    width: 35px;
+  }
+  .sticker {
+    top: 62%;
+    left: 50%;
+    width: 17px;
+    height: 17px;
+  }
+  .minigame_map {
+    margin: 200px 0 100px 0px;
+  }
+}
+@media (max-width: 600px) {
+  .parallax #cemetery_text {
+    font-size: 30px;
+  }
+  .parallax img {
+    width: 130%;
+  }
+}
+@media (max-width: 500px) {
+  .parallax {
+    height: 80vh;
+  }
+  .parallax #cemetery_text {
+    font-size: 26px;
+  }
+  .parallax img {
+    width: 140%;
+  }
+}
+@media (max-width: 430px) {
+  .parallax {
+    height: 70vh;
+  }
+  .parallax #cemetery_text {
+    font-size: 24px;
+  }
+  .parallax img {
+    width: 168%;
+  }
+  .split_text {
+    font-size: 16px;
+  }
+  .envelope_container {
+    height: 15vh;
+  }
+}
 .order_form {
   justify-content: space-between;
 }

@@ -104,12 +104,12 @@ export const all_data = {
         otherTheme: [
             {
                 id: 2,
-                src: new URL("@/assets/img/banner-mazeofTime.png", import.meta.url).href,
+                src: new URL("@/assets/img/poster_time.png", import.meta.url).href,
                 title: '時光迷宮'
             },
             {
                 id: 3,
-                src: new URL("@/assets/img/banner-dead.jpg", import.meta.url).href,
+                src: new URL("@/assets/img/poster_dead.jpg", import.meta.url).href,
                 title: '末日庇護所'
             },
             {
@@ -191,16 +191,16 @@ export const all_data = {
             {
                 title: '沉浸探索，重重謎團',
                 content: '幽暗地城，沿著階梯向下\n埋藏於遺跡深處的歷史真相',
-                backgroundImage: new URL("@/assets/img/mb_time_1.jpg", import.meta.url).href, 
+                backgroundImage: new URL("@/assets/img/mb_time_1.png", import.meta.url).href, 
             },
             {
                 title: '昏黃之影，深深囚籠',
                 content: '擾動的昏黃光影\n照耀一切事物\n發現於陰影深處的謎題線索',
-                backgroundImage: new URL("@/assets/img/mb_time_2.jpg", import.meta.url).href,
+                backgroundImage: new URL("@/assets/img/mb_time_2.png", import.meta.url).href,
             }, {
                 title: '初原之火，重見天日',
                 content: '解開謎題與囚籠\n釋放初原之火\n完成大任導正世界秩序',
-                backgroundImage: new URL("@/assets/img/mb_time_3.jpg", import.meta.url).href,
+                backgroundImage: new URL("@/assets/img/mb_time_3.png", import.meta.url).href,
             }
         ],
         btn: '預約探索'
@@ -226,7 +226,7 @@ export const all_data = {
             },
             {
                 id:3,
-                src: new URL("@/assets/img/banner-dead.jpg", import.meta.url).href,
+                src: new URL("@/assets/img/poster_dead.jpg", import.meta.url).href,
                 title: '末日庇護所'
             },
             {
@@ -278,17 +278,17 @@ export const all_data = {
 
         iconData: [
             {
-                src: new URL("@/assets/img/icon_dead_1.jpg", import.meta.url).href,
+                src: new URL("@/assets/img/icon_dead_1.png", import.meta.url).href,
                 title: '仿真生存道具',
                 content: '透過恐怖故事場景\n利用生存道具逃出殭屍的追捕'
             },
             {
-                src: new URL("@/assets/img/icon_dead_2.jpg", import.meta.url).href,
+                src: new URL("@/assets/img/icon_dead_2.png", import.meta.url).href,
                 title: '沉浸式體驗',
                 content: '實境效果和音效設計\n讓你體驗真實殭屍世界的感覺'
             },
             {
-                src: new URL("@/assets/img/icon_dead_3.jpg", import.meta.url).href,
+                src: new URL("@/assets/img/icon_dead_3.png", import.meta.url).href,
                 title: '複雜真實場景',
                 content: '專業美術設計場景\n讓你置身在世界末日當中'
             },
@@ -298,16 +298,16 @@ export const all_data = {
             {
                 title: '深淵恐懼，重重謎團',
                 content: '幽暗隧道、燈光閃爍\n隧道中屢屢傳出尖叫聲\n時間不多了，你活的下來嗎？',
-                backgroundImage: new URL("@/assets/img/mb_dead_1.jpg", import.meta.url).href, 
+                backgroundImage: new URL("@/assets/img/mb_dead_1.png", import.meta.url).href, 
             },
             {
                 title: '沉浸探索，驚悚破表',
                 content: '破碎的地下室、血腥味飄溢\n裡頭藏著安全庇護所的線索\n裡頭好像有聲音，你敢下去嗎？',
-                backgroundImage: new URL("@/assets/img/mb_dead_2.jpg", import.meta.url).href,
+                backgroundImage: new URL("@/assets/img/mb_dead_2.png", import.meta.url).href,
             }, {
                 title: '成功抵達，無人回應',
                 content: '幽暗走廊、昏黃燈光\n只見的著滿處血跡\n安全的庇護所真的存在嗎？',
-                backgroundImage: new URL("@/assets/img/mb_dead_3.jpg", import.meta.url).href,
+                backgroundImage: new URL("@/assets/img/mb_dead_3.png", import.meta.url).href,
             }
         ],
         btn: '預約戰鬥'
@@ -332,7 +332,7 @@ export const all_data = {
             },
             {
                 id:2,
-                src: new URL("@/assets/img/poster_time.jpg", import.meta.url).href,
+                src: new URL("@/assets/img/poster_time.png", import.meta.url).href,
                 title: '時光迷宮'
             },
             {
@@ -443,7 +443,7 @@ export const all_data = {
             },
             {
                 // id:4,
-                src: new URL("@/assets/img/3.png", import.meta.url).href,
+                src: new URL("@/assets/img/poster_comingsoon.png", import.meta.url).href,
                 title: '籌備中！Coming Soon！'
             },
         ]
@@ -500,7 +500,7 @@ export const all_data = {
                 content: '實境效果和音效設計\n讓你體驗陰森森恐懼的感覺'
             },
             {
-                src: new URL("@/assets/img/icon_room_3.jpg", import.meta.url).href,
+                src: new URL("@/assets/img/icon_room_3.png", import.meta.url).href,
                 title: '複雜真實場景',
                 content: '專業美術設計場景\n讓你置身在恐怖密室當中'
             },
@@ -510,16 +510,16 @@ export const all_data = {
             {
                 title: '暗黑空間，重重謎團',
                 content: '風吹走動、木板破損\n感覺有人在裡面看著我們\n冷聽到一些說話聲音，你敢進去嗎？',
-                backgroundImage: new URL("@/assets/img/mb_room_1.jpg", import.meta.url).href, 
+                backgroundImage: new URL("@/assets/img/mb_room_1.png", import.meta.url).href, 
             },
             {
                 title: '沉浸探索，驚悚破表',
                 content: '凌亂的客廳和房間、感覺有人翻過東西\n裡頭或許有密室的線索\n找不到任何鑰匙，該怎麼辦？',
-                backgroundImage: new URL("@/assets/img/mb_room_2.jpg", import.meta.url).href,
+                backgroundImage: new URL("@/assets/img/mb_room_2.png", import.meta.url).href,
             }, {
                 title: '發現工具，很破舊了',
                 content: '某處地板凌亂的一些工具\n有看到一些血跡,是住在這裡的人嗎？\n傳說中的密室真的存在嗎？',
-                backgroundImage: new URL("@/assets/img/mb_room_3.jpg", import.meta.url).href,
+                backgroundImage: new URL("@/assets/img/mb_room_3.png", import.meta.url).href,
             }
         ],
         btn: '預約出動'
