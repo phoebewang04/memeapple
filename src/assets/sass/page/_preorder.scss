@@ -73,10 +73,9 @@
 }
 
 .preorderinfor_active .infor_time {
-    width: 210px;
+    width: 220px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 
     @include rwd(430px){
         width: 210px;
@@ -187,7 +186,6 @@
 
 
 .preorder_datetime .time .time_ele .ele {
-    border: 1px solid #fff;
     background-color: #e4e1e1;
     height: 50px;
     width: 80px;
@@ -196,6 +194,18 @@
     line-height: 50px;
     margin: 20px;
     color: #100E24;
+    
+    &.ele1 {
+        background-color: map-get($colors , yellow );
+    }
+
+    &.ele3 {
+        background-color: map-get($colors , yellow );
+    }
+
+    &.ele5 {
+        background-color: map-get($colors , yellow );
+    }
 }
 
 

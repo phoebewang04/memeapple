@@ -34,7 +34,7 @@
                     <!-- <p class="noneuse">未使用</p> -->
                   </div>
                   <div class="order_cardleft" @click="showAlert()">
-                    <div class="order_cardimg"><img src="../assets/img/banner-lock.jpg" alt=""></div>
+                    <div class="order_cardimg"><img src="../assets/img/poster_Lock.jpg" alt=""></div>
                     <div class="order_cardtext">
                       <p>逃離武石監</p>
                       <p>訂單編號：  ABC202408070807</p>
@@ -56,7 +56,7 @@
                     <p class="noneuse">未使用</p>
                   </div>
                   <div class="order_cardleft">
-                    <div class="order_cardimg"><img src="../assets/img/banner-mazeofTime.png" alt=""></div>
+                    <div class="order_cardimg"><img src="../assets/img/poster_time.jpg" alt=""></div>
                     <div class="order_cardtext">
                       <p>時光迷宮</p>
                       <p>訂單編號：  ABC202409020902</p>
@@ -74,13 +74,13 @@
 
 
               </div>
-              <div class="ordertext_right">
+              <!-- <div class="ordertext_right">
                 <ul>
                   <li><h3>訂單查詢</h3></li>
-                  <li> <button class="btn btn_ordera">未使用訂單</button></li>
-                  <li><button class="btn btn_ordera">全部訂單</button></li>
+                  <li> <button class="btn btn_ordera" >未使用訂單</button></li>
+                  <li><button class="btn btn_ordera" >全部訂單</button></li>
                 </ul>
-              </div>
+              </div> -->
             </div>
 
 
@@ -92,6 +92,27 @@
                   <h4>50元</h4>
                   <h4>使用狀態：</h4>
                   <h4>未使用</h4>
+                </div>
+              </div>
+
+              <div class="couponticket">
+                <div class="coupont">
+                  <h3>小遊戲優惠卷</h3>
+                  <h4>折扣金額：</h4>
+                  <h4>100元</h4>
+                  <h4>使用狀態：</h4>
+                  <h4>未使用</h4>
+                </div>
+              </div>
+
+              <div class="couponticket">
+                <div class="coupont">
+                  <h3>小遊戲優惠卷</h3>
+                  <h4>折扣金額：</h4>
+                  <h4>150元</h4>
+                  <h4>使用狀態：</h4>
+                  <h4>未使用</h4>
+                  <!-- <h4>已使用</h4> -->
                 </div>
               </div>
             </div>
@@ -298,6 +319,9 @@ export default {
         localStorage.setItem("tasks", JSON.stringify(this.tasks));
       },
   },
+  
 };
+
+
 
 </script>

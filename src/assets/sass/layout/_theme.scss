@@ -5,7 +5,15 @@
     margin: 0 auto;
 
     &.dead{
-        background-image: url('../img/dead.bgpng.png');
+       background-image: url('../img/dead_bg.png');
+    }
+
+    &.room{
+        background-image: url('../img/room_bg.png');
+    }
+
+    &.alien{
+        background-image: url('../img/bgi_alien.jpg');
     }
 }
 
@@ -126,16 +134,15 @@
 
     &.hospital,
     &.time,
-    &.dead,
     &.Lock,
     &.room
      {
         background-color: map-get($colors, midnight);
     }
 
-    // {
-    //     background-color: map-get($colors, midnight);
-    // }
+    &.dead{
+        background-color: #121212;
+    }
 
     &.alien {
         background-color: #D8FFDF;
@@ -210,7 +217,7 @@
     }
 
     &.Lock{
-        color: #ffa43d;
+        color: #C8D1E0;
     }
 
     &.room{
@@ -499,7 +506,7 @@
 
 // -----該館遊戲 end-----
 
-//
+//----- RWD start-----
 
 @include rwd(1000px) {
 

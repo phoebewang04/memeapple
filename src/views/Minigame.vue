@@ -30,13 +30,13 @@ import Swal from 'sweetalert2';
     <section class="sec">
       <div class="cemetery_text">
         <p class="split_text">
-          在遙遠的靈息禁地，古老的墓園靜靜矗立，時間在這裡彷彿失去了意義。<br>
-          生前貪婪的貴族家族沉眠於此，靈魂被詛咒所纏繞，無法獲得安息。
+          在遙遠的靈息禁地，古老的墓園靜靜矗立<br>時間在這裡彷彿失去了意義，
+          生前貪婪的貴族家族沉眠於此<br>靈魂被詛咒所纏繞，無法獲得安息
         </p>
 
         <p class="split_text">
-          傳說，埋藏在這片土地深處的寶藏，只有穿透黑暗、解開宿命之謎的人才能得見真容。<br>
-          命運的試煉從未如此接近，當陰霧籠罩，亡靈怒吼，你是否願意成為那位踏破詛咒的勇者？
+          傳說，埋藏在這片土地深處的寶藏<br>只有穿透黑暗、解開宿命之謎的人才能得見真容<br>
+         當陰霧籠罩，亡靈怒吼，你是否願意成為踏破詛咒的勇者？
         </p>
       </div>
 
@@ -65,7 +65,7 @@ import Swal from 'sweetalert2';
 
 
     <section class="minigame_map">
-      <svg width="902" height="1213" viewBox="0 0 514 719" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 514 719" fill="none" xmlns="http://www.w3.org/2000/svg">
 
         <!-- 月亮 -->
         <g filter="url(#filter0_d_33_331)">
@@ -633,10 +633,6 @@ import Swal from 'sweetalert2';
             fill="white" />
         </g>
 
-        <!-- 座標 -->
-
-     
-
         <!-- 亡命數字 -->
         <router-link to="/dead1A2Bgame/">
           <g>
@@ -1070,7 +1066,6 @@ import Swal from 'sweetalert2';
           </filter>
         </defs>
       </svg>
-
     </section>
 
 
@@ -1136,7 +1131,7 @@ export default {
       let value = window.scrollY;
 
       this.$refs.cemeteryText.style.marginTop = `${value * 0.6}px`;
-      this.$refs.treeLeft.style.transform = `translateX(-${value * 0.2}px)`;
+      this.$refs.treeLeft.style.transform = `translateX(-${value * 0.9}px)`;
       this.$refs.treeRight.style.transform = `translateX(${value * 0.9}px)`;
       this.$refs.gateLeft.style.transform = `translateX(${value * 0.2}px)`;
       this.$refs.gateRight.style.transform = `translateX(-${value * 0.2}px)`;

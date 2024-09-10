@@ -18,7 +18,7 @@
                     <li v-if="theme">主題名稱：{{ theme.themeName }}</li>
                     <div class="infor_time">
                         <li><i class="fa-regular fa-clock"></i></li>
-                        <li>活動時間 1小時20分鐘</li>
+                        <li>活動時間：1小時20分鐘</li>
                     </div>
                     <li v-if="theme">地點：{{ theme.address }}</li>
                 </ul>
@@ -36,22 +36,22 @@
 
                     <h3>請選擇場次</h3>
                     <div class="time_ele">
-                        <div class="ele">10：30</div>
-                        <div class="ele">11：15</div>
-                        <div class="ele">12：55</div>
-                        <div class="ele">14：35</div>
-                        <div class="ele">16：30</div>
-                        <div class="ele">18：15</div>
+                        <div class="ele ele1">10：30</div>
+                        <div class="ele ele2">11：15</div>
+                        <div class="ele ele3">12：55</div>
+                        <div class="ele ele4">14：35</div>
+                        <div class="ele ele5">16：30</div>
+                        <div class="ele ele6">18：15</div>
                     </div>
 
                     <div class="amount">
-                    <select name="" id="people">
-                        <option value="">遊戲人數</option>
-                        <option value="">4 人</option>
-                        <option value="">5 人</option>
-                        <option value="">6 人</option>
-                        <option value="">7 人</option>
-                        <option value="">8 人</option>
+                    <select name="totalPeople" id="people" v-model="peopleAmount" @change="selectPeople">
+                        <option value="遊戲人數">遊戲人數</option>
+                        <option value="4">4 人</option>
+                        <option value="5">5 人</option>
+                        <option value="6">6 人</option>
+                        <option value="7">7 人</option>
+                        <option value="8">8 人</option>
                     </select>
                     </div>
                 </div>
@@ -260,11 +260,11 @@
         </div>
 
       
-        <router-link to="/orderinform/"> 
-            <div class="nextstep">
-                <button class="btn next_btn" >下一步</button>
+        <RouterLink :to="{ path: `/Theme/${$route.params.id}/preorder/orderinform` }">
+            <div class="nextstep" >
+                <button class="btn next_btn" @click="goToNextPage">下一步</button>
             </div>
-        </router-link> 
+        </RouterLink>
 
         <Footerbar />
     
@@ -280,7 +280,6 @@ import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 import 'v-calendar/style.css';
-// const 
 
 
 export default {
@@ -299,16 +298,21 @@ export default {
                 highlight: true,
                 dates: new Date(), 
                 },
-        ],
+            ],
+            peopleAmount: '遊戲人數',
         };
+    },
+
+    methods: {
+        goToNextPage (){
+            localStorage.setItem ('peopleAmount', this.peopleAmount);
+        },
     },
 
     mounted (){
 
         const themeId = this.$route.params.id;
         this.theme = this.all_data[themeId]; 
-        // const addressId = this.$route.params.id;
-        // this.address = this.all_data[themeId]; 
     }
 }
 
