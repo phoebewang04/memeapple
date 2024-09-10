@@ -5760,21 +5760,34 @@ p {
   }
 }
 
+.coupontext {
+  display: flex;
+  flex-wrap: wrap;
+}
 .coupontext .couponticket {
   position: relative;
-  background: #FCD15B;
-  width: 50%;
-  height: 200px;
+  margin: 10px 20px;
+  background: #FFE8BB;
+  width: 350px;
+  height: 180px;
   border-radius: 8px;
-  -webkit-mask: radial-gradient(circle at 30px 30px, transparent 30px, red 0) 85px -30px, radial-gradient(circle at 25px 15px, transparent 5px, red 0) 90px -5px/100% 10%;
+  -webkit-mask: radial-gradient(circle at 30px 30px, transparent 30px, red 0) 85px -30px, radial-gradient(circle at 25px 8px, transparent 3px, red 0) 90px -25px/100% 10%;
   -webkit-mask-composite: source-in;
 }
 .coupontext .coupont {
-  display: none;
   position: absolute;
-  right: 5%;
-  top: 5%;
+  right: 8%;
+  top: 8%;
   color: #292929;
+}
+.coupontext .coupont h3 {
+  color: #262B3F;
+}
+.coupontext .coupont h4 {
+  margin-top: 5px;
+}
+.coupontext .coupont h4:nth-child(3) {
+  color: #C70000;
 }
 
 .editmember h3 {
