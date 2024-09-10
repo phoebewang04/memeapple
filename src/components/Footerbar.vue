@@ -1,11 +1,11 @@
 <script setup>
-    import '../assets/css/style.css'
+import '../assets/css/style.css'
 </script>
 
 <template>
     <footer>
         <div class="bottom">
-            <div><img src="../assets/img/memelogo.svg" alt=""></div>
+            <div> <router-link to="/"><img src="../assets/img/memelogo.svg" alt=""></router-link></div>
 
             <div class="bm_text">
                 <p>© Copyright Meme謎因工作室&nbsp;&nbsp;All Rights Reserved.</p>

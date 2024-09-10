@@ -2,6 +2,7 @@
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
+import ScrollToTop from '../components/ScollToTop.vue';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 // Import Swiper Vue.js components
@@ -19,6 +20,7 @@ export default {
     Footerbar,
     Swiper,
     SwiperSlide,
+    ScrollToTop
   },
   data() {
     return {
@@ -179,8 +181,8 @@ export default {
 
 <template>
   <TopNavbar />
-
   <main ref="scrollContainer" class="main-homepage" @scroll="roll_effect">
+    <ScrollToTop />
     <section class="wrapper-homepage">
       <!-- 首頁第一部分  主視覺-->
       <section class="content-homepage">

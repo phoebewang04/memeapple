@@ -132,7 +132,7 @@
                 <li><h4>修改姓名：</h4></li>
                 <li><input type="text" class="editphone" value="李小王"></li>
                 <li><h4>電話：</h4></li>
-                <li><input type="text" class="editphone" value="0912123123"></li>
+                <li><input type="text" class="editphone" value="0912123123" maxlength="10" pattern="^09\d{8}$"></li>
               </ul>
               <div>
               <button class="btn btnedit">儲存變更</button>
@@ -248,10 +248,10 @@ export default {
       icon: "warning",
       color:"#100E24",
       showCancelButton: true,
-      cancelButtonText: "<span class='swalcolor'>取消</span>",
+      cancelButtonText: "<span>取消</span>",
       confirmButtonColor: "#FCD15B",
       cancelButtonColor: "#C70000",
-      confirmButtonText: "<span class='swalcolor'>確定</span>"
+      confirmButtonText: "<span>確定</span>"
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire({
@@ -260,7 +260,7 @@ export default {
             icon: "success",
             confirmButtonColor: "#FCD15B",
             color:"#100E24",
-            confirmButtonText: "<span class='swalcolor'>OK</span>",
+            confirmButtonText: "<span>OK</span>",
           });
         }
       });
@@ -295,7 +295,7 @@ export default {
         </div>
       `,
       confirmButtonColor: "#FCD15B",
-      confirmButtonText: "<span class='swalcolor'>送出</span>",
+      confirmButtonText: "<span>送出</span>",
       allowOutsideClick:false,
       allowEscapeKey:false,
       color:"#100E24",
@@ -308,7 +308,7 @@ export default {
             allowOutsideClick:false,
             allowEscapeKey:false,
             confirmButtonColor: "#FCD15B",
-            confirmButtonText: "<span class='swalcolor'>OK</span>",
+            confirmButtonText: "<span>OK</span>",
             color:"#100E24",
           });
         }
