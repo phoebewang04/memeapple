@@ -8,9 +8,9 @@
 
     <div class="order_return">
         <i class="fa-solid fa-chevron-left"></i>
-        <a href="#">
+        <RouterLink :to="{ path: `/Theme/${$route.params.id}/preorder` }">
             <p>返回</p>
-        </a>
+        </RouterLink>
     </div>
 
      <!-- ----------------------順序時間圖---------------------- -->
@@ -104,7 +104,7 @@
 
                 <div class="check">
                     <input type="checkbox" class="box" v-model="orderCheck1" @change="checkValid">
-                    <p>我同意《成都醫院注意事項》請閱讀《成都醫院》頁面中下方注意事項(含取消及更改辦法)</p>
+                    <p v-if="theme">我同意《{{ theme.themeName }}注意事項》請閱讀《{{ theme.themeName }}》頁面中下方注意事項(含取消及更改辦法)</p>
                 </div>
 
                 <div class="check">
@@ -124,16 +124,13 @@
                 <h3>訂單明細</h3>
 
                 <div class="list">
-                    <p>成都醫院 台北館</p>
-                    <p>場次時間：
-                        <br>
-                        2024 年 09 月 12 日 10：30
-                    </p>
-                    <p>總人數：4 人</p>
-                    <p>訂購項目：
-                        <br>
-                        包場訂金 2000 元 X1
-                    </p>
+                    <p v-if="theme">{{ theme.themeName }} {{ theme.branch }}</p>
+                    <p>場次時間：</p>
+                    <p class="pp">2024 年 09 月 12 日 10：30</p>
+                    <p>總人數：<span class="pp" v-if="peopleAmount">{{peopleAmount }} 人</span></p>
+                    <p>訂購項目：</p>
+                    <p class="pp">包場訂金 2000 元 X1</p>
+                    
                     <label for="orderDiscount">使用優惠卷</label>
                     <select name="使用優惠卷" v-model="orderDiscount" @change="selectDiscount">
                         <option value="discountA">優惠卷折扣 - 50 元</option>
@@ -172,11 +169,12 @@
                     </div>
                 </div>
 
-                <router-link to="/pay/">
+                <RouterLink :to="{ path: `/Theme/${$route.params.id}/preorder/orderinform/pay` }">
                     <div class="button01">
-                        <button class="btn next_btn" :disabled="!dataValid" :class="{active: dataValid}">下一步</button>
+                        <button class="btn next_btn" :disabled="!dataValid" :class="{active: dataValid}" @click="goToNextPage">下一步</button>
                     </div>
-                </router-link>
+                </RouterLink>
+
             </div>
             
         </div>
@@ -193,6 +191,7 @@
 <!-- --------------------------------功能程式---------------------------------------------- -->
 
 <script>
+import { all_data } from '../assets/js/all_data.js';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
@@ -220,6 +219,10 @@ export default {
             phoneError:'',
             passwordError:'',
             comfirmError:'',
+
+            all_data: all_data,
+            theme: null,
+            finalPeople: '',
         }
     },
     computed: {
@@ -306,7 +309,13 @@ export default {
             this.validPassword();
             this.validComfirm();
         },
-    }
+    },
+    mounted (){
+        const themeId = this.$route.params.id;
+        this.theme = this.all_data[themeId]; 
+
+        this.peopleAmount = localStorage.getItem('peopleAmount') || '';
+    },
 
 }
 </script>

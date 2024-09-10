@@ -207,7 +207,7 @@
 }
 
 .pay_left h2 {
-    font-size: map-get($fontsize , h4 );
+    font-size: map-get($fontsize , h4);
     margin-bottom: 10px;
 }
 
@@ -310,6 +310,11 @@
     font-size: map-get($fontsize , p);
     margin-bottom: 10px;
 }
+
+.pay_right .details .list .pp {
+    font-size: 16px;
+}
+
 
 .pay_right .details select {
     width: 150px;

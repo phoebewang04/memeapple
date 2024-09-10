@@ -9,9 +9,10 @@
 
         <div class="pay_return">
             <i class="fa-solid fa-chevron-left"></i>
-            <a href="#">
+            
+            <RouterLink :to="{ path: `/Theme/${$route.params.id}/preorder/orderinform` }">
                 <p>返回</p>
-            </a>
+            </RouterLink>
         </div>
 
         <div class="pay_process">
@@ -75,16 +76,12 @@
                     <h2>訂單明細</h2>
 
                     <div class="list">
-                        <p>末日庇護所 台北館</p>
-                        <p>場次時間：
-                            <br>
-                            2024 年08 月 06 日 10：30
-                        </p>
-                        <p>總人數: 4 人</p>
-                        <p>訂購項目：
-                            <br>
-                            包場訂金 2000 元 X1
-                        </p>
+                        <p v-if="theme">{{ theme.themeName }} {{ theme.branch }}</p>
+                        <p>場次時間：</p>
+                        <p class="pp">2024 年 09 月 12 日 10：30</p>
+                        <p>總人數： <span class="pp">4 人</span></p>
+                        <p>訂購項目：</p>
+                        <p class="pp">包場訂金 2000 元 X1</p>
                         <label for="orderDiscount">使用優惠卷</label>
                         <select v-model="orderDiscount" disabled>
                             <option value="discountA">優惠卷折扣 - 50 元</option>
@@ -143,6 +140,7 @@
 <!-- --------------------------------功能程式---------------------------------------------- -->
 
 <script>
+import { all_data } from '../assets/js/all_data.js';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
@@ -165,6 +163,9 @@ export default {
             cardError:'',
             timeError:'',
             NumError:'',
+
+            all_data: all_data,
+            theme: null,
         }
     },
     computed : {
@@ -220,7 +221,10 @@ export default {
     mounted (){
         this.orderDiscount = localStorage.getItem('orderDiscount') || '';
         this.discountPrice = localStorage.getItem('discountPrice') || '';
-    }
+
+        const themeId = this.$route.params.id;
+        this.theme = this.all_data[themeId]; 
+    },
 }
 </script>
 
