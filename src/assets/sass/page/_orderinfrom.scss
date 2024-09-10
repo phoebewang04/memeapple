@@ -168,7 +168,7 @@
     width: 1200px;
     margin: 0 auto;
     display: flex;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
 
     @include rwd(820px){
         width: 750px;
@@ -377,6 +377,10 @@
     font-size: map-get($fontsize , p);
     margin-bottom: 10px;
     
+}
+
+.order_right  .details .list .pp {
+    font-size: 16px;
 }
 
 .order_right .details select {

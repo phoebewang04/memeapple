@@ -85,7 +85,7 @@ const routes = [
     component: preorder
   },
   {
-    path: '/orderinform/',
+    path: '/Theme/:id/preorder/orderinform',
     component: orderinform
   },
   {
@@ -113,7 +113,7 @@ const routes = [
     component: Escaperoom //指定要渲染的 Vue 元件
   },
   {
-    path: '/pay/',
+    path: '/Theme/:id/preorder/orderinform/pay',
     component: pay
   },
   {
