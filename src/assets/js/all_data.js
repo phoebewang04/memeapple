@@ -1,6 +1,7 @@
 export const all_data = {
     //成都醫院
     1:{
+        branch:'台北館',
         themeName: '成都醫院',
         address:'台北市密逃路88之107號',
         src: new URL("@/assets/img/hospital_preorder.png", import.meta.url).href,
@@ -132,6 +133,7 @@ export const all_data = {
 
     //時光迷宮
     2:{
+        branch:'台北館',
         themeName: '時光迷宮',
         address:'台北市密逃路88之107號',
         src: new URL("@/assets/img/banner_time.jpg", import.meta.url).href,
@@ -240,6 +242,7 @@ export const all_data = {
     //末日庇護所
     3:{
         themeName: '末日庇護所',
+        branch:'台北館',
         address:'台北市密逃路88之107號',
         src: new URL("@/assets/img/dead_preorder.png", import.meta.url).href,
         // --------------------------------以上是預定資料的內容----------------------------------------------//
@@ -346,6 +349,7 @@ export const all_data = {
      //逃離武石監
     5:{
         themeName: '逃離武石監',
+        branch:'台中館',
         address:'台中市北屯區路黎明路8號',
         src: new URL("@/assets/img/banner_Lock.png", import.meta.url).href,
         // --------------------------------以上是預定資料的內容----------------------------------------------//
@@ -452,6 +456,7 @@ export const all_data = {
     //恐怖密室
     6:{
         themeName: '恐怖密室',
+        branch:'台中館',
         address:'台中市北屯區路黎明路8號',
         src: new URL("@/assets/img/room_preorder.png", import.meta.url).href,
         // --------------------------------以上是預定資料的內容----------------------------------------------//
@@ -556,6 +561,7 @@ export const all_data = {
     //逃出虛空
     7:{
         themeName: '逃出虛空',
+        branch:'台中館',
         address:'台中市北屯區路黎明路8號',
         src: new URL("@/assets/img/banner_alien.png", import.meta.url).href,
         // --------------------------------以上是預定資料的內容----------------------------------------------//
