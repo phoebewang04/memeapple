@@ -163,6 +163,11 @@
 
 /* --------------------------------------------------------------------- */
 
+.memberinfrom .redError {
+    @include rwd(430px) {
+        font-size: 14px;
+    }
+}
 
 .order_all {
     width: 1200px;

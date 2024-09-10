@@ -48,7 +48,7 @@
                     <div class="card_number">
                         <p>信用卡卡號</p>
                         <input type="text" v-model="payCard" @input="validCard" @keyup.enter="submitData" placeholder="0000 0000 0000 0000">
-                        <p v-if="cardError" style="color: #DC2F2F;"> {{ cardError }}</p>
+                        <p v-if="cardError" style="color: #DC2F2F;" class="redError"> {{ cardError }}</p>
                     </div>
                     <div class="card_time">
                         <div>
@@ -56,13 +56,13 @@
                             <div class="cardmonth">
                                 <input type="text"  v-model="payMonth" @input="validTime" @keyup.enter="submitData" placeholder="月份" maxlength="2">
                                 <input type="text" v-model="payYear" @input="validTime" @keyup.enter="submitData" placeholder="年份" maxlength="4">
-                                <p v-if="timeError" style="color: #DC2F2F;">{{ timeError }}</p>
+                                <p v-if="timeError" style="color: #DC2F2F;" class="redError">{{ timeError }}</p>
                             </div>
                         </div>
                         <div class="cardcode">
                             <p>信用卡檢查碼</p>
                             <input type="text" v-model="payNum" @input="validNum" @keyup.enter="submitData" placeholder="123" maxlength="4">
-                            <p v-if="NumError" style="color: #DC2F2F;">{{ NumError }}</p>
+                            <p v-if="NumError" style="color: #DC2F2F;" class="redError">{{ NumError }}</p>
                         </div>
                     </div>
 

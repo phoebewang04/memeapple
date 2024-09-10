@@ -53,7 +53,7 @@
                 <div class="mi_dt">
                     <p>姓名</p>
                     <input type="text" v-model="orderName" @input="validName" @keyup.enter="submitData" placeholder="請輸入姓名">
-                    <p v-if="nameError" style="color: #DC2F2F;">{{ nameError }}</p>
+                    <p v-if="nameError" style="color: #DC2F2F;" class="redError">{{ nameError }}</p>
                 </div>
 
                 <p>訂單資訊會寄到您的信箱，此信箱同時會成為您的帳號，請務必確認信箱填寫正確。</p>
@@ -61,7 +61,7 @@
                 <div class="mi_dt">
                     <p>電子信箱</p>
                     <input type="text" v-model="orderEmail" @input="validEmail" @keyup.enter="submitData" placeholder="請輸入正確的電子信箱格式">
-                    <p v-if="emailError" style="color: #DC2F2F;">{{ emailError }}</p>
+                    <p v-if="emailError" style="color: #DC2F2F;" class="redError">{{ emailError }}</p>
                 </div>
 
                 <div class="mi_dt">
@@ -73,7 +73,7 @@
                             <option value="MO">澳門 (+853)</option>
                         </select>
                         <input type="text" v-model="orderPhone" @input="validPhone" @keyup.enter="submitData">
-                        <p v-if="phoneError" style="color: #DC2F2F;">{{ phoneError }}</p>
+                        <p v-if="phoneError" style="color: #DC2F2F;" class="redError">{{ phoneError }}</p>
                     </div>
                 </div>
 
@@ -81,13 +81,13 @@
                     <div class="password01">
                         <p>建立密碼</p>
                         <input type="password" v-model="orderPassword" @input="validPassword" @keyup.enter="submitData" placeholder="請輸入6位以上密碼">
-                        <p v-if="passwordError" style="color: #DC2F2F;">{{ passwordError }}</p>
+                        <p v-if="passwordError" style="color: #DC2F2F;" class="redError">{{ passwordError }}</p>
                     </div>
 
                     <div class="password02">
                         <p>請再次輸入密碼</p>
                         <input type="password" v-model="comfirmPassword" @input="validComfirm" @keyup.enter="submitData" placeholder="再次確認密碼">
-                        <p v-if="comfirmError" style="color: #DC2F2F;">{{ comfirmError }}</p>
+                        <p v-if="comfirmError" style="color: #DC2F2F;" class="redError">{{ comfirmError }}</p>
                     </div>
                 </div>
 

@@ -158,6 +158,12 @@
 
 /* --------------------------------------------------------------------- */
 
+.pay_left .redError {
+    @include rwd(430px) {
+        font-size: 14px;
+    }
+}
+
 .pay_all {
     width: 1200px;
     margin: 0 auto;
@@ -256,6 +262,11 @@
 
     @include rwd(820px){
         display: flex;       
+    }
+
+    @include rwd(430px){
+        display: flex; 
+        flex-wrap: wrap;      
     }
     
 }

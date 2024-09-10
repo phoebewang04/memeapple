@@ -78,7 +78,7 @@
     justify-content: space-between;
 
     @include rwd(430px){
-        width: 210px;
+        width: 220px;
         
     }
     
@@ -227,6 +227,7 @@
 
     @include rwd(430px){
         width: 210px;
+        font-size: 16px;
     }
 }
 
