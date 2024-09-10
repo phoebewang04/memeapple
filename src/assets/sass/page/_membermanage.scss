@@ -82,6 +82,11 @@
     // width: 80%;
     border-radius: 8px;
     position: relative;
+
+    transition: transform 0.3s ease;
+    &:hover {
+        transform: scale(1.06);
+    }
 }
 
 .order_cardusage{
@@ -199,12 +204,15 @@
 }
 
 .star_block {
+    
+    span{
+        margin: 10px 5px;
+    }
 
     > span.star {
       cursor: pointer;
       display: inline-block;
-      margin-left: 15px;
-    
+      
       &.-on {
         color:#FCD15B;
       }
@@ -305,6 +313,11 @@
     
     .btnedit{
         margin-right: 10%;
+
+        &:hover{
+        background-color: map-get($colors, yellow);
+        color: map-get($colors, black);
+        }
         @include pad(){
         width: 100px;
         font-size: map-get($fontsize, p1 );

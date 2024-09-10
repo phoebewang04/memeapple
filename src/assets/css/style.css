@@ -844,7 +844,7 @@ p {
   margin-bottom: 15px;
   outline: none;
   font-size: 20px;
-  width: 100%;
+  width: 95%;
 }
 
 #onlogin {
@@ -5662,6 +5662,10 @@ p {
   color: #292929;
   border-radius: 8px;
   position: relative;
+  transition: transform 0.3s ease;
+}
+.order_card:hover {
+  transform: scale(1.06);
 }
 
 .order_cardusage p {
@@ -5783,10 +5787,12 @@ p {
   font-weight: bold;
 }
 
+.star_block span {
+  margin: 10px 5px;
+}
 .star_block > span.star {
   cursor: pointer;
   display: inline-block;
-  margin-left: 15px;
 }
 .star_block > span.star.-on {
   color: #FCD15B;
@@ -5875,6 +5881,10 @@ p {
 }
 .editmember .btnedit {
   margin-right: 10%;
+}
+.editmember .btnedit:hover {
+  background-color: #FEDA77;
+  color: #292929;
 }
 @media (max-width: 820px) {
   .editmember .btnedit {
