@@ -58,8 +58,8 @@
                         <li><button class="btn btnlogin">註冊帳號</button></li> 
                         </ul> 
     
+                        </div>
                     </div>
-                </div>
                  
                 </div>
             </div>
