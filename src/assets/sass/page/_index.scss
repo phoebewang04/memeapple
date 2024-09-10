@@ -153,14 +153,10 @@
 
     @include pad {
         width: 35%;
-        margin-left: 40px;
+        margin-left: 100px;
     }
 
-    @include rwd(541px) {
-        // display: none;
-    }
-
-    @include phone {
+    @include rwd(520px) {
         display: none;
     }
 
