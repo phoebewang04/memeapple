@@ -55,10 +55,10 @@
                 <!-- -------------------------台北館 手機畫面的swiper------------------------------ -->
 
                     <swiper :spaceBetween="30" :pagination="{ clickable: true,}" :modules="modules" class="mySwiper">
-                        <swiper-slide><li><img src="../assets/img/poster_hospital.png" alt=""><h3>成都醫院</h3></li></swiper-slide>
-                        <swiper-slide><li><img src="../assets/img/poster_time.png" alt=""><h3>時光迷宮</h3></li></swiper-slide>
-                        <swiper-slide><li><img src="../assets/img/poster_dead.jpg" alt=""><h3>末日庇護所</h3></li></swiper-slide>
-                        <swiper-slide><li><img src="../assets/img/poster_code.png" alt=""><h3>代碼深淵</h3></li></swiper-slide>
+                        <swiper-slide><router-link to="/Theme/1"><li><img src="../assets/img/poster_hospital.png" alt=""><h3>成都醫院</h3></li></router-link></swiper-slide>
+                        <swiper-slide><router-link to="/Theme/2"><li><img src="../assets/img/poster_time.png" alt=""><h3>時光迷宮</h3></li></router-link></swiper-slide>
+                        <swiper-slide><router-link to="/Theme/3"><li><img src="../assets/img/poster_dead.jpg" alt=""><h3>末日庇護所</h3></li></router-link></swiper-slide>
+                        <swiper-slide><router-link to="/Theme/4"><li><img src="../assets/img/poster_code.png" alt=""><h3>代碼深淵</h3></li></router-link></swiper-slide>
                     </swiper>
 
 
@@ -135,9 +135,9 @@
                     <!-- -------------------------台中館 手機畫面的swiper------------------------------ -->
 
                     <swiper :spaceBetween="30" :pagination="{ clickable: true,}" :modules="modules" class="mySwiper">
-                        <swiper-slide><li><img src="../assets/img/poster_Lock.jpg" alt=""><h3>逃離武石監</h3></li></swiper-slide>
-                        <swiper-slide><li><img src="../assets/img/poster_room.png" alt=""><h3>恐怖密室</h3></li></swiper-slide>
-                        <swiper-slide><li><img src="../assets/img/poster_alien.png" alt=""><h3>逃出虛空</h3></li></swiper-slide>
+                        <swiper-slide><router-link to="/Theme/5"><li><img src="../assets/img/poster_Lock.jpg" alt=""><h3>逃離武石監</h3></li></router-link></swiper-slide>
+                        <swiper-slide><router-link to="/Theme/6"><li><img src="../assets/img/poster_room.png" alt=""><h3>恐怖密室</h3></li></router-link></swiper-slide>
+                        <swiper-slide><router-link to="/Theme/7"><li><img src="../assets/img/poster_alien.png" alt=""><h3>逃出虛空</h3></li></router-link></swiper-slide>
                         <swiper-slide><li><img src="../assets/img/poster_comingsoon.png" alt=""><h3>coming soon</h3></li></swiper-slide>
                     </swiper>
 
