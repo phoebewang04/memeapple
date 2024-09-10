@@ -3,20 +3,20 @@
 
 
 #wrapper {
-    width: 1200px;
-    margin: 0 auto;
+    width: 100%;
+    // margin: 0 auto;
 
-    @include pad {
-        width: 800px;
-    }
+    // @include pad {
+    //     width: 800px;
+    // }
 
-    @include rwd(430px){
-        width: 430px;
-    }
+    // @include rwd(430px){
+    //     width: 430px;
+    // }
 }
 
 #wrapper .slogan {
-    width: 81%;
+    width: 80%;
     padding: 80px 0px;
     margin: 0 auto;
     text-align: center;
@@ -41,14 +41,17 @@
 
 .branch_btn {
 
+    width: 80%;
+    margin: 0 auto;
+
     @include pad {
-        padding-left: 29px;
+        // padding-left: 29px;
     }
     
     @include rwd(430px){
-        padding-left: 0px;
-        width: 400px;
-        margin: 0 auto;
+        // padding-left: 0px;
+        width: 90%;
+        // margin: 0 auto;
     }
 
 }
@@ -60,14 +63,18 @@
     border-left:1px solid white; 
     border-right: 1px solid white;
     border-bottom: none;
-    width: 200px;
+    width: 20%;
     height: 48px;
     cursor: pointer;
     font-size: 18px;
     border-radius: 40px 40px 0px 0px;
 
+    @include pad {
+        width: 30%;
+    }
+
     @include rwd(430px){
-        width: 200px;
+        width: 50%;
         margin: 0 auto;
     }
 }
@@ -78,14 +85,18 @@
     border-left:1px solid white; 
     border-right: 1px solid white;
     border-bottom: none;
-    width: 200px;
+    width: 20%;
     height: 48px;
     cursor: pointer;
     font-size: 18px;
     border-radius: 40px 40px 0px 0px;
 
+    @include pad {
+        width: 30%;
+    }
+
     @include rwd(430px){
-        width: 200px;
+        width: 50%;
         margin: 0 auto;
     }
 }
@@ -100,18 +111,19 @@
 
 
 #main {
+    width: 80%;
+    margin: 0 auto;
     border:1px solid #FFFFFF;
     margin-bottom: 80px;
     background-color: map-get($colors , lightblue );
     
     @include pad {
-        width: 740px;
         margin: 0 auto;
         margin-bottom: 80px;
     }
 
     @include rwd(430px){
-        width: 400px;
+        width: 90%;
         margin: 0 auto;
         margin-bottom: 80px;
     }
@@ -119,7 +131,7 @@
 }
 
 .introduce {
-    width: 1000px;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     
@@ -127,12 +139,12 @@
     padding-top: 80px;
 
     @include pad {
-        width: 700px;
+        width: 90%;
     }
 
     @include rwd(430px){
         flex-direction: column;
-        width: 350px;
+        width: 90%;
         padding-top: 40px;
         margin-bottom: 60px;
     }
@@ -140,17 +152,33 @@
   
 }
 
-.introduce img {
-    width: 500px;
-    height: 400px;
+ .introduce .branch1 {
+     width: 150%;
+     margin: 0 auto;
+    box-sizing: border-box;
 
     @include pad {
-        width: 330px;
-        height: 330px;
+        width:60% ;
     }
 
     @include rwd(430px){
-        width: 350px;
+        width: 100%;
+        height: 320px;
+    }
+ }
+
+.introduce  img {
+    width: 100%;
+    height: 400px;
+    box-sizing: border-box;
+
+    @include pad {
+        width: 100%;
+        height: 100%;
+    }
+
+    @include rwd(430px){
+        width: 100%;
         height: 320px;
     }
  
@@ -182,12 +210,13 @@
     padding-bottom: 40px;
 
     @include pad {
+        font-size: map-get($fontsize , p );
         padding-bottom: 10px;
     }
 
     @include rwd(430px){
         font-size: map-get($fontsize , p );
-        width: 350px;
+        width: 90%;
         margin: 0 auto;
     }
 
@@ -200,12 +229,13 @@
     line-height: map-get($lineheight , p );
     
     @include pad {
+        font-size: map-get($fontsize, p1 );
         line-height: 2.0;
     }
 
     @include rwd(430px){
         font-size: map-get($fontsize, p1 );
-        width: 350px;
+        width: 90%;
         margin: 0 auto;
     }
 
@@ -215,12 +245,12 @@
 
 
 .theme {
-    width: 1000px;
+    width: 90%;
     margin: 0 auto;
     margin-bottom: 80px;
 
     @include pad {
-        width: 700px;
+        width: 100%;
     }
 
     @include rwd(430px){
@@ -241,16 +271,12 @@
     &:hover {
         transform: scale(1.1);
     }
-
-    @include pad {
-        width: 300px;
-    }
 }
 
 .theme li i  {
     color: map-get($colors , yellow );
     font-size: 48px;
-    padding: 12px;
+    padding: 8px;
     cursor: pointer;
 
     @include rwd(430px){
@@ -278,19 +304,19 @@
     height: 400px;
 
     @include pad {
-        width: 190px;
+        width: 180px;
         height: 270px;
     }
 
 }
 
 .theme .theme_name {
-    width: 1000px;
+    width: 90%;
     display: flex;
     justify-content: space-between;
 
     @include pad {
-        width: 610px;
+        width: 90%;
     }
 }
 
@@ -304,24 +330,24 @@
     line-height: 40px;
 
     @include pad {
-        width: 190px;
+        width: 180px;
     }
 }
 
 
 .location {
-    width: 1000px;
+    width: 90% ;
     margin: 0 auto;
     margin-bottom: 80px;
     justify-content: space-between;
 
     
     @include pad {
-        width: 700px;
+        width: 90%;
     }
 
     @include rwd(430px){
-        width: 350px;
+        width: 90%;
         margin: 0 auto;
         margin-bottom: 60px;
     }
@@ -366,16 +392,16 @@
 }
 
 .location iframe {
-    width: 1000px;
+    width: 100% ;
     height: 300px;
 
 
       @include pad {
-        width: 700px;
+        width: 100%;
     }
 
     @include rwd(430px){
-        width: 350px;
+        width: 100%;
     }
 
   
