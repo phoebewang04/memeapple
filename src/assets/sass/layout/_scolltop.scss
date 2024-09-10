@@ -1,0 +1,26 @@
+#toTopBTN {
+    position: fixed;
+    /* 固定位置 */
+    top: 90%;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    // background-color: map-get($colors, underyellow);
+    background-color: rgba(255, 199, 0, 0.8);
+    color: map-get($colors, darkblue);
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+
+    @include phone {
+        padding: 8px;
+        right: 12px;
+        top: 86%;
+    }
+}
+
+#toTopBTN:hover {
+    background-color: map-get($colors, underyellow);
+    /* 滑鼠懸停時的背景顏色 */
+}
