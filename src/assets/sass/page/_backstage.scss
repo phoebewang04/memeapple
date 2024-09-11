@@ -230,6 +230,16 @@
         background-color: gray;
         color: map-get($colors , white );
     }
+
+    tr{
+        &:hover{
+            background-color: map-get($colors, lightyellow );
+        }
+
+        &.backstage_tfoot:hover{
+            background-color: map-get($colors, white );
+        }
+    }
 }
 
 .backstage_tfoot{

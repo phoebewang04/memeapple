@@ -2469,6 +2469,12 @@ p {
   background-color: gray;
   color: white;
 }
+.backstage_tablebody tr:hover {
+  background-color: #FFE8BB;
+}
+.backstage_tablebody tr.backstage_tfoot:hover {
+  background-color: white;
+}
 
 .backstage_tfoot {
   background-color: white;
