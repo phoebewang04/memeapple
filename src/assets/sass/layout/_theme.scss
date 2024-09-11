@@ -117,10 +117,13 @@
         color: map-get($colors, yellow);
     }
 
-    &.time {}
-
     &.alien {
         color: map-get($colors, lightgreen);
+    }
+
+    &.code{
+        // color: #AADDEC;
+        // color: #07D691;
     }
 }
 
@@ -135,7 +138,8 @@
     &.hospital,
     &.time,
     &.Lock,
-    &.room
+    &.room,
+    &.code
      {
         background-color: map-get($colors, midnight);
     }
@@ -180,6 +184,11 @@
     &.alien {
         background-color: map-get($colors, green);
         color: map-get($colors, black);
+    }
+
+    &.code{
+        background-color:#07D691;
+        color: white;
     }
 }
 
@@ -230,6 +239,10 @@
 
     &.alien{
         color: map-get($colors, green);
+    }
+
+    &.code{
+        color: #90E7F2;
     }
 }
 
@@ -323,6 +336,12 @@
         }
     }
 
+    &.code{
+        p{
+            color: #AADDEC;
+        }
+    }
+
 }
 
 // -----亮點icon end-----
@@ -411,7 +430,7 @@
     color: map-get($colors , black );
 
 
-    &.hospital{
+    &.hospital,&.code{
         font-weight: 400;
         color: map-get($colors , white );
         background: #221F3C;

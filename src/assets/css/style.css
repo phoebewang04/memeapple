@@ -415,7 +415,6 @@ p {
 .theme_number.alien {
   color: #D8FFDF;
 }
-
 .progress_bar {
   border-radius: 16px;
   overflow: hidden;
@@ -423,7 +422,7 @@ p {
   height: 30px;
   margin: 20px 0;
 }
-.progress_bar.hospital, .progress_bar.time, .progress_bar.Lock, .progress_bar.room {
+.progress_bar.hospital, .progress_bar.time, .progress_bar.Lock, .progress_bar.room, .progress_bar.code {
   background-color: #221F3C;
 }
 .progress_bar.dead {
@@ -458,6 +457,10 @@ p {
 .progress.alien {
   background-color: #6EE742;
   color: #292929;
+}
+.progress.code {
+  background-color: #07D691;
+  color: white;
 }
 
 .gameinfo {
@@ -496,6 +499,9 @@ p {
 }
 .theme_game.alien {
   color: #6EE742;
+}
+.theme_game.code {
+  color: #90E7F2;
 }
 
 .theme_game p {
@@ -562,6 +568,9 @@ p {
 .theme_icon.time p, .theme_icon.dead p {
   color: #8F9191;
 }
+.theme_icon.code p {
+  color: #AADDEC;
+}
 
 .theme_marketing_container {
   display: flex;
@@ -620,7 +629,7 @@ p {
   background: center/cover no-repeat;
   color: #292929;
 }
-.notice_text.hospital {
+.notice_text.hospital, .notice_text.code {
   font-weight: 400;
   color: white;
   background: #221F3C;

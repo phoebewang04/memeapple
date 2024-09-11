@@ -346,6 +346,127 @@ export const all_data = {
         ]
     },
 
+    //代碼深淵
+    4:{
+        branch:'台北館',
+        themeName: '代碼深淵',
+        address:'台北市密逃路88之107號',
+        src: new URL("@/assets/img/code_preorder.png", import.meta.url).href,
+
+        // --------------------------------以上是預定資料的內容----------------------------------------------//
+
+        themeClass: 'code',
+        banner: {
+            type: 'video',
+            src: new URL("@/assets/img/banner_code.mp4", import.meta.url).href,
+        },
+        overviewText: `在熬夜趕專題時，不小心寫了無限迴圈，結果錯誤訊息瘋狂跳出，甚至還冒了白煙？正當你以為電腦要爆炸的瞬間，居然被吸進了螢幕裡，這裡的教室雖熟悉卻異常詭異，四周充滿漂浮的程式碼和提示，蛤？難道要先Debug才能回去發表嗎...？`
+        ,
+        bar: [
+            { title: '燒腦指數', 'per': 98, },
+            { title: '驚嚇指數', 'per': 70, },
+            { title: '推薦指數', 'per': 87, }
+        ],
+
+        gameData: [
+            {
+                icon: 'fa-solid fa-clock',
+                title: '遊戲時間',
+                content: '120分鐘 \n （含20分鐘解說）'
+            },
+            {
+                icon: 'fa-solid fa-user-secret',
+                title: '建議人數',
+                content: '4－8 人\n （最少4人成團）'
+            },
+            {
+                icon: 'fa-solid fa-sack-dollar',
+                title: '遊戲費用',
+                content: '＄710－＄990 / 人 \n ▲ 點此查看詳細價格',
+                clickable: true
+            }
+        ],
+
+        iconData: [
+            {
+                src: new URL("@/assets/img/icon_code_1.png", import.meta.url).href,
+                title: '數位沉浸',
+                content: '現實與程式錯誤的完美結合\n讓你在虛實之間徘徊'
+            },
+            {
+                src: new URL("@/assets/img/icon_code_2.png", import.meta.url).href,
+                title: '身歷其境',
+                content: '鍵盤狂敲、無限重寫\n真實還原工程師Debug痛苦'
+            },
+            {
+                src: new URL("@/assets/img/icon_code_3.png", import.meta.url).href,
+                title: '除錯盛宴',
+                content: '錯誤層層疊加\n只有頂尖高手才能破解'
+            },
+        ],
+
+        textSec: [
+            {
+                title: '程式報錯，懷疑人生',
+                content: '狂按Ctrl+Z？那可不行\n還得靠你的Debug技能',
+                backgroundImage: new URL("@/assets/img/mb_code_1.png", import.meta.url).href,
+                // 'animation': 'hand',    
+            },
+            {
+                title: '瘋狂錯誤，狂點Ｆ５',
+                content: '紅字滿屏，狂按F5自救\n程式崩潰了，但你不能崩！',
+                backgroundImage: new URL("@/assets/img/mb_code_3.png", import.meta.url).href,
+                // 'animation': 'hand',    
+            },
+            {
+                title: '修個Bug，一夜變禿',
+                content: '程式一旦失控，你的頭髮可能也難逃一劫\n望也許只是開始',
+                backgroundImage: new URL("@/assets/img/mb_code_2.png", import.meta.url).href,
+                // 'animation': 'hand',    
+            },
+            {
+                title: null,
+                content: '錯誤滿天飛，無限迴圈不斷重複...Debug是你唯一希望！\n準備好修復Bug回去發表，還是永遠卡在螢幕裡重寫？',
+                backgroundImage: new URL("@/assets/img/mb_code_4.png", import.meta.url).href,
+                // 'animation': 'hand',    
+            },
+
+        ],
+        btn: '預約Debug'
+        ,
+
+        notice: [
+            {
+                'p1': `＊ 建議遊戲人數 6 ~ 7 人，容納人數 4 - 8 人。`,
+                'p2': `＊ 建議穿著輕便服裝，避免穿裙子。`,
+                'p3': `＊ 誠摯歡迎緯育老師一起挑戰，錯誤滿天飛，等您來Debug！`,
+                'p4': `＊ 未滿15歲孩童需有成人陪同參與。`,
+
+            }
+        ],
+
+        otherSeparate:`台北館其他主題`,
+
+        otherTheme: [
+            {
+                id: 1,
+                src: new URL("@/assets/img/poster_hospital.png", import.meta.url).href,
+                title: '成都醫院'
+            },
+            {
+                id: 2,
+                src: new URL("@/assets/img/poster_time.png", import.meta.url).href,
+                title: '時光迷宮'
+            },
+            {
+                id: 3,
+                src: new URL("@/assets/img/poster_dead.jpg", import.meta.url).href,
+                title: '末日庇護所'
+            }
+            
+        ],
+
+    },
      //逃離武石監
     5:{
         themeName: '逃離武石監',
