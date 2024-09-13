@@ -1,21 +1,32 @@
 <?php
+// database.php
+class Database {
+    private $pdo;
+    
+    public function __construct($host, $dbname, $user, $password) {
+        $dsn = "mysql:host=$host; dbname=$dbname; charset=utf8";
+        $this->pdo = new PDO($dsn, $user, $password);
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
 
-// SQL參數設定
-    // MySQL info
-    $db_host = "127.0.0.1";
-    $db_user = "root";
-    $db_pass = "password";
-    $db_select = "MemeStudio";
+    public function getConnection() {
+        return $this->pdo;
+    }
+}
 
-    // 設定DSN
-        // 前置詞: mysql
-        // host: 主機IP
-        // port: port number
-        // dbname: 資料庫名稱
-        // charset: 資料庫語系
-    $dsn = "mysql:host=localhost; dbname=MemeStudio; charset=utf8";
+// index.php
+// 組合兩版CORS設定
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Content-Type: application/json");
 
-    // 建立pdo物件
-    $pdo = new PDO($dsn, $db_user, $db_pass);  
+// Route handling
+$requestUri = $_SERVER['REQUEST_URI'];
+$requestMethod = $_SERVER['REQUEST_METHOD'];
+
+// Database connection
+$db = new Database('localhost', 'MemeStudio', 'root', 'password');
+$pdo = $db->getConnection();
 
 ?>

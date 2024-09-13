@@ -1,10 +1,7 @@
 <?php
 
-// 載入DB參數
-include_once '../config/database.php';
-include_once '../api/index.php';
-
-
+// 載入php API共同參數
+include_once '../sql.php';
 
 class Order {
     private $db;
@@ -23,7 +20,7 @@ class Order {
         $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 
         // SQL
-        $sql = 'SELECT * FROM MemeStudio.OrderDetails WHERE 1=1';
+        $sql = 'SELECT * FROM OrderDetails WHERE 1=1';
         $params = [];
 
         if ($order_date != '') {
@@ -61,8 +58,6 @@ class Order {
 
 }
 
-$db = new Database('localhost', 'MemeStudio', 'root', 'password');
-$pdo = $db->getConnection();
 $order = new Order($pdo);
 $order->getOrders();  //暫時寫死
 
