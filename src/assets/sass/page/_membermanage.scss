@@ -1,6 +1,6 @@
 .wrappermmange{
     display: flex;
-    min-height: 1100px;
+    min-height: 600px;
 }
 
 .mmangeleft{
@@ -260,19 +260,26 @@
         // opacity: 0.6;
         margin:10px 20px;
         background: map-get($colors, lightyellow);
-        width: 350px;
-        height: 180px;
+        width: 800px;
+        height: 260px;
         border-radius: 8px;
-        -webkit-mask: radial-gradient(circle at 30px 30px, transparent 30px, red 0) 85px -30px ,
-                      radial-gradient(circle at 25px 8px, transparent 3px, red 0) 90px -25px / 100% 10%;
-        -webkit-mask-composite: source-in;
+        // -webkit-mask: radial-gradient(circle at 30px 30px, transparent 30px, red 0) 85px -30px ,
+        //               radial-gradient(circle at 25px 8px, transparent 3px, red 0) 90px -25px / 100% 10%;
+        // -webkit-mask-composite: source-in;
         }
+    .couponbg{
+        width: 600px;
+        height: 100%;
+        opacity: 0.6;
+        background-size: cover;
+    }
     .coupont{
         // display: none;
         position: absolute;
-        right: 8%;
-        top:8%;
+        right: 10%;
+        top:10%;
         color: map-get($colors, black);
+        text-align: center;
         h3{
             color: map-get($colors, lightblue);
         }
