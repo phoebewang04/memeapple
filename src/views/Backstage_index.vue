@@ -1,75 +1,123 @@
-<script setup>
-    import '../assets/css/style.css'
-    import TopNavbarBack from '../components/TopNavbarBack.vue';
-    import FooterbarBack from '../components/FooterbarBack.vue';
+<script>
+import '../assets/css/style.css'
+import TopNavbarBack from '../components/TopNavbarBack.vue';
 
-    import 'v-calendar/style.css';
+import 'v-calendar/style.css';
+import { Calendar } from 'v-calendar';
 
-    import { ref } from 'vue'
-    import { Bar } from 'vue-chartjs'
-    import { Doughnut } from 'vue-chartjs'
-    
-    import { 
-        Chart as ChartJS, 
-        Title, 
-        Tooltip,
-        BarElement, 
-        CategoryScale, 
-        LinearScale,
-        ArcElement 
-    } from 'chart.js'
+import { Bar } from 'vue-chartjs'
+import { Doughnut } from 'vue-chartjs'
 
+import { 
+    Chart as ChartJS, 
+    Title, 
+    Tooltip,
+    BarElement, 
+    CategoryScale, 
+    LinearScale,
+    ArcElement 
+} from 'chart.js'
+import { valueOrDefault } from 'chart.js/helpers';
 
-    ChartJS.register(Title, Tooltip, BarElement, CategoryScale, LinearScale, ArcElement)
-  
-    const chartData = ref({
+ChartJS.register(Title, Tooltip, BarElement, CategoryScale, LinearScale, ArcElement);
+
+export default {
+  components: {
+    TopNavbarBack,
+    Calendar,
+    Bar,
+    Doughnut,
+  },
+  data() {
+    return {
+      selectedDate: new Date().toISOString().split('T')[0], // set the default selected date to today
+      attrs: [
+        {
+          key: 'today',
+          highlight: true,
+          dates: new Date(),
+        }
+      ],
+      chartData: {
         labels: ['成都醫院', '時光迷宮', '末日庇護所', '恐怖密室', '逃出虛空', '逃離武石監'],
         datasets: [
-            { 
-                backgroundColor: '#3c598d',
-                data: [170000, 180000, 50000, 160000, 230000, 170000] 
-            }
+          { 
+            backgroundColor: '#3c598d',
+            data: [170000, 180000, 50000, 160000, 230000, 170000] 
+          }
         ]
-    })
-  
-    const chartOptions = ref({
+      },
+      chartOptions: {
         indexAxis: 'y',  //直條圖
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-            x: {
-                beginAtZero: true,
-                ticks:{
-                    color: '#FCD15B'
-                }
-            },
-            y: {
-                ticks:{
-                    color: '#FCD15B'
-                }
+          x: {
+            beginAtZero: true,
+            ticks:{
+              color: '#FCD15B'
             }
+          },
+          y: {
+            ticks:{
+              color: '#FCD15B'
+            }
+          }
         },
         width: '835px',
-    })
-
-    const doughnutData = ref({
+      },
+      doughnutData: {
         labels: ['台北館', '台中館'],
         Legend: { display: false },
         datasets:[
-            {
-                backgroundColor: ['#324872', '#4f71a8'],
-                data: [60, 40]
-            }
+          {
+            backgroundColor: ['#324872', '#4f71a8'],
+            data: [60, 40]
+          }
         ]
-    })
-
-    const doughnutOptions = ref({
+      },
+      doughnutOptions: {
         responsive: true,
         maintainAspectRatio: false,
         width: '355px'
-    })
+      }
+    };
+  },
+  methods: {
+    onDateChange(date) {
+      this.selectedDate = date;
+      // 將選擇的日期傳遞給 PHP 後端
+      this.queryDatabaseByDate(date);
+    },
+    // 切換月份時取得年月資訊
+    onMonthChange(page) {
+        if (page && page.length > 0) {
+        const { month, year } = page[0];
+        console.log(`Month changed to: ${month}, Year: ${year}`);
+        // 將切換後年月傳給 PHP 後端
+        this.queryDatabaseByMonth(month, year);
+      } else {
+        console.error('Page update event did not provide the expected data.');
+        console.log('Page update event data:', page);
+      }
+    },
+    queryDatabaseByDate(date) {
+      // 實現你的 PHP 查詢邏輯
+      console.log('查詢日期：', date);
+    },
+    queryDatabaseByMonth(month, year) {
+      // 實現你的 PHP 查詢邏輯
+      console.log('查詢月份：', month, year);
+    },
+  },
+  mounted() {
+  this.selectedDate = new Date().toISOString().split('T')[0];
+  console.log(this.selectedDate);
+  },
+};
 
 </script>
+
 
 <template>
 <TopNavbarBack />
@@ -80,7 +128,12 @@
             <div class="backstage_dashboard">
                 <div class="backstage_daily">
                     <div class="backstage_calendar">
-                        <VCalendar title-position="left" style="width: 100%; height: 100%;" />
+                        <VCalendar 
+                        v-model="selectedDate"
+                        :attributes="attrs"
+                        @dayclick="onDateChange"
+                        @update:pages="onMonthChange"
+                        title-position="left" style="width: 100%; height: 100%;" />
                     </div>
                     <div class="backstage_booking">
                         
