@@ -140,10 +140,10 @@
     // 變數
     $speed: 6s;
     $wordCount: 8;
-    width: 55%;
+    width: 48%;
     height: 100px;
     position: relative;
-    margin-left: 300px;
+    margin-left: 260px;
     filter: contrast(10) blur(1px);
 
     @include rwd(1280px) {
@@ -303,11 +303,10 @@
     h3 {
         font-size: 32px;
         font-weight: bold;
-        margin: 20px 0;
+        margin: 8px 0;
 
         @include phone {
             font-size: 26px;
-            margin: 8px 0;
         }
     }
 
@@ -362,7 +361,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    background-image: url(/src/assets/img/Abyss_small2-0.jpg);
+    background-image: url(/src/assets/img/Abyss_small2-3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -1165,10 +1164,12 @@
         font-size: 48px;
         color: #FEDA77;
         cursor: pointer;
+
+        &:hover {
+            color: map-get($colors, priceorange);
+        }
     }
 }
-
-// 右邊按鈕
 
 
 .announcement-title {

@@ -1,5 +1,5 @@
 .bottom {
-    background-color: map-get($colors,  lightblue);
+    background-color: map-get($colors, lightblue);
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -10,76 +10,176 @@
 .bottom img {
     width: 100px;
     height: 70px;
-    margin-left: 80px;
-    @include rwd(1000px){
+    // margin-left: 80px;
+
+    @include rwd(1000px) {
         margin-left: 40px;
     }
-    @include pad{
-       margin-left: 28px;
+
+    @include pad {
+        margin-left: 28px;
     }
-    @include rwd(650px){
+
+    @include rwd(650px) {
         width: 70px;
         margin-left: 20px;
     }
-    @include phone{
+
+    @include phone {
         width: 50px;
         margin-left: 12px;
-     }
+    }
 }
 
 
-.bottom .bm_text{
-    color:map-get($colors,  white);
-    width: 80%;
-    margin: 0 auto;
+.bm_text {
+    color: map-get($colors, white);
+    width: 45%;
+    // margin: 0 auto;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
-        @include rwd(650px){
-            width: 60%;
-        }
-        @include phone{
-            width: 50%;
-        }
-    p{
-        font-size: 16px;
+    border: 1px solid gold;
+
+    @include rwd(650px) {
+        width: 60%;
+    }
+
+    @include phone {
+        width: 50%;
+    }
+
+    p {
+        font-size: 12px;
         line-height: 1.6;
-        @include pad{
-           line-height: 1.2;
-           font-size: 12px;
+
+        @include pad {
+            line-height: 1.2;
+            font-size: 12px;
         }
-        @include rwd(650px){
-            p{
+
+        @include rwd(650px) {
+            p {
                 font-size: 6px;
             }
         }
-        @include phone{
+
+        @include phone {
             font-size: 8px;
-         }
+        }
     }
 }
 
-.bottom .icon {
-    width: 80px;
+.footerRule {
     display: flex;
-    justify-content: space-between;
-    color: map-get($colors,  white);
-    margin-left: auto;
-    padding-right: 80px;
-    font-size: 20px;
-    & a{
-        color: map-get($colors,  white);
+    align-items: center;
+    text-align: center;
+
+    @include phone {
+        font-size: 8px;
     }
-    @include rwd(1100px){
+
+    a {
+        text-decoration: none;
+        color: map-get($colors, white);
+        font-size: 12px;
+        cursor: pointer;
+
+        &:first-child {
+            margin-right: 20px;
+        }
+
+        &:hover {
+            color: map-get($colors, underyellow);
+        }
+    }
+}
+
+.bm_info {
+    align-items: center;
+    color: map-get($colors, white);
+    // margin-left: auto;
+    // padding-right: 80px;
+    font-size: 12px;
+    border: 1px solid red;
+
+    & a {
+        color: map-get($colors, white);
+    }
+
+    span {
+        font-size: 14px;
+    }
+
+    @include rwd(1100px) {
         padding-right: 40px;
         // font-size: 20px;  
     }
-    @include rwd(650px){
+
+    @include rwd(650px) {
         padding-right: 20px;
         // font-size: 20px;  
     }
-    @include phone{
+
+    @include phone {
         padding-right: 15px;
     }
+}
+
+.footerInfo {
+    .bm_info {
+        align-items: center;
+        color: map-get($colors, white);
+        // margin-left: auto;
+        // padding-right: 80px;
+        font-size: 12px;
+        border: 1px solid red;
+
+        & a {
+            color: map-get($colors, white);
+        }
+
+        span {
+            font-size: 14px;
+        }
+
+        @include rwd(1100px) {
+            padding-right: 40px;
+            // font-size: 20px;  
+        }
+
+        @include rwd(650px) {
+            padding-right: 20px;
+            // font-size: 20px;  
+        }
+
+        @include phone {
+            padding-right: 15px;
+        }
+    }
+
+    p {
+        font-size: 12px;
+        line-height: 1.3;
+
+        @include phone {
+            font-size: 8px;
+        }
+    }
+}
+
+.footerPlace {
+
+    p {
+        font-size: 12px;
+        line-height: 1.3;
+        margin-right: 12px;
+
+        @include phone {
+            font-size: 8px;
+        }
+    }
+
 }

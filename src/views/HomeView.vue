@@ -28,7 +28,7 @@ export default {
       faqs: [
         {
           question: "請問可以在開始前增加人數嗎？",
-          answer: "可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!"
+          answer: "可以喔！只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好密室逃脫體驗！"
         },
         {
           question: "請問有心血管疾病適合遊玩嗎？",
@@ -200,9 +200,9 @@ export default {
         <!-- 文字區域 -->
         <div class="homepage-text">
           <h1 data-aos="fade-up" data-text="Meme謎因">Meme謎因</h1>
-          <p data-aos="fade-up" data-aos-delay="80">謎因工作室邀請勇敢的挑戰者進入神秘世界。</p>
-          <p data-aos="fade-up" data-aos-delay="90">解開謎題背後故事，發掘內心深處智慧與勇氣。</p>
-          <p data-aos="fade-up" data-aos-delay="100">體驗逃脫密室的刺激與成就感。</p>
+          <p data-aos="fade-up" data-aos-delay="100">謎因工作室邀請勇敢的挑戰者進入神秘世界。</p>
+          <p data-aos="fade-up" data-aos-delay="150">解開謎題背後故事，發掘內心深處智慧與勇氣。</p>
+          <p data-aos="fade-up" data-aos-delay="200">體驗逃脫密室的刺激與成就感。</p>
         </div>
         <!-- 下方圖片區 -->
         <div class="homepage-img">
@@ -232,7 +232,7 @@ export default {
             <img src="../assets/img/breadstoryimg3.jpg" alt="品牌故事照片">
           </div>
           <!-- 文字區域 -->
-          <div class="brandstory-text" data-aos="fade-up" data-aos-delay="200">
+          <div class="brandstory-text" data-aos="fade-up" data-aos-delay="300">
             <div class="brandstory-title">
               <span>— 品牌</span>
               <span>故事 —</span>
@@ -296,31 +296,7 @@ export default {
               </div>
             </section>
 
-            <section class="limitlevel-img" data-aos="fade-up" data-aos-delay="250">
-              <!-- <div class="limitlevel-imgtext">
-                <p>JavaScriptは大丈夫ですか？</p>
-                <p>青い光が一瞬にして爆発した </p>
-                <p>複雑なコードの異世界。</p>
-                <p>未知の危険と神秘的な力</p>
-                <p>現実世界に戻る方法を見つけてください</p>
-                <p> あるいは永遠に暗号の深淵に迷い込んでしまう</p>
-              </div> -->
-
-              <!-- <div class="limitlevel-info">
-                <div class="limitlevel-level">
-                  <font-awesome-icon :icon="['fas', 'lock']" class="limit-icon" />
-                  <p>3 Star</p>
-                </div>
-                <div class="limitlevel-people">
-                  <font-awesome-icon :icon="['fas', 'user-group']" class="limit-icon" />
-                  <p>4 - 8</p>
-                </div>
-                <div class="limitlevel-time">
-                  <font-awesome-icon :icon="['far', 'clock']" class="limit-icon" />
-                  <p>60 mins</p>
-                </div>
-              </div> -->
-            </section>
+            <section class="limitlevel-img" data-aos="fade-up" data-aos-delay="250"></section>
           </section>
           <router-link to="/Branch/" class="linmit-link" data-aos="fade-up" data-aos-delay="50"><button type="button"
               class="btn linmit-btn">立即預定</button></router-link>

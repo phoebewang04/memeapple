@@ -1,5 +1,6 @@
 <template>
-    <button @click="topFunction()" id="toTopBTN" v-show="showButton">Top</button>
+    <button @click="topFunction()" id="toTopBTN" v-show="showButton" @mouseover="pauseAnimation"
+        @mouseout="resumeAnimation">Top</button>
 </template>
 
 <script>
@@ -28,6 +29,12 @@ export default {
                 top: 0,
                 behavior: 'smooth'
             });
+        },
+        pauseAnimation() {
+            document.getElementById('toTopBTN').style.animationPlayState = 'paused';
+        },
+        resumeAnimation() {
+            document.getElementById('toTopBTN').style.animationPlayState = 'running';
         }
     }
 };
