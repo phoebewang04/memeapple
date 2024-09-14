@@ -1,45 +1,51 @@
 #toTopBTN {
-    position: fixed;
-    /* 固定位置 */
-    top: 80%;
-    right: 30px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: rgba(255, 199, 0, 0.8);
-    color: map-get($colors, white);
-    cursor: pointer;
-    width: 45px;
-    height: 45px;
-    padding: 0;
-    // padding: 15px 15px;
-    border-radius: 50%;
-    animation: float 2s infinite;
+  position: fixed;
+  /* 固定位置 */
+  top: 65%;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 199, 0, 0.8);
+  color: map-get($colors, white);
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  // padding: 15px 15px;
+  border-radius: 50%;
+  animation: float 2s infinite;
 
-    &:hover {
-        animation-play-state: paused;
-      }
+  &:hover {
+    animation-play-state: paused;
+  }
 
-    @include phone {
-        padding: 8px;
-        right: 12px;
-        top: 80%;
+  @include phone {
+    padding: 8px;
+    right: 12px;
+    top: 70%;
+  }
+
+  @include rwd(376px) {
+    top: 60%;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0);
     }
 
-    @keyframes float {
-        0% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-        100% {
-          transform: translateY(0);
-        }
-      }
+    50% {
+      transform: translateY(-10px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
 }
 
 #toTopBTN:hover {
-    background-color: map-get($colors, underyellow);
-    /* 滑鼠懸停時的背景顏色 */
+  background-color: map-get($colors, underyellow);
+  /* 滑鼠懸停時的背景顏色 */
 }

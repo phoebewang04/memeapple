@@ -19,6 +19,8 @@ import Escaperoom from '../views/Escaperoom.vue';
 import pay from '../views/pay.vue';
 import Theme_test from '../views/Theme_test.vue';
 import dead1A2Bgame from '../views/dead1A2Bgame.vue';
+import Privacy from '../views/PrivacyPolicy.vue';
+import Terms from '../views/TermsService.vue';
 
 
 // 後台相關路由
@@ -123,6 +125,14 @@ const routes = [
   {
     path: '/dead1A2Bgame/',
     component: dead1A2Bgame
+  },
+  {
+    path: '/Privacy/',
+    component:Privacy
+  },
+  {
+    path: '/Terms/',
+    component:Terms
   },
 
 

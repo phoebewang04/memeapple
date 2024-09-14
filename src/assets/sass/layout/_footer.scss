@@ -4,51 +4,59 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-}
+    justify-content: center;
+    flex-direction: column;
+    padding: 12px 0;
 
-.bottom img {
-    width: 100px;
-    height: 70px;
-    // margin-left: 80px;
-
-    @include rwd(1000px) {
-        margin-left: 40px;
-    }
-
-    @include pad {
-        margin-left: 28px;
-    }
-
-    @include rwd(650px) {
-        width: 70px;
-        margin-left: 20px;
-    }
-
-    @include phone {
-        width: 50px;
-        margin-left: 12px;
+    @include rwd(1280px) {
+        justify-content: center;
     }
 }
 
+.bm_logo {
+    display: flex;
+    margin-bottom: 4px;
+
+    img {
+        width: 100px;
+        height: 70px;
+        margin-right: 40px;
+
+        @include rwd(650px) {
+            width: 70px;
+        }
+
+        @include phone {
+            width: 100px;
+            height: 70px;
+            margin-right: 0px;
+        }
+    }
+
+    .bm_icon {
+        margin-top: 40px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
 
 .bm_text {
     color: map-get($colors, white);
-    width: 45%;
     // margin: 0 auto;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 1px solid gold;
 
     @include rwd(650px) {
-        width: 60%;
+        width: 80%;
     }
 
     @include phone {
-        width: 50%;
+        width: 96%;
     }
 
     p {
@@ -60,36 +68,70 @@
             font-size: 12px;
         }
 
-        @include rwd(650px) {
-            p {
-                font-size: 6px;
-            }
-        }
-
         @include phone {
-            font-size: 8px;
+            font-size: 10px;
         }
+    }
+}
+
+
+.bm_info {
+    color: map-get($colors, white);
+    margin-right: 40px;
+
+    & a {
+        color: map-get($colors, white);
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    span {
+        font-size: 14px;
+    }
+
+    @include rwd(600px) {
+        margin-right: 0;
+    }
+
+    @include phone {
+        display: none;
+    }
+
+    .bm_info_address {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bm_info_phone {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bm_info_title {
+        font-size: 18px;
+        font-weight: bold;
     }
 }
 
 .footerRule {
     display: flex;
-    align-items: center;
-    text-align: center;
+    flex-direction: column;
+    text-align-last: left;
 
-    @include phone {
-        font-size: 8px;
+    @include rwd(600px) {
+        display: none;
     }
 
     a {
         text-decoration: none;
         color: map-get($colors, white);
-        font-size: 12px;
+        font-size: 16px;
+        font-weight: bold;
         cursor: pointer;
-
-        &:first-child {
-            margin-right: 20px;
-        }
+        margin-bottom: 8px;
 
         &:hover {
             color: map-get($colors, underyellow);
@@ -97,89 +139,33 @@
     }
 }
 
-.bm_info {
-    align-items: center;
-    color: map-get($colors, white);
-    // margin-left: auto;
-    // padding-right: 80px;
-    font-size: 12px;
-    border: 1px solid red;
+.footerRule2 {
+    display: none;
 
-    & a {
+    @include rwd(600px) {
+        display: block;
+        text-align-last: left;
+        margin: 12px 0;
+    }
+
+    a {
+        text-decoration: none;
         color: map-get($colors, white);
-    }
-
-    span {
-        font-size: 14px;
-    }
-
-    @include rwd(1100px) {
-        padding-right: 40px;
-        // font-size: 20px;  
-    }
-
-    @include rwd(650px) {
-        padding-right: 20px;
-        // font-size: 20px;  
-    }
-
-    @include phone {
-        padding-right: 15px;
-    }
-}
-
-.footerInfo {
-    .bm_info {
-        align-items: center;
-        color: map-get($colors, white);
-        // margin-left: auto;
-        // padding-right: 80px;
-        font-size: 12px;
-        border: 1px solid red;
-
-        & a {
-            color: map-get($colors, white);
-        }
-
-        span {
-            font-size: 14px;
-        }
-
-        @include rwd(1100px) {
-            padding-right: 40px;
-            // font-size: 20px;  
-        }
-
-        @include rwd(650px) {
-            padding-right: 20px;
-            // font-size: 20px;  
-        }
-
-        @include phone {
-            padding-right: 15px;
-        }
-    }
-
-    p {
-        font-size: 12px;
-        line-height: 1.3;
-
-        @include phone {
-            font-size: 8px;
-        }
-    }
-}
-
-.footerPlace {
-
-    p {
-        font-size: 12px;
-        line-height: 1.3;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
         margin-right: 12px;
 
-        @include phone {
-            font-size: 8px;
+        &:last-child{
+            margin-right: 0;
+        }
+
+        @include rwd(376px) {
+            margin-right: 8px;
+        }
+
+        &:hover {
+            color: map-get($colors, underyellow);
         }
     }
-
 }
