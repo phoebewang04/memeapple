@@ -65,15 +65,27 @@
     }
 
 
+    // #gate-left {
+    //     bottom: 0;
+    //     left: -300px;
+    //     // transform: translateX(-282px);
+    // }
+
+    // #gate-right {
+    //     bottom: 0;
+    //     right: -300px;
+    //     // transform: translateX(305px);
+    // }
+
     #gate-left {
         bottom: 0;
-        left: -300px;
+        left: -200px;
         // transform: translateX(-282px);
     }
 
     #gate-right {
         bottom: 0;
-        right: -300px;
+        right: -200px;
         // transform: translateX(305px);
     }
 }

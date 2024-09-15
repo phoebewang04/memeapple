@@ -47,7 +47,7 @@
             <div class="memberinfrom">
                 <div class="login">
                     <h3>聯絡人資料</h3>
-                    <p>已經是會員？請 <a href="#">登入</a></p>
+                    <p>已經是會員？請 <RouterLink to="/Login">登入</RouterLink></p>
                 </div>
 
                 <div class="mi_dt">
@@ -104,7 +104,7 @@
 
                 <div class="check">
                     <input type="checkbox" class="box" v-model="orderCheck1" @change="checkValid">
-                    <p v-if="theme">我同意《{{ theme.themeName }}注意事項》請閱讀《{{ theme.themeName }}》頁面中下方注意事項(含取消及更改辦法)</p>
+                    <p v-if="theme">我同意《{{ theme.themeName }}注意事項》請閱讀《{{ theme.themeName }}》頁面中下方注意事項（含取消及更改辦法）</p>
                 </div>
 
                 <div class="check">
@@ -195,6 +195,7 @@ import { all_data } from '../assets/js/all_data.js';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
+import { RouterLink } from 'vue-router';
 
 export default {
     components: {

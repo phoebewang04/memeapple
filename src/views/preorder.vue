@@ -6,6 +6,7 @@
     <TopNavbar />
 
     <div id="preorder_wrapper">
+        <ScrollToTop />
 
         <div class="preorder_toppic">
             <img v-if="theme" :src= "theme.src"  alt="">
@@ -46,7 +47,7 @@
 
                     <div class="amount">
                     <select name="totalPeople" id="people" v-model="peopleAmount" @change="selectPeople">
-                        <option value="遊戲人數">遊戲人數</option>
+                        <option value="0">遊戲人數</option>
                         <option value="4">4 人</option>
                         <option value="5">5 人</option>
                         <option value="6">6 人</option>
@@ -265,11 +266,9 @@
                 <button class="btn next_btn" @click="goToNextPage">下一步</button>
             </div>
         </RouterLink>
-
-        <Footerbar />
     
     </div>
-
+    <Footerbar />
 </template>
 
 <!-- --------------------------------功能程式---------------------------------------------- -->
@@ -280,12 +279,15 @@ import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 import 'v-calendar/style.css';
+import ScrollToTop from '../components/ScollToTop.vue';
 
 
 export default {
     components: {
         TopNavbar,
-        Footerbar
+        Footerbar,
+        ScrollToTop,
+
     },
     data (){
         return {
@@ -299,7 +301,7 @@ export default {
                 dates: new Date(), 
                 },
             ],
-            peopleAmount: '遊戲人數',
+            peopleAmount: '0',
         };
     },
 
@@ -382,7 +384,12 @@ export default {
   }
 
   @media screen and (max-width: 390px) {
-    width: 298px;
+    width: 260px;
+    
+  }
+
+  @media screen and (max-width: 375px) {
+    width: 289px;
     
   }
 }
