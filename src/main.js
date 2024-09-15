@@ -21,6 +21,11 @@ import App from './App.vue'
 // AOS Import
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+// 動態引入 Google 字體
+const link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap';
+document.head.appendChild(link);
 
 
 // 添加Font Awesome圖標到庫中

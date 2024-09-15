@@ -159,8 +159,6 @@ export default {
     // // 在組件掛載後獲取新聞資料
     // this.fetchNews();
 
-
-
     // 隨機設置文字效果
     // 對每個文字元素生成隨機的 top、left、right、bottom、fontSize、opacity 和 scale 值。
     // 在生成隨機位置時，檢查新位置是否與已存在的文字重疊。如果重疊，則重新生成位置，直到找到不重疊的位置為止。
@@ -269,56 +267,76 @@ export default {
         <!-- 文字區域 -->
         <div class="homepage-text">
           <h1 data-aos="fade-up" data-text="Meme謎因">Meme謎因</h1>
-          <p data-aos="fade-up" data-aos-delay="100">謎因工作室邀請勇敢的挑戰者進入神秘世界。</p>
-          <p data-aos="fade-up" data-aos-delay="150">解開謎題背後故事，發掘內心深處智慧與勇氣。</p>
-          <p data-aos="fade-up" data-aos-delay="200">體驗逃脫密室的刺激與成就感。</p>
+          <section class="homepage-introtext">
+            <section>
+              <p data-aos="fade-up" data-aos-delay="100">謎因工作室邀請勇敢的挑戰者進入神秘世界。</p>
+              <p data-aos="fade-up" data-aos-delay="150">解開謎題背後故事，發掘內心深處智慧與勇氣。</p>
+              <p data-aos="fade-up" data-aos-delay="200">體驗逃脫密室的刺激與成就感。</p>
+            </section>
+            <section>
+              <router-link to="/Branch/" class="linmit-link"><button type="button" class="btn intro-btn"
+                  data-aos="fade-up" data-aos-delay="200">立即預定</button></router-link>
+            </section>
+          </section>
         </div>
+
         <!-- 下方圖片區 -->
         <div class="homepage-img">
           <!-- 照片1 -->
           <div class="homepage-card01" data-aos="fade-up" data-aos-delay="100">
-            <router-link to="/Theme/1"><img src="/src/assets/img/Index-person4.png" alt="成都醫院"></router-link>
+            <router-link to="/Theme/1">
+              <div class="overlay">
+                <img src="/src/assets/img/Index-person4.png" alt="成都醫院">
+                <button type="button" class="btn linmit-btn">立即預定</button>
+              </div>
+            </router-link>
           </div>
           <!-- 照片2 -->
           <div class="homepage-card02" data-aos="fade-up" data-aos-delay="200">
-            <router-link to="/Theme/6"><img src="/src/assets/img/Index-person5.png" alt="恐怖密室"></router-link>
+            <router-link to="/Theme/6">
+                <img src="/src/assets/img/Index-person5.png" alt="恐怖密室">
+            </router-link>
           </div>
           <!-- 照片3 -->
           <div class="homepage-card03" data-aos="fade-up" data-aos-delay="300">
-            <router-link to="/Theme/5"><img src="/src/assets/img/Index-person6.png" alt="逃離武石監"></router-link>
+            <router-link to="/Theme/5">
+                <img src="/src/assets/img/Index-person6.png" alt="逃離武石監">
+            </router-link>
           </div>
         </div>
+        <!-- 手機板預定按鈕 -->
+        <section>
+          <router-link to="/Branch/" class="linmit-link"><button type="button" class="btn introM-btn" data-aos="fade-up"
+              data-aos-delay="200">立即預定</button></router-link>
+        </section>
       </section>
 
-      <!-- 首頁第二部分  品牌故事-->
-      <section class="content-brandstory">
-        <!-- 閃光特效區域 -->
-        <div class="brandstory-effect"></div>
-        <!-- 內容區域 -->
-        <section class="brandstory-content">
-          <!-- 左側圖片 -->
-          <div class="brandstory-img" data-aos="fade-up" data-aos-delay="100">
-            <img src="../assets/img/breadstoryimg3.jpg" alt="品牌故事照片">
-          </div>
-          <!-- 文字區域 -->
-          <div class="brandstory-text" data-aos="fade-up" data-aos-delay="300">
-            <div class="brandstory-title">
-              <span>— 品牌</span>
-              <span>故事 —</span>
+      <!-- 首頁第五部分 最新消息-->
+      <section class="content-announcement">
+        <div class="announcement-content">
+          <p class="howtoplay-title" data-aos="fade-down" data-aos-delay="100">— 最新消息 — </p>
+          <ul>
+            <div class="theme_forindex" data-aos="fade-up" data-aos-delay="150">
+              <!-- 輪播按鈕左方 -->
+              <div class="News-swiper-button-prev">
+                <li @click="prevSlide"><i class="fa-solid fa-caret-left"></i></li>
+              </div>
+
+              <li class="index-news-li" v-for="(newsItem, index) in visibleNews" :key="index">
+                <router-link :to="`/Announcement/`">
+                  <img :src="newsItem.img" :alt="newsItem.name">
+                  <h3>{{ newsItem.title }}</h3>
+                  <p class="index-news-text">{{ newsItem.newstext }}</p>
+                </router-link>
+              </li>
+
+              <!-- 輪播按鈕右方 -->
+              <div class="News-swiper-button-next">
+                <li @click="nextSlide"><i class="fa-solid fa-caret-right"></i></li>
+              </div>
             </div>
-            <p class="brandstory-sub">2024 MAY 14</p>
-            <div class="while-lineforhome"></div>
-            <h3># 流連忘返的密室逃脫體驗</h3>
-            <p class="brandstory-intro">我們希望創造一個需要共同努力、交流和協作的密室逃脫環境，使團隊在挑戰中增進默契和合作精神。</p>
-            <p class="brandstory-intro">透過遊戲解謎的過程，不僅增加參與者的動腦能力，更重要的是提升團隊成員之間的互助合作。</p>
-            <p class="brandstory-intro">在這樣的情境下，每個成員的貢獻都至關重要！他們需要共同解決問題、分享資訊，並在壓力下作出決策，這不僅有助於提升個人的思維能力、更能促進團隊的協作和信任。</p>
-            <!-- 底部文字 -->
-            <div class="brandstory-bottom">
-              <p>The Birth of </p>
-              <p>Meme Studio</p>
-            </div>
-          </div>
-        </section>
+          </ul>
+        </div>
       </section>
 
       <!-- 首頁第三部分 限時主題 -->
@@ -437,34 +455,6 @@ export default {
         </section>
       </section>
 
-      <!-- 首頁第五部分 最新消息-->
-      <section class="content-announcement">
-        <div class="announcement-content">
-          <p class="howtoplay-title" data-aos="fade-down" data-aos-delay="100">— 最新消息 — </p>
-          <ul>
-            <div class="theme_forindex" data-aos="fade-up" data-aos-delay="150">
-              <!-- 輪播按鈕左方 -->
-              <div class="News-swiper-button-prev">
-                <li @click="prevSlide"><i class="fa-solid fa-caret-left"></i></li>
-              </div>
-
-              <li class="index-news-li" v-for="(newsItem, index) in visibleNews" :key="index">
-                <router-link :to="`/Announcement/`">
-                  <img :src="newsItem.img" :alt="newsItem.name">
-                  <h3>{{ newsItem.title }}</h3>
-                  <p class="index-news-text">{{ newsItem.newstext }}</p>
-                </router-link>
-              </li>
-
-              <!-- 輪播按鈕右方 -->
-              <div class="News-swiper-button-next">
-                <li @click="nextSlide"><i class="fa-solid fa-caret-right"></i></li>
-              </div>
-            </div>
-          </ul>
-        </div>
-      </section>
-
       <!-- 首頁第六部分 FAQ -->
       <section class="content-p-faq">
         <p class="index-faq-title" data-aos="fade-up" data-aos-delay="100">— 注意事項 — </p>
@@ -481,6 +471,38 @@ export default {
           </div>
         </section>
       </section>
+
+      <!-- 首頁第二部分  品牌故事-->
+      <section class="content-brandstory">
+        <!-- 閃光特效區域 -->
+        <div class="brandstory-effect"></div>
+        <!-- 內容區域 -->
+        <section class="brandstory-content">
+          <!-- 左側圖片 -->
+          <div class="brandstory-img" data-aos="fade-up" data-aos-delay="100">
+            <img src="../assets/img/breadstoryimg3.jpg" alt="品牌故事照片">
+          </div>
+          <!-- 文字區域 -->
+          <div class="brandstory-text" data-aos="fade-up" data-aos-delay="300">
+            <div class="brandstory-title">
+              <span>— 品牌</span>
+              <span>故事 —</span>
+            </div>
+            <p class="brandstory-sub">2024 MAY 14</p>
+            <div class="while-lineforhome"></div>
+            <h3># 流連忘返的密室逃脫體驗</h3>
+            <p class="brandstory-intro">我們希望創造一個需要共同努力、交流和協作的密室逃脫環境，使團隊在挑戰中增進默契和合作精神。</p>
+            <p class="brandstory-intro">透過遊戲解謎的過程，不僅增加參與者的動腦能力，更重要的是提升團隊成員之間的互助合作。</p>
+            <p class="brandstory-intro">在這樣的情境下，每個成員的貢獻都至關重要！他們需要共同解決問題、分享資訊，並在壓力下作出決策，這不僅有助於提升個人的思維能力、更能促進團隊的協作和信任。</p>
+            <!-- 底部文字 -->
+            <div class="brandstory-bottom">
+              <p>The Birth of </p>
+              <p>Meme Studio</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
     </section>
     <Footerbar />
   </main>
