@@ -1216,28 +1216,8 @@ p {
     display: none;
   }
 }
-.homepage-card01 .overlay {
-  position: relative;
+.homepage-card01 img {
   width: 100%;
-  height: 100%;
-}
-.homepage-card01 .overlay img {
-  display: block;
-  width: 100%;
-}
-.homepage-card01 .overlay button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
-  z-index: 2;
-}
-.homepage-card01 .overlay:hover {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-.homepage-card01 .overlay:hover button {
-  display: block;
 }
 
 .homepage-card02 {

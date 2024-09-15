@@ -282,25 +282,25 @@ export default {
 
         <!-- 下方圖片區 -->
         <div class="homepage-img">
+
           <!-- 照片1 -->
           <div class="homepage-card01" data-aos="fade-up" data-aos-delay="100">
             <router-link to="/Theme/1">
-              <div class="overlay">
                 <img src="/src/assets/img/Index-person4.png" alt="成都醫院">
-                <button type="button" class="btn linmit-btn">立即預定</button>
-              </div>
             </router-link>
           </div>
+
           <!-- 照片2 -->
           <div class="homepage-card02" data-aos="fade-up" data-aos-delay="200">
             <router-link to="/Theme/6">
-                <img src="/src/assets/img/Index-person5.png" alt="恐怖密室">
+              <img src="/src/assets/img/Index-person5.png" alt="恐怖密室">
             </router-link>
           </div>
+
           <!-- 照片3 -->
           <div class="homepage-card03" data-aos="fade-up" data-aos-delay="300">
             <router-link to="/Theme/5">
-                <img src="/src/assets/img/Index-person6.png" alt="逃離武石監">
+              <img src="/src/assets/img/Index-person6.png" alt="逃離武石監">
             </router-link>
           </div>
         </div>
