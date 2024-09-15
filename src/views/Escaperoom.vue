@@ -2,7 +2,7 @@
   <!-- <TopNavbar /> -->
   <main class="escaperoom_container">
 
-
+    <audio :src="bgMusic" autoplay loop hidden></audio>
     <div class="esc_hint_wrapper" v-if="currentSceneIndex !== 0">
       <input type="checkbox" />
       <div class="float_btn"></div>
@@ -118,7 +118,7 @@
       <div class="esc_restaurant_icon">
         <img src="../assets/img/restaurant_hint_1.png" alt="restaurant-menu" @click="paperClues(6)">
         <img src="../assets/img/esc_22.png" alt="restaurant-lock-menu" ref="lockMenu"
-          @click="lockClues('564', 'lockMenu', 7)">
+          @click="lockClues('560', 'lockMenu', 7)">
         <svg viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="50" />
         </svg>
@@ -169,6 +169,13 @@
     </div>
 
 
+    <!------- 結束影片 ------->
+<div ref="scene6" class="scene esc_end">
+
+  <div class="esc_end room">
+<video src="../assets/img/esc_end.mp4" playsinline autoplay muted></video>
+</div>
+</div>
   </main>
   <!-- <Footerbar /> -->
 </template>
@@ -183,9 +190,16 @@ import interact from 'interactjs';
 export default {
   component: { secAlert, interact },
 
+  //------------讓音樂和alert可以正常返回------------
   beforeRouteLeave(to, from, next) {
-    // Close SweetAlert when leaving the route
+
     secAlert.close();
+
+    if (this.bgMusic) {
+      this.bgMusic.pause();
+      this.bgMusic.currentTime = 0; //重新設定播放進度
+
+    }
     next();
   },
   data() {
@@ -205,6 +219,9 @@ export default {
       },
 
       allPuzzlesCompleted: false,
+
+      //------------大廳------------
+      bgMusic: null,
 
       //------------各關提示圖片+文字------------
       clueImages: [
@@ -242,6 +259,15 @@ export default {
     const shards = this.$refs.shards;
     const wastepaper = this.$refs.wastepaper;
 
+    import('../assets/img/escapebgmusic.mp3')
+      .then((module) => {
+        this.bgMusic = new Audio(module.default);
+        this.bgMusic.loop = true;
+        this.bgMusic.play();
+      })
+      .catch((err) => {
+        console.error("音樂檔案載入失敗:", err);
+      });
 
     //------------斧頭------------
     interact(axe).draggable({
@@ -280,6 +306,21 @@ export default {
     });
   },
   methods: {
+//------------開始遊戲並觸發音樂------------
+startGame(){
+  if (!this.bgMusic) {
+      this.bgMusic = new Audio(require('../assets/img/escapebgmusic.mp3'));  // 初始化背景音樂
+      this.bgMusic.loop = true;
+    }
+
+    // 在用戶點擊後播放音樂
+    this.bgMusic.play().catch(error => {
+      console.error("音樂播放失敗:", error);
+    });
+
+    this.nextScene();  // 切換到下一個場景
+},
+
     //------------轉場------------
     noviceTeach() {
       secAlert.fire({
@@ -290,10 +331,16 @@ export default {
       });
     },
     nextScene() {
+      
+      if (this.currentSceneIndex === 5 && this.bgMusic) {
+      this.bgMusic.pause();  // 暫停背景音樂
+    }
+
+
       if (this.transitioning) return; //避免重複觸發
       this.transitioning = true;
 
-      const scenes = [this.$refs.scene0, this.$refs.scene1, this.$refs.scene2, this.$refs.scene3, this.$refs.scene4, this.$refs.scene5];
+      const scenes = [this.$refs.scene0, this.$refs.scene1, this.$refs.scene2, this.$refs.scene3, this.$refs.scene4, this.$refs.scene5, this.$refs.scene6];
 
       //讓當前場景淡出
       const currentScene = scenes[this.currentSceneIndex];
@@ -380,11 +427,11 @@ export default {
           hintText = '鎖頭上面的形狀和顏色好像在哪裡看過？再找找吧！';
           break;
         case 4:
-          hintText = '觀察一下餐盤上的昆蟲和刀叉等線索吧！<br>菜單的排版配置怎麼好像在哪裡看過？';
+          hintText = '觀察一下餐盤上的食物和刀叉等線索吧！<br>菜單的排版配置怎麼好像在哪裡看過？';
           break;
-          case 5:
+        case 5:
           hintText = '若看不見的為真相，那試著拼出消失的部分吧！';
-          break;  
+          break;
         default:
           hintText = '目前沒有可用的提示。';
       }

@@ -11,12 +11,6 @@
             <div class="deadgame2 deadMb">
                 <img src="../assets/img/deadgame2.png" alt="">
             </div>
-            <!-- -------返回按鈕------- -->
-            <RouterLink to="/Minigame">
-                <div class="returnBtn">
-                    <img src="../assets/img/deadreturn.png" alt="">
-                </div>
-            </RouterLink>
             <!-- -------星星------- -->
             <div class="deadstar1">
                 <img src="../assets/img/deadstar.png" alt="">
@@ -57,32 +51,32 @@
             <!-- -------輸入框跟按鈕------- -->
             <el-input maxlength="4" placeholder="請輸入四位數字" v-model="guess" :readonly="isReadOnly" @keyup.enter="checkGuess" class="guessNumberBox"></el-input>
             <el-button id="enterBtn" :disabled="!isValidGuess"  @click="checkGuess" class="btn playBtn" >送出</el-button>
-            <!-- <el-button id="answerBtn" @click="showAnswer" class="btn answerBtn">Answer</el-button>
-            <el-button id="reloadBtn" @click="reloadPage" class="btn reloadBtn">Reload</el-button> -->
+            <!-- <el-button id="answerBtn" @click="showAnswer" class="btn answerBtn">Answer</el-button> -->
+            <!-- <el-button id="reloadBtn" @click="reloadPage" class="btn reloadBtn">Reload</el-button>  -->
 
 
             <!-- -------返回按鈕------- -->
-
-            <div class="returnBtn2">
+            <RouterLink to="/Minigame">
+            <div class="returnBtn">
                 <img src="../assets/img/deadreturn.png" alt="">
+            </div>
+            </RouterLink>
+            <!-- -------重新開始------- -->
+            <div class="resetBtn">
+                <img src="../assets/img/deadreset.png" alt="" @click="reloadPage">
             </div>
 
              <!-- -------墓碑------- -->
-            <div class="deadZombie3">
+            <div class="deadZombie3" @click="playText">
                 <img src="../assets/img/gameZombie3.png" alt="">
             </div>
 
             <!-- -------警報器------- -->
-            <div class="deadZombie4">
+            <div class="deadZombie4" :class="{ 'active-alarm': isAlarmActive }">
                 <img src="../assets/img/gameZombie4-1png.png" alt="">
             </div>
             <div class="deadZombie4_1">
                 <img src="../assets/img/gameZombie4-2.png" alt="">
-            </div>
-
-             <!-- -------提示燈------- -->
-            <div class="deadZombie5" @click="tips">
-                <img src="../assets/img/gameZombie5.png" alt="">
             </div>
 
              <!-- -------殭屍手臂------- -->
@@ -97,6 +91,7 @@
 
              <!-- -------乳牛殭屍------- -->
              <div class="deadZombie8">
+                <!-- <p>hello</p> -->
                 <img src="../assets/img/gameZombie8.png" alt="">
             </div>
 
@@ -106,7 +101,7 @@
             </div>
 
             <!-- -------咕嚕頭------- -->
-            <div class="deadZombie10">
+            <div class="deadZombie10 animate__animated animate__headShake">
                 <img src="../assets/img/gameZombie10.png" alt="">
             </div>
 
@@ -181,6 +176,7 @@ import WinDialog from '../components/WinDialog.vue';
                 showWinDialog: false,
                 gameResult: '', // 'win' 或 'lose'
                 maxTry: 8,
+                isAlarmActive : false,
                 winningImage: new URL('@/assets/img/deadWinPic.png', import.meta.url).href,
                 loseImage: new URL('@/assets/img/deadLosePic.png', import.meta.url).href,
             };
@@ -291,7 +287,13 @@ import WinDialog from '../components/WinDialog.vue';
 
                 // 5. 記錄猜測次數和結果
                 this.count++;
-                const record = `${this.guess}   ${numA} A ${numB} B`;
+                //判斷剩餘次數來啟動警報器效果
+                const playTimes = this.maxTry - this.count;
+                if (playTimes === 2){
+                    this.activeAlerm ();
+                }
+                
+                const record = `${this.guess}   ${numA}A${numB}B`;
                 this.history.push(record);
                 this.allGuess.push(this.guess);
 
@@ -306,10 +308,14 @@ import WinDialog from '../components/WinDialog.vue';
                 // 7. 清空猜測輸入
                 this.guess = "";
             },
+            activeAlerm (){
+                this.isAlarmActive = true;
+            },
             playerWins() {
             // 顯示對話框
                 this.gameResult = 'win';
                 this.showWinDialog = true;
+                this.isAlarmActive = false;
             },
             playerLose() {
                 this.gameResult = 'lose';
@@ -325,32 +331,43 @@ import WinDialog from '../components/WinDialog.vue';
                 this.count = 0;  // 重置嘗試次數
                 this.isReadOnly = false; // 允許玩家再次輸入
                 this.allGuess = []; // 清空已經猜過的數字
+                this.isAlarmActive = false;
                 
             },
 
-            // showAnswer() {
-            //     ElMessageBox.alert("Answer : " + this.answer, "Answer", {
-            //         confirmButtonText: "OK",
-            //         callback: (action) => {
-            //             console.log(action);
-            //         },
-            //         type: "info",
-            //     });
-            // },
-            // reloadPage() {
-            //     ElMessageBox.confirm("確定要重新開始遊戲？", {
-            //         confirmButtonText: "Confirm",
-            //         cancelButtonText: "Cancel",
-            //         type: "warning",
-            //     })
-            //     .then(() => {
-            //     console.log("Item reload.");
-            //     location.reload();
-            //     })
-            //     .catch(() => {
-            //     console.log("Item reload canceled.");
-            //     });
-            // },
+            showAnswer() {
+                ElMessageBox.alert("Answer : " + this.answer, "Answer", {
+                    confirmButtonText: "OK",
+                    callback: (action) => {
+                        console.log(action);
+                        },
+                    type: "info",
+                });
+             },
+            reloadPage() {
+                 ElMessageBox.confirm("確定要重新開始遊戲？", {
+                     confirmButtonText: "Confirm",
+                    cancelButtonText: "Cancel",
+                    type: "warning",
+                 })
+                 .then(() => {
+                    this.resetGame();  // 調用來重置遊戲的邏輯
+                    console.log("Game reset.");
+                 })
+                .catch(() => {
+                console.log("Item reload canceled.");
+                });
+            },
+
+            playText () {
+                ElMessageBox.alert ("1A2B是一個數字猜測遊戲。<br>遊戲目標是猜出由四個不同數字組成的秘密數字 位置和數字完全正確的稱為「A」，<br>數字正確但位置錯誤的稱為「B」。<br>若秘密數字是1234，玩家猜測1325，<br>則結果為「2A1B」：<br>1和2的數字及位置正確，3數字正確但位置錯誤。<br><br>"," 歡迎來到亡命數字" ,{
+                    dangerouslyUseHTMLString: true,
+                    confirmButtonText: "OK",
+                })
+            },
+            CautionAlert () {
+
+            },
         },
         mounted (){
             this.createAnswer();

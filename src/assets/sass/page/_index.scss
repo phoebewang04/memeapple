@@ -24,7 +24,6 @@
     // border-bottom: 1px solid gold;
 
     @include phone {
-
         padding: 46px 0;
     }
 }
@@ -52,6 +51,7 @@
     }
 
     h1 {
+        font-family: 'Noto Serif TC', serif;
         font-size: 80px;
         font-weight: bold;
         color: map-get($colors, usered);
@@ -62,13 +62,47 @@
 
         @include phone {
             font-size: 40px;
+            text-align: center;
         }
     }
+}
+
+.intro-btn {
+    margin-right: 150px;
+
+    @include rwd(1440px) {
+        margin-right: 80px;
+    }
+
+    @include rwd(854px) {
+        margin-right: 40px;
+    }
+
+    @include rwd(700px) {
+        display: none;
+    }
+}
+
+.introM-btn {
+    display: none;
+
+    @include rwd(700px) {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+
+.homepage-introtext {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     p {
+        font-family: 'Noto Serif TC', serif;
         font-size: 24px;
         font-weight: bold;
-        color: map-get($colors, gold);
+        color: map-get($colors, white);
 
         @include pad {
             font-size: 18px;
@@ -98,15 +132,43 @@
 }
 
 .homepage-card01 {
-
     width: 25%;
+    position: relative;
 
     @include rwd(854px) {
         display: none;
     }
 
-    img {
+    // img {
+    //     width: 100%;
+    // }
+
+    .overlay {
+        position: relative;
         width: 100%;
+        height: 100%;
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 2;
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+
+            button {
+                display: block;
+            }
+        }
     }
 }
 
@@ -164,6 +226,7 @@
         position: absolute;
         animation: homeeffect-word $speed infinite ease-in-out;
         color: map-get($colors , usered);
+        font-family: 'Noto Serif TC', serif;
         font-weight: bold;
         width: 50%;
 
@@ -361,7 +424,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    background-image: url(/src/assets/img/Abyss_small2-3.jpg);
+    background-image: url(/src/assets/img/Abyss_small2-0.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -427,7 +490,7 @@
     margin: 40px 0;
 
     @include rwd(1200px) {
-        margin: 20px 0;
+        margin: 0px 0;
     }
 
 
@@ -487,7 +550,7 @@
 
         @include rwd(1280px) {
             font-size: 20px;
-            margin-left: 60px;
+            margin-left: 150px;
         }
 
         @include phone {
@@ -512,7 +575,7 @@
 
         @include rwd(1280px) {
             font-size: 24px;
-            margin-left: 32px;
+            margin-left: 60px;
         }
 
         @include phone {
@@ -530,7 +593,7 @@
         display: flex;
         font-size: 36px;
         font-weight: bold;
-        margin-left: 60px;
+        margin-left: 0px;
 
         @include rwd(1280px) {
             font-size: 28px;
@@ -972,15 +1035,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    // background-image: url(/src/assets/img/BG-Index-How1.jpg);
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // border-bottom: 1px solid gold;
+    background-color: black;
 }
 
 .howtoplay-content {
     width: 90%;
-    padding: 80px 0;
+    // padding: 80px 0;
 
     @include phone {
         padding: 40px 0;
@@ -1040,30 +1100,8 @@
     position: relative;
 }
 
-.howPic1::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    /* 黑色半透明遮罩 */
-    z-index: 1;
-}
-
-.howPic2::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    /* 黑色半透明遮罩 */
-    z-index: 1;
-}
-
+.howPic1::before,
+.howPic2::before,
 .howPic3::before {
     content: "";
     position: absolute;
@@ -1071,9 +1109,34 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
     /* 黑色半透明遮罩 */
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
+    /* 添加過渡效果 */
+    transition: background-color 0.5s ease;
+}
+
+.howPic1:hover::before,
+.howPic2:hover::before,
+.howPic3:hover::before {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: map-get($colors, gold);
+    /* 改變外框線顏色 */
+    animation: glowHow 1.5s infinite;
+}
+
+@keyframes glowHow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
 }
 
 // 文字區域
@@ -1149,13 +1212,13 @@
 // 首頁第五部分 最新消息
 .content-announcement {
     width: 100%;
-    // padding: 80px 0;
-    // border-bottom: 1px solid greenyellow;
+    background-color: black;
 
     @include phone {
         padding: 40px 0;
     }
 }
+
 // 切換新聞的平滑動畫
 
 // 左邊按鈕
@@ -1303,7 +1366,10 @@
 // 首頁第六部分 FAQ
 .content-p-faq {
     width: 100%;
-    padding: 80px 0;
+    // padding: 80px 0;
+    padding-bottom: 80px;
+    padding-top: 0;
+    background-color: black;
 
     @include phone {
         padding: 20px 0;

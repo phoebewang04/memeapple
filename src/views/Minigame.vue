@@ -1068,7 +1068,6 @@ import Swal from 'sweetalert2';
       </svg>
     </section>
 
-
   </body>
   <section>
 
