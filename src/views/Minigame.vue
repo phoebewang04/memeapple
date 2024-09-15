@@ -64,7 +64,7 @@ import Swal from 'sweetalert2';
     <!-- --------------------------墓園地圖-------------------------- -->
 
 
-    <section class="minigame_map">
+    <section class="minigame_map" id="minigame_map">
       <svg viewBox="0 0 514 719" fill="none" xmlns="http://www.w3.org/2000/svg">
 
         <!-- 月亮 -->
@@ -1133,8 +1133,8 @@ export default {
       this.$refs.cemeteryText.style.marginTop = `${value * 0.6}px`;
       this.$refs.treeLeft.style.transform = `translateX(-${value * 0.9}px)`;
       this.$refs.treeRight.style.transform = `translateX(${value * 0.9}px)`;
-      this.$refs.gateLeft.style.transform = `translateX(${value * 0.2}px)`;
-      this.$refs.gateRight.style.transform = `translateX(-${value * 0.2}px)`;
+      this.$refs.gateLeft.style.transform = `translateX(-${value * 0.5}px)`;
+      this.$refs.gateRight.style.transform = `translateX(${value * 0.5}px)`;
     },
   },
 };
