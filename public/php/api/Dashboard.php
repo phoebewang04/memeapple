@@ -19,6 +19,26 @@ class Dashboard{
         return $orders;
     }
 
+    public function fetchThemeRevenueByMonth($month, $year) {
+        $sql = "SELECT THEME_ID, THEME_NAME, SUM(TOTAL_AMOUNT) AS theme_revenue FROM OrderDetails WHERE MONTH(ORDER_DATE) = :month AND YEAR(ORDER_DATE) = :year GROUP BY THEME_ID, THEME_NAME";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':month', $month);
+        $stmt->bindParam(':year', $year);
+        $stmt->execute();
+        $themeRevenue = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $themeRevenue;
+    }
+
+    public function fetchStoreRevenueByMonth($month, $year) {
+        $sql = "SELECT STORE_ID, STORE_NAME, SUM(TOTAL_AMOUNT) AS store_revenue FROM OrderDetails WHERE MONTH(ORDER_DATE) = :month AND YEAR(ORDER_DATE) = :year GROUP BY STORE_ID, STORE_NAME";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':month', $month);
+        $stmt->bindParam(':year', $year);
+        $stmt->execute();
+        $storeRevenue = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $storeRevenue;
+    }
+
 }
 
 $dashboard = new Dashboard($pdo);
@@ -29,10 +49,16 @@ if (isset($_GET['date'])) {
     header('Content-Type: application/json');
     echo json_encode($orders);
     exit;
-} elseif (isset($_GET['param'])) {
-    $param = $_GET['param'];
-    $result = $dashboard->function2($param);
-    echo json_encode($result);
+} elseif (isset($_GET['month']) && isset($_GET['year'])) {
+    $month = $_GET['month'];
+    $year = $_GET['year'];
+    $themeRevenue = $dashboard->fetchThemeRevenueByMonth($month, $year);
+    $storeRevenue = $dashboard->fetchStoreRevenueByMonth($month, $year);
+    header('Content-Type: application/json');
+    echo json_encode(
+        ['themeRevenue' => $themeRevenue ?: [],
+         'storeRevenue' => $storeRevenue ?: []]);
+    exit;
 }
 
 

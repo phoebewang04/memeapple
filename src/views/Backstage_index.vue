@@ -42,11 +42,11 @@ export default {
       ],
       orders: [],
       chartData: {
-        labels: ['成都醫院', '時光迷宮', '末日庇護所', '恐怖密室', '逃出虛空', '逃離武石監'],
+        labels: [],
         datasets: [
           { 
             backgroundColor: '#3c598d',
-            data: [170000, 180000, 50000, 160000, 230000, 170000] 
+            data: [] 
           }
         ]
       },
@@ -70,12 +70,12 @@ export default {
         width: '835px',
       },
       doughnutData: {
-        labels: ['台北館', '台中館'],
+        labels: [],
         Legend: { display: false },
         datasets:[
           {
             backgroundColor: ['#324872', '#4f71a8'],
-            data: [60, 40]
+            data: []
           }
         ]
       },
@@ -128,10 +128,38 @@ export default {
       return order ? order.ORDER_ID : '';
     },
 
-    queryDatabaseByMonth(month, year) {
-        // 實現 PHP 查詢邏輯
+    async queryDatabaseByMonth(month, year) {
         console.log('查詢月份：', month, year);
+        try {
+          const response = await axios.get(`http://localhost/memeapple/public/php/api/dashboard.php?month=${month}&year=${year}`);
+          console.log('伺服器回應：', response); // 檢查伺服器回應
+          const { themeRevenue = [], storeRevenue = [] } = response.data || {}; // 直接使用回應的資料
 
+          this.chartData = {
+            labels: themeRevenue.map(theme => theme.THEME_NAME),
+            datasets: [
+              {
+                data: themeRevenue.map(theme => theme.theme_revenue), // 確認使用正確的鍵名
+                backgroundColor: '#3c598d'
+              }
+            ]
+          };
+
+          this.doughnutData = {
+            labels: storeRevenue.map(store => store.STORE_NAME),
+            datasets: [
+              {
+                data: storeRevenue.map(store => store.store_revenue), // 確認使用正確的鍵名
+                backgroundColor: ['#324872', '#4f71a8']
+              }
+            ]
+          };
+
+          console.log('每月主題營收：', this.chartData); // 檢查回傳的資料結構
+          console.log('每月分館營收：', this.doughnutData); // 檢查回傳的資料結構
+        } catch (error) {
+          console.error('查詢失敗：', error);
+        }
     },
   },
 
@@ -143,6 +171,7 @@ export default {
 };
 
 </script>
+
 
 
 <template>
@@ -247,11 +276,11 @@ export default {
                 <div class="backstage_chart">
                     <div class="theme_income barChart">
                         <!-- bar -->
-                        <Bar :data="chartData" :options="chartOptions" />
+                        <Bar ref="barChart" :data="chartData" :options="chartOptions" />
                     </div>
                     <div class="store_income pieChart">
                         <!-- pie -->
-                        <Doughnut :data="doughnutData" :options="doughnutOptions" /> 
+                        <Doughnut ref="doughnutChart" :data="doughnutData" :options="doughnutOptions" /> 
                     </div>
                 </div>
             </div>
