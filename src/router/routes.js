@@ -9,15 +9,11 @@ import Branch from '../views/Branch.vue';
 import Announcement from '../views/Announcement.vue';
 import Popupcard from '../views/Popupcard.vue';
 import Theme from '../views/Theme.vue';
-import ThemeAlien from '../views/ThemeAlien.vue';
-import Theme_Lock from '../views/Theme_Lock.vue';
-import Theme_Time from '../views/Theme_time.vue';
 import preorder from '../views/preorder.vue';
 import orderinform from '../views/orderinform.vue';
 import Membermanage from '../views/Membermanage.vue';
 import Escaperoom from '../views/Escaperoom.vue';
 import pay from '../views/pay.vue';
-import Theme_test from '../views/Theme_test.vue';
 import dead1A2Bgame from '../views/dead1A2Bgame.vue';
 import Privacy from '../views/PrivacyPolicy.vue';
 import Terms from '../views/TermsService.vue';
@@ -96,18 +92,6 @@ const routes = [
     component: Join
   },
   {
-    path: '/ThemeAlien/',
-    component: ThemeAlien
-  },
-  {
-    path: '/Theme_Lock/',
-    component: Theme_Lock
-  },
-  {
-    path: '/Theme_Time/',
-    component: Theme_Time
-  },
-  {
     path: '/Membermanage/',
     component: Membermanage
   },
@@ -118,10 +102,6 @@ const routes = [
   {
     path: '/Theme/:id/preorder/orderinform/pay',
     component: pay
-  },
-  {
-    path: '/Theme_test/',
-    component: Theme_test
   },
   {
     path: '/dead1A2Bgame/',
