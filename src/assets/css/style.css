@@ -7219,6 +7219,10 @@ p {
   filter: drop-shadow(0 0 3px white);
 }
 
+.esc_end video {
+  width: 100%;
+}
+
 .main-privacy {
   display: flex;
   flex-direction: column;
