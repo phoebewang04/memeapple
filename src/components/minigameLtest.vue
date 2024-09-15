@@ -36,21 +36,44 @@
 //     },
 //     data(){
 //         return {
-//             formData: {
-//                 gameImg: "cemetery1",
-//                 level: 3,
-//             },
-//             formInline: {
-//                 imgList: [
-//                 { label: "墓園1", value: "cemetery1" },
-//                 ],
-//                 levelList: [
-//                 { label: "初级", value: 3 },
-//                 { label: "高级", value: 5 },
-//                 ],
-//                 },
+//         tiles: [1, 2, 3, 4, 5, 6, 7, 8, 0], // 0 表示空白
+//         size: 3, // 3x3 的拼圖
+//       };
+//     // },
+//         // return {
+//         //     formData: {
+//         //         gameImg: "cemetery1",
+//         //         level: 3,
+//         //     },
+//         //     formInline: {
+//         //         imgList: [
+//         //         { label: "墓園1", value: "cemetery1" },
+//         //         ],
+//         //         levelList: [
+//         //         { label: "初级", value: 3 },
+//         //         { label: "高级", value: 5 },
+//         //         ],
+//         //         },
+//         // }
+//     },
+//     methods: {
+//       moveTile(index) {
+//         const emptyIndex = this.tiles.indexOf(0);
+//         const { size } = this;
+  
+//         const isAdjacent = (i, j) => {
+//           const rowDiff = Math.abs(Math.floor(i / size) - Math.floor(j / size));
+//           const colDiff = Math.abs(i % size - j % size);
+//           return (rowDiff === 1 && colDiff === 0) || (rowDiff === 0 && colDiff === 1);
+//         };
+  
+//         if (isAdjacent(index, emptyIndex)) {
+//           this.tiles.splice(emptyIndex, 1, this.tiles[index]);
+//           this.tiles.splice(index, 1, 0);
 //         }
+//       },
 //     },
 // }
 </script>
 
+  
