@@ -10,30 +10,29 @@ class Dashboard{
         $this->db = $db;
     }
 
-    public function getTable() {
-
-        $date = $_GET['date'] ?? null;
-        $time = $_GET['time'] ?? null;
-        $themeName = $_GET['theme_name'] ?? null;
-
-        // SQL
-        $sql = "SELECT ORDER_ID, ORDER_DATE, ORDER_TIME, THEME_NAME FROM `OrderDetails` WHERE ORDER_DATE = ?";
-        $params = ['date' => $date];
-
-        try{
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute($params);
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            header('Content-Type: application/json');
-            echo json_encode($results);
-        } catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-        }
-
-
+    public function fetchOrdersByDate($date) {
+        $sql = "SELECT THEME_ID, ORDER_TIME, ORDER_ID FROM OrderDetails WHERE ORDER_DATE = :date";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':date', $date);
+        $stmt->execute();
+        $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $orders;
     }
 
+}
+
+$dashboard = new Dashboard($pdo);
+
+if (isset($_GET['date'])) {
+    $date = $_GET['date'];
+    $orders = $dashboard->fetchOrdersByDate($date);
+    header('Content-Type: application/json');
+    echo json_encode($orders);
+    exit;
+} elseif (isset($_GET['param'])) {
+    $param = $_GET['param'];
+    $result = $dashboard->function2($param);
+    echo json_encode($result);
 }
 
 

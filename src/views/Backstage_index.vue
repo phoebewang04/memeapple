@@ -5,7 +5,7 @@ import TopNavbarBack from '../components/TopNavbarBack.vue';
 import axios from 'axios';
 
 import 'v-calendar/style.css';
-import { Calendar } from 'v-calendar';
+import { Calendar, setupCalendar } from 'v-calendar';
 
 import { Bar } from 'vue-chartjs'
 import { Doughnut } from 'vue-chartjs'
@@ -40,7 +40,7 @@ export default {
           dates: new Date(),
         }
       ],
-      orders: {},
+      orders: [],
       chartData: {
         labels: ['成都醫院', '時光迷宮', '末日庇護所', '恐怖密室', '逃出虛空', '逃離武石監'],
         datasets: [
@@ -110,9 +110,22 @@ export default {
     },
     
     async queryDatabaseByDate(date) {
-        // 實現 PHP 查詢邏輯
-        console.log('查詢日期：', date);
+      console.log('查詢日期：', date);
+      try {
+        const response = await axios.get(`http://localhost/memeapple/public/php/api/dashboard.php?date=${date}`);
+        console.log('伺服器回應：', response); // 檢查伺服器回應
+        this.orders = response.data; // 直接使用回應的資料
+        console.log('查詢結果：', this.orders); // 檢查回傳的資料結構
+      } catch (error) {
+        console.error('查詢失敗：', error);
+      }
+    },
 
+    getOrder(themeID, time){
+      const order = this.orders.find(order => 
+        order.THEME_ID === themeID && 
+        order.ORDER_TIME.startsWith(time));
+      return order ? order.ORDER_ID : '';
     },
 
     queryDatabaseByMonth(month, year) {
@@ -165,67 +178,67 @@ export default {
                             <tbody>
                                 <tr>
                                     <th class="column-header">成都醫院</th>
-                                    <td><a href="">{{ orders['10:30'] ? orders['10:30']['成都醫院'].orderId : '' }}</a></td>
-                                    <td><a href="">{{ orders['11:15'] ? orders['11:15']['成都醫院'].orderId : '' }}</a></td>
-                                    <td><a href="">{{ orders['12:55'] ? orders['12:55']['成都醫院'].orderId : '' }}</a></td>
-                                    <td><a href="">{{ orders['14:35'] ? orders['14:35']['成都醫院'].orderId : '' }}</a></td>
-                                    <td><a href="">{{ orders['16:30'] ? orders['16:30']['成都醫院'].orderId : '' }}</a></td>
-                                    <td><a href="">{{ orders['18:15'] ? orders['18:15']['成都醫院'].orderId : '' }}</a></td>
+                                    <td><a href="">{{ getOrder(1, '10:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(1, '11:15') }}</a></td>
+                                    <td><a href="">{{ getOrder(1, '12:55') }}</a></td>
+                                    <td><a href="">{{ getOrder(1, '14:35') }}</a></td>
+                                    <td><a href="">{{ getOrder(1, '16:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(1, '18:15') }}</a></td>
                                 </tr>
                                 <tr>
                                     <th class="column-header">時光迷宮</th>
-                                    <td><a href="">{{ orders['10:30'] ? orders['10:30']['時光迷宮'].orderId : '' }}</a></td>
-                                    <td><a href="">{{ orders['11:15'] ? orders['11:15']['時光迷宮'].orderId : '' }}</a></td>
-                                    <td><a href="">{{ orders['12:55'] ? orders['12:55']['時光迷宮'].orderId : '' }}</a></td>
-                                    <td><a href="">{{ orders['14:35'] ? orders['14:35']['時光迷宮'].orderId : '' }}</a></td>
-                                    <td><a href="">{{ orders['16:30'] ? orders['16:30']['時光迷宮'].orderId : '' }}</a></td>
-                                    <td><a href="">{{ orders['18:15'] ? orders['18:15']['時光迷宮'].orderId : '' }}</a></td>
+                                    <td><a href="">{{ getOrder(2, '10:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(2, '11:15') }}</a></td>
+                                    <td><a href="">{{ getOrder(2, '12:55') }}</a></td>
+                                    <td><a href="">{{ getOrder(2, '14:35') }}</a></td>
+                                    <td><a href="">{{ getOrder(2, '16:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(2, '18:15') }}</a></td>
                                 </tr>
-                                <!-- <tr>
+                                <tr>
                                     <th class="column-header">末日庇護所</th>
-                                        <td><a href="">{{ orders['10:30']['末日庇護所'] }}</a></td>
-                                        <td><a href="">{{ orders['11:15']['末日庇護所'] }}</a></td>
-                                        <td><a href="">{{ orders['12:55']['末日庇護所'] }}</a></td>
-                                        <td><a href="">{{ orders['14:35']['末日庇護所'] }}</a></td>
-                                        <td><a href="">{{ orders['16:30']['末日庇護所'] }}</a></td>
-                                        <td><a href="">{{ orders['18:15']['末日庇護所'] }}</a></td>
+                                    <td><a href="">{{ getOrder(3, '10:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(3, '11:15') }}</a></td>
+                                    <td><a href="">{{ getOrder(3, '12:55') }}</a></td>
+                                    <td><a href="">{{ getOrder(3, '14:35') }}</a></td>
+                                    <td><a href="">{{ getOrder(3, '16:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(3, '18:15') }}</a></td>
                                 </tr>
                                 <tr>
                                     <th class="column-header">代碼深淵</th>
-                                        <td><a href="">{{ orders['10:30']['代碼深淵'] }}</a></td>
-                                        <td><a href="">{{ orders['11:15']['代碼深淵'] }}</a></td>
-                                        <td><a href="">{{ orders['12:55']['代碼深淵'] }}</a></td>
-                                        <td><a href="">{{ orders['14:35']['代碼深淵'] }}</a></td>
-                                        <td><a href="">{{ orders['16:30']['代碼深淵'] }}</a></td>
-                                        <td><a href="">{{ orders['18:15']['代碼深淵'] }}</a></td>
+                                    <td><a href="">{{ getOrder(4, '10:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(4, '11:15') }}</a></td>
+                                    <td><a href="">{{ getOrder(4, '12:55') }}</a></td>
+                                    <td><a href="">{{ getOrder(4, '14:35') }}</a></td>
+                                    <td><a href="">{{ getOrder(4, '16:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(4, '18:15') }}</a></td>
                                 </tr>
                                 <tr>
                                     <th class="column-header">逃離武石監</th>
-                                        <td><a href="">{{ orders['10:30']['逃離武石監'] }}</a></td>
-                                        <td><a href="">{{ orders['11:15']['逃離武石監'] }}</a></td>
-                                        <td><a href="">{{ orders['12:55']['逃離武石監'] }}</a></td>
-                                        <td><a href="">{{ orders['14:35']['逃離武石監'] }}</a></td>
-                                        <td><a href="">{{ orders['16:30']['逃離武石監'] }}</a></td>
-                                        <td><a href="">{{ orders['18:15']['逃離武石監'] }}</a></td>
+                                    <td><a href="">{{ getOrder(5, '10:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(5, '11:15') }}</a></td>
+                                    <td><a href="">{{ getOrder(5, '12:55') }}</a></td>
+                                    <td><a href="">{{ getOrder(5, '14:35') }}</a></td>
+                                    <td><a href="">{{ getOrder(5, '16:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(5, '18:15') }}</a></td>
                                 </tr>
                                 <tr>
                                     <th class="column-header">恐怖密室</th>
-                                        <td><a href="">{{ orders['10:30']['恐怖密室'] }}</a></td>
-                                        <td><a href="">{{ orders['11:15']['恐怖密室'] }}</a></td>
-                                        <td><a href="">{{ orders['12:55']['恐怖密室'] }}</a></td>
-                                        <td><a href="">{{ orders['14:35']['恐怖密室'] }}</a></td>
-                                        <td><a href="">{{ orders['16:30']['恐怖密室'] }}</a></td>
-                                        <td><a href="">{{ orders['18:15']['恐怖密室'] }}</a></td>
+                                    <td><a href="">{{ getOrder(6, '10:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(6, '11:15') }}</a></td>
+                                    <td><a href="">{{ getOrder(6, '12:55') }}</a></td>
+                                    <td><a href="">{{ getOrder(6, '14:35') }}</a></td>
+                                    <td><a href="">{{ getOrder(6, '16:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(6, '18:15') }}</a></td>
                                 </tr>
                                 <tr>
                                     <th class="column-header">逃出虛空</th>
-                                        <td><a href="">{{ orders['10:30']['逃出虛空'] }}</a></td>
-                                        <td><a href="">{{ orders['11:15']['逃出虛空'] }}</a></td>
-                                        <td><a href="">{{ orders['12:55']['逃出虛空'] }}</a></td>
-                                        <td><a href="">{{ orders['14:35']['逃出虛空'] }}</a></td>
-                                        <td><a href="">{{ orders['16:30']['逃出虛空'] }}</a></td>
-                                        <td><a href="">{{ orders['18:15']['逃出虛空'] }}</a></td>
-                                </tr> -->
+                                    <td><a href="">{{ getOrder(7, '10:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(7, '11:15') }}</a></td>
+                                    <td><a href="">{{ getOrder(7, '12:55') }}</a></td>
+                                    <td><a href="">{{ getOrder(7, '14:35') }}</a></td>
+                                    <td><a href="">{{ getOrder(7, '16:30') }}</a></td>
+                                    <td><a href="">{{ getOrder(7, '18:15') }}</a></td>
+                                </tr>
                             </tbody>
                         </table>
                         
