@@ -21,6 +21,7 @@ import Theme_test from '../views/Theme_test.vue';
 import dead1A2Bgame from '../views/dead1A2Bgame.vue';
 import Privacy from '../views/PrivacyPolicy.vue';
 import Terms from '../views/TermsService.vue';
+import minigameL from '../components/minigameLtest.vue';
 
 
 // 後台相關路由
@@ -128,11 +129,15 @@ const routes = [
   },
   {
     path: '/Privacy/',
-    component:Privacy
+    component: Privacy
   },
   {
     path: '/Terms/',
-    component:Terms
+    component: Terms
+  },
+  {
+    path: '/minigameL/',
+    component: minigameL
   },
 
 
