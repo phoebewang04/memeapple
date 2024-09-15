@@ -1,17 +1,17 @@
 <script>
-import '../assets/css/style.css';
-import TopNavbar from '../components/TopNavbar.vue';
-import Footerbar from '../components/Footerbar.vue';
-import ScrollToTop from '../components/ScollToTop.vue';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-// Import Swiper Vue.js components
+import '../assets/css/style.css'; // 引入全局樣式
+import TopNavbar from '../components/TopNavbar.vue'; // 引入頂部導航欄組件
+import Footerbar from '../components/Footerbar.vue'; // 引入底部導航欄組件
+import ScrollToTop from '../components/ScollToTop.vue'; // 引入返回頂部組件
+import AOS from 'aos'; // 引入AOS動畫庫
+import 'aos/dist/aos.css'; // 引入AOS動畫庫的樣式
+// 引入Swiper Vue.js組件
 import { Swiper, SwiperSlide } from 'swiper/vue';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-// import required modules
+// 引入Swiper所需的模塊
 import { Pagination, Navigation } from 'swiper/modules';
 
 export default {
@@ -25,10 +25,11 @@ export default {
   data() {
     return {
       modules: [Pagination, Navigation],
+      // 常見問題列表
       faqs: [
         {
           question: "請問可以在開始前增加人數嗎？",
-          answer: "可以喔!只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好的密室逃脫體驗!"
+          answer: "可以喔！只要開始遊戲前補繳多一人產生的費用即可，但唯獨超過當前關卡最大出席人數將無法一同參與，建議最好先與朋友再次確認，讓雙方都有一次美好密室逃脫體驗！"
         },
         {
           question: "請問有心血管疾病適合遊玩嗎？",
@@ -51,6 +52,7 @@ export default {
           answer: "很遺憾該主題已經下架，誠摯推薦您持續關注我們，敬請期待其他主題推出！"
         },
       ],
+      // 最新消息列表
       news: [
         {
           img: "/src/assets/img/banner_openning.png",
@@ -77,65 +79,118 @@ export default {
           newstext: "謎因工作室神祕新關卡即將於2024年11月推出！敬請期待！我們……Read More"
         }
       ],
+      // 當前顯示的新聞索引
       currentIndex: 0,
-      itemsPerPage: 3 // 初始化 itemsPerPage
+      // 每頁顯示的新聞數量，初始化 itemsPerPage
+      itemsPerPage: 3,
+      // 初始化新聞列表
+      // news: [], 
     };
 
   },
   computed: {
+    // 根據當前索引和每頁顯示數量計算可見的新聞
     visibleNews() {
       return this.news.slice(this.currentIndex, this.currentIndex + 3);
     }
   },
   methods: {
+    // fetchNews() {
+    //   fetch('http://localhost/path-to-your-api/news.php') // 更新為正確的 API 路徑
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       this.news = data;
+    //     })
+    //     .catch(error => console.error('Error fetching news:', error));
+    // },
     handleScroll() {
       requestAnimationFrame(() => {
-        AOS.refresh(); // 刷新 AOS
+        // 處理滾動事件，刷新AOS動畫
+        AOS.refresh();
       });
     },
+    // 顯示上一頁新聞
     prevSlide() {
       if (this.currentIndex > 0) {
         this.currentIndex--;
       }
     },
+    // 顯示下一頁新聞
     nextSlide() {
       if (this.currentIndex < this.news.length - this.itemsPerPage) {
         this.currentIndex++;
       }
     },
+    // 根據窗口寬度更新每頁顯示的新聞數量
     updateItemsPerPage() {
       if (window.innerWidth < 700) {
         this.itemsPerPage = 1;
       } else {
         this.itemsPerPage = 3;
       }
+
+      // 確保 currentIndex 不會超過新聞數量的範圍
+      if (this.currentIndex > this.news.length - this.itemsPerPage) {
+        this.currentIndex = this.news.length - this.itemsPerPage;
+      }
     }
   },
   mounted() {
+    // 組件掛載後初始化AOS動畫
     AOS.init({
       duration: 1200,
       once: false,
       easing: 'ease',
     });
 
+    // 延時刷新AOS動畫
     this.$nextTick(() => {
       setTimeout(() => {
         AOS.refresh(); // 延时刷新 AOS
       }, 100); // 100ms 延时
     });
 
-    this.updateItemsPerPage(); // 初始化時更新 itemsPerPage
-    window.addEventListener('resize', this.updateItemsPerPage); // 監聽窗口大小變化
+    // 初始化時更新每頁顯示的新聞數量
+    this.updateItemsPerPage();
+    // 監聽窗口大小變化
+    window.addEventListener('resize', this.updateItemsPerPage);
+
+    // window.addEventListener('scroll', this.handleScroll);
+    // // 在組件掛載後獲取新聞資料
+    // this.fetchNews();
+
+
+
+    // 隨機設置文字效果
+    // 對每個文字元素生成隨機的 top、left、right、bottom、fontSize、opacity 和 scale 值。
+    // 在生成隨機位置時，檢查新位置是否與已存在的文字重疊。如果重疊，則重新生成位置，直到找到不重疊的位置為止。
+    // 將這些隨機值應用到文字元素的樣式上
     const word = document.querySelectorAll('.homeeffect-word');
-    // 隨機顏色
-    word.forEach(word => {
-      const randomTop = Math.random() * 100;
-      const randomLeft = Math.random() * 100;
-      const randomRight = Math.random() * 100;
-      const randomBottom = Math.random() * 100;
-      const randomFontSize = Math.random() * 1.25 + 1;
-      const randomOpacity = Math.random();
-      const randomScale = Math.random() * 2 + 0.25;
+    const wordElements = document.querySelectorAll('.homeeffect-word');
+    const positions = [];
+
+    wordElements.forEach(word => {
+      let randomTop, randomLeft, randomRight, randomBottom, randomFontSize, randomOpacity, randomScale;
+      let isOverlapping;
+
+      do {
+        randomTop = Math.random() * 100;
+        randomLeft = Math.random() * 100;
+        randomRight = Math.random() * 100;
+        randomBottom = Math.random() * 100;
+        randomFontSize = Math.random() * 1.25 + 1;
+        randomOpacity = Math.random();
+        randomScale = Math.random() * 2 + 0.25;
+
+        isOverlapping = positions.some(pos => {
+          return (
+            Math.abs(pos.top - randomTop) < 10 &&
+            Math.abs(pos.left - randomLeft) < 10
+          );
+        });
+      } while (isOverlapping);
+
+      positions.push({ top: randomTop, left: randomLeft });
 
       word.style.top = `${randomTop}%`;
       word.style.left = `${randomLeft}%`;
@@ -146,13 +201,22 @@ export default {
       word.style.transform = `translate(-30%, -10%) scale(${randomScale})`;
     });
 
-    // faq縮放
+    // FAQ縮放效果
     const questions = document.querySelectorAll('.index-question');
 
     questions.forEach(question => {
       question.addEventListener('click', function () {
-        const answer = this.nextElementSibling;
+        // 先關閉所有已經展開的問題
+        questions.forEach(q => {
+          const answer = q.nextElementSibling;
+          if (answer !== this.nextElementSibling && answer.style.maxHeight) {
+            answer.style.maxHeight = null;
+            q.querySelector('.indexfaq-icon i').classList.replace('fa-minus', 'fa-plus');
+          }
+        });
 
+        // 展開或收攏當前點擊的問題
+        const answer = this.nextElementSibling;
         if (answer.style.maxHeight) {
           answer.style.maxHeight = null;
           this.querySelector('.indexfaq-icon i').classList.replace('fa-minus', 'fa-plus');
@@ -160,20 +224,25 @@ export default {
           answer.style.maxHeight = answer.scrollHeight + 'px';
           this.querySelector('.indexfaq-icon i').classList.replace('fa-plus', 'fa-minus');
         }
-        AOS.refresh();  // 確保 FAQ 展開時動畫正常觸發
+        // 確保 FAQ 展開時動畫正常觸發
+        AOS.refresh();
       });
     });
 
+    // 監聽滾動事件
     window.addEventListener('scroll', this.handleScroll);
   },
   updated() {
+    // 組件更新後手動刷新AOS動畫
     this.$nextTick(() => {
-      AOS.refresh(); // 手動刷新 AOS
+      AOS.refresh();
     });
   },
   beforeDestroy() {
+    // 組件銷毀前移除事件監聽
     window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('resize', this.updateItemsPerPage); // 移除窗口大小變化監聽
+    // 移除窗口大小變化監聽
+    window.removeEventListener('resize', this.updateItemsPerPage);
   },
 };
 </script>
@@ -200,9 +269,9 @@ export default {
         <!-- 文字區域 -->
         <div class="homepage-text">
           <h1 data-aos="fade-up" data-text="Meme謎因">Meme謎因</h1>
-          <p data-aos="fade-up" data-aos-delay="80">謎因工作室邀請勇敢的挑戰者進入神秘世界。</p>
-          <p data-aos="fade-up" data-aos-delay="90">解開謎題背後故事，發掘內心深處智慧與勇氣。</p>
-          <p data-aos="fade-up" data-aos-delay="100">體驗逃脫密室的刺激與成就感。</p>
+          <p data-aos="fade-up" data-aos-delay="100">謎因工作室邀請勇敢的挑戰者進入神秘世界。</p>
+          <p data-aos="fade-up" data-aos-delay="150">解開謎題背後故事，發掘內心深處智慧與勇氣。</p>
+          <p data-aos="fade-up" data-aos-delay="200">體驗逃脫密室的刺激與成就感。</p>
         </div>
         <!-- 下方圖片區 -->
         <div class="homepage-img">
@@ -232,7 +301,7 @@ export default {
             <img src="../assets/img/breadstoryimg3.jpg" alt="品牌故事照片">
           </div>
           <!-- 文字區域 -->
-          <div class="brandstory-text" data-aos="fade-up" data-aos-delay="200">
+          <div class="brandstory-text" data-aos="fade-up" data-aos-delay="300">
             <div class="brandstory-title">
               <span>— 品牌</span>
               <span>故事 —</span>
@@ -296,31 +365,7 @@ export default {
               </div>
             </section>
 
-            <section class="limitlevel-img" data-aos="fade-up" data-aos-delay="250">
-              <!-- <div class="limitlevel-imgtext">
-                <p>JavaScriptは大丈夫ですか？</p>
-                <p>青い光が一瞬にして爆発した </p>
-                <p>複雑なコードの異世界。</p>
-                <p>未知の危険と神秘的な力</p>
-                <p>現実世界に戻る方法を見つけてください</p>
-                <p> あるいは永遠に暗号の深淵に迷い込んでしまう</p>
-              </div> -->
-
-              <!-- <div class="limitlevel-info">
-                <div class="limitlevel-level">
-                  <font-awesome-icon :icon="['fas', 'lock']" class="limit-icon" />
-                  <p>3 Star</p>
-                </div>
-                <div class="limitlevel-people">
-                  <font-awesome-icon :icon="['fas', 'user-group']" class="limit-icon" />
-                  <p>4 - 8</p>
-                </div>
-                <div class="limitlevel-time">
-                  <font-awesome-icon :icon="['far', 'clock']" class="limit-icon" />
-                  <p>60 mins</p>
-                </div>
-              </div> -->
-            </section>
+            <section class="limitlevel-img" data-aos="fade-up" data-aos-delay="250"></section>
           </section>
           <router-link to="/Branch/" class="linmit-link" data-aos="fade-up" data-aos-delay="50"><button type="button"
               class="btn linmit-btn">立即預定</button></router-link>
@@ -350,18 +395,10 @@ export default {
                 <p>尋找散落的各種線索</p>
               </div>
             </section>
-            <!-- 右側圖片區塊 -->
-            <!-- <section class="howtoplay-img">
-              <img src="/src/assets/img/Index-howto01.jpg" alt="">
-            </section> -->
           </section>
 
           <!-- 內容區塊 02 -->
           <section class="howtoplay-box howPic2" data-aos="fade-right" data-aos-delay="150">
-            <!-- 左側圖片區域 -->
-            <!-- <section class="howtoplay-img">
-              <img src="/src/assets/img/Index-howto02.jpg" alt="">
-            </section> -->
             <!-- 右邊文字區塊 -->
             <section class="howtoplay-text">
               <!-- 上方標語 -->
@@ -396,10 +433,6 @@ export default {
                 <p>挖掘埋沒的真相</p>
               </div>
             </section>
-            <!-- 右側圖片區塊 -->
-            <!-- <section class="howtoplay-img">
-              <img src="/src/assets/img/Index-howto03.jpg" alt="">
-            </section> -->
           </section>
         </section>
       </section>
@@ -429,41 +462,6 @@ export default {
               </div>
             </div>
           </ul>
-
-          <!-- <ul>
-            <div class="theme_forindex" data-aos="fade-up" data-aos-delay="150">
-              <div class="News-swiper-button-prev">
-                <li><i class="fa-solid fa-caret-left"></i></li>
-              </div>
-              
-              <li class="index-news-li">
-                <router-link to="/Announcement/"><img src="../assets/img/banner_openning.png" alt="">
-                  <h3>謎因工作室盛大開幕！</h3>
-                  <p class="index-news-text">
-                    預約我們的謎因密室逃脫，體驗刺激解謎挑戰！還有……Read More</p>
-                </router-link>
-              </li>
-
-              <li class="index-news-li  news-notshow">
-                <router-link to="/Announcement/"><img src="/src/assets/img/banner_teacher.png" alt="">
-                  <h3>緯育教師專屬特惠！</h3>
-                  <p class="index-news-text">
-                    教師節快樂！感謝緯育老師們無私的奉獻，現在只要……Read More</p>
-                  </router-link>
-              </li>
-
-              <li class="index-news-li  news-notshow">
-                <router-link to="/Announcement/"><img src="/src/assets/img/banner_discount.png" alt="">
-                  <h3>歡慶中秋！</h3>
-                  <p class="index-news-text">
-                    謎因工作室隆重推出中秋特惠！四人同行一人免費！還有……Read More</p>
-                  </router-link>
-              </li>
-              <div class="News-swiper-button-next">
-                <li><i class="fa-solid fa-caret-right"></i></li>
-              </div>
-            </div>
-          </ul> -->
         </div>
       </section>
 

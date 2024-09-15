@@ -4,23 +4,54 @@ import '../assets/css/style.css'
 
 <template>
     <footer>
-        <div class="bottom">
-            <div> <router-link to="/"><img src="../assets/img/memelogo.svg" alt=""></router-link></div>
+        <section class="bottom">
+            <!-- 這邊是Logo，可以回前後台分流頁 -->
+            <section class="bm_logo">
+                <router-link to="/"><img src="../assets/img/memelogo.svg" alt=""></router-link>
+                <!-- 聯絡方式 -->
+                <section class="bm_info">
+                    <div class="bm_info_address">
+                        <p>台北館｜ 台北市密逃路8之10號</p>
+                        <p>台中館｜ 台中市北屯區路黎明路8號</p>
+                    </div>
 
-            <div class="bm_text">
+                    <div class="bm_info_phone">
+                        <p>聯絡方式｜ meme@gmail.com</p>
+                        <p>營業時間｜ 10：00 – 18：00</p>
+                    </div>
+                </section>
+
+                <section class="footerRule">
+                    <router-link to="/Branch/"><span>分館介紹</span></router-link>
+                    <router-link to="/Minigame/"><span>線上體驗</span></router-link>
+                    <router-link to="/Privacy/"><span>隱私權政策</span></router-link>
+                    <router-link to="/Terms/"><span>服務條款</span></router-link>
+                </section>
+            </section>
+
+            <!-- 這邊是中央文字 -->
+            <section class="bm_text">
+                <section class="footerRule2">
+                    <router-link to="/Branch/"><span>分館介紹</span></router-link>
+                    <router-link to="/Minigame/"><span>線上體驗</span></router-link>
+                    <router-link to="/Privacy/"><span>隱私權政策</span></router-link>
+                    <router-link to="/Terms/"><span>服務條款</span></router-link>
+                </section>
+
                 <p>© Copyright Meme謎因工作室&nbsp;&nbsp;All Rights Reserved.</p>
                 <p>本網站為緯育TibaMe【第93期】前端工程師專業技術養成班學員作品，僅供學習、展示之用途。</p>
-            </div>
-
-            <div class="icon">
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-square-threads"></i>
-            </div>
-        </div>
+            </section>
+        </section>
     </footer>
 </template>
 
+<!-- 
+                <section class="bm_icon">
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-square-threads"></i>
+                </section>
+-->
 
 <!-- <style lang="scss" scoped>
     .bottom {

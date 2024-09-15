@@ -1,85 +1,171 @@
 .bottom {
-    background-color: map-get($colors,  lightblue);
+    background-color: map-get($colors, lightblue);
     width: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    flex-direction: column;
+    padding: 12px 0;
+
+    @include rwd(1280px) {
+        justify-content: center;
+    }
 }
 
-.bottom img {
-    width: 100px;
-    height: 70px;
-    margin-left: 80px;
-    @include rwd(1000px){
-        margin-left: 40px;
+.bm_logo {
+    display: flex;
+    margin-bottom: 4px;
+
+    img {
+        width: 100px;
+        height: 70px;
+        margin-right: 40px;
+
+        @include rwd(650px) {
+            width: 70px;
+        }
+
+        @include phone {
+            width: 100px;
+            height: 70px;
+            margin-right: 0px;
+        }
     }
-    @include pad{
-       margin-left: 28px;
+
+    .bm_icon {
+        margin-top: 40px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
     }
-    @include rwd(650px){
-        width: 70px;
-        margin-left: 20px;
-    }
-    @include phone{
-        width: 50px;
-        margin-left: 12px;
-     }
 }
 
-
-.bottom .bm_text{
-    color:map-get($colors,  white);
-    width: 80%;
-    margin: 0 auto;
+.bm_text {
+    color: map-get($colors, white);
+    // margin: 0 auto;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
-        @include rwd(650px){
-            width: 60%;
-        }
-        @include phone{
-            width: 50%;
-        }
-    p{
-        font-size: 16px;
+
+    @include rwd(650px) {
+        width: 80%;
+    }
+
+    @include phone {
+        width: 96%;
+    }
+
+    p {
+        font-size: 12px;
         line-height: 1.6;
-        @include pad{
-           line-height: 1.2;
-           font-size: 12px;
+
+        @include pad {
+            line-height: 1.2;
+            font-size: 12px;
         }
-        @include rwd(650px){
-            p{
-                font-size: 6px;
-            }
+
+        @include phone {
+            font-size: 10px;
         }
-        @include phone{
-            font-size: 8px;
-         }
     }
 }
 
-.bottom .icon {
-    width: 80px;
+
+.bm_info {
+    color: map-get($colors, white);
+    margin-right: 40px;
+
+    & a {
+        color: map-get($colors, white);
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    span {
+        font-size: 14px;
+    }
+
+    @include rwd(600px) {
+        margin-right: 0;
+    }
+
+    @include phone {
+        display: none;
+    }
+
+    .bm_info_address {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bm_info_phone {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bm_info_title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+.footerRule {
     display: flex;
-    justify-content: space-between;
-    color: map-get($colors,  white);
-    margin-left: auto;
-    padding-right: 80px;
-    font-size: 20px;
-    & a{
-        color: map-get($colors,  white);
+    flex-direction: column;
+    text-align-last: left;
+
+    @include rwd(600px) {
+        display: none;
     }
-    @include rwd(1100px){
-        padding-right: 40px;
-        // font-size: 20px;  
+
+    a {
+        text-decoration: none;
+        color: map-get($colors, white);
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 8px;
+
+        &:hover {
+            color: map-get($colors, underyellow);
+        }
     }
-    @include rwd(650px){
-        padding-right: 20px;
-        // font-size: 20px;  
+}
+
+.footerRule2 {
+    display: none;
+
+    @include rwd(600px) {
+        display: block;
+        text-align-last: left;
+        margin: 12px 0;
     }
-    @include phone{
-        padding-right: 15px;
+
+    a {
+        text-decoration: none;
+        color: map-get($colors, white);
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-right: 12px;
+
+        &:last-child{
+            margin-right: 0;
+        }
+
+        @include rwd(376px) {
+            margin-right: 8px;
+        }
+
+        &:hover {
+            color: map-get($colors, underyellow);
+        }
     }
 }

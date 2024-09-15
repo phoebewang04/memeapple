@@ -1,11 +1,3 @@
-<script setup>
-
-</script>
-
-
-
-
-
 
 <template>
     <TopNavbar />
@@ -85,36 +77,16 @@
 
 
             <div class="coupontext" v-if="currentTab =='tab2'">
-              <div class="couponticket">
-                <div class="coupont">
-                  <h3>小遊戲優惠卷</h3>
-                  <h4>折扣金額：</h4>
-                  <h4>50元</h4>
-                  <h4>使用狀態：</h4>
-                  <h4>未使用</h4>
-                </div>
+              <div class="couponticket">                
+                  <img src="../assets/img/banner_Lock.png" class="couponbg">
+                  <div class="coupont">
+                    <h3>COUPON</h3>
+                    <h4>150元</h4>
+                    <h4>未使用</h4>
+                    <!-- <h4>已使用</h4> -->
+                  </div>
               </div>
-
-              <div class="couponticket">
-                <div class="coupont">
-                  <h3>小遊戲優惠卷</h3>
-                  <h4>折扣金額：</h4>
-                  <h4>100元</h4>
-                  <h4>使用狀態：</h4>
-                  <h4>未使用</h4>
-                </div>
-              </div>
-
-              <div class="couponticket">
-                <div class="coupont">
-                  <h3>小遊戲優惠卷</h3>
-                  <h4>折扣金額：</h4>
-                  <h4>150元</h4>
-                  <h4>使用狀態：</h4>
-                  <h4>未使用</h4>
-                  <!-- <h4>已使用</h4> -->
-                </div>
-              </div>
+              
             </div>
 
 
