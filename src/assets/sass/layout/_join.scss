@@ -10,7 +10,7 @@
 }
 
 .mainJoin ul{
-    padding: 2.5px;
+    padding: 2px;
 }
 
 .mainJoin li{
@@ -18,5 +18,15 @@
         outline: none;
         margin-bottom: 8px;
         width: 95%;
+    }
+}
+.checkservers{
+    align-items: center;
+    .checkserver{
+        width: 20px;
+        margin-top: 8px;
+    }
+    a{
+        font-size: map-get($fontsize, p);
     }
 }

@@ -61,6 +61,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
   }
   
   .dialog-box {
@@ -78,6 +79,7 @@
     max-width: 100%;
     height: auto;
     margin: 10px 0;
+    z-index: 2;
   }
   
   .confirm-btn {
