@@ -13,7 +13,7 @@ const frontpageSlogran = ref(null);
 
 onMounted(() => {
   // 當組件掛載時觸發動畫
-  triggerAnimations(); 
+  triggerAnimations();
 });
 
 router.beforeEach((to, from, next) => {
@@ -60,14 +60,14 @@ function triggerAnimations() {
   <main class="main-frontpage">
     <section class="wrapper-frontpage">
       <!-- Logo圖片 -->
-      <img src="../assets/img/memelogo.svg" alt="" class="frontpage-logo" ref="frontpageLogo">
+      <img src="@/assets/img/memelogo.svg" alt="" class="frontpage-logo" ref="frontpageLogo">
       <!-- 內容部分 -->
       <section class="content-frontpage">
 
         <!-- 前端按鈕 -->
         <router-link to="/index/">
           <section class="frontpage-btnL" ref="frontpageBtnL">
-            <img src="../assets/img/BTN-yellow.png" alt="" class="glow-effect-L">
+            <img src="@/assets/img/BTN-yellow.png" alt="" class="glow-effect-L">
             <a href="">
               <span></span>
               <span></span>
@@ -81,7 +81,7 @@ function triggerAnimations() {
         <!-- 右側按鈕 -->
         <router-link to="/BackstageIndex/">
           <section class="frontpage-btnR" ref="frontpageBtnR">
-            <img src="../assets//img/BTN-blue.png" alt="" class="glow-effect-R">
+            <img src="@/assets/img/BTN-blue.png" alt="" class="glow-effect-R">
             <a href="">
               <span></span>
               <span></span>
@@ -92,14 +92,6 @@ function triggerAnimations() {
           </section>
         </router-link>
       </section>
-
-      <!-- 中央內容 -->
-      <!-- <section class="frontpage-text" ref="frontpageSlogran">
-          <div class="frontpage-slogran">
-            <span>選擇你的</span>
-            <span class="frontpage-slogranred">下一步...</span>
-          </div>
-        </section> -->
     </section>
   </main>
 </template>

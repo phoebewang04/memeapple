@@ -1,33 +1,11 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 require 'sql.php';
 
-// 使前台分流頁顯示NEWS表格的資料
+// 使HomeView.vue 的最新消息區域，除了已經寫入的靜態假資料，也可以添加NEWS表格裡面新增的資料
 
-class Announcement {
-    private $pdo;
 
-    public function __construct($pdo){
-        $this->pdo = $pdo;
-    }
 
-    public function getNews() {
-        $stmt = $this->pdo->prepare("SELECT * FROM NEWS");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-}
-
-// 創建 Announcement 實例並抓取資料
-$announcement = new Announcement($pdo);
-$news = $announcement->getNews();
-
-header('Content-Type: application/json');
-
-// 將資料轉換為 JSON 格式並輸出
-echo json_encode($news);
+// 使HomeView.vue 的最新消息區域，點選任何一則最新消息，可以撈取NEWS表格裡面已經存在的資料，並透過announcement.vue檔案顯示
 
 ?>

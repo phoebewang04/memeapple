@@ -49,42 +49,30 @@ const Orderinform = () => import('../views/orderinform.vue');
 // ======================================================= //
 
 const routes = [
-  { path: '/', name: 'fontpage', component: () => import('../views/Frontpage.vue') },
-  { path: '/index/', name: 'index', component: () => import('../views/HomeView.vue') },
-  { path: '/Privacy/', name: 'Privacy', component: () => import('../views/PrivacyPolicy.vue') },
-  { path: '/Terms/', name: 'Terms', component: () => import('../views/TermsService.vue') },
-  { path: '/Announcement/', name: 'Announcement', component: () => import('../views/Announcement.vue') },
-  { path: '/Login/', name: 'Login', component: () => import('../components/login.vue') },
-  { path: '/Join/', name: 'Join', component: () => import('../components/join.vue') },
-  { path: '/Membermanage/', name: 'Membermanage', component: () => import('../views/Membermanage.vue') },
-  { path: '/Popupcard/', name: 'Popupcard', component: () => import('../views/Popupcard.vue') },
-  { path: '/Branch/', name: 'Branch', component: () => import('../views/Branch.vue') },
-  { path: '/Minigame/', name: 'Minigame', component: () => import('../views/Minigame.vue') },
-  { path: '/dead1A2Bgame/', name: 'dead1A2Bgame', component: () => import('../views/dead1A2Bgame.vue') },
-  { path: '/minigameL/', name: 'minigameL', component: () => import('../components/minigameLtest.vue') },
-  { path: '/Escaperoom/', name: 'Escaperoom', component: () => import('../views/Escaperoom.vue') },
-  { path: '/BackstageIndex/', name: 'BackstageIndex', component: () => import('../views/Backstage_index.vue') },
-  { path: '/MemberMenage/', name: 'MemberMenage', component: () => import('../views/Backstage_member.vue') },
-  { path: '/OrderMemage/', name: 'OrderMemage', component: () => import('../views/Backstage_order.vue') },
-  { path: '/NewsMenage/', name: 'NewsMenage', component: () => import('../views/Backstage_news.vue') },
-  { path: '/NewsEdit/', name: 'NewsEdit', component: () => import('../views/Backstage_news_edit.vue') },
+  { path: '/', name: 'fontpage',meta:{title:'前後台分流頁'}, component: () => import('../views/Frontpage.vue') },
+  { path: '/index/', name: 'index',meta:{title:'首頁'}, component: () => import('../views/HomeView.vue') },
+  { path: '/Privacy/', name: 'Privacy',meta:{title:'隱私權政策'}, component: () => import('../views/PrivacyPolicy.vue') },
+  { path: '/Terms/', name: 'Terms',meta:{title:'服務條款'}, component: () => import('../views/TermsService.vue') },
+  { path: '/Announcement/', name: 'Announcement',meta:{title:'最新消息'}, component: () => import('../views/Announcement.vue') },
+  { path: '/Login/', name: 'Login',meta:{title:'登入與註冊'}, component: () => import('../components/login.vue') },
+  { path: '/Join/', name: 'Join',meta:{title:'註冊'}, component: () => import('../components/join.vue') },
+  { path: '/Membermanage/', name: 'Membermanage',meta:{title:'會員資料管理'}, component: () => import('../views/Membermanage.vue') },
+  { path: '/Popupcard/', name: 'Popupcard',meta:{title:'票券'}, component: () => import('../views/Popupcard.vue') },
+  { path: '/Branch/', name: 'Branch',meta:{title:'分館介紹'}, component: () => import('../views/Branch.vue') },
+  { path: '/Minigame/', name: 'Minigame',meta:{title:'線上體驗'}, component: () => import('../views/Minigame.vue') },
+  { path: '/dead1A2Bgame/', name: 'dead1A2Bgame',meta:{title:'亡命數字'}, component: () => import('../views/dead1A2Bgame.vue') },
+  { path: '/minigameL/', name: 'minigameL',meta:{title:'鬼碑迷陣'}, component: () => import('../components/minigameLtest.vue') },
+  { path: '/Escaperoom/', name: 'Escaperoom',meta:{title:'亡靈醫院'}, component: () => import('../views/Escaperoom.vue') },
+  { path: '/BackstageIndex/', name: 'BackstageIndex',meta:{title:'後台首頁'}, component: () => import('../views/Backstage_index.vue') },
+  { path: '/MemberMenage/', name: 'MemberMenage',meta:{title:'會員資料管理'}, component: () => import('../views/Backstage_member.vue') },
+  { path: '/OrderMemage/', name: 'OrderMemage',meta:{title:'訂單資資料管理'}, component: () => import('../views/Backstage_order.vue') },
+  { path: '/NewsMenage/', name: 'NewsMenage',meta:{title:'最新消息管理'}, component: () => import('../views/Backstage_news.vue') },
+  { path: '/NewsEdit/', name: 'NewsEdit',meta:{title:'最新消息編輯'}, component: () => import('../views/Backstage_news_edit.vue') },
   { path: '/Theme/:id', component: Theme },
   { path: '/Theme/:id/preorder/orderinform/pay', component: Pay },
   { path: '/Theme/:id/preorder', component: Preorder },
   { path: '/Theme/:id/preorder/orderinform', component: Orderinform },
 ];
-
-
-const router = createRouter({
-  // 使用HTML5歷史模式，並設置基礎URL
-  history: createWebHistory(import.meta.env.BASE_URL),
-  // 定義路由規則
-  routes,
-  // 滾動行為
-  scrollBehavior(to, from, savedPosition) {
-    return { top: 0 };
-  }
-});
 
 
 // 將router實例導出，以便在其他地方使用。
@@ -96,6 +84,9 @@ export default function () {
   return createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes,
+    scrollBehavior(to, from, savedPosition) {
+      return { top: 0 };
+    }
   });
 }
 
