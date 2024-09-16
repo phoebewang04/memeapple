@@ -214,14 +214,14 @@ import { Pagination } from 'swiper/modules';
                 activeButton: 'taipei',
                 currentStartIndex: 0,
                 items: [
-                    { name: "成都醫院", img: "/src/assets/img/poster_hospital.png", title: "成都醫院" },
-                    { name: "時光迷宮", img: "/src/assets/img/poster_time.png", title: "時光迷宮" },
-                    { name: "末日庇護所", img: "/src/assets/img/poster_dead.jpg", title: "末日庇護所" },
-                    { name: "代碼深淵", img: "/src/assets/img/poster_code.png", title: "代碼深淵" },
-                    { name: "逃離武石監", img: "/src/assets/img/poster_Lock.jpg", title: "逃離武石監"},
-                    { name: "恐怖密室", img: "/src/assets/img/poster_room.png", title: "恐怖密室"},
-                    { name: "逃出虛空", img: "/src/assets/img/poster_alien.png", title: "逃出虛空"},
-                    { name: "coming soon", img: "/src/assets/img/postercomingbranch.jpg", title: "coming soon"}
+                    { name: "成都醫院", img: new URL("@/assets/img/poster_hospital.png", import.meta.url).href, title: "成都醫院" },
+                    { name: "時光迷宮", img: new URL("@/assets/img/poster_time.png", import.meta.url).href, title: "時光迷宮" },
+                    { name: "末日庇護所", img: new URL("@/assets/img/poster_dead.jpg", import.meta.url).href, title: "末日庇護所" },
+                    { name: "代碼深淵", img: new URL("@/assets/img/poster_code.png", import.meta.url).href, title: "代碼深淵" },
+                    { name: "逃離武石監", img: new URL("@/assets/img/poster_Lock.jpg", import.meta.url).href, title: "逃離武石監"},
+                    { name: "恐怖密室", img: new URL("@/assets/img/poster_room.png", import.meta.url).href, title: "恐怖密室"},
+                    { name: "逃出虛空", img: new URL("@/assets/img/poster_alien.png", import.meta.url).href, title: "逃出虛空"},
+                    { name: "coming soon", img: new URL("@/assets/img/postercomingbranch.jpg", import.meta.url).href, title: "coming soon"}
                 ],
                 itemsPerPage: 3
             };
