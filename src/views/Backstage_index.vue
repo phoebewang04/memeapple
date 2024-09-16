@@ -92,6 +92,8 @@ export default {
         width: "355px",
       },
       isPreviewVisible: false,
+      selectedOrderId: '',
+      paginatedData: [],
     };
   },
   methods: {
@@ -174,12 +176,40 @@ export default {
         console.error("查詢失敗：", error);
       }
     },
-    showPreview() {
-      this.isPreviewVisible = true;
+    showPreview(orderId) {
+      if (orderId) {
+      this.selectedOrderId = orderId; // 儲存選中的訂單編號
+      this.isPreviewVisible = true; // 顯示 pop 視窗
+      this.fetchData(); // 觸發 fetchData 方法
+      }
     },
+
+    async fetchData(){
+      try {
+        const params = {
+          keyword: this.selectedOrderId
+        };
+        console.log('params: ', params)
+        const response = await axios.get('http://localhost/memeapple/public/php/api/order.php', { params });
+        this.paginatedData = response.data;
+        console.log('paginatedData: ', this.paginatedData);
+      } catch (err){
+        this.error = 'An error occurred: ' + err.message
+      }
+    },
+
+    formatDate(timestamp) {
+      let date = new Date(timestamp);
+      return date.toISOString().split('T')[0];
+    },
+    // 調整時間格式
+    formatTime(time) {
+      return time.substring(0, 5);
+    },
+
     hidePreview() {
       this.isPreviewVisible = false;
-    },    
+    },
   },
 
   mounted() {
@@ -219,153 +249,153 @@ export default {
                 </tr>
               </thead>
               <tbody>
-                <!-- <tr style="height: 45px">
+                <tr style="height: 45px">
                   <th class="column-header">成都醫院</th>
                   <td>
-                    <a href="">{{ getOrder(1, "10:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(1, '10:30'))">{{ getOrder(1, "10:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(1, "11:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(1, '11:15'))">{{ getOrder(1, "11:15") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(1, "12:55") }}</a>
+                    <a href="#" @click="showPreview(getOrder(1, '12:55'))">{{ getOrder(1, "12:55") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(1, "14:35") }}</a>
+                    <a href="#" @click="showPreview(getOrder(1, '14:35'))">{{ getOrder(1, "14:35") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(1, "16:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(1, '16:30'))">{{ getOrder(1, "16:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(1, "18:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(1, '18:15'))">{{ getOrder(1, "18:15") }}</a>
                   </td>
-                </tr> -->
+                </tr>
                 <tr style="height: 45px">
                   <th class="column-header">時光迷宮</th>
                   <td>
-                    <a href="#" @click="showPreview">{{ getOrder(2, "10:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(2, '10:30'))">{{ getOrder(2, "10:30") }}</a>
                   </td>
                   <td>
-                    <a href="#" @click="showPreview">{{ getOrder(2, "11:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(2, '11:15'))">{{ getOrder(2, "11:15") }}</a>
                   </td>
                   <td>
-                    <a href="#" @click="showPreview">{{ getOrder(2, "12:55") }}</a>
+                    <a href="#" @click="showPreview(getOrder(2, '12:55'))">{{ getOrder(2, "12:55") }}</a>
                   </td>
                   <td>
-                    <a href="#" @click="showPreview">{{ getOrder(2, "14:35") }}</a>
+                    <a href="#" @click="showPreview(getOrder(2, '14:35'))">{{ getOrder(2, "14:35") }}</a>
                   </td>
                   <td>
-                    <a href="#" @click="showPreview">{{ getOrder(2, "16:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(2, '16:30'))">{{ getOrder(2, "16:30") }}</a>
                   </td>
                   <td>
-                    <a href="#" @click="showPreview">{{ getOrder(2, "18:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(2, '18:15'))">{{ getOrder(2, "18:15") }}</a>
                   </td>
                 </tr>
-                <!-- <tr style="height: 45px">
+                <tr style="height: 45px">
                   <th class="column-header">末日庇護所</th>
                   <td>
-                    <a href="">{{ getOrder(3, "10:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(3, '10:30'))">{{ getOrder(3, "10:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(3, "11:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(3, '11:15'))">{{ getOrder(3, "11:15") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(3, "12:55") }}</a>
+                    <a href="#" @click="showPreview(getOrder(3, '12:55'))">{{ getOrder(3, "12:55") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(3, "14:35") }}</a>
+                    <a href="#" @click="showPreview(getOrder(3, '14:35'))">{{ getOrder(3, "14:35") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(3, "16:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(3, '16:30'))">{{ getOrder(3, "16:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(3, "18:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(3, '18:15'))">{{ getOrder(3, "18:15") }}</a>
                   </td>
                 </tr>
                 <tr style="height: 45px">
                   <th class="column-header">代碼深淵</th>
                   <td>
-                    <a href="">{{ getOrder(4, "10:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(4, '10:30'))">{{ getOrder(4, "10:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(4, "11:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(4, '11:15'))">{{ getOrder(4, "11:15") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(4, "12:55") }}</a>
+                    <a href="#" @click="showPreview(getOrder(4, '12:55'))">{{ getOrder(4, "12:55") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(4, "14:35") }}</a>
+                    <a href="#" @click="showPreview(getOrder(4, '14:35'))">{{ getOrder(4, "14:35") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(4, "16:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(4, '16:30'))">{{ getOrder(4, "16:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(4, "18:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(4, '18:15'))">{{ getOrder(4, "18:15") }}</a>
                   </td>
                 </tr>
                 <tr style="height: 45px">
                   <th class="column-header">逃離武石監</th>
                   <td>
-                    <a href="">{{ getOrder(5, "10:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(5, '10:30'))">{{ getOrder(5, "10:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(5, "11:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(5, '11:15'))">{{ getOrder(5, "11:15") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(5, "12:55") }}</a>
+                    <a href="#" @click="showPreview(getOrder(5, '12:55'))">{{ getOrder(5, "12:55") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(5, "14:35") }}</a>
+                    <a href="#" @click="showPreview(getOrder(5, '14:35'))">{{ getOrder(5, "14:35") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(5, "16:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(5, '16:30'))">{{ getOrder(5, "16:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(5, "18:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(5, '18:15'))">{{ getOrder(5, "18:15") }}</a>
                   </td>
                 </tr>
                 <tr style="height: 45px">
                   <th class="column-header">恐怖密室</th>
                   <td>
-                    <a href="">{{ getOrder(6, "10:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(6, '10:30'))">{{ getOrder(6, "10:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(6, "11:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(6, '11:15'))">{{ getOrder(6, "11:15") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(6, "12:55") }}</a>
+                    <a href="#" @click="showPreview(getOrder(6, '12:55'))">{{ getOrder(6, "12:55") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(6, "14:35") }}</a>
+                    <a href="#" @click="showPreview(getOrder(6, '14:35'))">{{ getOrder(6, "14:35") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(6, "16:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(6, '16:30'))">{{ getOrder(6, "16:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(6, "18:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(6, '18:15'))">{{ getOrder(6, "18:15") }}</a>
                   </td>
                 </tr>
                 <tr style="height: 45px">
                   <th class="column-header">逃出虛空</th>
                   <td>
-                    <a href="">{{ getOrder(7, "10:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(7, '10:30'))">{{ getOrder(7, "10:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(7, "11:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(7, '11:15'))">{{ getOrder(7, "11:15") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(7, "12:55") }}</a>
+                    <a href="#" @click="showPreview(getOrder(7, '12:55'))">{{ getOrder(7, "12:55") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(7, "14:35") }}</a>
+                    <a href="#" @click="showPreview(getOrder(7, '14:35'))">{{ getOrder(7, "14:35") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(7, "16:30") }}</a>
+                    <a href="#" @click="showPreview(getOrder(7, '16:30'))">{{ getOrder(7, "16:30") }}</a>
                   </td>
                   <td>
-                    <a href="">{{ getOrder(7, "18:15") }}</a>
+                    <a href="#" @click="showPreview(getOrder(7, '18:15'))">{{ getOrder(7, "18:15") }}</a>
                   </td>
-                </tr> -->
+                </tr>
               </tbody>
             </table>
           </div>
@@ -386,15 +416,40 @@ export default {
       <div class="backstage_news_preview" @click.stop>
         <div class="backstage_news_content">
 
-          <div class="backstage_news_image">
-            <img :src="image" alt="Uploaded Image" class="announcementPic">
-          </div>
-
-          <div class="backstage_news_text">
-            <h1>{{ title }}</h1>
-            <p>{{ content }}</p>
-          </div>
-
+          <table class="backstage_table" style="margin: 24px;">
+            <thead class="backstage_tablehead">
+              <tr>
+                <th class="column-header" style="width: 100px;">日期</th>
+                <th class="column-header" style="width: 75px;">時間</th>
+                <th class="column-header" style="width: 175px;">訂單編號</th>
+                <th class="column-header" style="width: 100px;">分館</th>
+                <th class="column-header" style="width: 100px;">主題</th>
+                <th class="column-header" style="width: 100px;">姓名</th>
+                <th class="column-header" style="width: 125px;">電話</th>
+                <th class="column-header" style="width: 175px;">E-Mail</th>
+                <th class="column-header" style="width: 100px;">狀態</th>
+                <th class="column-header" style="width: 75px;">人數</th>
+                <th class="column-header" style="width: 100px;">總額</th>
+                <th class="column-header" style="width: 100px;">待付</th>
+              </tr>
+            </thead>
+            <tbody class="backstage_tablebody">
+              <tr v-for="item in paginatedData" :key="item.ID">
+                <td id="order_date">{{ formatDate(item.ORDER_DATE) }}</td>
+                <td id="order_time">{{ formatTime(item.ORDER_TIME) }}</td>
+                <td id="order_ID">{{ item.ORDER_ID }}</td>
+                <td id="order_store">{{ item.STORE_NAME }}</td>
+                <td id="order_theme">{{ item.THEME_NAME }}</td>
+                <td id="member_name">{{ item.MEMBER_NAME }}</td>
+                <td id="member_phone">{{ item.MEMBER_PHONE }}</td>
+                <td id="member_email">{{ item.MEMBER_EMAIL }}</td>
+                <td id="order_status">{{ item.ORDER_STATUS }}</td>
+                <td id="order_attendance">{{ item.ATTENDANCE }}</td>
+                <td id="order_total">{{ item.TOTAL_AMOUNT }}</td>
+                <td id="order_amount">{{ item.PENDING_AMOUNT }}</td>
+              </tr>
+            </tbody>
+          </table>    
         </div>
 
         <div class="backstage_panel">
