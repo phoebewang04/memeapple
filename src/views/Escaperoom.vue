@@ -2,8 +2,7 @@
   <!-- <TopNavbar /> -->
   <main class="escaperoom_container">
 
-    <audio :src="bgMusic" autoplay loop hidden></audio>
-    <div class="esc_hint_wrapper" v-if="currentSceneIndex !== 0">
+    <div class="esc_hint_wrapper" v-if="currentSceneIndex >= 1 && currentSceneIndex <= 5">
       <input type="checkbox" />
       <div class="float_btn"></div>
       <div class="float_actions">
@@ -27,7 +26,7 @@
           <p>穿過古老墓園，迎面而來的是一座佇立多年、陰森詭異的廢棄醫院。<br>勇者是無法回頭的，唯有在這座迷霧籠罩的醫院內，解開重重謎團，才能找到生存的出口！</p>
 
           <div class="esc_start_btn">
-            <button @click="nextScene"><i class="fa-solid fa-ghost"></i>開始遊戲</button>
+            <button @click="startGame"><i class="fa-solid fa-ghost"></i>開始遊戲</button>
             <button @click="noviceTeach"><i class="fa-solid fa-question"></i>新手教學</button>
           </div>
         </div>
@@ -170,12 +169,12 @@
 
 
     <!------- 結束影片 ------->
-<div ref="scene6" class="scene esc_end">
+    <div ref="scene6" class="scene esc_end">
 
-  <div class="esc_end room">
-<video src="../assets/img/esc_end.mp4" playsinline autoplay muted></video>
-</div>
-</div>
+      <div class="esc_end room">
+        <video ref="endVideo" src="../assets/img/esc_end.mp4" playsinline autoplay muted></video>
+      </div>
+    </div>
   </main>
   <!-- <Footerbar /> -->
 </template>
@@ -221,7 +220,8 @@ export default {
       allPuzzlesCompleted: false,
 
       //------------大廳------------
-      bgMusic: null,
+      bgMusic1: null,  // 第一首音樂
+      bgMusic2: null,  // 第二首音樂
 
       //------------各關提示圖片+文字------------
       clueImages: [
@@ -259,11 +259,21 @@ export default {
     const shards = this.$refs.shards;
     const wastepaper = this.$refs.wastepaper;
 
-    import('../assets/img/escapebgmusic.mp3')
+    import('../assets/img/escapebgmusic_1.mp3')
       .then((module) => {
-        this.bgMusic = new Audio(module.default);
-        this.bgMusic.loop = true;
-        this.bgMusic.play();
+        this.bgMusic1 = new Audio(module.default);
+        this.bgMusic1.loop = true;
+
+      })
+      .catch((err) => {
+        console.error("音樂檔案載入失敗:", err);
+      });
+
+    import('../assets/img/escapebgmusic_2.mp3')
+      .then((module) => {
+        this.bgMusic2 = new Audio(module.default);
+        this.bgMusic2.loop = true;
+
       })
       .catch((err) => {
         console.error("音樂檔案載入失敗:", err);
@@ -306,20 +316,17 @@ export default {
     });
   },
   methods: {
-//------------開始遊戲並觸發音樂------------
-startGame(){
-  if (!this.bgMusic) {
-      this.bgMusic = new Audio(require('../assets/img/escapebgmusic.mp3'));  // 初始化背景音樂
-      this.bgMusic.loop = true;
-    }
+    //------------開始遊戲並觸發音樂------------
+    startGame() {
+      if (this.bgMusic1) {
+        this.bgMusic1.play().catch(error => {
+          console.error("背景音樂1播放失敗:", error);
+        });
+      }
 
-    // 在用戶點擊後播放音樂
-    this.bgMusic.play().catch(error => {
-      console.error("音樂播放失敗:", error);
-    });
+      this.nextScene();  // 切換到下一個場景
+    },
 
-    this.nextScene();  // 切換到下一個場景
-},
 
     //------------轉場------------
     noviceTeach() {
@@ -331,33 +338,43 @@ startGame(){
       });
     },
     nextScene() {
-      
-      if (this.currentSceneIndex === 5 && this.bgMusic) {
-      this.bgMusic.pause();  // 暫停背景音樂
-    }
-
-
       if (this.transitioning) return; //避免重複觸發
       this.transitioning = true;
 
-      const scenes = [this.$refs.scene0, this.$refs.scene1, this.$refs.scene2, this.$refs.scene3, this.$refs.scene4, this.$refs.scene5, this.$refs.scene6];
+      const scenes = [
+        this.$refs.scene0, this.$refs.scene1, this.$refs.scene2,
+        this.$refs.scene3, this.$refs.scene4, this.$refs.scene5, this.$refs.scene6
+      ];
 
-      //讓當前場景淡出
       const currentScene = scenes[this.currentSceneIndex];
       currentScene.classList.add('animate__animated', 'animate__fadeOut');
 
-      //等待淡出動畫結束後切換場景
       setTimeout(() => {
         currentScene.classList.remove('active', 'animate__fadeOut');
         currentScene.style.display = 'none';
 
-        //切換到下一個場景
+        // 切換到下一個場景
         this.currentSceneIndex++;
         const nextScene = scenes[this.currentSceneIndex];
         nextScene.style.display = 'block';
         nextScene.classList.add('active', 'animate__animated', 'animate__fadeIn');
 
-        //動畫結束後重置
+        // 音樂切換邏輯
+        if (this.currentSceneIndex === 6 && this.bgMusic1) {
+          this.bgMusic1.pause();  // 停止第一首音樂
+
+          if (this.bgMusic2) {
+            this.bgMusic2.play().catch(error => {
+              console.error("背景音樂2播放失敗:", error);
+            });
+          }
+          
+            const videoElement = this.$refs.endVideo;
+          videoElement.addEventListener('ended', () => {
+            this.showCoupon();  // 顯示優惠券提示
+          });
+        }
+
         setTimeout(() => {
           nextScene.classList.remove('animate__fadeIn');
           this.transitioning = false; //重置過渡狀態
@@ -569,7 +586,47 @@ startGame(){
           this.nextScene();
         }
       });
+    },
+
+     // 確認是否可以領取優惠券
+  async checkCoupon() {
+    try {
+      const memberId = 1; // 假設的會員ID
+      const gameId = 3;   // 假設的遊戲ID
+
+      const response = await fetch(`http://localhost:5173/api/coupon.php?member_id=${memberId}&game_id=${gameId}`, {
+        method: 'GET',
+      });
+
+      const result = await response.json();
+      
+      if (result.status === 'success') {
+        // 如果成功領取優惠券
+        this.showCouponAlert(result.message);
+      } else {
+        // 如果已經有該優惠券，直接跳轉回遊戲頁
+        this.$router.push('/minigame');
+      }
+    } catch (error) {
+      console.error("API調用錯誤:", error);
+    }
+  },
+    showCoupon(message) {
+      secAlert.fire({
+        title: '恭喜！',
+        text: '你已成功通關，獲得優惠券！',
+        icon: 'success',
+        confirmButtonText: '兌換',
+      }).then(() => {
+
+        if (this.bgMusic2) {
+            this.bgMusic2.pause();
+          }
+
+        this.$router.push('/minigame/');
+    });
     }
   }
 }
+
 </script>
