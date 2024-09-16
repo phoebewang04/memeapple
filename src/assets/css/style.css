@@ -1030,13 +1030,24 @@ p {
 }
 
 .mainJoin ul {
-  padding: 2.5px;
+  padding: 2px;
 }
 
 .mainJoin li input {
   outline: none;
   margin-bottom: 8px;
   width: 95%;
+}
+
+.checkservers {
+  align-items: center;
+}
+.checkservers .checkserver {
+  width: 20px;
+  margin-top: 8px;
+}
+.checkservers a {
+  font-size: 18px;
 }
 
 #toTopBTN {

@@ -196,11 +196,13 @@ import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 import { RouterLink } from 'vue-router';
+import ScrollToTop from '../components/ScollToTop.vue';
 
 export default {
     components: {
         TopNavbar,
-        Footerbar
+        Footerbar,
+        ScrollToTop,
     },
     data () {
         return {

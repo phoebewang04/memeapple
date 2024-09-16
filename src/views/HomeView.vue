@@ -5,6 +5,7 @@ import Footerbar from '../components/Footerbar.vue'; // 引入底部導航欄組
 import ScrollToTop from '../components/ScollToTop.vue'; // 引入返回頂部組件
 import AOS from 'aos'; // 引入AOS動畫庫
 import 'aos/dist/aos.css'; // 引入AOS動畫庫的樣式
+import axios from 'axios';
 // 引入Swiper Vue.js組件
 import { Swiper, SwiperSlide } from 'swiper/vue';
 // Import Swiper styles
@@ -23,6 +24,8 @@ export default {
     ScrollToTop
   },
   data() {
+    // console.log(new URL("@/assets/img/banner_openning.png", import.meta.url).href);
+
     return {
       modules: [Pagination, Navigation],
       // 常見問題列表
@@ -55,54 +58,47 @@ export default {
       // 最新消息列表
       news: [
         {
-          img: "/src/assets/img/banner_openning.png",
+          img: new URL("@/assets/img/banner_openning.png", import.meta.url).href,
+
+
           name: "盛大開幕",
           title: "謎因工作室盛大開幕！",
           newstext: "謎因工作室已於 2024年6月1日 盛大開幕！誠摯邀請……Read More"
         },
         {
-          img: "/src/assets/img/banner_teacher.png",
+          img: new URL("@/assets/img/banner_teacher.png", import.meta.url).href,
           name: "教師專屬特惠",
           title: "緯育教師專屬特惠！",
           newstext: "教師節快樂！感謝緯育老師們無私的奉獻，現在只要……Read More"
         },
         {
-          img: "/src/assets/img/banner_discount.png",
+          img: new URL("@/assets/img/banner_discount.png", import.meta.url).href,
           name: "中秋特惠",
           title: "歡慶中秋！",
           newstext: "謎因工作室隆重推出中秋特惠！四人同行一人免費！還有……Read More"
         },
         {
-          img: "/src/assets/img/banner_comingsoon.png",
+          img: new URL("@/assets/img/banner_comingsoon.png", import.meta.url).href,
           name: "全新主題",
           title: "全新主題即將推出！",
-          newstext: "謎因工作室神祕新關卡即將於2024年11月推出！敬請期待！我們……Read More"
+          newstext: "謎因工作室神祕新關卡即將於2024年11月推出！我們……Read More"
         }
       ],
+
       // 當前顯示的新聞索引
       currentIndex: 0,
       // 每頁顯示的新聞數量，初始化 itemsPerPage
       itemsPerPage: 3,
-      // 初始化新聞列表
-      // news: [], 
     };
 
   },
   computed: {
     // 根據當前索引和每頁顯示數量計算可見的新聞
     visibleNews() {
-      return this.news.slice(this.currentIndex, this.currentIndex + 3);
+      return this.news.slice(this.currentIndex, this.currentIndex + this.itemsPerPage);
     }
   },
   methods: {
-    // fetchNews() {
-    //   fetch('http://localhost/path-to-your-api/news.php') // 更新為正確的 API 路徑
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       this.news = data;
-    //     })
-    //     .catch(error => console.error('Error fetching news:', error));
-    // },
     handleScroll() {
       requestAnimationFrame(() => {
         // 處理滾動事件，刷新AOS動畫
@@ -155,9 +151,6 @@ export default {
     // 監聽窗口大小變化
     window.addEventListener('resize', this.updateItemsPerPage);
 
-    // window.addEventListener('scroll', this.handleScroll);
-    // // 在組件掛載後獲取新聞資料
-    // this.fetchNews();
 
     // 隨機設置文字效果
     // 對每個文字元素生成隨機的 top、left、right、bottom、fontSize、opacity 和 scale 值。
@@ -282,25 +275,25 @@ export default {
 
         <!-- 下方圖片區 -->
         <div class="homepage-img">
+
           <!-- 照片1 -->
           <div class="homepage-card01" data-aos="fade-up" data-aos-delay="100">
             <router-link to="/Theme/1">
-              <div class="overlay">
-                <img src="/src/assets/img/Index-person4.png" alt="成都醫院">
-                <button type="button" class="btn linmit-btn">立即預定</button>
-              </div>
+              <img src="@/assets/img/Index-person4.png" alt="成都醫院">
             </router-link>
           </div>
+
           <!-- 照片2 -->
           <div class="homepage-card02" data-aos="fade-up" data-aos-delay="200">
             <router-link to="/Theme/6">
-                <img src="/src/assets/img/Index-person5.png" alt="恐怖密室">
+              <img src="@/assets/img/Index-person5.png" alt="恐怖密室">
             </router-link>
           </div>
+
           <!-- 照片3 -->
           <div class="homepage-card03" data-aos="fade-up" data-aos-delay="300">
             <router-link to="/Theme/5">
-                <img src="/src/assets/img/Index-person6.png" alt="逃離武石監">
+              <img src="@/assets/img/Index-person6.png" alt="逃離武石監">
             </router-link>
           </div>
         </div>
@@ -403,7 +396,7 @@ export default {
               <!-- 上方標語 -->
               <div class="howtoplay-slogan">
                 <span>尋找</span>
-                <img src="/src/assets/img/keyhole.svg" alt="">
+                <img src="@/assets/img/keyhole.svg" alt="">
                 <span>出口</span>
               </div>
               <!-- 下方文字 -->
@@ -422,7 +415,7 @@ export default {
               <!-- 上方標語 -->
               <div class="howtoplay-slogan">
                 <span>解謎</span>
-                <img src="/src/assets/img/keyhole.svg" alt="">
+                <img src="@/assets/img/keyhole.svg" alt="">
                 <span>合作</span>
               </div>
               <!-- 下方文字 -->
@@ -441,7 +434,7 @@ export default {
               <!-- 上方標語 -->
               <div class="howtoplay-slogan">
                 <span>了解</span>
-                <img src="/src/assets/img/keyhole.svg" alt="">
+                <img src="@/assets/img/keyhole.svg" alt="">
                 <span>真相</span>
               </div>
               <!-- 下方文字 -->
@@ -480,7 +473,7 @@ export default {
         <section class="brandstory-content">
           <!-- 左側圖片 -->
           <div class="brandstory-img" data-aos="fade-up" data-aos-delay="100">
-            <img src="../assets/img/breadstoryimg3.jpg" alt="品牌故事照片">
+            <img src="@/assets/img/breadstoryimg3.jpg" alt="品牌故事照片">
           </div>
           <!-- 文字區域 -->
           <div class="brandstory-text" data-aos="fade-up" data-aos-delay="300">

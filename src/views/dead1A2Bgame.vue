@@ -44,42 +44,43 @@
                 <img src="../assets/img/deadgame3.png" alt="">
             </div>
 
+
             <div class="deadgame4 deadMb">
                 <img src="../assets/img/deadgame4.png" alt="">
             </div>
 
             <!-- -------輸入框跟按鈕------- -->
-            <el-input maxlength="4" placeholder="請輸入四位數字" v-model="guess" :readonly="isReadOnly" @keyup.enter="checkGuess" class="guessNumberBox"></el-input>
+            <el-input maxlength="4" placeholder="請輸入四位數字" v-model="guess" :readonly="isReadOnly" @keyup.enter="checkGuess" class="guessNumberBox" @focus="hideText"></el-input>
             <el-button id="enterBtn" :disabled="!isValidGuess"  @click="checkGuess" class="btn playBtn" >送出</el-button>
             <!-- <el-button id="answerBtn" @click="showAnswer" class="btn answerBtn">Answer</el-button> -->
             <!-- <el-button id="reloadBtn" @click="reloadPage" class="btn reloadBtn">Reload</el-button>  -->
 
-
-            <!-- -------返回按鈕------- -->
-            <RouterLink to="/Minigame">
-            <div class="returnBtn">
-                <img src="../assets/img/deadreturn.png" alt="">
-            </div>
-            </RouterLink>
             <!-- -------重新開始------- -->
+
             <div class="resetBtn">
                 <img src="../assets/img/deadreset.png" alt="" @click="reloadPage">
             </div>
 
-             <!-- -------墓碑------- -->
+            <!-- -------墓碑遊戲說明------- -->
             <div class="deadZombie3" @click="playText">
                 <img src="../assets/img/gameZombie3.png" alt="">
             </div>
 
             <!-- -------警報器------- -->
-            <div class="deadZombie4" :class="{ 'active-alarm': isAlarmActive }">
-                <img src="../assets/img/gameZombie4-1png.png" alt="">
+            <div class="deadZombie4">
+                <img src="../assets/img/gameZombie4-1png.png" alt="" :class="{'alermSpin': isAlermSpin}">
             </div>
+
+            <!-- -------警報器光暈------- -->
+            <div class="alertLeft" :class="{ 'active-alarm': isAlarmActive }"></div>
+            <div class="alertRight" :class="{ 'active-alarm': isAlarmActive }"></div>
+
+            <!-- -------警報器黃色光束------- -->
             <div class="deadZombie4_1">
                 <img src="../assets/img/gameZombie4-2.png" alt="">
             </div>
 
-             <!-- -------殭屍手臂------- -->
+            <!-- -------殭屍手臂------- -->
             <div class="deadZombie6">
                 <img src="../assets/img/gameZombie6.png" alt="">
             </div>
@@ -120,12 +121,27 @@
                 <img src="../assets/img/gameZombie13.png" alt="">
             </div>
 
-             <!-- -------數字顯示框------- -->
+            <!-- -------離開掛牌------- -->
+            <RouterLink to="/Minigame">
+            <div class="deadZombie14">
+                <img src="../assets/img/gameZombie14.png" alt="">
+            </div>
+            </RouterLink>
+
+            <!-- -------數字顯示框------- -->
             <div class="recordPlace">
                 <div id="history" v-for="(record, index) in history" :key="index" class="record" >{{ record }}</div>
             </div>
 
-             <!-- 遊戲邏輯 -->
+            <!-- -------對話文字------- -->
+            <p class="deadtext" v-if="deadtext1">
+                <span class="line">注意！你僅有的生命只有8條 ...</span>
+                 <span class="line">大門的密碼就是四個數字 他們快來了 快啊！</span>
+                <!-- 注意！你僅有的生命只有8條 ... 大門的密碼就是四個數字 他們快來了 快啊！... -->
+            </p>
+            <p class="deadtext" v-if="deadtext2">撐住 ... 還剩2條命 答案就在細節裡 ...</p>
+
+            <!-- 遊戲邏輯 -->
             <div>
                 <win-dialog :visible="showWinDialog" :status="gameResult" :winImageSrc="winningImage" :loseImageSrc="loseImage"  @confirm="resetGame"/>
             </div>
@@ -143,19 +159,16 @@
 
 <script>
 import '../assets/css/style.css';
-import TopNavbar from '../components/TopNavbar.vue';
-import Footerbar from '../components/Footerbar.vue';
 import 'animate.css';
 import { ElButton, ElInput } from "element-plus";
 import { ElMessageBox } from 'element-plus';
 import 'element-plus/dist/index.css';
 import WinDialog from '../components/WinDialog.vue';
+import { RouterLink } from 'vue-router';
 
 
     export default {
         components: {
-            // TopNavbar,
-            // Footerbar
             ElButton,
             ElInput,
             WinDialog,
@@ -177,8 +190,12 @@ import WinDialog from '../components/WinDialog.vue';
                 gameResult: '', // 'win' 或 'lose'
                 maxTry: 8,
                 isAlarmActive : false,
+                isAlermSpin: false,
                 winningImage: new URL('@/assets/img/deadWinPic.png', import.meta.url).href,
                 loseImage: new URL('@/assets/img/deadLosePic.png', import.meta.url).href,
+
+                deadtext1: true,
+                deadtext2: false,
             };
         },
         methods: {
@@ -220,6 +237,9 @@ import WinDialog from '../components/WinDialog.vue';
 	            }
 	            this.answer = randomNumbers.join("");
 	        },
+            hideText() {
+                this.deadtext1 = false;
+            },
             checkGuess() {
                 
                 //判斷數字是否為4個數字長度
@@ -292,8 +312,9 @@ import WinDialog from '../components/WinDialog.vue';
                 if (playTimes === 2){
                     this.activeAlerm ();
                 }
-                
-                const record = `${this.guess}   ${numA}A${numB}B`;
+
+                const record = `${this.guess}  ${numA}A${numB}B`;
+
                 this.history.push(record);
                 this.allGuess.push(this.guess);
 
@@ -310,16 +331,23 @@ import WinDialog from '../components/WinDialog.vue';
             },
             activeAlerm (){
                 this.isAlarmActive = true;
+                this.isAlermSpin = true;
+                this.deadtext2 = true;
             },
             playerWins() {
             // 顯示對話框
                 this.gameResult = 'win';
                 this.showWinDialog = true;
                 this.isAlarmActive = false;
+                this.isAlermSpin = false;
+                this.deadtext2 = false;
             },
             playerLose() {
                 this.gameResult = 'lose';
                 this.showWinDialog = true;
+                this.isAlarmActive = false;
+                this.isAlermSpin = false;
+                this.deadtext2 = false;
             },
 
             resetGame() {
@@ -332,6 +360,9 @@ import WinDialog from '../components/WinDialog.vue';
                 this.isReadOnly = false; // 允許玩家再次輸入
                 this.allGuess = []; // 清空已經猜過的數字
                 this.isAlarmActive = false;
+                this.isAlermSpin = false;
+                this.deadtext1 = true;
+                this.deadtext2 = false;
                 
             },
 

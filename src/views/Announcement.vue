@@ -52,7 +52,7 @@ function triggerAnimations() {
       <!-- 中央內容 -->
       <section class="content-announcement-new">
         <!-- 左邊圖像內容 -->
-        <section class="announcement-img"><img src="../assets/img/banner_openning.png" alt="" class="announcementPic">
+        <section class="announcement-img"><img src="@/assets/img/banner_openning.png" alt="" class="announcementPic">
         </section>
 
         <!-- 右邊文字內容 -->
