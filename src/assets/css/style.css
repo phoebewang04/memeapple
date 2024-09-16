@@ -1139,6 +1139,9 @@ p {
 
 .intro-btn {
   margin-right: 150px;
+  border-color: #FCD15B;
+  /* 改變外框線顏色 */
+  animation: glowHow 1.5s infinite;
 }
 @media (max-width: 1440px) {
   .intro-btn {

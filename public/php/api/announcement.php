@@ -1,27 +1,33 @@
 <?php
-// 組合兩版CORS設定
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-header("Content-Type: application/json");
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 require 'sql.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $stmt = $pdo->prepare("SELECT * FROM News"); // 注意表格名稱是 News
-    $stmt->execute();
-    $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($news);
-    exit;
+// 使前台分流頁顯示NEWS表格的資料
+
+class Announcement {
+    private $pdo;
+
+    public function __construct($pdo){
+        $this->pdo = $pdo;
+    }
+
+    public function getNews() {
+        $stmt = $this->pdo->prepare("SELECT * FROM NEWS");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
 
+// 創建 Announcement 實例並抓取資料
+$announcement = new Announcement($pdo);
+$news = $announcement->getNews();
 
+header('Content-Type: application/json');
 
-
-
-
-
-
-
+// 將資料轉換為 JSON 格式並輸出
+echo json_encode($news);
 
 ?>
