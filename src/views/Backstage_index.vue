@@ -5,7 +5,7 @@ import TopNavbarBack from "../components/TopNavbarBack.vue";
 import axios from "axios";
 
 import "v-calendar/style.css";
-import { Calendar, setupCalendar } from "v-calendar";
+import { Calendar } from "v-calendar";
 
 import { Bar } from "vue-chartjs";
 import { Doughnut } from "vue-chartjs";
@@ -460,3 +460,139 @@ export default {
   </main>
   <!-- <FooterbarBack /> -->
 </template>
+
+<style>
+
+.vc-bordered {
+    border-radius: 0px;
+}
+.vc-pane-container {
+  background-color: #100E24;
+  width: 520px ;
+  height: 375px;
+
+  @media screen and (max-width: 1100px){
+    width: 430px;
+  } 
+
+  @media screen and (max-width: 1015px){
+    width: 380px;
+  } 
+
+  @media screen and (max-width: 1000px){
+    width: 330px;
+  } 
+
+  @media screen and (max-width: 920px){
+    width: 280px;
+  } 
+
+  @media screen and (max-width: 820px){
+    width: 630px;
+  } 
+
+  @media screen and (max-width: 768px){
+    width: 586px;
+  } 
+
+  @media screen and (max-width: 680px){
+    width: 520px;
+  } 
+
+  @media screen and (max-width: 590px){
+    width: 452px;
+  } 
+
+  @media screen and (max-width: 540px){
+    width: 415px;
+  } 
+
+  @media screen and (max-width: 430px) {
+    width: 328px;
+    
+  }
+
+  @media screen and (max-width: 412px) {
+    width: 315px;
+    
+  }
+
+  @media screen and (max-width: 414px) {
+    width: 316px;
+    
+  }
+
+  @media screen and (max-width: 390px) {
+    width: 260px;
+    
+  }
+
+  @media screen and (max-width: 375px) {
+    width: 289px;
+    
+  }
+}
+
+.vc-header {
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+
+.vc-header .vc-arrow {
+    border-radius: 40px ;
+    width: 40px ; 
+    height: 40px;
+    color: #100E24;
+}
+
+.vc-base-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.vc-header .vc-arrow:hover{
+    background-color: #FCD15B;
+}
+
+.vc-header .vc-title {
+    background-color: #100E24;
+    color: #ffff;
+    font-size: 24px;
+}
+
+.vc-weekday {
+    color: #ffff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.vc-weeks {
+    color: #ffff;
+}
+
+
+.vc-day-content {
+    font-size: 18px;
+}
+
+.vc-day{
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    /* margin: 0px 20px; */
+    margin-bottom: 10px;
+}
+
+.vc-day-content:hover {
+    background-color: #FCD15B;
+}
+
+.vc-container *:focus {
+    outline: 3px solid #100E24;
+    background-color:#FCD15B;
+}
+
+</style>
