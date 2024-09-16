@@ -1,27 +1,11 @@
 <?php
-// 組合兩版CORS設定
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-header("Content-Type: application/json");
 
 require 'sql.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $stmt = $pdo->prepare("SELECT * FROM News"); // 注意表格名稱是 News
-    $stmt->execute();
-    $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($news);
-    exit;
-}
+// 使HomeView.vue 的最新消息區域，除了已經寫入的靜態假資料，也可以添加NEWS表格裡面新增的資料
 
 
 
-
-
-
-
-
-
+// 使HomeView.vue 的最新消息區域，點選任何一則最新消息，可以撈取NEWS表格裡面已經存在的資料，並透過announcement.vue檔案顯示
 
 ?>

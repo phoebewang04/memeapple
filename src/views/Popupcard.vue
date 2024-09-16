@@ -18,7 +18,7 @@ export default {
                         <section class="popupcard-card">
                             <p class="popupcard-title">請出示電子票券即可入場</p>
                             <div class="popupcard-qrcode">
-                                <img src="/src/assets/img/qrcode_001.jpg" alt="">
+                                <img src="@/assets/img/qrcode_001.jpg" alt="">
                             </div>
                             <h1>逃出虛空</h1>
                             <div class="qrcode-time">

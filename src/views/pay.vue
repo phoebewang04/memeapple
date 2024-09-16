@@ -144,11 +144,13 @@ import { all_data } from '../assets/js/all_data.js';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
+import ScrollToTop from '../components/ScollToTop.vue';
 
 export default {
     components: {
         TopNavbar,
-        Footerbar
+        Footerbar,
+        ScrollToTop,
     },
 
     data (){
