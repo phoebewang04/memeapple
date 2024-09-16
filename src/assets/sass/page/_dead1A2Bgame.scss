@@ -212,43 +212,24 @@
     position: relative;
 }
 
-// ----------返回上一頁-----------
-
-.returnBtn {
-    width: 4%;
-    position: absolute;
-    right: 2%;
-    top: 1%;
-
-    @include rwd(430px) {
-        width: 17%;
-        position: absolute;
-        right: 2%;
-        top: 1%;
-    }
-
-    & img {
-        width: 100%;
-
-        @include rwd(430px) {
-            width: 83%;
-        }
-    }
-}
 // ----------重新開始-----------
 
 .resetBtn {
     width: 4%;
     position: absolute;
-    right: 8%;
-    top: 2%;
+    right: 6%;
+    top: 11%;
     cursor: pointer;
+    z-index: 1;
+    transform: rotate(26deg);
+
+    
 
     @include rwd(430px) {
         width: 17%;
         position: absolute;
-        right: 6%;
-        top: 1%;
+        right: 13%;
+        top: 27%;
     }
 
     & img {
@@ -257,6 +238,10 @@
         @include rwd(430px) {
             width: 83%;
         }
+    }
+
+    img:hover {
+        filter: drop-shadow(0 0 10px white);
     }
 }
 
@@ -266,23 +251,34 @@
     width: 14% !important;
     height: 5% !important;
     position: absolute !important; 
-    top: 22%;
-    left: 22%;
+    top: 17%;
+    left: 26%;
+    z-index: 1;
+
+    @include rwd(430px) {
+        width: 29% !important;
+        height: 5% !important;
+        position: absolute !important;
+        top: 66%;
+        left: 26%;
+        z-index: 1;
+    }
 }
 
-// ----------墓碑-----------
+// ----------墓碑 遊戲說明-----------
 
 .deadZombie3 {
-    width: 30%;
+    width: 29%;
     position: absolute;
     top: 62%;
     left: 1%;
+    z-index: 1;
 
     @include rwd(430px){
-        width: 31%;
+        width: 35%;
         position: absolute;
-        top: 69%;
-        left: 5%;
+        top: 74%;
+        left: 1%;
     }
 
     & img {
@@ -295,18 +291,17 @@
     }
 
     img:hover {
-        filter: drop-shadow(0 0 10px #b00000);
+        filter: drop-shadow(0 0 10px darkgreen);
     }
 }
 
 // ----------警報器-----------
 
 .deadZombie4 {
-    width: 35%;
+    width: 33%;
     position: absolute;
     top: 0%;
-    left: 3%;
-    transition: all 0.5s ease;
+    left: 4%;
     
     @include rwd(430px) {
         width: 15%;
@@ -317,35 +312,79 @@
 
     & img {
         width: 20%;
+        
+        &.alermSpin {
+            animation: spin 2s linear infinite;
+        }
 
         @include rwd(430px) {
             width: 100%;
         }
     }
+}
+@keyframes spin {
+    0% {
+      transform: rotatey(0deg);
+    }
+    
+    100% {
+      transform: rotatey(360deg);
+    }
+}
+
+// ----------警報器光暈-----------
+.alertLeft {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    
+    &.active-alarm {
+        background-color: #b2494d;
+        animation: alarm-flash 4s infinite; /* 例如閃爍動畫 */
+    }
+
+    @include rwd(430px) {
+        display: none;
+    }
+}
+
+.alertRight {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    right: 0%;
 
     &.active-alarm {
-        // background-color: red;
-        animation: alarm-flash 1s infinite;  /* 例如閃爍動畫 */
-      }
-      
+        background-color: #b2494d;
+        animation: alarm-flash 4s infinite;  /* 例如閃爍動畫 */
+    }
+
+    @include rwd(430px) {
+        width: 100%;
+    }
 }
 
 @keyframes alarm-flash {
   0% {
-    opacity: 1;
+    opacity: 0.4;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0;
   }
   100% {
-    opacity: 1;
+    opacity: 0.4;
   }
-}
+  }
+
+  // ----------警報器黃色光束----------
 .deadZombie4_1 {
-    width: 35%;
+    width: 33%;
     position: absolute;
     top: 0%;
-    left: 3%;
+    left: 4%;
     
     @include rwd(430px) {
         width: 15%;
@@ -363,44 +402,21 @@
     }
 }
 
-
-// ----------提示燈-----------
-
-.deadZombie5 {
-    width: 3%;
-    position: absolute;
-    top: 0%;
-    right: 2%;
-
-    @include rwd(430px) {
-        width: 10%;
-        position: absolute;
-        bottom: 10%;
-        right: 3%;
-    }
-
-    & img {
-        width: 100%;
-
-        @include rwd(430px) {
-            width: 100%;
-        }
-    }
-}
 
 // ----------殭屍手臂-----------
 
 .deadZombie6 {
     width: 7%;
     position: absolute;
-    bottom: 4%;
-    left: 12%;
+    bottom: 9%;
+    left: 14%;
+    z-index: 1;
 
     @include rwd(430px) {
-        width: 18%;
+        width: 14%;
         position: absolute;
-        bottom: 8%;
-        right: 29%;
+        bottom: 7%;
+        right: 20%;
     }
 
     & img {
@@ -417,8 +433,9 @@
 .deadZombie7 {
     width: 23%;
     position: absolute;
-    bottom: 7%;
-    left: 24%;
+    bottom: 16%;
+    left: 17%;
+    transform: rotate(-11deg);
 
     @include rwd(430px) {
         width: 18%;
@@ -431,7 +448,7 @@
         width: 100%;
 
         @include rwd(430px) {
-            width: 100%;
+            display: none;
         }
     }
 }
@@ -441,7 +458,7 @@
     width: 28%;
     position: absolute;
     bottom: 12%;
-    right: 30%;
+    right: 24%;
 
     @include rwd(430px) {
         width: 18%;
@@ -454,7 +471,7 @@
         width: 100%;
 
         @include rwd(430px) {
-            width: 100%;
+            display: none;
         }
     }
     
@@ -466,19 +483,20 @@
 
 }
 
-// ----------樹-----------
+// ----------樹----------
 
 .deadZombie9 {
-    width: 19%;
+    width: 22%;
     position: absolute;
     bottom: 16%;
     right: 0%;
 
     @include rwd(430px) {
-        width: 18%;
+        width: 60%;
         position: absolute;
-        bottom: 8%;
-        right: 29%;
+        bottom: 10%;
+        right: 0%;
+    
     }
 
     & img {
@@ -493,17 +511,17 @@
 // ----------咕嚕頭-----------
 
 .deadZombie10 {
-    width: 11%;
+    width: 8%;
     position: absolute;
-    bottom: 13%;
-    right: 6%;
+    bottom: 17%;
+    right: 5%;
     cursor: pointer;
 
     @include rwd(430px) {
         width: 18%;
         position: absolute;
-        bottom: 8%;
-        right: 29%;
+        bottom: 11%;
+        right: 16%;
     }
 
     & img {
@@ -524,8 +542,8 @@
 .deadZombie11 {
     width: 11%;
     position: absolute;
-    bottom: 19%;
-    right: 19%;
+    bottom: 20%;
+    right: 16%;
 
     @include rwd(430px) {
         width: 18%;
@@ -538,7 +556,7 @@
         width: 100%;
 
         @include rwd(430px) {
-            width: 100%;
+            display: none;
         }
     }
 }
@@ -548,7 +566,7 @@
 .deadZombie12 {
     width: 12%;
     position: absolute;
-    top: 37%;
+    top: 29%;
     left: 1%;
     opacity: 0.8;
 
@@ -563,7 +581,7 @@
         width: 100%;
 
         @include rwd(430px) {
-            width: 100%;
+            display: none;
         }
     }
 }
@@ -571,10 +589,11 @@
 // ----------綿羊殭屍-----------
 
 .deadZombie13 {
-    width: 9%;
+width: 8%;
     position: absolute;
-    bottom: 4%;
-    right: 31%;
+    bottom: 14%;
+    right: 48%;
+    transform: rotate(15deg);
 
     @include rwd(430px) {
         width: 18%;
@@ -587,8 +606,37 @@
         width: 100%;
 
         @include rwd(430px) {
+            display: none;
+        }
+    }
+}
+
+// ----------離開掛牌-----------
+
+.deadZombie14 {
+    width: 7%;
+    position: absolute;
+    bottom: 6%;
+    right: 14%;
+    z-index: 1;
+
+    @include rwd(430px) {
+        width: 18%;
+        position: absolute;
+        bottom: 7%;
+        right: 32%;
+    }
+
+    & img {
+        width: 100%;
+
+        @include rwd(430px) {
             width: 100%;
         }
+    }
+
+    img:hover {
+        filter: drop-shadow(0 0 10px darkgreen);
     }
 }
 
@@ -599,27 +647,90 @@
     grid-template-rows: repeat(4, auto);
     grid-auto-flow: column;
     gap: 15px;
-    width: 31%;
-    height: 30%;
+    width: 25%;
+    height: 28%;
     position: absolute;
-    bottom: 51%;
-    right: 20%;
+    bottom: 55%;
+    right: 25%;
+    white-space: pre;
+
 
     @include rwd(430px) {
-        width: 18%;
+        width: 28%;
+        height: 32%;
         position: absolute;
-        bottom: 8%;
-        right: 29%;
+        bottom: 54%;
+        right: 60%;
+        display: flex;
+        flex-wrap: wrap;
     }
    
     & .record {
         color: #6db818;
-        font-family: "Nerko One", cursive;
+        font-family: "Nanum Brush Script", cursive;
         font-weight: 400;
         font-style: normal;
-        font-size: 32px;
-        margin-right: 30px;
+        font-size: 40px;
+
+        @include rwd(430px){
+            font-size: 30px;
+           
+        }
+
     }
+}
+
+// ----------警告文字-----------
+
+.deadGame p {
+    color: #a6a6a6;
+    position: absolute;
+    bottom: 60%;
+    left: 18%;
+    font-size: 20px;
+    overflow: hidden;
+    // white-space: nowrap;
+   
+    // animation: typing 8s steps(20); /* 打字效果 */
+    .line {
+        display: block;
+        white-space: nowrap; /* 防止文字自動換行 */
+        overflow: hidden; /* 隱藏超出的文字 */
+        visibility: hidden;
+        animation: typing 7s steps(20) forwards, fadeIn 0.5s ease-in forwards;
+    }
+
+    .line:nth-child(1) {
+        animation-delay: 0s;
+    }
+      
+    .line:nth-child(2) {
+        animation-delay: 5s;
+    }
+
+    @include rwd(430px){
+        width: 70%;
+        white-space: normal;
+        font-size: 14px;
+        position: absolute;
+        bottom: 40%;
+        left: 11%;
+    }
+
+}
+
+@keyframes typing {
+    from {
+        width: 0 ;  visibility: visible;
+    }
+    to {
+        width: 100%; visibility: visible;
+    }
+}
+
+@keyframes fadeIn {
+  from { visibility: hidden; } /* 淡入開始前不可見 */
+  to { visibility: visible; } /* 動畫開始後設置為可見 */
 }
 
 // ----------輸入按鈕-----------
@@ -627,11 +738,21 @@
 .playBtn {
     border-radius: 20px !important;
     width: 6%;
-    background-color: lightgreen;
     font-size: 14px;
     position: absolute;
-    top: 23%;
-    left: 38%;
+    top: 18%;
+    left: 42%;
+    z-index: 1;
+
+    @include rwd(430px) {
+        border-radius: 12px !important;
+        width: 11%;
+        font-size: 14px;
+        position: absolute;
+        top: 67%;
+        left: 59%;
+        z-index: 1;
+    }
 }
 
 .answerBtn {
