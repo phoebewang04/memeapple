@@ -1,61 +1,84 @@
-<script setup>
-// import { useRouter,useRoute } from 'vue-router';
-// const router = useRouter()
-// const route = useRoute()
-// console.log(router);
-// console.log(route.query);
-
-// ajax
-
-
-import '../assets/css/style.css';
-import { onMounted } from 'vue';
-import TopNavbar from '../components/TopNavbar.vue';
-import Footerbar from '../components/Footerbar.vue';
-
-onMounted(() => {
-  triggerAnimations();
-});
-
-function triggerAnimations() {
-
-  setTimeout(function () {
-    document.querySelector('.announcement-bread').classList.add('show');
-  }, 700);
-  // 延遲 500 毫秒後顯示
-
-  setTimeout(function () {
-    document.querySelector('.announcement-img').classList.add('show');
-  }, 800);
-  // 延遲 500 毫秒後顯示
-
-  setTimeout(function () {
-    document.querySelector('.announcement-text').classList.add('show');
-  }, 900);
-  // 延遲 500 毫秒後顯示
-
-  setTimeout(function () {
-    document.querySelector('.NewsBack').classList.add('show');
-  }, 900);
-  // 延遲 500 毫秒後顯示
-
-};
-
-
-</script>
-
-
 <template>
   <TopNavbar />
   <main class="main-announcement">
     <section class="wrapper-announcement">
       <!-- 中央內容 -->
+      <section class="content-announcement-new" v-if="announcements.length">
+        <div v-for="announcement in announcements" :key="announcement.ID">
+          <!-- 左邊圖像內容 -->
+          <section class="announcement-img">
+            <img :src="`/${announcement.IMG}`" alt="" class="announcementPic">
+          </section>
+
+          <!-- 右邊文字內容 -->
+          <section class="announcement-text">
+            <h1>{{ announcement.TOPIC }}</h1>
+            <p>{{ announcement.ARTICLE }}</p>
+            <p>{{ announcement.PUBLISH_DATE }}</p>
+          </section>
+        </div>
+      </section>
+
+      <!-- 按鈕 -->
+      <section class="NewsBack">
+        <router-link to="/index/">
+          <button class="btn btnano">回到首頁</button>
+        </router-link>
+      </section>
+    </section>
+  </main>
+  <Footerbar />
+</template>
+
+<script>
+import '../assets/css/style.css';
+import TopNavbar from '../components/TopNavbar.vue';
+import Footerbar from '../components/Footerbar.vue';
+
+export default {
+  components: {
+    TopNavbar,
+    Footerbar
+  },
+  data() {
+    return {
+      announcements: []
+    };
+  },
+  mounted() {
+    this.fetchAnnouncements();
+  },
+  methods: {
+    fetchAnnouncements() {
+      fetch('http://localhost/meme_apple/public/php/api/announcement.php')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          this.announcements = data;
+        })
+        .catch(error => {
+          console.error('Error fetching announcements:', error);
+        });
+    }
+  }
+}
+</script>
+<!-- 
+<template>
+  <TopNavbar />
+  <main class="main-announcement">
+    <section class="wrapper-announcement">
+
       <section class="content-announcement-new">
-        <!-- 左邊圖像內容 -->
+
         <section class="announcement-img"><img src="@/assets/img/banner_openning.png" alt="" class="announcementPic">
         </section>
 
-        <!-- 右邊文字內容 -->
+
         <section class="announcement-text">
           <h1>謎因工作室盛大開幕！</h1>
           <p>謎因工作室已於 2024年6月1日 盛大開幕！誠摯邀請您來體驗我們全新的密室逃脫挑戰，享受刺激與驚喜的冒險之旅！</p>
@@ -64,11 +87,11 @@ function triggerAnimations() {
         </section>
       </section>
 
-      <!-- 按鈕 -->
+  
       <section class="NewsBack"><router-link to="/index/"><button class="btn btnano">回到首頁</button></router-link>
       </section>
 
     </section>
   </main>
   <Footerbar />
-</template>
+</template> -->
