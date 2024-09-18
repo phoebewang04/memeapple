@@ -27,6 +27,7 @@ export default {
     // console.log(new URL("@/assets/img/banner_openning.png", import.meta.url).href);
 
     return {
+      baseUrl: import.meta.env.BASE_URL,
       modules: [Pagination, Navigation],
       // 常見問題列表
       faqs: [
@@ -132,6 +133,7 @@ export default {
     },
     fetchAnnouncements() {
       fetch('http://localhost/meme_apple/public/php/api/announcement.php')
+        // fetch(import.meta.env.VITE_API_BASE + '/api/announcement.php')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -139,6 +141,10 @@ export default {
           return response.json();
         })
         .then(data => {
+          console.log(data); // 檢查回應資料
+          if (data.error) {
+            throw new Error(data.error);
+          }
           this.announcements = data.length ? data : this.news;
         })
         .catch(error => {
@@ -148,11 +154,17 @@ export default {
         });
     },
     truncateText(text, length) {
+      if (!text) {
+        return '';
+      }
       if (text.length > length) {
         return text.substring(0, length) + '...';
       }
       return text;
-    }
+    },
+    getImageUrl(imgPath) {
+      return `${this.baseUrl}${imgPath}`;
+    },
   },
   mounted() {
 
@@ -343,7 +355,9 @@ export default {
 
               <li class="index-news-li" v-for="(newsItem, index) in visibleAnnouncements" :key="index">
                 <router-link :to="{ name: 'Announcement', params: { id: newsItem.ID } }">
-                  <img :src="`/${newsItem.IMG}`" :alt="newsItem.TOPIC">
+                  <img :src="getImageUrl(newsItem.IMG)" :alt="newsItem.TOPIC">
+                  <!-- <img :src="`${import.meta.env.BASE_URL}${newsItem.IMG}`" :alt="newsItem.TOPIC"> -->
+                  <!-- <img :src="`/${newsItem.IMG}`" :alt="newsItem.TOPIC"> -->
                   <h3>{{ newsItem.TOPIC }}</h3>
                   <p class="index-news-text">{{ truncateText(newsItem.ARTICLE, 45) }}</p>
                 </router-link>

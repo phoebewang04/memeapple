@@ -11,7 +11,8 @@
           <section class="announcement-img">
             <!-- 動態綁定圖片的 src 屬性，顯示公告的圖片 -->
             <!-- IMG 是 NEWS表格的 圖片欄位名稱 -->
-            <img :src="`/${announcement.IMG}`" alt="" class="announcementPic">
+            <!-- <img :src="`/${announcement.IMG}`" alt="" class="announcementPic"> -->
+            <img :src="getImageUrl(announcement.IMG)" alt="" class="announcementPic">
           </section>
 
           <!-- 右邊文字內容 -->
@@ -52,6 +53,7 @@ export default {
   },
   data() {
     return {
+      baseUrl: import.meta.env.BASE_URL,
       // 初始化 announcement 變數為 null
       announcement: null
     };
@@ -63,10 +65,14 @@ export default {
     this.fetchAnnouncement(this.$route.params.id);
   },
   methods: {
+    getImageUrl(imgPath) {
+      return `${this.baseUrl}${imgPath}`;
+    },
     // 定義 fetchAnnouncement 方法，用於根據 ID 獲取公告資料
     fetchAnnouncement(id) {
       // 你的php需要連結到announcement.php，且你的網址要?id = ${你的id}
       fetch(`http://localhost/meme_apple/public/php/api/announcement.php?id=${id}`)
+        // fetch(import.meta.env.VITE_API_BASE + `/api/announcement.php?id=${id}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -74,6 +80,7 @@ export default {
           return response.json();
         })
         .then(data => {
+          console.log(data); // 檢查回應資料
           // 將獲取到的資料賦值給 announcement 變數
           this.announcement = data.length ? data[0] : null;
         })

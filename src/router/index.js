@@ -82,7 +82,7 @@ const routes = [
 
 export default function () {
   return createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+    history: createWebHistory(import.meta.env.BASE_URL), //vite設定檔案中的 base: /tid102/g1/front/
     routes,
     scrollBehavior(to, from, savedPosition) {
       return { top: 0 };

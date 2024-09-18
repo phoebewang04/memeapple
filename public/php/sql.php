@@ -26,7 +26,10 @@ $requestUri = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
 // Database connection
+
 $db = new Database('localhost', 'MemeStudio', 'root', 'password');
+// $db = new Database('127.0.0.1', 'tibamefe_tid102g1', 'tibamefe_since2021', 'vwRBSb.j&K#E');
+
 $pdo = $db->getConnection();
 
 ?>
