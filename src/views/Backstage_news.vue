@@ -4,6 +4,7 @@
     import FooterbarBack from '../components/FooterbarBack.vue';
 
     import axios from 'axios';
+    import { RouterLink } from 'vue-router';
 
     export default{
         // 進入頁面時先執行搜尋載入資料
@@ -144,6 +145,10 @@
                 } catch(err){
                     alert('An error occurred: ' + err.message);
                 }
+            },
+            // 編輯最新消息
+            editNews(item){
+                this.$router.push({ name: 'NewsEdit', params: { id: item.ID }});
             }
         }
     }
@@ -194,9 +199,11 @@
                                 <button @click="updateStatus(item)" :class="{ banned: item.STATUS === 1 }">{{ item.STATUS === 1 ? '隱藏' : '顯示' }}</button>
                             </td>
                             <td id="news_action">
-                                <button @click="">編輯</button>
-                                &ensp;
-                                <button @click="">刪除</button>
+                                <RouterLink :to="{ name: 'NewsEdit', params: { id: String(item.ID) } }">
+                                    <button @click="editNews(item)">編輯</button>
+                                </RouterLink>
+                                <!-- &ensp;
+                                <button @click="">刪除</button> -->
                             </td>
                         </tr>
                         <tr class="backstage_tfoot">

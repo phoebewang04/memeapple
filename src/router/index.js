@@ -67,7 +67,7 @@ const routes = [
   { path: '/MemberMenage/', name: 'MemberMenage',meta:{title:'會員資料管理'}, component: () => import('../views/Backstage_member.vue') },
   { path: '/OrderMemage/', name: 'OrderMemage',meta:{title:'訂單資資料管理'}, component: () => import('../views/Backstage_order.vue') },
   { path: '/NewsMenage/', name: 'NewsMenage',meta:{title:'最新消息管理'}, component: () => import('../views/Backstage_news.vue') },
-  { path: '/NewsEdit/', name: 'NewsEdit',meta:{title:'最新消息編輯'}, component: () => import('../views/Backstage_news_edit.vue') },
+  { path: '/NewsEdit/:id?', name: 'NewsEdit',meta:{title:'最新消息編輯'}, component: () => import('../views/Backstage_news_edit.vue') },
   { path: '/Theme/:id', component: Theme },
   { path: '/Theme/:id/preorder/orderinform/pay', component: Pay },
   { path: '/Theme/:id/preorder', component: Preorder },
