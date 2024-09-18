@@ -22,11 +22,11 @@ class Member {
         ];
 
         // SQL
-        $sql = 'SELECT * FROM MEMBER';
+        $sql = 'SELECT * FROM memberdetails WHERE 1=1';
         $params = [];
 
         if ($status != '所有狀態') {
-            $sql .= " WHERE status = ?";
+            $sql .= " AND STATUS = ?";
             $params[] = $statusMap[$status];
         }
         if ($keyword != '') {
@@ -48,34 +48,35 @@ class Member {
         echo json_encode($results);
     }
 
-    // 更新狀態
-    // public function updateStatus($id) {
-    //     // Update Status
-    //     $query = "UPDATE MemeStudio.MEMBER SET status = ? WHERE id = ?";
-    //     $stmt = $this->db->prepare($query);
+    // 更新狀態API
+    public function updateStatus($id, $status) {
+        $sql = "UPDATE memberdetails SET STATUS = ? WHERE ID = ?";
 
-    //     $_GET['status'] = $_GET['status'] == '正常' ? '0' : '1';
-        
-    //     $stmt->bindParam(1, $_GET['status']);
-    //     $stmt->bindParam(2, $id);
-    //     $stmt->execute();
-    // }
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$status, $id]);
+
+        if ($stmt->rowCount() > 0) {
+            return ['success' => true];
+        } else {
+            return ['success' => false];
+        }
+    }
 
 }
 
 $member = new Member($pdo);
-$member->getMembers();  //暫時寫死
+// $member->getMembers();  //暫時寫死
 
-// switch methods
-// $method = $_SERVER['REQUEST_METHOD'];
-// switch ($method) {
-//     case 'GET':
-//         $member->getMembers();
-//         break;
-//     case 'POST':
-//         $member->updateStatus($_POST['id']);
-//         break;
-// }
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $member->getMembers();
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    $id = $data['id'];
+    $status = $data['status'];
+    $result = $member->updateStatus($id, $status);
+    header('Content-Type: application/json');
+    echo json_encode($result);
+}
 
 
 ?>

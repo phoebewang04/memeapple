@@ -129,6 +129,22 @@
             formatDate(timestamp){
                 let date = new Date(timestamp);
                 return date.toISOString().split('T')[0];
+            },
+            async updateStatus(member){
+                const newStatus = member.STATUS === 1 ? 0 : 1;
+                try{
+                    const response = await axios.post('http://localhost/memeapple/public/php/api/member.php', { 
+                        id: member.ID,
+                        status: newStatus
+                    });
+                    if(response.data.success){
+                        member.STATUS = newStatus;
+                    } else {
+                        alert('更新失敗' + response.data.message);
+                    }
+                } catch(err){
+                    alert('An error occurred: ' + err.message);
+                }
             }   
         }
     }
@@ -181,9 +197,7 @@
                             <td id="member_email">{{ item.EMAIL }}</td>
                             <td id="member_phone">{{ item.PHONE }}</td>
                             <td id="member_status">
-                                <!-- 根據狀態顯示對應狀態資訊 -->
-                                <button v-if="item.STATUS == '0'">正常</button>
-                                <button v-if="item.STATUS == '1'" class="banned">停權</button>
+                                <button @click="updateStatus(item)" :class="{ banned: item.STATUS === 1 }">{{ item.STATUS === 1 ? '停權' : '正常' }}</button>
                             </td>
                             <td id="member_action">
                                 <button>檢視訂單</button>
