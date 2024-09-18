@@ -40,10 +40,35 @@ class News {
         echo json_encode($results);
     }
 
+    // 更新狀態API
+    public function updateStatus($id, $status) {
+        $sql = "UPDATE newsdetails SET STATUS = ? WHERE ID = ?";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$status, $id]);
+
+        if ($stmt->rowCount() > 0) {
+            return ['success' => true];
+        } else {
+            return ['success' => false];
+        }
+    }
+
 }
 
 $news = new News($pdo);
-$news->getNews();  //暫時寫死
+// $news->getNews();  //暫時寫死
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $news->getNews();
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    $id = $data['id'];
+    $status = $data['status'];
+    $result = $news->updateStatus($id, $status);
+    header('Content-Type: application/json');
+    echo json_encode($result);
+}
 
 
 
