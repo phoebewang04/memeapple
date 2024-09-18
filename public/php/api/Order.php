@@ -20,7 +20,7 @@ class Order {
         $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 
         // SQL
-        $sql = 'SELECT * FROM OrderDetails WHERE 1=1';
+        $sql = 'SELECT * FROM orderdetails WHERE 1=1';
         $params = [];
 
         if ($order_date != '') {

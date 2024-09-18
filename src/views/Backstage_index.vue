@@ -461,7 +461,9 @@ export default {
   <!-- <FooterbarBack /> -->
 </template>
 
-<style>
+<style>  
+
+/* 小汪部分VCalendar樣式設定，9/16更新後必須加上否則跑版 */
 
 .vc-bordered {
     border-radius: 0px;

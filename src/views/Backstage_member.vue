@@ -111,7 +111,7 @@
                         status: this.status
                     };
                     // const response = await axios.get('http://localhost:3000/api/member', { params });
-                    const response = await axios.get('http://localhost/appleyy/public/php/api/member.php', { params });
+                    const response = await axios.get('http://localhost/memeapple/public/php/api/member.php', { params });
                     this.objArray = response.data                
                 } catch (err) {
                     this.error = 'An error occurred: ' + err.message
@@ -175,7 +175,7 @@
                         </tr>
                     </thead>
                     <tbody class="backstage_tablebody">
-                        <tr v-for = "item in paginatedData" :key="item.ID">
+                        <tr v-for = "item in paginatedData" :key="item.REGI_DATE">
                             <td id="member_regi_date">{{ formatDate(item.REGI_DATE) }}</td>
                             <td id="member_name">{{ item.NAME }}</td>
                             <td id="member_email">{{ item.EMAIL }}</td>

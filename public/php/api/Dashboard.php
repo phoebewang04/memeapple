@@ -11,7 +11,7 @@ class Dashboard{
     }
 
     public function fetchOrdersByDate($date) {
-        $sql = "SELECT THEME_ID, ORDER_TIME, ORDER_ID FROM OrderDetails WHERE ORDER_DATE = :date";
+        $sql = "SELECT THEME_ID, ORDER_TIME, ORDER_ID FROM orderdetails WHERE ORDER_DATE = :date";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':date', $date);
         $stmt->execute();
@@ -20,7 +20,7 @@ class Dashboard{
     }
 
     public function fetchThemeRevenueByMonth($month, $year) {
-        $sql = "SELECT THEME_ID, THEME_NAME, SUM(TOTAL_AMOUNT) AS theme_revenue FROM OrderDetails WHERE MONTH(ORDER_DATE) = :month AND YEAR(ORDER_DATE) = :year GROUP BY THEME_ID, THEME_NAME";
+        $sql = "SELECT THEME_ID, THEME_NAME, SUM(TOTAL_AMOUNT) AS theme_revenue FROM orderdetails WHERE MONTH(ORDER_DATE) = :month AND YEAR(ORDER_DATE) = :year GROUP BY THEME_ID, THEME_NAME";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':month', $month);
         $stmt->bindParam(':year', $year);
@@ -30,7 +30,7 @@ class Dashboard{
     }
 
     public function fetchStoreRevenueByMonth($month, $year) {
-        $sql = "SELECT STORE_ID, STORE_NAME, SUM(TOTAL_AMOUNT) AS store_revenue FROM OrderDetails WHERE MONTH(ORDER_DATE) = :month AND YEAR(ORDER_DATE) = :year GROUP BY STORE_ID, STORE_NAME";
+        $sql = "SELECT STORE_ID, STORE_NAME, SUM(TOTAL_AMOUNT) AS store_revenue FROM orderdetails WHERE MONTH(ORDER_DATE) = :month AND YEAR(ORDER_DATE) = :year GROUP BY STORE_ID, STORE_NAME";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':month', $month);
         $stmt->bindParam(':year', $year);

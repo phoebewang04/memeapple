@@ -183,14 +183,6 @@
                         <option value="台中館">台中館</option>
                     </select>
                     <select class="backstage_dropdown" name="selected" v-model="theme_name">
-                        <!-- <option value="所有主題" selected>所有主題</option>
-                        <option value="成都醫院">成都醫院</option>
-                        <option value="末日庇護所">末日庇護所</option>
-                        <option value="時光迷宮">時光迷宮</option>
-                        <option value="恐怖密室">恐怖密室</option>
-                        <option value="逃出虛空">逃出虛空</option>
-                        <option value="逃離武石監">逃離武石監</option> -->
-                        <!-- <option value="所有主題" selected>所有主題</option> -->
                         <option v-for="theme in filteredThemes" :key="theme" :value="theme">{{ theme }}</option>
                     </select>
                     <select class="backstage_dropdown" name="selected" v-model="order_status">
@@ -226,7 +218,7 @@
                         </tr>
                     </thead>
                     <tbody class="backstage_tablebody">
-                        <tr v-for = "item in paginatedData" :key="item.ID">
+                        <tr v-for = "item in paginatedData" :key="item.ORDER_DATE">
                             <td id="order_date">{{ formatDate(item.ORDER_DATE) }}</td>
                             <td id="order_time">{{ formatTime(item.ORDER_TIME) }}</td>
                             <td id="order_ID">{{ item.ORDER_ID }}</td>
