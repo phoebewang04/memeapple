@@ -105,7 +105,16 @@ $news = new News($pdo);
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $news->getNews();
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['title']) && isset($_POST['content']) && isset($_FILES['image'])) {
+    $data = json_decode(file_get_contents('php://input'), true);
+    if (isset($data['id']) && isset($data['status'])) {
+        $id = $data['id'];
+        $status = $data['status'];
+
+        $result = $news->updateStatus($id, $status);
+
+        header('Content-Type: application/json');
+        echo json_encode($result);
+    } else if (isset($_POST['title']) && isset($_POST['content']) && isset($_FILES['image'])) {
         $title = $_POST['title'];
         $content = $_POST['content'];
         $image = $_FILES['image'];
@@ -115,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $status = 0;
 
         // 圖片上傳
-        $targetDir = '../public/img/';
+        $targetDir = '../../img/';
         $targetFile = $targetDir . basename($image['name']);
         if (move_uploaded_file($image['tmp_name'], $targetFile)) {
             $imagePath = 'public/img/'. basename($image['name']);
@@ -135,20 +144,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         header('Content-Type: application/json');
         echo json_encode($result);
     } else {
-        $data = json_decode(file_get_contents('php://input'), true);
-        if (isset($data['id']) && isset($data['status'])) {
-            $id = $data['id'];
-            $status = $data['status'];
+        // 測試缺少的參數
+        $missingParams = [];
+        if (!isset($_POST['title'])) $missingParams[] = 'title';
+        if (!isset($_POST['content'])) $missingParams[] = 'content';
+        if (!isset($_FILES['image'])) $missingParams[] = 'image';
 
-            $result = $news->updateStatus($id, $status);
-
-            header('Content-Type: application/json');
-            echo json_encode($result);
-        } else {
-            echo json_encode(['success' => false, 'message' => '缺少必要的參數']);
-        }
+        // 輸出除錯訊息
+        echo json_encode([
+            'success' => false,
+            'message' => '缺少必要的參數: ' . implode(', ', $missingParams),
+            'post_data' => $_POST,
+            'files_data' => $_FILES
+        ]);
+        exit;
     }
 }
 
 ?>
+
 

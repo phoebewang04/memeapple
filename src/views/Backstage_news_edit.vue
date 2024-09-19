@@ -68,7 +68,7 @@
                 formData.append('content', this.content);
                 formData.append('image', this.$refs.fileInput.files[0]);
                 formData.append('fileName', this.$refs.fileInput.files[0].name);
-                formData.append('imagePath', '/path/to/image'); // add this
+                formData.append('imagePath', '/public/img/' + this.$refs.fileInput.files[0].name); // add this
                 formData.append('status', 0); // add this
                 formData.append('publisherId', 1); // add this
 
@@ -80,7 +80,7 @@
                 try {
                     const response = await axios.post('http://localhost/memeapple/public/php/api/news.php', formData, {
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'multipart/form-data'
                         }
                     });
                     console.log(response);
