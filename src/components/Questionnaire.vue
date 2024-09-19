@@ -29,7 +29,7 @@
   }
   </script>
   
-  <style len="scss" scoped>
+  <style scoped>
   .overlay {
     position: fixed;
     top: 0;
@@ -49,14 +49,14 @@
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
-
-    p{
-        color:black;
-        text-align: center;
+  
+    p {
+      color: black;
+      text-align: center;
     }
-
-    span{
-        color: black;
+  
+    span {
+      color: black;
     }
   }
   
@@ -84,3 +84,4 @@
     color: gold;
   }
   </style>
+  
