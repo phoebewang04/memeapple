@@ -3,52 +3,39 @@
 // 載入php API共同參數
 include_once '../sql.php';
 
-// $username = $_POST['username'];
-// $pwd = $_POST['password'];
 
-// $sql = "SELECT * FROM MEMBER where EMAIL = ? and PASSWORD = ?";
+// 獲取請求的數據
+$data = json_decode(file_get_contents('php://input'), true);
+$email = $data['username'] ?? null;  // 確保變數名與前端一致
+$pass = $data['password'] ?? null;
 
-// $statement = $pdo->prepare($sql);
-// $statement->bindValue(1,$username);
-// $statement->bindValue(2,$pwd);
-// $statement->execute();
-// $data = $statement->fetchAll();
 
-// if(count($data) > 0){
-//      echo "登入成功";
-// //     header("Location: Welcome.php");
-// //     session_start();
-// //     $_SESSION["memberID"] = "$account";
-// }else{
-//      echo "帳號或密碼錯誤";
-// //     header("Location: Login.html");
-// }
+if ($email && $pass) {
+    try {
+        // 使用 PDO 進行查詢
+        $sql = "SELECT * FROM MEMBER WHERE EMAIL = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(1, $email);
+        $stmt->execute();
+        
+        if ($stmt->rowCount() > 0) {
+            $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// 獲取 POST 資料
-$data = json_decode(file_get_contents("php://input"), true);
-$user = $data['username'];
-$pass = $data['password'];
-
-// 檢查用戶名和密碼
-$sql = "SELECT * FROM MEMBER WHERE EMAIL = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $user);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    $user_data = $result->fetch_assoc();
-    if (password_verify($pass, $user_data['password'])) {
-        echo json_encode(["status" => "success", "message" => "登入成功"]);
-    } else {
-        echo json_encode(["status" => "error", "message" => "密碼錯誤"]);
+            // 確保資料庫中的密碼欄位名稱正確
+            if ($pass === $user_data['PASSWORD']) {
+                echo json_encode(["status" => "success", "message" => "登入成功"]);
+            } else {
+                echo json_encode(["status" => "error", "message" => "密碼錯誤"]);
+            }
+        } else {
+            echo json_encode(["status" => "error", "message" => "用戶名不存在"]);
+        }
+    } catch (PDOException $e) {
+        echo json_encode(["status" => "error", "message" => "資料庫錯誤: " . $e->getMessage()]);
     }
 } else {
-    echo json_encode(["status" => "error", "message" => "用戶名不存在"]);
+    echo json_encode(["status" => "error", "message" => "請提供帳號和密碼"]);
 }
-
-
-
 
 
 ?>

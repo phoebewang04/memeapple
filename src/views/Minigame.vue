@@ -868,7 +868,7 @@ import Swal from 'sweetalert2';
 
 
         <!-- 鬼碑迷陣 -->
-        <router-link to="//">
+        <router-link to="/Cardmatching/">
           <g>
           <!-- 座標 -->
           <g class="coordinate">

@@ -7,7 +7,7 @@ import '../assets/css/style.css'
         <section class="bottom">
             <!-- 這邊是Logo，可以回前後台分流頁 -->
             <section class="bm_logo">
-                <router-link to="/"><img src="../assets/img/memelogo.svg" alt=""></router-link>
+                <router-link to="/"><img src="@/assets/img/memelogo.svg" alt=""></router-link>
                 <!-- 聯絡方式 -->
                 <section class="bm_info">
                     <div class="bm_info_address">

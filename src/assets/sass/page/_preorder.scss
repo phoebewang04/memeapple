@@ -187,26 +187,13 @@
 
 
 .preorder_datetime .time .time_ele .ele {
-    background-color: #e4e1e1;
     height: 50px;
     width: 80px;
     border-radius: 20px;
     text-align: center;
     line-height: 50px;
     margin: 20px;
-    color: #100E24;
-    
-    &.ele1 {
-        background-color: map-get($colors , yellow );
-    }
 
-    &.ele3 {
-        background-color: map-get($colors , yellow );
-    }
-
-    &.ele5 {
-        background-color: map-get($colors , yellow );
-    }
 }
 
 
@@ -232,10 +219,10 @@
     }
 }
 
-.preorder_datetime .time .time_ele .ele:hover {
-    background-color: map-get($colors , gold );
-    cursor: pointer;
-}
+// .preorder_datetime .time .time_ele .ele:hover {
+//     background-color: map-get($colors , gold );
+//     cursor: pointer;
+// }
 
 
 

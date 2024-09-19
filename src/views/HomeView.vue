@@ -27,6 +27,7 @@ export default {
     // console.log(new URL("@/assets/img/banner_openning.png", import.meta.url).href);
 
     return {
+      baseUrl: import.meta.env.BASE_URL,
       modules: [Pagination, Navigation],
       // 常見問題列表
       faqs: [
@@ -55,12 +56,11 @@ export default {
           answer: "很遺憾該主題已經下架，誠摯推薦您持續關注我們，敬請期待其他主題推出！"
         },
       ],
-      // 最新消息列表
+      announcements: [],
+      // 最新消息列表 假資料
       news: [
         {
           img: new URL("@/assets/img/banner_openning.png", import.meta.url).href,
-
-
           name: "盛大開幕",
           title: "謎因工作室盛大開幕！",
           newstext: "謎因工作室已於 2024年6月1日 盛大開幕！誠摯邀請……Read More"
@@ -94,8 +94,9 @@ export default {
   },
   computed: {
     // 根據當前索引和每頁顯示數量計算可見的新聞
-    visibleNews() {
-      return this.news.slice(this.currentIndex, this.currentIndex + this.itemsPerPage);
+
+    visibleAnnouncements() {
+      return this.announcements.slice(this.currentIndex, this.currentIndex + this.itemsPerPage);
     }
   },
   methods: {
@@ -129,9 +130,46 @@ export default {
       if (this.currentIndex > this.news.length - this.itemsPerPage) {
         this.currentIndex = this.news.length - this.itemsPerPage;
       }
-    }
+    },
+    fetchAnnouncements() {
+      fetch('http://localhost/meme_apple/public/php/api/announcement.php')
+        // fetch(import.meta.env.VITE_API_BASE + '/api/announcement.php')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log(data); // 檢查回應資料
+          if (data.error) {
+            throw new Error(data.error);
+          }
+          this.announcements = data.length ? data : this.news;
+        })
+        .catch(error => {
+          console.error('Error fetching announcements:', error);
+          // 使用假資料
+          this.announcements = this.news;
+        });
+    },
+    truncateText(text, length) {
+      if (!text) {
+        return '';
+      }
+      if (text.length > length) {
+        return text.substring(0, length) + '...';
+      }
+      return text;
+    },
+    getImageUrl(imgPath) {
+      return `${this.baseUrl}${imgPath}`;
+    },
   },
   mounted() {
+
+    this.fetchAnnouncements();
+
     // 組件掛載後初始化AOS動畫
     AOS.init({
       duration: 1200,
@@ -315,11 +353,13 @@ export default {
                 <li @click="prevSlide"><i class="fa-solid fa-caret-left"></i></li>
               </div>
 
-              <li class="index-news-li" v-for="(newsItem, index) in visibleNews" :key="index">
-                <router-link :to="`/Announcement/`">
-                  <img :src="newsItem.img" :alt="newsItem.name">
-                  <h3>{{ newsItem.title }}</h3>
-                  <p class="index-news-text">{{ newsItem.newstext }}</p>
+              <li class="index-news-li" v-for="(newsItem, index) in visibleAnnouncements" :key="index">
+                <router-link :to="{ name: 'Announcement', params: { id: newsItem.ID } }">
+                  <img :src="getImageUrl(newsItem.IMG)" :alt="newsItem.TOPIC">
+                  <!-- <img :src="`${import.meta.env.BASE_URL}${newsItem.IMG}`" :alt="newsItem.TOPIC"> -->
+                  <!-- <img :src="`/${newsItem.IMG}`" :alt="newsItem.TOPIC"> -->
+                  <h3>{{ newsItem.TOPIC }}</h3>
+                  <p class="index-news-text">{{ truncateText(newsItem.ARTICLE, 45) }}</p>
                 </router-link>
               </li>
 

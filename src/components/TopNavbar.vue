@@ -56,6 +56,25 @@ export default {
       <li><router-link to="/pay/">結帳</router-link></li>
       <li><router-link to="/dead1A2Bgame/">1A2B</router-link></li> -->
       <!-- <li><router-link to="/minigameL/">華容道</router-link></li> -->
+      <li>主題專區
+        <ul>
+          <li>台北館
+            <ul>
+              <li><router-link to="/Theme/1" class="dropDown">成都醫院</router-link></li>
+              <li><router-link to="/Theme/2" class="dropDown">時光迷宮</router-link></li>
+              <li><router-link to="/Theme/3" class="dropDown">末日庇護所</router-link></li>
+              <li><router-link to="/Theme/4" class="dropDown">代碼深淵</router-link></li>
+            </ul>
+          </li>
+          <li>台中館
+            <ul>
+              <li><router-link to="/Theme/5" class="dropDown">逃離武石監</router-link></li>
+              <li><router-link to="/Theme/6" class="dropDown">恐怖密室</router-link></li>
+              <li><router-link to="/Theme/7" class="dropDown">逃出虛空</router-link></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
     </ul>
   </header>
 </template>

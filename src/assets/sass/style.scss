@@ -2,7 +2,6 @@
 @import '../../../node_modules/sass-google-fonts/src/GoogleFonts.scss';
 
 
-
 @import 'basic/color';
 @import 'basic/var';
 @import 'basic/font';
@@ -17,6 +16,7 @@
 @import 'layout/login';
 @import 'layout/join';
 @import 'layout/scolltop';
+@import 'layout/footerBack';
 
 @import 'page/index';
 @import 'page/backstage';
@@ -40,3 +40,4 @@
 @import 'page/minigameLtest';
 @import 'page/privacy';
 @import 'page/termservice';
+@import 'page/cardmatching';
