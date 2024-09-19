@@ -66,11 +66,10 @@
                 const formData = new FormData();
                 formData.append('title', this.title);
                 formData.append('content', this.content);
-                formData.append('image', this.$refs.fileInput.files[0].name);
+                formData.append('image', this.$refs.fileInput.files[0]);
                 formData.append('fileName', this.$refs.fileInput.files[0].name);
                 formData.append('imagePath', '/path/to/image'); // add this
                 formData.append('status', 0); // add this
-                formData.append('publishDate', '2023-02-20'); // add this
                 formData.append('publisherId', 1); // add this
 
                 // 檢查 FormData 的內容

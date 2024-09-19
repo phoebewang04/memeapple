@@ -130,19 +130,22 @@
                 return date.toISOString().split('T')[0];
             },
             // 更新狀態
-            async updateStatus(news){
+            async updateStatus(news) {
                 const newStatus = news.STATUS === 1 ? 0 : 1;
-                try{
-                    const response = await axios.post('http://localhost/memeapple/public/php/api/news.php', { 
+                try {
+                    const response = await axios.post('http://localhost/memeapple/public/php/api/news.php', {
                         id: news.ID,
                         status: newStatus
                     });
-                    if(response.data.success){
+
+                    console.log(response.data); // 加入這行來檢查回應資料
+                    
+                    if (response.data.success) {
                         news.STATUS = newStatus;
                     } else {
-                        alert('更新失敗' + response.data.message);
+                        alert('更新失敗: ' + response.data.message);
                     }
-                } catch(err){
+                } catch (err) {
                     alert('An error occurred: ' + err.message);
                 }
             },
