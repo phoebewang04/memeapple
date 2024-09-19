@@ -15,11 +15,11 @@
         <div class="preorderinfor_active">
             <h2>活動資訊</h2>
             <div class="infor_list">
-                <ul>
+                <ul> <!-- ---------主題基本資訊---------- -->
                     <li v-if="theme">主題名稱：{{ theme.themeName }}</li>
                     <div class="infor_time">
                         <li><i class="fa-regular fa-clock"></i></li>
-                        <li>活動時間：1小時20分鐘</li>
+                        <li>活動時間：1小時10分鐘</li>
                     </div>
                     <li v-if="theme">地點：{{ theme.address }}</li>
                 </ul>
@@ -31,20 +31,17 @@
 
             <div class="timeandele">
 
-                <VCalendar :attributes="attrs" title-position="left" />
+                <!-- ---------日曆---------- -->
+                <VCalendar v-model="selectedDate" :attributes="attrs" @dayclick="onDateChange" title-position="left" />
 
+                <!-- ---------場次時間---------- -->
                 <div class="time">
 
                     <h3>請選擇場次</h3>
                     <div class="time_ele">
-                        <div class="ele ele1">10：30</div>
-                        <div class="ele ele2">11：15</div>
-                        <div class="ele ele3">12：55</div>
-                        <div class="ele ele4">14：35</div>
-                        <div class="ele ele5">16：30</div>
-                        <div class="ele ele6">18：15</div>
+                        <div v-for="slot in timeSlots" :key="slot.time" :class="['ele', slot.disabled ? 'disabled' : 'enabled', selectedTimeSlot === slot.time ? 'selectTime' : '']" @click="selectTimeSlot(slot)"> {{ slot.time }}</div>
                     </div>
-
+                    <!-- ---------遊戲人數---------- -->
                     <div class="amount">
                     <select name="totalPeople" id="people" v-model="peopleAmount" @change="selectPeople">
                         <option value="0">遊戲人數</option>
@@ -280,6 +277,7 @@ import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 import 'v-calendar/style.css';
 import ScrollToTop from '../components/ScollToTop.vue';
+import axios from 'axios';
 
 
 export default {
@@ -292,8 +290,19 @@ export default {
     data (){
         return {
             all_data: all_data,
-            theme: null,
-            
+            theme: null, //根據主題 ID 來決定當前顯示的主題資料。
+            selectedDate: new Date().toISOString().split("T")[0], // 當前日期
+            themeId: this.$route.params.id,  // 從路由中獲取的主題 ID
+            orders: [], //儲存從後端 API 查詢到的訂單資料，用於決定哪些場次已被預訂
+            timeSlots: [
+                { time: "10:30", disabled: false },
+                { time: "11:15", disabled: false },
+                { time: "12:55", disabled: false },
+                { time: "14:35", disabled: false },
+                { time: "16:30", disabled: false },
+                { time: "18:15", disabled: false }
+            ],
+            selectedTimeSlot: null,
             attrs: [
                 {
                 key: 'today',
@@ -302,12 +311,85 @@ export default {
                 },
             ],
             peopleAmount: '0',
+    
         };
     },
 
     methods: {
+        // 當用戶點擊日曆中的某一天時觸發的事件處理器
+        onDateChange(date) {
+            // 檢查 `date.id` 是否存在，並使用它作為日期，並呼叫 queryDatabaseByDate 方法去後端查詢該日期的預訂資料。
+            if (date && date.id) {
+                const formattedDate = date.id; 
+                this.selectedDate = formattedDate;
+                console.log("格式化後的日期：", formattedDate);
+                this.queryDatabaseByDate(formattedDate);
+                // this.selectedTimeSlot = null;
+                localStorage.removeItem('selectedTimeSlot');
+            } else {
+                console.error("無效的日期值：", date);
+            }
+        },
+        //根據選擇的日期查詢後端數據庫中的訂單資料，並更新到 orders 數據中
+        async queryDatabaseByDate(date) {
+            console.log("查詢日期：", date);
+            console.log("查詢的 themeId：", this.themeId);
+            try {
+                // 確保 URL 正確格式化，使用 & 分隔日期和 themeId
+                const response = await axios.get(
+                    `http://localhost/appleTeam/public/php/api/preorder.php?date=${date}&themeId=${this.themeId}`
+                );
+                console.log("伺服器回應：", response); // 檢查伺服器回應
+                this.orders = response.data; // 直接使用回應的資料
+                this.updateTimeSlots(); // 根據回傳的資料更新 timeSlots 的 disabled 狀態
+                console.log("查詢結果：", this.orders); // 檢查回傳的資料結構
+            } catch (error) {
+                console.error("查詢失敗：", error);
+            }
+        },
+        updateTimeSlots() {
+            // 檢查 orders，根據每個場次的時間來更新其 `disabled` 狀態
+            this.timeSlots.forEach(slot => {
+                // 檢查是否有訂單的時間與場次時間匹配
+                const order = this.orders.find(o => {
+                    const orderTime = o.ORDER_TIME.split(':').slice(0, 2).join(':'); // 提取訂單時間的 小時:分鐘
+                    return orderTime === slot.time; // 如果訂單時間匹配場次時間
+                });
+                // 如果找到匹配的訂單，將該場次設為 disabled，否則可選
+                slot.disabled = !!order; // order 存在則設置 disabled
+            });
+            
+        },
+
+        selectTimeSlot(slot) {
+            if (!slot.disabled) {
+                // 將選中的場次時間保存到 localStorage
+                localStorage.setItem('selectedTimeSlot', slot.time);
+                
+                console.log("已選擇場次：", slot.time);
+                this.selectedTimeSlot = slot.time;
+
+            }
+        },
+
+        //	它會經過 orders，尋找與傳遞進來的 themeId 和 time 匹配的訂單
+        getOrder(themeID, time) {
+            const order = this.orders.find(
+                (order) =>
+                order.themeId === themeID && order.ORDER_TIME.startsWith(time)
+            );
+            return order ? order.ORDER_ID : "";
+
+
+
+        },
         goToNextPage (){
             localStorage.setItem ('peopleAmount', this.peopleAmount);
+            const selectedTimeSlot = localStorage.getItem('selectedTimeSlot');
+            if (selectedTimeSlot === 0) {
+                alert('請選擇一個場次');
+            }
+
         },
     },
 
@@ -315,7 +397,13 @@ export default {
 
         const themeId = this.$route.params.id;
         this.theme = this.all_data[themeId]; 
+        this.selectedDate = new Date().toISOString().split("T")[0];
+        this.queryDatabaseByDate(this.selectedDate);
+
+
     }
+
+
 }
 
 </script>
@@ -323,7 +411,25 @@ export default {
 <!-- --------------------------------樣式版---------------------------------------------- -->
 
 <style>
+/* ------------場次時間按鈕變化----------------- */
+.disabled {
+  color: white;
+  background-color: lightgray;
+  cursor: not-allowed;
+}
+.enabled {
+  color: #100E24;
+  background-color: #FEDA77;
+  cursor: pointer; 
+}
 
+.selectTime {
+    color: #FCD15B;
+    border: 1px solid #FCD15B;
+    background-color: #100E24;
+}
+
+/* -------------日曆的樣式---------------- */
 .vc-bordered {
     border-radius: 0px;
 }

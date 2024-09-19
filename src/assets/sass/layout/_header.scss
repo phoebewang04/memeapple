@@ -74,10 +74,15 @@
 }
 
 .top li {
+
     margin-right: 20px;
 
     @include rwd(700px) {
         margin: 0;
+    }
+
+    &:hover {
+        color: map-get($colors, gold);
     }
 }
 
@@ -106,4 +111,52 @@
     #menuBar.visible {
         display: flex;
     }
+}
+
+// -------------主題專區下拉式選單-----------------
+
+ul#menuBar ul {
+    // border: #ccc 1px solid;
+    position: absolute;
+    z-index: 99;
+    right: 0%;
+    top: 10%;
+    min-width: 160px;
+    text-align: center;
+}
+
+ul#menuBar ul li {
+    background-color:map-get($colors, darkblue) ;
+    border-bottom: #ccc 1px solid;
+    cursor: pointer;
+    border: 1px solid white;
+    color: white;
+    
+    &:hover {
+        background-color:map-get($colors, gold);
+        color:map-get($colors, darkblue);
+    }
+}
+
+ul#menuBar ul li .dropDown {
+    &:hover {
+        color:map-get($colors, darkblue);
+    }
+}
+
+ul#menuBar ul ul { /*第三層以後的選單出現位置與第二層不同*/
+    z-index: 999;
+    position: fixed;
+    top: 10%;
+    right: 10%;
+}
+
+ul#menuBar ul {
+    display: none;
+}
+
+ul#menuBar  li:hover > ul { /* 滑鼠滑入展開次選單*/
+    display: block;
+   
+    
 }
