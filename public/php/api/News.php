@@ -56,19 +56,19 @@ class News {
     }
 
     // 新增資料API
-    public function addNews($title, $content, $imagePath, $fileName, $status, $publishDate, $publisherId) {
-        $sql = 'INSERT INTO NEWS (TOPIC, ARTICLE, IMG, FILENAME, STATUS, PUBLISH_DATE, PUBLISHER_ID) VALUES (?, ?, ?, ?, ?, NOW(), ?)';
+    public function addNews($title, $content, $imagePath, $status, $publishDate, $publisherId) {
+        $sql = 'INSERT INTO NEWS (TOPIC, ARTICLE, IMG, STATUS, PUBLISH_DATE, PUBLISHER_ID) VALUES (?, ?, ?, ?, NOW(), ?)';
         $stmt = $this->db->prepare($sql);
 
-        if (!$stmt->execute([$title, $content, $imagePath, $fileName, $status, $publisherId])) {
-            echo json_encode(['success' => false, 'message' => 'SQL 執行失敗']);
+        if (!$stmt->execute([$title, $content, $imagePath, $status, $publisherId])) {
+            return['success' => false, 'message' => 'SQL 執行失敗'];
             exit;
         }
 
         if ($stmt->rowCount() > 0) {
-            echo json_encode(['success' => true, 'message' => '新增成功']);
+            return['success' => true, 'message' => '新增成功'];
         } else {
-            echo json_encode(['success' => false, 'message' => '新增失敗', 'error' => $stmt->errorInfo()]);
+            return['success' => false, 'message' => '新增失敗', 'error' => $stmt->errorInfo()];
         }
     }
 
@@ -87,15 +87,15 @@ class News {
     }
 
     // 更新資料API
-    public function updateNews($id, $title, $content, $imagePath, $fileName){
-        $sql = 'UPDATE NEWS SET TOPIC = ?, ARTICLE = ?, IMG = ?, FILENAME = ? WHERE ID = ?';
+    public function updateNews($id, $title, $content, $imagePath){
+        $sql = 'UPDATE NEWS SET TOPIC = ?, ARTICLE = ?, IMG = ? WHERE ID = ?';
         $stmt = $this->db->prepare($sql);
-        $stmt->execute([$title, $content, $imagePath, $fileName, $id]);
+        $stmt->execute([$title, $content, $imagePath, $id]);
 
         if ($stmt->rowCount() > 0) {
-            echo json_encode(['success' => true, 'message' => '更新成功']);
+            return['success' => true, 'message' => '更新成功'];
         } else {
-            echo json_encode(['success' => false, 'message' => '更新失敗']);
+            return['success' => false, 'message' => '更新失敗'];
         }
     }
 }
@@ -115,34 +115,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         header('Content-Type: application/json');
         echo json_encode($result);
     } else if (isset($_POST['title']) && isset($_POST['content']) && isset($_FILES['image'])) {
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-        $image = $_FILES['image'];
-        $fileName = basename($image['name']);
-        $publisherId = 1; // 暫時設定為1
-        $publishDate = date('Y-m-d');
-        $status = 0;
-
-        // 圖片上傳
-        $targetDir = '../../img/';
-        $targetFile = $targetDir . basename($image['name']);
-        if (move_uploaded_file($image['tmp_name'], $targetFile)) {
-            $imagePath = 'public/img/'. basename($image['name']);
-        } else {
-            $imagePath = null;
-            echo json_encode(['success' => false, 'message' => '圖片上傳失敗']);
-            exit;
-        }
-
-        if (isset($_POST['id'])) {
+        try{
+            $action = $_POST['action'];
+            $title = $_POST['title'];
+            $content = $_POST['content'];
             $id = $_POST['id'];
-            $result = $news->updateNews($id, $title, $content, $imagePath, $fileName);
-        } else {
-            $result = $news->addNews($title, $content, $imagePath, $fileName, $status, $publishDate, $publisherId);
+            $image = $_FILES['image'];
+            $publisherId = 1; // 暫時設定為1
+            $publishDate = date('Y-m-d');
+            $status = 0;
+    
+            // 圖片上傳
+            $targetDir = '../../img/';
+            $targetFile = $targetDir . basename($image['name']);
+            if (move_uploaded_file($image['tmp_name'], $targetFile)) {
+                $imagePath = 'public/img/'. basename($image['name']);
+            } else {
+                $imagePath = null;
+                echo json_encode(['success' => false, 'message' => '圖片上傳失敗']);
+                exit;
+            }
+    
+            if ($action == 'update') {
+                $result = $news->updateNews($id, $title, $content, $imagePath);
+            } else {
+                $result = $news->addNews($title, $content, $imagePath, $status, $publishDate, $publisherId);
+            }
+    
+            header('Content-Type: application/json');
+            echo json_encode($result);
+        } catch (Exception $e) {
+            echo '幹你娘機掰: ', $e->getMessage(), "\n";
         }
-
-        header('Content-Type: application/json');
-        echo json_encode($result);
     } else {
         // 測試缺少的參數
         $missingParams = [];
