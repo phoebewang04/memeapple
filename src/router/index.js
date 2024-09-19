@@ -23,9 +23,8 @@ const Popupcard = () => import('../views/Popupcard.vue');
 // 前台線上體驗相關組件
 const Minigame = () => import('../views/Minigame.vue');
 const Dead1A2Bgame = () => import('../views/dead1A2Bgame.vue');
-const MinigameL = () => import('../components/minigameLtest.vue');
+const Cardmatching = () => import('../views/Cardmatching.vue');
 const Escaperoom = () => import('../views/Escaperoom.vue');
-
 // ======================================================= //
 // ======================================================= //
 // 後台相關組件

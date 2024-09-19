@@ -175,6 +175,10 @@
         <video ref="endVideo" src="../assets/img/esc_end.mp4" playsinline autoplay muted></video>
       </div>
     </div>
+
+    <!-- <div>
+      <button @click="showCoupon()">test</button>
+    </div> -->
   </main>
   <!-- <Footerbar /> -->
 </template>
@@ -184,6 +188,7 @@ import '../assets/css/style.css';
 import secAlert from 'sweetalert2';
 import 'animate.css';
 import interact from 'interactjs';
+import axios from 'axios';
 
 
 export default {
@@ -194,15 +199,16 @@ export default {
 
     secAlert.close();
 
-    if (this.bgMusic) {
-      this.bgMusic.pause();
-      this.bgMusic.currentTime = 0; //重新設定播放進度
+    if (this.bgMusic1) {
+      this.bgMusic1.pause();
+      this.bgMusic1.currentTime = 0; //重新設定播放進度
 
     }
     next();
   },
   data() {
     return {
+      gameId: 3,
 
       currentSceneIndex: 0, //當前的場景索引
 
@@ -368,10 +374,10 @@ export default {
               console.error("背景音樂2播放失敗:", error);
             });
           }
-          
-            const videoElement = this.$refs.endVideo;
+
+          const videoElement = this.$refs.endVideo;
           videoElement.addEventListener('ended', () => {
-            this.showCoupon();  // 顯示優惠券提示
+            this.checkCoupon();
           });
         }
 
@@ -588,43 +594,75 @@ export default {
       });
     },
 
-     // 確認是否可以領取優惠券
-  async checkCoupon() {
-    try {
-      const memberId = 1; // 假設的會員ID
-      const gameId = 3;   // 假設的遊戲ID
+    // 確認是否可以領取優惠券
+    async checkCoupon() {
+      try {
+        const memberId = 12; // 假設的會員ID
+        const discount = 150;   // 假設的遊戲ID
 
-      const response = await fetch(`http://localhost:5173/api/coupon.php?member_id=${memberId}&game_id=${gameId}`, {
-        method: 'GET',
-      });
+        // 在調用 API 之前顯示一個 console.log，確認方法被調用
+        // console.log('checkCoupon 方法被調用了，gameId:', gameId);
 
-      const result = await response.json();
-      
-      if (result.status === 'success') {
-        // 如果成功領取優惠券
-        this.showCouponAlert(result.message);
-      } else {
-        // 如果已經有該優惠券，直接跳轉回遊戲頁
-        this.$router.push('/minigame');
+        const response = await axios.get(`http://localhost/appleyy/public/php/api/coupon.php`,{params: { member_id: memberId, discount: discount }});
+
+        console.log('API 回應數據:', response.data);
+
+        const result = response.data;
+
+        if (result.status === 'exists') {
+          // 已有優惠券
+          this.showCouponAlert("已成功通關，但寶藏已經被你挖走了喔～", '/minigame/');
+          // console.log('成功領取優惠券', result.message);
+        
+        } else if(result.status === 'not_found'){
+          // 沒有優惠券
+          await this.issueCoupon(memberId, discount);
+          this.showCouponAlert("已成功通關，挖到寶藏啦！快去會員中心看看！", '/Membermanage/');
+        } else{
+          console.error("未知的優惠券狀態", result);
+        }
+      } catch (error) {
+        console.error("API調用錯誤:", error);
       }
+    },
+
+    //發放優惠券
+    async issueCoupon(memberId, discount) {
+    try {
+      console.log('正在發送的折扣值:', discount);
+
+      let form_data = new FormData();
+      form_data.append("member_id", memberId);
+      form_data.append("discount", discount);
+
+      let res = await fetch("http://localhost/appleyy/public/php/api/coupon.php", {
+        method: "POST",
+        body: form_data
+      });
+      let data = await res.json();
+      console.log(data);
+
+      // const response = await axios.post(`http://localhost/appleyy/public/php/api/coupon.php`, {
+      //   member_id: memberId,
+      //   discount: discount
+      // });
+      //console.log('優惠券發放成功:', response.data);
     } catch (error) {
-      console.error("API調用錯誤:", error);
+      console.error("發放優惠券時出錯:", error);
     }
   },
-    showCoupon(message) {
+  showCouponAlert(message, redirectUrl) {
       secAlert.fire({
-        title: '恭喜！',
-        text: '你已成功通關，獲得優惠券！',
+        title: message,
         icon: 'success',
-        confirmButtonText: '兌換',
+        confirmButtonText: '確認',
       }).then(() => {
-
+        
         if (this.bgMusic2) {
-            this.bgMusic2.pause();
-          }
-
-        this.$router.push('/minigame/');
-    });
+          this.bgMusic2.pause();
+        }
+        this.$router.push(redirectUrl);
+      });
     }
   }
 }

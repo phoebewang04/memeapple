@@ -187,6 +187,9 @@ p {
     margin: 0;
   }
 }
+.top li:hover {
+  color: #FCD15B;
+}
 
 .top a {
   color: white;
@@ -212,6 +215,46 @@ p {
     display: flex;
   }
 }
+ul#menuBar ul {
+  position: absolute;
+  z-index: 99;
+  right: 0%;
+  top: 10%;
+  min-width: 160px;
+  text-align: center;
+}
+
+ul#menuBar ul li {
+  background-color: #100E24;
+  border-bottom: #ccc 1px solid;
+  cursor: pointer;
+  border: 1px solid white;
+  color: white;
+}
+ul#menuBar ul li:hover {
+  background-color: #FCD15B;
+  color: #100E24;
+}
+
+ul#menuBar ul li .dropDown:hover {
+  color: #100E24;
+}
+
+ul#menuBar ul ul { /*第三層以後的選單出現位置與第二層不同*/
+  z-index: 999;
+  position: fixed;
+  top: 10%;
+  right: 10%;
+}
+
+ul#menuBar ul {
+  display: none;
+}
+
+ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
+  display: block;
+}
+
 .bottom {
   background-color: #262B3F;
   width: 100%;
@@ -575,8 +618,14 @@ p {
 
 .game_price {
   cursor: pointer;
+  animation: fly 1s linear infinite;
 }
 
+@keyframes fly {
+  50% {
+    transform: translateY(10px);
+  }
+}
 .theme_popup {
   background-color: #221F3C;
   color: white;
@@ -588,7 +637,7 @@ p {
 }
 
 #swal2-html-container {
-  padding: 0;
+  padding: 10px;
 }
 
 .iconinfo {
@@ -636,6 +685,7 @@ p {
 }
 
 .theme_marketing_container {
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -671,6 +721,60 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.theme_btn {
+  width: 220px;
+  font-size: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-align: center;
+  border: 0;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #100E24;
+}
+.theme_btn.hospital {
+  background-color: #FCD15B;
+}
+.theme_btn.hospital:hover {
+  background-color: #FEDA77;
+}
+.theme_btn.time {
+  background-color: #FFC700;
+}
+.theme_btn.time:hover {
+  background-color: #FCD15B;
+}
+.theme_btn.dead {
+  background-color: #BF9773;
+}
+.theme_btn.dead:hover {
+  background-color: #c6a588;
+}
+.theme_btn.code {
+  background-color: #90E7F2;
+}
+.theme_btn.code:hover {
+  background-color: #07D691;
+}
+.theme_btn.Lock {
+  background-color: #C8D1E0;
+}
+.theme_btn.Lock:hover {
+  background-color: whitesmoke;
+}
+.theme_btn.room {
+  background-color: #8DA18D;
+}
+.theme_btn.room:hover {
+  background-color: #99ae99;
+}
+.theme_btn.alien {
+  background-color: #6EE742;
+}
+.theme_btn.alien:hover {
+  background-color: #D8FFDF;
 }
 
 .small_mark {
@@ -712,7 +816,6 @@ p {
 }
 .notice_text.alien {
   color: #D8FFDF;
-  background: #221F3C;
 }
 
 .theme_arrow {
@@ -3461,7 +3564,7 @@ p {
   height: 5% !important;
   position: absolute !important;
   top: 17%;
-  left: 26%;
+  left: 23%;
   z-index: 1;
 }
 @media (max-width: 430px) {
@@ -3878,13 +3981,13 @@ p {
   white-space: nowrap; /* 防止文字自動換行 */
   overflow: hidden; /* 隱藏超出的文字 */
   visibility: hidden;
-  animation: typing 7s steps(20) forwards, fadeIn 0.5s ease-in forwards;
+  animation: typing 4s steps(20) forwards, fadeIn 0.3s ease-in forwards;
 }
 .deadGame p .line:nth-child(1) {
   animation-delay: 0s;
 }
 .deadGame p .line:nth-child(2) {
-  animation-delay: 5s;
+  animation-delay: 3s;
 }
 @media (max-width: 430px) {
   .deadGame p {
@@ -3921,7 +4024,7 @@ p {
   font-size: 14px;
   position: absolute;
   top: 18%;
-  left: 42%;
+  left: 39%;
   z-index: 1;
 }
 @media (max-width: 430px) {
@@ -4978,23 +5081,12 @@ p {
 }
 
 .preorder_datetime .time .time_ele .ele {
-  background-color: #e4e1e1;
   height: 50px;
   width: 80px;
   border-radius: 20px;
   text-align: center;
   line-height: 50px;
   margin: 20px;
-  color: #100E24;
-}
-.preorder_datetime .time .time_ele .ele.ele1 {
-  background-color: #FEDA77;
-}
-.preorder_datetime .time .time_ele .ele.ele3 {
-  background-color: #FEDA77;
-}
-.preorder_datetime .time .time_ele .ele.ele5 {
-  background-color: #FEDA77;
 }
 
 .preorder_datetime .time .amount {
@@ -5019,11 +5111,6 @@ p {
     width: 210px;
     font-size: 16px;
   }
-}
-
-.preorder_datetime .time .time_ele .ele:hover {
-  background-color: #FCD15B;
-  cursor: pointer;
 }
 
 /* --------------------訂購須知------------------------------------ */
@@ -7595,6 +7682,47 @@ p {
   width: 100%;
   line-height: 1.5;
   color: #292929;
+}
+
+.card_scene {
+  max-width: 100%;
+  position: relative;
+}
+
+.card_scene.active {
+  display: none;
+}
+
+.card_start img {
+  width: 100%;
+  top: 0;
+}
+
+.card_start_icon img {
+  position: absolute;
+}
+.card_start_icon img:nth-of-type(1) {
+  width: 30%;
+  top: 10%;
+  left: 38%;
+}
+.card_start_icon img:nth-of-type(2) {
+  width: 10%;
+  top: 45%;
+  left: 35%;
+  cursor: pointer;
+}
+.card_start_icon img:nth-of-type(2):hover {
+  opacity: 0.8;
+}
+.card_start_icon img:nth-of-type(3) {
+  width: 10%;
+  top: 45%;
+  right: 30%;
+  cursor: pointer;
+}
+.card_start_icon img:nth-of-type(3):hover {
+  opacity: 0.8;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -4,15 +4,15 @@
     gap: 100px;
     margin: 0 auto;
 
-    &.dead{
-       background-image: url('../img/dead_bg.png');
+    &.dead {
+        background-image: url('../img/dead_bg.png');
     }
 
-    &.room{
+    &.room {
         background-image: url('../img/room_bg.png');
     }
 
-    &.alien{
+    &.alien {
         background-image: url('../img/bgi_alien.jpg');
     }
 }
@@ -121,7 +121,7 @@
         color: map-get($colors, lightgreen);
     }
 
-    &.code{
+    &.code {
         // color: #AADDEC;
         // color: #07D691;
     }
@@ -139,12 +139,11 @@
     &.time,
     &.Lock,
     &.room,
-    &.code
-     {
+    &.code {
         background-color: map-get($colors, midnight);
     }
 
-    &.dead{
+    &.dead {
         background-color: #121212;
     }
 
@@ -169,15 +168,15 @@
         color: map-get($colors, black);
     }
 
-    &.dead{
+    &.dead {
         background-color: map-get($colors, underred);
     }
 
-    &.Lock{
+    &.Lock {
         background-color: map-get($colors, usered);
     }
 
-    &.room{
+    &.room {
         background-color: #8DA18D;
     }
 
@@ -186,8 +185,8 @@
         color: map-get($colors, black);
     }
 
-    &.code{
-        background-color:#07D691;
+    &.code {
+        background-color: #07D691;
         color: white;
     }
 }
@@ -221,27 +220,27 @@
         color: map-get($colors, yellow);
     }
 
-    &.dead{
+    &.dead {
         color: #BF9773;
     }
 
-    &.Lock{
+    &.Lock {
         color: #C8D1E0;
     }
 
-    &.room{
+    &.room {
         color: #8DA18D;
     }
-    
+
     &.time {
         color: map-get($colors, underyellow);
     }
 
-    &.alien{
+    &.alien {
         color: map-get($colors, green);
     }
 
-    &.code{
+    &.code {
         color: #90E7F2;
     }
 }
@@ -258,7 +257,15 @@
 
 .game_price {
     cursor: pointer;
+    animation: fly 1s linear infinite;
 }
+
+@keyframes fly{
+    50%{
+        transform: translateY(10px);
+    }
+}
+
 
 .theme_popup {
     background-color: map-get($colors , midnight);
@@ -271,7 +278,7 @@
 }
 
 #swal2-html-container {
-    padding: 0;
+    padding: 10px;
 }
 
 // -----遊戲資訊 end-----
@@ -318,10 +325,10 @@
         font-size: 20px;
     }
 
-    p{
+    p {
         font-size: 18px;
     }
-    
+
     &.hospital,
     &.Lock {
         p {
@@ -330,14 +337,14 @@
     }
 
     &.time,
-    &.dead{
-        p{
+    &.dead {
+        p {
             color: map-get($colors, gray);
         }
     }
 
-    &.code{
-        p{
+    &.code {
+        p {
             color: #AADDEC;
         }
     }
@@ -350,6 +357,7 @@
 // -----主題介紹 start-----
 
 .theme_marketing_container {
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -405,6 +413,93 @@
 
 // -----主題介紹 end-----
 
+// -----按鈕 start-----
+
+.theme_btn {
+
+    width: 220px;
+    font-size: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-align: center;
+    border: 0;
+    border-radius: 20px;
+
+    cursor: pointer;
+    color: map-get($colors , darkblue);
+
+
+    &.hospital {
+        background-color: map-get($colors , gold);
+
+
+        &:hover{
+            background-color:map-get($colors , yellow) ;
+        }
+    }
+
+    &.time {
+        background-color: map-get($colors , underyellow);
+
+        &:hover{
+            background-color:map-get($colors , gold) ;
+        }
+    }
+
+    &.dead {
+        background-color: #BF9773;
+
+        &:hover{
+            background-color: #c6a588;
+        }
+    }
+
+    &.code {
+        background-color: #90E7F2;
+
+        &:hover{
+            background-color: #07D691;
+        }
+    }
+
+    &.Lock {
+        background-color: #C8D1E0;
+
+        &:hover{
+            background-color:whitesmoke;
+        }
+    }
+
+    &.room {
+        background-color: #8DA18D;
+
+        &:hover{
+            background-color: #99ae99;
+        }
+    }
+
+    &.alien {
+        background-color: #6EE742;
+
+        &:hover{
+            background-color: #D8FFDF;
+        }
+    }
+    
+
+
+}
+
+
+
+
+
+
+// -----按鈕 end-----
+
+
+
+
 // -----注意事項 start-----
 
 .small_mark {
@@ -427,12 +522,13 @@
 
     margin: 0 auto;
     background: center / cover no-repeat;
-    color: map-get($colors , black );
+    color: map-get($colors , black);
 
 
-    &.hospital,&.code{
+    &.hospital,
+    &.code {
         font-weight: 400;
-        color: map-get($colors , white );
+        color: map-get($colors , white);
         background: #221F3C;
     }
 
@@ -440,22 +536,22 @@
         background-image: url('../img/noticebg_time.png');
     }
 
-    &.dead{
+    &.dead {
         background-image: url('../img/noticebg_dead.png');
     }
 
-    &.Lock{
+    &.Lock {
         background: #FFE8BB;
     }
 
-    &.room{
-        color: map-get($colors , white );
+    &.room {
+        color: map-get($colors , white);
         background-image: url('../img/noticebg_room.png');
     }
 
-    &.alien{
+    &.alien {
         color: map-get($colors, lightgreen);
-        background: #221F3C;
+        // background: #221F3C;
     }
 }
 

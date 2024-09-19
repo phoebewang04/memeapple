@@ -780,7 +780,7 @@ export const all_data = {
                 title: '恐怖密室'
             },
             {
-                src: new URL("@/assets/img/3.png", import.meta.url).href,
+                src: new URL("@/assets/img/poster_comingsoon.png", import.meta.url).href,
                 title: '籌備中！Coming Soon！'
             },
 
