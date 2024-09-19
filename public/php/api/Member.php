@@ -76,6 +76,6 @@ $member->getMembers();  //暫時寫死
 //         $member->updateStatus($_POST['id']);
 //         break;
 // }
-
+ 
 
 ?>

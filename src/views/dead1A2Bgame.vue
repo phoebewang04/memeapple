@@ -50,7 +50,7 @@
             </div>
 
             <!-- -------輸入框跟按鈕------- -->
-            <el-input maxlength="4" placeholder="請輸入四位數字" v-model="guess" :readonly="isReadOnly" @keyup.enter="checkGuess" class="guessNumberBox" @focus="hideText"></el-input>
+            <el-input maxlength="4" placeholder="請輸入四位數字" v-model="guess" :readonly="isReadOnly" @keyup.enter="checkGuess" class="guessNumberBox"></el-input>
             <el-button id="enterBtn" :disabled="!isValidGuess"  @click="checkGuess" class="btn playBtn" >送出</el-button>
             <!-- <el-button id="answerBtn" @click="showAnswer" class="btn answerBtn">Answer</el-button> -->
             <!-- <el-button id="reloadBtn" @click="reloadPage" class="btn reloadBtn">Reload</el-button>  -->
@@ -137,7 +137,6 @@
             <p class="deadtext" v-if="deadtext1">
                 <span class="line">注意！你僅有的生命只有8條 ...</span>
                  <span class="line">大門的密碼就是四個數字 他們快來了 快啊！</span>
-                <!-- 注意！你僅有的生命只有8條 ... 大門的密碼就是四個數字 他們快來了 快啊！... -->
             </p>
             <p class="deadtext" v-if="deadtext2">撐住 ... 還剩2條命 答案就在細節裡 ...</p>
 
@@ -237,9 +236,9 @@ import { RouterLink } from 'vue-router';
 	            }
 	            this.answer = randomNumbers.join("");
 	        },
-            hideText() {
-                this.deadtext1 = false;
-            },
+            // hideText() {
+            //     this.deadtext1 = false;
+            // },
             checkGuess() {
                 
                 //判斷數字是否為4個數字長度
@@ -333,6 +332,7 @@ import { RouterLink } from 'vue-router';
                 this.isAlarmActive = true;
                 this.isAlermSpin = true;
                 this.deadtext2 = true;
+                this.deadtext1 = false;
             },
             playerWins() {
             // 顯示對話框

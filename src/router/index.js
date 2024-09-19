@@ -23,9 +23,8 @@ const Popupcard = () => import('../views/Popupcard.vue');
 // 前台線上體驗相關組件
 const Minigame = () => import('../views/Minigame.vue');
 const Dead1A2Bgame = () => import('../views/dead1A2Bgame.vue');
-const MinigameL = () => import('../components/minigameLtest.vue');
+const Cardmatching = () => import('../views/Cardmatching.vue');
 const Escaperoom = () => import('../views/Escaperoom.vue');
-
 // ======================================================= //
 // ======================================================= //
 // 後台相關組件
@@ -61,7 +60,7 @@ const routes = [
   { path: '/Branch/', name: 'Branch',meta:{title:'分館介紹'}, component: () => import('../views/Branch.vue') },
   { path: '/Minigame/', name: 'Minigame',meta:{title:'線上體驗'}, component: () => import('../views/Minigame.vue') },
   { path: '/dead1A2Bgame/', name: 'dead1A2Bgame',meta:{title:'亡命數字'}, component: () => import('../views/dead1A2Bgame.vue') },
-  { path: '/minigameL/', name: 'minigameL',meta:{title:'鬼碑迷陣'}, component: () => import('../components/minigameLtest.vue') },
+  { path: '/Cardmatching/', name: 'Cardmatching',meta:{title:'鬼碑迷陣'}, component: () => import('../views/Cardmatching.vue') },
   { path: '/Escaperoom/', name: 'Escaperoom',meta:{title:'亡靈醫院'}, component: () => import('../views/Escaperoom.vue') },
   { path: '/BackstageIndex/', name: 'BackstageIndex',meta:{title:'後台首頁'}, component: () => import('../views/Backstage_index.vue') },
   { path: '/MemberMenage/', name: 'MemberMenage',meta:{title:'會員資料管理'}, component: () => import('../views/Backstage_member.vue') },

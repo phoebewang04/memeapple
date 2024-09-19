@@ -126,7 +126,7 @@
                 <div class="list">
                     <p v-if="theme">{{ theme.themeName }} {{ theme.branch }}</p>
                     <p>場次時間：</p>
-                    <p class="pp">2024 年 09 月 12 日 10：30</p>
+                    <p class="pp">2024 年 09 月 12 日 {{ selectedTimeSlot }} </p>
                     <p>總人數：<span class="pp" v-if="peopleAmount">{{peopleAmount }} 人</span></p>
                     <p>訂購項目：</p>
                     <p class="pp">包場訂金 2000 元 X1</p>
@@ -226,6 +226,8 @@ export default {
             all_data: all_data,
             theme: null,
             finalPeople: '',
+            selectedTimeSlot: null,
+            peopleAmount: null,
         }
     },
     computed: {
@@ -318,7 +320,14 @@ export default {
         this.theme = this.all_data[themeId]; 
 
         this.peopleAmount = localStorage.getItem('peopleAmount') || '';
-    },
+        const selectedTimeSlot = localStorage.getItem('selectedTimeSlot');
+        if (selectedTimeSlot) {
+            // 如果找到了選定的場次時間，將其顯示在頁面上
+            this.selectedTimeSlot = selectedTimeSlot;
+        } else {
+            console.error("未選擇場次時間");
+        }
+        },
 
 }
 </script>
