@@ -14,7 +14,7 @@ class preorder{
     }
     public function fetchOrdersByDateAndTheme($date, $themeId) {
         // 查詢語句需要根據日期和主題ID進行過濾
-        $sql = "SELECT theme_id, ORDER_TIME, ORDER_ID FROM OrderDetails WHERE ORDER_DATE = :date AND theme_id = :themeId";
+        $sql = "SELECT theme_id, ORDER_TIME, ORDER_ID FROM orderdetails WHERE ORDER_DATE = :date AND theme_id = :themeId";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':date', $date);
         $stmt->bindParam(':themeId', $themeId);
@@ -25,7 +25,7 @@ class preorder{
 
 
     public function fetchThemeRevenueByMonth($month, $year) {
-        $sql = "SELECT THEME_ID, SUM(TOTAL_AMOUNT) AS theme_revenue FROM OrderDetails WHERE MONTH(ORDER_DATE) = :month AND YEAR(ORDER_DATE) = :year GROUP BY THEME_ID, THEME_NAME";
+        $sql = "SELECT THEME_ID, SUM(TOTAL_AMOUNT) AS theme_revenue FROM orderdetails WHERE MONTH(ORDER_DATE) = :month AND YEAR(ORDER_DATE) = :year GROUP BY THEME_ID, THEME_NAME";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':month', $month);
         $stmt->bindParam(':year', $year);
@@ -35,7 +35,7 @@ class preorder{
     }
 
     public function fetchStoreRevenueByMonth($month, $year) {
-        $sql = "SELECT STORE_ID, STORE_NAME, SUM(TOTAL_AMOUNT) AS store_revenue FROM OrderDetails WHERE MONTH(ORDER_DATE) = :month AND YEAR(ORDER_DATE) = :year GROUP BY STORE_ID, STORE_NAME";
+        $sql = "SELECT STORE_ID, STORE_NAME, SUM(TOTAL_AMOUNT) AS store_revenue FROM orderdetails WHERE MONTH(ORDER_DATE) = :month AND YEAR(ORDER_DATE) = :year GROUP BY STORE_ID, STORE_NAME";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':month', $month);
         $stmt->bindParam(':year', $year);
