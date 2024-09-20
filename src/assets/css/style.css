@@ -7707,12 +7707,11 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   color: #292929;
 }
 
-.card_scene {
-  max-width: 100%;
-  position: relative;
+.card_scene.active {
+  display: block;
 }
 
-.card_scene.active {
+.card_scene {
   display: none;
 }
 
@@ -7746,6 +7745,147 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 .card_start_icon img:nth-of-type(3):hover {
   opacity: 0.8;
+}
+
+/* 過渡進入動畫 */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.8s; /* 控制過渡動畫的時間 */
+}
+
+/* 元素進入時的初始狀態 */
+.fade-enter {
+  transition: opacity 0; /* 從透明開始淡入 */
+}
+
+/* 元素離開時的最終狀態 */
+.fade-leave-to {
+  transition: opacity 0; /* 淡出至完全透明 */
+}
+
+.card_game_container {
+  margin: 50px;
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  grid-gap: 16px;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.card_game_info {
+  margin-bottom: 40px;
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: space-between;
+}
+.card_game_info i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+.card_game_info span {
+  font-size: 20px;
+}
+.card_game_info span:nth-of-type(2),
+.card_game_info a {
+  cursor: pointer;
+  color: white;
+  background-color: #28283f;
+  padding: 12px;
+  border-radius: 20px;
+}
+.card_game_info span:nth-of-type(2):hover,
+.card_game_info a:hover {
+  background: #373757;
+}
+.card_game_info #time_remaining {
+  color: #FEDA77;
+  padding: 12px;
+}
+
+.card_monument {
+  position: relative;
+  width: 110px;
+  height: 150px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.card_front,
+.card_back {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 500ms ease-in-out;
+  backface-visibility: hidden;
+}
+
+.card_front {
+  background: #28283f;
+  max-width: 100%;
+}
+.card_front img {
+  position: absolute;
+  bottom: -10%;
+  width: 80%;
+  transition: all 0.5s;
+}
+.card_front:hover {
+  background: #373757;
+}
+.card_front:hover img {
+  bottom: -6%;
+}
+
+.card_back img {
+  width: 70%;
+}
+.card_back img[alt=bat] {
+  width: 90%;
+}
+.card_back img[alt=tombstone] {
+  width: 60%;
+}
+.card_back img[alt=potion] {
+  width: 45%;
+}
+.card_back img[alt=coin],
+.card_back img[alt=eye] {
+  width: 50%;
+}
+
+@keyframes rotate_card {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.card_match {
+  animation: rotate_card 0.6s 0.5s ease-in-out;
+}
+
+.card_back {
+  transform: rotateY(180deg);
+  background-color: #b3bddd;
+}
+
+.card_monument.flipped {
+  transform: rotateY(180deg);
 }
 
 /*# sourceMappingURL=style.css.map */
