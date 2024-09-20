@@ -76,9 +76,9 @@
                     <h2>訂單明細</h2>
 
                     <div class="list">
-                        <p v-if="theme">{{ theme.themeName }} {{ theme.branch }}</p>
-                        <p>場次時間：</p>
-                        <p class="pp">2024 年 09 月 12 日 10：30</p>
+                        <p v-if="theme">{{ theme.themeName }} （ {{ theme.branch }} ）</p>
+                        <p>預約場次</p>
+                        <p class="pp">日期：{{ selectedDate}}  ｜  時間：{{ selectedTimeSlot }} </p>
                         <p>總人數：<span class="pp" v-if="peopleAmount">{{peopleAmount }} 人</span></p>
                         <p>訂購項目：</p>
                         <p class="pp">包場訂金 2000 元 X1</p>
@@ -168,6 +168,9 @@ export default {
 
             all_data: all_data,
             theme: null,
+            selectedTimeSlot: null,
+            peopleAmount: null,
+            selectedDate: null,
         }
     },
     computed : {
@@ -228,6 +231,18 @@ export default {
         this.theme = this.all_data[themeId]; 
 
         this.peopleAmount = localStorage.getItem('peopleAmount') || '';
+        const selectedTimeSlot = localStorage.getItem('selectedTimeSlot');
+        const selectedDate = localStorage.getItem('selectedDate');
+        if (selectedTimeSlot) {
+            // 如果找到了選定的場次時間，將其顯示在頁面上
+            this.selectedTimeSlot = selectedTimeSlot;
+            this.selectedDate = selectedDate;
+        } else {
+            console.error("未選擇場次時間");
+        }
+
+        // localStorage.clear();
+        
     },
 }
 </script>

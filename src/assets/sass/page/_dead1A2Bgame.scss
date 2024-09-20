@@ -1,4 +1,4 @@
-
+@include google-font('Nanum Brush Script');
 // ---------------------------遊戲主畫面1-----------------------------
 
 .game {
@@ -759,6 +759,7 @@ width: 8%;
     position: absolute;
     top: 39%;
     left: 22%;
+    z-index: 2;
 }
 
 .reloadBtn {

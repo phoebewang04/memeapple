@@ -21,7 +21,7 @@ if($method === 'GET'){
         die(json_encode(['status' => 'error', 'message' => '無效的會員ID或優惠金額']));
     }
 
-    $sql = "SELECT * FROM COUPON WHERE MEMBER_ID = ? AND DISCOUNT = ? AND COUPON_STATUS = 1";
+    $sql = "SELECT * FROM COUPON WHERE MEMBER_ID = ? AND DISCOUNT = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$memberId, $discount]);
 
