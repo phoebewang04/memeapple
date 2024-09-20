@@ -132,8 +132,8 @@ export default {
       }
     },
     fetchAnnouncements() {
-      fetch('http://localhost/meme_apple/public/php/api/announcement.php')
-        // fetch(import.meta.env.VITE_API_BASE + '/api/announcement.php')
+      // fetch('http://localhost/meme_apple/public/php/api/announcement.php')
+        fetch(import.meta.env.VITE_API_BASE + '/api/announcement.php')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
