@@ -119,24 +119,40 @@ ul#menuBar ul {
     // border: #ccc 1px solid;
     position: absolute;
     z-index: 99;
-    right: 0%;
-    top: 10%;
+    right: 0px;
+    top: 70px;
     min-width: 160px;
     text-align: center;
+
+    @include rwd(430px){
+        top: 300px;
+        right: 0px;
+        
+    }
 }
 
 ul#menuBar ul li {
     background-color:map-get($colors, darkblue) ;
     border-bottom: #ccc 1px solid;
     cursor: pointer;
-    border: 1px solid white;
+    // border: 1px solid white;
     color: white;
     
     &:hover {
         background-color:map-get($colors, gold);
         color:map-get($colors, darkblue);
     }
+
+
+    @include rwd(430px){
+        background-color: map-get($colors, lightblue);
+    }
 }
+
+ul#menuBar ul li:last-child {
+    border-bottom: none;
+}
+
 
 ul#menuBar ul li .dropDown {
     &:hover {
@@ -146,9 +162,16 @@ ul#menuBar ul li .dropDown {
 
 ul#menuBar ul ul { /*第三層以後的選單出現位置與第二層不同*/
     z-index: 999;
-    position: fixed;
-    top: 10%;
-    right: 10%;
+    position: absolute;
+    top: 0px;
+    right: 140px;
+
+
+    @include rwd(430px){
+        top: 121px;
+        right: 0px;
+        
+    }
 }
 
 ul#menuBar ul {

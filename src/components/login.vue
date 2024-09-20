@@ -1,30 +1,29 @@
 <template>
-    <TopNavbar />
-
-
-            <div class="main">
-        
-                <div class="wrapper">
+            <div v-if="showPopup" class="popup">
+                    <div class="popup-content">
+                        
                     <div class="join_login">
-                    <div class="join_loginHeader" v-if="currentlogin === 'login'">
-                        <button class="btn btn_acc" @click="loginbtn" :class="{active: activeButton === 'login'}">會員登入</button>
-                        <button class="btn btn_accj" @click="joinbtn" :class="{active: activeButton === 'join'}">會員註冊</button>
-                    </div>
-                    <div class="join_loginHeader" v-if="currentlogin === 'join'">
-                        <button class="btn btn_joina" @click="loginbtn" :class="{active: activeButton === 'login'}">會員登入</button>
-                        <button class="btn btn_join" @click="joinbtn" :class="{active: activeButton === 'join'}">會員註冊</button>
-                    </div>
+                        
+                        <div class="join_loginHeader" v-if="currentlogin === 'login'">
+                            <button class="btn btn_acc" @click="loginbtn" :class="{active: activeButton === 'login'}">會員登入</button>
+                            <button class="btn btn_accj" @click="joinbtn" :class="{active: activeButton === 'join'}">會員註冊</button>
+                        </div>
+                        <div class="join_loginHeader" v-if="currentlogin === 'join'">
+                            <button class="btn btn_joina" @click="loginbtn" :class="{active: activeButton === 'login'}">會員登入</button>
+                            <button class="btn btn_join" @click="joinbtn" :class="{active: activeButton === 'join'}">會員註冊</button>
+                        </div>
                     
                     <div class="mainLogin" v-if="currentlogin === 'login'">
                         <form @submit.prevent="submitLogin">
-                            <ul>
+                            <span class="close" @click="closePopup">&times;</span>
+                            <ol id="mainLogin">
                             <li><h3>會員登入</h3></li>
                             <li><i class="fa-solid fa-envelope"></i><h4>帳號</h4></li>
                             <li><input type="text" class="account" placeholder="請輸入帳號"  v-model="username"></li>
                             <li><i class="fa-solid fa-lock"></i><h4>密碼</h4></li>
                             <li><input type="password" class="PWD" placeholder="請輸入密碼" v-model="password"></li>
                             <li><button type="submit" class="btn btnlogin">登入</button></li> 
-                            </ul> 
+                            </ol> 
                             <div class="checkforget">
                                 <div>
                                     <input type="checkbox" name="onlogin" id="onlogin" checked="checked">保持登入
@@ -39,7 +38,7 @@
                             <div class="outloginbtn">
                             <button class="btn btnfb"><i class="fa-brands fa-square-facebook"></i></button>   
                             <!-- <button class="btn btngoogle"><i class="fa-brands fa-google"></i></button> -->
-                            <button class="btn btngoogle"><img src="../assets/img/icons_google.png" alt=""></button>
+                            <button class="btn btngoogle"><img src="@/assets/img/icons_google.png"></button>
                             <button class="btn btnline"><i class="fa-brands fa-line"></i></button>    
                             </div>
                         </form>
@@ -47,7 +46,8 @@
 
                     <div class="mainLogin mainJoin" v-if="currentlogin === 'join'">
                         <form @submit.prevent="submitRegister">
-                            <ul>
+                            <span class="close" @click="closePopup">&times;</span>
+                            <ol id="mainJoin">
                             <li><h3>會員註冊</h3></li>
                             <li><i class="fa-solid fa-envelope"></i><h4>帳號</h4></li>
                             <li><input type="email" class="account" placeholder="請輸入信箱" v-model="registerEmail" required>
@@ -69,16 +69,13 @@
                             </li>
                             <li class="checkservers"><input type="checkbox" class="checkserver" v-model="agreeTerms"><p>我同意</p><router-link to="/Privacy/" target="_blank">隱私權政策</router-link><p>&</p><router-link to="/Terms/" target="_blank">服務條款</router-link></li>
                             <li><button type="submit" class="btn btnlogin">註冊帳號</button></li> 
-                            </ul> 
+                            </ol> 
                         </form>
                         </div>
                     </div>
                  
                 </div>
-            </div>
-        
-    <Footerbar />
-           
+            </div>           
 
    
 </template>
@@ -86,20 +83,16 @@
 <script>
 import '../assets/js/vue.global';
 import '../assets/css/style.css';
-import TopNavbar from '../components/TopNavbar.vue';
-import Footerbar from '../components/Footerbar.vue';
 import axios from 'axios';
 
 
 export default {
-    components:{
-      TopNavbar,
-      Footerbar,
-    },
+ 
     data (){
             return {
                 currentlogin: 'login', // 切換登入/註冊狀態
                 // currentStartIndex: 0,
+                showPopup: true,
                 username: '',
                 password: '',
                 registerEmail: '',
@@ -132,6 +125,10 @@ export default {
             this.activeButton = 'join';
             // this.currentStartIndex = 0;
         },
+        closePopup() {
+            this.showPopup = false;
+            this.$emit('close'); // 可選：通知父組件關閉
+        },
         async submitLogin() {
             try {
                 const response = await axios.post('http://localhost/sweethome/meme/public/php/api/Login.php', {
@@ -148,7 +145,8 @@ export default {
                         // 否則使用 sessionStorage
                         sessionStorage.setItem('user', JSON.stringify({ username: this.username }));
                     }
-
+                    this.$emit('login', response.data.user); // 發出登入事件，並傳遞用戶資料
+                    this.closePopup(); // 關閉彈窗
 
                 } else {
                     alert(response.data.message); // 顯示錯誤消息

@@ -37,9 +37,8 @@
               <div class="order_cardright">
                 <div class="order_cardstate">
                   <p>訂金</p>
-                  <P>TWD 2,000元</P>
-                  <button class="questionwrite" @click="questionReturn">問卷填寫</button>
-
+                  <p>TWD 2,000元</p>
+                  <button class="questionwrite" @click="orderquestion()">問卷填寫</button>
                   <!-- <button class="cancelorder" @click="ordercancel()">取消訂單</button> -->
                 </div>
               </div>
@@ -61,7 +60,7 @@
               <div class="order_cardright">
                 <div class="order_cardstate">
                   <p>訂金</p>
-                  <P>TWD 2,000元</P>
+                  <p>TWD 2,000元</p>
                   <!-- <button class="questionwrite" @click="orderquestion()">問卷填寫</button> -->
                   <button class="cancelorder" @click="ordercancel()">取消訂單</button>
                 </div>
@@ -136,13 +135,6 @@
     </div>
   </div>
   <Footerbar />
-
-  <!-- 動態組件容器 -->
-  <!-- v-if="showDiv" 表示當 showDiv 為 true 時，渲染 Questionnaire 組件 -->
-  <!-- :tasks="tasks" 將 tasks 資料綁定並傳遞給 Questionnaire 組件 -->
-  <!-- @taskStar="taskStar" 監聽 Questionnaire 組件發出的 taskStar 事件，並調用父組件的 taskStar 方法 -->
-  <!-- @close="closeQuestionnaire" 監聽 Questionnaire 組件發出的 close 事件，並調用父組件的 closeQuestionnaire 方法 -->
-  <Questionnaire v-if="showDiv" :tasks="tasks" @taskStar="taskStar" @close="closeQuestionnaire" />
 </template>
 
 <script>
@@ -150,88 +142,98 @@ import '../assets/js/vue.global';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
-import Questionnaire from '../components/Questionnaire.vue';
 import Swal from 'sweetalert2';
 
 export default {
+  props: ["tasks"],
+  emits: ["taskStar"],
   components: {
     TopNavbar,
     Footerbar,
-    Questionnaire,
+  },
+  beforeRouteLeave(to, from, next) {
+    // Close SweetAlert when leaving the route
+    Swal.close();
+    next();
   },
   data() {
     return {
-      showDiv: false,
       currentTab: "tab1",
       tabs: [
-        { id: "tab1", name: "訂單檢視" },
-        { id: "tab2", name: "優惠券" },
-        { id: "tab3", name: "會員資料修改" }
+        {
+          id: "tab1",
+          name: "訂單檢視"
+        },
+        {
+          id: "tab2",
+          name: "優惠券"
+        },
+        {
+          id: "tab3",
+          name: "會員資料修改"
+        }
       ],
       tasks: [
-        { id: "task1", name: "Task 1", star: 0 },
-        { id: "task2", name: "Task 2", star: 0 }
+        // {
+        //   id: "aaa",
+        //   name: "123",
+        //   star: 0,
+        //   editable: false
+        // }
       ],
+      brainIndex: 0,
+      scareIndex: 0,
+      recommendationIndex: 0,
     };
   },
   beforeMount() {
-     // 從 localStorage 中獲取名為 "tasks" 的資料，並將其解析為 JavaScript 對象
-    //  JSON.parse() 方法將 JSON 格式的字串解析為 JavaScript 對象。
-    // getItem("tasks") 方法從 localStorage 中獲取名為 "tasks" 的資料，這些資料是以 JSON 格式儲存的字串。
     let tasks = JSON.parse(localStorage.getItem("tasks"));
-    // 如果 tasks 存在，則將其賦值給組件的 tasks 資料屬性
     if (tasks) {
       this.tasks = tasks;
     }
   },
   methods: {
-    questionReturn() {
-      this.showDiv = true;
-    },
-    closeQuestionnaire() {
-      this.showDiv = false;
-    },
-    taskStar(index, star) {
-      this.tasks[index].star = star;
-      localStorage.setItem("tasks", JSON.stringify(this.tasks));
-    },
     showAlert() {
       Swal.fire({
-        html: `
-          <main class="main-popupcard">
-            <section class="popupcard-card">
-              <p class="popupcard-title">請出示電子票券即可入場</p>
-              <div class="popupcard-qrcode">
-                <img src="${new URL("@/assets/img/qrcode_001.jpg", import.meta.url).href}" alt="">
-              </div>
-              <h1>逃離武石監</h1>
-              <div class="qrcode-time">
-                <p class="qrcode-y">2024 /</p>
-                <p class="qrcode-m">08 /</p>
-                <p class="qrcode-d">17</p>
-              </div>
-              <div class="qrcode-place">
-                <p>台中館</p>
-                <div class="qrcode-line"></div>
-                <span>入場</span>
-                <span>14:00</span>
-              </div>
-            </section>
-          </main>
-        `,
+        html:
+          `
+                      <main class="main-popupcard">
+                        <section class="popupcard-card">
+                            <p class="popupcard-title">請出示電子票券即可入場</p>
+                            <div class="popupcard-qrcode">
+                                <img src="${new URL("@/assets/img/qrcode_001.jpg", import.meta.url).href}" alt="">
+                                
+                            </div>
+                            <h1>逃離武石監</h1>
+                            <div class="qrcode-time">
+                                <p class="qrcode-y">2024 /</p>
+                                <p class="qrcode-m">08 /</p>
+                                <p class="qrcode-d">17</p>
+                            </div>
+                            <div class="qrcode-place">
+                                <p>台中館</p>
+                                <div class="qrcode-line"></div>
+                                <span>入場</span>
+                                <span>14:00</span>
+                           </div>
+                        </section>
+                      </main>
+                `,
         showConfirmButton: false,
         color: '#FFFFFF',
         width: 'auto',
         backgroundcolor: 'transparent',
-        customClass: {
+        customClass:
+        {
           popup: 'main-popupcard',
           content: 'wrapper-popupcard',
           title: 'popupcard-title',
           image: 'popupcard-qrcode',
           htmlContainer: 'popupcard-card',
+
         },
         position: 'center',
-      });
+      })
     },
     ordercancel() {
       Swal.fire({
@@ -256,7 +258,75 @@ export default {
           });
         }
       });
+    },
+    orderquestion() {
+      Swal.fire({
+        title: "問卷調查",
+        html: this.generateHtml(),
+        confirmButtonColor: "#FCD15B",
+        confirmButtonText: "<span>送出</span>",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        color: "#100E24",
+        preConfirm: () => {
+          this.saveData();
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "完成問卷",
+            text: "您已完成問券，歡迎再次光臨",
+            icon: "success",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            confirmButtonColor: "#FCD15B",
+            confirmButtonText: "<span>OK</span>",
+            color: "#100E24",
+          });
+        }
+      });
+    },
+    generateHtml(){
+      `    <div class="star_block">
+      <span>燒腦指數</span>
+      <span class="star" id="brain-1"><i class="fas fa-star"></i></span>
+      <span class="star" id="brain-2"><i class="fas fa-star"></i></span>
+      <span class="star" id="brain-3"><i class="fas fa-star"></i></span>
+      <span class="star" id="brain-4"><i class="fas fa-star"></i></span>
+      <span class="star" id="brain-5"><i class="fas fa-star"></i></span>
+    </div>
+    <div class="star_block">
+      <span>驚嚇指數</span>
+      <span class="star" id="scare-1"><i class="fas fa-star"></i></span>
+      <span class="star" id="scare-2"><i class="fas fa-star"></i></span>
+      <span class="star" id="scare-3"><i class="fas fa-star"></i></span>
+      <span class="star" id="scare-4"><i class="fas fa-star"></i></span>
+      <span class="star" id="scare-5"><i class="fas fa-star"></i></span>
+    </div>
+    <div class="star_block">
+      <span>推薦指數</span>
+      <span class="star" id="recommendation-1"><i class="fas fa-star"></i></span>
+      <span class="star" id="recommendation-2"><i class="fas fa-star"></i></span>
+      <span class="star" id="recommendation-3"><i class="fas fa-star"></i></span>
+      <span class="star" id="recommendation-4"><i class="fas fa-star"></i></span>
+      <span class="star" id="recommendation-5"><i class="fas fa-star"></i></span>
+    </div>`
     }
+    ,
+    setBrainIndex(index) {
+      this.brainIndex = index;
+    },
+    setScareIndex(index) {
+      this.scareIndex = index;
+    },
+    setRecommendationIndex(index) {
+      this.recommendationIndex = index;
+    },
+    saveData() {
+      // 保存數據的 Vue 方法
+      console.log('Data saved');
+    },
   },
+
 };
 </script>

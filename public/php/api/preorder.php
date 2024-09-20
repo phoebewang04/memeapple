@@ -14,7 +14,7 @@ class preorder{
     }
     public function fetchOrdersByDateAndTheme($date, $themeId) {
         // 查詢語句需要根據日期和主題ID進行過濾
-        $sql = "SELECT theme_id, ORDER_TIME, ORDER_ID FROM orderdetails WHERE ORDER_DATE = :date AND theme_id = :themeId";
+        $sql = "SELECT THEME_ID, ORDER_TIME, ORDER_ID FROM orderdetails WHERE ORDER_DATE = :date AND THEME_ID = :themeId";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':date', $date);
         $stmt->bindParam(':themeId', $themeId);

@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url(../css/reset.css);
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC");
+@import url("https://fonts.googleapis.com/css?family=Nanum+Brush+Script");
 body {
   background-color: #100E24;
   color: white;
@@ -218,22 +219,36 @@ p {
 ul#menuBar ul {
   position: absolute;
   z-index: 99;
-  right: 0%;
-  top: 10%;
+  right: 0px;
+  top: 70px;
   min-width: 160px;
   text-align: center;
+}
+@media (max-width: 430px) {
+  ul#menuBar ul {
+    top: 300px;
+    right: 0px;
+  }
 }
 
 ul#menuBar ul li {
   background-color: #100E24;
   border-bottom: #ccc 1px solid;
   cursor: pointer;
-  border: 1px solid white;
   color: white;
 }
 ul#menuBar ul li:hover {
   background-color: #FCD15B;
   color: #100E24;
+}
+@media (max-width: 430px) {
+  ul#menuBar ul li {
+    background-color: #262B3F;
+  }
+}
+
+ul#menuBar ul li:last-child {
+  border-bottom: none;
 }
 
 ul#menuBar ul li .dropDown:hover {
@@ -242,9 +257,15 @@ ul#menuBar ul li .dropDown:hover {
 
 ul#menuBar ul ul { /*第三層以後的選單出現位置與第二層不同*/
   z-index: 999;
-  position: fixed;
-  top: 10%;
-  right: 10%;
+  position: absolute;
+  top: 0px;
+  right: 140px;
+}
+@media (max-width: 430px) {
+  ul#menuBar ul ul {
+    top: 121px;
+    right: 0px;
+  }
 }
 
 ul#menuBar ul {
@@ -991,6 +1012,26 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
     max-width: 160px;
   }
 }
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+  line-height: 1;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
 .join_login {
   margin: 80px auto;
   max-width: 300px;
@@ -1008,6 +1049,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .mainLogin {
+  position: relative;
   background-color: #FFE8BB;
   border-radius: 0 0 8px 8px;
 }
@@ -1015,8 +1057,14 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   text-align: center;
   font-weight: bold;
 }
+.mainLogin a {
+  color: blue;
+}
+.mainLogin a:hover {
+  color: blue; /* 確保 hover 時不改變顏色 */
+}
 
-.mainLogin ul {
+.mainLogin ol {
   margin: 0 2.5%;
   padding: 5px;
   color: #292929;
@@ -1038,6 +1086,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   width: 95%;
   border-radius: 8px;
   padding-left: 8px;
+}
+.mainLogin li:hover {
+  color: inherit; /* 確保 hover 時不改變顏色 */
+  background-color: transparent; /* 或者設置為無背景色 */
 }
 
 #onlogin {
@@ -1098,6 +1150,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   padding: 10px;
 }
 .outloginbtn img {
+  padding: 0;
   text-align: center;
   width: 28px;
   height: 28px;
@@ -1132,7 +1185,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   border-radius: 0 8px 0 0;
 }
 
-.mainJoin ul {
+.mainJoin ol {
   padding: 2px;
 }
 
@@ -1149,8 +1202,11 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   width: 20px;
   margin-top: 8px;
 }
+.checkservers p {
+  font-size: 16px;
+}
 .checkservers a {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #toTopBTN {
@@ -4092,6 +4148,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   position: absolute;
   top: 39%;
   left: 22%;
+  z-index: 2;
 }
 
 .reloadBtn {
@@ -4552,6 +4609,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .next_btn.active {
   background: #FEDA77;
+  cursor: pointer;
 }
 
 /* --------------------------結帳資訊------------------------------------------- */
@@ -5216,7 +5274,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .nextstep .next_btn {
-  background-color: #FEDA77;
+  background-color: lightgray;
   width: 300px;
   height: 40px;
   border-radius: 20px;
@@ -5224,8 +5282,8 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   font-size: 14px;
 }
 
-.nextstep next_btn:hover {
-  background-color: #FCD15B;
+.next_btn.active {
+  background: #FEDA77;
   cursor: pointer;
 }
 
@@ -7734,12 +7792,11 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   color: #292929;
 }
 
-.card_scene {
-  max-width: 100%;
-  position: relative;
+.card_scene.active {
+  display: block;
 }
 
-.card_scene.active {
+.card_scene {
   display: none;
 }
 
@@ -7773,6 +7830,147 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 .card_start_icon img:nth-of-type(3):hover {
   opacity: 0.8;
+}
+
+/* 過渡進入動畫 */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.8s; /* 控制過渡動畫的時間 */
+}
+
+/* 元素進入時的初始狀態 */
+.fade-enter {
+  transition: opacity 0; /* 從透明開始淡入 */
+}
+
+/* 元素離開時的最終狀態 */
+.fade-leave-to {
+  transition: opacity 0; /* 淡出至完全透明 */
+}
+
+.card_game_container {
+  margin: 50px;
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  grid-gap: 16px;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.card_game_info {
+  margin-bottom: 40px;
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: space-between;
+}
+.card_game_info i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+.card_game_info span {
+  font-size: 20px;
+}
+.card_game_info span:nth-of-type(2),
+.card_game_info a {
+  cursor: pointer;
+  color: white;
+  background-color: #28283f;
+  padding: 12px;
+  border-radius: 20px;
+}
+.card_game_info span:nth-of-type(2):hover,
+.card_game_info a:hover {
+  background: #373757;
+}
+.card_game_info #time_remaining {
+  color: #FEDA77;
+  padding: 12px;
+}
+
+.card_monument {
+  position: relative;
+  width: 110px;
+  height: 150px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.card_front,
+.card_back {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 500ms ease-in-out;
+  backface-visibility: hidden;
+}
+
+.card_front {
+  background: #28283f;
+  max-width: 100%;
+}
+.card_front img {
+  position: absolute;
+  bottom: -10%;
+  width: 80%;
+  transition: all 0.5s;
+}
+.card_front:hover {
+  background: #373757;
+}
+.card_front:hover img {
+  bottom: -6%;
+}
+
+.card_back img {
+  width: 70%;
+}
+.card_back img[alt=bat] {
+  width: 90%;
+}
+.card_back img[alt=tombstone] {
+  width: 60%;
+}
+.card_back img[alt=potion] {
+  width: 45%;
+}
+.card_back img[alt=coin],
+.card_back img[alt=eye] {
+  width: 50%;
+}
+
+@keyframes rotate_card {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.card_match {
+  animation: rotate_card 0.6s 0.5s ease-in-out;
+}
+
+.card_back {
+  transform: rotateY(180deg);
+  background-color: #b3bddd;
+}
+
+.card_monument.flipped {
+  transform: rotateY(180deg);
 }
 
 /*# sourceMappingURL=style.css.map */

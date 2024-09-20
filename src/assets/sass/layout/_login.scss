@@ -1,3 +1,22 @@
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    line-height: 1;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
 
 .join_login{
     margin: 80px auto;
@@ -17,16 +36,22 @@
 }
 
 .mainLogin{
+    position: relative;
     background-color:map-get($colors , lightyellow);
     border-radius:0 0 8px 8px;
       h3{
         text-align: center;
         font-weight: bold;
       }
-   
+   a{
+    color: blue;
+    &:hover {
+        color: blue; /* 確保 hover 時不改變顏色 */
+    }
+   }
 }
 
-.mainLogin ul{
+.mainLogin ol{
     margin:0 2.5%;
     padding: 5px;
     color: map-get($colors , black );
@@ -47,6 +72,11 @@
         width: 95%;
         border-radius: 8px;
         padding-left: 8px;
+    }
+    
+    &:hover {
+        color: inherit; /* 確保 hover 時不改變顏色 */
+        background-color: transparent; /* 或者設置為無背景色 */
     }
 }
 
@@ -104,7 +134,7 @@
     }
 
     img{
-        
+        padding: 0;
         text-align: center;
         width:28px;
         height: 28px;

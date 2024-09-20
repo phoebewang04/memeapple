@@ -293,7 +293,8 @@
 }
 
 .nextstep .next_btn {
-    background-color: map-get($colors , yellow );
+    // background-color: map-get($colors , yellow );
+    background-color: lightgray;
     width: 300px;
     height: 40px;
     border-radius: 20px;
@@ -302,7 +303,12 @@
 }
 
 
-.nextstep next_btn:hover {
-    background-color: map-get($colors , gold );
+// .nextstep next_btn:hover {
+//     background-color: map-get($colors , gold );
+//     cursor: pointer;
+// }
+
+.next_btn.active {
+    background: #FEDA77;
     cursor: pointer;
 }

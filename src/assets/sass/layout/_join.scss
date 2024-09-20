@@ -9,7 +9,7 @@
     border-radius:0 8px 0 0;
 }
 
-.mainJoin ul{
+.mainJoin ol{
     padding: 2px;
 }
 
@@ -26,7 +26,10 @@
         width: 20px;
         margin-top: 8px;
     }
+    p{
+        font-size:16px;
+    }
     a{
-        font-size: map-get($fontsize, p);
+        font-size: 16px;
     }
 }
