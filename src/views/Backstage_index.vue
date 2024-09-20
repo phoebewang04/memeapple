@@ -419,7 +419,7 @@ export default {
       </div>
     </div>
     <div v-if="isPreviewVisible" class="backstage_news" @click="hidePreview">
-      <div class="backstage_news_preview" @click.stop>
+      <div class="backstage_news_preview" @click.stop style="background-color: #e5e5e5; border: .5px solid #8F9191; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
         <div class="backstage_news_content">
 
           <table class="backstage_table preview" style="padding: 24px 24px 0 24px;">
