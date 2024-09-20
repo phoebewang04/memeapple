@@ -2687,7 +2687,6 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .backstage_button:hover {
-  border: 1px solid #292929;
   background-color: #FEDA77;
   color: #100E24;
 }
@@ -2823,41 +2822,45 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .bindex_wrapper {
   display: flex;
-  height: calc(100vh - 145px);
+  min-height: calc(100vh - 70px);
+  background-color: #E5E5E5;
 }
 
 .backstage_dashboard {
   width: 100%;
-  height: calc(100vh - 145px);
+  height: 100%;
+  padding: auto;
   align-self: center;
   align-self: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
 }
 
 .backstage_daily {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   height: calc(50% - 8px);
-  justify-content: center;
-  margin-top: 4px;
+  padding-top: 8px;
 }
 
 .backstage_calendar {
-  width: 40%;
+  width: calc(40% - 2PX);
   height: 100%;
+  min-height: 293.66px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.backstage_calendar .vc-bordered {
-  border-color: #100E24;
-}
-.backstage_calendar .vc-light {
-  background-color: #100E24;
-}
 .backstage_calendar .vc-day-content {
   font-size: 2vh;
+  outline: none;
+}
+.backstage_calendar .vc-day-content:focus {
+  outline: none;
 }
 .backstage_calendar .vc-pane-container {
   height: 100%;
@@ -2877,10 +2880,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .backstage_booking {
-  width: 60%;
+  width: calc(60% - 2PX);
   height: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
 }
 .backstage_booking a {
@@ -2889,44 +2892,52 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   color: #100E24;
 }
 .backstage_booking a:hover {
-  color: #4f71a8;
+  color: #FFC700;
 }
 .backstage_booking a:active {
-  color: #FEDA77;
+  color: #292929;
 }
 
 .dashboard_table {
   width: calc(100% - 4px);
   height: 100%;
+  min-height: 293.66px;
   border-radius: 4px;
-  border: 3px solid #293651;
+  border: 3px solid #EFEFEF;
+}
+.dashboard_table thead th {
+  background-color: #f8f8f8;
 }
 .dashboard_table .column-header {
   width: 100px;
 }
 .dashboard_table th {
-  background-color: #100E24;
-  color: #FCD15B;
+  background-color: #f8f8f8;
+  color: #324872;
   font-weight: bold;
   vertical-align: middle;
-  border: 1px solid #293651;
+  border: 1px solid #EFEFEF;
 }
 .dashboard_table td {
-  background-color: #100E24;
+  background-color: white;
   vertical-align: middle;
-  border: 1px solid #293651;
+  border: 1px solid #EFEFEF;
+  line-height: 2;
 }
 .dashboard_table td a {
-  color: white;
+  color: #262B3F;
 }
 
 .backstage_chart {
   display: flex;
   width: 100%;
   height: calc(50% - 8px);
-  justify-content: center;
   margin-top: 4px;
   margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding-bottom: 8px;
 }
 @media (max-width: 1400px) {
   .backstage_chart {
@@ -2935,14 +2946,35 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .theme_income {
-  width: 70%;
+  background-color: white;
+  width: calc(70% - 8px);
   height: 100%;
+  border: 3px solid #EFEFEF;
+}
+.theme_income h5 {
+  color: #100E24;
+  padding: 12px 0 12px 20px;
+}
+.theme_income .bar {
+  height: 85%;
+  width: 95%;
+  margin: 0 auto;
 }
 
 .store_income {
-  width: 30%;
-  height: 80%;
-  align-self: center;
+  background-color: white;
+  width: calc(30% - 8px);
+  height: 100%;
+  border: 3px solid #EFEFEF;
+}
+.store_income h5 {
+  color: #100E24;
+  padding: 12px 0 12px 20px;
+}
+.store_income .pie {
+  height: 90%;
+  width: 95%;
+  margin: 0 auto;
 }
 
 /* ---------------------分館介紹----------------------------- */
@@ -5186,6 +5218,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 .backstage_page_content {
   display: flex;
   flex-direction: column;
+}
+.backstage_page_content .backstage_panel {
+  margin: 0 auto;
+  width: 25%;
 }
 
 .backstage_news_editor {

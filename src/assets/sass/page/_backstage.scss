@@ -158,7 +158,6 @@
   }
 
 .backstage_button:hover{
-    border: 1px solid map-get($colors, black );
     background-color: map-get($colors, yellow );
     color: map-get($colors, darkblue );
 }

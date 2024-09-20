@@ -27,7 +27,7 @@ ChartJS.register(
   BarElement,
   CategoryScale,
   LinearScale,
-  ArcElement
+  ArcElement,
 );
 
 export default {
@@ -52,7 +52,7 @@ export default {
         labels: [],
         datasets: [
           {
-            backgroundColor: "#3c598d",
+            backgroundColor: [],
             data: [],
           },
         ],
@@ -65,23 +65,22 @@ export default {
           x: {
             beginAtZero: true,
             ticks: {
-              color: "#FCD15B",
+              color: "#262B3F",
             },
           },
           y: {
             ticks: {
-              color: "#FCD15B",
+              color: "#262B3F",
             },
           },
         },
-        width: "835px",
       },
       doughnutData: {
         labels: [],
         Legend: { display: false },
         datasets: [
           {
-            backgroundColor: ["#324872", "#4f71a8"],
+            backgroundColor: [],
             data: [],
           },
         ],
@@ -89,7 +88,6 @@ export default {
       doughnutOptions: {
         responsive: true,
         maintainAspectRatio: false,
-        width: "355px",
       },
       isPreviewVisible: false,
       selectedOrderId: '',
@@ -155,7 +153,9 @@ export default {
           datasets: [
             {
               data: themeRevenue.map((theme) => theme.theme_revenue), // 確認使用正確的鍵名
-              backgroundColor: "#3c598d",
+              // backgroundColor: ['#B00000', '#FFC700', '#324872', '#90E7F2', '#C8D1E0', '#8DA18D', '#6EE742'],
+              backgroundColor: '#3d486b',
+              
             },
           ],
         };
@@ -165,7 +165,7 @@ export default {
           datasets: [
             {
               data: storeRevenue.map((store) => store.store_revenue), // 確認使用正確的鍵名
-              backgroundColor: ["#324872", "#4f71a8"],
+              backgroundColor: ["#FCD15B", "#5265a3"],
             },
           ],
         };
@@ -226,7 +226,7 @@ export default {
 <template>
   <TopNavbarBack />
 
-  <main class="bindex_wrapper">
+  <main class="backstage_main bindex_wrapper">
     <div class="wrapper backstage_wrapper">
       <!-- 儀表板 -->
       <div class="backstage_dashboard">
@@ -236,7 +236,7 @@ export default {
               title-position="left" style="width: 100%; height: 100%" />
           </div>
           <div class="backstage_booking">
-            <table class="backstage_table dashboard_table" style="width: 99%; height: 99%">
+            <table class="backstage_table dashboard_table">
               <thead class="backstage_tablehead">
                 <tr style="height: 34px">
                   <th style="width: 100px" class="column-header"></th>
@@ -249,7 +249,7 @@ export default {
                 </tr>
               </thead>
               <tbody>
-                <tr style="height: 45px">
+                <tr>
                   <th class="column-header">成都醫院</th>
                   <td>
                     <a href="#" @click="showPreview(getOrder(1, '10:30'))">{{ getOrder(1, "10:30") }}</a>
@@ -270,7 +270,7 @@ export default {
                     <a href="#" @click="showPreview(getOrder(1, '18:15'))">{{ getOrder(1, "18:15") }}</a>
                   </td>
                 </tr>
-                <tr style="height: 45px">
+                <tr>
                   <th class="column-header">時光迷宮</th>
                   <td>
                     <a href="#" @click="showPreview(getOrder(2, '10:30'))">{{ getOrder(2, "10:30") }}</a>
@@ -291,7 +291,7 @@ export default {
                     <a href="#" @click="showPreview(getOrder(2, '18:15'))">{{ getOrder(2, "18:15") }}</a>
                   </td>
                 </tr>
-                <tr style="height: 45px">
+                <tr>
                   <th class="column-header">末日庇護所</th>
                   <td>
                     <a href="#" @click="showPreview(getOrder(3, '10:30'))">{{ getOrder(3, "10:30") }}</a>
@@ -312,7 +312,7 @@ export default {
                     <a href="#" @click="showPreview(getOrder(3, '18:15'))">{{ getOrder(3, "18:15") }}</a>
                   </td>
                 </tr>
-                <tr style="height: 45px">
+                <tr>
                   <th class="column-header">代碼深淵</th>
                   <td>
                     <a href="#" @click="showPreview(getOrder(4, '10:30'))">{{ getOrder(4, "10:30") }}</a>
@@ -333,7 +333,7 @@ export default {
                     <a href="#" @click="showPreview(getOrder(4, '18:15'))">{{ getOrder(4, "18:15") }}</a>
                   </td>
                 </tr>
-                <tr style="height: 45px">
+                <tr>
                   <th class="column-header">逃離武石監</th>
                   <td>
                     <a href="#" @click="showPreview(getOrder(5, '10:30'))">{{ getOrder(5, "10:30") }}</a>
@@ -354,7 +354,7 @@ export default {
                     <a href="#" @click="showPreview(getOrder(5, '18:15'))">{{ getOrder(5, "18:15") }}</a>
                   </td>
                 </tr>
-                <tr style="height: 45px">
+                <tr>
                   <th class="column-header">恐怖密室</th>
                   <td>
                     <a href="#" @click="showPreview(getOrder(6, '10:30'))">{{ getOrder(6, "10:30") }}</a>
@@ -375,7 +375,7 @@ export default {
                     <a href="#" @click="showPreview(getOrder(6, '18:15'))">{{ getOrder(6, "18:15") }}</a>
                   </td>
                 </tr>
-                <tr style="height: 45px">
+                <tr>
                   <th class="column-header">逃出虛空</th>
                   <td>
                     <a href="#" @click="showPreview(getOrder(7, '10:30'))">{{ getOrder(7, "10:30") }}</a>
@@ -402,12 +402,18 @@ export default {
         </div>
         <div class="backstage_chart">
           <div class="theme_income barChart">
-            <!-- bar -->
-            <Bar ref="barChart" :data="chartData" :options="chartOptions" />
+            <h5>各主題每月營收：</h5>
+            <div class="bar">
+              <!-- bar -->
+              <Bar class="bar" ref="barChart" :data="chartData" :options="chartOptions" />
+            </div>
           </div>
           <div class="store_income pieChart">
+            <h5>各分店每月營收：</h5>
+            <div class="pie">  
             <!-- pie -->
-            <Doughnut ref="doughnutChart" :data="doughnutData" :options="doughnutOptions" />
+            <Doughnut class="pie" ref="doughnutChart" :data="doughnutData" :options="doughnutOptions" />
+            </div>
           </div>
         </div>
       </div>
@@ -416,7 +422,7 @@ export default {
       <div class="backstage_news_preview" @click.stop>
         <div class="backstage_news_content">
 
-          <table class="backstage_table" style="margin: 24px;">
+          <table class="backstage_table preview" style="padding: 24px 24px 0 24px;">
             <thead class="backstage_tablehead">
               <tr>
                 <th class="column-header" style="width: 100px;">日期</th>
@@ -466,79 +472,19 @@ export default {
 /* 小汪部分VCalendar樣式設定，9/16更新後必須加上否則跑版 */
 
 .vc-bordered {
-    border-radius: 0px;
+    border-radius: 4px;
+    border: 3px solid #EFEFEF;
 }
 .vc-pane-container {
-  background-color: #100E24;
-  width: 520px ;
-  height: 375px;
-
-  @media screen and (max-width: 1100px){
-    width: 430px;
-  } 
-
-  @media screen and (max-width: 1015px){
-    width: 380px;
-  } 
-
-  @media screen and (max-width: 1000px){
-    width: 330px;
-  } 
-
-  @media screen and (max-width: 920px){
-    width: 280px;
-  } 
-
-  @media screen and (max-width: 820px){
-    width: 630px;
-  } 
-
-  @media screen and (max-width: 768px){
-    width: 586px;
-  } 
-
-  @media screen and (max-width: 680px){
-    width: 520px;
-  } 
-
-  @media screen and (max-width: 590px){
-    width: 452px;
-  } 
-
-  @media screen and (max-width: 540px){
-    width: 415px;
-  } 
-
-  @media screen and (max-width: 430px) {
-    width: 328px;
-    
-  }
-
-  @media screen and (max-width: 412px) {
-    width: 315px;
-    
-  }
-
-  @media screen and (max-width: 414px) {
-    width: 316px;
-    
-  }
-
-  @media screen and (max-width: 390px) {
-    width: 260px;
-    
-  }
-
-  @media screen and (max-width: 375px) {
-    width: 289px;
-    
-  }
+    background-color: #ffffff;
+    width: 520px ;
+    height: 373px;
 }
 
 .vc-header {
     height: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
     padding-left: 25px;
     padding-right: 25px;
 }
@@ -551,6 +497,10 @@ export default {
     color: #100E24;
 }
 
+.vc-header .vc-arrow:active{
+    border: 1px solid #100E24;
+}
+
 .vc-base-icon {
     width: 30px;
     height: 30px;
@@ -561,19 +511,19 @@ export default {
 }
 
 .vc-header .vc-title {
-    background-color: #100E24;
-    color: #ffff;
+    background-color: #ffffff;
+    color: #324872;
     font-size: 24px;
 }
 
 .vc-weekday {
-    color: #ffff;
+    color: #324872;
     font-size: 20px;
     margin-bottom: 10px;
 }
 
 .vc-weeks {
-    color: #ffff;
+    color: #324872;
 }
 
 
@@ -592,9 +542,8 @@ export default {
     background-color: #FCD15B;
 }
 
-.vc-container *:focus {
-    outline: 3px solid #100E24;
-    background-color:#FCD15B;
+.vc-container *:active {
+    outline: none;
 }
 
 </style>

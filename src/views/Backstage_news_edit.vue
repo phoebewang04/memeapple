@@ -139,10 +139,11 @@ export default {
                     <input type="file" ref="fileInput" @change="onFileChange" style="display: none;">
                     <span v-if="fileName">{{ fileName }}</span>
                 </div>
-                <div class="backstage_panel">
+                <div class="backstage_panel news_edit">
                     <!-- click this button to show div id="backstage_news_preview" -->
                     <button class="btn backstage_button" id="button_preview" @click="showPreview">預覽</button>
                     <button class="btn backstage_button" @click="saveNews">{{ isEditMode ? '更新' : '新增' }}</button>
+                    <router-link to="/NewsMenage/"><button class="btn backstage_button">取消</button></router-link>
                 </div>
                 <div v-if="isPreviewVisible" class="backstage_news" @click="hidePreview">
                     <div class="backstage_news_preview" @click.stop>
