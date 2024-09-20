@@ -991,6 +991,26 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
     max-width: 160px;
   }
 }
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+  line-height: 1;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
 .join_login {
   margin: 80px auto;
   max-width: 300px;
@@ -1008,6 +1028,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .mainLogin {
+  position: relative;
   background-color: #FFE8BB;
   border-radius: 0 0 8px 8px;
 }
@@ -1015,8 +1036,14 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   text-align: center;
   font-weight: bold;
 }
+.mainLogin a {
+  color: blue;
+}
+.mainLogin a:hover {
+  color: blue; /* 確保 hover 時不改變顏色 */
+}
 
-.mainLogin ul {
+.mainLogin ol {
   margin: 0 2.5%;
   padding: 5px;
   color: #292929;
@@ -1038,6 +1065,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   width: 95%;
   border-radius: 8px;
   padding-left: 8px;
+}
+.mainLogin li:hover {
+  color: inherit; /* 確保 hover 時不改變顏色 */
+  background-color: transparent; /* 或者設置為無背景色 */
 }
 
 #onlogin {
@@ -1098,6 +1129,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   padding: 10px;
 }
 .outloginbtn img {
+  padding: 0;
   text-align: center;
   width: 28px;
   height: 28px;
@@ -1132,7 +1164,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   border-radius: 0 8px 0 0;
 }
 
-.mainJoin ul {
+.mainJoin ol {
   padding: 2px;
 }
 
@@ -1149,8 +1181,11 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   width: 20px;
   margin-top: 8px;
 }
+.checkservers p {
+  font-size: 16px;
+}
 .checkservers a {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #toTopBTN {

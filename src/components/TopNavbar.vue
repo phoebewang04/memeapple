@@ -1,10 +1,22 @@
 <script>
 import '../assets/css/style.css';
+import LoginRegisterPopup from './login.vue';
 
 export default {
+  components: {
+        LoginRegisterPopup
+    },
+  props: {
+    isLoggedIn: {
+      type: Boolean,
+      required: true,
+    },
+  },
   data() {
     return {
-      visible_active: false
+      isLoggedIn: false,
+      visible_active: false,
+      showPopup: false
     };
   },
   methods: {
@@ -19,7 +31,11 @@ export default {
       } else {
         this.visible_active = false;
       }
-    }
+    },
+    logout() {
+      this.isLoggedIn = false;
+      this.$emit('logout'); // 發出登出事件
+    },
   },
   created() {
     this.handleResize();
@@ -38,7 +54,14 @@ export default {
     <router-link to="/index/"><img src="../assets/img/memelogo.svg" alt=""></router-link>
     <font-awesome-icon class="fa" icon="bars" @click="showMenuBar"></font-awesome-icon>
     <ul id="menuBar" :class="{ visible: visible_active }">
-      <li><router-link to="/Login/">會員登入</router-link></li>
+      <div v-if="isLoggedIn">
+      <li><a @click="logout">登出</a> <!-- 只顯示登出按鈕 --></li>
+      </div>
+      <div v-else>
+        <li><a @click="showPopup = true">會員登入</a></li>
+      </div>
+      <!-- <li><a @click="showPopup = true">會員登入</a></li> -->
+      <LoginRegisterPopup v-if="showPopup" @close="showPopup = false" />
       <li><router-link to="/Membermanage/">會員專區</router-link></li>
       <li><router-link to="/Minigame/">線上體驗</router-link></li>
       <li><router-link to="/Branch/">分館介紹</router-link></li>
