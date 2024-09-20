@@ -73,6 +73,11 @@
     text-align: center;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
     animation-iteration-count:1;
+
+    @media screen and (max-width: 430px) {
+      height: 40%;
+      width: 100%;
+    }
   }
   
   .result-image {
@@ -80,6 +85,10 @@
     height: auto;
     margin: 10px 0;
     z-index: 2;
+
+    @media screen and (max-width: 430px) {
+      max-width: 100%; 
+    }
   }
   
   .confirm-btn {
