@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url(../css/reset.css);
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC");
+@import url("https://fonts.googleapis.com/css?family=Nanum+Brush+Script");
 body {
   background-color: #100E24;
   color: white;
@@ -218,22 +219,36 @@ p {
 ul#menuBar ul {
   position: absolute;
   z-index: 99;
-  right: 0%;
-  top: 10%;
+  right: 0px;
+  top: 70px;
   min-width: 160px;
   text-align: center;
+}
+@media (max-width: 430px) {
+  ul#menuBar ul {
+    top: 300px;
+    right: 0px;
+  }
 }
 
 ul#menuBar ul li {
   background-color: #100E24;
   border-bottom: #ccc 1px solid;
   cursor: pointer;
-  border: 1px solid white;
   color: white;
 }
 ul#menuBar ul li:hover {
   background-color: #FCD15B;
   color: #100E24;
+}
+@media (max-width: 430px) {
+  ul#menuBar ul li {
+    background-color: #262B3F;
+  }
+}
+
+ul#menuBar ul li:last-child {
+  border-bottom: none;
 }
 
 ul#menuBar ul li .dropDown:hover {
@@ -242,9 +257,15 @@ ul#menuBar ul li .dropDown:hover {
 
 ul#menuBar ul ul { /*第三層以後的選單出現位置與第二層不同*/
   z-index: 999;
-  position: fixed;
-  top: 10%;
-  right: 10%;
+  position: absolute;
+  top: 0px;
+  right: 140px;
+}
+@media (max-width: 430px) {
+  ul#menuBar ul ul {
+    top: 121px;
+    right: 0px;
+  }
 }
 
 ul#menuBar ul {
@@ -4046,6 +4067,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   position: absolute;
   top: 39%;
   left: 22%;
+  z-index: 2;
 }
 
 .reloadBtn {
@@ -4506,6 +4528,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .next_btn.active {
   background: #FEDA77;
+  cursor: pointer;
 }
 
 /* --------------------------結帳資訊------------------------------------------- */
@@ -5170,7 +5193,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .nextstep .next_btn {
-  background-color: #FEDA77;
+  background-color: lightgray;
   width: 300px;
   height: 40px;
   border-radius: 20px;
@@ -5178,8 +5201,8 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   font-size: 14px;
 }
 
-.nextstep next_btn:hover {
-  background-color: #FCD15B;
+.next_btn.active {
+  background: #FEDA77;
   cursor: pointer;
 }
 

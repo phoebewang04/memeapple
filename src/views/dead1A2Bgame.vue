@@ -52,7 +52,7 @@
             <!-- -------輸入框跟按鈕------- -->
             <el-input maxlength="4" placeholder="請輸入四位數字" v-model="guess" :readonly="isReadOnly" @keyup.enter="checkGuess" class="guessNumberBox"></el-input>
             <el-button id="enterBtn" :disabled="!isValidGuess"  @click="checkGuess" class="btn playBtn" >送出</el-button>
-            <!-- <el-button id="answerBtn" @click="showAnswer" class="btn answerBtn">Answer</el-button> -->
+             <el-button id="answerBtn" @click="showAnswer" class="btn answerBtn">Answer</el-button>
             <!-- <el-button id="reloadBtn" @click="reloadPage" class="btn reloadBtn">Reload</el-button>  -->
 
             <!-- -------重新開始------- -->
@@ -415,5 +415,5 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Lilita+One&family=Nerko+One&family=Permanent+Marker&family=Playwrite+CU:wght@100..400&family=Protest+Guerrilla&display=swap');
+
 </style>

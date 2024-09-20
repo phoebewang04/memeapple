@@ -258,11 +258,11 @@
         </div>
 
       
-        <RouterLink :to="{ path: `/Theme/${$route.params.id}/preorder/orderinform` }">
+        <RouterLink :to="{ path: `/Theme/${$route.params.id}/preorder/orderinform` }" @click.prevent="goToNextPage">
             <div class="nextstep" >
-                <button class="btn next_btn" @click="goToNextPage">下一步</button>
+                <button class="btn next_btn" @click="goToNextPage" :disabled="!dataValid" :class="{active: dataValid}">下一步</button>
             </div>
-        </RouterLink>
+        </RouterLink> 
     
     </div>
     <Footerbar />
@@ -295,19 +295,21 @@ export default {
             themeId: this.$route.params.id,  // 從路由中獲取的主題 ID
             orders: [], //儲存從後端 API 查詢到的訂單資料，用於決定哪些場次已被預訂
             timeSlots: [
-                { time: "10:30", disabled: false },
-                { time: "11:15", disabled: false },
-                { time: "12:55", disabled: false },
-                { time: "14:35", disabled: false },
-                { time: "16:30", disabled: false },
-                { time: "18:15", disabled: false }
+                { time: "10：30", disabled: false },
+                { time: "11：15", disabled: false },
+                { time: "12：55", disabled: false },
+                { time: "14：35", disabled: false },
+                { time: "16：30", disabled: false },
+                { time: "18：15", disabled: false }
             ],
             selectedTimeSlot: null,
             attrs: [
                 {
                 key: 'today',
+                class: 'selected-date',
                 highlight: true,
                 dates: new Date(), 
+                
                 },
             ],
             peopleAmount: '0',
@@ -324,8 +326,22 @@ export default {
                 this.selectedDate = formattedDate;
                 console.log("格式化後的日期：", formattedDate);
                 this.queryDatabaseByDate(formattedDate);
-                // this.selectedTimeSlot = null;
+                
+                this.selectedTimeSlot = null;
+                localStorage.setItem('selectedDate', formattedDate);
                 localStorage.removeItem('selectedTimeSlot');
+                this.timeSlots.forEach(slot => {
+                slot.selected = false; // 重置每個場次的選擇狀態
+                });
+
+                this.attrs = [
+                {
+                    key: 'formattedDate',
+                    dates: formattedDate,  // 這裡使用選中的日期
+                    highlight: true,
+                    class: 'selected-date' // 自定義的選中樣式
+                }
+            ];
             } else {
                 console.error("無效的日期值：", date);
             }
@@ -340,34 +356,34 @@ export default {
                     `http://localhost/appleTeam/public/php/api/preorder.php?date=${date}&themeId=${this.themeId}`
                 );
                 console.log("伺服器回應：", response); // 檢查伺服器回應
-                this.orders = response.data; // 直接使用回應的資料
-                this.updateTimeSlots(); // 根據回傳的資料更新 timeSlots 的 disabled 狀態
+                this.orders = response.data;// 直接使用回應的資料
+                this.updateTimeSlots(); 
                 console.log("查詢結果：", this.orders); // 檢查回傳的資料結構
-            } catch (error) {
-                console.error("查詢失敗：", error);
+                } catch (error) {
+                    console.error("查詢失敗：", error);
             }
         },
-        updateTimeSlots() {
-            // 檢查 orders，根據每個場次的時間來更新其 `disabled` 狀態
-            this.timeSlots.forEach(slot => {
-                // 檢查是否有訂單的時間與場次時間匹配
-                const order = this.orders.find(o => {
-                    const orderTime = o.ORDER_TIME.split(':').slice(0, 2).join(':'); // 提取訂單時間的 小時:分鐘
-                    return orderTime === slot.time; // 如果訂單時間匹配場次時間
+         updateTimeSlots() {
+           // 檢查 orders，根據每個場次的時間來更新其 `disabled` 狀態
+             this.timeSlots.forEach(slot => {
+              // 檢查是否有訂單的時間與場次時間匹配
+                 const order = this.orders.find(o => {
+                   const orderTime = o.ORDER_TIME.split(':').slice(0, 2).join(':'); // 提取訂單時間的 小時:分鐘
+                   return orderTime === slot.time; // 如果訂單時間匹配場次時間
                 });
-                // 如果找到匹配的訂單，將該場次設為 disabled，否則可選
+                 // 如果找到匹配的訂單，將該場次設為 disabled，否則可選
                 slot.disabled = !!order; // order 存在則設置 disabled
             });
             
-        },
+         },
 
         selectTimeSlot(slot) {
             if (!slot.disabled) {
-                // 將選中的場次時間保存到 localStorage
                 localStorage.setItem('selectedTimeSlot', slot.time);
-                
-                console.log("已選擇場次：", slot.time);
                 this.selectedTimeSlot = slot.time;
+                
+                // 不更改日期，只處理場次
+                console.log("已選擇場次：", slot.time);
 
             }
         },
@@ -385,24 +401,47 @@ export default {
         },
         goToNextPage (){
             localStorage.setItem ('peopleAmount', this.peopleAmount);
-            const selectedTimeSlot = localStorage.getItem('selectedTimeSlot');
-            if (selectedTimeSlot === 0) {
+
+            if (!selectedDate) {
+                alert('請選擇一個日期');
+                return; 
+            } else if (!selectedTimeSlot) {
                 alert('請選擇一個場次');
+                return; 
+            } else if (peopleAmount === '0') {
+                alert('請選擇人數');
+                return; 
             }
 
         },
+    },
+
+    computed: {
+        dataValid (){
+            return (
+                this.selectedDate && this.selectedTimeSlot && this.peopleAmount     
+            )
+            
+        }
     },
 
     mounted (){
 
         const themeId = this.$route.params.id;
         this.theme = this.all_data[themeId]; 
-        this.selectedDate = new Date().toISOString().split("T")[0];
+        // this.selectedDate = new Date().toISOString().split("T")[0];
+        const today = new Date().toISOString().split('T')[0];
+
+        // 將當前日期存入 localStorage
+        localStorage.setItem('selectedDate', today);
+        // 設置 selectedDate 並查詢當天的預訂信息
+        this.selectedDate = today;
+        console.log('當天的日期已存入 localStorage:', today);
         this.queryDatabaseByDate(this.selectedDate);
 
+        // localStorage.clear();
 
     }
-
 
 }
 
@@ -560,6 +599,10 @@ export default {
 .vc-container *:focus {
     outline: 3px solid #100E24;
     background-color:#FCD15B;
+}
+
+.selected-date {
+    background-color: #FCD15B;  
 }
 
 /* ------------------------------------------------------------------------ */
