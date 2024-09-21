@@ -62,6 +62,7 @@ export default {
     },
   },
   created() {
+    this.checkLoginStatus();
     this.handleResize();
   },
   mounted() {

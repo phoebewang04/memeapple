@@ -1,6 +1,11 @@
 .backstage_page_content{
     display: flex;
     flex-direction: column;
+
+    & .backstage_panel{
+        margin: 0 auto;
+        width: 25%;
+    }
 }
 
 .backstage_news_editor{

@@ -1263,12 +1263,23 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   width: 100%;
   display: flex;
   text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 800px 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "logo text empty";
   align-items: center;
+  justify-items: center;
 }
 .backstage_footer_one img {
   width: 30%;
+  grid-area: logo;
+  margin: 0 auto;
 }
 
+.bm_text1 {
+  grid-area: text;
+  margin: 0 auto;
+}
 .bm_text1 p {
   text-align: center;
   font-size: 14px;
@@ -2744,7 +2755,6 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .backstage_button:hover {
-  border: 1px solid #292929;
   background-color: #FEDA77;
   color: #100E24;
 }
@@ -2880,41 +2890,46 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .bindex_wrapper {
   display: flex;
-  height: calc(100vh - 145px);
+  min-height: calc(100vh - 70px);
+  background-color: #E5E5E5;
 }
 
 .backstage_dashboard {
   width: 100%;
-  height: calc(100vh - 145px);
+  height: 100%;
+  padding: auto;
   align-self: center;
   align-self: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
 }
 
 .backstage_daily {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   height: calc(50% - 8px);
-  justify-content: center;
-  margin-top: 4px;
+  padding-top: 8px;
 }
 
 .backstage_calendar {
-  width: 40%;
+  width: calc(40% - 2PX);
   height: 100%;
+  min-height: 293.66px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.backstage_calendar .vc-bordered {
-  border-color: #100E24;
-}
-.backstage_calendar .vc-light {
-  background-color: #100E24;
+  border-radius: 8px;
 }
 .backstage_calendar .vc-day-content {
   font-size: 2vh;
+  outline: none;
+}
+.backstage_calendar .vc-day-content:focus {
+  outline: none;
 }
 .backstage_calendar .vc-pane-container {
   height: 100%;
@@ -2934,10 +2949,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .backstage_booking {
-  width: 60%;
+  width: calc(60% - 2PX);
   height: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
 }
 .backstage_booking a {
@@ -2946,44 +2961,52 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   color: #100E24;
 }
 .backstage_booking a:hover {
-  color: #4f71a8;
+  color: #FFC700;
 }
 .backstage_booking a:active {
-  color: #FEDA77;
+  color: #292929;
 }
 
 .dashboard_table {
-  width: calc(100% - 4px);
+  width: 100%;
   height: 100%;
-  border-radius: 4px;
-  border: 3px solid #293651;
+  min-height: 293.66px;
+  border-radius: 8px;
+  border: 3px solid #EFEFEF;
+}
+.dashboard_table thead th {
+  background-color: #f8f8f8;
 }
 .dashboard_table .column-header {
   width: 100px;
 }
 .dashboard_table th {
-  background-color: #100E24;
-  color: #FCD15B;
+  background-color: #f8f8f8;
+  color: #324872;
   font-weight: bold;
   vertical-align: middle;
-  border: 1px solid #293651;
+  border: 1px solid #EFEFEF;
 }
 .dashboard_table td {
-  background-color: #100E24;
+  background-color: white;
   vertical-align: middle;
-  border: 1px solid #293651;
+  border: 1px solid #EFEFEF;
+  line-height: 2;
 }
 .dashboard_table td a {
-  color: white;
+  color: #262B3F;
 }
 
 .backstage_chart {
   display: flex;
   width: 100%;
   height: calc(50% - 8px);
-  justify-content: center;
   margin-top: 4px;
   margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding-bottom: 8px;
 }
 @media (max-width: 1400px) {
   .backstage_chart {
@@ -2992,14 +3015,37 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .theme_income {
-  width: 70%;
+  background-color: white;
+  width: calc(70% - 8px);
   height: 100%;
+  border: 3px solid #EFEFEF;
+  border-radius: 8px;
+}
+.theme_income h5 {
+  color: #100E24;
+  padding: 12px 0 12px 20px;
+}
+.theme_income .bar {
+  height: 85%;
+  width: 95%;
+  margin: 0 auto;
 }
 
 .store_income {
-  width: 30%;
-  height: 80%;
-  align-self: center;
+  background-color: white;
+  width: calc(30% - 8px);
+  height: 100%;
+  border: 3px solid #EFEFEF;
+  border-radius: 8px;
+}
+.store_income h5 {
+  color: #100E24;
+  padding: 12px 0 12px 20px;
+}
+.store_income .pie {
+  height: 90%;
+  width: 95%;
+  margin: 0 auto;
 }
 
 /* ---------------------分館介紹----------------------------- */
@@ -5246,6 +5292,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   display: flex;
   flex-direction: column;
 }
+.backstage_page_content .backstage_panel {
+  margin: 0 auto;
+  width: 25%;
+}
 
 .backstage_news_editor {
   margin-top: 20px;
@@ -5926,6 +5976,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   100% {
     transform: translateY(0px);
   }
+}
+
+.game_esc, .game_1A2B, .game_cardmatching {
+  cursor: pointer;
 }
 
 .zombie_bighand {
@@ -7137,6 +7191,8 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   border: none;
   padding: 12px 20px;
   border-radius: 20px;
+  width: 200px;
+  height: 60px;
   cursor: pointer;
 }
 .esc_start_btn button i {
@@ -7578,6 +7634,78 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   width: 100%;
 }
 
+@media (max-width: 900px) {
+  .esc_start p {
+    font-size: 18px;
+  }
+  .esc_start_btn button {
+    font-size: 18px;
+    padding: 10px 18px;
+    width: 180px;
+    height: 55px;
+  }
+}
+@media (max-width: 750px) {
+  .esc_start p {
+    font-size: 16px;
+  }
+  .esc_start_btn {
+    top: 52%;
+  }
+  .esc_start_btn button {
+    font-size: 16px;
+    width: 164px;
+    height: 50px;
+  }
+}
+@media (max-width: 650px) {
+  .esc_start p {
+    font-size: 14px;
+  }
+  .esc_start_btn button {
+    font-size: 14px;
+    width: 150px;
+    height: 45px;
+  }
+  .esc_start_btn {
+    top: 55%;
+  }
+}
+@media (max-width: 550px) {
+  .esc_start p {
+    font-size: 13px;
+  }
+  .esc_start_btn button {
+    font-size: 13px;
+    width: 136px;
+    height: 40px;
+  }
+  .esc_start_btn {
+    top: 60%;
+    gap: 20px;
+  }
+}
+@media (max-width: 450px) {
+  .esc_start p {
+    font-size: 12px;
+  }
+  .esc_start_btn button {
+    font-size: 12px;
+    width: 113px;
+    height: 33px;
+    line-height: 1.2;
+    padding: 0;
+  }
+  .esc_start_btn button i {
+    margin-right: 4px;
+  }
+}
+@media (max-width: 400px) {
+  .esc_start_btn {
+    top: 65%;
+    gap: 10px;
+  }
+}
 .main-privacy {
   display: flex;
   flex-direction: column;
@@ -7756,6 +7884,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   top: 0;
 }
 
+.card_container {
+  position: relative;
+}
+
 .card_start_icon img {
   position: absolute;
 }
@@ -7781,21 +7913,6 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 .card_start_icon img:nth-of-type(3):hover {
   opacity: 0.8;
-}
-
-/* 過渡進入動畫 */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.8s; /* 控制過渡動畫的時間 */
-}
-
-/* 元素進入時的初始狀態 */
-.fade-enter {
-  transition: opacity 0; /* 從透明開始淡入 */
-}
-
-/* 元素離開時的最終狀態 */
-.fade-leave-to {
-  transition: opacity 0; /* 淡出至完全透明 */
 }
 
 .card_game_container {
@@ -7825,8 +7942,14 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   cursor: pointer;
   color: white;
   background-color: #28283f;
-  padding: 12px;
+  padding: 4px;
   border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 40px;
+  line-height: 40px;
 }
 .card_game_info span:nth-of-type(2):hover,
 .card_game_info a:hover {
@@ -7870,11 +7993,11 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   width: 80%;
   transition: all 0.5s;
 }
-.card_front:hover {
-  background: #373757;
-}
 .card_front:hover img {
   bottom: -6%;
+}
+.card_front:hover {
+  background: #373757;
 }
 
 .card_back img {
@@ -7922,6 +8045,65 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .card_monument.flipped {
   transform: rotateY(180deg);
+}
+
+@media (max-width: 1040px) {
+  .card_game_container {
+    grid-template-columns: repeat(4, auto);
+  }
+  .card_game_info {
+    gap: 20px;
+  }
+  .card_game_info i {
+    font-size: 18px;
+  }
+  .card_game_info span {
+    font-size: 18px;
+  }
+}
+@media (max-width: 610px) {
+  .card_game_info {
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 8px;
+  }
+  .card_game_info i {
+    font-size: 16px;
+  }
+  .card_game_info span {
+    font-size: 16px;
+  }
+  .card_game_info span:nth-of-type(2),
+  .card_game_info a {
+    width: 116px;
+    height: 32px;
+    line-height: 32px;
+  }
+  .card_monument {
+    width: 87px;
+    height: 126px;
+  }
+}
+@media (max-width: 430px) {
+  .card_game_info {
+    margin-bottom: 10px;
+  }
+  .card_game_info i {
+    font-size: 13px;
+  }
+  .card_game_info span {
+    font-size: 13px;
+  }
+  .card_game_info span:nth-of-type(2),
+  .card_game_info a {
+    width: 105px;
+    height: 29px;
+    line-height: 29px;
+  }
+  .card_monument {
+    width: 72px;
+    height: 105px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

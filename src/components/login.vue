@@ -129,9 +129,31 @@ export default {
             this.showPopup = false;
             this.$emit('close'); // 可選：通知父組件關閉
         },
+//         async submitLogin() {
+//   try {
+//     const response = await axios.post('http://localhost/appleyy/public/php/api/Login.php', {
+//       username: this.username,
+//       password: this.password
+//     });
+//     if (response.data.status === "success") {
+//       alert("登入成功");
+
+//       localStorage.setItem('user', JSON.stringify({ username: this.username }));
+
+//       this.$emit('loginSuccess'); // 通知父組件登入成功
+
+//       this.closePopup(); // 關閉登入畫面
+//     } else {
+//       alert(response.data.message); // 顯示錯誤消息
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     alert("發生錯誤，請稍後再試。");
+//   }
+// },
         async submitLogin() {
             try {
-                const response = await axios.post('http://localhost/sweethome/meme/public/php/api/Login.php', {
+                const response = await axios.post('http://localhost/appleyy/public/php/api/Login.php', {
                     username: this.username,
                     password: this.password
                 });
@@ -194,7 +216,7 @@ export default {
 
             // 如果所有檢查都通過，則進行註冊請求
                 try {
-                    const response = await axios.post('http://localhost/sweethome/meme/public/php/api/Register.php', {
+                    const response = await axios.post('http://localhost/appleyy/public/php/api/Register.php', {
                         email: this.registerEmail,
                         password: this.registerPassword,
                         name: this.registerName,

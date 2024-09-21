@@ -208,8 +208,6 @@ export default {
   },
   data() {
     return {
-      gameId: 3,
-
       currentSceneIndex: 0, //當前的場景索引
 
       //------------辦公室------------
@@ -259,6 +257,7 @@ export default {
     };
   },
   mounted() {
+    
     const axe = this.$refs.axe;
     const window = this.$refs.window;
     const brokenWindow = this.$refs.brokenWindow;
@@ -339,7 +338,7 @@ export default {
       secAlert.fire({
         title: "新手教學",
         imageUrl: this.clueImages[10],
-        html: '一進入密室後，右上角的＋號背包會一直陪伴著你！<br><br><li>場景資訊：快速了解每個關卡的環境。</li><br><li>密室提示：遇到瓶頸時，點擊燈泡獲取提示</li><br><li>好想回家：點擊此按鈕返回遊戲選單頁<br><br>（勇者無法回頭，但我不會攔你！）</li><br>建議使用電腦操作<br>並開啟全螢幕畫面（F11）及聲音，以獲得最佳遊戲體驗！',
+        html: '一進入密室後，右上角的＋號背包會一直陪伴著你！<br><br><li>場景資訊：快速了解每個關卡的環境。</li><br><li>密室提示：遇到瓶頸時，點擊燈泡獲取提示</li><br><li>好想回家：點擊此按鈕返回遊戲選單頁<br>（勇者無法回頭，但我不會攔你！）</li><br>建議使用電腦操作，並開啟全螢幕畫面（F11）及聲音。<br>若使用手機請轉向，以獲得最佳遊戲體驗！',
         // html: this.clueHint[index],
       });
     },
@@ -596,10 +595,12 @@ export default {
 
     // 確認是否可以領取優惠券
     async checkCoupon() {
-      try {
-        const memberId = 12; // 假設的會員ID
-        const discount = 150;   // 假設的遊戲ID
 
+      const user = JSON.parse(localStorage.getItem('user'));
+      const memberId = user.id; // 假設的會員ID
+      const discount = 150;
+
+      try {
         // 在調用 API 之前顯示一個 console.log，確認方法被調用
         // console.log('checkCoupon 方法被調用了，gameId:', gameId);
 
@@ -635,18 +636,19 @@ export default {
       form_data.append("member_id", memberId);
       form_data.append("discount", discount);
 
-      let res = await fetch("http://localhost/appleyy/public/php/api/coupon.php", {
-        method: "POST",
-        body: form_data
-      });
-      let data = await res.json();
-      console.log(data);
-
-      // const response = await axios.post(`http://localhost/appleyy/public/php/api/coupon.php`, {
-      //   member_id: memberId,
-      //   discount: discount
+      // let res = await fetch("http://localhost/appleyy/public/php/api/coupon.php", {
+      //   method: "POST",
+      //   body: form_data
       // });
-      //console.log('優惠券發放成功:', response.data);
+      // let data = await res.json();
+      // console.log(data);
+
+      const response = await axios.post("http://localhost/appleyy/public/php/api/coupon.php", form_data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      console.log('優惠券發放成功:', response.data);
     } catch (error) {
       console.error("發放優惠券時出錯:", error);
     }

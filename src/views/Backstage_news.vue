@@ -131,7 +131,7 @@
             },
             // 更新狀態
             async updateStatus(news) {
-                const newStatus = news.STATUS === 1 ? 0 : 1;
+                const newStatus = news.STATUS == 1 ? 0 : 1;
                 try {
                     const response = await axios.post('http://localhost/memeapple/public/php/api/news.php', {
                         id: news.ID,
@@ -199,7 +199,7 @@
                             <td id="news_author">{{ item.PUBLISHER_NAME }}</td>
                             <td id="news_title">{{ item.TOPIC }}</td>
                             <td id="news_status">
-                                <button @click="updateStatus(item)" :class="{ banned: item.STATUS === 1 }">{{ item.STATUS === 1 ? '隱藏' : '顯示' }}</button>
+                                <button @click="updateStatus(item)" :class="{ banned: item.STATUS == 1 }">{{ item.STATUS == 1 ? '隱藏' : '顯示' }}</button>
                             </td>
                             <td id="news_action">
                                 <RouterLink :to="{ name: 'NewsEdit', params: { id: String(item.ID) } }">
