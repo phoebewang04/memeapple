@@ -315,6 +315,39 @@ export default {
             this.validPassword();
             this.validComfirm();
         },
+
+        async submitData() {
+            this.checkValid();
+            console.log('aaaa');
+            if (this.dataValid) {
+
+                try {
+                    const response = await axios.post('http://localhost/appleTeam/public/php/api/register.php', {
+                    name: this.orderName,
+                    email: this.orderEmail,
+                    phone: this.orderPhone,
+                    password: this.orderPassword,
+                    // selectedDate: this.selectedDate,
+                    // selectedTimeSlot: this.selectedTimeSlot,
+                    // peopleAmount: this.peopleAmount,
+                    // orderDiscount: this.orderDiscount
+                    });
+                    if (response.data.status === 'success') {
+                    alert('註冊成功！');
+                    console.log(response.data.status);
+                    // 清空表单或其他成功处理逻辑
+                    } else {
+                        alert('註冊失敗：' + response.data.message);
+                        alert('註冊失敗：' + response.data.message);
+                    }
+                } catch (error) {
+                    console.error('提交數據失敗', error);
+                    alert('提交失敗，請稍後再試');
+                }
+            } else {
+                alert('請確保所有表單數據正確無誤');
+            }
+        }
     },
     mounted (){
         const themeId = this.$route.params.id;
