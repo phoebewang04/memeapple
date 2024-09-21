@@ -2778,6 +2778,9 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   border: 0;
   border-bottom: 1px solid #FEDA77;
 }
+.backstage_table td.filled {
+  background-color: #fff8eb;
+}
 .backstage_table td button {
   background-color: #FEDA77;
   border: 0px;
@@ -2818,7 +2821,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   color: white;
 }
 .backstage_tablebody tr:hover {
-  background-color: #FFE8BB;
+  background-color: #fff8eb;
 }
 .backstage_tablebody tr.backstage_tfoot:hover {
   background-color: white;

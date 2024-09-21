@@ -183,6 +183,10 @@
             border: 0;
             border-bottom: 1px solid map-get($colors, yellow );
 
+            &.filled{
+                background-color: #fff8eb;
+            }
+
             button{
                 background-color: map-get($colors, yellow );
                 border: 0px;
@@ -232,11 +236,11 @@
 
     tr{
         &:hover{
-            background-color: map-get($colors, lightyellow );
+            background-color: #fff8eb;
         }
 
         &.backstage_tfoot:hover{
-            background-color: map-get($colors, white );
+            background-color: white;
         }
     }
 }

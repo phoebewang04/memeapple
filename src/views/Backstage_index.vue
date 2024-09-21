@@ -254,148 +254,148 @@ export default {
               <tbody>
                 <tr>
                   <th class="column-header">成都醫院</th>
-                  <td>
+                  <td :class="{ 'filled': getOrder(1, '10:30') }">
                     <a href="#" @click="showPreview(getOrder(1, '10:30'))">{{ getOrder(1, "10:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(1, '11:15') }">
                     <a href="#" @click="showPreview(getOrder(1, '11:15'))">{{ getOrder(1, "11:15") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(1, '12:55') }">
                     <a href="#" @click="showPreview(getOrder(1, '12:55'))">{{ getOrder(1, "12:55") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(1, '14:35') }">
                     <a href="#" @click="showPreview(getOrder(1, '14:35'))">{{ getOrder(1, "14:35") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(1, '16:30') }">
                     <a href="#" @click="showPreview(getOrder(1, '16:30'))">{{ getOrder(1, "16:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(1, '18:15') }">
                     <a href="#" @click="showPreview(getOrder(1, '18:15'))">{{ getOrder(1, "18:15") }}</a>
                   </td>
                 </tr>
                 <tr>
                   <th class="column-header">時光迷宮</th>
-                  <td>
+                  <td :class="{ 'filled': getOrder(2, '10:30') }">
                     <a href="#" @click="showPreview(getOrder(2, '10:30'))">{{ getOrder(2, "10:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(2, '11:15') }">
                     <a href="#" @click="showPreview(getOrder(2, '11:15'))">{{ getOrder(2, "11:15") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(2, '12:55') }">
                     <a href="#" @click="showPreview(getOrder(2, '12:55'))">{{ getOrder(2, "12:55") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(2, '14:35') }">
                     <a href="#" @click="showPreview(getOrder(2, '14:35'))">{{ getOrder(2, "14:35") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(2, '16:30') }">
                     <a href="#" @click="showPreview(getOrder(2, '16:30'))">{{ getOrder(2, "16:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(2, '18:15') }">
                     <a href="#" @click="showPreview(getOrder(2, '18:15'))">{{ getOrder(2, "18:15") }}</a>
                   </td>
                 </tr>
                 <tr>
                   <th class="column-header">末日庇護所</th>
-                  <td>
+                  <td :class="{ 'filled': getOrder(3, '10:30') }">
                     <a href="#" @click="showPreview(getOrder(3, '10:30'))">{{ getOrder(3, "10:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(3, '11:15') }">
                     <a href="#" @click="showPreview(getOrder(3, '11:15'))">{{ getOrder(3, "11:15") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(3, '12:55') }">
                     <a href="#" @click="showPreview(getOrder(3, '12:55'))">{{ getOrder(3, "12:55") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(3, '14:35') }">
                     <a href="#" @click="showPreview(getOrder(3, '14:35'))">{{ getOrder(3, "14:35") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(3, '16:30') }">
                     <a href="#" @click="showPreview(getOrder(3, '16:30'))">{{ getOrder(3, "16:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(3, '18:15') }">
                     <a href="#" @click="showPreview(getOrder(3, '18:15'))">{{ getOrder(3, "18:15") }}</a>
                   </td>
                 </tr>
                 <tr>
                   <th class="column-header">代碼深淵</th>
-                  <td>
+                  <td :class="{ 'filled': getOrder(4, '10:30') }">
                     <a href="#" @click="showPreview(getOrder(4, '10:30'))">{{ getOrder(4, "10:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(4, '11:15') }">
                     <a href="#" @click="showPreview(getOrder(4, '11:15'))">{{ getOrder(4, "11:15") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(4, '12:55') }">
                     <a href="#" @click="showPreview(getOrder(4, '12:55'))">{{ getOrder(4, "12:55") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(4, '14:35') }">
                     <a href="#" @click="showPreview(getOrder(4, '14:35'))">{{ getOrder(4, "14:35") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(4, '16:30') }">
                     <a href="#" @click="showPreview(getOrder(4, '16:30'))">{{ getOrder(4, "16:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(4, '18:15') }">
                     <a href="#" @click="showPreview(getOrder(4, '18:15'))">{{ getOrder(4, "18:15") }}</a>
                   </td>
                 </tr>
                 <tr>
                   <th class="column-header">逃離武石監</th>
-                  <td>
+                  <td :class="{ 'filled': getOrder(5, '10:30') }">
                     <a href="#" @click="showPreview(getOrder(5, '10:30'))">{{ getOrder(5, "10:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(5, '11:15') }">
                     <a href="#" @click="showPreview(getOrder(5, '11:15'))">{{ getOrder(5, "11:15") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(5, '12:55') }">
                     <a href="#" @click="showPreview(getOrder(5, '12:55'))">{{ getOrder(5, "12:55") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(5, '14:35') }">
                     <a href="#" @click="showPreview(getOrder(5, '14:35'))">{{ getOrder(5, "14:35") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(5, '16:30') }">
                     <a href="#" @click="showPreview(getOrder(5, '16:30'))">{{ getOrder(5, "16:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(5, '18:15') }">
                     <a href="#" @click="showPreview(getOrder(5, '18:15'))">{{ getOrder(5, "18:15") }}</a>
                   </td>
                 </tr>
                 <tr>
                   <th class="column-header">恐怖密室</th>
-                  <td>
+                  <td :class="{ 'filled': getOrder(6, '10:30') }">
                     <a href="#" @click="showPreview(getOrder(6, '10:30'))">{{ getOrder(6, "10:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(6, '11:15') }">
                     <a href="#" @click="showPreview(getOrder(6, '11:15'))">{{ getOrder(6, "11:15") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(6, '12:55') }">
                     <a href="#" @click="showPreview(getOrder(6, '12:55'))">{{ getOrder(6, "12:55") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(6, '14:35') }">
                     <a href="#" @click="showPreview(getOrder(6, '14:35'))">{{ getOrder(6, "14:35") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(6, '16:30') }">
                     <a href="#" @click="showPreview(getOrder(6, '16:30'))">{{ getOrder(6, "16:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(6, '18:15') }">
                     <a href="#" @click="showPreview(getOrder(6, '18:15'))">{{ getOrder(6, "18:15") }}</a>
                   </td>
                 </tr>
                 <tr>
                   <th class="column-header">逃出虛空</th>
-                  <td>
+                  <td :class="{ 'filled': getOrder(7, '10:30') }">
                     <a href="#" @click="showPreview(getOrder(7, '10:30'))">{{ getOrder(7, "10:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(7, '11:15') }">
                     <a href="#" @click="showPreview(getOrder(7, '11:15'))">{{ getOrder(7, "11:15") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(7, '12:55') }">
                     <a href="#" @click="showPreview(getOrder(7, '12:55'))">{{ getOrder(7, "12:55") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(7, '14:35') }">
                     <a href="#" @click="showPreview(getOrder(7, '14:35'))">{{ getOrder(7, "14:35") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(7, '16:30') }">
                     <a href="#" @click="showPreview(getOrder(7, '16:30'))">{{ getOrder(7, "16:30") }}</a>
                   </td>
-                  <td>
+                  <td :class="{ 'filled': getOrder(7, '18:15') }">
                     <a href="#" @click="showPreview(getOrder(7, '18:15'))">{{ getOrder(7, "18:15") }}</a>
                   </td>
                 </tr>
