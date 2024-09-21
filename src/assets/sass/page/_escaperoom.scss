@@ -296,6 +296,8 @@
         border: none;
         padding: 12px 20px;
         border-radius: 20px;
+        width: 200px;
+        height: 60px;
 
         cursor: pointer;
 
@@ -775,7 +777,7 @@
 
     position: absolute;
     cursor: pointer;
-   
+
 
     &:hover {
         // border: 1px solid white;
@@ -792,7 +794,7 @@
     }
 
     /* 點擊後拼圖移動到新位置 */
-    img[alt="puzzle-up"].puzzle-active{
+    img[alt="puzzle-up"].puzzle-active {
         width: 10%;
         top: 10.6%;
         left: 25.4%;
@@ -805,7 +807,7 @@
         // transform: rotate(20deg);
     }
 
-    img[alt="puzzle-right"].puzzle-active{  
+    img[alt="puzzle-right"].puzzle-active {
         width: 9.6%;
         top: 10.5%;
         left: 33%;
@@ -829,7 +831,7 @@
         top: 57%;
     }
 
-    img[alt="puzzle-down"].puzzle-active{
+    img[alt="puzzle-down"].puzzle-active {
         width: 8.7%;
         top: 17.8%;
         left: 33.9%;
@@ -842,7 +844,7 @@
         pointer-events: none;
     }
 
-    img[alt="full-puzzle-tips"]{
+    img[alt="full-puzzle-tips"] {
         width: 18%;
         top: 10%;
         left: 25%;
@@ -917,13 +919,109 @@
 
 
 
-.esc_end video{
+.esc_end video {
     width: 100%;
 }
 
-
-
-
-
-
 //-----結束影片end-----
+
+//-----RWD-----
+@include rwd(900px) {
+    .esc_start {
+        p {
+            font-size: 18px;
+        }
+    }
+
+    .esc_start_btn button {
+        font-size: 18px;
+        padding: 10px 18px;
+        width: 180px;
+        height: 55px;
+    }
+}
+
+@include rwd(750px) {
+    .esc_start {
+        p {
+            font-size: 16px;
+        }
+    }
+
+    .esc_start_btn{
+        top: 52%;
+
+    }
+
+    .esc_start_btn button {
+        font-size: 16px;
+        width: 164px;
+        height: 50px;
+    }
+}
+
+@include rwd(650px) {
+    .esc_start {
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .esc_start_btn button {
+        font-size: 14px;
+        width: 150px;
+        height: 45px;
+    }
+
+    .esc_start_btn{
+        top: 55%;
+    }
+}
+
+@include rwd(550px) {
+    .esc_start {
+        p {
+            font-size: 13px;
+        }
+    }
+
+    .esc_start_btn button {
+        font-size: 13px;
+        width: 136px;
+        height: 40px;
+    }
+
+    .esc_start_btn{
+        top: 60%;
+        gap: 20px;
+    }
+}
+
+@include rwd(450px) {
+    .esc_start {
+        p {
+            font-size: 12px;
+        }
+    }
+
+    .esc_start_btn button {
+        font-size: 12px;
+        width: 113px;
+        height: 33px;
+        line-height: 1.2;
+        padding: 0;
+    }
+
+    .esc_start_btn button i {
+        margin-right: 4px;
+
+    }
+}
+
+@include rwd(400px) {
+
+    .esc_start_btn{
+        top: 65%;
+        gap: 10px;
+    }
+}

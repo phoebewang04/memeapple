@@ -152,6 +152,12 @@ export default {
     TopNavbar,
     Footerbar,
   },
+  created() {
+  const tab = this.$route.query.tab;
+  if (tab) {
+    this.currentTab = tab; // 或其他初始化邏輯
+  }
+  },
   beforeRouteLeave(to, from, next) {
     // Close SweetAlert when leaving the route
     Swal.close();
