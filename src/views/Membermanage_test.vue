@@ -9,6 +9,7 @@
             <button class="btn btn_mange">優惠券</button>
             <button class="btn btn_mange">會員資料修改</button> -->
       </div>
+
       <div class="mmangeright" id="mmangeright">
         <div class="mangerightitems">
           <button type="button" v-for="tab in tabs" :class="{ active: currentTab == tab.id }" :key="tab.id"
@@ -21,61 +22,46 @@
         <div class="ordertext" v-if="currentTab == 'tab1'">
           <div class="ordertext_left">
             <h3>您的訂單</h3>
-            <div class="order_card">
-              <div class="order_cardusage">
-                <p class="onuse">已使用</p>
-                <!-- <p class="noneuse">未使用</p> -->
-              </div>
-              <div class="order_cardleft" @click="showAlert()">
-                <div class="order_cardimg"><img src="../assets/img/poster_Lock.jpg" alt=""></div>
-                <div class="order_cardtext">
-                  <p>逃離武石監</p>
-                  <p>訂單編號： ABC202408070807</p>
-                  <p>訂購日期： 2024/08/07</p>
-                </div>
-              </div>
-              <div class="order_cardright">
-                <div class="order_cardstate">
-                  <p>訂金</p>
-                  <p>TWD 2,000元</p>
-                  <button class="questionwrite" @click="orderquestion()">問卷填寫</button>
-                  <!-- <button class="cancelorder" @click="ordercancel()">取消訂單</button> -->
-                </div>
-              </div>
-            </div>
 
-            <div class="order_card">
-              <div class="order_cardusage">
-                <!-- <p class="onuse">已使用</p> -->
-                <p class="noneuse">未使用</p>
-              </div>
-              <div class="order_cardleft">
-                <div class="order_cardimg"><img src="../assets/img/poster_time.jpg" alt=""></div>
-                <div class="order_cardtext">
-                  <p>時光迷宮</p>
-                  <p>訂單編號： ABC202409020902</p>
-                  <p>訂購日期： 2024/09/02</p>
+            <section class="order_container">
+              <!-- 訂單票券 -->
+              <div v-for="order in filteredOrders" :key="order.ORDER_ID" class="order_card">
+                <!-- 右上標籤 -->
+                <div class="order_cardusage">
+                  <p :class="order.ORDER_STATUS == 1 ? 'onuse' : 'noneuse'">
+                    {{ order.ORDER_STATUS === '已使用' ? '已使用' : '未使用' }}
+                  </p>
+                </div>
+                <!-- 票券左側，點選後觸發SweetAlert2，顯示入場票券 -->
+                <div class="order_cardleft" @click="showAlert(order)">
+                  <!-- 活動海報圖片 -->
+                  <div class="order_cardimg">
+                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="`/${tickets.banner}`" alt=""> -->
+                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="`/${tickets.banner}`" alt=""> -->
+                    <!-- <img v-for="ticket in tickets" v-if="ticket.id === order.THEME_ID" :src="`/${ticket.banner}`" alt=""> -->
+                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="tickets.banner" alt=""> -->
+                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="tickets.banner" alt=""> -->
+                    <img v-for="ticket in tickets" v-if="tickets.id === Number(order.THEME_ID)" :src="tickets.banner" alt="">
+                  </div>
+                  <!-- 活動詳細資訊以及訂單編號 -->
+                  <div class="order_cardtext">
+                    <p>{{ order.THEME_NAME }}</p>
+                    <p>訂單編號： {{ order.ORDER_ID }}</p>
+                    <p>訂購日期： {{ order.ORDER_DATE }}</p>
+                  </div>
+                </div>
+                <!-- 票券右側，有問券填寫功能以及已經支付的訂金 -->
+                <div class="order_cardright">
+                  <!-- 訂金詳細資訊 -->
+                  <div class="order_cardstate">
+                    <p>訂金</p>
+                    <p>TWD 2000元</p>
+                    <button class="questionwrite" @click="orderquestion(order)">問卷填寫</button>
+                  </div>
                 </div>
               </div>
-              <div class="order_cardright">
-                <div class="order_cardstate">
-                  <p>訂金</p>
-                  <p>TWD 2,000元</p>
-                  <!-- <button class="questionwrite" @click="orderquestion()">問卷填寫</button> -->
-                  <button class="cancelorder" @click="ordercancel()">取消訂單</button>
-                </div>
-              </div>
-            </div>
-
-
+            </section>
           </div>
-          <!-- <div class="ordertext_right">
-                <ul>
-                  <li><h3>訂單查詢</h3></li>
-                  <li> <button class="btn btn_ordera" >未使用訂單</button></li>
-                  <li><button class="btn btn_ordera" >全部訂單</button></li>
-                </ul>
-              </div> -->
         </div>
 
 
@@ -89,9 +75,7 @@
               <!-- <h4>已使用</h4> -->
             </div>
           </div>
-
         </div>
-
 
         <div class="editmember" v-if="currentTab == 'tab3'">
           <h3>會員資料修改</h3>
@@ -143,6 +127,7 @@ import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 export default {
   props: ["tasks"],
@@ -160,18 +145,9 @@ export default {
     return {
       currentTab: "tab1",
       tabs: [
-        {
-          id: "tab1",
-          name: "訂單檢視"
-        },
-        {
-          id: "tab2",
-          name: "優惠券"
-        },
-        {
-          id: "tab3",
-          name: "會員資料修改"
-        }
+        { id: "tab1", name: "訂單檢視" },
+        { id: "tab2", name: "優惠券" },
+        { id: "tab3", name: "會員資料修改" }
       ],
       tasks: [
         // {
@@ -184,7 +160,31 @@ export default {
       brainIndex: 0,
       scareIndex: 0,
       recommendationIndex: 0,
+      memberId: 2,
+      orders: [],
+      error: null,
+      tickets: [
+        { id: 1, banner: '/img/poster_hospital.png' },
+        { id: 2, banner: '/img/poster_time.png' },
+        { id: 3, banner: '/img/poster_dead.png' },
+        { id: 4, banner: '/img/poster_code.png' },
+        { id: 5, banner: '/img/poster_Lock.jpg' },
+        { id: 6, banner: '/img/poster_room.png' },
+        { id: 7, banner: '/img/poster_alien.png' }
+      ],
     };
+  },
+  computed: {
+    filteredOrders() {
+      if (Array.isArray(this.orders)) {
+        return this.orders.filter(order =>
+          order.MEMBER_ID === this.memberId &&
+          (order.ORDER_STATUS === '已使用' || order.ORDER_STATUS === '已預訂')
+        );
+      }
+      console.log('Fetched orders:', this.orders);
+      return [];
+    }
   },
   beforeMount() {
     let tasks = JSON.parse(localStorage.getItem("tasks"));
@@ -192,8 +192,27 @@ export default {
       this.tasks = tasks;
     }
   },
+  mounted() {
+    this.fetchOrders();
+    // this.fetchOrderData();
+  },
   methods: {
-    showAlert() {
+    // 查會員訂單資料
+    async fetchOrders() {
+      try {
+        const params = {
+          memberId: this.memberId
+        };
+        console.log('params: ', params)
+        const response = await axios.get('http://localhost/meme_apple/public/php/api/Order.php', { params });
+        console.log('response.data: ', response.data);
+        this.orders = response.data;
+        console.log('this.orders: ', this.orders);
+      } catch (err) {
+        this.error = 'An error occurred: ' + err.message
+      }
+    },
+    showAlert(order) {
       Swal.fire({
         html:
           `
@@ -259,7 +278,7 @@ export default {
         }
       });
     },
-    orderquestion() {
+    orderquestion(order) {
       Swal.fire({
         title: "問卷調查",
         html: this.generateHtml(),
@@ -286,7 +305,7 @@ export default {
         }
       });
     },
-    generateHtml(){
+    generateHtml() {
       `    <div class="star_block">
       <span>燒腦指數</span>
       <span class="star" id="brain-1"><i class="fas fa-star"></i></span>

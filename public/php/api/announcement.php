@@ -34,11 +34,11 @@ class News{
         $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 
         // SQL
+        // 使用 WHERE 1=1 方便動態構建查詢條件，避免處理第一個條件前面的 AND 或 OR。
         $sql = 'SELECT * FROM NEWS WHERE 1=1';
         $params = [];
 
         if ($publish_date != '') {
-            // 使用 WHERE 1=1 是一種簡單且有效的技巧，可以方便地動態構建查詢條件，避免處理第一個條件前面的 AND 或 OR。
             $sql .= " AND PUBLISH_DATE = ?";
             $params[] = $publish_date;
         }
