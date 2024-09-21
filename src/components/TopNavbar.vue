@@ -32,9 +32,33 @@ export default {
         this.visible_active = false;
       }
     },
-    logout() {
+    handleLogin(user) {
+      this.isLoggedIn = true;
+      this.user = user;
+      console.log("Logged in user:", user);
+      localStorage.setItem('user', JSON.stringify(user)); // 儲存用戶信息
+    },
+    handleLogout() {
       this.isLoggedIn = false;
-      this.$emit('logout'); // 發出登出事件
+      this.user = null;
+      localStorage.removeItem('user'); // 移除用戶信息
+    },
+    checkLoginStatus() {
+      const user = localStorage.getItem('user');
+    if (user) {
+      this.isLoggedIn = true;
+      this.user = JSON.parse(user);
+    } else {
+      this.isLoggedIn = false; // 確保設置為 false
+      this.user = null; // 清空用戶資料
+  }
+    },
+    logout() {
+
+      localStorage.removeItem('user'); // 移除用戶信息
+      this.isLoggedIn = false; // 更新登錄狀態
+      this.user = null; // 清空用戶資料
+      this.$emit('logout'); // 發出登出事件（如果需要）
     },
   },
   created() {
@@ -60,8 +84,11 @@ export default {
       <div v-else>
         <li><a @click="showPopup = true">會員登入</a></li>
       </div>
-      <!-- <li><a @click="showPopup = true">會員登入</a></li> -->
-      <LoginRegisterPopup v-if="showPopup" @close="showPopup = false" />
+      <LoginRegisterPopup 
+        v-if="showPopup" 
+        @close="showPopup = false" 
+        @login="handleLogin"
+      />
       <li><router-link to="/Membermanage/">會員專區</router-link></li>
       <li><router-link to="/Minigame/">線上體驗</router-link></li>
       <li><router-link to="/Branch/">分館介紹</router-link></li>

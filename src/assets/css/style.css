@@ -195,6 +195,7 @@ p {
 .top a {
   color: white;
   display: block;
+  cursor: pointer;
 }
 .top a:hover {
   color: #FCD15B;

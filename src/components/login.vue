@@ -138,14 +138,11 @@ export default {
                 if (response.data.status === "success") {
                     alert("登入成功");
                     // 進行登入後的操作，例如重定向
-                    // 如果選擇了保持登入，使用 localStorage
-                    if (this.rememberMe) {
-                        localStorage.setItem('user', JSON.stringify({ username: this.username }));
-                    } else {
-                        // 否則使用 sessionStorage
-                        sessionStorage.setItem('user', JSON.stringify({ username: this.username }));
-                    }
-                    this.$emit('login', response.data.user); // 發出登入事件，並傳遞用戶資料
+                    const user = response.data.user; // 假設用戶資料在這裡返回
+                    localStorage.setItem('user', JSON.stringify(user));//儲存用戶資料
+                
+                    this.$emit('login', user); // 發出登入事件，並傳遞用戶資料
+                    console.log(response.data.user);
                     this.closePopup(); // 關閉彈窗
 
                 } else {
@@ -236,8 +233,9 @@ export default {
         },
         logout() {
             localStorage.removeItem('user'); // 移除 localStorage 中的用戶信息
-            sessionStorage.removeItem('user'); // 移除 sessionStorage 中的用戶信息
             // 進行登出後的操作，例如重定向
+            this.username = ''; // 清空帳號資訊
+            this.password = ''; // 清空密碼（如需要）
         }    
     },
 }
