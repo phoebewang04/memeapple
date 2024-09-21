@@ -135,6 +135,7 @@
                         order_status: this.order_status,
                         keyword: this.keyword
                     };
+                    // const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/order.php', { params });
                     const response = await axios.get('http://localhost/memeapple/public/php/api/order.php', { params });
                     this.objArray = response.data;
                 } catch (err) {

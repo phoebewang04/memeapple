@@ -121,6 +121,7 @@ export default {
       console.log("查詢日期：", date);
       try {
         const response = await axios.get(
+          // import.meta.env.VITE_API_BASE + `/api/dashboard.php?date=${date}`
           `http://localhost/memeapple/public/php/api/dashboard.php?date=${date}`
         );
         console.log("伺服器回應：", response); // 檢查伺服器回應
@@ -143,6 +144,7 @@ export default {
       console.log("查詢月份：", month, year);
       try {
         const response = await axios.get(
+          // import.meta.env.VITE_API_BASE + `/api/dashboard.php?month=${month}&year=${year}`
           `http://localhost/memeapple/public/php/api/dashboard.php?month=${month}&year=${year}`
         );
         console.log("伺服器回應：", response); // 檢查伺服器回應
@@ -190,6 +192,7 @@ export default {
           keyword: this.selectedOrderId
         };
         console.log('params: ', params)
+        // const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/order.php', { params });
         const response = await axios.get('http://localhost/memeapple/public/php/api/order.php', { params });
         this.paginatedData = response.data;
         console.log('paginatedData: ', this.paginatedData);

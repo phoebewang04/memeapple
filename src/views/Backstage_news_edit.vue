@@ -51,6 +51,7 @@ export default {
         // 載入最新消息資料
         async loadNews() {
             try {
+                // const response = await axios.get(import.meta.env.VITE_API_BASE + `/api/news.php?id=${this.id}`);
                 const response = await axios.get(`http://localhost/memeapple/public/php/api/news.php?id=${this.id}`);
                 const news = response.data;
                 this.title = news.TOPIC;
@@ -79,6 +80,7 @@ export default {
             }
 
             try {
+                // const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/news.php', formData, {
                 const response = await axios.post('http://localhost/memeapple/public/php/api/news.php', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'

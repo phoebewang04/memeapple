@@ -110,7 +110,7 @@
                         keyword: this.keyword,
                         status: this.status
                     };
-                    // const response = await axios.get('http://localhost:3000/api/member', { params });
+                    // const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/member.php', { params });
                     const response = await axios.get('http://localhost/memeapple/public/php/api/member.php', { params });
                     this.objArray = response.data                
                 } catch (err) {
@@ -133,6 +133,7 @@
             async updateStatus(member){
                 const newStatus = member.STATUS === 1 ? 0 : 1;
                 try{
+                    // const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/member.php', { 
                     const response = await axios.post('http://localhost/memeapple/public/php/api/member.php', { 
                         id: member.ID,
                         status: newStatus
