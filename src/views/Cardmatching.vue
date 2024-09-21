@@ -1,36 +1,26 @@
 <template>
     <main class="card_container">
-        <transition name="fade" mode="out-in">
+
         <div v-if="!isGameStarted" class="card_scene active card_start_container" ref="card_scene0">
             <div class="card_start">
-
                 <img src="../assets/img/card_bg.png" alt="card_bg">
             </div>
 
             <div class="card_start_icon">
-
                 <img src="../assets/img/card_name.png" alt="">
                 <img src="../assets/img/card_start.png" alt="" @click="startGame">
                 <img src="../assets/img/card_rules.png" alt="" @click="gameRules">
-
             </div>
         </div>
-    </transition>
 
-    <transition name="fade" mode="out-in">
-        <div class="card_scene card_game_container" ref="card_scene1">
 
-            <!-- <div class="aa">
-             <img src="../assets/img/123.png" alt="">
-            </div> -->
 
+        <div v-if="isGameStarted" class="card_scene card_game_container" ref="card_scene1">
             <div class="card_game_info">
-                <span id="time_remaining"><i class="fa-regular fa-hourglass-half"></i>遊戲時間：{{ timeRemaining }}秒</span>
+                <span id="time_remaining"><i class="fa-regular fa-hourglass-half"></i>時間：{{ timeRemaining }} 秒</span>
                 <span @click="restart"><i class="fa-solid fa-repeat"></i>重新開始</span>
-                <router-link to="/Minigame/"><span><i class="fa-solid fa-house-chimney"></i>回遊戲首頁</span></router-link>
-
+                <router-link to="/Minigame/"><span><i class="fa-solid fa-house-chimney"></i>遊戲首頁</span></router-link>
             </div>
-
 
             <div v-for="(card, index) in cards" :key="index" class="card_monument" :class="{ 'flipped': card.flipped }"
                 @click="flipCard(card)">
@@ -46,7 +36,6 @@
                 </div>
             </div>
         </div>
-    </transition>
 
     </main>
 </template>
@@ -58,29 +47,25 @@ import cardAlert from 'sweetalert2';
 import 'animate.css';
 import axios from 'axios';
 
-
-
 export default {
 
     beforeRouteLeave(to, from, next) {
+        if (cardAlert.isVisible()) {
+            cardAlert.close();
+        }
 
-        cardAlert.close();
-        
         if (this.intervalId) {
-        clearInterval(this.intervalId);
-    }
+            clearInterval(this.intervalId);
+        }
         next();
     },
 
     data() {
         return {
             isGameStarted: false,
-            cardSceneIndex: 0,
-            isFlipped: false,
-            timeRemaining: 10,
+            initialTime: 80,
+            timeRemaining: this.initialTime,
             intervalId: null,
-
-            //卡片icon
             cards: [
                 { image: 'card_icon_bat', name: 'bat', flipped: false },
                 { image: 'card_icon_coffin', name: 'coffin', flipped: false },
@@ -90,12 +75,10 @@ export default {
                 { image: 'card_icon_skull', name: 'skull', flipped: false },
                 { image: 'card_icon_tombstone', name: 'tombstone', flipped: false },
                 { image: 'card_icon_potion', name: 'potion', flipped: false },
+
             ],
-
             flippedCards: [],  // 追蹤翻開的卡片
-            lockBoard: false,  // 避免玩家在翻卡時重複操作
-
-
+            lockBoard: false  // 避免玩家在翻卡時重複操作
         };
     },
     components: { cardAlert },
@@ -105,11 +88,11 @@ export default {
 
     methods: {
         startGame() {
-            this.isGameStarted = true;  // 當點擊開始遊戲按鈕後，顯示遊戲畫面
-        this.startCountdown();  // 開始倒數計時
+            this.isGameStarted = true;
+            this.startCountdown();
         },
         startCountdown() {
-            this.timeRemaining = 10;
+            this.timeRemaining = this.initialTime;
             if (this.intervalId) {
                 clearInterval(this.intervalId);
             }
@@ -123,29 +106,14 @@ export default {
             }, 1000);
         },
 
-        //初始化遊戲
         initializeGame() {
-            // 複製一組卡片 (總共16張)
             const cardPairs = this.cards.concat(this.cards.map(card => ({ ...card })));
-            this.timeRemaining = 10;
-            // 打亂卡片順序
+            this.timeRemaining = this.initialTime;
             this.cards = this.shuffleArray(cardPairs);
         },
 
         flipCard(card) {
-            card.flipped = !card.flipped; // 切換flipped狀態
-        },
-
-        shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                let j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        },
-        // 翻牌邏輯
-        flipCard(card) {
-            if (this.lockBoard || card.flipped) return;  // 如果卡片已經翻開則返回
+            if (this.lockBoard || card.flipped) return;
 
             card.flipped = true;
             this.flippedCards.push(card);
@@ -154,6 +122,7 @@ export default {
                 this.checkForMatch();
             }
         },
+
         checkForMatch() {
             const [firstCard, secondCard] = this.flippedCards;
 
@@ -163,9 +132,9 @@ export default {
 
                 setTimeout(() => {
                     this.flippedCards = [];
-                }, 600);  // 等待動畫結束後清空 flippedCards
+                    this.checkAllCardsMatched();
+                }, 600);
             } else {
-                // 如果不匹配
                 this.lockBoard = true;
                 setTimeout(() => {
                     firstCard.flipped = false;
@@ -175,20 +144,92 @@ export default {
                 }, 1000);
             }
         },
-        restart() {
-            // 重置卡片狀態，將所有卡片設為未翻開
-            this.cards = this.cards.map(card => {
-                return { ...card, flipped: false };
-            });
 
-            // 打亂卡片順序
-            this.cards = this.shuffleArray(this.cards);
-
-            // 清空翻牌狀態和解除鎖定
-            this.flippedCards = [];
-            this.lockBoard = false;
+        checkAllCardsMatched() {
+            const allMatched = this.cards.every(card => card.matched);
+            if (allMatched) {
+                this.challengeSuccess();
+            }
         },
+        //確認是否可以領取優惠券
+        async challengeSuccess() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            const memberId = user.id; // 假設的會員ID
+            const discount = 50;
+
+            try {
+                // 在調用 API 之前顯示一個 console.log，確認方法被調用
+                // console.log('checkCoupon 方法被調用了，gameId:', gameId);
+
+                const response = await axios.get(`http://localhost/appleyy/public/php/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
+
+                console.log('API 回應數據:', response.data);
+
+                const result = response.data;
+
+                if (result.status === 'exists') {
+                    // 已有優惠券
+                    this.showCouponCard("挑戰成功，但你已經有該寶藏了喔～", '/minigame/');
+                    // console.log('成功領取優惠券', result.message);
+
+                } else if (result.status === 'not_found') {
+                    // 沒有優惠券
+                    await this.issueCoupon(memberId, discount);
+                    this.showCouponCard("挑戰成功，挖到寶藏啦！", { path: '/Membermanage/', query: { tab: 'tab2' } });
+                } else {
+                    console.error("未知的優惠券狀態", result);
+                }
+            } catch (error) {
+                console.error("API調用錯誤:", error);
+            }
+        },
+        // 發放優惠券
+        async issueCoupon(memberId, discount) {
+            try {
+                console.log('正在發送的折扣值:', discount);
+
+                let form_data = new FormData();
+                form_data.append("member_id", memberId);
+                form_data.append("discount", discount);
+
+                const response = await axios.post("http://localhost/appleyy/public/php/api/coupon.php", form_data, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+                console.log('優惠券發放成功:', response.data);
+            } catch (error) {
+                console.error("發放優惠券時出錯:", error);
+            }
+        },
+        showCouponCard(message, redirectUrl) {
+            clearInterval(this.intervalId); // 停止計時
+            cardAlert.fire({
+                title: message,
+                icon: 'success',
+                confirmButtonText: '確認'
+            }).then(() => {
+                this.$router.push(redirectUrl);
+            });
+        },
+
+        restart() {
+            clearInterval(this.intervalId);  // 清除計時器
+            this.lockBoard = true;
+
+            this.cards = this.cards.map(card => ({ ...card, flipped: false }));
+            setTimeout(() => {
+                this.cards = this.cards.map(card => ({ ...card, matched: false }));
+                this.cards = this.shuffleArray(this.cards);
+                this.flippedCards = [];
+                this.lockBoard = false;
+                this.timeRemaining = this.initialTime;  // 重置倒數時間
+                this.startCountdown();  // 重新啟動倒數
+            }, 500);
+        },
+
         challengeFailed() {
+            this.lockBoard = true;  // 鎖定遊戲板
             cardAlert.fire({
                 title: '挑戰失敗',
                 text: '時間到！你可以重新挑戰！',
@@ -198,10 +239,22 @@ export default {
                 this.restart();
             });
         },
-        gameRules(){
 
+        shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        },
+
+        gameRules() {
+            cardAlert.fire({
+                icon:'info',
+                title: "遊戲說明",
+                html: '80秒的記憶翻牌遊戲，在時間內完成即可獲得秘寶！<br>若使用手機請轉為橫向，以獲得最佳遊戲體驗！',
+            });
         }
-
     },
 };
 </script>

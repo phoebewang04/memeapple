@@ -1,7 +1,5 @@
 .card_scene.active {
     display: block;
-
-
 }
 
 .card_scene {
@@ -15,10 +13,16 @@
     top: 0;
 }
 
+.card_container {
+    position: relative;
+}
+
 .card_start_icon img {
+
     position: absolute;
 
     &:nth-of-type(1) {
+
         width: 30%;
         top: 10%;
         left: 38%;
@@ -47,20 +51,6 @@
     }
 }
 
-/* 過渡進入動畫 */
-.fade-enter-active, .fade-leave-active {
-    transition: opacity 0.8s; /* 控制過渡動畫的時間 */
-  }
-  
-  /* 元素進入時的初始狀態 */
-  .fade-enter {
-    transition: opacity 0; /* 從透明開始淡入 */
-  }
-  
-  /* 元素離開時的最終狀態 */
-  .fade-leave-to {
-    transition: opacity 0; /* 淡出至完全透明 */
-  }
 
 //-----翻牌遊戲start-----
 // .aa img{
@@ -74,7 +64,6 @@
 // }
 .card_game_container {
 
-    // position: relative;
     margin: 50px;
     display: grid;
     grid-template-columns: repeat(8, auto);
@@ -106,11 +95,16 @@
     span:nth-of-type(2),
     a {
         cursor: pointer;
-        // border: 1px solid slateblue;
         color: map-get($colors, white);
         background-color: #28283f;
-        padding: 12px;
+        padding: 4px;
         border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
 
         &:hover {
             background: #373757;
@@ -167,7 +161,10 @@
             bottom: -6%;
         }
 
-        background: #373757;
+        & {
+            background: #373757;
+        }
+
     }
 }
 
@@ -231,4 +228,85 @@
 
 .card_monument.flipped {
     transform: rotateY(180deg);
+}
+
+//-----RWD-----
+@include rwd(1040px) {
+
+    .card_game_container {
+        grid-template-columns: repeat(4, auto);
+    }
+
+    .card_game_info {
+        gap: 20px;
+
+        i {
+            font-size: 18px;
+        }
+
+        span {
+
+            font-size: 18px;
+        }
+    }
+}
+
+@include rwd(610px) {
+
+
+    .card_game_info {
+        justify-content: center;
+        margin-bottom: 20px;
+        gap: 8px;
+
+
+        i {
+            font-size: 16px;
+        }
+
+        span {
+
+            font-size: 16px;
+        }
+
+        span:nth-of-type(2),
+        a {
+            width: 116px;
+            height: 32px;
+            line-height: 32px;
+        }
+    }
+    .card_monument{
+        width: 87px;
+        height: 126px;
+    }
+}
+
+@include phone() {
+
+    .card_game_info {
+        margin-bottom: 10px;
+
+        i {
+            font-size: 13px;
+
+        }
+
+        span {
+
+            font-size: 13px;
+        }
+
+        span:nth-of-type(2),
+        a {
+            width: 105px;
+            height: 29px;
+            line-height: 29px;
+        }
+    }
+
+    .card_monument{
+        width: 72px;
+        height: 105px;
+    }
 }
