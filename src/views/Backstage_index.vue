@@ -180,9 +180,9 @@ export default {
     },
     showPreview(orderId) {
       if (orderId) {
-      this.selectedOrderId = orderId; // 儲存選中的訂單編號
-      this.isPreviewVisible = true; // 顯示 pop 視窗
-      this.fetchData(); // 觸發 fetchData 方法
+        this.selectedOrderId = orderId; // 儲存選中的訂單編號
+        this.isPreviewVisible = true; // 顯示 pop 視窗
+        this.fetchData(); // 觸發 fetchData 方法
       }
     },
 
@@ -421,6 +421,7 @@ export default {
         </div>
       </div>
     </div>
+    <!-- popup -->
     <div v-if="isPreviewVisible" class="backstage_news" @click="hidePreview">
       <div class="backstage_news_preview" @click.stop style="background-color: #e5e5e5; border: .5px solid #8F9191; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
         <div class="backstage_news_content">

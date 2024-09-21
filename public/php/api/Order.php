@@ -18,6 +18,7 @@ class Order {
         $theme_name = isset($_GET['theme_name']) ? $_GET['theme_name'] : '所有主題';
         $order_status = isset($_GET['order_status']) ? $_GET['order_status'] : '所有狀態';
         $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+        $memberId = isset($_GET['memberId']) ? $_GET['memberId'] : '';
 
         // SQL
         $sql = 'SELECT * FROM orderdetails WHERE 1=1';
@@ -46,6 +47,13 @@ class Order {
             $params[] = "%$keyword%";
             $params[] = "%$keyword%";
         }
+        if ($memberId != '') {
+        //echo $memberId;
+
+            $sql .= " AND MEMBER_ID = ?";
+            $params[] = $memberId;
+        }
+
         $sql .= " ORDER BY ORDER_DATE DESC";
 
         $stmt = $this->db->prepare($sql);
