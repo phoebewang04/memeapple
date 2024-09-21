@@ -6,7 +6,6 @@
     align-items: center;
     justify-content: center;
     padding: 12px 0;
-    flex-direction: column;
 
     @include rwd(1280px) {
         justify-content: center;
@@ -33,8 +32,8 @@
     align-items: center;
     justify-content: center;
 
-    @include rwd(650px) {
-        margin-left: 12px;
+    @include rwd(750px) {
+        margin-left: 0px;
     }
 }
 
@@ -43,11 +42,7 @@
         width: 100px;
         height: 70px;
 
-        @include rwd(650px) {
-            width: 70px;
-        }
-
-        @include rwd(500px) {
+        @include rwd(750px) {
             display: none;
         }
     }
@@ -80,7 +75,6 @@
 
     p {
         font-size: 12px;
-        margin-right: 20px;
 
         &:last-child {
             margin-right: 0;
@@ -180,7 +174,7 @@
             margin-right: 8px;
         }
 
-        @include rwd(400px) {
+        @include phone {
            font-size: 12px;
         }
 

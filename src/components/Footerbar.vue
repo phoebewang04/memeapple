@@ -5,12 +5,12 @@ import '../assets/css/style.css'
 <template>
     <footer>
         <section class="bottom">
-            <section class="bottom_div1">
-                <section class="footer_logo2">
-                    <!-- 這邊是Logo，可以回前後台分流頁 -->
-                    <router-link to="/"><img src="@/assets/img/memelogo.svg" alt=""></router-link>
-                </section>
+            <section class="footer_logo2">
+                <!-- 這邊是Logo，可以回前後台分流頁 -->
+                <router-link to="/"><img src="@/assets/img/memelogo.svg" alt=""></router-link>
+            </section>
 
+            <section class="bottom_div1">
                 <section class="footer_textArea">
                     <!-- 快速選單 -->
                     <section class="footerRule">
@@ -27,13 +27,12 @@ import '../assets/css/style.css'
                             <p>營業時間｜ 10：00 – 18：00</p>
                         </div>
                     </section>
-                </section>
-            </section>
-            <section class="bottom_div2">
-                <!-- 這邊是中央文字 -->
-                <section class="bm_text">
-                    <p>本網站為緯育TibaMe【第93期】前端工程師專業技術養成班學員作品，僅供學習、展示之用途。</p>
-                    <p>© Copyright Meme謎因工作室&nbsp;&nbsp;All Rights Reserved.</p>
+
+                    <!-- 這邊是中央文字 -->
+                    <section class="bm_text">
+                        <p>本網站為緯育TibaMe【第93期】前端工程師專業技術養成班學員作品，僅供學習、展示之用途。</p>
+                        <p>© Copyright Meme謎因工作室&nbsp;&nbsp;All Rights Reserved.</p>
+                    </section>
                 </section>
             </section>
 

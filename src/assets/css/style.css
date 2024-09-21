@@ -285,7 +285,6 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   align-items: center;
   justify-content: center;
   padding: 12px 0;
-  flex-direction: column;
 }
 @media (max-width: 1280px) {
   .bottom {
@@ -312,9 +311,9 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 650px) {
+@media (max-width: 750px) {
   .footer_textArea {
-    margin-left: 12px;
+    margin-left: 0px;
   }
 }
 
@@ -322,12 +321,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   width: 100px;
   height: 70px;
 }
-@media (max-width: 650px) {
-  .footer_logo2 img {
-    width: 70px;
-  }
-}
-@media (max-width: 500px) {
+@media (max-width: 750px) {
   .footer_logo2 img {
     display: none;
   }
@@ -360,7 +354,6 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 .bm_text p {
   font-size: 12px;
-  margin-right: 20px;
 }
 .bm_text p:last-child {
   margin-right: 0;
@@ -453,7 +446,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
     margin-right: 8px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 430px) {
   .footerRule a {
     font-size: 12px;
   }
@@ -1658,7 +1651,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 @media (max-width: 541px) {
   .brandstory-text {
-    width: 95%;
+    width: 92%;
   }
 }
 .brandstory-text .brandstory-sub {
