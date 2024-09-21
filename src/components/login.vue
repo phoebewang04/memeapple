@@ -129,23 +129,43 @@ export default {
             this.showPopup = false;
             this.$emit('close'); // 可選：通知父組件關閉
         },
+//         async submitLogin() {
+//   try {
+//     const response = await axios.post('http://localhost/appleyy/public/php/api/Login.php', {
+//       username: this.username,
+//       password: this.password
+//     });
+//     if (response.data.status === "success") {
+//       alert("登入成功");
+
+//       localStorage.setItem('user', JSON.stringify({ username: this.username }));
+
+//       this.$emit('loginSuccess'); // 通知父組件登入成功
+
+//       this.closePopup(); // 關閉登入畫面
+//     } else {
+//       alert(response.data.message); // 顯示錯誤消息
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     alert("發生錯誤，請稍後再試。");
+//   }
+// },
         async submitLogin() {
             try {
-                const response = await axios.post('http://localhost/sweethome/meme/public/php/api/Login.php', {
+                const response = await axios.post('http://localhost/appleyy/public/php/api/Login.php', {
                     username: this.username,
                     password: this.password
                 });
                 if (response.data.status === "success") {
                     alert("登入成功");
                     // 進行登入後的操作，例如重定向
-                    // 如果選擇了保持登入，使用 localStorage
-                    if (this.rememberMe) {
-                        localStorage.setItem('user', JSON.stringify({ username: this.username }));
-                    } else {
-                        // 否則使用 sessionStorage
-                        sessionStorage.setItem('user', JSON.stringify({ username: this.username }));
-                    }
-                    this.$emit('login', response.data.user); // 發出登入事件，並傳遞用戶資料
+                   
+                    const user =response.data.user; 
+                    localStorage.setItem('user', JSON.stringify(user));
+                
+                    this.$emit('login', user); // 發出登入事件，並傳遞用戶資料
+                    console.log(response.data.user);
                     this.closePopup(); // 關閉彈窗
 
                 } else {
@@ -197,7 +217,7 @@ export default {
 
             // 如果所有檢查都通過，則進行註冊請求
                 try {
-                    const response = await axios.post('http://localhost/sweethome/meme/public/php/api/Register.php', {
+                    const response = await axios.post('http://localhost/appleyy/public/php/api/Register.php', {
                         email: this.registerEmail,
                         password: this.registerPassword,
                         name: this.registerName,
@@ -236,9 +256,9 @@ export default {
         },
         logout() {
             localStorage.removeItem('user'); // 移除 localStorage 中的用戶信息
-            sessionStorage.removeItem('user'); // 移除 sessionStorage 中的用戶信息
             // 進行登出後的操作，例如重定向
-        }    
+        },
+            
     },
 }
 </script>
