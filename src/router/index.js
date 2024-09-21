@@ -27,6 +27,7 @@ const Escaperoom = () => import('../views/Escaperoom.vue');
 // ======================================================= //
 // ======================================================= //
 // 後台相關組件
+const Backstage_login = () => import('../views/Backstage_login.vue');
 const Backstage_index = () => import('../views/Backstage_index.vue');
 const Backstage_member = () => import('../views/Backstage_member.vue');
 const Backstage_order = () => import('../views/Backstage_order.vue');
@@ -60,6 +61,7 @@ const routes = [
   { path: '/dead1A2Bgame/', name: 'dead1A2Bgame',meta:{title:'亡命數字'}, component: () => import('../views/dead1A2Bgame.vue') },
   { path: '/Cardmatching/', name: 'Cardmatching',meta:{title:'鬼碑迷陣'}, component: () => import('../views/Cardmatching.vue') },
   { path: '/Escaperoom/', name: 'Escaperoom',meta:{title:'亡靈醫院'}, component: () => import('../views/Escaperoom.vue') },
+  { path: '/BackstageLogin/', name: 'BackstageLogin',meta:{title:'後台登入頁'}, component: () => import('../views/Backstage_login.vue') },
   { path: '/BackstageIndex/', name: 'BackstageIndex',meta:{title:'後台首頁'}, component: () => import('../views/Backstage_index.vue') },
   { path: '/MemberMenage/', name: 'MemberMenage',meta:{title:'會員資料管理'}, component: () => import('../views/Backstage_member.vue') },
   { path: '/OrderMemage/', name: 'OrderMemage',meta:{title:'訂單資資料管理'}, component: () => import('../views/Backstage_order.vue') },
