@@ -64,6 +64,20 @@ export default {
         },
         // 儲存最新消息
         async saveNews() {
+            // 檢查輸入資料
+            if (!this.title) {
+                alert('請輸入標題');
+                return;
+            }
+            if (!this.content) {
+                alert('請輸入內容');
+                return;
+            }
+            if (!this.$refs.fileInput.files[0]) {
+                alert('請上傳圖片');
+                return;
+            }
+
             const formData = new FormData();
             formData.append('action', this.id ? 'update' : 'add');
             formData.append('title', this.title);
