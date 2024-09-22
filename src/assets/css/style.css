@@ -1085,7 +1085,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .join_login {
   margin: 80px auto;
-  max-width: 300px;
+  width: 280px;
 }
 
 .btn_acc {
@@ -1101,46 +1101,54 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .mainLogin {
   position: relative;
-  background-color: #FFE8BB;
-  border-radius: 0 0 8px 8px;
+  background-color: #221F3C;
+  border-radius: 8px;
 }
 .mainLogin h3 {
   text-align: center;
   font-weight: bold;
 }
-.mainLogin a {
-  color: blue;
-}
-.mainLogin a:hover {
-  color: blue; /* 確保 hover 時不改變顏色 */
-}
 
 .mainLogin ol {
   margin: 0 2.5%;
-  padding: 5px;
-  color: #292929;
+  padding: 2px;
 }
 
 .mainLogin li {
-  margin: 5px 5px 8px;
+  margin: 6px 6px 20px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .mainLogin li i {
-  margin-top: 3px;
-  margin-left: 3px;
-  margin-right: 8px;
+  margin-right: 12px;
+  font-size: 18px;
 }
 .mainLogin li input {
-  margin-bottom: 15px;
-  outline: none;
-  font-size: 20px;
+  border: none;
   width: 95%;
   border-radius: 8px;
-  padding-left: 8px;
+  padding: 10px 12px;
+  background-color: #35395b;
+  color: #FFE8BB;
+  outline: none;
+}
+.mainLogin li input::placeholder {
+  color: white;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+}
+.mainLogin li input:focus::placeholder {
+  color: transparent;
+}
+.mainLogin li span {
+  margin: 20px 0;
 }
 .mainLogin li:hover {
-  color: inherit; /* 確保 hover 時不改變顏色 */
-  background-color: transparent; /* 或者設置為無背景色 */
+  color: inherit;
+  /* 確保 hover 時不改變顏色 */
+  background-color: transparent;
+  /* 或者設置為無背景色 */
 }
 
 #onlogin {
@@ -1149,32 +1157,80 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .btnlogin {
   width: 100%;
-  font-size: 24px;
-  padding: 10px 20px;
+  height: 36px;
+  padding: 0px 12px;
   font-weight: bold;
   text-align: center;
   background-color: #FCD15B;
   border: 0;
-  color: #100E24;
   cursor: pointer;
   border-radius: 8px;
-  border: 1px solid #292929;
-  font-size: 20px;
+  font-size: 16px;
+}
+.btnlogin:hover {
+  background-color: #FEDA77;
 }
 
 .checkforget {
-  margin: 0 5%;
+  margin: 0 2%;
   padding: 5px;
-  color: #292929;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+.checkforget a, .checkforget p {
+  text-decoration: none;
+  font-size: 12px;
+  color: whitesmoke;
+}
+.checkforget a:hover, .checkforget p:hover {
+  color: #FEDA77;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  appearance: none;
+  width: 16px;
+  height: 20px;
+  margin-right: 8px;
+  border: 2px solid #35395b;
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type=checkbox]:checked {
+  background-color: #221F3C;
+  background-color: #35395b;
+}
+
+input[type=checkbox]::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 6px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border: solid #FEDA77;
+  border-width: 0 2px 2px 0;
+  display: none;
+}
+
+input[type=checkbox]:checked::before {
+  display: block;
 }
 
 .linef {
-  color: #292929;
   display: flex;
   justify-content: center;
-  margin: 0 5%;
+  margin: 10% 5% 0%;
   align-items: center;
 }
 
@@ -1185,7 +1241,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 .fline {
   content: "";
   display: block;
-  border-bottom: 1px solid #292929;
+  border-bottom: 1px solid white;
   width: 40%;
 }
 
@@ -1210,19 +1266,55 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   font: size 20px;
 }
 
-.btnfb {
-  background-color: #1877F2;
-  color: white;
-}
-
-.btngoogle {
-  background-color: white;
-  color: #292929;
-}
-
+.btnfb,
+.btngoogle,
 .btnline {
-  background-color: #23DB35;
+  background-color: #35395b;
   color: white;
+}
+
+.btnfb:hover {
+  background-color: #1877F2;
+}
+
+.btngoogle:hover {
+  background-color: #DC3327;
+}
+
+.btnline:hover {
+  background-color: #23DB35;
+}
+
+.register_now {
+  padding: 20px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.register_now p {
+  font-size: 12px;
+}
+.register_now span {
+  display: inline-block;
+  font-weight: 500;
+  color: #FCD15B;
+  position: relative;
+}
+.register_now span::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  left: 0;
+  background-color: #FCD15B;
+  transition: width 0.3s ease;
+}
+.register_now span:hover {
+  color: #FEDA77;
+}
+.register_now span:hover::after {
+  width: 100%;
+  background: #FEDA77;
 }
 
 .btn_joina {
@@ -1240,24 +1332,39 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   padding: 2px;
 }
 
-.mainJoin li input {
-  outline: none;
-  margin-bottom: 8px;
-  width: 95%;
-}
-
 .checkservers {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 .checkservers .checkserver {
-  width: 20px;
-  margin-top: 8px;
+  width: 14px;
+  height: 14px;
 }
 .checkservers p {
-  font-size: 16px;
+  font-size: 12px;
 }
 .checkservers a {
-  font-size: 16px;
+  color: #FEDA77;
+  position: relative;
+}
+.checkservers a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  left: 0;
+  background-color: #FCD15B;
+  transition: width 0.3s ease;
+}
+.checkservers a:hover {
+  color: #FEDA77;
+}
+.checkservers a:hover::after {
+  width: 100%;
+  background: #FEDA77;
 }
 
 #toTopBTN {

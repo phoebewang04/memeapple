@@ -1,35 +1,68 @@
-.btn_joina{
+.btn_joina {
     width: 50%;
     border-radius: 8px 0 0 0;
-    background-color:map-get($colors , yellow);
+    background-color: map-get($colors , yellow);
 }
 
-.btn_join{
+.btn_join {
     width: 50%;
-    border-radius:0 8px 0 0;
+    border-radius: 0 8px 0 0;
 }
 
-.mainJoin ol{
+.mainJoin ol {
+
     padding: 2px;
 }
 
-.mainJoin li{
-    input{
-        outline: none;
-        margin-bottom: 8px;
-        width: 95%;
+.mainJoin li {
+    input {
+        // outline: none;
+        // margin-bottom: 8px;
+        // width: 95%;
     }
 }
-.checkservers{
+
+.checkservers {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    .checkserver{
-        width: 20px;
-        margin-top: 8px;
+    margin-bottom: 20px;
+
+    .checkserver {
+        width: 14px;
+        height: 14px;
     }
-    p{
-        font-size:16px;
+
+    p {
+        font-size: 12px;
     }
-    a{
-        font-size: 16px;
+
+    a {
+        color: map-get($colors , yellow);
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            left: 0;
+            background-color: map-get($colors , gold);
+            transition: width 0.3s ease;
+        }
+
+        &:hover {
+
+            color: map-get($colors , yellow);
+            &::after{
+                width: 100%;
+                background: map-get($colors , yellow);
+            }
+
+
+        }
     }
+
+
 }

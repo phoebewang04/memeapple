@@ -18,114 +18,200 @@
     cursor: pointer;
 }
 
-.join_login{
+.join_login {
     margin: 80px auto;
-    max-width: 300px;
- 
+    width: 280px;
+
 }
 
-.btn_acc{
+.btn_acc {
     width: 50%;
     border-radius: 8px 0 0 0;
 }
 
-.btn_accj{
+.btn_accj {
     width: 50%;
-    background-color:map-get($colors , yellow);
-    border-radius:0 8px 0 0;
+    background-color: map-get($colors , yellow);
+    border-radius: 0 8px 0 0;
 }
 
-.mainLogin{
+.mainLogin {
     position: relative;
-    background-color:map-get($colors , lightyellow);
-    border-radius:0 0 8px 8px;
-      h3{
+    background-color: map-get($colors , midnight);
+    border-radius: 8px;
+
+    h3 {
         text-align: center;
         font-weight: bold;
-      }
-   a{
-    color: blue;
-    &:hover {
-        color: blue; /* 確保 hover 時不改變顏色 */
     }
-   }
+
+  
+    
 }
 
-.mainLogin ol{
-    margin:0 2.5%;
-    padding: 5px;
-    color: map-get($colors , black );
+.mainLogin ol {
+    margin: 0 2.5%;
+    padding: 2px;
+
+    // color: map-get($colors , black );
 }
 
-.mainLogin li{
-    margin: 5px 5px 8px;
+.mainLogin li {
+    margin: 6px 6px 20px;
     display: flex;
-    i{
-        margin-top: 3px;
-        margin-left: 3px;
-        margin-right: 8px;
+    align-items: center;
+    justify-content: center;
+
+    i {
+        margin-right: 12px;
+        font-size: 18px;
     }
-    input{
-        margin-bottom: 15px;
-        outline: none;
-        font-size: map-get($fontsize, h4 );
+
+    input {
+        border: none;
         width: 95%;
         border-radius: 8px;
-        padding-left: 8px;
+        padding: 10px 12px;
+        background-color: map-get($colors , grayblue);
+        color: map-get($colors , lightyellow);
+        outline: none;
+
+        &::placeholder {
+            color: white;
+            transition: all 0.2s ease;
+            opacity: .8;
+        }
+
+        &:focus::placeholder {
+            color: transparent;
+        }
+
     }
-    
+
+    span {
+        margin: 20px 0;
+    }
+
+
     &:hover {
-        color: inherit; /* 確保 hover 時不改變顏色 */
-        background-color: transparent; /* 或者設置為無背景色 */
+        color: inherit;
+        /* 確保 hover 時不改變顏色 */
+        background-color: transparent;
+        /* 或者設置為無背景色 */
     }
 }
 
 
-#onlogin{
+#onlogin {
     width: 20px;
 }
 
-.btnlogin{
-    @include btn(100%,true);
-    border: 1px solid map-get($colors, black);
-    font-size: 20px;
-        
-    
+.btnlogin {
+    width: 100%;
+    height: 36px;
+    padding: 0px 12px;
+    font-weight: bold;
+    text-align: center;
+    background-color: map-get($colors , gold);
+    border: 0;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+
+    &:hover {
+        background-color: map-get($colors , yellow);
+
+    }
+
 }
 
-.checkforget{
-    margin:0 5%;
+
+.checkforget {
+    margin: 0 2%;
     padding: 5px;
-    color: map-get($colors , black );
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+
+    a,p {
+        text-decoration: none;
+        font-size: 12px;
+        color: whitesmoke;
+
+        &:hover {
+            color: map-get($colors , yellow);
+            ;
+        }
+    }
+
+
 }
 
-.linef{
+label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 20px;
+    margin-right: 8px;
+    border: 2px solid map-get($colors , grayblue);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: map-get($colors , midnight);
+    background-color: map-get($colors , grayblue);
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: solid map-get($colors , yellow);
+    border-width: 0 2px 2px 0;
+    display: none;
+}
+
+input[type="checkbox"]:checked::before {
+    display: block;
+}
+
+
+.linef {
     // max-width: 700px;
-    color: map-get($colors , black );
     display: flex;
     justify-content: center;
-    margin: 0 5%;
+    margin: 10% 5% 0%;
     align-items: center;
 }
 
-.flinetext{
+.flinetext {
     margin: 0 3%;
 }
 
-.fline{
+.fline {
     content: '';
     display: block;
-    border-bottom: 1px solid map-get($colors , black );
+    border-bottom: 1px solid map-get($colors , white);
     width: 40%;
 }
 
-.outloginbtn{
+.outloginbtn {
     display: flex;
     justify-content: center;
 
-    button{
+    button {
         max-width: 50px;
         max-height: 50px;
         margin: 10px 20px 20px;
@@ -133,31 +219,82 @@
         padding: 10px;
     }
 
-    img{
+    img {
         padding: 0;
         text-align: center;
-        width:28px;
+        width: 28px;
         height: 28px;
     }
 
-    i{
+    i {
         font: size 20px;
     }
 }
 
 
-.btnfb{
-    background-color:map-get($colors, fbblue) ;
+.btnfb,
+.btngoogle,
+.btnline {
+    background-color: map-get($colors , grayblue);
     color: map-get($colors, white);
 }
 
-.btngoogle{
-    background-color:map-get($colors, white) ;
-    color: map-get($colors, black);
+.btnfb {
+    &:hover {
+        background-color: map-get($colors , fbblue);
+    }
 }
 
-
-.btnline{
-    background-color:map-get($colors, linegreen) ;
-    color: map-get($colors, white);
+.btngoogle {
+    &:hover {
+        background-color: #DC3327;
+    }
 }
+
+.btnline {
+    &:hover {
+        background-color: map-get($colors, linegreen);
+    }
+}
+
+.register_now {
+    padding: 20px 0;
+    text-align: center;
+    cursor: pointer;
+
+    p {
+        font-size: 12px;
+    }
+
+    span {
+        display: inline-block;
+        font-weight: 500;
+        color: map-get($colors , gold);
+        position: relative;
+        
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            left: 0;
+            background-color: map-get($colors , gold);
+            transition: width 0.3s ease;
+        }
+
+
+        &:hover {
+
+            color: map-get($colors , yellow);
+            &::after{
+                width: 100%;
+                background: map-get($colors , yellow);
+            }
+
+
+        }
+    }
+}
+

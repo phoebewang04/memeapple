@@ -16,6 +16,7 @@ const Announcement = () => import('../views/Announcement.vue');
 
 // 前台會員相關組件
 const Login = () => import('../components/login.vue');
+const Loginy = () => import('../components/loginy.vue');
 const Membermanage = () => import('../views/Membermanage.vue');
 const Popupcard = () => import('../views/Popupcard.vue');
 
@@ -54,6 +55,7 @@ const routes = [
   { path: '/Terms/', name: 'Terms',meta:{title:'服務條款'}, component: () => import('../views/TermsService.vue') },
   { path: '/Announcement/:id', name: 'Announcement',meta:{title:'最新消息'}, component: () => import('../views/Announcement.vue') },
   { path: '/Login/', name: 'Login',meta:{title:'登入與註冊'}, component: () => import('../components/login.vue') },
+  { path: '/Loginy/', name: 'Loginy',meta:{title:'登入與註冊'}, component: () => import('../components/loginy.vue') },
   { path: '/Membermanage/', name: 'Membermanage',meta:{title:'會員資料管理'}, component: () => import('../views/Membermanage_test.vue') },
   { path: '/Popupcard/', name: 'Popupcard',meta:{title:'票券'}, component: () => import('../views/Popupcard.vue') },
   { path: '/Branch/', name: 'Branch',meta:{title:'分館介紹'}, component: () => import('../views/Branch.vue') },
