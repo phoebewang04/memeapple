@@ -33,7 +33,7 @@
                   </p>
                 </div>
                 <!-- 票券左側，點選後觸發SweetAlert2，顯示入場票券 -->
-                <div  class="order_cardleft" @click="order.ORDER_STATUS !== '已使用' && showAlert(order)">
+                <div class="order_cardleft" @click="order.ORDER_STATUS !== '已使用' && showAlert(order)">
                   <!-- 活動海報圖片 -->
                   <div class="order_cardimg">
                     <img v-for="poster in posters" v-if="poster && poster.id === Number(order.THEME_ID)"
@@ -54,9 +54,11 @@
                     <p>訂金</p>
                     <p>TWD 2000元</p>
                     <!-- 問卷填寫按鈕 -->
-                    <button v-if="order.ORDER_STATUS === '已使用'" class="questionwrite" @click="orderquestion(order)">問卷填寫</button>
+                    <button v-if="order.ORDER_STATUS === '已使用'" class="questionwrite"
+                      @click="orderquestion(order)">問卷填寫</button>
                     <!-- 取消訂單按鈕 -->
-                    <button v-else-if="order.ORDER_STATUS === '已預訂'" class="cancelorder" @click="ordercancel()">取消訂單</button>
+                    <button v-else-if="order.ORDER_STATUS === '已預訂'" class="cancelorder"
+                      @click="ordercancel()">取消訂單</button>
                   </div>
                 </div>
               </div>
@@ -216,6 +218,49 @@ export default {
       }
     },
     showAlert(order) {
+      
+      // 這邊是卡片主題名稱
+      let titleText = '';
+      // 這邊是卡片場館名稱
+      let placeText = '';
+
+      switch (order.THEME_ID) {
+        case 1:
+          titleText = '成都醫院';
+          break;
+        case 2:
+          titleText = '時光迷宮';
+          break;
+        case 3:
+          titleText = '末日庇護所';
+          break;
+        case 4:
+          titleText = '代碼深淵';
+          break;
+        case 5:
+          titleText = '逃離武石監';
+          break;
+        case 6:
+          titleText = '恐怖密室';
+          break;
+        case 7:
+          titleText = '逃出虛空';
+          break;
+        default:
+          titleText = '未知主題';
+      }
+
+      switch (order.STORE_ID) {
+        case 1:
+        placeText = '台北館';
+          break;
+        case 2:
+        placeText = '台中館';
+          break;
+        default:
+          titleText = '未知場館';
+      }
+
       Swal.fire({
         html:
           `
@@ -226,14 +271,14 @@ export default {
                                 <img src="${new URL("@/assets/img/qrcode_001.jpg", import.meta.url).href}" alt="">
                                 
                             </div>
-                            <h1>逃離武石監</h1>
+                            <h1>${titleText}</h1>
                             <div class="qrcode-time">
                                 <p class="qrcode-y">2024 /</p>
                                 <p class="qrcode-m">08 /</p>
                                 <p class="qrcode-d">17</p>
                             </div>
                             <div class="qrcode-place">
-                                <p>台中館</p>
+                                <p>${placeText}</p>
                                 <div class="qrcode-line"></div>
                                 <span>入場</span>
                                 <span>14:00</span>
