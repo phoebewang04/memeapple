@@ -6762,11 +6762,24 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   border-radius: 8px;
   position: relative;
   transition: transform 0.3s ease;
+  margin-bottom: 20px;
 }
 .order_card:hover {
   transform: scale(1.06);
+  animation: glowHow 1.5s infinite;
 }
 
+@keyframes glowHow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 223, 0, 0.5), 0 0 10px rgba(255, 223, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.863), 0 0 30px rgba(255, 255, 0, 0.863);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 223, 0, 0.5), 0 0 10px rgba(255, 223, 0, 0.5);
+  }
+}
 .order_cardusage p {
   border-radius: 0 8px 0 8px;
   color: white;

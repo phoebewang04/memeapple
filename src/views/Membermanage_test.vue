@@ -28,20 +28,16 @@
               <div v-for="order in filteredOrders" :key="order.ORDER_ID" class="order_card">
                 <!-- 右上標籤 -->
                 <div class="order_cardusage">
-                  <p :class="order.ORDER_STATUS == 1 ? 'onuse' : 'noneuse'">
-                    {{ order.ORDER_STATUS === '已使用' ? '已使用' : '未使用' }}
+                  <p :class="order.ORDER_STATUS === '已使用' ? 'onuse' : (order.ORDER_STATUS === '已預訂' ? 'noneuse' : '')">
+                    {{ order.ORDER_STATUS }}
                   </p>
                 </div>
                 <!-- 票券左側，點選後觸發SweetAlert2，顯示入場票券 -->
-                <div class="order_cardleft" @click="showAlert(order)">
+                <div  class="order_cardleft" @click="order.ORDER_STATUS !== '已使用' && showAlert(order)">
                   <!-- 活動海報圖片 -->
                   <div class="order_cardimg">
-                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="`/${tickets.banner}`" alt=""> -->
-                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="`/${tickets.banner}`" alt=""> -->
-                    <!-- <img v-for="ticket in tickets" v-if="ticket.id === order.THEME_ID" :src="`/${ticket.banner}`" alt=""> -->
-                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="tickets.banner" alt=""> -->
-                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="tickets.banner" alt=""> -->
-                    <img v-for="ticket in tickets" v-if="tickets.id === Number(order.THEME_ID)" :src="tickets.banner" alt="">
+                    <img v-for="poster in posters" v-if="poster && poster.id === Number(order.THEME_ID)"
+                      :src="poster.banner" alt="Ticket Image">
                   </div>
                   <!-- 活動詳細資訊以及訂單編號 -->
                   <div class="order_cardtext">
@@ -50,13 +46,17 @@
                     <p>訂購日期： {{ order.ORDER_DATE }}</p>
                   </div>
                 </div>
+
                 <!-- 票券右側，有問券填寫功能以及已經支付的訂金 -->
                 <div class="order_cardright">
                   <!-- 訂金詳細資訊 -->
                   <div class="order_cardstate">
                     <p>訂金</p>
                     <p>TWD 2000元</p>
-                    <button class="questionwrite" @click="orderquestion(order)">問卷填寫</button>
+                    <!-- 問卷填寫按鈕 -->
+                    <button v-if="order.ORDER_STATUS === '已使用'" class="questionwrite" @click="orderquestion(order)">問卷填寫</button>
+                    <!-- 取消訂單按鈕 -->
+                    <button v-else-if="order.ORDER_STATUS === '已預訂'" class="cancelorder" @click="ordercancel()">取消訂單</button>
                   </div>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export default {
       memberId: 2,
       orders: [],
       error: null,
-      tickets: [
+      posters: [
         { id: 1, banner: '/img/poster_hospital.png' },
         { id: 2, banner: '/img/poster_time.png' },
         { id: 3, banner: '/img/poster_dead.png' },
@@ -177,10 +177,12 @@ export default {
   computed: {
     filteredOrders() {
       if (Array.isArray(this.orders)) {
-        return this.orders.filter(order =>
+        const filtered = this.orders.filter(order =>
           order.MEMBER_ID === this.memberId &&
           (order.ORDER_STATUS === '已使用' || order.ORDER_STATUS === '已預訂')
         );
+        console.log('Filtered orders:', filtered);
+        return filtered;
       }
       console.log('Fetched orders:', this.orders);
       return [];
@@ -194,7 +196,8 @@ export default {
   },
   mounted() {
     this.fetchOrders();
-    // this.fetchOrderData();
+    console.log('Tickets on mount:', this.posters);
+    console.log('Orders on mount:', this.orders);
   },
   methods: {
     // 查會員訂單資料
