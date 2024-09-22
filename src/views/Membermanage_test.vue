@@ -151,18 +151,11 @@ export default {
         { id: "tab2", name: "優惠券" },
         { id: "tab3", name: "會員資料修改" }
       ],
-      tasks: [
-        // {
-        //   id: "aaa",
-        //   name: "123",
-        //   star: 0,
-        //   editable: false
-        // }
-      ],
+      tasks: [],
       brainIndex: 0,
       scareIndex: 0,
       recommendationIndex: 0,
-      memberId: 2,
+      memberId: null,
       orders: [],
       error: null,
       posters: [
@@ -197,9 +190,25 @@ export default {
     }
   },
   mounted() {
-    this.fetchOrders();
+    // 從 localStorage 獲取會員資料
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      this.memberId = user.id; // 動態設置 memberId
+      this.fetchOrders();
+    } else {
+      alert("請進行登入或註冊以造訪會員專區");
+      this.$router.push('/index/'); // 重定向到登入頁面
+    }
+
+    if (!user) {
+        this.memberId = null; // 清空 memberId
+        this.orders = []; // 清空訂單資料
+        this.$router.push('/index'); // 重定向到首頁
+      }
+      
     console.log('Tickets on mount:', this.posters);
     console.log('Orders on mount:', this.orders);
+
   },
   methods: {
     // 查會員訂單資料
@@ -218,44 +227,58 @@ export default {
       }
     },
     showAlert(order) {
-      
+
       // 這邊是卡片主題名稱
       let titleText = '';
       // 這邊是卡片場館名稱
       let placeText = '';
+      // 這是訂單上面的日期，我需要使用次元斬分割他
+      const [year, month, day] = order.ORDER_DATE.split('-');
+      // 這是訂單的背景圖片
+      let backgroundImage = '';
 
       switch (order.THEME_ID) {
         case 1:
           titleText = '成都醫院';
+          backgroundImage = 'url("/img/popupcard_space.png")';
           break;
         case 2:
           titleText = '時光迷宮';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
           break;
         case 3:
           titleText = '末日庇護所';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
           break;
         case 4:
           titleText = '代碼深淵';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
           break;
         case 5:
           titleText = '逃離武石監';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
           break;
         case 6:
           titleText = '恐怖密室';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
           break;
         case 7:
           titleText = '逃出虛空';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
           break;
         default:
           titleText = '未知主題';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
       }
+      console.log('THEME_ID:', order.THEME_ID);
+      console.log('Background Image:', backgroundImage);
 
       switch (order.STORE_ID) {
         case 1:
-        placeText = '台北館';
+          placeText = '台北館';
           break;
         case 2:
-        placeText = '台中館';
+          placeText = '台中館';
           break;
         default:
           titleText = '未知場館';
@@ -265,7 +288,7 @@ export default {
         html:
           `
                       <main class="main-popupcard">
-                        <section class="popupcard-card">
+                        <section class="popupcard-card" style="background-image: ${backgroundImage} !important;">
                             <p class="popupcard-title">請出示電子票券即可入場</p>
                             <div class="popupcard-qrcode">
                                 <img src="${new URL("@/assets/img/qrcode_001.jpg", import.meta.url).href}" alt="">
@@ -273,15 +296,15 @@ export default {
                             </div>
                             <h1>${titleText}</h1>
                             <div class="qrcode-time">
-                                <p class="qrcode-y">2024 /</p>
-                                <p class="qrcode-m">08 /</p>
-                                <p class="qrcode-d">17</p>
+                                <p class="qrcode-y">${year} /</p>
+                                <p class="qrcode-m">${month} /</p>
+                                <p class="qrcode-d">${day}</p>
                             </div>
                             <div class="qrcode-place">
                                 <p>${placeText}</p>
                                 <div class="qrcode-line"></div>
                                 <span>入場</span>
-                                <span>14:00</span>
+                                <span>${order.ORDER_TIME}</span>
                            </div>
                         </section>
                       </main>
@@ -289,7 +312,7 @@ export default {
         showConfirmButton: false,
         color: '#FFFFFF',
         width: 'auto',
-        backgroundcolor: 'transparent',
+        // backgroundcolor: 'transparent',
         customClass:
         {
           popup: 'main-popupcard',
@@ -354,30 +377,6 @@ export default {
       });
     },
     generateHtml() {
-      `    <div class="star_block">
-      <span>燒腦指數</span>
-      <span class="star" id="brain-1"><i class="fas fa-star"></i></span>
-      <span class="star" id="brain-2"><i class="fas fa-star"></i></span>
-      <span class="star" id="brain-3"><i class="fas fa-star"></i></span>
-      <span class="star" id="brain-4"><i class="fas fa-star"></i></span>
-      <span class="star" id="brain-5"><i class="fas fa-star"></i></span>
-    </div>
-    <div class="star_block">
-      <span>驚嚇指數</span>
-      <span class="star" id="scare-1"><i class="fas fa-star"></i></span>
-      <span class="star" id="scare-2"><i class="fas fa-star"></i></span>
-      <span class="star" id="scare-3"><i class="fas fa-star"></i></span>
-      <span class="star" id="scare-4"><i class="fas fa-star"></i></span>
-      <span class="star" id="scare-5"><i class="fas fa-star"></i></span>
-    </div>
-    <div class="star_block">
-      <span>推薦指數</span>
-      <span class="star" id="recommendation-1"><i class="fas fa-star"></i></span>
-      <span class="star" id="recommendation-2"><i class="fas fa-star"></i></span>
-      <span class="star" id="recommendation-3"><i class="fas fa-star"></i></span>
-      <span class="star" id="recommendation-4"><i class="fas fa-star"></i></span>
-      <span class="star" id="recommendation-5"><i class="fas fa-star"></i></span>
-    </div>`
     }
     ,
     setBrainIndex(index) {

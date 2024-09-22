@@ -48,30 +48,31 @@ const Orderinform = () => import('../views/orderinform.vue');
 // ======================================================= //
 
 const routes = [
-  { path: '/', name: 'fontpage',meta:{title:'前後台分流頁'}, component: () => import('../views/Frontpage.vue') },
-  { path: '/index/', name: 'index',meta:{title:'首頁'}, component: () => import('../views/HomeView.vue') },
-  { path: '/Privacy/', name: 'Privacy',meta:{title:'隱私權政策'}, component: () => import('../views/PrivacyPolicy.vue') },
-  { path: '/Terms/', name: 'Terms',meta:{title:'服務條款'}, component: () => import('../views/TermsService.vue') },
-  { path: '/Announcement/:id', name: 'Announcement',meta:{title:'最新消息'}, component: () => import('../views/Announcement.vue') },
-  { path: '/Login/', name: 'Login',meta:{title:'登入與註冊'}, component: () => import('../components/login.vue') },
-  { path: '/Membermanage/', name: 'Membermanage',meta:{title:'會員資料管理'}, component: () => import('../views/Membermanage_test.vue') },
-  { path: '/Popupcard/', name: 'Popupcard',meta:{title:'票券'}, component: () => import('../views/Popupcard.vue') },
-  { path: '/Branch/', name: 'Branch',meta:{title:'分館介紹'}, component: () => import('../views/Branch.vue') },
-  { path: '/Minigame/', name: 'Minigame',meta:{title:'線上體驗'}, component: () => import('../views/Minigame.vue') },
-  { path: '/dead1A2Bgame/', name: 'dead1A2Bgame',meta:{title:'亡命數字'}, component: () => import('../views/dead1A2Bgame.vue') },
-  { path: '/Cardmatching/', name: 'Cardmatching',meta:{title:'鬼碑迷陣'}, component: () => import('../views/Cardmatching.vue') },
-  { path: '/Escaperoom/', name: 'Escaperoom',meta:{title:'亡靈醫院'}, component: () => import('../views/Escaperoom.vue') },
-  { path: '/BackstageLogin/', name: 'BackstageLogin',meta:{title:'後台登入頁'}, component: () => import('../views/Backstage_login.vue') },
-  { path: '/BackstageIndex/', name: 'BackstageIndex',meta:{title:'後台首頁'}, component: () => import('../views/Backstage_index.vue') },
-  { path: '/MemberMenage/', name: 'MemberMenage',meta:{title:'會員資料管理'}, component: () => import('../views/Backstage_member.vue') },
-  { path: '/OrderMemage/', name: 'OrderMemage',meta:{title:'訂單資資料管理'}, component: () => import('../views/Backstage_order.vue') },
-  { path: '/NewsMenage/', name: 'NewsMenage',meta:{title:'最新消息管理'}, component: () => import('../views/Backstage_news.vue') },
-  { path: '/NewsEdit/:id?', name: 'NewsEdit',meta:{title:'最新消息編輯'}, component: () => import('../views/Backstage_news_edit.vue') },
+  { path: '/', name: 'fontpage', meta: { title: '前後台分流頁' }, component: () => import('../views/Frontpage.vue') },
+  { path: '/index/', name: 'index', meta: { title: '首頁' }, component: () => import('../views/HomeView.vue') },
+  { path: '/Privacy/', name: 'Privacy', meta: { title: '隱私權政策' }, component: () => import('../views/PrivacyPolicy.vue') },
+  { path: '/Terms/', name: 'Terms', meta: { title: '服務條款' }, component: () => import('../views/TermsService.vue') },
+  { path: '/Announcement/:id', name: 'Announcement', meta: { title: '最新消息' }, component: () => import('../views/Announcement.vue') },
+  { path: '/Login/', name: 'Login', meta: { title: '登入與註冊' }, component: () => import('../components/login.vue') },
+  { path: '/Membermanage/', name: 'Membermanage', meta: { title: '會員資料管理' }, component: () => import('../views/Membermanage_test.vue') },
+  { path: '/Popupcard/', name: 'Popupcard', meta: { title: '票券' }, component: () => import('../views/Popupcard.vue') },
+  { path: '/Branch/', name: 'Branch', meta: { title: '分館介紹' }, component: () => import('../views/Branch.vue') },
+  { path: '/Minigame/', name: 'Minigame', meta: { title: '線上體驗' }, component: () => import('../views/Minigame.vue') },
+  { path: '/dead1A2Bgame/', name: 'dead1A2Bgame', meta: { title: '亡命數字' }, component: () => import('../views/dead1A2Bgame.vue') },
+  { path: '/Cardmatching/', name: 'Cardmatching', meta: { title: '鬼碑迷陣' }, component: () => import('../views/Cardmatching.vue') },
+  { path: '/Escaperoom/', name: 'Escaperoom', meta: { title: '亡靈醫院' }, component: () => import('../views/Escaperoom.vue') },
+  { path: '/BackstageLogin/', name: 'BackstageLogin', meta: { title: '後台登入頁' }, component: () => import('../views/Backstage_login.vue') },
+  { path: '/BackstageIndex/', name: 'BackstageIndex', meta: { title: '後台首頁' }, component: () => import('../views/Backstage_index.vue') },
+  { path: '/MemberMenage/', name: 'MemberMenage', meta: { title: '會員資料管理' }, component: () => import('../views/Backstage_member.vue') },
+  { path: '/OrderMemage/', name: 'OrderMemage', meta: { title: '訂單資資料管理' }, component: () => import('../views/Backstage_order.vue') },
+  { path: '/NewsMenage/', name: 'NewsMenage', meta: { title: '最新消息管理' }, component: () => import('../views/Backstage_news.vue') },
+  { path: '/NewsEdit/:id?', name: 'NewsEdit', meta: { title: '最新消息編輯' }, component: () => import('../views/Backstage_news_edit.vue') },
   { path: '/Theme/:id', component: Theme },
   { path: '/Theme/:id/preorder/orderinform/pay', component: Pay },
   { path: '/Theme/:id/preorder', component: Preorder },
   { path: '/Theme/:id/preorder/orderinform', component: Orderinform },
 ];
+
 
 
 // 將router實例導出，以便在其他地方使用。
@@ -87,7 +88,9 @@ export default function () {
       return { top: 0 };
     }
   });
+
 }
+
 
 // 其他備註。
 // ======================================================= //
