@@ -251,7 +251,8 @@ export default {
           memberId: this.memberId
         };
         console.log('params: ', params)
-        const response = await axios.get('http://localhost/meme_apple/public/php/api/Order.php', { params });
+        const response = await axios.get(import.meta.env.VITE_API_BASE +'/api/Order.php', { params });
+        // const response = await axios.get('http://localhost/meme_apple/public/php/api/Order.php', { params });
         console.log('response.data: ', response.data);
         this.orders = response.data;
         console.log('this.orders: ', this.orders);
@@ -274,7 +275,8 @@ export default {
 
       if (result.isConfirmed) {
         try {
-          const response = await axios.post('http://localhost/meme_apple/public/php/api/OrderCancel.php', {
+          const response = await axios.post(import.meta.env.VITE_API_BASE +'/api/OrderCancel.php', {
+          // const response = await axios.post('http://localhost/meme_apple/public/php/api/OrderCancel.php', {
             orderId: order.ORDER_ID,
             status: 3
           });
@@ -315,20 +317,22 @@ export default {
       }
     },
     showAlert(order) {
-
       // 這邊是卡片主題名稱
       let titleText = '';
       // 這邊是卡片場館名稱
       let placeText = '';
       // 這是訂單上面的日期，我需要使用次元斬分割他
       const [year, month, day] = order.ORDER_DATE.split('-');
+      // 這是訂單上面的入場時間，我需要使用次元斬分割他
+      const [hour, min] = order.ORDER_TIME.split(':');
+      const displayTime = `${hour}:${min}`;
       // 這是訂單的背景圖片
       let backgroundImage = '';
 
       switch (order.THEME_ID) {
         case 1:
           titleText = '成都醫院';
-          backgroundImage = 'url("/tid102/g1/img/popupcard_space.png")';
+          backgroundImage = '("../img/popupcard_space_2.png")';
           break;
         case 2:
           titleText = '時光迷宮';
@@ -391,13 +395,14 @@ export default {
                             <div class="qrcode-place">
                                 <p>${placeText}</p>
                                 <div class="qrcode-line"></div>
-                                <span>入場</span>
-                                <span>${order.ORDER_TIME}</span>
+                                <span>入場時間</span>
+                                <span>${displayTime}</span>
                            </div>
                         </section>
                       </main>
                 `,
         showConfirmButton: false,
+        showCloseButton: true,
         color: '#FFFFFF',
         width: 'auto',
         // backgroundcolor: 'transparent',

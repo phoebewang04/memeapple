@@ -88,7 +88,8 @@
                                     <label for="agreeTerms"><input type="checkbox" class="checkserver"
                                             v-model="agreeTerms" id="agreeTerms">
                                         <p>我同意 <router-link to="/Privacy/" target="_blank">隱私權政策</router-link> &
-                                            <router-link to="/Terms/" target="_blank">服務條款</router-link></p>
+                                            <router-link to="/Terms/" target="_blank">服務條款</router-link>
+                                        </p>
                                     </label>
                                 </div>
                                 <li><button type="submit" class="btn btnlogin">註冊帳號</button></li>
@@ -117,7 +118,7 @@
 import '../assets/js/vue.global';
 import '../assets/css/style.css';
 import axios from 'axios';
-
+import Swal from 'sweetalert2';
 
 export default {
 
@@ -186,26 +187,49 @@ export default {
         // },
         async submitLogin() {
             try {
-                const response = await axios.post('http://localhost/sweethome/meme/public/php/api/Login.php', {
+                const response = await axios.post(import.meta.env.VITE_API_BASE +'/api/login.php', {
+                // const response = await axios.post('http://localhost/meme_apple/public/php/api/Login.php', {
                     username: this.username,
                     password: this.password
                 });
                 if (response.data.status === "success") {
-                    alert("登入成功");
-                    // 進行登入後的操作，例如重定向
-                    const user = response.data.user; // 假設用戶資料在這裡返回
-                    localStorage.setItem('user', JSON.stringify(user));//儲存用戶資料
+                    // alert("登入成功");
 
-                    this.$emit('login', user); // 發出登入事件，並傳遞用戶資料
-                    console.log(response.data.user);
-                    this.closePopup(); // 關閉彈窗
+                    Swal.fire({
+                        title: '登入成功',
+                        text: '您已成功登入',
+                        icon: 'success',
+                        confirmButtonColor: '#FCD15B',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        // 進行登入後的操作，例如重定向
+                        const user = response.data.user; // 假設用戶資料在這裡返回
+                        localStorage.setItem('user', JSON.stringify(user));//儲存用戶資料
 
+                        this.$emit('login', user); // 發出登入事件，並傳遞用戶資料
+                        console.log(response.data.user);
+                        this.closePopup(); // 關閉彈窗
+                    });
                 } else {
-                    alert(response.data.message); // 顯示錯誤消息
+                    // alert(response.data.message); // 顯示錯誤消息
+                    console.error('Error details:', error.response ? error.response.data : error.message);
+                    Swal.fire({
+                        title: '錯誤',
+                        text: response.data.message,
+                        icon: 'error',
+                        confirmButtonColor: '#FCD15B',
+                        confirmButtonText: 'OK'
+                    });
                 }
             } catch (error) {
-                console.error(error);
-                alert("發生錯誤，請稍後再試。");
+                console.error('Error details:', error.response ? error.response.data : error.message);
+                Swal.fire({
+                    title: '錯誤',
+                    text: '發生錯誤，請稍後再試。',
+                    icon: 'error',
+                    confirmButtonColor: '#FCD15B',
+                    confirmButtonText: 'OK'
+                });
             }
         },
         validateEmail(email) {
@@ -249,7 +273,8 @@ export default {
 
             // 如果所有檢查都通過，則進行註冊請求
             try {
-                const response = await axios.post('http://localhost/appleyy/public/php/api/Register.php', {
+                const response = await axios.post(import.meta.env.VITE_API_BASE +'/api/register.php', {
+                // const response = await axios.post('http://localhost/meme_apple/public/php/api/Register.php', {
                     email: this.registerEmail,
                     password: this.registerPassword,
                     name: this.registerName,

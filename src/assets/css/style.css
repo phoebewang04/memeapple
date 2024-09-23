@@ -6822,6 +6822,12 @@ input[type=checkbox]:checked::before {
   margin-right: 20px;
   line-height: 1.5;
 }
+.qrcode-place span {
+  margin-left: 0px;
+}
+.qrcode-place span:last-child {
+  margin-left: 12px;
+}
 
 .qrcode-line {
   border: 1px solid white;
