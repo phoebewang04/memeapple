@@ -1,11 +1,12 @@
 <script>
 import '../assets/css/style.css';
 import LoginRegisterPopup from './login.vue';
+import Swal from 'sweetalert2';
 
 export default {
   components: {
-        LoginRegisterPopup
-    },
+    LoginRegisterPopup
+  },
   props: {
     isLoggedIn: {
       type: Boolean,
@@ -45,13 +46,13 @@ export default {
     },
     checkLoginStatus() {
       const user = localStorage.getItem('user');
-    if (user) {
-      this.isLoggedIn = true;
-      this.user = JSON.parse(user);
-    } else {
-      this.isLoggedIn = false; // 確保設置為 false
-      this.user = null; // 清空用戶資料
-  }
+      if (user) {
+        this.isLoggedIn = true;
+        this.user = JSON.parse(user);
+      } else {
+        this.isLoggedIn = false; // 確保設置為 false
+        this.user = null; // 清空用戶資料
+      }
     },
     logout() {
 
@@ -59,6 +60,18 @@ export default {
       this.isLoggedIn = false; // 更新登錄狀態
       this.user = null; // 清空用戶資料
       this.$emit('logout'); // 發出登出事件（如果需要）
+
+      setTimeout(() => {
+        Swal.fire({
+          title: '登出成功',
+          text: '您已成功登出',
+          icon: 'success',
+          confirmButtonColor: '#FCD15B',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.$router.push('/index/'); // 重定向到登入頁面
+        });
+      }, 100); // 延遲顯示 alert，確保頁面已跳轉
     },
   },
   created() {
@@ -80,16 +93,12 @@ export default {
     <font-awesome-icon class="fa" icon="bars" @click="showMenuBar"></font-awesome-icon>
     <ul id="menuBar" :class="{ visible: visible_active }">
       <div v-if="isLoggedIn">
-      <li><a @click="logout">登出</a> <!-- 只顯示登出按鈕 --></li>
+        <li><a @click="logout">登出</a> <!-- 只顯示登出按鈕 --></li>
       </div>
       <div v-else>
         <li><a @click="showPopup = true">會員登入</a></li>
       </div>
-      <LoginRegisterPopup 
-        v-if="showPopup" 
-        @close="showPopup = false" 
-        @login="handleLogin"
-      />
+      <LoginRegisterPopup v-if="showPopup" @close="showPopup = false" @login="handleLogin" />
       <li><router-link to="/Membermanage/">會員專區</router-link></li>
       <li><router-link to="/Minigame/">線上體驗</router-link></li>
       <li><router-link to="/Branch/">分館介紹</router-link></li>

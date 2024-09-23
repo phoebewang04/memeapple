@@ -87,8 +87,7 @@
     margin-bottom: 20px;
 
     &:hover {
-        transform: scale(1.06);
-        animation: glowHow 1.5s infinite;
+        transform: scale(1.02);
     }
 }
 
@@ -121,6 +120,9 @@
         }
         &.noneuse{
             background-color: map-get($colors, usered);
+        }
+        &.cancaluse{
+            background-color: map-get($colors, priceorange);
         }
         @include rwd(520px){
             font-size: 10px;
