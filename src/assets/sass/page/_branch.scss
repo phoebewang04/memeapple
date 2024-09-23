@@ -269,7 +269,7 @@
     transition: transform 0.3s ease;
 
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 }
 
@@ -300,10 +300,12 @@
 }
 
 .theme ul li img {
-    width: 280px;
-    height: 400px;
+    
+    width: 95%;
+    height: 360px;
 
     @include pad {
+        
         width: 180px;
         height: 270px;
     }
@@ -321,7 +323,7 @@
 }
 
 .theme .theme_name h3 {
-    width: 280px;
+    width: 244px;
     height: 40px;
     background-color: map-get($colors , yellow );
     color: map-get($colors , darkblue ) ;

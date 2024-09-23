@@ -402,17 +402,7 @@ export default {
         goToNextPage (){
             localStorage.setItem ('peopleAmount', this.peopleAmount);
 
-            if (!selectedDate) {
-                alert('請選擇一個日期');
-                return; 
-            } else if (!selectedTimeSlot) {
-                alert('請選擇一個場次');
-                return; 
-            } else if (peopleAmount === '0') {
-                alert('請選擇人數');
-                return; 
-            }
-
+            
         },
     },
 

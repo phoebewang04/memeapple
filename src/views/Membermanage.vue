@@ -7,7 +7,7 @@
           @click="currentTab = tab.id" class="btn btn_mange">{{ tab.name }}</button>
         <!-- <button class="btn btn_mange">訂單檢視</button>
             <button class="btn btn_mange">優惠券</button>
-            <button class="btn btn_mange">會員資料修改</button> -->
+            <button class="btn btn_mange">會員資料</button> -->
       </div>
       <div class="mmangeright" id="mmangeright">
         <div class="mangerightitems">
@@ -15,7 +15,7 @@
             @click="currentTab = tab.id" class="btn btn_mange">{{ tab.name }}</button>
           <!-- <button class="btn btn_mange">訂單檢視</button>
           <button class="btn btn_mange">優惠券</button>
-          <button class="btn btn_mange">會員資料修改</button> -->
+          <button class="btn btn_mange">會員資料</button> -->
         </div>
 
         <div class="ordertext" v-if="currentTab == 'tab1'">
@@ -69,13 +69,13 @@
 
 
           </div>
-          <!-- <div class="ordertext_right">
+          <div class="ordertext_right">
                 <ul>
                   <li><h3>訂單查詢</h3></li>
                   <li> <button class="btn btn_ordera" >未使用訂單</button></li>
                   <li><button class="btn btn_ordera" >全部訂單</button></li>
                 </ul>
-              </div> -->
+              </div>
         </div>
 
 
@@ -85,8 +85,6 @@
             <div class="coupont">
               <h3>COUPON</h3>
               <h4>150元</h4>
-              <h4>未使用</h4>
-              <!-- <h4>已使用</h4> -->
             </div>
           </div>
 
@@ -94,42 +92,30 @@
 
 
         <div class="editmember" v-if="currentTab == 'tab3'">
-          <h3>會員資料修改</h3>
-          <ul>
-            <li>
-              <h4>帳號：</h4>
-            </li>
-            <li>
-              <h4>a123456789@yahoo.com.tw</h4>
-            </li>
-            <li>
-              <h4>生日：</h4>
-            </li>
-            <li>
-              <h4>1987-08-07</h4>
-            </li>
-            <li>
-              <h4>修改密碼：</h4>
-            </li>
-            <li><input type="text" class="editphone" value="********"></li>
-            <li>
-              <h4>請再次輸入密碼：</h4>
-            </li>
-            <li><input type="text" class="editphone" value="********"></li>
-            <li>
-              <h4>修改姓名：</h4>
-            </li>
-            <li><input type="text" class="editphone" value="李小王"></li>
-            <li>
-              <h4>電話：</h4>
-            </li>
-            <li><input type="text" class="editphone" value="0912123123" maxlength="10" pattern="^09\d{8}$"></li>
-          </ul>
-          <div>
-            <button class="btn btnedit">儲存變更</button>
-            <button class="btn btnedit">取消</button>
+          <div class="memberdata" v-if="!isEditing">
+            <h3>會員資料</h3>
+            <ul>
+              <li><h4>帳號：{{user.email}}</h4></li>
+              <li><h4>密碼：{{user.password}}</h4></li>
+              <li><h4>姓名：{{user.name}}</h4></li>
+              <li><h4>電話：{{user.phone}}</h4></li>
+            </ul>
+            <div><button class="btn btnedit" @click="isEditing = true">資料變更</button></div>
           </div>
-
+          <div class="editmemberdata" v-else>
+            <h3>會員資料修改</h3>
+            <ul>
+              <li><h4>帳號：{{user.email}}</h4></li>
+              <li><h4>修改密碼：<input type="text" class="editphone" v-model="editedUser.password"></h4></li>
+              <li><h4>請再次輸入密碼：<input type="text" class="editphone" v-model="editedUser.password"></h4></li>
+              <li><h4>修改姓名：<input type="text" class="editphone" v-model="editedUser.name"></h4></li>
+              <li><h4>電話：<input type="text" class="editphone" v-model="editedUser.phone" maxlength="10" pattern="^09\d{8}$"></h4></li>
+            </ul>
+            <div>
+              <button class="btn btnedit" @click="saveChanges">儲存變更</button>
+              <button class="btn btnedit" @click="isEditing = false">取消</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -143,6 +129,7 @@ import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 
 export default {
@@ -166,6 +153,7 @@ export default {
   data() {
     return {
       currentTab: "tab1",
+      isEditing: false,
       tabs: [
         {
           id: "tab1",
@@ -177,7 +165,7 @@ export default {
         },
         {
           id: "tab3",
-          name: "會員資料修改"
+          name: "會員資料"
         }
       ],
       tasks: [
@@ -188,6 +176,13 @@ export default {
         //   editable: false
         // }
       ],
+      user: {},
+      editedUser: {
+        password: '',
+        passwordConfirm: '',
+        name: '',
+        phone: ''
+      }
     };
   },
   beforeMount() {
@@ -195,6 +190,23 @@ export default {
     if (tasks) {
       this.tasks = tasks;
     }
+  },
+  mounted() {
+    // 從 localStorage 獲取會員資料
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      this.user=user;
+      this.memberId = user.id; // 動態設置 memberId
+      
+      this.editedUser = { ...user };
+    } else {
+      alert("請進行登入或註冊以造訪會員專區");
+      this.$router.push('/index/'); // 重定向到登入頁面
+    }
+
+    console.log('Tickets on mount:', this.posters);
+    console.log('Orders on mount:', this.orders);
+
   },
   methods: {
     showAlert() {
@@ -317,6 +329,37 @@ export default {
     taskStar(e, i, star) {
       this.tasks[i].star = star;
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
+    },
+    saveChanges() {
+     // 更新用戶資料
+      this.user.name = this.editedUser.name;
+      this.user.phone = this.editedUser.phone;
+      this.user.password = this.editedUser.password; // 直接使用明文密碼
+
+      // 更新 localStorage
+      localStorage.setItem('user', JSON.stringify(this.user));
+
+      // 發送請求到後端
+      this.updateUserData(this.user);
+      this.isEditing = false; // 儲存後退出編輯模式
+    },
+    updateUserData(user) {
+      const payload = {
+        id: user.id, // 假設有用戶ID
+        email: user.email,
+        name: user.name,
+        phone: user.phone,
+        password: user.password // 直接傳送明文密碼
+      };
+      console.log(payload);
+      axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)
+        .then(response => {
+          Swal.fire('成功', '資料已更新', 'success');
+        })
+        .catch(error => {
+          console.error('更新用戶資料失敗:', error);
+          Swal.fire('失敗', '更新失敗', 'error');
+        });
     },
   },
 

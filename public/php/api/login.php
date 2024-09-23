@@ -29,6 +29,7 @@ if ($email && $pass) {
                         "email" => $user_data['EMAIL'],
                         "phone" => $user_data['PHONE'],
                         "status" => $user_data['STATUS'],
+                        "password" => $user_data['PASSWORD'],
                     ]]);
             } else {
                 echo json_encode(["status" => "error", "message" => "密碼錯誤"]);

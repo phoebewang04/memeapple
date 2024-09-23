@@ -15,10 +15,11 @@ $name = $data['name'] ?? '';
 $phone = $data['phone'] ?? '';
 
 // 檢查是否有必要的參數
-if (!$email || !$pass || !$name || !$phone) {
+  if (!$email || !$pass || !$name || !$phone) {
     echo json_encode(["status" => "error", "message" => "缺少必要的參數"]);
-    exit();
-}
+     exit();
+ }
+
 
 // 檢查是否已經有相同的帳號
 $sql = "SELECT * FROM MEMBER WHERE EMAIL = ? OR PHONE = ?";

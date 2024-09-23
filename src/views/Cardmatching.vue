@@ -78,7 +78,8 @@ export default {
 
             ],
             flippedCards: [],  // 追蹤翻開的卡片
-            lockBoard: false  // 避免玩家在翻卡時重複操作
+            lockBoard: false,  // 避免玩家在翻卡時重複操作
+            cardBgi: [new URL("@/assets/img/123.png", import.meta.url).href,]
         };
     },
     components: { cardAlert },
@@ -169,13 +170,13 @@ export default {
 
                 if (result.status === 'exists') {
                     // 已有優惠券
-                    this.showCouponCard("挑戰成功，但你已經有該寶藏了喔～", '/minigame/');
+                    this.showCouponCard("挑戰成功，但你已經擁有寶藏了喔！", '/minigame/');
                     // console.log('成功領取優惠券', result.message);
 
                 } else if (result.status === 'not_found') {
                     // 沒有優惠券
                     await this.issueCoupon(memberId, discount);
-                    this.showCouponCard("挑戰成功，挖到寶藏啦！", { path: '/Membermanage/', query: { tab: 'tab2' } });
+                    this.showCouponCard("挑戰成功，恭喜挖到寶藏啦！", { path: '/Membermanage/', query: { tab: 'tab2' } });
                 } else {
                     console.error("未知的優惠券狀態", result);
                 }
@@ -205,16 +206,21 @@ export default {
         showCouponCard(message, redirectUrl) {
             clearInterval(this.intervalId); // 停止計時
             cardAlert.fire({
-                title: message,
-                icon: 'success',
-                confirmButtonText: '確認'
+                imageUrl:new URL("@/assets/img/card_icon_treasure.png", import.meta.url).href,
+                imageWidth: 120,
+                imageHeight: 140,
+                text: message,
+                confirmButtonText: '確認',
+                confirmButtonColor:'#2b2b40',
+                background:'#373757',
+                color:'white'
             }).then(() => {
                 this.$router.push(redirectUrl);
             });
         },
 
         restart() {
-            clearInterval(this.intervalId);  // 清除計時器
+            clearInterval(this.intervalId);
             this.lockBoard = true;
 
             this.cards = this.cards.map(card => ({ ...card, flipped: false }));
@@ -223,18 +229,23 @@ export default {
                 this.cards = this.shuffleArray(this.cards);
                 this.flippedCards = [];
                 this.lockBoard = false;
-                this.timeRemaining = this.initialTime;  // 重置倒數時間
-                this.startCountdown();  // 重新啟動倒數
+                this.timeRemaining = this.initialTime;
+                this.startCountdown();
             }, 500);
         },
 
         challengeFailed() {
-            this.lockBoard = true;  // 鎖定遊戲板
+            this.lockBoard = true;
             cardAlert.fire({
-                title: '挑戰失敗',
-                text: '時間到！你可以重新挑戰！',
-                icon: 'error',
-                confirmButtonText: '重新開始'
+                imageUrl:new URL("@/assets/img/card_icon_ghost.png", import.meta.url).href,
+                imageWidth: 100,
+                imageHeight: 120,
+                text: '時間到！挑戰失敗！',
+                color:'white',
+                confirmButtonText: '重新挑戰',
+                confirmButtonColor:'#2b2b40',
+                background:'#373757',
+                focusConfirm: false
             }).then(() => {
                 this.restart();
             });
@@ -250,9 +261,14 @@ export default {
 
         gameRules() {
             cardAlert.fire({
-                icon:'info',
-                title: "遊戲說明",
+                imageUrl:new URL("@/assets/img/card_icon_candle.png", import.meta.url).href,
+                imageWidth: 120,
                 html: '80秒的記憶翻牌遊戲，在時間內完成即可獲得秘寶！<br>若使用手機請轉為橫向，以獲得最佳遊戲體驗！',
+                background:'#2b2b40',
+                color:'white',
+                showConfirmButton: false,
+                showCloseButton: true,
+                focusConfirm: false
             });
         }
     },
