@@ -13,6 +13,7 @@ const Home = () => import('../views/HomeView.vue');
 const Privacy = () => import('../views/PrivacyPolicy.vue');
 const Terms = () => import('../views/TermsService.vue');
 const Announcement = () => import('../views/Announcement.vue');
+const Landingpage = () => import('../views/Landingpage.vue');
 
 // 前台會員相關組件
 const Login = () => import('../components/login.vue');
@@ -67,10 +68,13 @@ const routes = [
   { path: '/OrderMemage/', name: 'OrderMemage',meta:{title:'訂單資資料管理'}, component: () => import('../views/Backstage_order.vue') },
   { path: '/NewsMenage/', name: 'NewsMenage',meta:{title:'最新消息管理'}, component: () => import('../views/Backstage_news.vue') },
   { path: '/NewsEdit/:id?', name: 'NewsEdit',meta:{title:'最新消息編輯'}, component: () => import('../views/Backstage_news_edit.vue') },
-  { path: '/Theme/:id', component: Theme },
-  { path: '/Theme/:id/preorder/orderinform/pay', component: Pay },
+  { path: '/Theme/:id', component: Theme }, 
   { path: '/Theme/:id/preorder', component: Preorder },
   { path: '/Theme/:id/preorder/orderinform', component: Orderinform },
+  { path: '/Landingpage/', name: 'Landingpage',meta:{title:'Landingpage'}, component: () => import('../views/Landingpage.vue') },
+  { path: '/Theme/:id/preorder/orderinform/pay', component: Pay },
+  { path: '/Theme/:id/preorder/orderinform/pay/Membermanage', component:Membermanage},
+ 
 ];
 
 

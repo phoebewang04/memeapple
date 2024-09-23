@@ -88,7 +88,7 @@
 
 .top a {
     color: map-get($colors, white);
-    display: block;
+    // display: block;
     cursor: pointer;
     &:hover {
         color: map-get($colors, gold);

@@ -169,11 +169,11 @@
                     </div>
                 </div>
 
-                <RouterLink :to="{ path: `/Theme/${$route.params.id}/preorder/orderinform/pay` }">
+                <!-- <RouterLink :to="{ path: `/Theme/${$route.params.id}/preorder/orderinform/pay` }"> -->
                     <div class="button01">
-                        <button class="btn next_btn" :disabled="!dataValid" :class="{active: dataValid}" @click="goToNextPage">下一步</button>
+                        <button class="btn next_btn" :disabled="!dataValid" :class="{active: dataValid}" @click="goToNextStep">下一步</button>
                     </div>
-                </RouterLink>
+                <!-- </RouterLink> -->
 
             </div>
             
@@ -197,6 +197,8 @@ import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 import { RouterLink } from 'vue-router';
 import ScrollToTop from '../components/ScollToTop.vue';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     components: {
@@ -213,6 +215,7 @@ export default {
             orderPassword:'',
             comfirmPassword:'',
             orderDiscount:'',
+            usedDiscount: false,
             discountPrice: '0',
             orderCheck1 : false,
             orderCheck2 : false,
@@ -279,8 +282,9 @@ export default {
             }
         },
         validPassword(){
-            if (this.orderPassword.length < 6){
-                this.passwordError = '密碼輸入格式有錯誤！至少要包含6位字符！';
+            const regex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/; 
+            if (!this.orderPassword.match(regex)){
+                this.passwordError = '密碼輸入格式有誤！至少要包含6位數 含字母和數字！';
             }else {
                 this.passwordError = '';
             }
@@ -304,49 +308,164 @@ export default {
                 this.discountPrice = '0';
             }
         },
+        // showDiscountPopup() {
+        //   Swal.fire({
+        //     title: "今日是否要使用優惠卷？",
+        //     text: "什麼？你還沒有拿到優惠卷！",
+        //     text: "偷偷告訴你去玩小遊戲！會有驚喜給你噢！",
+        //     icon: "warning",
+        //     color: "#100E24",
+        //     showCancelButton: true,
+        //     cancelButtonText: "<span>取消</span>",
+        //     confirmButtonColor: "#FCD15B",
+        //     cancelButtonColor: "#C70000",
+        //     confirmButtonText: "<span>確定</span>"
+        //   }).then((result) => {
+        //     if (result.isConfirmed) {
+        //       // 用戶選擇了使用優惠卷
+        //       this.usedDiscount = true;  // 設置優惠卷已選擇
+        //     } else if (result.isDismissed) {
+        //       // 用戶選擇不使用優惠卷，直接跳轉下一步
+        //       this.goToNextStep(); 
+        //     }
+        //   });
+        // },
+        // nextStep() {
+        //   if (this.usedDiscount) {
+        //     // 如果選擇了優惠卷，應用折扣
+        //     this.selectDiscount(); 
+        //     // 然後跳轉到下一步
+        //     this.goToNextStep();
+        //   } else {
+        //     // 如果未選擇優惠卷，彈出優惠卷選擇框
+        //     this.showDiscountPopup();
+        //   }
+        // },
         goToNextPage (){
             localStorage.setItem ('orderDiscount', this.orderDiscount);
             localStorage.setItem('discountPrice', this.discountPrice);
+
+        //     Swal.fire({
+        //     title: "今日是否要使用優惠卷？",
+        //     text: "什麼？你還沒有拿到優惠卷！",
+        //     text: "偷偷告訴你去玩小遊戲！會有驚喜給你噢！",
+        //     icon: "warning",
+        //     color: "#100E24",
+        //     showCancelButton: true,
+        //     cancelButtonText: "<span>取消</span>",
+        //     confirmButtonColor: "#FCD15B",
+        //     cancelButtonColor: "#C70000",
+        //     confirmButtonText: "<span>確定</span>"
+        //   }).then((result) => {
+        //     if (result.isConfirmed) {
+        //       // 用戶選擇了使用優惠卷
+        //       this.usedDiscount = true;  // 設置優惠卷已選擇
+        //     } else if (result.isDismissed) {
+        //       // 用戶選擇不使用優惠卷，直接跳轉下一步
+        //       this.goToNextStep(); 
+        //     }
+        //   });
+        //     if (this.usedDiscount) {
+        //     // 如果選擇了優惠卷，應用折扣
+        //     this.selectDiscount(); 
+        //     // 然後跳轉到下一步
+        //     this.goToNextStep();
+        //   } else {
+        //     // 如果未選擇優惠卷，彈出優惠卷選擇框
+        //     this.showDiscountPopup();
+        //   }
+             this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay` });
+
+        //     Swal.fire({
+        //     title: "今日是否要使用優惠卷？",
+        //     text: "什麼？你還沒有拿到優惠卷！偷偷告訴你去玩小遊戲！會有驚喜給你噢！",
+        //     icon: "warning",
+        //     color: "#100E24",
+        //     showCancelButton: true,
+        //     cancelButtonText: "<span>取消</span>",
+        //     confirmButtonColor: "#FCD15B",
+        //     cancelButtonColor: "#C70000",
+        //     confirmButtonText: "<span>確定</span>"
+        //     }).then((result) => {
+        //         if (result.isConfirmed) {
+        //             // 用戶點擊了「確認」停留在本頁
+        //             console.log("用戶選擇使用優惠卷");
+                    
+        //         } else if (result.isDismissed) {
+        //             // 用戶點擊了「取消」，跳轉到下一步
+        //             this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay` });
+        //         }   
+            
+        // });
         },
         checkValid (){
-            this.validName();
-            this.validEmail();
-            this.validPhone();
-            this.validPassword();
-            this.validComfirm();
+            // this.validName();
+            // this.validEmail();
+            // this.validPhone();
+            // this.validPassword();
+            // this.validComfirm();
+            return new Promise((resolve, reject) => {
+                let isValid = true;
+
+                this.validName();
+                this.validEmail();
+                this.validPhone();
+                this.validPassword();
+                this.validComfirm();
+
+                // 根據驗證結果判斷表單是否有效
+                if (this.nameError || this.emailError || this.phoneError || this.passwordError || this.comfirmError) {
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    resolve(); // 驗證通過
+                } else {
+                    reject(); // 驗證失敗
+                }
+            });
         },
 
         async submitData() {
-            this.checkValid();
-            console.log('aaaa');
-            if (this.dataValid) {
+            await this.checkValid();
+             console.log('Submitting data:', {
+                name: this.orderName,
+                email: this.orderEmail,
+                phone: this.orderPhone,
+                password: this.orderPassword,
+            });
+            // console.log(this.dataValid); 
 
                 try {
                     const response = await axios.post('http://localhost/appleTeam/public/php/api/register.php', {
+                   
                     name: this.orderName,
                     email: this.orderEmail,
                     phone: this.orderPhone,
                     password: this.orderPassword,
-                    // selectedDate: this.selectedDate,
-                    // selectedTimeSlot: this.selectedTimeSlot,
-                    // peopleAmount: this.peopleAmount,
-                    // orderDiscount: this.orderDiscount
-                    });
-                    if (response.data.status === 'success') {
-                    alert('註冊成功！');
-                    console.log(response.data.status);
-                    // 清空表单或其他成功处理逻辑
-                    } else {
-                        alert('註冊失敗：' + response.data.message);
-                        alert('註冊失敗：' + response.data.message);
+                  
+                    });     
+                   
+                  
+                     if (response.data.status === "success") {
+                        alert("註冊成功123");
+                        // this.goToNextPage ();
+                         // 可以在這裡進行重定向或其他操作
+                        // this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay` });
+
+                        // this.orderName = '';
+                        // this.orderEmail = '';
+                        // this.orderPhone = '';
+                        // this.orderPassword = '';
+
+                     } else {
+                         alert("發生錯誤：" + response.data.message); // 顯示錯誤消息
                     }
                 } catch (error) {
-                    console.error('提交數據失敗', error);
-                    alert('提交失敗，請稍後再試');
+                    console.error(error);
+                    alert("發生錯誤，請稍後再試。");
                 }
-            } else {
-                alert('請確保所有表單數據正確無誤');
-            }
+            
         }
     },
     mounted (){
@@ -361,7 +480,7 @@ export default {
             this.selectedTimeSlot = selectedTimeSlot;
             this.selectedDate = selectedDate;
         } else {
-            console.error("未選擇場次時間");
+            alert("未選擇日期、人數與場次時間");
         }
 
         
