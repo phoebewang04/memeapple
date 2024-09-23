@@ -84,8 +84,24 @@
     position: relative;
 
     transition: transform 0.3s ease;
+    margin-bottom: 20px;
+
     &:hover {
-        transform: scale(1.06);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes glowHow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 223, 0, 0.5), 0 0 10px rgba(255, 223, 0, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 0, 0.863), 0 0 30px rgba(255, 255, 0, 0.863);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(255, 223, 0, 0.5), 0 0 10px rgba(255, 223, 0, 0.5);
     }
 }
 
@@ -104,6 +120,9 @@
         }
         &.noneuse{
             background-color: map-get($colors, usered);
+        }
+        &.cancaluse{
+            background-color: map-get($colors, priceorange);
         }
         @include rwd(520px){
             font-size: 10px;

@@ -194,7 +194,6 @@ p {
 
 .top a {
   color: white;
-  display: block;
   cursor: pointer;
 }
 .top a:hover {
@@ -285,7 +284,6 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   align-items: center;
   justify-content: center;
   padding: 12px 0;
-  flex-direction: column;
 }
 @media (max-width: 1280px) {
   .bottom {
@@ -312,9 +310,9 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 650px) {
+@media (max-width: 750px) {
   .footer_textArea {
-    margin-left: 12px;
+    margin-left: 0px;
   }
 }
 
@@ -322,12 +320,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   width: 100px;
   height: 70px;
 }
-@media (max-width: 650px) {
-  .footer_logo2 img {
-    width: 70px;
-  }
-}
-@media (max-width: 500px) {
+@media (max-width: 750px) {
   .footer_logo2 img {
     display: none;
   }
@@ -360,7 +353,6 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 .bm_text p {
   font-size: 12px;
-  margin-right: 20px;
 }
 .bm_text p:last-child {
   margin-right: 0;
@@ -453,7 +445,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
     margin-right: 8px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 430px) {
   .footerRule a {
     font-size: 12px;
   }
@@ -1085,7 +1077,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .join_login {
   margin: 80px auto;
-  max-width: 300px;
+  width: 280px;
 }
 
 .btn_acc {
@@ -1101,80 +1093,144 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .mainLogin {
   position: relative;
-  background-color: #FFE8BB;
-  border-radius: 0 0 8px 8px;
+  background-color: #221F3C;
+  border-radius: 8px;
 }
 .mainLogin h3 {
   text-align: center;
   font-weight: bold;
 }
-.mainLogin a {
-  color: blue;
-}
-.mainLogin a:hover {
-  color: blue; /* 確保 hover 時不改變顏色 */
+.mainLogin .fa-envelope,
+.mainLogin .fa-lock,
+.mainLogin .fa-circle-check,
+.mainLogin .fa-user,
+.mainLogin .fa-phone {
+  width: 8%;
 }
 
 .mainLogin ol {
   margin: 0 2.5%;
-  padding: 5px;
-  color: #292929;
+  padding: 2px;
 }
 
 .mainLogin li {
-  margin: 5px 5px 8px;
+  margin: 6px 6px 20px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .mainLogin li i {
-  margin-top: 3px;
-  margin-left: 3px;
-  margin-right: 8px;
+  margin-right: 12px;
+  font-size: 18px;
 }
 .mainLogin li input {
-  margin-bottom: 15px;
-  outline: none;
-  font-size: 20px;
-  width: 95%;
+  border: none;
+  width: 200px;
   border-radius: 8px;
-  padding-left: 8px;
+  padding: 10px 12px;
+  background-color: #35395b;
+  color: #FFE8BB;
+  outline: none;
+}
+.mainLogin li input::placeholder {
+  color: white;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+}
+.mainLogin li input:focus::placeholder {
+  color: transparent;
+}
+.mainLogin li span {
+  margin: 20px 0;
 }
 .mainLogin li:hover {
-  color: inherit; /* 確保 hover 時不改變顏色 */
-  background-color: transparent; /* 或者設置為無背景色 */
+  color: inherit;
+  /* 確保 hover 時不改變顏色 */
+  background-color: transparent;
+  /* 或者設置為無背景色 */
 }
 
 #onlogin {
-  width: 20px;
+  width: 14px;
+  height: 14px;
 }
 
 .btnlogin {
   width: 100%;
-  font-size: 24px;
-  padding: 10px 20px;
+  height: 36px;
+  padding: 0px 12px;
   font-weight: bold;
   text-align: center;
   background-color: #FCD15B;
   border: 0;
-  color: #100E24;
   cursor: pointer;
   border-radius: 8px;
-  border: 1px solid #292929;
-  font-size: 20px;
+  font-size: 16px;
+}
+.btnlogin:hover {
+  background-color: #FEDA77;
 }
 
 .checkforget {
-  margin: 0 5%;
+  margin: 0 2%;
   padding: 5px;
-  color: #292929;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+.checkforget a,
+.checkforget p {
+  text-decoration: none;
+  font-size: 12px;
+  color: whitesmoke;
+}
+.checkforget a:hover,
+.checkforget p:hover {
+  color: #FEDA77;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  appearance: none;
+  margin-right: 8px;
+  border: 2px solid #35395b;
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type=checkbox]:checked {
+  background-color: #221F3C;
+  background-color: #35395b;
+}
+
+input[type=checkbox]::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 6px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border: solid #FEDA77;
+  border-width: 0 2px 2px 0;
+  display: none;
+}
+
+input[type=checkbox]:checked::before {
+  display: block;
 }
 
 .linef {
-  color: #292929;
   display: flex;
   justify-content: center;
-  margin: 0 5%;
+  margin: 10% 5% 0%;
   align-items: center;
 }
 
@@ -1185,7 +1241,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 .fline {
   content: "";
   display: block;
-  border-bottom: 1px solid #292929;
+  border-bottom: 1px solid white;
   width: 40%;
 }
 
@@ -1194,10 +1250,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   justify-content: center;
 }
 .outloginbtn button {
-  max-width: 50px;
-  max-height: 50px;
+  width: 50px;
+  height: 50px;
   margin: 10px 20px 20px;
-  border-radius: 200%;
+  border-radius: 50%;
   padding: 10px;
 }
 .outloginbtn img {
@@ -1210,19 +1266,61 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   font: size 20px;
 }
 
-.btnfb {
-  background-color: #1877F2;
-  color: white;
-}
-
-.btngoogle {
-  background-color: white;
-  color: #292929;
-}
-
+.btnfb,
+.btngoogle,
 .btnline {
-  background-color: #23DB35;
+  background-color: #35395b;
   color: white;
+}
+
+.btnfb:hover {
+  background-color: #1877F2;
+}
+
+.btngoogle:hover {
+  background-color: #DC3327;
+}
+
+.btnline:hover {
+  background-color: #23DB35;
+}
+
+.register_now,
+.join_now {
+  padding: 20px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.register_now p,
+.join_now p {
+  font-size: 12px;
+}
+.register_now span,
+.join_now span {
+  display: inline-block;
+  font-weight: 500;
+  color: #FCD15B;
+  position: relative;
+}
+.register_now span::after,
+.join_now span::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  left: 0;
+  background-color: #FCD15B;
+  transition: width 0.3s ease;
+}
+.register_now span:hover,
+.join_now span:hover {
+  color: #FEDA77;
+}
+.register_now span:hover::after,
+.join_now span:hover::after {
+  width: 100%;
+  background: #FEDA77;
 }
 
 .btn_joina {
@@ -1240,24 +1338,71 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   padding: 2px;
 }
 
-.mainJoin li input {
-  outline: none;
-  margin-bottom: 8px;
-  width: 95%;
-}
-
 .checkservers {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 .checkservers .checkserver {
-  width: 20px;
-  margin-top: 8px;
+  width: 14px;
+  height: 14px;
 }
 .checkservers p {
-  font-size: 16px;
+  font-size: 12px;
 }
 .checkservers a {
-  font-size: 16px;
+  color: #FEDA77;
+  position: relative;
+}
+.checkservers a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  left: 0;
+  background-color: #FCD15B;
+  transition: width 0.3s ease;
+}
+.checkservers a:hover {
+  color: #FEDA77;
+}
+.checkservers a:hover::after {
+  width: 100%;
+  background: #FEDA77;
+}
+
+.join_now {
+  padding: 20px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.join_now p {
+  font-size: 12px;
+}
+.join_now span {
+  display: inline-block;
+  font-weight: 500;
+  color: #FCD15B;
+  position: relative;
+}
+.join_now span::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  left: 0;
+  background-color: #FCD15B;
+  transition: width 0.3s ease;
+}
+.join_now span:hover {
+  color: #FEDA77;
+}
+.join_now span:hover::after {
+  width: 100%;
+  background: #FEDA77;
 }
 
 #toTopBTN {
@@ -1425,8 +1570,20 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   }
 }
 
+@keyframes glowHow2 {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+}
 .introM-btn {
   display: none;
+  animation: glowHow 1.5s infinite;
 }
 @media (max-width: 700px) {
   .introM-btn {
@@ -1658,7 +1815,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 @media (max-width: 541px) {
   .brandstory-text {
-    width: 95%;
+    width: 92%;
   }
 }
 .brandstory-text .brandstory-sub {
@@ -2374,9 +2531,9 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 .howPic2:hover::before,
 .howPic3:hover::before {
   background-color: rgba(0, 0, 0, 0.3);
-  border-color: #FCD15B;
+  border-color: #FFE8BB;
   /* 改變外框線顏色 */
-  animation: glowHow 1.5s infinite;
+  animation: glowHow2 1.5s infinite;
 }
 
 @keyframes glowHow {
@@ -3349,7 +3506,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   transition: transform 0.3s ease;
 }
 .theme li:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .theme li i {
@@ -3380,8 +3537,8 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .theme ul li img {
-  width: 280px;
-  height: 400px;
+  width: 95%;
+  height: 360px;
 }
 @media (max-width: 820px) {
   .theme ul li img {
@@ -3402,7 +3559,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .theme .theme_name h3 {
-  width: 280px;
+  width: 244px;
   height: 40px;
   background-color: #FEDA77;
   color: #100E24;
@@ -5068,7 +5225,6 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 .preorder_toppic img {
   margin-top: 40px;
   width: 100%;
-  height: 600px;
 }
 @media (max-width: 820px) {
   .preorder_toppic img {
@@ -6769,11 +6925,23 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   border-radius: 8px;
   position: relative;
   transition: transform 0.3s ease;
+  margin-bottom: 20px;
 }
 .order_card:hover {
-  transform: scale(1.06);
+  transform: scale(1.02);
 }
 
+@keyframes glowHow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 223, 0, 0.5), 0 0 10px rgba(255, 223, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.863), 0 0 30px rgba(255, 255, 0, 0.863);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 223, 0, 0.5), 0 0 10px rgba(255, 223, 0, 0.5);
+  }
+}
 .order_cardusage p {
   border-radius: 0 8px 0 8px;
   color: white;
@@ -6788,6 +6956,9 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 .order_cardusage p.noneuse {
   background-color: #C70000;
+}
+.order_cardusage p.cancaluse {
+  background-color: #E98714;
 }
 @media (max-width: 520px) {
   .order_cardusage p {
@@ -8157,6 +8328,186 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
     width: 72px;
     height: 105px;
   }
+}
+.error_container {
+  height: 90vh;
+}
+.error_container p,
+.error_container span {
+  font-size: 13px;
+  line-height: 2;
+  font-weight: 500;
+  font-family: "Lucida Console", "Monaco", monospace;
+}
+
+.error_page {
+  margin: 30px auto;
+  border-top: 10px solid #FF5555;
+  background-color: #181818;
+  width: 65%;
+  border-radius: 10px;
+}
+.error_page .close_page {
+  position: absolute;
+  top: 10%;
+  right: 20%;
+  cursor: pointer;
+}
+
+.error_information {
+  color: #FF5555;
+  margin: 20px 0px 0px 20px;
+}
+.error_information span {
+  color: #C49BF1;
+}
+
+.error_vue p {
+  color: #FF5555;
+  margin: 20px 0px 0px 20px;
+}
+.error_vue span:nth-of-type(1) {
+  margin-left: 30px;
+}
+.error_vue span:nth-of-type(2),
+.error_vue span:nth-of-type(7) {
+  margin-left: 50px;
+}
+.error_vue span:nth-of-type(3),
+.error_vue span:nth-of-type(4),
+.error_vue span:nth-of-type(5),
+.error_vue span:nth-of-type(6) {
+  margin-left: 70px;
+}
+
+.error_btn_container > p {
+  margin: 20px 0px 0px 20px;
+  color: #2DD9DA;
+}
+.error_btn_container .error_html {
+  display: flex;
+  align-items: center;
+  color: #D29F4F;
+  margin: 20px 0px 0px 20px;
+}
+.error_btn_container .error_html span {
+  margin-left: 30px;
+}
+
+.error_btn {
+  margin-left: 60px;
+}
+
+.aa,
+.aa::after {
+  border: none;
+  width: 180px;
+  height: 30px;
+  font-size: 24px;
+  background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+  color: #fff;
+  letter-spacing: 3px;
+  line-height: 30px;
+  box-shadow: 6px 0px 0px #00E6F6;
+  outline: transparent;
+  position: relative;
+}
+
+.aa:hover::after {
+  animation: glitch 1s;
+  animation-timing-function: steps(2, end);
+}
+
+.aa:after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  content: "預約debug";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5% #FF013C 5%);
+  text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+  clip-path: var(--slice-0);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(0px, 0px);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(1px, 1px);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-1px, 1px);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 2px);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-2px, 0px);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(1px, 0px);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(1px, 1px);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-1px, 2px);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(1px, -2px);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-2px, 0px);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+.error_other p:nth-child(1) {
+  font-size: 10px;
+  color: #BEBEBE;
+  line-height: 1.6;
+  margin: 10px 0px 0px 60px;
+}
+.error_other p:nth-child(2) {
+  font-size: 10px;
+  border-top: 1px dotted #BEBEBE;
+  padding-top: 20px;
+  margin: 20px 0px 0px 20px;
+  width: 80%;
+}
+.error_other span:nth-of-type(1) {
+  font-size: 10px;
+  background-color: #26282C;
+  border: 0.5px solid #BEBEBE;
+  padding: 4px;
+  border-radius: 2px;
+}
+.error_other span:nth-of-type(2),
+.error_other span:nth-of-type(3),
+.error_other span:nth-of-type(4) {
+  font-size: 10px;
+  color: #D29F4F;
 }
 
 /*# sourceMappingURL=style.css.map */

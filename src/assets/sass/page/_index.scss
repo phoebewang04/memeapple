@@ -86,9 +86,24 @@
     }
 }
 
+@keyframes glowHow2 {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgb(255, 255, 255);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+}
+
 .introM-btn {
     display: none;
-
+    animation: glowHow 1.5s infinite;
+    
     @include rwd(700px) {
         display: block;
         margin: 0 auto;
@@ -310,7 +325,7 @@
     }
 
     @include rwd(541px) {
-        width: 95%;
+        width: 92%;
     }
 
     .brandstory-sub {
@@ -1096,9 +1111,9 @@
 .howPic2:hover::before,
 .howPic3:hover::before {
     background-color: rgba(0, 0, 0, 0.3);
-    border-color: map-get($colors, gold);
+    border-color: map-get($colors, lightyellow);
     /* 改變外框線顏色 */
-    animation: glowHow 1.5s infinite;
+    animation: glowHow2 1.5s infinite;
 }
 
 @keyframes glowHow {
@@ -1107,7 +1122,7 @@
     }
 
     50% {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+        box-shadow: 0 0 20px rgb(255, 255, 255);
     }
 
     100% {

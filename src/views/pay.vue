@@ -120,11 +120,10 @@
                         </div>
                     </div>
 
-                    <router-link to="/Membermanage/">
-                        <div class="button01">
-                            <button  class=" btn next_btn" :disabled="!dataValid" :class="{active : dataValid}" >下一步</button>
-                        </div>
-                    </router-link>
+                    <div class="button01">
+                        <button  class=" btn next_btn" :disabled="!dataValid" :class="{active : dataValid}" @click="goToNextPage">下一步</button>
+                    </div>
+                
 
                 </div>
 
@@ -220,6 +219,13 @@ export default {
             }else {
                 this.NumError = '';
             }
+        },
+
+        goToNextPage (){
+            localStorage.clear();
+            this.$router.push({
+            path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay/Membermanage`
+            });
         }
 
     },
@@ -240,8 +246,6 @@ export default {
         } else {
             console.error("未選擇場次時間");
         }
-
-        // localStorage.clear();
         
     },
 }
