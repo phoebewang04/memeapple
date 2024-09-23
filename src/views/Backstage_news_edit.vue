@@ -12,6 +12,8 @@ export default {
     },
     data() {
         return {
+            showPasswordPrompt: false,
+            password: '',
             id: null,
             isEditMode: false,
             title: '',
@@ -30,6 +32,23 @@ export default {
         }
     },
     methods: {
+        // 上傳最新消息驗證
+        promptPassword() {
+            this.showPasswordPrompt = true;
+        },
+        verifyPassword() {
+            const correctPassword = 'meme123'; // 替換為你的密碼
+            if (this.password === correctPassword) {
+                this.saveNews();
+                this.showPasswordPrompt = false;
+                this.password = '';
+            } else {
+                alert('密碼錯誤');
+            }
+        },
+        hideInputPreview() {
+            this.showPasswordPrompt = false;
+        },
         triggerFileInput() {
             this.$refs.fileInput.click();
         },
@@ -158,31 +177,39 @@ export default {
                 <div class="backstage_panel news_edit">
                     <!-- click this button to show div id="backstage_news_preview" -->
                     <button class="btn backstage_button" id="button_preview" @click="showPreview">預覽</button>
-                    <button class="btn backstage_button" @click="saveNews">{{ isEditMode ? '更新' : '新增' }}</button>
+                    <!-- <button class="btn backstage_button" @click="saveNews">{{ isEditMode ? '更新' : '新增' }}</button> -->
+                    <button class="btn backstage_button" @click="promptPassword">{{ isEditMode ? '更新' : '新增' }}</button>
+                        <div v-if="showPasswordPrompt" class="backstage_news" @click="hideInputPreview">
+                            <div class="backstage_news_preview" @click.stop
+                            style="background-color: whitesmoke; border: .5px solid #8F9191; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2 );">
+                                <input type="password" v-model="password" placeholder="輸入密碼" style="margin: 24px 24px 24px 24px; font-size: 20px; line-height: 1.6;">
+                                <button class="btn backstage_button" @click="verifyPassword" style="margin: 0 auto; margin-bottom: 24px;">確認</button>
+                            </div>
+                        </div>
                     <router-link to="/NewsMenage/"><button class="btn backstage_button">取消</button></router-link>
                 </div>
-                <div v-if="isPreviewVisible" class="backstage_news" @click="hidePreview">
-                    <div class="backstage_news_preview" @click.stop>
-                        <div class="backstage_news_content">
+                    <div v-if="isPreviewVisible" class="backstage_news" @click="hidePreview">
+                        <div class="backstage_news_preview" @click.stop>
+                            <div class="backstage_news_content">
 
-                            <div class="backstage_news_image">
-                                <img :src="image" alt="Uploaded Image" class="announcementPic">
+                                <div class="backstage_news_image">
+                                    <img :src="image" alt="Uploaded Image" class="announcementPic">
+                                </div>
+
+                                <div class="backstage_news_text">
+                                    <h1>{{ title }}</h1>
+                                    <p>{{ content }}</p>
+                                </div>
+
                             </div>
 
-                            <div class="backstage_news_text">
-                                <h1>{{ title }}</h1>
-                                <p>{{ content }}</p>
+                            <div class="backstage_panel">
+                                <button class="btn backstage_button" @click="hidePreview">關閉</button>
                             </div>
-
-                        </div>
-
-                        <div class="backstage_panel">
-                            <button class="btn backstage_button" @click="hidePreview">關閉</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </main>
 
     <FooterbarBack />
