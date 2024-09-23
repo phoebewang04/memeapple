@@ -22,7 +22,7 @@ class Member {
         ];
 
         // SQL
-        $sql = 'SELECT * FROM memberdetails WHERE 1=1';
+        $sql = 'SELECT * FROM memberdetails';
         $params = [];
 
         if ($status != '所有狀態') {
