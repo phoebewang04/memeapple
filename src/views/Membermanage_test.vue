@@ -28,20 +28,16 @@
               <div v-for="order in filteredOrders" :key="order.ORDER_ID" class="order_card">
                 <!-- 右上標籤 -->
                 <div class="order_cardusage">
-                  <p :class="order.ORDER_STATUS == 1 ? 'onuse' : 'noneuse'">
-                    {{ order.ORDER_STATUS === '已使用' ? '已使用' : '未使用' }}
+                  <p :class="order.ORDER_STATUS === '已使用' ? 'onuse' : (order.ORDER_STATUS === '已預訂' ? 'noneuse' : (order.ORDER_STATUS === '已取消' ? 'cancaluse' : ''))">
+                    {{ order.ORDER_STATUS }}
                   </p>
                 </div>
                 <!-- 票券左側，點選後觸發SweetAlert2，顯示入場票券 -->
-                <div class="order_cardleft" @click="showAlert(order)">
+                <div class="order_cardleft" @click="order.ORDER_STATUS !== '已使用' && showAlert(order)">
                   <!-- 活動海報圖片 -->
                   <div class="order_cardimg">
-                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="`/${tickets.banner}`" alt=""> -->
-                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="`/${tickets.banner}`" alt=""> -->
-                    <!-- <img v-for="ticket in tickets" v-if="ticket.id === order.THEME_ID" :src="`/${ticket.banner}`" alt=""> -->
-                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="tickets.banner" alt=""> -->
-                    <!-- <img v-for="ticket in tickets" v-if="tickets.id === order.THEME_ID" :src="tickets.banner" alt=""> -->
-                    <img v-for="ticket in tickets" v-if="tickets.id === Number(order.THEME_ID)" :src="tickets.banner" alt="">
+                    <img v-for="poster in posters" v-if="poster && poster.id === Number(order.THEME_ID)"
+                      :src="poster.banner" alt="Ticket Image">
                   </div>
                   <!-- 活動詳細資訊以及訂單編號 -->
                   <div class="order_cardtext">
@@ -50,13 +46,19 @@
                     <p>訂購日期： {{ order.ORDER_DATE }}</p>
                   </div>
                 </div>
+
                 <!-- 票券右側，有問券填寫功能以及已經支付的訂金 -->
                 <div class="order_cardright">
                   <!-- 訂金詳細資訊 -->
                   <div class="order_cardstate">
                     <p>訂金</p>
                     <p>TWD 2000元</p>
-                    <button class="questionwrite" @click="orderquestion(order)">問卷填寫</button>
+                    <!-- 問卷填寫按鈕 -->
+                    <button v-if="order.ORDER_STATUS === '已使用'" class="questionwrite"
+                      @click="orderquestion(order)">問卷填寫</button>
+                    <!-- 取消訂單按鈕 -->
+                    <button v-else-if="order.ORDER_STATUS === '已預訂'" class="cancelorder"
+                      @click="ordercancel()">取消訂單</button>
                   </div>
                 </div>
               </div>
@@ -149,21 +151,14 @@ export default {
         { id: "tab2", name: "優惠券" },
         { id: "tab3", name: "會員資料修改" }
       ],
-      tasks: [
-        // {
-        //   id: "aaa",
-        //   name: "123",
-        //   star: 0,
-        //   editable: false
-        // }
-      ],
+      tasks: [],
       brainIndex: 0,
       scareIndex: 0,
       recommendationIndex: 0,
-      memberId: 2,
+      memberId: null,
       orders: [],
       error: null,
-      tickets: [
+      posters: [
         { id: 1, banner: '/img/poster_hospital.png' },
         { id: 2, banner: '/img/poster_time.png' },
         { id: 3, banner: '/img/poster_dead.png' },
@@ -177,10 +172,12 @@ export default {
   computed: {
     filteredOrders() {
       if (Array.isArray(this.orders)) {
-        return this.orders.filter(order =>
+        const filtered = this.orders.filter(order =>
           order.MEMBER_ID === this.memberId &&
-          (order.ORDER_STATUS === '已使用' || order.ORDER_STATUS === '已預訂')
+          (order.ORDER_STATUS === '已使用' || order.ORDER_STATUS === '已預訂' || order.ORDER_STATUS === '已取消')
         );
+        console.log('Filtered orders:', filtered);
+        return filtered;
       }
       console.log('Fetched orders:', this.orders);
       return [];
@@ -193,8 +190,19 @@ export default {
     }
   },
   mounted() {
-    this.fetchOrders();
-    // this.fetchOrderData();
+    // 從 localStorage 獲取會員資料
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      this.memberId = user.id; // 動態設置 memberId
+      this.fetchOrders();
+    } else {
+      alert("請進行登入或註冊以造訪會員專區");
+      this.$router.push('/index/'); // 重定向到登入頁面
+    }
+
+    console.log('Tickets on mount:', this.posters);
+    console.log('Orders on mount:', this.orders);
+
   },
   methods: {
     // 查會員訂單資料
@@ -213,27 +221,84 @@ export default {
       }
     },
     showAlert(order) {
+
+      // 這邊是卡片主題名稱
+      let titleText = '';
+      // 這邊是卡片場館名稱
+      let placeText = '';
+      // 這是訂單上面的日期，我需要使用次元斬分割他
+      const [year, month, day] = order.ORDER_DATE.split('-');
+      // 這是訂單的背景圖片
+      let backgroundImage = '';
+
+      switch (order.THEME_ID) {
+        case 1:
+          titleText = '成都醫院';
+          backgroundImage = 'url("/img/popupcard_space.png")';
+          break;
+        case 2:
+          titleText = '時光迷宮';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
+          break;
+        case 3:
+          titleText = '末日庇護所';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
+          break;
+        case 4:
+          titleText = '代碼深淵';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
+          break;
+        case 5:
+          titleText = '逃離武石監';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
+          break;
+        case 6:
+          titleText = '恐怖密室';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
+          break;
+        case 7:
+          titleText = '逃出虛空';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
+          break;
+        default:
+          titleText = '未知主題';
+          backgroundImage = 'url("/img/popupcard_space_2.png")';
+      }
+      console.log('THEME_ID:', order.THEME_ID);
+      console.log('Background Image:', backgroundImage);
+
+      switch (order.STORE_ID) {
+        case 1:
+          placeText = '台北館';
+          break;
+        case 2:
+          placeText = '台中館';
+          break;
+        default:
+          titleText = '未知場館';
+      }
+
       Swal.fire({
         html:
           `
                       <main class="main-popupcard">
-                        <section class="popupcard-card">
+                        <section class="popupcard-card" style="background-image: ${backgroundImage} !important;">
                             <p class="popupcard-title">請出示電子票券即可入場</p>
                             <div class="popupcard-qrcode">
                                 <img src="${new URL("@/assets/img/qrcode_001.jpg", import.meta.url).href}" alt="">
                                 
                             </div>
-                            <h1>逃離武石監</h1>
+                            <h1>${titleText}</h1>
                             <div class="qrcode-time">
-                                <p class="qrcode-y">2024 /</p>
-                                <p class="qrcode-m">08 /</p>
-                                <p class="qrcode-d">17</p>
+                                <p class="qrcode-y">${year} /</p>
+                                <p class="qrcode-m">${month} /</p>
+                                <p class="qrcode-d">${day}</p>
                             </div>
                             <div class="qrcode-place">
-                                <p>台中館</p>
+                                <p>${placeText}</p>
                                 <div class="qrcode-line"></div>
                                 <span>入場</span>
-                                <span>14:00</span>
+                                <span>${order.ORDER_TIME}</span>
                            </div>
                         </section>
                       </main>
@@ -241,7 +306,7 @@ export default {
         showConfirmButton: false,
         color: '#FFFFFF',
         width: 'auto',
-        backgroundcolor: 'transparent',
+        // backgroundcolor: 'transparent',
         customClass:
         {
           popup: 'main-popupcard',
@@ -306,30 +371,6 @@ export default {
       });
     },
     generateHtml() {
-      `    <div class="star_block">
-      <span>燒腦指數</span>
-      <span class="star" id="brain-1"><i class="fas fa-star"></i></span>
-      <span class="star" id="brain-2"><i class="fas fa-star"></i></span>
-      <span class="star" id="brain-3"><i class="fas fa-star"></i></span>
-      <span class="star" id="brain-4"><i class="fas fa-star"></i></span>
-      <span class="star" id="brain-5"><i class="fas fa-star"></i></span>
-    </div>
-    <div class="star_block">
-      <span>驚嚇指數</span>
-      <span class="star" id="scare-1"><i class="fas fa-star"></i></span>
-      <span class="star" id="scare-2"><i class="fas fa-star"></i></span>
-      <span class="star" id="scare-3"><i class="fas fa-star"></i></span>
-      <span class="star" id="scare-4"><i class="fas fa-star"></i></span>
-      <span class="star" id="scare-5"><i class="fas fa-star"></i></span>
-    </div>
-    <div class="star_block">
-      <span>推薦指數</span>
-      <span class="star" id="recommendation-1"><i class="fas fa-star"></i></span>
-      <span class="star" id="recommendation-2"><i class="fas fa-star"></i></span>
-      <span class="star" id="recommendation-3"><i class="fas fa-star"></i></span>
-      <span class="star" id="recommendation-4"><i class="fas fa-star"></i></span>
-      <span class="star" id="recommendation-5"><i class="fas fa-star"></i></span>
-    </div>`
     }
     ,
     setBrainIndex(index) {

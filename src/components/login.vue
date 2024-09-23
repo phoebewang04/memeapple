@@ -153,7 +153,7 @@ export default {
 // },
         async submitLogin() {
             try {
-                const response = await axios.post('http://localhost/appleyy/public/php/api/Login.php', {
+                const response = await axios.post('http://localhost/sweethome/meme/public/php/api/Login.php', {
                     username: this.username,
                     password: this.password
                 });
