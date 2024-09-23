@@ -66,3 +66,44 @@
 
 
 }
+
+.join_now {
+    padding: 20px 0;
+    text-align: center;
+    cursor: pointer;
+
+    p {
+        font-size: 12px;
+    }
+
+    span {
+        display: inline-block;
+        font-weight: 500;
+        color: map-get($colors , gold);
+        position: relative;
+        
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            left: 0;
+            background-color: map-get($colors , gold);
+            transition: width 0.3s ease;
+        }
+
+
+        &:hover {
+
+            color: map-get($colors , yellow);
+            &::after{
+                width: 100%;
+                background: map-get($colors , yellow);
+            }
+
+
+        }
+    }
+}

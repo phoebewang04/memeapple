@@ -194,7 +194,6 @@ p {
 
 .top a {
   color: white;
-  display: block;
   cursor: pointer;
 }
 .top a:hover {
@@ -1108,6 +1107,13 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   text-align: center;
   font-weight: bold;
 }
+.mainLogin .fa-envelope,
+.mainLogin .fa-lock,
+.mainLogin .fa-circle-check,
+.mainLogin .fa-user,
+.mainLogin .fa-phone {
+  width: 8%;
+}
 
 .mainLogin ol {
   margin: 0 2.5%;
@@ -1126,7 +1132,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 .mainLogin li input {
   border: none;
-  width: 95%;
+  width: 200px;
   border-radius: 8px;
   padding: 10px 12px;
   background-color: #35395b;
@@ -1152,7 +1158,8 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 #onlogin {
-  width: 20px;
+  width: 14px;
+  height: 14px;
 }
 
 .btnlogin {
@@ -1179,12 +1186,14 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   align-items: center;
   font-size: 12px;
 }
-.checkforget a, .checkforget p {
+.checkforget a,
+.checkforget p {
   text-decoration: none;
   font-size: 12px;
   color: whitesmoke;
 }
-.checkforget a:hover, .checkforget p:hover {
+.checkforget a:hover,
+.checkforget p:hover {
   color: #FEDA77;
 }
 
@@ -1196,8 +1205,6 @@ label {
 
 input[type=checkbox] {
   appearance: none;
-  width: 16px;
-  height: 20px;
   margin-right: 8px;
   border: 2px solid #35395b;
   border-radius: 2px;
@@ -1250,10 +1257,10 @@ input[type=checkbox]:checked::before {
   justify-content: center;
 }
 .outloginbtn button {
-  max-width: 50px;
-  max-height: 50px;
+  width: 50px;
+  height: 50px;
   margin: 10px 20px 20px;
-  border-radius: 200%;
+  border-radius: 50%;
   padding: 10px;
 }
 .outloginbtn img {
@@ -1285,21 +1292,25 @@ input[type=checkbox]:checked::before {
   background-color: #23DB35;
 }
 
-.register_now {
+.register_now,
+.join_now {
   padding: 20px 0;
   text-align: center;
   cursor: pointer;
 }
-.register_now p {
+.register_now p,
+.join_now p {
   font-size: 12px;
 }
-.register_now span {
+.register_now span,
+.join_now span {
   display: inline-block;
   font-weight: 500;
   color: #FCD15B;
   position: relative;
 }
-.register_now span::after {
+.register_now span::after,
+.join_now span::after {
   content: "";
   position: absolute;
   width: 0;
@@ -1309,10 +1320,12 @@ input[type=checkbox]:checked::before {
   background-color: #FCD15B;
   transition: width 0.3s ease;
 }
-.register_now span:hover {
+.register_now span:hover,
+.join_now span:hover {
   color: #FEDA77;
 }
-.register_now span:hover::after {
+.register_now span:hover::after,
+.join_now span:hover::after {
   width: 100%;
   background: #FEDA77;
 }
@@ -1363,6 +1376,38 @@ input[type=checkbox]:checked::before {
   color: #FEDA77;
 }
 .checkservers a:hover::after {
+  width: 100%;
+  background: #FEDA77;
+}
+
+.join_now {
+  padding: 20px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.join_now p {
+  font-size: 12px;
+}
+.join_now span {
+  display: inline-block;
+  font-weight: 500;
+  color: #FCD15B;
+  position: relative;
+}
+.join_now span::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  left: 0;
+  background-color: #FCD15B;
+  transition: width 0.3s ease;
+}
+.join_now span:hover {
+  color: #FEDA77;
+}
+.join_now span:hover::after {
   width: 100%;
   background: #FEDA77;
 }
@@ -8264,6 +8309,186 @@ input[type=checkbox]:checked::before {
     width: 72px;
     height: 105px;
   }
+}
+.error_container {
+  height: 90vh;
+}
+.error_container p,
+.error_container span {
+  font-size: 13px;
+  line-height: 2;
+  font-weight: 500;
+  font-family: "Lucida Console", "Monaco", monospace;
+}
+
+.error_page {
+  margin: 30px auto;
+  border-top: 10px solid #FF5555;
+  background-color: #181818;
+  width: 65%;
+  border-radius: 10px;
+}
+.error_page .close_page {
+  position: absolute;
+  top: 10%;
+  right: 20%;
+  cursor: pointer;
+}
+
+.error_information {
+  color: #FF5555;
+  margin: 20px 0px 0px 20px;
+}
+.error_information span {
+  color: #C49BF1;
+}
+
+.error_vue p {
+  color: #FF5555;
+  margin: 20px 0px 0px 20px;
+}
+.error_vue span:nth-of-type(1) {
+  margin-left: 30px;
+}
+.error_vue span:nth-of-type(2),
+.error_vue span:nth-of-type(7) {
+  margin-left: 50px;
+}
+.error_vue span:nth-of-type(3),
+.error_vue span:nth-of-type(4),
+.error_vue span:nth-of-type(5),
+.error_vue span:nth-of-type(6) {
+  margin-left: 70px;
+}
+
+.error_btn_container > p {
+  margin: 20px 0px 0px 20px;
+  color: #2DD9DA;
+}
+.error_btn_container .error_html {
+  display: flex;
+  align-items: center;
+  color: #D29F4F;
+  margin: 20px 0px 0px 20px;
+}
+.error_btn_container .error_html span {
+  margin-left: 30px;
+}
+
+.error_btn {
+  margin-left: 60px;
+}
+
+.aa,
+.aa::after {
+  border: none;
+  width: 180px;
+  height: 30px;
+  font-size: 24px;
+  background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+  color: #fff;
+  letter-spacing: 3px;
+  line-height: 30px;
+  box-shadow: 6px 0px 0px #00E6F6;
+  outline: transparent;
+  position: relative;
+}
+
+.aa:hover::after {
+  animation: glitch 1s;
+  animation-timing-function: steps(2, end);
+}
+
+.aa:after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  content: "預約debug";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5% #FF013C 5%);
+  text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+  clip-path: var(--slice-0);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(0px, 0px);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(1px, 1px);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-1px, 1px);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 2px);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-2px, 0px);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(1px, 0px);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(1px, 1px);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-1px, 2px);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(1px, -2px);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-2px, 0px);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+.error_other p:nth-child(1) {
+  font-size: 10px;
+  color: #BEBEBE;
+  line-height: 1.6;
+  margin: 10px 0px 0px 60px;
+}
+.error_other p:nth-child(2) {
+  font-size: 10px;
+  border-top: 1px dotted #BEBEBE;
+  padding-top: 20px;
+  margin: 20px 0px 0px 20px;
+  width: 80%;
+}
+.error_other span:nth-of-type(1) {
+  font-size: 10px;
+  background-color: #26282C;
+  border: 0.5px solid #BEBEBE;
+  padding: 4px;
+  border-radius: 2px;
+}
+.error_other span:nth-of-type(2),
+.error_other span:nth-of-type(3),
+.error_other span:nth-of-type(4) {
+  font-size: 10px;
+  color: #D29F4F;
 }
 
 /*# sourceMappingURL=style.css.map */
