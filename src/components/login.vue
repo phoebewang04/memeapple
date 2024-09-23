@@ -216,7 +216,7 @@ export default {
 
             // 如果所有檢查都通過，則進行註冊請求
                 try {
-                    const response = await axios.post('http://localhost/appleyy/public/php/api/Register.php', {
+                    const response = await axios.post('http://localhost/appleTeam/public/php/api/Register.php', {
                         email: this.registerEmail,
                         password: this.registerPassword,
                         name: this.registerName,
