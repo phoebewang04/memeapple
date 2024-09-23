@@ -3501,7 +3501,7 @@ input[type=checkbox]:checked::before {
   transition: transform 0.3s ease;
 }
 .theme li:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .theme li i {
@@ -3532,8 +3532,8 @@ input[type=checkbox]:checked::before {
 }
 
 .theme ul li img {
-  width: 280px;
-  height: 400px;
+  width: 95%;
+  height: 360px;
 }
 @media (max-width: 820px) {
   .theme ul li img {
@@ -3554,7 +3554,7 @@ input[type=checkbox]:checked::before {
 }
 
 .theme .theme_name h3 {
-  width: 280px;
+  width: 244px;
   height: 40px;
   background-color: #FEDA77;
   color: #100E24;
@@ -5220,7 +5220,6 @@ input[type=checkbox]:checked::before {
 .preorder_toppic img {
   margin-top: 40px;
   width: 100%;
-  height: 600px;
 }
 @media (max-width: 820px) {
   .preorder_toppic img {
