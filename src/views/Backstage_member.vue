@@ -269,7 +269,7 @@
                 <div class="backstage_news_preview" @click.stop
                     style="background-color: whitesmoke; border: .5px solid #8F9191; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2 );">
                     <div class="backstage_news_content" style="display: flex; flex-direction: column;">
-                        <h4 style="line-height: 2; padding-left: 24px; color: gray;">僅顯示最近10筆訂單資料</h4>
+                        <h4 style="line-height: 2; padding: 12px 0px 0px 24px; color: gray;">僅顯示最近10筆訂單資料</h4>
                         <table class="backstage_table preview" style="padding: 12px 24px 24px 24px;">
                             <thead class="backstage_tablehead">
                                 <tr>
