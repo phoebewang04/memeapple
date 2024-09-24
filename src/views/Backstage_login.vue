@@ -23,7 +23,8 @@ export default {
                         console.log(response.data);
                         this.role = response.data.role;
                         sessionStorage.setItem('user', JSON.stringify(response.data.user));
-                        alert('登入成功');
+                        const userName = response.data.user.NAME;
+                        alert(`${userName}您好，歡迎回來！`);
                         this.$router.push('/BackstageIndex');
                     } else {
                         console.log(response.data || '沒有回傳資料');
@@ -44,17 +45,39 @@ export default {
 </script>
 
 <template>
-    <div id="loginForm">
-        <form @submit.prevent="login">
-            <label for="account">Account:</label>
-            <input type="text" id="account" v-model="account" required>
+    <div class="popup">
+        <div class="mainLogin backstage" id="loginForm">
+            <form @submit.prevent="login">
+                <ol class="backstage">
+                    <li><span>管理者登入</span></li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="text" class="account" id="account" placeholder="請輸入帳號" v-model="account" required>
+                    </li>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" v-model="password" required>
+                    <li>
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" class="PWD" id="password" placeholder="請輸入密碼" v-model="password"
+                            required>
+                    </li>
 
-            <button type="submit">Login</button>
-        </form>
-        <button @click="guestLogin">訪客</button>
+                    <li style="margin-bottom: 10px;">
+                        <button type="submit" class="btn btnlogin" style="">登入</button>
+                    </li>
+
+                    <div class="linef" style="margin-top: 0px;">
+                        <span class="fline"></span>
+                        <p class="flinetext">or</p>
+                        <span class="fline"></span>
+                    </div>
+
+                    <li style="margin-top: 10px;">
+                        <button class="btn btnlogin" @click="guestLogin">訪客進入</button>
+                    </li>
+                </ol>
+
+            </form>
+        </div>
     </div>
 </template>
 
