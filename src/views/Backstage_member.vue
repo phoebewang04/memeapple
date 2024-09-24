@@ -170,6 +170,7 @@
                         memberId: this.selectedMemberID
                     };
                     console.log('params: ', params)
+                    // const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/order.php', { params });
                     const response = await axios.get('http://localhost/memeapple/public/php/api/order.php', { params });
                     this.paginatedOrderData = response.data;
                     this.totalOrderPages = Math.ceil(this.paginatedOrderData.length / this.pageSize); // 計算popup視窗的總頁數
