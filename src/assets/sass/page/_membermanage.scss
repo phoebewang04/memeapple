@@ -1,81 +1,91 @@
-.wrappermmange{
+.wrappermmange {
     display: flex;
     min-height: 600px;
 }
 
-.mmangeleft{
+.mmangeleft {
     display: flex;
     flex-direction: column;
     width: 20%;
     margin: 50px 0 80px;
-    @include pad(){
-    display: none;    
+
+    @include pad() {
+        display: none;
     }
 }
 
-.btn_mange{
+.btn_mange {
     border-radius: 0;
     color: map-get($colors, white);
-    background-color: map-get($colors, darkblue );
+    background-color: map-get($colors, darkblue);
     width: 100%;
-    font-size: map-get($fontsize , h4 );
-    &:hover{
+    font-size: map-get($fontsize , h4);
+
+    &:hover {
         color: map-get($colors, gold);
     }
 }
 
 
-.mmangeright{
+.mmangeright {
     width: 80%;
     margin: 60px 0 80px;
-    @include pad(){
+
+    @include pad() {
         width: 100%;
     }
-    .mangerightitems{
+
+    .mangerightitems {
         display: none;
-    
-        @include pad(){
+
+        @include pad() {
             display: flex;
-            margin: 0 auto 20px; 
-            button{
+            margin: 0 auto 20px;
+
+            button {
                 font-size: 1.2rem;
                 display: block;
             }
+        }
+
+        @include rwd(500px) {
+            button {
+                font-size: 0.8rem;
             }
-        @include rwd(500px){
-            button{
-            font-size: 0.8rem;
-            }
-            }
+        }
     }
 }
 
 
 
 //訂單檢視
-.ordertext{
+.ordertext {
     display: flex;
     // display: none;
-    
+
 }
-    .ordertext_left{
-        width: 80%;
-        margin: 0 10px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        gap:20px;
-        h3{
-            margin-bottom: 20px;;
-        }
-        @include pad(){
-        width: 100%;
-        }
+
+.ordertext_left {
+    width: 80%;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    h3 {
+        margin-bottom: 20px;
+        ;
     }
+
+    @include pad() {
+        width: 100%;
+    }
+}
 
 
 //小卡
-.order_card{
+.order_card {
     display: flex;
     background-color: map-get($colors, white);
     color: map-get($colors, black);
@@ -105,179 +115,221 @@
     }
 }
 
-.order_cardusage{
-    
-    p{
+.order_cardusage {
+
+    p {
         border-radius: 0 8px 0 8px;
-        color:map-get($colors, white);
+        color: map-get($colors, white);
         padding: 2px;
         position: absolute;
         right: 0;
         top: 0;
         font-size: 16px;
-        &.onuse{
+
+        &.onuse {
             background-color: map-get($colors, usegreen);
         }
-        &.noneuse{
+
+        &.noneuse {
             background-color: map-get($colors, usered);
         }
-        &.cancaluse{
+
+        &.cancaluse {
             background-color: map-get($colors, priceorange);
         }
-        @include rwd(520px){
+
+        @include rwd(520px) {
             font-size: 10px;
             // padding: 0;
         }
     }
 }
 
-.order_cardleft{
+.order_cardleft {
     display: flex;
     width: 80%;
-    border-right: 1px dashed map-get($colors, black );
+    border-right: 1px dashed map-get($colors, black);
     cursor: pointer;
-    @include rwd(520px){
+
+    @include rwd(520px) {
         width: 75%;
     }
-    .order_cardimg{
+
+    .order_cardimg {
         max-width: 150px;
         min-width: 150px;
         max-height: 200px;
         margin: 20px;
-        img{
-        width: 100%;
-        height: 100%;
-        object-fit:fill
-        }
-        @include rwd(520px){
-         margin: 5px;
-         min-width: auto;
 
-         max-width: 100px;
-         max-height: 150px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill
+        }
+
+        @include rwd(520px) {
+            margin: 5px;
+            min-width: auto;
+
+            max-width: 100px;
+            max-height: 150px;
         }
     }
 
-    .order_cardtext{
-      
+    .order_cardtext {
         width: 100%;
         margin: 20px;
-        @include rwd(520px){
+
+        @include rwd(1280px) {
+            margin: 4px;
+        }
+
+        @include rwd(520px) {
             margin: auto;
             width: auto;
         }
-        p{
+
+        p {
             font-size: map-get($fontsize, h4);
+
             &:nth-of-type(1) {
                 font-size: map-get($fontsize, h3);
                 font-weight: bold;
-                @include rwd(520px){
+
+                @include rwd(520px) {
                     font-size: map-get($fontsize, p);
-                }   
+                }
             }
-        @include rwd(520px){
-            font-size: map-get($fontsize, p1);
+
+            @include rwd(1280px) {
+               font-size: 18px;
+            }
+
+            @include rwd(520px) {
+                font-size: map-get($fontsize, p1);
+            }
         }
-    }
     }
 }
 
-.order_cardright{
+.order_cardright {
     text-align: center;
     margin: auto;
     width: 20%;
-    @include rwd(520px){
-       width: 25%
+
+    @include rwd(520px) {
+        width: 25%
     }
-        .order_cardstate{
-            p{
-                &:nth-of-type(2) {
-                    color: map-get($colors, priceorange);
-                }
-                @include rwd(520px){
-                    font-size: map-get($fontsize, p1);
-                }
+
+    .order_cardstate {
+        p {
+            &:nth-of-type(2) {
+                color: map-get($colors, priceorange);
+                font-size: 16px;
             }
-            button {
-                color: map-get($colors, usered);
-                border: none;
-                background-color: transparent;
-                font-size: map-get($fontsize, p);
-                cursor: pointer;
-                &:hover{
-                   font-weight: bold;
-                   text-decoration: underline; 
-                }
-                @include rwd(520px){
-                    font-size: map-get($fontsize, p1);
-                }
+
+            @include rwd(520px) {
+                font-size: map-get($fontsize, p1);
             }
-            
         }
-   
+
+        button {
+            color: map-get($colors, usered);
+            border: none;
+            background-color: transparent;
+            font-size: map-get($fontsize, p);
+            cursor: pointer;
+
+            &:hover {
+                font-weight: bold;
+                text-decoration: underline;
+            }
+
+            @include rwd(520px) {
+                font-size: map-get($fontsize, p1);
+            }
+        }
+
+    }
+
 }
 
-.swalcolor{
-    color: map-get($colors, darkblue );
+.swalcolor {
+    color: map-get($colors, darkblue);
     font-weight: bold;
 }
 
 .star_block {
-    
-    span{
+
+    span {
         margin: 10px 5px;
     }
 
-    > span.star {
-      cursor: pointer;
-      display: inline-block;
-      
-      &.-on {
-        color:#FCD15B;
-      }
-    }
-  }
+    >span.star {
+        cursor: pointer;
+        display: inline-block;
 
-.ordertext_right{
+        &.-on {
+            color: #FCD15B;
+        }
+    }
+}
+
+.ordertext_right {
     width: 15%;
-    border: 1px solid map-get($colors, white );
+    border: 1px solid map-get($colors, white);
     border-radius: 8px;
     height: 100%;
     margin: 0 20px;
-        
-    .btn_ordera{
+
+    .btn_ordera {
         color: map-get($colors, white);
-        background-color: map-get($colors, darkblue );
-        font-size: map-get($fontsize , h4 );
+        background-color: map-get($colors, darkblue);
+        font-size: map-get($fontsize , h4);
         width: 100%;
-        &:hover{
+        padding: 10px 12px;
+
+        @include rwd(1280px) {
+            padding: 10px 4px;
+            font-size: 16px;
+        }
+
+        &:hover {
             color: map-get($colors, gold);
         }
-        }
-    h3{
-        border-bottom: 1px solid map-get($colors, white );
+    }
+
+    h3 {
+        border-bottom: 1px solid map-get($colors, white);
         border-radius: 8px 8px 0 0;
         text-align: center;
         font-weight: bold;
+
+        @include rwd(1280px) {
+            padding: 10px 4px;
+            font-size: 16px;
+        }
     }
-    @include pad(){
-     display: none;   
+
+    @include pad() {
+        display: none;
     }
 }
 
 
 
 //優惠券
-.coupontext{
+.coupontext {
     // display: none;
     display: flex;
     flex-wrap: wrap;
-    .couponticket{
+
+    .couponticket {
         position: relative;
         // background-image: url(../img/lockbg1.png);
         // background-size: cover;
         // opacity: 0.6;
-        margin:10px 20px;
+        margin: 10px 20px;
         background: map-get($colors, lightyellow);
         width: 800px;
         height: 260px;
@@ -285,26 +337,31 @@
         // -webkit-mask: radial-gradient(circle at 30px 30px, transparent 30px, red 0) 85px -30px ,
         //               radial-gradient(circle at 25px 8px, transparent 3px, red 0) 90px -25px / 100% 10%;
         // -webkit-mask-composite: source-in;
-        }
-    .couponbg{
+    }
+
+    .couponbg {
         width: 600px;
         height: 100%;
         opacity: 0.6;
         background-size: cover;
     }
-    .coupont{
+
+    .coupont {
         // display: none;
         position: absolute;
         right: 10%;
-        top:10%;
+        top: 10%;
         color: map-get($colors, black);
         text-align: center;
-        h3{
+
+        h3 {
             color: map-get($colors, lightblue);
         }
-        h4{
+
+        h4 {
             margin-top: 5px;
-            &:nth-child(3){
+
+            &:nth-child(3) {
                 color: map-get($colors, usered);
             }
         }
@@ -312,44 +369,50 @@
 }
 
 //會員資料管理
-.editmember{
+.editmember {
     // display: none;
 
-    h3{
+    h3 {
         margin-bottom: 30px;
-        @include rwd(500px){
-            font-size: map-get($fontsize, p1 );
-            }
+
+        @include rwd(500px) {
+            font-size: map-get($fontsize, p1);
+        }
     }
-    li{
+
+    li {
         margin-bottom: 20px;
-        
+
     }
-    .editphone{
+
+    .editphone {
         padding-left: 10px;
         outline: none;
         width: 40%;
-        font-size: map-get($fontsize, h4 );
-        @include rwd(500px){
-            font-size: map-get($fontsize, p1 );
+        font-size: map-get($fontsize, h4);
+
+        @include rwd(500px) {
+            font-size: map-get($fontsize, p1);
             padding: 0;
-            }
+        }
     }
-    
-    
-    .btnedit{
+
+
+    .btnedit {
         margin-right: 10%;
 
-        &:hover{
-        background-color: map-get($colors, yellow);
-        color: map-get($colors, black);
+        &:hover {
+            background-color: map-get($colors, yellow);
+            color: map-get($colors, black);
         }
-        @include pad(){
-        width: 100px;
-        font-size: map-get($fontsize, p1 );
+
+        @include pad() {
+            width: 100px;
+            font-size: map-get($fontsize, p1);
         }
     }
-    @include pad(){
-     margin-left: 20%;
+
+    @include pad() {
+        margin-left: 20%;
     }
 }

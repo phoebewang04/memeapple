@@ -373,22 +373,20 @@ export default {
       </section>
 
       <!-- 首頁第三部分 限時主題 -->
-      <section class="content-limitlevel">
-        <!-- <video src="../assets/img/Abyss_small2.mp4" playsinline autoplay muted loop type="video/mp4"
-          class="limit_video"></video> -->
-        <!-- 羽毛特效區域 -->
+      <!-- <section class="content-limitlevel">
+
         <div class="limitlevel-effect"></div>
-        <!-- 內容區域 -->
+        
         <section class="limitlevel-content">
           <p class="limitlevel-topic" data-aos="fade-down" data-aos-delay="100">— 限時主題 —</p>
 
-          <!-- 下方內容 -->
+         
           <section class="limitlevel-title" data-aos="fade-down" data-aos-delay="130">
             <span data-text="代碼深淵">代碼深淵</span>
           </section>
 
           <section class="limitlevel-Area">
-            <!-- 左側標語 -->
+            
             <section class="limitlevel-text">
 
               <div class="limitlevel-sologan-1" data-aos="fade-up" data-aos-delay="150">
@@ -421,7 +419,7 @@ export default {
           <router-link to="/Branch/" class="linmit-link" data-aos="fade-up" data-aos-delay="50"><button type="button"
               class="btn linmit-btn">立即預定</button></router-link>
         </section>
-      </section>
+      </section> -->
 
       <!-- 首頁第四部分 如何遊玩-->
       <section class="content-howtoplay">

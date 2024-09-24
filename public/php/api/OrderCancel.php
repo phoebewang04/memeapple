@@ -12,7 +12,7 @@ class OrderCancel {
 
     // 更新訂單狀態API
     public function updateOrderStatus($orderId, $status) {
-        $sql = "UPDATE orders SET ORDER_STATUS = ? WHERE ID = ?";
+        $sql = "UPDATE ORDERS SET ORDER_STATUS = ? WHERE ID = ?";
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$status, $orderId]);
