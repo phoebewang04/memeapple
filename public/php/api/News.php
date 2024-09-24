@@ -121,7 +121,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $content = $_POST['content'];
             $id = $_POST['id'];
             $image = $_FILES['image'];
-            $publisherId = 1; // 暫時設定為1
+            // $publisherId = 1; // 暫時設定為1
+            $publisherId = $_POST['publisherId'];
             $publishDate = date('Y-m-d');
             $status = 0;
     

@@ -114,7 +114,16 @@ export default {
             formData.append('image', this.$refs.fileInput.files[0]);
             formData.append('imagePath', '/public/img/' + this.$refs.fileInput.files[0].name); // add this
             formData.append('status', 0); // add this
-            formData.append('publisherId', 1); // add this
+            // formData.append('publisherId', 1); // add this
+
+            // 從session拿publisherID
+            const user = JSON.parse(sessionStorage.getItem('user'));
+            if (user && user.ID) {
+                formData.append('publisherId', user.ID);
+            } else {
+                alert('無法從session獲取ID');
+                return;
+            }
 
             // 檢查 FormData 的內容
             for (let pair of formData.entries()) {
