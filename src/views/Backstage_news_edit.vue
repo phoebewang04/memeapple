@@ -49,6 +49,15 @@ export default {
         hideInputPreview() {
             this.showPasswordPrompt = false;
         },
+        // 權限管控
+        checkRole(){
+            const user = JSON.parse(sessionStorage.getItem('user'));
+            if (user && user.ROLE === 'admin') {
+                this.saveNews();
+            } else {
+                alert('看就好，不要玩啦!');
+            }
+        },
         triggerFileInput() {
             this.$refs.fileInput.click();
         },
@@ -177,15 +186,19 @@ export default {
                 <div class="backstage_panel news_edit">
                     <!-- click this button to show div id="backstage_news_preview" -->
                     <button class="btn backstage_button" id="button_preview" @click="showPreview">預覽</button>
+                    <!-- 普通版按鈕 -->
                     <!-- <button class="btn backstage_button" @click="saveNews">{{ isEditMode ? '更新' : '新增' }}</button> -->
-                    <button class="btn backstage_button" @click="promptPassword">{{ isEditMode ? '更新' : '新增' }}</button>
+                    <!-- 密碼驗證版按鈕 -->
+                    <!-- <button class="btn backstage_button" @click="promptPassword">{{ isEditMode ? '更新' : '新增' }}</button>
                         <div v-if="showPasswordPrompt" class="backstage_news" @click="hideInputPreview">
                             <div class="backstage_news_preview" @click.stop
                             style="background-color: whitesmoke; border: .5px solid #8F9191; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2 );">
                                 <input type="password" v-model="password" placeholder="輸入密碼" style="margin: 24px 24px 24px 24px; font-size: 20px; line-height: 1.6;">
                                 <button class="btn backstage_button" @click="verifyPassword" style="margin: 0 auto; margin-bottom: 24px;">確認</button>
                             </div>
-                        </div>
+                        </div> -->
+                    <!-- 登入後權限控管版按鈕 -->
+                    <button class="btn backstage_button" @click="checkRole">{{ isEditMode ? '更新' : '新增' }}</button> 
                     <router-link to="/NewsMenage/"><button class="btn backstage_button">取消</button></router-link>
                 </div>
                     <div v-if="isPreviewVisible" class="backstage_news" @click="hidePreview">

@@ -79,7 +79,7 @@ function triggerAnimations() {
         </router-link>
 
         <!-- 右側按鈕 -->
-        <router-link to="/BackstageIndex/">
+        <router-link to="/BackstageLogin/">
           <section class="frontpage-btnR" ref="frontpageBtnR">
             <img src="@/assets/img/BTN-blue.png" alt="" class="glow-effect-R">
             <a href="">

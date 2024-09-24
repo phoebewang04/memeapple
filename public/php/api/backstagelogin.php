@@ -1,4 +1,10 @@
 <?php
+session_start(); // 啟動 session
+
+// 錯誤報告
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // 載入php API共同參數
 include_once '../sql.php';
@@ -11,20 +17,17 @@ class Login {
     }
 
     // 登入API
-    public function login() {
-        $account = $_POST['account'];
-        $password = $_POST['password'];
-
-        $sql = "SELECT * FROM EMPLOYEE WHERE ACCOUNT = ?";
+    public function login($account, $password) {
+        $sql = 'SELECT * FROM EMPLOYEE WHERE ACCOUNT = ?';
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$account]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($password, $user['PASSWORD'])) {
-            $_SESSION['user'] = $user;
-            echo json_encode(['success' => true, 'role' => $user['ROLE']]);
+        if ($user && $password === $user['PASSWORD']) {
+            $_SESSION['user'] = $user; // 在這裡保存 session
+            return ['success' => true, 'role' => $user['ROLE'], 'user' => $user];
         } else {
-            echo json_encode(['success' => false, 'message' => '帳號或密碼錯誤']);
+            return ['success' => false, 'message' => '帳號或密碼錯誤'];
         }
     }
 
@@ -32,33 +35,29 @@ class Login {
     public function logout() {
         session_unset();
         session_destroy();
-        echo json_encode(['success' => true]);
-    }
-
-    // 檢查登入API
-    public function checkStatus() {
-        $response = ['loggedIn' => false];
-
-        if (isset($_SESSION['user'])) {
-            $response['loggedIn'] = true;
-        }
-
-        echo json_encode($response);
+        return ['success' => true];
     }
 }
 
 $login = new Login($pdo);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['action'])) {
-        if ($_POST['action'] == 'login') {
-            $login->login();
-        } elseif ($_POST['action'] == 'logout') {
-            $login->logout();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    try {
+        $action = $data['action'];
+
+        if ($action === 'login') {
+            $account = $data['account'];
+            $password = $data['password'];
+            $result = $login->login($account, $password);
+            echo json_encode($result);
+        } elseif ($action === 'logout') {
+            $result = $login->logout();
+            echo json_encode($result);
         }
+    } catch (Exception $e) {
+        echo json_encode(['success' => false, 'message' => $e->getMessage()]);
     }
-} elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $login->checkStatus();
 }
 
 ?>
