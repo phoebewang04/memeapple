@@ -40,7 +40,7 @@
                 <div class="theme">
 
                     <ul>
-                        <li @click="leftPage"><i class="fa-solid fa-caret-left"></i></li>
+                        <div @click="leftPage" class="leftarrow"> <i class="fa-solid fa-caret-left"> </i> </div>
                         <div class="theme_name" >
 
                             <li v-for="(item, index) in items" :key="index" v-show="showItem(index)" >
@@ -48,7 +48,7 @@
                             </li>
 
                         </div>
-                        <li @click="rightPage"><i class="fa-solid fa-caret-right"></i></li>
+                        <div @click="rightPage" class="rightarrow"><i class="fa-solid fa-caret-right"></i> </div>
                         
                     </ul>
 
@@ -122,13 +122,15 @@
                 <div class="theme">
 
                     <ul>
-                        <li @click="leftPage"><i class="fa-solid fa-caret-left"></i></li>
+                        <div @click="leftPage" class="leftarrow"> <i class="fa-solid fa-caret-left"> </i> </div>
                         <div class="theme_name" >
-                            <li v-for="(item, index) in items" :key="index" v-show="showItem(index)">
-                               <router-link :to="`/Theme/${index + 1}`"><img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3></router-link>
-                            </li>
+                           
+                                <li v-for="(item, index) in items" :key="index" v-show="showItem(index)">
+                                <router-link :to="`/Theme/${index + 1}`"><img :src="item.img" :alt="item.name"><h3>{{ item.title }}</h3></router-link>
+                                </li>
+                           
                         </div>
-                        <li @click="rightPage"><i class="fa-solid fa-caret-right"></i></li>
+                        <div @click="rightPage" class="rightarrow"><i class="fa-solid fa-caret-right"></i> </div>
                         
                     </ul>
 
@@ -294,7 +296,7 @@ import { Pagination } from 'swiper/modules';
 
 
     .mySwiper img {
-        width: 300px;
+        width: 258px;
         height: 360px;
     }
 
@@ -306,10 +308,14 @@ import { Pagination } from 'swiper/modules';
         height: 400px;
     }
 
+    .mySwiper a {
+        width: 260px;
+    }
+
     .swiper-slide h3 {
         background-color: #FEDA77;
         text-align: center;
-        width: 300px;
+        width: 258px;
     }
 
     ::v-deep .mySwiper .swiper-pagination-bullet {
