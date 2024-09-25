@@ -5,17 +5,11 @@
       <div class="mmangeleft" id="mmangeleft">
         <button type="button" v-for="tab in tabs" :class="{ active: currentTab == tab.id }" :key="tab.id"
           @click="currentTab = tab.id" class="btn btn_mange">{{ tab.name }}</button>
-        <!-- <button class="btn btn_mange">訂單檢視</button>
-            <button class="btn btn_mange">優惠券</button>
-            <button class="btn btn_mange">會員資料</button> -->
       </div>
       <div class="mmangeright" id="mmangeright">
         <div class="mangerightitems">
           <button type="button" v-for="tab in tabs" :class="{ active: currentTab == tab.id }" :key="tab.id"
             @click="currentTab = tab.id" class="btn btn_mange">{{ tab.name }}</button>
-          <!-- <button class="btn btn_mange">訂單檢視</button>
-          <button class="btn btn_mange">優惠券</button>
-          <button class="btn btn_mange">會員資料</button> -->
         </div>
 
         <div class="ordertext" v-if="currentTab == 'tab1'">
@@ -39,6 +33,8 @@
                   <p>訂金</p>
                   <P>TWD 2,000元</P>
                   <button class="questionwrite" @click="orderquestion()">問卷填寫</button>
+                  <!-- <button class="questionwrite" @click="orderquestion1()">問卷填寫</button> -->
+                  <StarRating v-if="showStarRating" @close="showStarRating = false" />
                   <!-- <button class="cancelorder" @click="ordercancel()">取消訂單</button> -->
                 </div>
               </div>
@@ -80,11 +76,16 @@
 
 
         <div class="coupontext" v-if="currentTab == 'tab2'">
-          <div class="couponticket">
-            <img src="../assets/img/banner_Lock.png" class="couponbg">
-            <div class="coupont">
-              <h3>COUPON</h3>
-              <h4>150元</h4>
+          <div v-for="coupon in coupons" :key="coupon.id" class="couponticket">
+            <div class="couponimg">
+              <img src="../assets/img/game_coupon.png" class="couponbg">
+            </div>
+            <div class="coupondata">
+              <div class="couponposition">
+                <!-- <h3>COUPON</h3> -->
+                <h4 class="rotate-text">折價券</h4>
+                <h3 class="rotate-text">${{ coupon.DISCOUNT }}</h3>
+              </div>
             </div>
           </div>
 
@@ -106,10 +107,26 @@
             <h3>會員資料修改</h3>
             <ul>
               <li><h4>帳號：{{user.email}}</h4></li>
-              <li><h4>修改密碼：<input type="text" class="editphone" v-model="editedUser.password"></h4></li>
-              <li><h4>請再次輸入密碼：<input type="text" class="editphone" v-model="editedUser.password"></h4></li>
-              <li><h4>修改姓名：<input type="text" class="editphone" v-model="editedUser.name"></h4></li>
-              <li><h4>電話：<input type="text" class="editphone" v-model="editedUser.phone" maxlength="10" pattern="^09\d{8}$"></h4></li>
+              <li>
+                <div class="flexinput">
+                  <h4>修改密碼：</h4><input type="text" class="editphone" v-model="editedUser.password">    
+                </div>
+              </li>
+              <li>
+                <div class="flexinput">
+                  <h4>請再次輸入密碼：</h4><input type="text" class="editphone" v-model="editedUser.password">
+                </div>
+              </li>
+              <li>
+                <div class="flexinput">
+                  <h4>修改姓名：</h4><input type="text" class="editphone" v-model="editedUser.name">
+                </div>  
+              </li>
+              <li>
+                <div class="flexinput">
+                  <h4>電話：</h4><input type="text" class="editphone" v-model="editedUser.phone" maxlength="10" pattern="^09\d{8}$">
+                </div>
+              </li>
             </ul>
             <div>
               <button class="btn btnedit" @click="saveChanges">儲存變更</button>
@@ -128,6 +145,7 @@ import '../assets/js/vue.global';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
+import StarRating from '../components/StarRating.vue';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
@@ -138,6 +156,7 @@ export default {
   components: {
     TopNavbar,
     Footerbar,
+    StarRating,
   },
   created() {
   const tab = this.$route.query.tab;
@@ -182,7 +201,10 @@ export default {
         passwordConfirm: '',
         name: '',
         phone: ''
-      }
+      },
+      memberId: null, // 定義 memberId
+      coupons: [], // 定義 coupons
+      showStarRating: false,
     };
   },
   beforeMount() {
@@ -203,9 +225,7 @@ export default {
       alert("請進行登入或註冊以造訪會員專區");
       this.$router.push('/index/'); // 重定向到登入頁面
     }
-
-    console.log('Tickets on mount:', this.posters);
-    console.log('Orders on mount:', this.orders);
+    this.fetchCoupons(); // 獲取優惠券
 
   },
   methods: {
@@ -277,7 +297,7 @@ export default {
         }
       });
     },
-    orderquestion() {
+    orderquestion1() {
       Swal.fire({
         title: "問卷調查",
         html: `
@@ -351,8 +371,8 @@ export default {
         phone: user.phone,
         password: user.password // 直接傳送明文密碼
       };
-      console.log(payload);
-      axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)
+      axios.post(import.meta.env.VITE_API_BASE + '/api/editmemberdata.php', payload)
+      // axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)
         .then(response => {
           Swal.fire('成功', '資料已更新', 'success');
         })
@@ -360,6 +380,25 @@ export default {
           console.error('更新用戶資料失敗:', error);
           Swal.fire('失敗', '更新失敗', 'error');
         });
+    },
+    fetchCoupons() {
+      axios.get(import.meta.env.VITE_API_BASE + `/api/membercoupon.php?member_id=${this.memberId}`)
+      // axios.get(`http://localhost/sweethome/meme/public/php/api/membercoupon.php?member_id=${this.memberId}`)
+        .then(response => {
+          if (response.data.error) {
+            console.error(response.data.error);
+          } else {
+            // Handle the coupons data (e.g., store it in a data property)
+            this.coupons = response.data;
+            console.log('獲取的優惠券:', this.coupons);
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching coupons:', error);
+        });
+    },
+    orderquestion() {
+      this.showStarRating = true; // 顯示彈出窗口
     },
   },
 

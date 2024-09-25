@@ -257,7 +257,7 @@ export default {
     };
   },
   mounted() {
-    
+
     const axe = this.$refs.axe;
     const window = this.$refs.window;
     const brokenWindow = this.$refs.brokenWindow;
@@ -339,7 +339,7 @@ export default {
         title: "新手教學",
         imageUrl: this.clueImages[10],
         html: '一進入密室後，右上角的＋號背包會一直陪伴著你！<br><br><li>場景資訊：快速了解每個關卡的環境。</li><br><li>密室提示：遇到瓶頸時，點擊燈泡獲取提示</li><br><li>好想回家：點擊此按鈕返回遊戲選單頁<br>（勇者無法回頭，但我不會攔你！）</li><br>建議使用電腦操作，並開啟全螢幕畫面（F11）及聲音。<br>若使用手機請轉向，以獲得最佳遊戲體驗！',
-        // html: this.clueHint[index],
+        confirmButtonColor: "#82a7af",
       });
     },
     nextScene() {
@@ -511,7 +511,7 @@ export default {
         showConfirmButton: true,
         confirmButtonText: "確認",
         showCloseButton: true,
-        CloseButtonColor: "#221F3C",
+        confirmButtonColor: "#82a7af",
         inputValidator: (value) => {
           // 確保輸入不為空
           if (!value) {
@@ -548,6 +548,7 @@ export default {
         html: '發現了線索！',
         showConfirmButton: true,
         confirmButtonText: "繼續",
+        confirmButtonColor: "#82a7af",
         showCloseButton: true,
         CloseButtonColor: "#221F3C"
       }).then((result) => {
@@ -604,7 +605,7 @@ export default {
         // 在調用 API 之前顯示一個 console.log，確認方法被調用
         // console.log('checkCoupon 方法被調用了，gameId:', gameId);
 
-        const response = await axios.get(`http://localhost/appleyy/public/php/api/coupon.php`,{params: { member_id: memberId, discount: discount }});
+        const response = await axios.get(`http://localhost/appleyy/public/php/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
 
         console.log('API 回應數據:', response.data);
 
@@ -612,14 +613,14 @@ export default {
 
         if (result.status === 'exists') {
           // 已有優惠券
-          this.showCouponAlert("已成功通關，但寶藏已經被你挖走了喔～", '/minigame/');
+          this.showCouponAlert("逃脫成功，但你已經擁有寶藏了喔！", '/minigame/');
           // console.log('成功領取優惠券', result.message);
-        
-        } else if(result.status === 'not_found'){
+
+        } else if (result.status === 'not_found') {
           // 沒有優惠券
           await this.issueCoupon(memberId, discount);
-          this.showCouponAlert("已成功通關，挖到寶藏啦！快去會員中心看看！", '/Membermanage/');
-        } else{
+          this.showCouponAlert("逃脫成功，恭喜挖到寶藏啦！", { path: '/Membermanage/', query: { tab: 'tab2' } });
+        } else {
           console.error("未知的優惠券狀態", result);
         }
       } catch (error) {
@@ -629,37 +630,33 @@ export default {
 
     //發放優惠券
     async issueCoupon(memberId, discount) {
-    try {
-      console.log('正在發送的折扣值:', discount);
+      try {
+        console.log('正在發送的折扣值:', discount);
 
-      let form_data = new FormData();
-      form_data.append("member_id", memberId);
-      form_data.append("discount", discount);
+        let form_data = new FormData();
+        form_data.append("member_id", memberId);
+        form_data.append("discount", discount);
 
-      // let res = await fetch("http://localhost/appleyy/public/php/api/coupon.php", {
-      //   method: "POST",
-      //   body: form_data
-      // });
-      // let data = await res.json();
-      // console.log(data);
-
-      const response = await axios.post("http://localhost/appleyy/public/php/api/coupon.php", form_data, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      console.log('優惠券發放成功:', response.data);
-    } catch (error) {
-      console.error("發放優惠券時出錯:", error);
-    }
-  },
-  showCouponAlert(message, redirectUrl) {
+        // const response = await axios.post(import.meta.env.VITE_API_BASE + "/api/coupon.php", form_data, {
+        const response = await axios.post("http://localhost/appleyy/public/php/api/coupon.php", form_data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+        console.log('優惠券發放成功:', response.data);
+      } catch (error) {
+        console.error("發放優惠券時出錯:", error);
+      }
+    },
+    showCouponAlert(message, redirectUrl) {
       secAlert.fire({
-        title: message,
-        icon: 'success',
+        imageUrl: new URL("@/assets/img/esc_34.png", import.meta.url).href,
+        imageWidth: 250,
+        text: message,
         confirmButtonText: '確認',
+        confirmButtonColor: "#82a7af",
       }).then(() => {
-        
+
         if (this.bgMusic2) {
           this.bgMusic2.pause();
         }

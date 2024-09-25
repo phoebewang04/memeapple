@@ -187,8 +187,8 @@ export default {
         // },
         async submitLogin() {
             try {
-                const response = await axios.post(import.meta.env.VITE_API_BASE +'/api/login.php', {
-                // const response = await axios.post('http://localhost/meme_apple/public/php/api/Login.php', {
+                const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/login.php', {
+                // const response = await axios.post('http://localhost/sweethome/meme/public/php/api/login.php', {
                     username: this.username,
                     password: this.password
                 });
@@ -274,7 +274,7 @@ export default {
             // 如果所有檢查都通過，則進行註冊請求
             try {
                 const response = await axios.post(import.meta.env.VITE_API_BASE +'/api/register.php', {
-                // const response = await axios.post('http://localhost/meme_apple/public/php/api/Register.php', {
+                // const response = await axios.post('http://localhost/sweethome/meme/public/php/api/register.php', {
                     email: this.registerEmail,
                     password: this.registerPassword,
                     name: this.registerName,
