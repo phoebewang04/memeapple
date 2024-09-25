@@ -3539,21 +3539,17 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .theme li {
+  width: 258px;
+  margin: 0 10px;
   transition: transform 0.3s ease;
 }
 .theme li:hover {
   transform: scale(1.05);
 }
-
-.theme li i {
-  color: #FEDA77;
-  font-size: 48px;
-  padding: 8px;
-  cursor: pointer;
-}
-@media (max-width: 430px) {
-  .theme li i {
-    display: none;
+@media (max-width: 820px) {
+  .theme li {
+    width: 170px;
+    margin: 0px;
   }
 }
 
@@ -3562,27 +3558,50 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   justify-content: space-between;
   align-items: center;
 }
+@media (max-width: 820px) {
+  .theme ul {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
 @media (max-width: 430px) {
   .theme ul {
     display: none;
   }
 }
 
-.theme ul li a {
-  text-decoration: none;
+.theme .leftarrow {
+  color: #FEDA77;
+  font-size: 48px;
+  padding: 8px;
+  cursor: pointer;
 }
-
-.theme ul li img {
-  width: 95%;
-  height: 360px;
-}
-@media (max-width: 820px) {
-  .theme ul li img {
-    width: 180px;
-    height: 270px;
+@media (max-width: 430px) {
+  .theme .leftarrow {
+    display: none;
   }
 }
 
+.theme ul .rightarrow {
+  color: #FEDA77;
+  font-size: 48px;
+  padding: 8px;
+  cursor: pointer;
+}
+@media (max-width: 430px) {
+  .theme ul .rightarrow {
+    display: none;
+  }
+}
+
+.theme ul li a {
+  text-decoration: none;
+  width: 260px;
+}
+
+.theme ul li img {
+  width: 100%;
+}
 .theme .theme_name {
   width: 90%;
   display: flex;
@@ -3595,7 +3614,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .theme .theme_name h3 {
-  width: 244px;
+  width: 100%;
   height: 40px;
   background-color: #FEDA77;
   color: #100E24;
@@ -3605,7 +3624,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 @media (max-width: 820px) {
   .theme .theme_name h3 {
-    width: 180px;
+    width: 170px;
   }
 }
 
@@ -3813,15 +3832,15 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   }
 }
 .deadBtn {
-  width: 50%;
+  width: 10%;
   position: absolute;
-  left: 38%;
-  bottom: 15%;
+  left: 44%;
+  bottom: 22%;
   cursor: pointer;
   animation-iteration-count: infinite;
 }
 .deadBtn img {
-  width: 50%;
+  width: 100%;
 }
 @media (max-width: 430px) {
   .deadBtn img {
@@ -3830,24 +3849,24 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 @media (max-width: 430px) {
   .deadBtn {
-    width: 67%;
+    width: 29%;
     position: absolute;
-    left: 15%;
-    bottom: 32%;
+    left: 36%;
+    bottom: 39%;
   }
 }
 
 .deadZombie1 {
-  width: 20%;
+  width: 13%;
   position: absolute;
   left: 5%;
-  bottom: 3%;
+  bottom: 0%;
 }
 @media (max-width: 430px) {
   .deadZombie1 {
-    width: 49%;
+    width: 31%;
     position: absolute;
-    left: 30%;
+    left: 34%;
     bottom: 0%;
   }
 }
@@ -3861,9 +3880,9 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 }
 
 .deadZombie2 {
-  width: 19%;
+  width: 16%;
   position: absolute;
-  right: 7%;
+  right: 4%;
   bottom: 0%;
 }
 @media (max-width: 430px) {
@@ -3908,23 +3927,44 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   filter: drop-shadow(0 0 10px white);
 }
 
-.guessNumberBox {
-  width: 14% !important;
-  height: 5% !important;
-  position: absolute !important;
+.playGround .guessNumberBox {
+  width: 510px;
+  height: 57px;
+  position: absolute;
   top: 17%;
   left: 23%;
   z-index: 1;
+  display: flex;
+  align-items: center;
 }
 @media (max-width: 430px) {
-  .guessNumberBox {
-    width: 29% !important;
-    height: 5% !important;
-    position: absolute !important;
-    top: 66%;
-    left: 26%;
+  .playGround .guessNumberBox {
+    width: 320px;
+    height: 57px;
+    position: absolute;
+    top: 55%;
+    left: 11%;
     z-index: 1;
+    display: flex;
+    align-items: center;
   }
+}
+
+.playGround .guessNumberBox input {
+  outline: none;
+  padding-left: 10px;
+  width: 150px;
+  height: 50px;
+}
+@media (max-width: 430px) {
+  .playGround .guessNumberBox input {
+    width: 142px;
+    height: 44px;
+  }
+}
+
+.playGround .guessNumberBox input, textarea {
+  font-size: initial;
 }
 
 .deadZombie3 {
@@ -4320,7 +4360,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 .deadGame p {
   color: #a6a6a6;
   position: absolute;
-  bottom: 60%;
+  bottom: 54%;
   left: 18%;
   font-size: 20px;
   overflow: hidden;
@@ -4344,7 +4384,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
     white-space: normal;
     font-size: 14px;
     position: absolute;
-    bottom: 40%;
+    bottom: 28%;
     left: 11%;
   }
 }
@@ -4367,22 +4407,27 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
     visibility: visible;
   } /* 動畫開始後設置為可見 */
 }
-.playBtn {
-  border-radius: 20px !important;
-  width: 6%;
+.guessNumberBox .playBtn {
+  border-radius: 12px;
+  height: 40px;
+  width: 80px;
   font-size: 14px;
   position: absolute;
   top: 18%;
   left: 39%;
   z-index: 1;
+  background-color: #77806d;
+  padding: 0px;
+  color: white;
 }
 @media (max-width: 430px) {
-  .playBtn {
-    border-radius: 12px !important;
-    width: 11%;
+  .guessNumberBox .playBtn {
+    border-radius: 12px;
+    height: 30px;
+    width: 60px;
     font-size: 14px;
     position: absolute;
-    top: 67%;
+    top: 27%;
     left: 59%;
     z-index: 1;
   }
@@ -4686,6 +4731,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   }
 }
 
+.memberinfrom input, textarea {
+  font-size: initial;
+}
+
 .memberinfrom .mi_dt .phone select {
   width: 150px;
   height: 35px;
@@ -4790,6 +4839,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .order_right .details .list .pp {
   font-size: 16px;
+}
+
+.order_right .orderLabel {
+  display: flex;
 }
 
 .order_right .details select {
@@ -5115,6 +5168,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   }
 }
 
+.pay_left .card_number input, textarea {
+  font-size: initial;
+}
+
 .pay_left .card_time {
   display: flex;
 }
@@ -5153,6 +5210,14 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   width: 270px;
 }
 
+.pay_left.cardcode input, textarea {
+  font-size: initial;
+}
+
+.pay_left .card_time input, textarea {
+  font-size: initial;
+}
+
 /* --------------------------------------------------------------------- */
 .pay_right .details {
   width: 350px;
@@ -5188,6 +5253,10 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
 
 .pay_right .details .list .pp {
   font-size: 16px;
+}
+
+.pay_right .orderLabel {
+  display: flex;
 }
 
 .pay_right .details select {
@@ -5406,6 +5475,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
     width: 100%;
     height: 440px;
     margin-top: 10px;
+    border: none;
   }
 }
 
@@ -5414,7 +5484,11 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   width: 100px;
   margin: 0 auto;
   padding-top: 20px;
-  padding-bottom: 20px;
+}
+@media (max-width: 430px) {
+  .preorder_datetime .time h3 {
+    border-bottom: 1px solid white;
+  }
 }
 
 .preorder_datetime .time .time_ele {
@@ -5423,6 +5497,7 @@ ul#menuBar li:hover > ul { /* 滑鼠滑入展開次選單*/
   flex-wrap: wrap;
   margin: 0 auto;
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 @media (max-width: 430px) {
   .preorder_datetime .time .time_ele {

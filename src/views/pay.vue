@@ -82,12 +82,15 @@
                         <p>總人數：<span class="pp" v-if="peopleAmount">{{peopleAmount }} 人</span></p>
                         <p>訂購項目：</p>
                         <p class="pp">包場訂金 2000 元 X1</p>
-                        <label for="orderDiscount">使用優惠卷</label>
-                        <select v-model="orderDiscount" disabled>
-                            <option value="discountA">優惠卷折扣 - 50 元</option>
-                            <option value="discountB">優惠卷折扣 - 100 元</option>
-                            <option value="discountC">優惠卷折扣 - 150 元</option>
-                        </select>
+                        
+                        <div class="orderLabel">
+                            <label for="orderDiscount">使用優惠卷</label>
+                            <select v-model="orderDiscount" disabled>
+                                <option value="discountA">優惠卷折扣 - 50 元</option>
+                                <option value="discountB">優惠卷折扣 - 100 元</option>
+                                <option value="discountC">優惠卷折扣 - 150 元</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="amount">

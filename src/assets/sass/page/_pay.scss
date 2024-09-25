@@ -249,6 +249,10 @@
     }
 }
 
+.pay_left .card_number input, textarea {
+    font-size: initial;
+} 
+
 .pay_left .card_time {
     display: flex;
 
@@ -288,6 +292,16 @@
     width: 270px;
 }
 
+.pay_left.cardcode input, textarea {
+    font-size: initial;
+} 
+
+.pay_left .card_time input, textarea {
+    font-size: initial;
+} 
+
+
+
 
 /* --------------------------------------------------------------------- */
 
@@ -324,6 +338,10 @@
 
 .pay_right .details .list .pp {
     font-size: 16px;
+}
+
+.pay_right .orderLabel {
+    display: flex;
 }
 
 

@@ -32,7 +32,7 @@
             <div class="timeandele">
 
                 <!-- ---------日曆---------- -->
-                <VCalendar v-model="selectedDate" :attributes="attrs" @dayclick="onDateChange" title-position="left" />
+                <VCalendar v-model="selectedDate" :attributes="attrs" @dayclick="onDateChange" title-position="left" :min-date="today"/>
 
                 <!-- ---------場次時間---------- -->
                 <div class="time">
@@ -278,6 +278,7 @@ import Footerbar from '../components/Footerbar.vue';
 import 'v-calendar/style.css';
 import ScrollToTop from '../components/ScollToTop.vue';
 import axios from 'axios';
+import preorderAlert from 'sweetalert2';
 
 
 export default {
@@ -292,6 +293,7 @@ export default {
             all_data: all_data,
             theme: null, //根據主題 ID 來決定當前顯示的主題資料。
             selectedDate: new Date().toISOString().split("T")[0], // 當前日期
+            today: new Date().toISOString().split("T")[0],
             themeId: this.$route.params.id,  // 從路由中獲取的主題 ID
             orders: [], //儲存從後端 API 查詢到的訂單資料，用於決定哪些場次已被預訂
             timeSlots: [
@@ -320,6 +322,20 @@ export default {
     methods: {
         // 當用戶點擊日曆中的某一天時觸發的事件處理器
         onDateChange(date) {
+            if (new Date(date.id) < new Date(this.today)) {
+                preorderAlert.fire({
+                
+                text: "無法選擇今天以前的日期噢！",
+                icon: "warning",
+                iconColor:'#FEDA77',
+                background:'#100E24',
+                color:'white',
+                confirmButtonText: '確認',
+                confirmButtonColor:'#FEDA77',
+                });
+                // alert("無法選擇今天之前的日期");
+                return;
+            }
             // 檢查 `date.id` 是否存在，並使用它作為日期，並呼叫 queryDatabaseByDate 方法去後端查詢該日期的預訂資料。
             if (date && date.id) {
                 const formattedDate = date.id; 
@@ -352,6 +368,7 @@ export default {
             console.log("查詢的 themeId：", this.themeId);
             try {
                 // 確保 URL 正確格式化，使用 & 分隔日期和 themeId
+                // const response = await axios.get(import.meta.env.VITE_API_BASE + `/api/preorder.php?date=${date}&themeId=${this.themeId}`);
                 const response = await axios.get(
                     `http://localhost/appleTeam/public/php/api/preorder.php?date=${date}&themeId=${this.themeId}`
                 );
@@ -363,18 +380,22 @@ export default {
                     console.error("查詢失敗：", error);
             }
         },
+        //比對訂單場次選用時間如有人已選該時段的場次就會變不能選
          updateTimeSlots() {
-           // 檢查 orders，根據每個場次的時間來更新其 `disabled` 狀態
-             this.timeSlots.forEach(slot => {
-              // 檢查是否有訂單的時間與場次時間匹配
-                 const order = this.orders.find(o => {
-                   const orderTime = o.ORDER_TIME.split(':').slice(0, 2).join(':'); // 提取訂單時間的 小時:分鐘
-                   return orderTime === slot.time; // 如果訂單時間匹配場次時間
+        
+                this.timeSlots.forEach(slot => {
+                // 使用 find 方法來檢查 orders，找到匹配的時間
+                const order = this.orders.find(o => {
+                    const orderTime = o.ORDER_TIME.split(':').slice(0, 2).join(':'); // 提取 小時:分鐘
+                    const slotTime = slot.time.replace('：', ':'); // 確保時間格式一致
+                    console.log('比對的時間：', orderTime, slotTime); // 查看比對的結果
+                    return orderTime === slotTime; // 比對時間
                 });
-                 // 如果找到匹配的訂單，將該場次設為 disabled，否則可選
-                slot.disabled = !!order; // order 存在則設置 disabled
+
+                // 如果有匹配的訂單，將該場次設為 disabled
+                slot.disabled = !!order;
             });
-            
+        
          },
 
         selectTimeSlot(slot) {
@@ -392,12 +413,9 @@ export default {
         getOrder(themeID, time) {
             const order = this.orders.find(
                 (order) =>
-                order.themeId === themeID && order.ORDER_TIME.startsWith(time)
+                order.THEME_ID === themeID && order.ORDER_TIME.startsWith(time)
             );
             return order ? order.ORDER_ID : "";
-
-
-
         },
         goToNextPage (){
             localStorage.setItem ('peopleAmount', this.peopleAmount);
@@ -409,7 +427,7 @@ export default {
     computed: {
         dataValid (){
             return (
-                this.selectedDate && this.selectedTimeSlot && this.peopleAmount     
+                this.selectedDate && this.selectedTimeSlot && this.peopleAmount  
             )
             
         }
@@ -423,10 +441,11 @@ export default {
         const today = new Date().toISOString().split('T')[0];
 
         // 將當前日期存入 localStorage
-        localStorage.setItem('selectedDate', today);
+         localStorage.setItem('selectedDate', today);
         // 設置 selectedDate 並查詢當天的預訂信息
-        this.selectedDate = today;
-        console.log('當天的日期已存入 localStorage:', today);
+         this.selectedDate = today;
+         this.today = today;
+         console.log('當天的日期已存入 localStorage:', today);
         this.queryDatabaseByDate(this.selectedDate);
 
         // localStorage.clear();
@@ -447,15 +466,21 @@ export default {
   cursor: not-allowed;
 }
 .enabled {
-  color: #100E24;
+  /* color: #100E24;
   background-color: #FEDA77;
-  cursor: pointer; 
-}
-
-.selectTime {
+  cursor: pointer;  */
     color: #FCD15B;
     border: 1px solid #FCD15B;
     background-color: #100E24;
+}
+
+.selectTime {
+    /* color: #FCD15B;
+    border: 1px solid #FCD15B;
+    background-color: #100E24; */
+    color: #100E24;
+    background-color: #FEDA77;
+    cursor: pointer; 
 }
 
 /* -------------日曆的樣式---------------- */
@@ -537,6 +562,11 @@ export default {
     padding-right: 25px;
 }
 
+.vc-bordered {
+    @media screen and (max-width:430px) {
+        border: none;
+    }
+}
 
 .vc-header .vc-arrow {
     border-radius: 40px ;
