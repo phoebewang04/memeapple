@@ -131,8 +131,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             // $targetDir = '../../img/';
             $targetFile = $targetDir . basename($image['name']);
             if (move_uploaded_file($image['tmp_name'], $targetFile)) {
-                // $imagePath = '/img/'. basename($image['name']);
-                $imagePath = 'public/img/'. basename($image['name']);
+                $imagePath = '/img/'. basename($image['name']);
+                // $imagePath = 'public/img/'. basename($image['name']);
             } else {
                 $imagePath = null;
                 echo json_encode(['success' => false, 'message' => '圖片上傳失敗']);
