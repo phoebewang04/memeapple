@@ -61,7 +61,7 @@
             // 排序後顯示icon
             getSortIcon(key) {
                 if (this.sortKey === key) {
-                    return this.sortOrder === 1 ? this.sortIcons['asc'] : this.sortIcons['desc'];
+                    return this.sortOrder == 1 ? this.sortIcons['asc'] : this.sortIcons['desc'];
                 }
                 return this.sortIcons[''];
             },

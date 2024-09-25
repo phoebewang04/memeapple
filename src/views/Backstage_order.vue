@@ -45,7 +45,7 @@
         computed:{
             // 動態下拉選單
             filteredThemes() {
-                if (this.store_name === '所有分館') {
+                if (this.store_name == '所有分館') {
                     return ['所有主題', ...new Set(Object.values(this.themes).flat().filter(theme => theme !== '所有主題'))];
                 } else {
                     return ['所有主題', ...this.themes[this.store_name]];
@@ -81,7 +81,7 @@
             },
             // 排序後顯示icon
             getSortIcon(key) {
-                if (this.sortKey === key) {
+                if (this.sortKey == key) {
                     return this.sortOrder === 1 ? this.sortIcons['asc'] : this.sortIcons['desc'];
                 }
                 return this.sortIcons[''];

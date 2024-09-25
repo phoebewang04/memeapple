@@ -135,7 +135,7 @@
                 return date.toISOString().split('T')[0];
             },
             async updateStatus(member){
-                const newStatus = member.STATUS === 1 ? 0 : 1;
+                const newStatus = member.STATUS == 1 ? 0 : 1;
                 try{
                     const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/member.php', { 
                     // const response = await axios.post('http://localhost/memeapple/public/php/api/member.php', { 
@@ -241,8 +241,8 @@
                             <td id="member_email">{{ item.EMAIL }}</td>
                             <td id="member_phone">{{ item.PHONE }}</td>
                             <td id="member_status">
-                                <button @click="updateStatus(item)" :class="{ banned: item.STATUS === 1 }">{{
-                                    item.STATUS === 1 ? '停權' : '正常' }}</button>
+                                <button @click="updateStatus(item)" :class="{ banned: item.STATUS == 1 }">{{
+                                    item.STATUS == 1 ? '停權' : '正常' }}</button>
                             </td>
                             <td id="member_action">
                                 <button @click="showPreview(item.ID)">檢視訂單</button>
