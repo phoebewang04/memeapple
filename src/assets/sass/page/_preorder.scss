@@ -160,6 +160,7 @@
         width: 100%;
         height: 440px;
         margin-top: 10px;
+        border: none;
     }
 
 }
@@ -169,7 +170,11 @@
     width: 100px;
     margin: 0 auto;
     padding-top: 20px;
-    padding-bottom: 20px;
+    
+
+    @include rwd(430px) {
+        border-bottom: 1px solid white;
+    }
 }
 
 .preorder_datetime .time .time_ele {
@@ -178,6 +183,7 @@
     flex-wrap: wrap;
     margin: 0 auto;
     padding-bottom: 20px;
+    padding-top: 20px;
 
     @include rwd(430px){
         width: 250px;

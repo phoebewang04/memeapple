@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // 載入php API共同參數
 include_once '../sql.php';
@@ -13,8 +16,9 @@ class Dashboard{
     public function fetchOrdersByDate($date) {
         $sql = "SELECT THEME_ID, ORDER_TIME, ORDER_ID FROM orderdetails WHERE ORDER_DATE = :date";
         $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':date', $date);
-        $stmt->execute();
+        // $stmt->bindParam(':date', $date);
+        $stmt->execute(['date' => $date, 'themeId' => $themeId]);
+        // $stmt->execute();
         $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $orders;
     }

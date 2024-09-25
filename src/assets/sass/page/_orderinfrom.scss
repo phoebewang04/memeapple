@@ -276,7 +276,12 @@
 
     @include rwd(820px){
         width: 340px;
+        
     }
+}
+
+.memberinfrom input, textarea {
+    font-size: initial;
 }
 
 .memberinfrom .mi_dt .phone select {
@@ -386,6 +391,10 @@
 
 .order_right  .details .list .pp {
     font-size: 16px;
+}
+
+.order_right .orderLabel {
+    display: flex;
 }
 
 .order_right .details select {

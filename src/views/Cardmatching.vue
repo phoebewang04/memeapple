@@ -31,8 +31,7 @@
 
                 <!-- 卡片背面 -->
                 <div class="card_back card_face">
-                    <img class="card_value" :src="`/tid102/g1/front/src/assets/img/${card.image}.png`" :alt="card.name"
-                        :class="{ 'card_match': card.matched }">
+                    <img class="card_value" :src="card.src" :alt="card.name" :class="{ 'card_match': card.matched }">
                 </div>
             </div>
         </div>
@@ -67,14 +66,14 @@ export default {
             timeRemaining: this.initialTime,
             intervalId: null,
             cards: [
-                { image: 'card_icon_bat', name: 'bat', flipped: false },
-                { image: 'card_icon_coffin', name: 'coffin', flipped: false },
-                { image: 'card_icon_coin', name: 'coin', flipped: false },
-                { image: 'card_icon_eye', name: 'eye', flipped: false },
-                { image: 'card_icon_ghost', name: 'ghost', flipped: false },
-                { image: 'card_icon_skull', name: 'skull', flipped: false },
-                { image: 'card_icon_tombstone', name: 'tombstone', flipped: false },
-                { image: 'card_icon_potion', name: 'potion', flipped: false },
+                { src: new URL("@/assets/img/card_icon_bat.png", import.meta.url).href, name: 'bat', flipped: false },
+                { src:  new URL("@/assets/img/card_icon_coffin.png", import.meta.url).href, name: 'coffin', flipped: false },
+                { src:  new URL("@/assets/img/card_icon_coin.png", import.meta.url).href, name: 'coin', flipped: false },
+                { src:  new URL("@/assets/img/card_icon_eye.png", import.meta.url).href, name: 'eye', flipped: false },
+                { src:  new URL("@/assets/img/card_icon_ghost.png", import.meta.url).href, name: 'ghost', flipped: false },
+                { src:  new URL("@/assets/img/card_icon_skull.png", import.meta.url).href, name: 'skull', flipped: false },
+                { src:  new URL("@/assets/img/card_icon_tombstone.png", import.meta.url).href, name: 'tombstone', flipped: false },
+                { src:  new URL("@/assets/img/card_icon_potion.png", import.meta.url).href, name: 'potion', flipped: false },
 
             ],
             flippedCards: [],  // 追蹤翻開的卡片
@@ -88,6 +87,12 @@ export default {
     },
 
     methods: {
+        getImagePath(imageName) {
+            // 測試 console.log 檢查圖片路徑是否正確
+            const path = new URL(`@/assets/img/${imageName}.png`, import.meta.url).href;
+            console.log('Image path:', path);  // 檢查路徑是否正確
+            return path;
+        },
         startGame() {
             this.isGameStarted = true;
             this.startCountdown();
@@ -120,7 +125,10 @@ export default {
             this.flippedCards.push(card);
 
             if (this.flippedCards.length === 2) {
-                this.checkForMatch();
+                this.lockBoard = true;
+                setTimeout(()=>{
+                    this.checkForMatch();
+                },600);
             }
         },
 
@@ -133,8 +141,9 @@ export default {
 
                 setTimeout(() => {
                     this.flippedCards = [];
+                    this.lockBoard = false;
                     this.checkAllCardsMatched();
-                }, 600);
+                },0);
             } else {
                 this.lockBoard = true;
                 setTimeout(() => {
@@ -142,7 +151,7 @@ export default {
                     secondCard.flipped = false;
                     this.flippedCards = [];
                     this.lockBoard = false;
-                }, 1000);
+                }, 200);
             }
         },
 
@@ -162,7 +171,7 @@ export default {
                 // 在調用 API 之前顯示一個 console.log，確認方法被調用
                 // console.log('checkCoupon 方法被調用了，gameId:', gameId);
 
-                const response = await axios.get(`http://localhost/appleyy/public/php/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
+                const response = await axios.get(import.meta.env.VITE_API_BASE + `api/coupon.php`, { params: { member_id: memberId, discount: discount } });
 
                 console.log('API 回應數據:', response.data);
 
@@ -170,13 +179,13 @@ export default {
 
                 if (result.status === 'exists') {
                     // 已有優惠券
-                    this.showCouponCard("挑戰成功，但你已經擁有寶藏了喔！", '/minigame/');
+                    this.showCardCoupon("挑戰成功，但你已經擁有寶藏了喔！", '/minigame/');
                     // console.log('成功領取優惠券', result.message);
 
                 } else if (result.status === 'not_found') {
                     // 沒有優惠券
                     await this.issueCoupon(memberId, discount);
-                    this.showCouponCard("挑戰成功，恭喜挖到寶藏啦！", { path: '/Membermanage/', query: { tab: 'tab2' } });
+                    this.showCardCoupon("挑戰成功，恭喜挖到寶藏啦！", { path: '/Membermanage/', query: { tab: 'tab2' } });
                 } else {
                     console.error("未知的優惠券狀態", result);
                 }
@@ -193,6 +202,7 @@ export default {
                 form_data.append("member_id", memberId);
                 form_data.append("discount", discount);
 
+                // const response = await axios.post(import.meta.env.VITE_API_BASE + "/api/coupon.php", form_data, {
                 const response = await axios.post("http://localhost/appleyy/public/php/api/coupon.php", form_data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
@@ -203,17 +213,17 @@ export default {
                 console.error("發放優惠券時出錯:", error);
             }
         },
-        showCouponCard(message, redirectUrl) {
+        showCardCoupon(message, redirectUrl) {
             clearInterval(this.intervalId); // 停止計時
             cardAlert.fire({
-                imageUrl:new URL("@/assets/img/card_icon_treasure.png", import.meta.url).href,
+                imageUrl: new URL("@/assets/img/card_icon_treasure.png", import.meta.url).href,
                 imageWidth: 120,
                 imageHeight: 140,
                 text: message,
                 confirmButtonText: '確認',
-                confirmButtonColor:'#2b2b40',
-                background:'#373757',
-                color:'white'
+                confirmButtonColor: '#2b2b40',
+                background: '#373757',
+                color: 'white'
             }).then(() => {
                 this.$router.push(redirectUrl);
             });
@@ -237,14 +247,14 @@ export default {
         challengeFailed() {
             this.lockBoard = true;
             cardAlert.fire({
-                imageUrl:new URL("@/assets/img/card_icon_ghost.png", import.meta.url).href,
+                imageUrl: new URL("@/assets/img/card_icon_ghost.png", import.meta.url).href,
                 imageWidth: 100,
                 imageHeight: 120,
                 text: '時間到！挑戰失敗！',
-                color:'white',
+                color: 'white',
                 confirmButtonText: '重新挑戰',
-                confirmButtonColor:'#2b2b40',
-                background:'#373757',
+                confirmButtonColor: '#2b2b40',
+                background: '#373757',
                 focusConfirm: false
             }).then(() => {
                 this.restart();
@@ -261,11 +271,11 @@ export default {
 
         gameRules() {
             cardAlert.fire({
-                imageUrl:new URL("@/assets/img/card_icon_candle.png", import.meta.url).href,
+                imageUrl: new URL("@/assets/img/card_icon_candle.png", import.meta.url).href,
                 imageWidth: 120,
                 html: '80秒的記憶翻牌遊戲，在時間內完成即可獲得秘寶！<br>若使用手機請轉為橫向，以獲得最佳遊戲體驗！',
-                background:'#2b2b40',
-                color:'white',
+                background: '#2b2b40',
+                color: 'white',
                 showConfirmButton: false,
                 showCloseButton: true,
                 focusConfirm: false

@@ -55,7 +55,8 @@
         &:hover {
 
             color: map-get($colors , yellow);
-            &::after{
+
+            &::after {
                 width: 100%;
                 background: map-get($colors , yellow);
             }
@@ -64,8 +65,46 @@
         }
     }
 
+    label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
 
 }
+
+.checkservers input[type="checkbox"] {
+    appearance: none;
+    margin-right: 8px;
+    border: 2px solid map-get($colors , grayblue);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+}
+
+.checkservers input[type="checkbox"]:checked {
+    background-color: map-get($colors , midnight);
+    background-color: map-get($colors , grayblue);
+}
+
+.checkservers input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: solid map-get($colors , yellow);
+    border-width: 0 2px 2px 0;
+    display: none;
+}
+
+.checkservers input[type="checkbox"]:checked::before {
+    display: block;
+}
+
 
 .join_now {
     padding: 20px 0;
@@ -81,7 +120,7 @@
         font-weight: 500;
         color: map-get($colors , gold);
         position: relative;
-        
+
 
         &::after {
             content: '';
@@ -98,7 +137,8 @@
         &:hover {
 
             color: map-get($colors , yellow);
-            &::after{
+
+            &::after {
                 width: 100%;
                 background: map-get($colors , yellow);
             }

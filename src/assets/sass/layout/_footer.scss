@@ -78,6 +78,7 @@
 
         &:last-child {
             margin-right: 0;
+            line-height: 1.2;
         }
 
         @include pad {
@@ -179,7 +180,7 @@
         }
 
         &:hover {
-            color: map-get($colors, underyellow);
+            color: map-get($colors, gold);
         }
 
         &:last-child {
