@@ -2,7 +2,7 @@
 
 <template>
 
-  <TopNavbar />
+    <TopNavbar />
 
     <div id="order_wrapper">
 
@@ -47,7 +47,8 @@
                 <div class="memberinfrom">
                     <div class="login">
                         <h3>聯絡人資料</h3>
-                        <p>已經是會員？請 <RouterLink to="/Login">登入</RouterLink></p>
+                        <p v-if="!isLoggedIn">已經是會員？請 <RouterLink to="/Login">登入</RouterLink>
+                        </p>
                     </div>
 
                     <div class="mi_dt">
@@ -77,10 +78,10 @@
                         </div>
                     </div>
 
-                    <div class="password">
+                    <div class="password" v-if="!isLoggedIn">
                         <div class="password01">
                             <p>建立密碼</p>
-                            <input type="password" v-model="orderPassword" @input="validPassword"  placeholder="請輸入6位以上密碼">
+                            <input type="password" v-model="orderPassword" @input="validPassword" placeholder="請輸入6位以上密碼">
                             <p v-if="passwordError" style="color: #DC2F2F;" class="redError">{{ passwordError }}</p>
                         </div>
 
@@ -91,7 +92,7 @@
                         </div>
                     </div>
 
-                    <p>繼續進行且完成訂單，代表您同意服務條款與隱私權政策並成為註冊會員</p>
+                    <p v-if="!isLoggedIn">繼續進行且完成訂單，代表您同意服務條款與隱私權政策並成為註冊會員</p>
 
                 </div>
 
@@ -125,72 +126,74 @@
             <div class="order_right">
 
                 <div class="details">
-                        <h3>訂單明細</h3>
+                    <h3>訂單明細</h3>
 
-                        <div class="list">
-                            <p v-if="theme">{{ theme.themeName }} （ {{ theme.branch }} ）</p>
-                            <p>預約場次</p>
-                            <p class="pp"> 日期：{{ selectedDate}}  ｜  時間：{{ selectedTimeSlot }} </p>
-                            <p>總人數：<span class="pp" v-if="peopleAmount">{{peopleAmount }} 人</span></p>
-                            <p>訂購項目：</p>
-                            <p class="pp">包場訂金 2000 元 X1</p>
-                            
-                            <div class="orderLabel">
-                                <label for="orderDiscount" >使用優惠卷</label>
-                                <select name="使用優惠卷" v-model="orderDiscount" @change="selectDiscount">
-                                    <option value="discountA">優惠卷折扣 - 50 元</option>
-                                    <option value="discountB">優惠卷折扣 - 100 元</option>
-                                    <option value="discountC">優惠卷折扣 - 150 元</option>
-                                </select>
+                    <div class="list">
+                        <p v-if="theme">{{ theme.themeName }} （ {{ theme.branch }} ）</p>
+                        <p>預約場次</p>
+                        <p class="pp"> 日期：{{ selectedDate}} ｜ 時間：{{ selectedTimeSlot }} </p>
+                        <p>總人數：<span class="pp" v-if="peopleAmount">{{peopleAmount }} 人</span></p>
+                        <p>訂購項目：</p>
+                        <p class="pp">包場訂金 2000 元 X1</p>
+
+                        <label for="orderDiscount">使用優惠卷</label>
+                        <select v-if="coupons.length > 0" name="使用優惠卷" v-model="orderDiscount" @change="selectDiscount">
+                            <!-- <option value="discountA">優惠卷折扣 - 50 元</option> -->
+                            <!-- <option value="discountB">優惠卷折扣 - 100 元</option> -->
+                            <!-- <option value="discountC">優惠卷折扣 - 150 元</option> -->
+                            <option v-for="coupon in coupons" :key="coupon.ID" :value="coupon.ID">
+                                {{ `優惠卷折扣 - ${coupon.DISCOUNT} 元` }}
+                            </option>
+                        </select>
+                        <p v-else>無可用優惠券</p>
+                    </div>
+
+                    <div class="amount">
+
+                        <div class="price">
+                            <div>
+                                <p>小計</p>
+                            </div>
+                            <div>
+                                <p>NT 2,000</p>
                             </div>
                         </div>
 
-                        <div class="amount">
-
-                            <div class="price">
-                                <div>
-                                    <p>小計</p>
-                                </div>
-                                <div>
-                                    <p>NT 2,000</p>
-                                </div>
+                        <div class="price">
+                            <div>
+                                <p>折扣 (現場折抵)</p>
                             </div>
-
-                            <div class="price">
-                                <div>
-                                    <p>折扣 (現場折抵)</p>
-                                </div>
-                                <div>
-                                    <p v-if="discountPrice">NT {{ discountPrice }} 元</p>
-                                </div>
-                            </div>
-
-                            <div class="price">
-                                <div>
-                                    <p>總計</p>
-                                </div>
-                                <div>
-                                    <p>NT 2,000</p>
-                                </div>
+                            <div>
+                                <p v-if="discountPrice">NT {{ discountPrice }} 元</p>
                             </div>
                         </div>
 
-               
+                        <div class="price">
+                            <div>
+                                <p>總計</p>
+                            </div>
+                            <div>
+                                <p>NT 2,000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                   
                         <div class="button01">
                             <button class="btn next_btn" :disabled="!dataValid" :class="{active: dataValid}" @click="submitData" >下一步</button>
                         </div>
-                
+                    
 
                 </div>
-            
+
             </div>
 
         </div>
 
-  </div>
+        </div>
 
 
-  <Footerbar />
+    <Footerbar />
 
 </template>
 
@@ -238,6 +241,9 @@ export default {
             selectedTimeSlot: null,
             peopleAmount: null,
             selectedDate: null,
+
+            isLoggedIn: false,
+            coupons: [],
         }
     },
     computed: {
@@ -253,8 +259,41 @@ export default {
             );
         },
     },
+    created() {
+        const memberData = JSON.parse(localStorage.getItem('user'));
+        if (memberData) {
+            this.orderName = memberData.name;
+            this.orderEmail = memberData.email;
+            this.orderPhone = memberData.phone;
+            this.isLoggedIn = true;
+            this.getCoupons(memberData.id);
+        };
+    },
 
     methods :{
+        // 查詢優惠券
+        getCoupons(memberId) {
+            axios.get(`http://localhost/memeapple/public/php/api/membercoupon.php?member_id=${memberId}`)
+                .then(response => {
+                    if (Array.isArray(response.data)) {
+                        this.coupons = response.data;
+
+                        // 找尋折扣最大的優惠券
+                        if (this.coupons.length > 0) {
+                            const maxDiscountCoupon = this.coupons.reduce((max, coupon) => {
+                                return coupon.DISCOUNT > max.DISCOUNT ? coupon : max;
+                            }, this.coupons[0]);
+                            this.orderDiscount = maxDiscountCoupon.ID;
+                            this.discountPrice = maxDiscountCoupon.DISCOUNT;
+                        }
+                    } else {
+                        console.error('Invalid response data:', response.data);
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
         validName(){
             const nameData = /^[\u4e00-\u9fa5]+$/;
             if (!this.orderName.match(nameData)){
@@ -303,14 +342,23 @@ export default {
             }
         },
         selectDiscount (){
-            let discountPrice;
-            if (this.orderDiscount === 'discountA'){
-                this.discountPrice = '-50';
-            }else if (this.orderDiscount === 'discountB'){
-                this.discountPrice = '-100';
-            }else if (this.orderDiscount === 'discountC'){
-                this.discountPrice = '-150';
-            }else {
+            // 原本小汪的
+            // let discountPrice;
+            // if (this.orderDiscount === 'discountA'){
+            //     this.discountPrice = '-50';
+            // }else if (this.orderDiscount === 'discountB'){
+            //     this.discountPrice = '-100';
+            // }else if (this.orderDiscount === 'discountC'){
+            //     this.discountPrice = '-150';
+            // }else {
+            //     this.discountPrice = '0';
+            // }
+
+            // 小郭version
+            const selectedCoupon = this.coupons.find(coupon => coupon.ID === this.orderDiscount);
+            if (selectedCoupon) {
+                this.discountPrice = selectedCoupon.DISCOUNT;
+            } else {
                 this.discountPrice = '0';
             }
         },
