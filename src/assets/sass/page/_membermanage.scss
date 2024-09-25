@@ -97,7 +97,8 @@
     margin-bottom: 20px;
 
     &:hover {
-        transform: scale(1.02);
+        // transform: scale(1.02);
+        animation: glowHow 1.5s infinite;
     }
 }
 
