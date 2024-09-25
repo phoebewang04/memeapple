@@ -1564,6 +1564,7 @@ ul#menuBar li:hover > ul {
   width: 280px;
   background-color: white;
   color: #100E24;
+  text-align: center;
 }
 .rating h3 {
   text-align: center;
@@ -7363,10 +7364,6 @@ ul#menuBar li:hover > ul {
 .coupontext .coupondata .couponposition {
   height: 100%;
   text-align: center;
-}
-.coupontext .coupondata .rotate-text {
-  transform: rotate(-90deg);
-  transform-origin: center center;
 }
 .coupontext .coupondata h3 {
   color: #FCD15B;
