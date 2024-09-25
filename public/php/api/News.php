@@ -127,12 +127,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $status = 0;
     
             // 圖片上傳
-            // $targetDir = $_SERVER['DOCUMENT_ROOT'] . '/tid102/g1/front/img/';
-            $targetDir = '../../img/';
+            $targetDir = $_SERVER['DOCUMENT_ROOT'] . '/tid102/g1/img/';
+            // $targetDir = '../../img/';
             $targetFile = $targetDir . basename($image['name']);
             if (move_uploaded_file($image['tmp_name'], $targetFile)) {
-                // $imagePath = '/img/'. basename($image['name']);
-                $imagePath = 'public/img/'. basename($image['name']);
+                $imagePath = '/img/'. basename($image['name']);
+                // $imagePath = 'public/img/'. basename($image['name']);
             } else {
                 $imagePath = null;
                 echo json_encode(['success' => false, 'message' => '圖片上傳失敗']);
