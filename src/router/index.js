@@ -50,7 +50,7 @@ const Orderinform = () => import('../views/orderinform.vue');
 
 const routes = [
   { path: '/', name: 'fontpage',meta:{title:'前後台分流頁'}, component: () => import('../views/Frontpage.vue') },
-  { path: '/index/', name: 'index',meta:{title:'首頁'}, component: () => import('../views/HomeView.vue') },
+  { path: '/index/', name: 'index',meta:{title:'首頁'}, component: () => import('../views/HomeView.vue')},
   { path: '/Privacy/', name: 'Privacy',meta:{title:'隱私權政策'}, component: () => import('../views/PrivacyPolicy.vue') },
   { path: '/Terms/', name: 'Terms',meta:{title:'服務條款'}, component: () => import('../views/TermsService.vue') },
   { path: '/Announcement/:id', name: 'Announcement',meta:{title:'最新消息'}, component: () => import('../views/Announcement.vue') },
