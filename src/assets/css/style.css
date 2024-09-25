@@ -2998,6 +2998,7 @@ input[type=checkbox]:checked::before {
 .backstage_table td button:hover {
   background-color: #100E24;
   color: #FEDA77;
+  cursor: pointer;
 }
 .backstage_table td button:active {
   color: white;
