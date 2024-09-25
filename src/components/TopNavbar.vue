@@ -26,6 +26,9 @@ export default {
       if (window.innerWidth <= 700) {
         this.visible_active = !this.visible_active;
       }
+      if (this.showPopup) {
+        this.visible_active = false;
+      }
     },
     handleResize() {
       if (window.innerWidth > 700) {
@@ -117,7 +120,7 @@ export default {
         </a>
       </div>
       <div v-else>
-        <a @click="showPopup = true; closeMenu()" >
+        <a @click="showPopup = true">
           <li>會員登入</li>
         </a>
       </div>
