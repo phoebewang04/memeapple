@@ -57,7 +57,7 @@
                     <p>TWD 2000元</p>
                     <!-- 問卷填寫按鈕 -->
                     <button v-if="order.ORDER_STATUS === '已使用'" class="questionwrite"
-                      @click="orderquestion(order)">問卷填寫</button>
+                      @click="orderquestion()">問卷填寫</button>
                     <!-- 取消訂單按鈕 -->
                     <button v-else-if="order.ORDER_STATUS === '已預訂'" class="cancelorder"
                       @click="ordercancel(order)">取消訂單</button>

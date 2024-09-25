@@ -135,7 +135,7 @@ export default {
     getOrder(themeID, time) {
       const order = this.orders.find(
         (order) =>
-          order.THEME_ID === themeID && order.ORDER_TIME.startsWith(time)
+          order.THEME_ID == themeID && order.ORDER_TIME.startsWith(time)
       );
       return order ? order.ORDER_ID : "";
     },

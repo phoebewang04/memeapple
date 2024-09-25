@@ -110,6 +110,7 @@ export default {
 </script>
 
 <template>
+  <LoginRegisterPopup v-if="showPopup" @close="showPopup = false" @login="handleLogin" />
   <header class="top">
     <router-link to="/index/"><img src="../assets/img/memelogo.svg" alt=""></router-link>
     <font-awesome-icon class="fa HambergerAwasome" icon="bars" @click="showMenuBar"></font-awesome-icon>
@@ -124,7 +125,7 @@ export default {
           <li>會員登入</li>
         </a>
       </div>
-      <LoginRegisterPopup v-if="showPopup" @close="showPopup = false" @login="handleLogin" />
+
       <router-link to="/Membermanage/">
         <li>會員專區</li>
       </router-link>
