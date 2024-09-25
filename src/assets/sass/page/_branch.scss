@@ -265,15 +265,43 @@
 
 
 .theme li  {
+    width: 258px;
+    
+    margin: 0 10px;
 
     transition: transform 0.3s ease;
 
     &:hover {
         transform: scale(1.05);
     }
+
+    @include rwd(820px) {
+        width: 170px;
+        margin: 0px;
+    }
+    
+
 }
 
-.theme li i  {
+
+
+.theme ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include rwd(820px) {
+        width: 95%;
+        margin: 0 auto;
+    }
+ 
+
+    @include rwd(430px){
+        display: none;
+    }
+}
+
+.theme .leftarrow {
     color: map-get($colors , yellow );
     font-size: 48px;
     padding: 8px;
@@ -284,30 +312,32 @@
     }
 }
 
-
-.theme ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.theme ul .rightarrow {
+    color: map-get($colors , yellow );
+    font-size: 48px;
+    padding: 8px;
+    cursor: pointer;
 
     @include rwd(430px){
         display: none;
     }
+    
 }
 
 .theme ul li a {
     text-decoration: none;
+    width: 260px;
 }
 
 .theme ul li img {
     
-    width: 95%;
-    height: 360px;
+    width: 100%;
+    // height: 360px;
 
     @include pad {
         
-        width: 180px;
-        height: 270px;
+        // width: 136px;
+        // height: 180px;
     }
 
 }
@@ -322,8 +352,10 @@
     }
 }
 
+
+
 .theme .theme_name h3 {
-    width: 244px;
+    width: 100%;
     height: 40px;
     background-color: map-get($colors , yellow );
     color: map-get($colors , darkblue ) ;
@@ -332,7 +364,7 @@
     line-height: 40px;
 
     @include pad {
-        width: 180px;
+        width: 170px;
     }
 }
 

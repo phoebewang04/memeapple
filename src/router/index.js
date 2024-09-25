@@ -50,12 +50,12 @@ const Orderinform = () => import('../views/orderinform.vue');
 
 const routes = [
   { path: '/', name: 'fontpage',meta:{title:'前後台分流頁'}, component: () => import('../views/Frontpage.vue') },
-  { path: '/index/', name: 'index',meta:{title:'首頁'}, component: () => import('../views/HomeView.vue') },
+  { path: '/index/', name: 'index',meta:{title:'首頁'}, component: () => import('../views/HomeView.vue')},
   { path: '/Privacy/', name: 'Privacy',meta:{title:'隱私權政策'}, component: () => import('../views/PrivacyPolicy.vue') },
   { path: '/Terms/', name: 'Terms',meta:{title:'服務條款'}, component: () => import('../views/TermsService.vue') },
   { path: '/Announcement/:id', name: 'Announcement',meta:{title:'最新消息'}, component: () => import('../views/Announcement.vue') },
   { path: '/Login/', name: 'Login',meta:{title:'登入與註冊'}, component: () => import('../components/login.vue') },
-  { path: '/Membermanage/', name: 'Membermanage',meta:{title:'會員資料管理'}, component: () => import('../views/Membermanage.vue') },
+  { path: '/Membermanage/', name: 'Membermanage',meta:{title:'會員資料管理'}, component: () => import('../views/Membermanage_test.vue') },
   { path: '/Popupcard/', name: 'Popupcard',meta:{title:'票券'}, component: () => import('../views/Popupcard.vue') },
   { path: '/Branch/', name: 'Branch',meta:{title:'分館介紹'}, component: () => import('../views/Branch.vue') },
   { path: '/Minigame/', name: 'Minigame',meta:{title:'線上體驗'}, component: () => import('../views/Minigame.vue') },
@@ -74,6 +74,7 @@ const routes = [
   { path: '/Landingpage/', name: 'Landingpage',meta:{title:'Landingpage'}, component: () => import('../views/Landingpage.vue') },
   { path: '/Theme/:id/preorder/orderinform/pay', component: Pay },
   { path: '/Theme/:id/preorder/orderinform/pay/Membermanage', component:Membermanage},
+  { path: '/StarRating/', name: 'StarRating',meta:{title:'問卷調查'}, component: () => import('../components/StarRating.vue') },
  
 ];
 

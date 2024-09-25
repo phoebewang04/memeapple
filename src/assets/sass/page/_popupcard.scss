@@ -43,7 +43,7 @@
 }
 
 .popupcard-card {
-    background-image: url('/src/assets/img/popupcard_space.png');
+    // background-image: url('/src/assets/img/popupcard_space.png');
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 20px;
@@ -55,7 +55,7 @@
     justify-content: center;
 
     @include pad {
-        background-image: url('/src/assets/img/popupcard_space-m.png');
+        // background-image: url('/src/assets/img/popupcard_space-m.png');
         width: 350px;
         height: 631px;
     }
@@ -170,6 +170,14 @@
     p {
         margin-right: 20px;
         line-height: 1.5;
+    }
+
+    span{
+        margin-left: 0px;
+
+        &:last-child{
+            margin-left: 12px;
+        }
     }
 }
 

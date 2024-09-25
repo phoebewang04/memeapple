@@ -128,7 +128,9 @@ export const all_data = {
             { src: new URL('@/assets/img/blood_06.png', import.meta.url).href },
             { src: new URL('@/assets/img/blood_07.png', import.meta.url).href }
         ],
-
+        titleText: '成都醫院',
+        backgroundImage: 'url("/tid102/g1/img/popupcard_space_1.png")',
+        backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_1.png")',
     },
 
     //時光迷宮
@@ -236,7 +238,10 @@ export const all_data = {
                 src: new URL("@/assets/img/poster_code.png", import.meta.url).href,
                 title: '代碼深淵'
             },
-        ]
+        ],
+        titleText: '時光迷宮',
+        backgroundImage: 'url("/tid102/g1/img/popupcard_space_2.png")',
+        backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_2.png")',
     },
 
     //末日庇護所
@@ -343,7 +348,10 @@ export const all_data = {
                 src: new URL("@/assets/img/poster_code.png", import.meta.url).href,
                 title: '代碼深淵'
             },
-        ]
+        ],
+        titleText: '末日庇護所',
+        backgroundImage: 'url("/tid102/g1/img/popupcard_space_3.png")',
+        backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_3.png")',
     },
 
     //代碼深淵
@@ -465,6 +473,9 @@ export const all_data = {
             }
             
         ],
+        titleText: '代碼深淵',
+        backgroundImage: 'url("/tid102/g1/img/popupcard_space_4.png")',
+        backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_4.png")',
 
     },
      //逃離武石監
@@ -571,7 +582,10 @@ export const all_data = {
                 src: new URL("@/assets/img/poster_comingsoon.png", import.meta.url).href,
                 title: '籌備中！Coming Soon！'
             },
-        ]
+        ],
+        titleText: '逃離武石監',
+        backgroundImage: 'url("/tid102/g1/img/popupcard_space_5.png")',
+        backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_5.png")',
     },
     
     //恐怖密室
@@ -677,7 +691,10 @@ export const all_data = {
                 src: new URL("@/assets/img/poster_comingsoon.png", import.meta.url).href,
                 title: '籌備中！Coming Soon！'
             },
-        ]
+        ],
+        titleText: '恐怖密室',
+        backgroundImage: 'url("/tid102/g1/img/popupcard_space_6.png")',
+        backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_6.png")',
     },
     //逃出虛空
     7:{
@@ -784,7 +801,10 @@ export const all_data = {
                 title: '籌備中！Coming Soon！'
             },
 
-        ]
+        ],
+        titleText: '逃出虛空',
+        backgroundImage: 'url("/tid102/g1/img/popupcard_space_7.png")',
+        backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_7.png")',
     },
 
     

@@ -17,13 +17,17 @@ export default {
     return {
       isLoggedIn: false,
       visible_active: false,
-      showPopup: false
+      showPopup: false,
+      showThemes: false, // 控制台北館主題的顯示
     };
   },
   methods: {
     showMenuBar() {
       if (window.innerWidth <= 700) {
         this.visible_active = !this.visible_active;
+      }
+      if (this.showPopup) {
+        this.visible_active = false;
       }
     },
     handleResize() {
@@ -32,6 +36,9 @@ export default {
       } else {
         this.visible_active = false;
       }
+    },
+    closeMenu() {
+      this.visible_active = false;
     },
     handleLogin(user) {
       this.isLoggedIn = true;
@@ -73,13 +80,28 @@ export default {
         });
       }, 100); // 延遲顯示 alert，確保頁面已跳轉
     },
+    toggleThemes() {
+      this.showThemes = !this.showThemes;
+    },
   },
+  // watch: {
+  //   showPopup(newVal) {
+  //     if (newVal) {
+  //       this.closeMenu(); // 當 showPopup 為 true 時關閉 header 選單
+  //     }
+  //   }
+  // },
   created() {
     this.checkLoginStatus();
     this.handleResize();
   },
   mounted() {
     window.addEventListener('resize', this.handleResize);
+
+    // 檢查螢幕寬度
+    if (window.innerWidth > 700) {
+      this.showThemes = true;
+    }
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.handleResize);
@@ -90,19 +112,52 @@ export default {
 <template>
   <header class="top">
     <router-link to="/index/"><img src="../assets/img/memelogo.svg" alt=""></router-link>
-    <font-awesome-icon class="fa" icon="bars" @click="showMenuBar"></font-awesome-icon>
+    <font-awesome-icon class="fa HambergerAwasome" icon="bars" @click="showMenuBar"></font-awesome-icon>
     <ul id="menuBar" :class="{ visible: visible_active }">
       <div v-if="isLoggedIn">
-        <li><a @click="logout">登出</a> <!-- 只顯示登出按鈕 --></li>
+        <a @click="logout">
+          <li>登出<!-- 只顯示登出按鈕 --></li>
+        </a>
       </div>
       <div v-else>
-        <li><a @click="showPopup = true">會員登入</a></li>
+        <a @click="showPopup = true">
+          <li>會員登入</li>
+        </a>
       </div>
       <LoginRegisterPopup v-if="showPopup" @close="showPopup = false" @login="handleLogin" />
-      <li><router-link to="/Membermanage/">會員專區</router-link></li>
-      <li><router-link to="/Minigame/">線上體驗</router-link></li>
-      <li><router-link to="/Branch/">分館介紹</router-link></li>
-      <!--
+      <router-link to="/Membermanage/">
+        <li>會員專區</li>
+      </router-link>
+      <router-link to="/Minigame/">
+        <li>線上體驗</li>
+      </router-link>
+      <router-link to="/Branch/">
+        <li>分館介紹</li>
+      </router-link>
+      <li class="themeArea" @click="toggleAllThemes">主題專區
+        <ul>
+          <li @click="toggleThemes">台北館
+            <ul v-if="showThemes">
+              <li><router-link to="/Theme/1" class="dropDown" @click="closeMenu">成都醫院</router-link></li>
+              <li><router-link to="/Theme/2" class="dropDown" @click="closeMenu">時光迷宮</router-link></li>
+              <li><router-link to="/Theme/3" class="dropDown" @click="closeMenu">末日庇護所</router-link></li>
+              <li><router-link to="/Theme/4" class="dropDown" @click="closeMenu">代碼深淵</router-link></li>
+            </ul>
+          </li>
+          <li @click="toggleThemes">台中館
+            <ul v-if="showThemes">
+              <li><router-link to="/Theme/5" class="dropDown" @click="closeMenu">逃離武石監</router-link></li>
+              <li><router-link to="/Theme/6" class="dropDown" @click="closeMenu">恐怖密室</router-link></li>
+              <li><router-link to="/Theme/7" class="dropDown" @click="closeMenu">逃出虛空</router-link></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </header>
+</template>
+
+<!--
       <li><router-link to="/">前後台分流頁</router-link></li> 
       <li><router-link to="/Announcement/">最新消息</router-link></li>
       <li><router-link to="/Popupcard/">彈跳甲魚</router-link></li>
@@ -115,26 +170,4 @@ export default {
       <li><router-link to="/Theme_test/">測</router-link></li>
       <li><router-link to="/pay/">結帳</router-link></li>
       <li><router-link to="/dead1A2Bgame/">1A2B</router-link></li> -->
-      <!-- <li><router-link to="/minigameL/">華容道</router-link></li> -->
-      <li>主題專區
-        <ul>
-          <li>台北館
-            <ul>
-              <li><router-link to="/Theme/1" class="dropDown">成都醫院</router-link></li>
-              <li><router-link to="/Theme/2" class="dropDown">時光迷宮</router-link></li>
-              <li><router-link to="/Theme/3" class="dropDown">末日庇護所</router-link></li>
-              <li><router-link to="/Theme/4" class="dropDown">代碼深淵</router-link></li>
-            </ul>
-          </li>
-          <li>台中館
-            <ul>
-              <li><router-link to="/Theme/5" class="dropDown">逃離武石監</router-link></li>
-              <li><router-link to="/Theme/6" class="dropDown">恐怖密室</router-link></li>
-              <li><router-link to="/Theme/7" class="dropDown">逃出虛空</router-link></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </header>
-</template>
+<!-- <li><router-link to="/minigameL/">華容道</router-link></li> -->

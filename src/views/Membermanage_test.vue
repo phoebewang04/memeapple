@@ -135,6 +135,7 @@
 </template>
 
 <script>
+import { all_data } from '../assets/js/all_data.js';
 import '../assets/js/vue.global';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
@@ -158,6 +159,8 @@ export default {
   },
   data() {
     return {
+      //引入 all_data
+      all_data: all_data,
       currentTab: "tab1",
       tabs: [
         { id: "tab1", name: "訂單檢視" },
@@ -251,7 +254,9 @@ export default {
           memberId: this.memberId
         };
         console.log('params: ', params)
-        const response = await axios.get('http://localhost/meme_apple/public/php/api/Order.php', { params });
+        const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/Order.php', { params });
+        // const response = await axios.get('http://localhost/meme_apple/public/php/api/Order.php', { params });
+        console.log(import.meta.env.VITE_API_BASE);
         console.log('response.data: ', response.data);
         this.orders = response.data;
         console.log('this.orders: ', this.orders);
@@ -274,7 +279,8 @@ export default {
 
       if (result.isConfirmed) {
         try {
-          const response = await axios.post('http://localhost/meme_apple/public/php/api/OrderCancel.php', {
+          const response = await axios.post(import.meta.env.VITE_API_BASE +'/api/OrderCancel.php', {
+            // const response = await axios.post('http://localhost/meme_apple/public/php/api/OrderCancel.php', {
             orderId: order.ORDER_ID,
             status: 3
           });
@@ -315,68 +321,100 @@ export default {
       }
     },
     showAlert(order) {
-
       // 這邊是卡片主題名稱
       let titleText = '';
       // 這邊是卡片場館名稱
       let placeText = '';
       // 這是訂單上面的日期，我需要使用次元斬分割他
       const [year, month, day] = order.ORDER_DATE.split('-');
+      // 這是訂單上面的入場時間，我需要使用次元斬分割他
+      const [hour, min] = order.ORDER_TIME.split(':');
+      const displayTime = `${hour}:${min}`;
       // 這是訂單的背景圖片
       let backgroundImage = '';
+      // 這是訂單小於pad尺寸變換的背景圖片
+      let backgroundImageMobile = '';
 
-      switch (order.THEME_ID) {
-        case 1:
-          titleText = '成都醫院';
-          backgroundImage = 'url("/tid102/g1/img/popupcard_space.png")';
-          break;
-        case 2:
-          titleText = '時光迷宮';
-          backgroundImage = 'url("/tid102/g1/img/popupcard_space_2.png")';
-          break;
-        case 3:
-          titleText = '末日庇護所';
-          backgroundImage = 'url("/tid102/g1/img/popupcard_space_2.png")';
-          break;
-        case 4:
-          titleText = '代碼深淵';
-          backgroundImage = 'url("/tid102/g1/img/popupcard_space_2.png")';
-          break;
-        case 5:
-          titleText = '逃離武石監';
-          backgroundImage = 'url("/tid102/g1/img/popupcard_space_2.png")';
-          break;
-        case 6:
-          titleText = '恐怖密室';
-          backgroundImage = 'url("/tid102/g1/img/popupcard_space_2.png")';
-          break;
-        case 7:
-          titleText = '逃出虛空';
-          backgroundImage = 'url("/tid102/g1/img/popupcard_space_2.png")';
-          break;
-        default:
-          titleText = '未知主題';
-          backgroundImage = 'url("/tid102/g1/img/popupcard_space_2.png")';
-      }
-      console.log('THEME_ID:', order.THEME_ID);
-      console.log('Background Image:', backgroundImage);
+      // const all_data = [
+      //   {
+      //     titleText: '成都醫院',
+      //     backgroundImage: 'url("/tid102/g1/img/popupcard_space_1.png")',
+      //     backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_1.png")',
+      //   },
+      //   {
+      //     titleText: '時光迷宮',
+      //     backgroundImage: 'url("/tid102/g1/img/popupcard_space_2.png")',
+      //     backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_2.png")',
+      //   },
+      //   {
+      //     titleText: '末日庇護所',
+      //     backgroundImage: 'url("/tid102/g1/img/popupcard_space_3.png")',
+      //     backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_3.png")',
+      //   },
+      //   {
+      //     titleText: '代碼深淵',
+      //     backgroundImage: 'url("/tid102/g1/img/popupcard_space_4.png")',
+      //     backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_4.png")',
+      //   },
+      //   {
+      //     titleText: '逃離武石監',
+      //     backgroundImage: 'url("/tid102/g1/img/popupcard_space_5.png")',
+      //     backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_5.png")',
+      //   },
+      //   {
+      //     titleText: '恐怖密室',
+      //     backgroundImage: 'url("/tid102/g1/img/popupcard_space_6.png")',
+      //     backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_6.png")',
+      //   },
+      //   {
+      //     titleText: '逃出虛空',
+      //     backgroundImage: 'url("/tid102/g1/img/popupcard_space_7.png")',
+      //     backgroundImageMobile: 'url("/tid102/g1/img/popupcard_space-m_7.png")',
+      //   },
+      // ]
 
-      switch (order.STORE_ID) {
-        case 1:
-          placeText = '台北館';
-          break;
-        case 2:
-          placeText = '台中館';
-          break;
-        default:
-          titleText = '未知場館';
+      // titleText = all_data[order.THEME_ID - 1].titleText;
+      // backgroundImage = all_data[order.THEME_ID - 1].backgroundImage;
+      // backgroundImageMobile = all_data[order.THEME_ID - 1].backgroundImageMobile;
+
+      if (Number(order.THEME_ID) === 1 || Number(order.THEME_ID) === 2 || Number(order.THEME_ID) === 3 || Number(order.THEME_ID) === 4) {
+        placeText = '台北館';
+      } else if (Number(order.THEME_ID) === 5 || Number(order.THEME_ID) === 6 || Number(order.THEME_ID) === 7) {
+        placeText = '台中館';
+      } else {
+        placeText = '未知場館';
       }
+
+      console.log(placeText);
+      console.log(order.THEME_ID);
+
+      const themeData = all_data[order.THEME_ID];
+      // console.log('theme_data', themeData);
+      // console.log('all_data', all_data);
+      // console.log('id', order.THEME_ID);
+
+      if (themeData) {
+        titleText = themeData.titleText;
+        backgroundImage = themeData.backgroundImage;
+        backgroundImageMobile = themeData.backgroundImageMobile;
+        placeText = themeData.branch;
+        // console.log(themeData.branch);
+      } else {
+        titleText = '未知主題';
+        backgroundImage = 'url("/tid102/g1/img/popupcard_space_unknown.png")';
+        backgroundImageMobile = 'url("/tid102/g1/img/popupcard_space-m_unknown.png")';
+        placeText = '未知場館';
+      }
+
+      // 檢查螢幕尺寸
+      const isMobile = window.innerWidth < 820;
+      const finalBackgroundImage = isMobile ? backgroundImageMobile : backgroundImage;
 
       Swal.fire({
         html:
           `
                       <main class="main-popupcard">
-                        <section class="popupcard-card" style="background-image: ${backgroundImage} !important;">
+                        <section class="popupcard-card" style='background-image:${finalBackgroundImage} !important;''>
                             <p class="popupcard-title">請出示電子票券即可入場</p>
                             <div class="popupcard-qrcode">
                                 <img src="${new URL("@/assets/img/qrcode_001.jpg", import.meta.url).href}" alt="">
@@ -391,13 +429,14 @@ export default {
                             <div class="qrcode-place">
                                 <p>${placeText}</p>
                                 <div class="qrcode-line"></div>
-                                <span>入場</span>
-                                <span>${order.ORDER_TIME}</span>
+                                <span>入場時間</span>
+                                <span>${displayTime}</span>
                            </div>
                         </section>
                       </main>
                 `,
         showConfirmButton: false,
+        showCloseButton: true,
         color: '#FFFFFF',
         width: 'auto',
         // backgroundcolor: 'transparent',

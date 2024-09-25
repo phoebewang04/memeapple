@@ -325,7 +325,7 @@
     }
 
     @include rwd(541px) {
-        width: 92%;
+        width: 86%;
     }
 
     .brandstory-sub {
@@ -360,7 +360,7 @@
         margin: 8px 0;
 
         @include phone {
-            font-size: 26px;
+            font-size: 24px;
         }
     }
 
@@ -742,6 +742,12 @@
     font-size: 18px;
     padding: 6px 12px;
     margin-bottom: 40px;
+    margin-top: 40px;
+    animation: glowHow 1.5s infinite;
+
+    @include pad {
+        margin-top: 40px;
+    }
 
     @include phone {
         margin-bottom: 20px;
@@ -1389,6 +1395,7 @@
 
     .index-question {
         color: map-get($colors, darkblue);
+        text-align: left;
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -1411,6 +1418,10 @@
             font-size: 16px;
             text-align: left;
         }
+    }
+
+    .indexfaq-icon{
+        margin-left: 8px;
     }
 
     .index-answer {
