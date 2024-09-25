@@ -1,4 +1,23 @@
 <template>
+
+    <section class="slideshow_container">
+
+        <span class="close_mbpage" @click="closeLandingPage">&times;</span>
+
+        <div class="error_mb_text">
+            <p>限時主題 ｘ 代碼深淵</p>
+            <p>徵求「debug高手」一起除錯！</p>
+        </div>
+
+        <section class="slideshow">
+            <img :src="codeImg[currentCodeIndex]" alt="Slideshow Image" />
+        </section>
+
+        <div class="error_btn_container">
+            <router-link to="/theme/4/preorder"><button class="error_mbbtn">預約debug</button></router-link>
+        </div>
+    </section>
+
     <section class="error_container">
 
         <div class="error_page">
@@ -40,15 +59,16 @@
                 </div>
             </div>
 
-   
+
             <div class="error_other">
                 <p>at constructor (C:\xampp\htdocs\deep_code\node_modules\@babel\parser\lib\index.js:512:25)</p>
-                <p>請嘗試點擊其他地方，或按下 <span>X</span> 來中止錯誤訊息。也可點擊<span>預約按鈕</span>選擇你的<span>挑戰時刻</span>，踏上<span>成為debug高手</span>的征途。</p>
+                <p>請嘗試點擊其他地方，或按下 <span>X</span>
+                    來中止錯誤訊息。也可點擊<span>預約按鈕</span>選擇你的<span>挑戰時刻</span>，踏上<span>成為debug高手</span>的征途。</p>
             </div>
 
             <div class="error_btn_container">
-                        <router-link to="/theme/4/preorder"><button class="error_btn">預約debug</button></router-link>
-                    </div>
+                <router-link to="/theme/4/preorder"><button class="error_btn">預約debug</button></router-link>
+            </div>
 
 
 
@@ -56,15 +76,37 @@
         </div>
 
     </section>
+
+
+
+
+
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            codeImg: [
+                new URL('@/assets/img/Index-pic04.png', import.meta.url).href,
+                new URL('@/assets/img/Index-pic05.png', import.meta.url).href
+            ],
+            currentCodeIndex: 0,
+            intervalId: null
+        };
+    },
+    mounted() {
+        this.startSlideshow();
+    },
     methods: {
-    closeLandingPage() {
-      this.$emit('close');
+        startSlideshow() {
+            this.intervalId = setInterval(() => {
+                this.currentCodeIndex = (this.currentCodeIndex + 1) % this.codeImg.length;
+            }, 500);
+        }
+    },
+    beforeDestroy() {
+        clearInterval(this.intervalId);
     }
-}
-}
-
+};
 </script>

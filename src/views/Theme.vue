@@ -123,7 +123,7 @@
                 <div class="theme_wrapper" ref="theme_wrapper">
                     <ul class="theme_carousel">
                         <li v-for="(card, index) in all_data[$route.params.id].otherTheme" :key="index"
-                            class="theme_card">
+                            :class="['theme_card', all_data[$route.params.id].themeClass]">
                             <router-link :to="{ path: `/Theme/${card.id}` }">
                                 <img :src="card.src" :alt="card.title">
                                 <h4>{{ card.title }}</h4>

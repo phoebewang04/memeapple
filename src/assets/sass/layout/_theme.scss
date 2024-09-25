@@ -602,7 +602,15 @@
             cursor: pointer;
 
             &:hover {
-                background-color: map-get($colors , midnight);
+
+                &.hospital,&.time,&.code,&.Lock{
+                    background-color: map-get($colors , midnight);
+                }
+
+                &.dead,&.room,&.alien{
+                    background-color: map-get($colors , black);
+                }
+                
                 transition: .3s;
             }
 
