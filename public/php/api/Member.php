@@ -22,7 +22,7 @@ class Member {
         ];
 
         // SQL
-        $sql = 'SELECT * FROM memberdetails';
+        $sql = 'SELECT * FROM memberdetails where 1=1';
         $params = [];
 
         if ($status != '所有狀態') {
@@ -33,7 +33,7 @@ class Member {
             if ($status != '所有狀態') {
                 $sql .= " AND (NAME LIKE ? OR EMAIL LIKE ? OR PHONE LIKE ?)";
             } else {
-                $sql .= " WHERE (NAME LIKE ? OR EMAIL LIKE ? OR PHONE LIKE ?)";
+                $sql .= " AND (NAME LIKE ? OR EMAIL LIKE ? OR PHONE LIKE ?)";
             }
             $params[] = "%$keyword%";
             $params[] = "%$keyword%";

@@ -38,7 +38,7 @@ export default {
         },
         verifyPassword() {
             const correctPassword = 'meme123'; // 替換為你的密碼
-            if (this.password === correctPassword) {
+            if (this.password == correctPassword) {
                 this.saveNews();
                 this.showPasswordPrompt = false;
                 this.password = '';
@@ -52,7 +52,7 @@ export default {
         // 權限管控
         checkRole(){
             const user = JSON.parse(sessionStorage.getItem('user'));
-            if (user && user.ROLE === 'admin') {
+            if (user && user.ROLE == 'admin') {
                 this.saveNews();
             } else {
                 alert('看就好，不要玩啦!');
@@ -112,7 +112,7 @@ export default {
             formData.append('id', this.id);
             formData.append('content', this.content);
             formData.append('image', this.$refs.fileInput.files[0]);
-            formData.append('imagePath', '/public/img/' + this.$refs.fileInput.files[0].name); // add this
+            formData.append('imagePath', '/tid102/g1/img/' + this.$refs.fileInput.files[0].name); // add this
             formData.append('status', 0); // add this
             // formData.append('publisherId', 1); // add this
 
