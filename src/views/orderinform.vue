@@ -273,7 +273,8 @@ export default {
     methods :{
         // 查詢優惠券
         getCoupons(memberId) {
-            axios.get(`http://localhost/memeapple/public/php/api/membercoupon.php?member_id=${memberId}`)
+            axios.get(import.meta.env.VITE_API_BASE + `/api/membercoupon.php?member_id=${memberId}`)
+            // axios.get(`http://localhost/memeapple/public/php/api/membercoupon.php?member_id=${memberId}`)
                 .then(response => {
                     if (Array.isArray(response.data)) {
                         this.coupons = response.data;
@@ -426,8 +427,8 @@ export default {
             });
 
                 try {
-                    // const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/register.php');
-                    const response = await axios.post('http://localhost/appleTeam/public/php/api/register.php', {
+                    const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/register.php', {
+                    // const response = await axios.post('http://localhost/appleTeam/public/php/api/register.php', {
                    
                     name: this.orderName,
                     email: this.orderEmail,

@@ -13,8 +13,8 @@ export default {
     },
     methods: {
         login() {
-            // axios.post(import.meta.env.VITE_API_BASE + '/api/backstagelogin.php', {
-            axios.post('http://localhost/memeapple/public/php/api/backstagelogin.php', {
+            axios.post(import.meta.env.VITE_API_BASE + '/api/backstagelogin.php', {
+            // axios.post('http://localhost/memeapple/public/php/api/backstagelogin.php', {
                 action: 'login',
                 account: this.account,
                 password: this.password,

@@ -1,20 +1,9 @@
-<<<<<<< HEAD
-/* Error: Can't find stylesheet to import.
- *    ,
- * 20 | @import 'layout/starrating';
- *    |         ^^^^^^^^^^^^^^^^^^^
- *    '
- *   sass\style.scss 20:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-=======
 @charset "UTF-8";
 @import url(../css/reset.css);
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC");
 @import url("https://fonts.googleapis.com/css?family=Nanum+Brush+Script");
+@import url("https://fonts.googleapis.com/css?family=Creepster");
+@import url("https://fonts.googleapis.com/css?family=Dela+Gothic+One");
 body {
   background-color: #100E24;
   color: white;
@@ -1535,6 +1524,80 @@ ul#menuBar li:hover > ul {
   text-align: center;
   font-size: 14px;
   line-height: 1.5;
+}
+
+.popup1 {
+  position: fixed; /* 固定位置 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 確保在其他元素之上 */
+  overflow: hidden; /* 防止背景滾動 */
+}
+
+.popup-content1 {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 400px; /* 可以根據需求調整 */
+  max-width: 90%; /* 確保在小螢幕上不會超出視窗 */
+  position: fixed;
+}
+
+.close {
+  cursor: pointer;
+  font-size: 24px;
+  color: #333; /* 關閉按鈕顏色 */
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.rating {
+  margin: 80px auto;
+  width: 280px;
+  background-color: white;
+  color: #100E24;
+}
+.rating h3 {
+  text-align: center;
+  font-weight: bold;
+  margin: 0 0 15px;
+  font-size: 20px;
+}
+.rating .star_block {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.rating .star_block span {
+  margin: 10px 5px;
+}
+.rating .star_block .star {
+  font-size: 24px;
+  cursor: pointer;
+  display: inline-block;
+  transition: color 0.2s;
+}
+.rating .star_block .star.-on {
+  color: #FCD15B;
+}
+
+#btnrating {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .main-homepage {
@@ -4398,15 +4461,12 @@ ul#menuBar li:hover > ul {
   overflow: hidden;
 }
 .deadGame p .line {
->>>>>>> a63e049d701d4791263542ac34f5437bffdd1423
   display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a    \2577 \a 20 \2502  @import 'layout/starrating';\d\a    \2502          ^^^^^^^^^^^^^^^^^^^\a    \2575 \a   sass\\style.scss 20:9  root stylesheet";
+  white-space: nowrap; /* 防止文字自動換行 */
+  overflow: hidden; /* 隱藏超出的文字 */
+  visibility: hidden;
+  animation: typing 4s steps(20) forwards, fadeIn 0.3s ease-in forwards;
 }
-<<<<<<< HEAD
-=======
 .deadGame p .line:nth-child(1) {
   animation-delay: 0s;
 }
@@ -7002,6 +7062,9 @@ ul#menuBar li:hover > ul {
   width: 20%;
   margin: 50px 0 80px;
 }
+.mmangeleft .active {
+  color: #FCD15B;
+}
 @media (max-width: 820px) {
   .mmangeleft {
     display: none;
@@ -7030,6 +7093,9 @@ ul#menuBar li:hover > ul {
 }
 .mmangeright .mangerightitems {
   display: none;
+}
+.mmangeright .mangerightitems .active {
+  color: #FCD15B;
 }
 @media (max-width: 820px) {
   .mmangeright .mangerightitems {
@@ -7225,17 +7291,6 @@ ul#menuBar li:hover > ul {
   font-weight: bold;
 }
 
-.star_block span {
-  margin: 10px 5px;
-}
-.star_block > span.star {
-  cursor: pointer;
-  display: inline-block;
-}
-.star_block > span.star.-on {
-  color: #FCD15B;
-}
-
 .ordertext_right {
   width: 15%;
   border: 1px solid white;
@@ -7277,39 +7332,53 @@ ul#menuBar li:hover > ul {
   }
 }
 
-.coupontext {
+.coupontext .couponticket {
   display: flex;
   flex-wrap: wrap;
-}
-.coupontext .couponticket {
-  position: relative;
   margin: 10px 20px;
-  background: #FFE8BB;
-  width: 800px;
-  height: 260px;
+  max-width: 800px;
+  max-height: 260px;
   border-radius: 8px;
 }
-.coupontext .couponbg {
-  width: 600px;
-  height: 100%;
-  opacity: 0.6;
-  background-size: cover;
+.coupontext .couponimg {
+  max-width: 600px;
+  max-height: 260px;
+  border-radius: 8px;
 }
-.coupontext .coupont {
-  position: absolute;
-  right: 10%;
-  top: 10%;
-  color: #292929;
+.coupontext .couponimg .couponbg {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+.coupontext .coupondata {
+  border-radius: 8px;
+  background: #06508E;
+  max-width: 200px;
+  width: 100%;
+  max-height: 260px;
+  text-align: center;
+  position: relative;
+  font-family: "Creepster";
+}
+.coupontext .coupondata .couponposition {
+  height: 100%;
   text-align: center;
 }
-.coupontext .coupont h3 {
-  color: #262B3F;
+.coupontext .coupondata .rotate-text {
+  transform: rotate(-90deg);
+  transform-origin: center center;
 }
-.coupontext .coupont h4 {
-  margin-top: 5px;
+.coupontext .coupondata h3 {
+  color: #FCD15B;
+  font-size: 64px;
+  line-height: 1.5;
+  margin-top: 50px;
 }
-.coupontext .coupont h4:nth-child(3) {
-  color: #C70000;
+.coupontext .coupondata h4 {
+  color: white;
+  font-family: "Dela Gothic One";
+  font-size: 40px;
+  margin-top: 50px;
 }
 
 .editmember h3 {
@@ -7326,7 +7395,7 @@ ul#menuBar li:hover > ul {
 .editmember .editphone {
   padding-left: 10px;
   outline: none;
-  width: 40%;
+  width: 60%;
   font-size: 20px;
 }
 @media (max-width: 500px) {
@@ -7335,8 +7404,14 @@ ul#menuBar li:hover > ul {
     padding: 0;
   }
 }
+.editmember .flexinput {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
 .editmember .btnedit {
-  margin-right: 10%;
+  margin-right: 5%;
+  width: 150px;
 }
 .editmember .btnedit:hover {
   background-color: #FEDA77;
@@ -8706,4 +8781,3 @@ ul#menuBar li:hover > ul {
 }
 
 /*# sourceMappingURL=style.css.map */
->>>>>>> a63e049d701d4791263542ac34f5437bffdd1423

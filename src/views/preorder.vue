@@ -368,10 +368,10 @@ export default {
             console.log("查詢的 themeId：", this.themeId);
             try {
                 // 確保 URL 正確格式化，使用 & 分隔日期和 themeId
-                // const response = await axios.get(import.meta.env.VITE_API_BASE + `/api/preorder.php?date=${date}&themeId=${this.themeId}`);
-                const response = await axios.get(
-                    `http://localhost/appleTeam/public/php/api/preorder.php?date=${date}&themeId=${this.themeId}`
-                );
+                const response = await axios.get(import.meta.env.VITE_API_BASE + `/api/preorder.php?date=${date}&themeId=${this.themeId}`);
+                // const response = await axios.get(
+                //     `http://localhost/appleTeam/public/php/api/preorder.php?date=${date}&themeId=${this.themeId}`
+                // );
                 console.log("伺服器回應：", response); // 檢查伺服器回應
                 this.orders = response.data;// 直接使用回應的資料
                 this.updateTimeSlots(); 

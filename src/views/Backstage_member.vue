@@ -114,8 +114,8 @@
                         keyword: this.keyword,
                         status: this.status
                     };
-                    // const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/member.php', { params });
-                    const response = await axios.get('http://localhost/memeapple/public/php/api/member.php', { params });
+                    const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/member.php', { params });
+                    // const response = await axios.get('http://localhost/memeapple/public/php/api/member.php', { params });
                     this.objArray = response.data                
                 } catch (err) {
                     this.error = 'An error occurred: ' + err.message
@@ -137,8 +137,8 @@
             async updateStatus(member){
                 const newStatus = member.STATUS === 1 ? 0 : 1;
                 try{
-                    // const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/member.php', { 
-                    const response = await axios.post('http://localhost/memeapple/public/php/api/member.php', { 
+                    const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/member.php', { 
+                    // const response = await axios.post('http://localhost/memeapple/public/php/api/member.php', { 
                         id: member.ID,
                         status: newStatus
                     });
@@ -170,8 +170,8 @@
                         memberId: this.selectedMemberID
                     };
                     console.log('params: ', params)
-                    // const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/order.php', { params });
-                    const response = await axios.get('http://localhost/memeapple/public/php/api/order.php', { params });
+                    const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/order.php', { params });
+                    // const response = await axios.get('http://localhost/memeapple/public/php/api/order.php', { params });
                     this.paginatedOrderData = response.data;
                     this.totalOrderPages = Math.ceil(this.paginatedOrderData.length / this.pageSize); // 計算popup視窗的總頁數
                     console.log('paginatedOrderData: ', this.paginatedOrderData);

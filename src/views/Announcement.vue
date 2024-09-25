@@ -71,8 +71,8 @@ export default {
     // 定義 fetchAnnouncement 方法，用於根據 ID 獲取公告資料
     fetchAnnouncement(id) {
       // 你的php需要連結到announcement.php，且你的網址要?id = ${你的id}
-      fetch(`http://localhost/sweethome/meme/public/php/api/announcement.php?id=${id}`)
-        // fetch(import.meta.env.VITE_API_BASE + `/api/announcement.php?id=${id}`)
+      // fetch(`http://localhost/sweethome/meme/public/php/api/announcement.php?id=${id}`)
+        fetch(import.meta.env.VITE_API_BASE + `/api/announcement.php?id=${id}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
