@@ -1,6 +1,6 @@
 <template>
   <TopNavbar />
-  <StarRating v-if="showStarRating" @close="showStarRating = false" />
+  <StarRating v-if="showStarRating" @close="showStarRating = false" :orderId="selectedOrderId" />
   <div class="main">
     <div class="wrappermmange">
       <div class="mmangeleft" id="mmangeleft">
@@ -51,8 +51,8 @@
                     <p>TWD 2000元</p>
                     <!-- 問卷填寫按鈕 -->
                     <button v-if="order.ORDER_STATUS === '已使用'" class="questionwrite"
-                      @click="orderquestion()">問卷填寫</button>
-                      
+                      @click="orderquestion(order)">問卷填寫</button>
+                     
                     <!-- 取消訂單按鈕 -->
                     <button v-else-if="order.ORDER_STATUS === '已預訂'" class="cancelorder"
                       @click="ordercancel(order)">取消訂單</button>
@@ -82,8 +82,8 @@
             <div class="coupondata">
               <div class="couponposition">
                 <!-- <h3>COUPON</h3> -->
-                <h4 class="rotate-text">折價券</h4>
                 <h3 class="rotate-text">${{ coupon.DISCOUNT }}</h3>
+                <h4 class="rotate-text">折價券</h4>
               </div>
             </div>
           </div>
@@ -296,7 +296,7 @@ export default {
         };
         console.log('params: ', params)
         const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/order.php', { params });
-        // const response = await axios.get('http://localhost/meme_apple/public/php/api/Order.php', { params });
+        // const response = await axios.get('http://localhost/sweethome/meme/public/php/api/Order.php', { params });
         console.log(import.meta.env.VITE_API_BASE);
         console.log('response.data: ', response.data);
         this.orders = response.data;
@@ -321,7 +321,7 @@ export default {
       if (result.isConfirmed) {
         try {
           const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/ordercancel.php', {
-            // const response = await axios.post('http://localhost/meme_apple/public/php/api/OrderCancel.php', {
+            // const response = await axios.post('http://localhost/sweethome/meme/public/php/api/OrderCancel.php', {
             orderId: order.ORDER_ID,
             status: 3
           });
@@ -544,7 +544,8 @@ export default {
           console.error('Error fetching coupons:', error);
         });
     },
-    orderquestion() {
+    orderquestion(order) {
+      this.selectedOrderId = order.ORDER_ID;
       this.showStarRating = true; // 顯示彈出窗口
     },
   },

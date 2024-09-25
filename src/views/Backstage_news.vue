@@ -134,7 +134,7 @@
             async updateStatus(news) {
                 const newStatus = news.STATUS == 1 ? 0 : 1;
                 try {
-                    const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/News.php', {    //正式版API環境變數
+                    const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/news.php', {    //正式版API環境變數
                     // const response = await axios.post('http://localhost/memeapple/public/php/api/news.php', {
                         id: news.ID,
                         status: newStatus
