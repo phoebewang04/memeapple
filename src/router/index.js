@@ -74,6 +74,7 @@ const routes = [
   { path: '/Landingpage/', name: 'Landingpage',meta:{title:'Landingpage'}, component: () => import('../views/Landingpage.vue') },
   { path: '/Theme/:id/preorder/orderinform/pay', component: Pay },
   { path: '/Theme/:id/preorder/orderinform/pay/Membermanage', component:Membermanage},
+  { path: '/StarRating/', name: 'StarRating',meta:{title:'問卷調查'}, component: () => import('../components/StarRating.vue') },
  
 ];
 

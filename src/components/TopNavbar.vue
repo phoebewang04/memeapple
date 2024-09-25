@@ -102,6 +102,7 @@ export default {
       <li><router-link to="/Membermanage/">會員專區</router-link></li>
       <li><router-link to="/Minigame/">線上體驗</router-link></li>
       <li><router-link to="/Branch/">分館介紹</router-link></li>
+      <!-- <li><router-link to="/StarRating/">問卷調查</router-link></li>  -->
       <!--
       <li><router-link to="/">前後台分流頁</router-link></li> 
       <li><router-link to="/Announcement/">最新消息</router-link></li>
