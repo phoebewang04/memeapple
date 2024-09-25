@@ -121,8 +121,8 @@ export default {
       console.log("查詢日期：", date);
       try {
         const response = await axios.get(
-          import.meta.env.VITE_API_BASE + `/api/dashboard.php?date=${date}`
-          // `http://localhost/memeapple/public/php/api/dashboard.php?date=${date}`
+          // import.meta.env.VITE_API_BASE + `/api/dashboard.php?date=${date}`
+          `http://localhost/memeapple/public/php/api/dashboard.php?date=${date}`
         );
         console.log("伺服器回應：", response); // 檢查伺服器回應
         this.orders = response.data; // 直接使用回應的資料
@@ -135,7 +135,7 @@ export default {
     getOrder(themeID, time) {
       const order = this.orders.find(
         (order) =>
-          order.THEME_ID === themeID && order.ORDER_TIME.startsWith(time)
+          order.THEME_ID == themeID && order.ORDER_TIME.startsWith(time)
       );
       return order ? order.ORDER_ID : "";
     },
