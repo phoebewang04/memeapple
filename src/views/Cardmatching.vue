@@ -173,6 +173,7 @@ export default {
 
                 // const response = await axios.get(`http://localhost/appleyy/public/php/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
                 const response = await axios.get(import.meta.env.VITE_API_BASE + `/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
+
                 console.log('API 回應數據:', response.data);
 
                 const result = response.data;
@@ -203,7 +204,7 @@ export default {
                 form_data.append("discount", discount);
 
                 const response = await axios.post(import.meta.env.VITE_API_BASE + `/api/coupon.php`, form_data, {
-                // const response = await axios.post("http://localhost/appleyy/public/php/api/coupon.php", form_data, {
+                // const response = await axios.post(`http://localhost/appleyy/public/php/api/coupon.php`, form_data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }

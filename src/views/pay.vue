@@ -4,6 +4,7 @@
 <template>
 
     <TopNavbar />
+    <ScrollToTop />
 
     <div id="pay_wrapper">
 
@@ -76,21 +77,25 @@
                     <h2>訂單明細</h2>
 
                     <div class="list">
-                        <p v-if="theme">{{ theme.themeName }} （ {{ theme.branch }} ）</p>
+                        <p v-if="theme">{{ theme.themeName }}（ {{ theme.branch }} ）</p>
                         <p>預約場次</p>
                         <p class="pp">日期：{{ selectedDate}}  ｜  時間：{{ selectedTimeSlot }} </p>
                         <p>總人數：<span class="pp" v-if="peopleAmount">{{peopleAmount }} 人</span></p>
                         <p>訂購項目：</p>
-                        <p class="pp">包場訂金 2000 元 X1</p>
+                        <p class="pp">包場訂金 2,000 元 X1</p>
                         
                         <div class="orderLabel">
                             <label for="orderDiscount">使用優惠卷</label>
                             <select v-model="orderDiscount" disabled>
-                                <option value="discountA">優惠卷折扣 - 50 元</option>
+                                <!-- <option value="discountA">優惠卷折扣 - 50 元</option>
                                 <option value="discountB">優惠卷折扣 - 100 元</option>
-                                <option value="discountC">優惠卷折扣 - 150 元</option>
+                                <option value="discountC">優惠卷折扣 - 150 元</option> -->
+                                <!-- <option v-for="coupon in coupons" :key="coupon.ID" :value="coupon.ID">
+                                    {{ `優惠卷折扣 - ${coupon.DISCOUNT} 元` }}
+                                </option> -->
                             </select>
                         </div>
+
                     </div>
 
                     <div class="amount">
@@ -109,7 +114,7 @@
                                 <p>折扣 (現場折抵)</p>
                             </div>
                             <div>
-                                <p>NT {{ discountPrice }} 元</p>
+                                <p> - NT {{ discountPrice }} 元</p>
                             </div>
                         </div>
 
@@ -124,7 +129,7 @@
                     </div>
 
                     <div class="button01">
-                        <button  class=" btn next_btn" :disabled="!dataValid" :class="{active : dataValid}" @click="goToNextPage">下一步</button>
+                        <button  class=" btn next_btn" :disabled="!dataValid" :class="{active : dataValid}" @click="submitOrder">下一步</button>
                     </div>
                 
 
@@ -147,6 +152,7 @@ import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
 import ScrollToTop from '../components/ScollToTop.vue';
+import axios from 'axios';
 
 export default {
     components: {
@@ -173,6 +179,7 @@ export default {
             selectedTimeSlot: null,
             peopleAmount: null,
             selectedDate: null,
+            
         }
     },
     computed : {
@@ -186,6 +193,19 @@ export default {
         }
     },
     methods : {
+        saveToLocalStorage() {
+        const orderData = {
+            storeId: this.storeId,
+            themeId: this.themeId,
+            selectedDate: this.selectedDate,
+            selectedTimeSlot: this.selectedTimeSlot,
+            peopleAmount: this.peopleAmount,
+            
+        };
+        localStorage.setItem('orderData', JSON.stringify(orderData));
+        },
+        
+       
         validCard (){
             let clean = this.payCard.replace(/\D/g, '');
             clean = clean.replace(/(\d{4})(?=\d)/g, '$1 ');
@@ -225,11 +245,73 @@ export default {
         },
 
         goToNextPage (){
-            localStorage.clear();
+            // localStorage.clear();
             this.$router.push({
             path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay/Membermanage`
             });
-        }
+        },
+
+        submitOrder() {
+       
+        const orderData = JSON.parse(localStorage.getItem('orderData'));
+        const userData = JSON.parse(localStorage.getItem('user'));
+        const memberId = userData ? userData.id : null;  // 提取 id
+
+            if (orderData && memberId) {
+                const storeId = this.all_data[orderData.themeId]?.storeId;
+                    if (!storeId) {
+                        console.error('無法獲取 storeId');
+                        alert('無法獲取 storeId');
+                        return;
+                    }
+
+                const cleanedTimeSlot = orderData.selectedTimeSlot.replace(/：/g, ':');
+                const timeWithSeconds = `${cleanedTimeSlot}:00`; // 確保時間格式為 "HH:mm:ss
+
+                const dataToSend = {
+                themeId: orderData.themeId,
+                orderDate: orderData.selectedDate,  // 對應 PHP 的 $orderDate
+                orderTime: timeWithSeconds,  // 對應 PHP 的 $orderTime
+                attendance: orderData.peopleAmount,  // 對應 PHP 的 $attendance
+                memberId:  userData.id,
+                storeId: storeId,
+                orderStatus:2,
+
+
+            };
+            console.log('提交的數據：', {
+                themeId: orderData.themeId,
+                orderDate: orderData.selectedDate,  
+                orderTime: timeWithSeconds, 
+                attendance: orderData.peopleAmount,
+                memberId:  userData.id,
+                storeId: storeId, 
+                orderStatus:2,
+                
+            });
+
+            console.log('Sending data:', dataToSend);
+             axios.get(import.meta.env.VITE_API_BASE + '/api/pay.php', dataToSend)
+                // axios.post('http://localhost/appleTeam/public/php/api/pay.php', dataToSend)
+                    .then(response => {
+                        if (response.data.status === 'success') {
+                            // 清空localStorage
+                            // localStorage.removeItem('orderData');
+                            // 跳轉到訂單確認頁面
+                            this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay/Membermanage`});
+                        } else {
+                            alert(`提交失敗，錯誤信息：${response.data.message || '未知錯誤'}`);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('提交訂單時出錯：', error);
+                    });
+            }else {
+                alert("缺少訂單資料或會員ID");
+            }
+        },
+        
+        
 
     },
     mounted (){
@@ -242,6 +324,7 @@ export default {
         this.peopleAmount = localStorage.getItem('peopleAmount') || '';
         const selectedTimeSlot = localStorage.getItem('selectedTimeSlot');
         const selectedDate = localStorage.getItem('selectedDate');
+
         if (selectedTimeSlot) {
             // 如果找到了選定的場次時間，將其顯示在頁面上
             this.selectedTimeSlot = selectedTimeSlot;
@@ -249,7 +332,25 @@ export default {
         } else {
             console.error("未選擇場次時間");
         }
+
+        const savedOrderData = localStorage.getItem('orderData');
+        if (savedOrderData) {
+            const parsedData = JSON.parse(savedOrderData);
+            // this.storeId = parsedData.storeId;
+            this.themeId = parsedData.themeId;
+            this.selectedDate = parsedData.selectedDate;
+            this.selectedTimeSlot = parsedData.selectedTimeSlot;
+            this.peopleAmount = parsedData.peopleAmount;
+          
+        }
         
+        const userData = JSON.parse(localStorage.getItem('user'));
+            if (userData) {
+                console.log('User data exists:', userData);
+            } else {
+                console.error('User data is null or not found in localStorage');
+            }
+            
     },
 }
 </script>

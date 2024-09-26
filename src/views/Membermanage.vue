@@ -1,5 +1,6 @@
 <template>
   <TopNavbar />
+  <ScrollToTop />
   <StarRating v-if="showStarRating" @close="showStarRating = false" :orderId="selectedOrderId" />
   <div class="main">
     <div class="wrappermmange">
@@ -94,53 +95,78 @@
         <div class="editmember" v-if="currentTab == 'tab3'">
           <div class="memberdata" v-if="!isEditing">
             <h3>會員資料</h3>
-            <ul>
-              <li>
-                <h4>帳號：{{ user.email }}</h4>
-              </li>
-              <li>
-                <h4>密碼：{{ user.password }}</h4>
-              </li>
-              <li>
-                <h4>姓名：{{ user.name }}</h4>
-              </li>
-              <li>
-                <h4>電話：{{ user.phone }}</h4>
-              </li>
-            </ul>
-            <div><button class="btn btnedit" @click="isEditing = true">資料變更</button></div>
+            <div class="memberdatacard">
+              <div class="memberdatacardleft">
+                <h3>會員卡</h3>
+                <img src="../assets/img/adventurerbear.jpg" alt="" class="member-photo">
+                <h4>{{ user.name }}</h4>
+              </div>
+              <div class="memberdatacardright">
+              <h3>會員卡</h3>
+              <ul>
+                <li>
+                  <h4>帳號：{{ user.email }}</h4>
+                </li>
+                <li>
+                  <h4>密碼：{{ user.password }}</h4>
+                </li>
+                <li>
+                  <h4>電話：{{ user.phone }}</h4>
+                </li>
+              </ul>
+            </div>  
+            </div>
+            <div class="btnlocation"><button class="btn btnedit" @click="isEditing = true">資料變更</button></div>
           </div>
           <div class="editmemberdata" v-else>
             <h3>會員資料修改</h3>
-            <ul>
-              <li>
-                <h4>帳號：{{ user.email }}</h4>
-              </li>
-              <li>
-                <div class="flexinput">
-                  <h4>修改密碼：</h4><input type="text" class="editphone" v-model="editedUser.password">
-                </div>
-              </li>
-              <li>
-                <div class="flexinput">
-                  <h4>請再次輸入密碼：</h4><input type="text" class="editphone" v-model="editedUser.password">
-                </div>
-              </li>
-              <li>
-                <div class="flexinput">
-                  <h4>修改姓名：</h4><input type="text" class="editphone" v-model="editedUser.name">
-                </div>
-              </li>
-              <li>
-                <div class="flexinput">
-                  <h4>電話：</h4><input type="text" class="editphone" v-model="editedUser.phone" maxlength="10"
-                    pattern="^09\d{8}$">
-                </div>
-              </li>
-            </ul>
-            <div>
+            <div class="memberdatacard">
+              <div class="memberdatacardleft">
+                <h3>會員卡</h3>
+                <img src="../assets/img/adventurerbear.jpg" alt="" class="member-photo">
+                <h4>{{ editedUser.name }}</h4>
+              </div>
+              <div class="memberdatacardright">
+                <h3>會員卡</h3>
+                <ul>
+                  <li>
+                    <h4>帳號：{{ user.email }}</h4>
+                  </li>              
+                  <li>
+                    <h4>密碼：{{  editedUser.password }}</h4>
+                  </li>
+                  <li>
+                    <h4>電話：{{ editedUser.phone }}</h4>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="btnlocation">
               <button class="btn btnedit" @click="saveChanges">儲存變更</button>
               <button class="btn btnedit" @click="isEditing = false">取消</button>
+              <ul>
+                <li>
+                    <div class="flexinput">
+                      <h4>修改密碼：</h4><input type="text" class="editphone" v-model="editedUser.password"  placeholder="請輸入新密碼">
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flexinput">
+                      <h4>請再次輸入密碼：</h4><input type="text" class="editphone" v-model="editedUser.passwordConfirm" placeholder="請再次輸入新密碼">
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flexinput">
+                      <h4>修改姓名：</h4><input type="text" class="editphone" v-model="editedUser.name" placeholder="請輸入姓名">
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flexinput">
+                      <h4>電話：</h4><input type="text" class="editphone" v-model="editedUser.phone" maxlength="10"
+                        pattern="^09\d{8}$" placeholder="請輸入電話">
+                    </div>
+                  </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -159,6 +185,7 @@ import Footerbar from '../components/Footerbar.vue';
 import StarRating from '../components/StarRating.vue';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import ScrollToTop from '../components/ScollToTop.vue';
 
 
 export default {
@@ -168,6 +195,7 @@ export default {
     TopNavbar,
     Footerbar,
     StarRating,
+    ScrollToTop,
   },
   created() {
     const tab = this.$route.query.tab;
@@ -259,7 +287,7 @@ export default {
       this.user = user;
       this.memberId = user.id; // 動態設置 memberId
       this.fetchOrders();
-      this.editedUser = { ...user };
+      this.editedUser = { ...user, passwordConfirm: user.password };
     } else {
       Swal.fire({
         title: '請登入或註冊',
@@ -498,11 +526,37 @@ export default {
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
     saveChanges() {
+     // 初始化錯誤訊息陣列
+      const errorMessages = [];
+
+      // 密碼驗證：至少6個字符，包含字母和數字
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+      if (!passwordRegex.test(this.editedUser.password)) {
+        errorMessages.push('密碼至少需要6個字符，並且包含字母和數字');
+      }
+
+      // 確認密碼是否相同
+      if (this.editedUser.password !== this.editedUser.passwordConfirm) {
+        errorMessages.push('密碼和確認密碼不匹配');
+      }
+
+      // 電話號碼驗證：以09開頭的10位數字
+      const phoneRegex = /^09\d{8}$/;
+      if (!phoneRegex.test(this.editedUser.phone)) {
+        errorMessages.push('電話號碼必須是以09開頭的10位數字');
+      }
+
+      // 如果有錯誤訊息，顯示所有錯誤
+      if (errorMessages.length > 0) {
+        Swal.fire('錯誤', errorMessages.join('<br>'), 'error');
+        return;
+      }
+      
       // 更新用戶資料
       this.user.name = this.editedUser.name;
       this.user.phone = this.editedUser.phone;
       this.user.password = this.editedUser.password; // 直接使用明文密碼
-
+      this.user.passwordConfirm = this.editedUser.password;
       // 更新 localStorage
       localStorage.setItem('user', JSON.stringify(this.user));
 
@@ -516,7 +570,8 @@ export default {
         email: user.email,
         name: user.name,
         phone: user.phone,
-        password: user.password // 直接傳送明文密碼
+        password: user.password, // 直接傳送明文密碼
+        passwordConfirm : user.password
       };
       axios.post(import.meta.env.VITE_API_BASE + '/api/editmemberdata.php', payload)
         // axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)

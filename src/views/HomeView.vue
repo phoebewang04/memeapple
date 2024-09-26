@@ -92,6 +92,14 @@ export default {
       itemsPerPage: 3,
       // 控制 landing page 的顯示
       showLandingPage: false,
+
+      //手機版本landing page圖片
+      codeImg: [
+                new URL('@/assets/img/Index-pic04.png', import.meta.url).href,
+                new URL('@/assets/img/Index-pic05.png', import.meta.url).href
+            ],
+            currentCodeIndex: 0,
+            intervalId: null
     };
 
   },
@@ -173,6 +181,13 @@ export default {
     closeLandingPage() {
       this.showLandingPage = false;
     },
+
+    //手機 landing page
+    startSlideshow() {
+            this.intervalId = setInterval(() => {
+                this.currentCodeIndex = (this.currentCodeIndex + 1) % this.codeImg.length;
+            }, 500);
+        }
   },
   mounted() {
 
@@ -180,6 +195,8 @@ export default {
       this.showLandingPage = true;
       localStorage.setItem('popupDisplayed', 'true');
     }
+
+    this.startSlideshow();
 
     this.fetchAnnouncements();
 
@@ -285,6 +302,9 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
     // 移除窗口大小變化監聽
     window.removeEventListener('resize', this.updateItemsPerPage);
+
+    //清除landing page
+    clearInterval(this.intervalId);
   },
 };
 </script>
@@ -347,6 +367,25 @@ export default {
           </div>
         </div>
 
+      </section>
+
+      <!-- 手機版本 -->
+      <section class="slideshow_container" @click.stop>
+
+        <span class="close_mbpage" @click="closeLandingPage">&times;</span>
+
+        <div class="error_mb_text">
+            <p>限時主題 ｘ 代碼深淵</p>
+            <p>徵求「debug高手」一起除錯！</p>
+        </div>
+
+        <section class="slideshow">
+          <img :src="codeImg[currentCodeIndex]" alt="Slideshow Image" />
+        </section>
+
+        <div class="error_btn_container">
+          <router-link to="/theme/4/preorder"><button class="error_mbbtn">預約debug</button></router-link>
+        </div>
       </section>
     </div>
 

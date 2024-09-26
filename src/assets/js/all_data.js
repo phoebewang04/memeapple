@@ -1,6 +1,7 @@
 export const all_data = {
     //成都醫院
     1:{
+        storeId: 1,
         branch:'台北館',
         themeName: '成都醫院',
         address:'台北市密逃路88之107號',
@@ -135,6 +136,7 @@ export const all_data = {
 
     //時光迷宮
     2:{
+        storeId: 1,
         branch:'台北館',
         themeName: '時光迷宮',
         address:'台北市密逃路88之107號',
@@ -246,6 +248,7 @@ export const all_data = {
 
     //末日庇護所
     3:{
+        storeId: 1,
         themeName: '末日庇護所',
         branch:'台北館',
         address:'台北市密逃路88之107號',
@@ -356,6 +359,7 @@ export const all_data = {
 
     //代碼深淵
     4:{
+        storeId: 1,
         branch:'台北館',
         themeName: '代碼深淵',
         address:'台北市密逃路88之107號',
@@ -480,6 +484,7 @@ export const all_data = {
     },
      //逃離武石監
     5:{
+        storeId: 2,
         themeName: '逃離武石監',
         branch:'台中館',
         address:'台中市北屯區路黎明路8號',
@@ -590,6 +595,7 @@ export const all_data = {
     
     //恐怖密室
     6:{
+        storeId: 2,
         themeName: '恐怖密室',
         branch:'台中館',
         address:'台中市北屯區路黎明路8號',
@@ -698,6 +704,7 @@ export const all_data = {
     },
     //逃出虛空
     7:{
+        storeId: 2,
         themeName: '逃出虛空',
         branch:'台中館',
         address:'台中市北屯區路黎明路8號',

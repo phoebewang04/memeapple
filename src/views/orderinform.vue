@@ -3,6 +3,7 @@
 <template>
 
     <TopNavbar />
+    <ScrollToTop />
 
     <div id="order_wrapper">
 
@@ -129,23 +130,22 @@
                     <h3>訂單明細</h3>
 
                     <div class="list">
-                        <p v-if="theme">{{ theme.themeName }} （ {{ theme.branch }} ）</p>
+                        <p v-if="theme">{{ theme.themeName }}（ {{ theme.branch }} ）</p>
                         <p>預約場次</p>
                         <p class="pp"> 日期：{{ selectedDate}} ｜ 時間：{{ selectedTimeSlot }} </p>
                         <p>總人數：<span class="pp" v-if="peopleAmount">{{peopleAmount }} 人</span></p>
                         <p>訂購項目：</p>
-                        <p class="pp">包場訂金 2000 元 X1</p>
+                        <p class="pp">包場訂金 2,000 元 X1</p>
 
-                        <label for="orderDiscount">使用優惠卷</label>
-                        <select v-if="coupons.length > 0" name="使用優惠卷" v-model="orderDiscount" @change="selectDiscount">
-                            <!-- <option value="discountA">優惠卷折扣 - 50 元</option> -->
-                            <!-- <option value="discountB">優惠卷折扣 - 100 元</option> -->
-                            <!-- <option value="discountC">優惠卷折扣 - 150 元</option> -->
-                            <option v-for="coupon in coupons" :key="coupon.ID" :value="coupon.ID">
-                                {{ `優惠卷折扣 - ${coupon.DISCOUNT} 元` }}
-                            </option>
-                        </select>
-                        <p v-else>無可用優惠券</p>
+                        <div class="orderLabel">
+                            <label for="orderDiscount">使用優惠卷</label>
+                            <select v-if="coupons.length > 0" name="使用優惠卷" v-model="orderDiscount" @change="selectDiscount">
+                                <option v-for="coupon in coupons" :key="coupon.ID" :value="coupon.ID">
+                                    {{ `折扣 - ${coupon.DISCOUNT} 元` }}
+                                </option>
+                            </select>
+                            <h6 v-else>無可用優惠券 </h6>
+                        </div>
                     </div>
 
                     <div class="amount">
@@ -164,7 +164,7 @@
                                 <p>折扣 (現場折抵)</p>
                             </div>
                             <div>
-                                <p v-if="discountPrice">NT {{ discountPrice }} 元</p>
+                                <p>- NT {{ discountPrice }} 元</p>
                             </div>
                         </div>
 
@@ -248,15 +248,26 @@ export default {
     },
     computed: {
         dataValid (){
-            return(
+   
+            if (this.isLoggedIn) {
+            // 當用戶已登入，只需要驗證基本資料和同意條款
+            return (
                 this.orderName && !this.nameError &&
                 this.orderEmail && !this.emailError &&
                 this.orderPhone && !this.phoneError &&
-                this.orderPassword && !this.passwordError&&
-                this.comfirmPassword && !this.comfirmError &&
-                this.orderCheck1 && 
-                this.orderCheck2
+                this.orderCheck1 && this.orderCheck2
             );
+            } else {
+                // 當用戶未登入，還需要驗證密碼和確認密碼
+                return (
+                    this.orderName && !this.nameError &&
+                    this.orderEmail && !this.emailError &&
+                    this.orderPhone && !this.phoneError &&
+                    this.orderPassword && !this.passwordError &&
+                    this.comfirmPassword && !this.comfirmError &&
+                    this.orderCheck1 && this.orderCheck2
+                );
+            }
         },
     },
     created() {
@@ -271,10 +282,21 @@ export default {
     },
 
     methods :{
+        saveToLocalStorage() {
+        const orderData = {
+            // storeId: this.$route.params.storeId,
+            themeId: this.$route.params.id,
+            selectedDate: this.selectedDate,
+            selectedTimeSlot: this.selectedTimeSlot,
+            peopleAmount: this.peopleAmount,
+            
+        };
+        localStorage.setItem('orderData', JSON.stringify(orderData));
+        },
         // 查詢優惠券
         getCoupons(memberId) {
-            axios.get(import.meta.env.VITE_API_BASE + `/api/membercoupon.php?member_id=${memberId}`)
-            // axios.get(`http://localhost/memeapple/public/php/api/membercoupon.php?member_id=${memberId}`)
+             axios.get(import.meta.env.VITE_API_BASE + `/api/membercoupon.php?member_id=${memberId}`)
+            //  axios.get(`http://localhost/appleTeam/public/php/api/membercoupon.php?member_id=${memberId}`)
                 .then(response => {
                     if (Array.isArray(response.data)) {
                         this.coupons = response.data;
@@ -286,6 +308,12 @@ export default {
                             }, this.coupons[0]);
                             this.orderDiscount = maxDiscountCoupon.ID;
                             this.discountPrice = maxDiscountCoupon.DISCOUNT;
+
+                            //把優惠卷的值存入localstorage裡 再由下一頁帶入值
+                            this.$nextTick(() => {
+                            localStorage.setItem('discountPrice', this.discountPrice);
+                            console.log('Stored Discount Price:', localStorage.getItem('discountPrice'));
+                    });
                         }
                     } else {
                         console.error('Invalid response data:', response.data);
@@ -362,13 +390,14 @@ export default {
             } else {
                 this.discountPrice = '0';
             }
+            
         },
         
         goToNextPage (){
             localStorage.setItem ('orderDiscount', this.orderDiscount);
             localStorage.setItem('discountPrice', this.discountPrice);
 
-             this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay` });
+            this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay` });
 
       
         },
@@ -380,12 +409,19 @@ export default {
                 this.validName();
                 this.validEmail();
                 this.validPhone();
-                this.validPassword();
+                // this.validPassword();
                 this.validComfirm();
 
+                if (!this.isLoggedIn) {
+                // 如果不是會員，還需要驗證密碼和確認密碼
+                this.validPassword();
+                
+            }
+
                 // 根據驗證結果判斷表單是否有效
-                if (this.nameError || this.emailError || this.phoneError || this.passwordError || this.comfirmError) {
-                    isValid = false;
+                if (this.nameError || this.emailError || this.phoneError ||
+                (!this.isLoggedIn && (this.passwordError || this.comfirmError))) {
+                isValid = false;
                 }
 
                 if (isValid) {
@@ -424,39 +460,41 @@ export default {
                 email: this.orderEmail,
                 phone: this.orderPhone,
                 password: this.orderPassword,
+                
             });
-
+  
                 try {
-                    const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/register.php', {
-                    // const response = await axios.post('http://localhost/appleTeam/public/php/api/register.php', {
-                   
+                    if (!this.isLoggedIn) {
+                // 如果未登入，準備要提交的資料
+                const payload = {
                     name: this.orderName,
                     email: this.orderEmail,
                     phone: this.orderPhone,
-                    password: this.orderPassword,
-                  
-                    });     
-                   
-                  
-                     if (response.data.status === "success") {
-                        // alert("註冊成功123");
-        
+                    password: this.orderPassword, // 如果是註冊會員，必須傳遞密碼
+                };
+
+                console.log('提交的註冊數據：', payload);
+
+                // 發送 POST 請求到後端進行註冊
+                const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/register.php', payload);
+                // const response = await axios.post('http://localhost/appleTeam/public/php/api/register.php', payload);
+
+                    if (response.data.status === "success") {
+                        // 註冊成功，跳轉到下一頁
                         this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay` });
-
-                        // this.orderName = '';
-                        // this.orderEmail = '';
-                        // this.orderPhone = '';
-                        // this.orderPassword = '';
-
-                     } else {
-                         alert("發生錯誤：" + response.data.message); // 顯示錯誤消息
+                    } else {
+                        alert("發生錯誤：" + response.data.message); // 顯示錯誤消息
                     }
+                } else {
+                    // 如果已經是登入會員，直接進行到下一步
+                    console.log('會員已登入，進行到下一步');
+                    this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay` });
+                }
                 } catch (error) {
                     console.error(error);
                     alert("發生錯誤，請稍後再試。");
                 }
-            
-        }
+        },
     },
     mounted (){
         const themeId = this.$route.params.id;
@@ -469,8 +507,17 @@ export default {
             // 如果找到了選定的場次時間，將其顯示在頁面上
             this.selectedTimeSlot = selectedTimeSlot;
             this.selectedDate = selectedDate;
-        } else {
-            alert("未選擇日期、人數與場次時間");
+        }
+
+        const savedOrderData = localStorage.getItem('orderData');
+        if (savedOrderData) {
+            const parsedData = JSON.parse(savedOrderData);
+            // this.storeId = parsedData.storeId;
+            this.themeId = parsedData.themeId;
+            this.selectedDate = parsedData.selectedDate;
+            this.selectedTimeSlot = parsedData.selectedTimeSlot;
+            this.peopleAmount = parsedData.peopleAmount;
+          
         }
 
         

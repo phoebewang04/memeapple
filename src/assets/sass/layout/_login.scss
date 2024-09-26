@@ -11,8 +11,9 @@
     line-height: 1;
 }
 
-.close {
+.member_close {
     position: absolute;
+    color: map-get($colors , white );
     top: 10px;
     right: 15px;
     cursor: pointer;
