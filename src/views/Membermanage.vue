@@ -1,5 +1,6 @@
 <template>
   <TopNavbar />
+  <ScrollToTop />
   <StarRating v-if="showStarRating" @close="showStarRating = false" :orderId="selectedOrderId" />
   <div class="main">
     <div class="wrappermmange">
@@ -83,7 +84,6 @@
               <div class="couponposition">
                 <!-- <h3>COUPON</h3> -->
                 <h3 class="rotate-text">${{ coupon.DISCOUNT }}</h3>
-                <h4 class="rotate-text">折價券</h4>
               </div>
             </div>
           </div>
@@ -94,53 +94,78 @@
         <div class="editmember" v-if="currentTab == 'tab3'">
           <div class="memberdata" v-if="!isEditing">
             <h3>會員資料</h3>
-            <ul>
-              <li>
-                <h4>帳號：{{ user.email }}</h4>
-              </li>
-              <li>
-                <h4>密碼：{{ user.password }}</h4>
-              </li>
-              <li>
-                <h4>姓名：{{ user.name }}</h4>
-              </li>
-              <li>
-                <h4>電話：{{ user.phone }}</h4>
-              </li>
-            </ul>
-            <div><button class="btn btnedit" @click="isEditing = true">資料變更</button></div>
+            <div class="memberdatacard">
+              <div class="memberdatacardleft">
+                <h3>會員卡</h3>
+                <img src="../assets/img/adventurerbear.jpg" alt="" class="member-photo">
+                <h4>{{ user.name }}</h4>
+              </div>
+              <div class="memberdatacardright">
+              <h3>會員卡</h3>
+              <ul>
+                <li>
+                  <h4>帳號：{{ user.email }}</h4>
+                </li>
+                <li>
+                  <h4>密碼：{{ user.password }}</h4>
+                </li>
+                <li>
+                  <h4>電話：{{ user.phone }}</h4>
+                </li>
+              </ul>
+            </div>  
+            </div>
+            <div class="btnlocation"><button class="btn btnedit" @click="isEditing = true">資料變更</button></div>
           </div>
           <div class="editmemberdata" v-else>
             <h3>會員資料修改</h3>
-            <ul>
-              <li>
-                <h4>帳號：{{ user.email }}</h4>
-              </li>
-              <li>
-                <div class="flexinput">
-                  <h4>修改密碼：</h4><input type="text" class="editphone" v-model="editedUser.password">
-                </div>
-              </li>
-              <li>
-                <div class="flexinput">
-                  <h4>請再次輸入密碼：</h4><input type="text" class="editphone" v-model="editedUser.passwordConfirm">
-                </div>
-              </li>
-              <li>
-                <div class="flexinput">
-                  <h4>修改姓名：</h4><input type="text" class="editphone" v-model="editedUser.name">
-                </div>
-              </li>
-              <li>
-                <div class="flexinput">
-                  <h4>電話：</h4><input type="text" class="editphone" v-model="editedUser.phone" maxlength="10"
-                    pattern="^09\d{8}$">
-                </div>
-              </li>
-            </ul>
-            <div>
+            <div class="memberdatacard">
+              <div class="memberdatacardleft">
+                <h3>會員卡</h3>
+                <img src="../assets/img/adventurerbear.jpg" alt="" class="member-photo">
+                <h4>{{ editedUser.name }}</h4>
+              </div>
+              <div class="memberdatacardright">
+                <h3>會員卡</h3>
+                <ul>
+                  <li>
+                    <h4>帳號：{{ user.email }}</h4>
+                  </li>              
+                  <li>
+                    <h4>密碼：{{  editedUser.password }}</h4>
+                  </li>
+                  <li>
+                    <h4>電話：{{ editedUser.phone }}</h4>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="btnlocation">
               <button class="btn btnedit" @click="saveChanges">儲存變更</button>
               <button class="btn btnedit" @click="isEditing = false">取消</button>
+              <ul>
+                <li>
+                    <div class="flexinput">
+                      <h4>修改密碼：</h4><input type="text" class="editphone" v-model="editedUser.password"  placeholder="請輸入新密碼">
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flexinput">
+                      <h4>請再次輸入密碼：</h4><input type="text" class="editphone" v-model="editedUser.passwordConfirm" placeholder="請再次輸入新密碼">
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flexinput">
+                      <h4>修改姓名：</h4><input type="text" class="editphone" v-model="editedUser.name" placeholder="請輸入姓名">
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flexinput">
+                      <h4>電話：</h4><input type="text" class="editphone" v-model="editedUser.phone" maxlength="10"
+                        pattern="^09\d{8}$" placeholder="請輸入電話">
+                    </div>
+                  </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -159,6 +184,7 @@ import Footerbar from '../components/Footerbar.vue';
 import StarRating from '../components/StarRating.vue';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import ScrollToTop from '../components/ScollToTop.vue';
 
 
 export default {
@@ -168,6 +194,7 @@ export default {
     TopNavbar,
     Footerbar,
     StarRating,
+    ScrollToTop,
   },
   created() {
     const tab = this.$route.query.tab;
@@ -543,7 +570,7 @@ export default {
         name: user.name,
         phone: user.phone,
         password: user.password, // 直接傳送明文密碼
-        passwordConfirm : password
+        passwordConfirm : user.password
       };
       // axios.post(import.meta.env.VITE_API_BASE + '/api/editmemberdata.php', payload)
         axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)
