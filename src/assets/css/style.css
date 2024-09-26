@@ -4898,6 +4898,7 @@ ul#menuBar li:hover > ul {
 .confrim p {
   font-size: 14px;
   padding-left: 10px;
+  cursor: pointer;
 }
 @media (max-width: 820px) {
   .confrim p {
@@ -4944,6 +4945,13 @@ ul#menuBar li:hover > ul {
 
 .order_right .orderLabel {
   display: flex;
+  align-items: center;
+}
+
+.order_right .orderLabel h6 {
+  color: #FEDA77;
+  font-size: 16px;
+  margin-left: 15px;
 }
 
 .order_right .details select {
@@ -5358,6 +5366,7 @@ ul#menuBar li:hover > ul {
 
 .pay_right .orderLabel {
   display: flex;
+  align-items: center;
 }
 
 .pay_right .details select {
