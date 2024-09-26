@@ -86,12 +86,10 @@ export default {
           newstext: "謎因工作室神祕新關卡即將於2024年11月推出！我們……Read More"
         }
       ],
-
       // 當前顯示的新聞索引
       currentIndex: 0,
       // 每頁顯示的新聞數量，初始化 itemsPerPage
       itemsPerPage: 3,
-
       // 控制 landing page 的顯示
       showLandingPage: false,
     };
@@ -99,7 +97,6 @@ export default {
   },
   computed: {
     // 根據當前索引和每頁顯示數量計算可見的新聞
-
     visibleAnnouncements() {
       return this.announcements.slice(this.currentIndex, this.currentIndex + this.itemsPerPage);
     }
@@ -113,14 +110,31 @@ export default {
     },
     // 顯示上一頁新聞
     prevSlide() {
+      // if (this.currentIndex > 0) {
+      //   this.currentIndex--;
+      // }
+      // 確保不低於0
       if (this.currentIndex > 0) {
-        this.currentIndex--;
+        this.currentIndex -= this.itemsPerPage;
+        // 確保不低於0
+        if (this.currentIndex < 0) {
+          this.currentIndex = 0;
+        }
       }
     },
     // 顯示下一頁新聞
     nextSlide() {
-      if (this.currentIndex < this.news.length - this.itemsPerPage) {
-        this.currentIndex++;
+      // if (this.currentIndex < this.announcements.length - this.itemsPerPage) {
+      //   this.currentIndex++;
+      // }
+      // 計算下一頁的起始索引
+      const nextIndex = this.currentIndex + this.itemsPerPage;
+      // 確保不超過新聞數量的範圍
+      if (nextIndex < this.announcements.length) {
+        this.currentIndex = nextIndex;
+      } else {
+        // 如果超過範圍，則顯示最後一頁
+        this.currentIndex = this.announcements.length - this.itemsPerPage;
       }
     },
     // 根據窗口寬度更新每頁顯示的新聞數量
@@ -138,7 +152,7 @@ export default {
     },
     fetchAnnouncements() {
       // fetch('http://localhost/appleyy/public/php/api/announcement.php')
-        fetch(import.meta.env.VITE_API_BASE + '/api/announcement.php')
+      fetch(import.meta.env.VITE_API_BASE + '/api/announcement.php')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -150,7 +164,9 @@ export default {
           if (data.error) {
             throw new Error(data.error);
           }
-          this.announcements = data.length ? data : this.news;
+          // this.announcements = data.length ? data : this.news;
+          // 確保資料按照 PUBLISH_DATE 降序排列
+          this.announcements = data.length ? data.sort((a, b) => new Date(b.PUBLISH_DATE) - new Date(a.PUBLISH_DATE)) : this.news;
         })
         .catch(error => {
           console.error('Error fetching announcements:', error);
@@ -177,7 +193,7 @@ export default {
   },
   mounted() {
 
-    if(!localStorage.getItem('popupDisplayed')){
+    if (!localStorage.getItem('popupDisplayed')) {
       this.showLandingPage = true;
       localStorage.setItem('popupDisplayed', 'true');
     }
@@ -304,13 +320,11 @@ export default {
 
           <span class="close_page" @click="closeLandingPage">&times;</span>
 
-
           <div class="error_information">
             <p><span>[plugin: vite:vue] </span>
               Error: Undefined variable 'reservation'. Please enter it to proceed.(10:1)</p>
 
           </div>
-
 
           <div class="error_vue">
             <p> Address:台北市密逃路8之10號/台北館/限時主題/代碼深淵.vue</p>
@@ -338,7 +352,6 @@ export default {
               </p>
             </div>
           </div>
-
 
           <div class="error_other">
             <p>at constructor (C:\xampp\htdocs\deep_code\node_modules\@babel\parser\lib\index.js:512:25)</p>
