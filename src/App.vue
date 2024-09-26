@@ -1,18 +1,18 @@
 <template>
-  <TopNavbar :isLoggedIn="isLoggedIn"
+  <!-- <TopNavbar :isLoggedIn="isLoggedIn"
     @login="handleLogin"
-    @logout="handleLogout" />
-  <LoginRegisterPopup v-if="showLoginPopup" @login="handleLogin" @close="showLoginPopup = false" />
+    @logout="handleLogout" /> -->
+  <!-- <LoginRegisterPopup v-if="showLoginPopup" @login="handleLogin" @close="showLoginPopup = false" /> -->
   <router-view></router-view>
 </template>
 
 <script>
 
-import LoginRegisterPopup from './components/login.vue';
+//import LoginRegisterPopup from './components/login.vue';
 export default {
-  components: {
-        LoginRegisterPopup,
-    },
+  // components: {
+  //   LoginRegisterPopup,
+  // },
   data() {
     return {
       isLoggedIn: false,
@@ -41,7 +41,7 @@ export default {
         this.user = null; // 清空用戶資料
       }
     },
-  },    
+  },
   watch: {
     $route(to) {
       document.title = to.meta.title || '主題頁';

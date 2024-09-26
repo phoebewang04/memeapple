@@ -20,6 +20,7 @@ import { createPinia } from 'pinia'
 import createRouter from './router/index'
 // 這是日曆
 import VCalendar from 'v-calendar';
+import 'v-calendar/style.css';
 // 基礎
 import App from './App.vue'
 // AOS Import

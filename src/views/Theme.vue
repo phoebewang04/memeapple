@@ -36,9 +36,9 @@
             <div :class="['theme_number', all_data[$route.params.id].themeClass]">
                 <div v-for="(bar, index) in all_data[$route.params.id].bar" :key="index">
                     <span>{{ bar.title }}</span>
-                    <div :class="['progress_bar', all_data[$route.params.id].themeClass]">
+                    <div :class="['progress_bar', all_data[$route.params.id].themeClass]" ref="progressBars">
                         <div :class="['progress', all_data[$route.params.id].themeClass]"
-                            :style="{ width: bar.per + '%' }">{{ bar.per }}%</div>
+                            :style="{ width: isVisible ? bar.per + '%' : '0%' }">{{ bar.per }}%</div>
                     </div>
                 </div>
             </div>
@@ -74,8 +74,7 @@
         <section :class="['theme_marketing_container', all_data[$route.params.id].themeClass]">
             <div v-for="(textSec, index) in all_data[$route.params.id].textSec" :key="index" class="theme_marketing"
                 :style="{ backgroundImage: `url(${textSec.backgroundImage})` }"
-                :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'"
-                data-aos-offset="200" data-aos-duration="1000">
+                :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-offset="200" data-aos-duration="1000">
                 <div class="theme_marketing_text">
                     <h3>{{ textSec.title }}</h3>
                     <p>{{ textSec.content }}</p>
@@ -123,7 +122,7 @@
                 <div class="theme_wrapper" ref="theme_wrapper">
                     <ul class="theme_carousel">
                         <li v-for="(card, index) in all_data[$route.params.id].otherTheme" :key="index"
-                            class="theme_card">
+                            :class="['theme_card', all_data[$route.params.id].themeClass]">
                             <router-link :to="{ path: `/Theme/${card.id}` }">
                                 <img :src="card.src" :alt="card.title">
                                 <h4>{{ card.title }}</h4>
@@ -138,7 +137,9 @@
 
     </main>
 
+
     <Footerbar />
+    <ScrollToTop />
 
 </template>
 
@@ -148,13 +149,14 @@ import { all_data } from '../assets/js/all_data.js';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
+import ScrollToTop from '../components/ScollToTop.vue';
 import themeAlart from 'sweetalert2';
 import themeAOS from 'aos';
 import 'aos/dist/aos.css';
 
 // import all_data from 'xxx.js'
 export default {
-    components: { TopNavbar, Footerbar, themeAlart, themeAOS },
+    components: { TopNavbar, Footerbar, themeAlart, themeAOS, ScrollToTop },
     data() {
         // console.log(this.$route.query);
         // console.log(this.$route.query.id);
@@ -165,6 +167,9 @@ export default {
 
             //輪播
             cardWidth: 0,
+
+            // progress_bar
+            isVisible: false,
         }
     },
     mounted() {
@@ -172,6 +177,8 @@ export default {
         //輪播
         this.cardWidth = this.$refs.theme_wrapper.querySelector('.theme_card').offsetWidth;
         // console.log(this.cardWidth);
+
+        this.setupObserver();
 
     },
     updated() {
@@ -205,8 +212,23 @@ export default {
             const scrollAmount = direction === 'left' ? -this.cardWidth : this.cardWidth;
             wrapper.scrollLeft += scrollAmount;
         },
+        //進度條指數
+        setupObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.isVisible = true;
+                    } else {
+                        this.isVisible = false;
+                    }
+                });
+            });
 
-        //滾動出現血手印
+            this.$refs.progressBars.forEach((progressBar) => {
+                observer.observe(progressBar);
+            });
+        }
+
     },
 };
 </script>

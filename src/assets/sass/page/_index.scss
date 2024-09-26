@@ -1232,7 +1232,6 @@
     }
 }
 
-
 .announcement-title {
     text-align: center;
     font-size: 40px;
@@ -1263,7 +1262,7 @@
 
 .theme_forindex {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     width: 100%;
 
@@ -1273,7 +1272,20 @@
     }
 }
 
+.News-swiper-button-prev{
+    display: flex;
+    align-items: center;
+}
+
+.News-swiper-button-next{
+    display: flex;
+    align-items: center;
+}
+
 .index-news-li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; // 讓內容均勻分佈
     text-align: center;
     padding: 20px 0;
     transition: background-color .4s ease-in-out;
@@ -1288,7 +1300,7 @@
     }
 
     &:hover {
-        background-color: map-get($colors, midnight);
+        background-color: map-get($colors, black);
     }
 
     h3 {

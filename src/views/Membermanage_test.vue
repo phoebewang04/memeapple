@@ -57,7 +57,7 @@
                     <p>TWD 2000元</p>
                     <!-- 問卷填寫按鈕 -->
                     <button v-if="order.ORDER_STATUS === '已使用'" class="questionwrite"
-                      @click="orderquestion(order)">問卷填寫</button>
+                      @click="orderquestion()">問卷填寫</button>
                     <!-- 取消訂單按鈕 -->
                     <button v-else-if="order.ORDER_STATUS === '已預訂'" class="cancelorder"
                       @click="ordercancel(order)">取消訂單</button>
@@ -254,8 +254,8 @@ export default {
           memberId: this.memberId
         };
         console.log('params: ', params)
-        const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/Order.php', { params });
-        // const response = await axios.get('http://localhost/meme_apple/public/php/api/Order.php', { params });
+        // const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/Order.php', { params });
+         const response = await axios.get('http://localhost/appleTeam/public/php/api/Order.php', { params });
         console.log(import.meta.env.VITE_API_BASE);
         console.log('response.data: ', response.data);
         this.orders = response.data;
@@ -279,8 +279,8 @@ export default {
 
       if (result.isConfirmed) {
         try {
-          const response = await axios.post(import.meta.env.VITE_API_BASE +'/api/OrderCancel.php', {
-            // const response = await axios.post('http://localhost/meme_apple/public/php/api/OrderCancel.php', {
+          // const response = await axios.post(import.meta.env.VITE_API_BASE +'/api/OrderCancel.php', {
+             const response = await axios.post('http://localhost/appleTeam/public/php/api/OrderCancel.php', {
             orderId: order.ORDER_ID,
             status: 3
           });

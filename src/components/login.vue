@@ -15,7 +15,7 @@
 
                 <div class="mainLogin" v-if="currentlogin === 'login'">
                     <form @submit.prevent="submitLogin">
-                        <span class="close" @click="closePopup">&times;</span>
+                        <span class="member_close" @click="closePopup">&times;</span>
                         <ol id="mainLogin">
                             <li><span>會員登入</span></li>
                             <!-- <li><i class="fa-solid fa-envelope"></i><h4>帳號</h4></li> -->
@@ -188,7 +188,7 @@ export default {
         async submitLogin() {
             try {
                 const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/login.php', {
-                // const response = await axios.post('http://localhost/sweethome/meme/public/php/api/login.php', {
+                // const response = await axios.post('http://localhost/appleyy/public/php/api/login.php', {
                     username: this.username,
                     password: this.password
                 });
@@ -274,7 +274,7 @@ export default {
             // 如果所有檢查都通過，則進行註冊請求
             try {
                 const response = await axios.post(import.meta.env.VITE_API_BASE +'/api/register.php', {
-                // const response = await axios.post('http://localhost/sweethome/meme/public/php/api/register.php', {
+                // const response = await axios.post('http://localhost/appleyy/public/php/api/register.php', {
                     email: this.registerEmail,
                     password: this.registerPassword,
                     name: this.registerName,

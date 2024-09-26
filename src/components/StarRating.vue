@@ -16,7 +16,7 @@
             <i class="fas fa-star"></i>
           </span>
         </div>
-        <button id="btnrating" @click="showAlert">送出</button>
+        <button id="btnrating" @click="showAlertA">送出</button>
       </div>
     </div>
   </div>
@@ -28,6 +28,12 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default {
+  props: {
+  orderId: {
+    type: String,
+    required: true
+    }
+  },
   data() {
     return {
       visible: true,
@@ -37,7 +43,13 @@ export default {
         { label: '驚嚇指數', star: 0 },
         { label: '推薦指數', star: 0 },
       ],
+      
     };
+  },
+  computed: {
+  filteredOrders() {
+    return this.orders.filter(order => order.MEMBER_ID === this.memberId);
+    }
   },
   mounted() {
     const storedTasks = JSON.parse(localStorage.getItem("tasks"));
@@ -53,7 +65,7 @@ export default {
     closePopup() {
       this.$emit('close'); // 通知父組件關閉
     },
-    showAlert() {
+    showAlertA() {
       Swal.fire({
         title: '確認送出評分?',
         text: '你確定要送出這些評分嗎?',
@@ -68,7 +80,16 @@ export default {
       });
     },
     submitRatings() {
-        axios.post('/api/submit-ratings', this.tasks)
+
+        const paload = {
+          orderId: this.orderId, // 將 orderId 加入 paload
+          difficult: this.tasks[0].star, 
+          scary: this.tasks[1].star,     
+          recommand: this.tasks[2].star, 
+        };
+        console.log(paload);
+        axios.post(import.meta.env.VITE_API_BASE + '/api/starrating.php', paload)
+        // axios.post('http://localhost/sweethome/meme/public/php/api/starrating.php', paload)
           .then(response => {
             console.log('送出成功', response.data);
             this.closePopup(); // 送出後關閉 popup

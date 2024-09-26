@@ -341,11 +341,13 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    
 }
 
 .confrim p {
     font-size: map-get($fontsize , p1);
     padding-left: 10px;
+    cursor: pointer;
 
     @include rwd(820px){
         font-size: map-get($fontsize , p);
@@ -395,6 +397,13 @@
 
 .order_right .orderLabel {
     display: flex;
+    align-items: center;
+}
+
+.order_right .orderLabel h6 {
+    color: #FEDA77;
+    font-size: 16px;
+    margin-left: 15px;
 }
 
 .order_right .details select {
