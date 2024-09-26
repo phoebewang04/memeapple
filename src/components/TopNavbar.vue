@@ -22,6 +22,10 @@ export default {
     };
   },
   methods: {
+    handleScroll() {
+      console.log('滾動事件觸發');
+      console.log('visible_active:', this.visible_active);
+    },
     showMenuBar() {
       if (window.innerWidth <= 700) {
         this.visible_active = !this.visible_active;
@@ -84,19 +88,14 @@ export default {
       this.showThemes = !this.showThemes;
     },
   },
-  // watch: {
-  //   showPopup(newVal) {
-  //     if (newVal) {
-  //       this.closeMenu(); // 當 showPopup 為 true 時關閉 header 選單
-  //     }
-  //   }
-  // },
   created() {
     this.checkLoginStatus();
     this.handleResize();
   },
   mounted() {
     window.addEventListener('resize', this.handleResize);
+    window.addEventListener('scroll', this.handleScroll);
+    console.log('mounted: visible_active:', this.visible_active);
 
     // 檢查螢幕寬度
     if (window.innerWidth > 700) {
@@ -139,17 +138,31 @@ export default {
         <ul>
           <li @click="toggleThemes">台北館
             <ul v-if="showThemes">
-              <router-link to="/Theme/1" class="dropDown" @click="closeMenu"><li>成都醫院</li></router-link>
-              <router-link to="/Theme/2" class="dropDown" @click="closeMenu"><li>時光迷宮</li></router-link>
-              <router-link to="/Theme/3" class="dropDown" @click="closeMenu"><li>末日庇護所</li></router-link>
-              <router-link to="/Theme/4" class="dropDown" @click="closeMenu"><li>代碼深淵</li></router-link>
+              <router-link to="/Theme/1" class="dropDown" @click="closeMenu">
+                <li>成都醫院</li>
+              </router-link>
+              <router-link to="/Theme/2" class="dropDown" @click="closeMenu">
+                <li>時光迷宮</li>
+              </router-link>
+              <router-link to="/Theme/3" class="dropDown" @click="closeMenu">
+                <li>末日庇護所</li>
+              </router-link>
+              <router-link to="/Theme/4" class="dropDown" @click="closeMenu">
+                <li>代碼深淵</li>
+              </router-link>
             </ul>
           </li>
           <li @click="toggleThemes">台中館
             <ul v-if="showThemes">
-              <router-link to="/Theme/5" class="dropDown" @click="closeMenu"><li>逃離武石監</li></router-link>
-              <router-link to="/Theme/6" class="dropDown" @click="closeMenu"><li>恐怖密室</li></router-link>
-              <router-link to="/Theme/7" class="dropDown" @click="closeMenu"><li>逃出虛空</li></router-link>
+              <router-link to="/Theme/5" class="dropDown" @click="closeMenu">
+                <li>逃離武石監</li>
+              </router-link>
+              <router-link to="/Theme/6" class="dropDown" @click="closeMenu">
+                <li>恐怖密室</li>
+              </router-link>
+              <router-link to="/Theme/7" class="dropDown" @click="closeMenu">
+                <li>逃出虛空</li>
+              </router-link>
             </ul>
           </li>
         </ul>

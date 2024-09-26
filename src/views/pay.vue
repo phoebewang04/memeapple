@@ -291,7 +291,7 @@ export default {
             });
 
             console.log('Sending data:', dataToSend);
-             axios.get(import.meta.env.VITE_API_BASE + '/api/pay.php', dataToSend)
+             axios.post(import.meta.env.VITE_API_BASE + '/api/pay.php', dataToSend)
                 // axios.post('http://localhost/appleTeam/public/php/api/pay.php', dataToSend)
                     .then(response => {
                         if (response.data.status === 'success') {
