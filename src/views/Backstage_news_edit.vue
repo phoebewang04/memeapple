@@ -5,6 +5,8 @@ import FooterbarBack from '../components/FooterbarBack.vue';
 
 import axios from 'axios';
 
+import Swal from 'sweetalert2';
+
 export default {
     components: {
         TopNavbarBack,
@@ -55,7 +57,13 @@ export default {
             if (user && user.ROLE == 'admin') {
                 this.saveNews();
             } else {
-                alert('看就好，不要玩啦!');
+                // alert('看就好，不要玩啦!');
+                Swal.fire({
+                    title: '無法儲存！',
+                    text: '訪客無法儲存最新消息，請先登入管理者帳號',
+                    confirmButtonColor: '#FCD15B',
+                    confirmButtonText: 'OK'
+                });
             }
         },
         triggerFileInput() {
@@ -139,11 +147,27 @@ export default {
                 });
                 console.log(response);
                 if (response.data.success) {
-                    alert('儲存成功');
-                    this.$router.push('/NewsMenage/');
+                    // alert('儲存成功');
+                    // this.$router.push('/NewsMenage/');
+
+                    Swal.fire({
+                        title: '儲存成功！',
+                        confirmButtonColor: '#FCD15B',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        this.$router.push('/NewsMenage/');
+                    });
                 } else {
                     const message = response.data.message || '儲存失敗';
-                    alert('儲存失敗' + message);
+                    // alert('儲存失敗' + message);
+                    
+                    Swal.fire({
+                        title: '儲存失敗！',
+                        text: message,
+                        confirmButtonColor: '#FCD15B',
+                        confirmButtonText: 'OK'
+                    });
+
                 }
             } catch (err) {
                 console.error('An error occurred: ' + err.message);
