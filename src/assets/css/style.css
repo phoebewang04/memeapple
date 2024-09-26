@@ -238,6 +238,8 @@ ul#menuBar ul li {
   background-color: #35395b;
   cursor: pointer;
   color: white;
+  font-size: 18px;
+  line-height: 54px;
 }
 ul#menuBar ul li:hover {
   background-color: #FCD15B;
@@ -601,14 +603,11 @@ ul#menuBar li:hover > ul {
   height: 30px;
   margin: 20px 0;
 }
-.progress_bar.hospital, .progress_bar.time, .progress_bar.Lock, .progress_bar.room, .progress_bar.code {
+.progress_bar.hospital, .progress_bar.time, .progress_bar.Lock, .progress_bar.code {
   background-color: #221F3C;
 }
-.progress_bar.dead {
+.progress_bar.dead, .progress_bar.room, .progress_bar.alien {
   background-color: #121212;
-}
-.progress_bar.alien {
-  background-color: #D8FFDF;
 }
 
 .progress {
@@ -616,6 +615,7 @@ ul#menuBar li:hover > ul {
   line-height: 30px;
   white-space: nowrap;
   border-radius: 16px 0 0 16px;
+  transition: width 1s ease;
 }
 .progress.hospital {
   background-color: #870801;
@@ -755,6 +755,9 @@ ul#menuBar li:hover > ul {
 }
 .theme_icon.code p {
   color: #AADDEC;
+}
+.theme_icon.alien p {
+  color: #D8FFDF;
 }
 
 .theme_marketing_container {
@@ -1459,7 +1462,7 @@ ul#menuBar li:hover > ul {
 #toTopBTN {
   position: fixed;
   /* 固定位置 */
-  top: 65%;
+  top: 78%;
   right: 30px;
   z-index: 99;
   border: none;
@@ -1480,12 +1483,12 @@ ul#menuBar li:hover > ul {
   #toTopBTN {
     padding: 8px;
     right: 12px;
-    top: 70%;
+    top: 80%;
   }
 }
 @media (max-width: 376px) {
   #toTopBTN {
-    top: 60%;
+    top: 75%;
   }
 }
 @keyframes float {

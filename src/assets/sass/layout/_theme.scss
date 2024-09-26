@@ -137,17 +137,13 @@
     &.hospital,
     &.time,
     &.Lock,
-    &.room,
     &.code {
         background-color: map-get($colors, midnight);
     }
 
-    &.dead {
+    &.dead,
+    &.room,&.alien {
         background-color: #121212;
-    }
-
-    &.alien {
-        background-color: #D8FFDF;
     }
 }
 
@@ -156,6 +152,7 @@
     line-height: 30px;
     white-space: nowrap;
     border-radius: 16px 0 0 16px;
+    transition: width 1s ease;
 
 
     &.hospital {
@@ -259,8 +256,8 @@
     animation: fly 1s linear infinite;
 }
 
-@keyframes fly{
-    50%{
+@keyframes fly {
+    50% {
         transform: translateY(10px);
     }
 }
@@ -348,6 +345,12 @@
         }
     }
 
+    &.alien{
+        p{
+            color: #D8FFDF;
+        }
+    }
+
 }
 
 // -----亮點icon end-----
@@ -432,23 +435,23 @@
         background-color: map-get($colors , gold);
 
 
-        &:hover{
-            background-color:map-get($colors , yellow) ;
+        &:hover {
+            background-color: map-get($colors , yellow);
         }
     }
 
     &.time {
         background-color: map-get($colors , underyellow);
 
-        &:hover{
-            background-color:map-get($colors , gold) ;
+        &:hover {
+            background-color: map-get($colors , gold);
         }
     }
 
     &.dead {
         background-color: #BF9773;
 
-        &:hover{
+        &:hover {
             background-color: #c6a588;
         }
     }
@@ -456,7 +459,7 @@
     &.code {
         background-color: #90E7F2;
 
-        &:hover{
+        &:hover {
             background-color: #07D691;
         }
     }
@@ -464,15 +467,15 @@
     &.Lock {
         background-color: #C8D1E0;
 
-        &:hover{
-            background-color:whitesmoke;
+        &:hover {
+            background-color: whitesmoke;
         }
     }
 
     &.room {
         background-color: #8DA18D;
 
-        &:hover{
+        &:hover {
             background-color: #99ae99;
         }
     }
@@ -480,23 +483,16 @@
     &.alien {
         background-color: #6EE742;
 
-        &:hover{
+        &:hover {
             background-color: #D8FFDF;
         }
     }
-    
+
 
 
 }
 
-
-
-
-
-
 // -----按鈕 end-----
-
-
 
 
 // -----注意事項 start-----
@@ -603,15 +599,22 @@
 
             &:hover {
 
-                &.hospital,&.time,&.code,&.Lock{
+                transition: .3s;
+
+                &.hospital,
+                &.time,
+                &.code,
+                &.Lock {
                     background-color: map-get($colors , midnight);
                 }
 
-                &.dead,&.room,&.alien{
+                &.dead,
+                &.room,
+                &.alien {
                     background-color: map-get($colors , black);
                 }
-                
-                transition: .3s;
+
+
             }
 
             img {

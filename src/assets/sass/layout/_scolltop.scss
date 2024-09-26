@@ -1,7 +1,7 @@
 #toTopBTN {
   position: fixed;
   /* 固定位置 */
-  top: 65%;
+  top: 78%;
   right: 30px;
   z-index: 99;
   border: none;
@@ -23,11 +23,11 @@
   @include phone {
     padding: 8px;
     right: 12px;
-    top: 70%;
+    top: 80%;
   }
 
   @include rwd(376px) {
-    top: 60%;
+    top: 75%;
   }
 
   @keyframes float {
