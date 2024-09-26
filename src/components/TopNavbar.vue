@@ -139,17 +139,17 @@ export default {
         <ul>
           <li @click="toggleThemes">台北館
             <ul v-if="showThemes">
-              <li><router-link to="/Theme/1" class="dropDown" @click="closeMenu">成都醫院</router-link></li>
-              <li><router-link to="/Theme/2" class="dropDown" @click="closeMenu">時光迷宮</router-link></li>
-              <li><router-link to="/Theme/3" class="dropDown" @click="closeMenu">末日庇護所</router-link></li>
-              <li><router-link to="/Theme/4" class="dropDown" @click="closeMenu">代碼深淵</router-link></li>
+              <router-link to="/Theme/1" class="dropDown" @click="closeMenu"><li>成都醫院</li></router-link>
+              <router-link to="/Theme/2" class="dropDown" @click="closeMenu"><li>時光迷宮</li></router-link>
+              <router-link to="/Theme/3" class="dropDown" @click="closeMenu"><li>末日庇護所</li></router-link>
+              <router-link to="/Theme/4" class="dropDown" @click="closeMenu"><li>代碼深淵</li></router-link>
             </ul>
           </li>
           <li @click="toggleThemes">台中館
             <ul v-if="showThemes">
-              <li><router-link to="/Theme/5" class="dropDown" @click="closeMenu">逃離武石監</router-link></li>
-              <li><router-link to="/Theme/6" class="dropDown" @click="closeMenu">恐怖密室</router-link></li>
-              <li><router-link to="/Theme/7" class="dropDown" @click="closeMenu">逃出虛空</router-link></li>
+              <router-link to="/Theme/5" class="dropDown" @click="closeMenu"><li>逃離武石監</li></router-link>
+              <router-link to="/Theme/6" class="dropDown" @click="closeMenu"><li>恐怖密室</li></router-link>
+              <router-link to="/Theme/7" class="dropDown" @click="closeMenu"><li>逃出虛空</li></router-link>
             </ul>
           </li>
         </ul>

@@ -1,5 +1,6 @@
 <template>
   <TopNavbar />
+  <ScrollToTop />
   <main class="main-announcement">
     <section class="wrapper-announcement">
       <!-- 中央內容 -->
@@ -8,7 +9,7 @@
       <section v-if="announcement">
         <div class="content-announcement-new">
           <!-- 左邊圖像內容 -->
-          <section class="announcement-img">
+          <section class="announcement-img" data-aos="fade-up" data-aos-delay="80">
             <!-- 動態綁定圖片的 src 屬性，顯示公告的圖片 -->
             <!-- IMG 是 NEWS表格的 圖片欄位名稱 -->
             <!-- <img :src="`/${announcement.IMG}`" alt="" class="announcementPic"> -->
@@ -16,7 +17,7 @@
           </section>
 
           <!-- 右邊文字內容 -->
-          <section class="announcement-text">
+          <section class="announcement-text" data-aos="fade-up" data-aos-delay="100">
             <!-- 顯示公告的主題 ， TOPIC 是 NEWS 表格的欄位，代表標題 -->
             <h1>{{ announcement.TOPIC }}</h1>
             <!-- 顯示公告的發布日期  ， PUBLISH_DATE 是 NEWS 表格的欄位，代表發布日期-->
@@ -33,7 +34,7 @@
       <!-- 按鈕 -->
       <section class="NewsBack">
         <router-link to="/index/">
-          <button class="btn btnano">回到首頁</button>
+          <button class="btn btnano" data-aos="fade-up" data-aos-delay="120">回到首頁</button>
         </router-link>
       </section>
     </section>
@@ -45,11 +46,15 @@
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
+import ScrollToTop from '../components/ScollToTop.vue'; // 引入返回頂部組件
+import AOS from 'aos'; // 引入AOS動畫庫
+import 'aos/dist/aos.css'; // 引入AOS動畫庫的樣式
 
 export default {
   components: {
     TopNavbar,
-    Footerbar
+    Footerbar,
+    ScrollToTop,
   },
   data() {
     return {
@@ -63,6 +68,20 @@ export default {
     // 這邊路由參數設定請參考  位於router資料夾裡面的index.js
     // 搜尋這一段 { path: '/Announcement/:id', name: 'Announcement', meta: { title: '最新消息' }, component: () => import('../views/Announcement.vue') } 
     this.fetchAnnouncement(this.$route.params.id);
+
+    // 組件掛載後初始化AOS動畫
+    AOS.init({
+      duration: 1200,
+      once: false,
+      easing: 'ease',
+    });
+
+    // 延時刷新AOS動畫
+    this.$nextTick(() => {
+      setTimeout(() => {
+        AOS.refresh(); // 延时刷新 AOS
+      }, 100); // 100ms 延时
+    });
   },
   methods: {
     getImageUrl(imgPath) {
@@ -72,7 +91,7 @@ export default {
     fetchAnnouncement(id) {
       // 你的php需要連結到announcement.php，且你的網址要?id = ${你的id}
       // fetch(`http://localhost/sweethome/meme/public/php/api/announcement.php?id=${id}`)
-        fetch(import.meta.env.VITE_API_BASE + `/api/announcement.php?id=${id}`)
+      fetch(import.meta.env.VITE_API_BASE + `/api/announcement.php?id=${id}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -95,5 +114,12 @@ export default {
       this.fetchAnnouncement(newId);
     }
   }
+  ,
+  updated() {
+    // 組件更新後手動刷新AOS動畫
+    this.$nextTick(() => {
+      AOS.refresh();
+    });
+  },
 }
 </script>

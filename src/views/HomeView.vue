@@ -422,7 +422,7 @@ export default {
               <div class="News-swiper-button-prev">
                 <li @click="prevSlide"><i class="fa-solid fa-caret-left"></i></li>
               </div>
-
+              
               <li class="index-news-li" v-for="(newsItem, index) in visibleAnnouncements" :key="index">
                 <router-link :to="{ name: 'Announcement', params: { id: newsItem.ID } }">
                   <img :src="getImageUrl(newsItem.IMG)" :alt="newsItem.TOPIC">
