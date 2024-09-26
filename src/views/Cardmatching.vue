@@ -171,8 +171,8 @@ export default {
                 // 在調用 API 之前顯示一個 console.log，確認方法被調用
                 // console.log('checkCoupon 方法被調用了，gameId:', gameId);
 
-                // const response = await axios.get(`http://localhost/appleyy/public/php/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
-                const response = await axios.get(import.meta.env.VITE_API_BASE + `/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
+                const response = await axios.get(`http://localhost/appleyy/public/php/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
+                // const response = await axios.get(import.meta.env.VITE_API_BASE + `/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
 
                 console.log('API 回應數據:', response.data);
 
