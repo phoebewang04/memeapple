@@ -43,7 +43,7 @@
                     </div>
                     <!-- ---------遊戲人數---------- -->
                     <div class="amount">
-                    <select name="totalPeople" id="people" v-model="peopleAmount" @change="selectPeople">
+                    <select name="totalPeople" id="people" v-model="peopleAmount" @change="saveToLocalStorage">
                         <option value="0">遊戲人數</option>
                         <option value="4">4 人</option>
                         <option value="5">5 人</option>
@@ -258,11 +258,11 @@
         </div>
 
       
-        <RouterLink :to="{ path: `/Theme/${$route.params.id}/preorder/orderinform` }" @click.prevent="goToNextPage">
+        
             <div class="nextstep" >
                 <button class="btn next_btn" @click="goToNextPage" :disabled="!dataValid" :class="{active: dataValid}">下一步</button>
             </div>
-        </RouterLink> 
+        
     
     </div>
     <Footerbar />
@@ -320,6 +320,18 @@ export default {
     },
 
     methods: {
+        
+        saveToLocalStorage() {
+        const orderData = {
+            storeId: this.$route.params.storeId,
+            themeId: this.$route.params.id,
+            selectedDate: this.selectedDate,
+            selectedTimeSlot: this.selectedTimeSlot,
+            peopleAmount: this.peopleAmount,
+            
+        };
+        localStorage.setItem('orderData', JSON.stringify(orderData));
+        },
         // 當用戶點擊日曆中的某一天時觸發的事件處理器
         onDateChange(date) {
             if (new Date(date.id) < new Date(this.today)) {
@@ -368,9 +380,9 @@ export default {
             console.log("查詢的 themeId：", this.themeId);
             try {
                 // 確保 URL 正確格式化，使用 & 分隔日期和 themeId
-                const response = await axios.get(import.meta.env.VITE_API_BASE + `/api/preorder.php?date=${date}&themeId=${this.themeId}`);
+                 const response = await axios.get(import.meta.env.VITE_API_BASE + `/api/preorder.php?date=${date}&themeId=${this.themeId}`);
                 // const response = await axios.get(
-                //     `http://localhost/appleTeam/public/php/api/preorder.php?date=${date}&themeId=${this.themeId}`
+                //      `http://localhost/appleTeam/public/php/api/preorder.php?date=${date}&themeId=${this.themeId}`
                 // );
                 console.log("伺服器回應：", response); // 檢查伺服器回應
                 this.orders = response.data;// 直接使用回應的資料
@@ -378,11 +390,12 @@ export default {
                 console.log("查詢結果：", this.orders); // 檢查回傳的資料結構
                 } catch (error) {
                     console.error("查詢失敗：", error);
+                    this.orders = []; 
             }
         },
         //比對訂單場次選用時間如有人已選該時段的場次就會變不能選
          updateTimeSlots() {
-        
+     
                 this.timeSlots.forEach(slot => {
                 // 使用 find 方法來檢查 orders，找到匹配的時間
                 const order = this.orders.find(o => {
@@ -392,8 +405,28 @@ export default {
                     return orderTime === slotTime; // 比對時間
                 });
 
+                const currentTime = new Date(); //先設定一個當下時間再去判斷
+
+                if (this.selectedDate === this.today) {
+                const [hours, minutes] = slot.time.replace('：', ':').split(':').map(Number); // 將場次時間轉為小時和分鐘
+                const slotDateTime = new Date(); // 建立新的日期對象來表示場次的時間
+                slotDateTime.setHours(hours, minutes, 0); // 設置場次時間
+
+                    if (slotDateTime <= currentTime) {
+                        slot.disabled = true; // 如果場次時間已過，設置為禁用
+                    } else if (order) {
+                        slot.disabled = !!order; // 已預訂場次設置為禁用
+                    } else {
+                        slot.disabled = false; // 否則場次可選
+                    }
+                } else if (order) {
+                     slot.disabled = !!order; // 已預訂場次設置為禁用
+                } else {
+                     slot.disabled = false; // 否則場次可選
+                }
+                
                 // 如果有匹配的訂單，將該場次設為 disabled
-                slot.disabled = !!order;
+                // slot.disabled = !!order;
             });
         
          },
@@ -419,7 +452,9 @@ export default {
         },
         goToNextPage (){
             localStorage.setItem ('peopleAmount', this.peopleAmount);
-
+       
+            this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform` });
+            
             
         },
     },
@@ -427,17 +462,33 @@ export default {
     computed: {
         dataValid (){
             return (
-                this.selectedDate && this.selectedTimeSlot && this.peopleAmount  
+                this.selectedDate && this.selectedTimeSlot && this.peopleAmount > 0  
             )
             
         }
     },
 
     mounted (){
+        
+        setTimeout(() => {
+            
+            preorderAlert.fire({
+            imageUrl: new URL("@/assets/img/preorder_coupon.png", import.meta.url).href,
+            imageWidth: 190,
+            imageHeight: 100,
+            // title: '優惠通知來嘍',
+            text: '什麼？優惠折扣？想獲得折扣來玩線上體驗吧！',
+            // icon: 'info',
+            iconColor:'#FEDA77',
+            confirmButtonText: '好的',
+            background: '#100E24', // 可自定義背景顏色
+            color:'white',
+            confirmButtonColor:'#FEDA77',
+            });
+        }, 1500);
 
         const themeId = this.$route.params.id;
         this.theme = this.all_data[themeId]; 
-        // this.selectedDate = new Date().toISOString().split("T")[0];
         const today = new Date().toISOString().split('T')[0];
 
         // 將當前日期存入 localStorage
@@ -448,7 +499,8 @@ export default {
          console.log('當天的日期已存入 localStorage:', today);
         this.queryDatabaseByDate(this.selectedDate);
 
-        // localStorage.clear();
+
+
 
     }
 
@@ -466,18 +518,15 @@ export default {
   cursor: not-allowed;
 }
 .enabled {
-  /* color: #100E24;
-  background-color: #FEDA77;
-  cursor: pointer;  */
+
     color: #FCD15B;
     border: 1px solid #FCD15B;
     background-color: #100E24;
+    cursor: pointer; 
 }
 
 .selectTime {
-    /* color: #FCD15B;
-    border: 1px solid #FCD15B;
-    background-color: #100E24; */
+
     color: #100E24;
     background-color: #FEDA77;
     cursor: pointer; 
@@ -485,15 +534,15 @@ export default {
 
 /* -------------日曆的樣式---------------- */
 .vc-bordered {
-    border-radius: 0px;
+    border-radius: 0px !important;
 }
 .vc-pane-container {
-  background-color: #100E24;
-  width: 520px ;
-  height: 375px;
+  background-color: #100E24 !important;
+  width: 520px !important ;
+  height: 375px !important;
 
   @media screen and (max-width: 1100px){
-    width: 430px;
+    width: 430px !important;
   } 
 
   @media screen and (max-width: 1015px){
@@ -509,7 +558,7 @@ export default {
   } 
 
   @media screen and (max-width: 820px){
-    width: 630px;
+    width: 630px !important;
   } 
 
   @media screen and (max-width: 768px){
@@ -529,7 +578,7 @@ export default {
   } 
 
   @media screen and (max-width: 430px) {
-    width: 328px;
+    width: 328px !important;
     
   }
 
@@ -555,74 +604,72 @@ export default {
 }
 
 .vc-header {
-    height: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-left: 25px;
-    padding-right: 25px;
+    height: 40px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
 }
 
 .vc-bordered {
     @media screen and (max-width:430px) {
-        border: none;
+        border: none !important;
     }
 }
 
 .vc-header .vc-arrow {
-    border-radius: 40px ;
-    width: 40px ; 
-    height: 40px;
-    color: #100E24;
+    border-radius: 40px !important;
+    width: 40px !important; 
+    height: 40px !important;
+    color: #100E24 !important;
 }
 
 .vc-base-icon {
-    width: 30px;
-    height: 30px;
+    width: 30px !important;
+    height: 30px !important;
 }
 
 .vc-header .vc-arrow:hover{
-    background-color: #FCD15B;
+    background-color: #FCD15B !important;
 }
 
 .vc-header .vc-title {
-    background-color: #100E24;
-    color: #ffff;
-    font-size: 24px;
+    background-color: #100E24 !important;
+    color: #ffff !important;
+    font-size: 24px !important;
 }
 
 .vc-weekday {
-    color: #ffff;
-    font-size: 20px;
-    margin-bottom: 10px;
+    color: #ffff !important;
+    font-size: 20px !important;
+    margin-bottom: 10px !important;
 }
 
 .vc-weeks {
-    color: #ffff;
+    color: #ffff !important;
 }
 
 
 .vc-day-content {
-    font-size: 18px;
+    font-size: 18px !important;
 }
 
 .vc-day{
-    /* margin-left: 10px;
-    margin-right: 10px; */
-    /* margin: 0px 20px; */
-    margin-bottom: 10px;
+
+    margin-bottom: 10px !important;
 }
 
 .vc-day-content:hover {
-    background-color: #FCD15B;
+    background-color: #FCD15B !important;
 }
 
 .vc-container *:focus {
-    outline: 3px solid #100E24;
-    background-color:#FCD15B;
+    outline: 3px solid #100E24 !important;
+    background-color:#FCD15B !important;
 }
 
 .selected-date {
-    background-color: #FCD15B;  
+    background-color: #FCD15B !important;  
 }
 
 /* ------------------------------------------------------------------------ */
