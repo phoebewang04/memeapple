@@ -322,8 +322,8 @@ export default {
           memberId: this.memberId
         };
         console.log('params: ', params)
-        // const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/order.php', { params });
-        const response = await axios.get('http://localhost/sweethome/meme/public/php/api/Order.php', { params });
+        const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/order.php', { params });
+        // const response = await axios.get('http://localhost/sweethome/meme/public/php/api/Order.php', { params });
         console.log(import.meta.env.VITE_API_BASE);
         console.log('response.data: ', response.data);
         this.orders = response.data;
@@ -347,8 +347,8 @@ export default {
 
       if (result.isConfirmed) {
         try {
-          // const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/ordercancel.php', {
-            const response = await axios.post('http://localhost/sweethome/meme/public/php/api/OrderCancel.php', {
+          const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/ordercancel.php', {
+            // const response = await axios.post('http://localhost/sweethome/meme/public/php/api/OrderCancel.php', {
             orderId: order.ORDER_ID,
             status: 3
           });
