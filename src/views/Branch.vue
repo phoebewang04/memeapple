@@ -2,7 +2,7 @@
 <template>
 
     <TopNavbar />
-
+    <ScrollToTop />
     <div id="wrapper"> 
 
          <!-- ----------------------slogan---------------------- -->
@@ -193,7 +193,7 @@
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
-
+import ScrollToTop from '../components/ScollToTop.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -201,10 +201,12 @@ import { Pagination } from 'swiper/modules';
 
 
     export default {
-        
+
+    
         components: {
             TopNavbar,
             Footerbar,
+            ScrollToTop,
             Swiper,
             SwiperSlide,
         },

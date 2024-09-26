@@ -572,8 +572,8 @@ export default {
         password: user.password, // 直接傳送明文密碼
         passwordConfirm : user.password
       };
-      // axios.post(import.meta.env.VITE_API_BASE + '/api/editmemberdata.php', payload)
-        axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)
+      axios.post(import.meta.env.VITE_API_BASE + '/api/editmemberdata.php', payload)
+        // axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)
         .then(response => {
           Swal.fire('成功', '資料已更新', 'success');
         })
@@ -583,8 +583,8 @@ export default {
         });
     },
     fetchCoupons() {
-      // axios.get(import.meta.env.VITE_API_BASE + `/api/membercoupon.php?member_id=${this.memberId}`)
-        axios.get(`http://localhost/sweethome/meme/public/php/api/membercoupon.php?member_id=${this.memberId}`)
+      axios.get(import.meta.env.VITE_API_BASE + `/api/membercoupon.php?member_id=${this.memberId}`)
+        // axios.get(`http://localhost/sweethome/meme/public/php/api/membercoupon.php?member_id=${this.memberId}`)
         .then(response => {
           if (response.data.error) {
             console.error(response.data.error);
