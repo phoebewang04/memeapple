@@ -144,8 +144,8 @@ export default {
       console.log("查詢月份：", month, year);
       try {
         const response = await axios.get(
-          // import.meta.env.VITE_API_BASE + `/api/dashboard.php?month=${month}&year=${year}`
-           `http://localhost/appleTeam/public/php/api/dashboard.php?month=${month}&year=${year}`
+          import.meta.env.VITE_API_BASE + `/api/dashboard.php?month=${month}&year=${year}`
+          //  `http://localhost/appleTeam/public/php/api/dashboard.php?month=${month}&year=${year}`
         );
         console.log("伺服器回應：", response); // 檢查伺服器回應
         const { themeRevenue = [], storeRevenue = [] } = response.data || {}; // 直接使用回應的資料
@@ -192,8 +192,8 @@ export default {
           keyword: this.selectedOrderId
         };
         console.log('params: ', params)
-        // const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/order.php', { params });
-         const response = await axios.get('http://localhost/appleTeam/public/php/api/order.php', { params });
+        const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/order.php', { params });
+        //  const response = await axios.get('http://localhost/appleTeam/public/php/api/order.php', { params });
         this.paginatedData = response.data;
         console.log('paginatedData: ', this.paginatedData);
       } catch (err){
