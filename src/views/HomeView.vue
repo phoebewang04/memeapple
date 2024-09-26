@@ -110,31 +110,14 @@ export default {
     },
     // 顯示上一頁新聞
     prevSlide() {
-      // if (this.currentIndex > 0) {
-      //   this.currentIndex--;
-      // }
-      // 確保不低於0
       if (this.currentIndex > 0) {
-        this.currentIndex -= this.itemsPerPage;
-        // 確保不低於0
-        if (this.currentIndex < 0) {
-          this.currentIndex = 0;
-        }
+        this.currentIndex--;
       }
     },
     // 顯示下一頁新聞
     nextSlide() {
-      // if (this.currentIndex < this.announcements.length - this.itemsPerPage) {
-      //   this.currentIndex++;
-      // }
-      // 計算下一頁的起始索引
-      const nextIndex = this.currentIndex + this.itemsPerPage;
-      // 確保不超過新聞數量的範圍
-      if (nextIndex < this.announcements.length) {
-        this.currentIndex = nextIndex;
-      } else {
-        // 如果超過範圍，則顯示最後一頁
-        this.currentIndex = this.announcements.length - this.itemsPerPage;
+      if (this.currentIndex < this.announcements.length - this.itemsPerPage) {
+        this.currentIndex++;
       }
     },
     // 根據窗口寬度更新每頁顯示的新聞數量
