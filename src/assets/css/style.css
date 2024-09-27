@@ -7230,7 +7230,7 @@ ul#menuBar li:hover > ul {
 .order_cardusage p {
   border-radius: 0 8px 0 8px;
   color: white;
-  padding: 2px;
+  padding: 4px 10px;
   position: absolute;
   right: 0;
   top: 0;
@@ -7546,7 +7546,12 @@ ul#menuBar li:hover > ul {
 }
 .editmember .member_card_collect .card_collect {
   background-color: #35395b;
-  padding: 48px;
+  width: 100%;
+  height: 100%;
+}
+.editmember .member_card_collect .stamp-image {
+  width: 105px; /* 調整圖片大小 */
+  height: 105px;
 }
 .editmember .btnlocation {
   text-align: center;
