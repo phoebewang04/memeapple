@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 include_once '../sql.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
+// var_dump($data);
 
 // 提取接收到的數據
 $storeId = $data['storeId'] ?? ''; 
@@ -18,10 +19,7 @@ $memberId = $data['memberId'] ?? '';
 $total = $data['total'] ?? 0; 
 // $orderStatus = 2; 
 
-// if (empty($storeId)) {
-//     echo json_encode(["status" => "error", "message" => "缺少 storeId"]);
-//     exit();
-// }
+
 
 
 // 檢查必要的參數是否存在
