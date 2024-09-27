@@ -53,7 +53,7 @@
             <div class="guessNumberBox">
             <input type="text" maxlength="4" placeholder="請輸入四位數字" v-model="guess" :readonly="isReadOnly" @keyup.enter="checkGuess">
             <button id="enterBtn" :disabled="!isValidGuess"  @click="checkGuess" class="btn playBtn">送出</button>
-              <el-button id="answerBtn" @click="showAnswer" class="btn answerBtn">Answer</el-button>  
+            <!-- <el-button id="answerBtn" @click="showAnswer" class="btn answerBtn">Answer</el-button>   -->
             <!-- <el-button id="reloadBtn" @click="reloadPage" class="btn reloadBtn">Reload</el-button>  -->
             </div>
             <!-- -------重新開始------- -->
@@ -412,8 +412,8 @@ export default {
 
             try {
                 
-                // const response = await axios.get(import.meta.env.VITE_API_BASE + `/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
-                 const response = await axios.get(`http://localhost/appleTeam/public/php/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
+                 const response = await axios.get(import.meta.env.VITE_API_BASE + `/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
+                // const response = await axios.get(`http://localhost/appleTeam/public/php/api/coupon.php`, { params: { member_id: memberId, discount: discount } });
                 console.log('API 回應數據:', response.data);
 
                 const result = response.data;
@@ -442,8 +442,8 @@ export default {
                 form_data.append("member_id", memberId);
                 form_data.append("discount", discount);
 
-                // const response = await axios.post(import.meta.env.VITE_API_BASE + "/api/coupon.php", form_data, {
-                 const response = await axios.post("http://localhost/appleTeam/public/php/api/coupon.php", form_data, {
+                const response = await axios.post(import.meta.env.VITE_API_BASE + "/api/coupon.php", form_data, {
+                //  const response = await axios.post("http://localhost/appleTeam/public/php/api/coupon.php", form_data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }

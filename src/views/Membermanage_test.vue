@@ -1,22 +1,17 @@
 <template>
   <TopNavbar />
+  <ScrollToTop />
+  <StarRating v-if="showStarRating" @close="showStarRating = false" :orderId="selectedOrderId" />
   <div class="main">
     <div class="wrappermmange">
       <div class="mmangeleft" id="mmangeleft">
         <button type="button" v-for="tab in tabs" :class="{ active: currentTab == tab.id }" :key="tab.id"
           @click="currentTab = tab.id" class="btn btn_mange">{{ tab.name }}</button>
-        <!-- <button class="btn btn_mange">訂單檢視</button>
-            <button class="btn btn_mange">優惠券</button>
-            <button class="btn btn_mange">會員資料修改</button> -->
       </div>
-
       <div class="mmangeright" id="mmangeright">
         <div class="mangerightitems">
           <button type="button" v-for="tab in tabs" :class="{ active: currentTab == tab.id }" :key="tab.id"
             @click="currentTab = tab.id" class="btn btn_mange">{{ tab.name }}</button>
-          <!-- <button class="btn btn_mange">訂單檢視</button>
-          <button class="btn btn_mange">優惠券</button>
-          <button class="btn btn_mange">會員資料修改</button> -->
         </div>
 
         <div class="ordertext" v-if="currentTab == 'tab1'">
@@ -57,7 +52,8 @@
                     <p>TWD 2000元</p>
                     <!-- 問卷填寫按鈕 -->
                     <button v-if="order.ORDER_STATUS === '已使用'" class="questionwrite"
-                      @click="orderquestion()">問卷填寫</button>
+                      @click="orderquestion(order)">問卷填寫</button>
+                     
                     <!-- 取消訂單按鈕 -->
                     <button v-else-if="order.ORDER_STATUS === '已預訂'" class="cancelorder"
                       @click="ordercancel(order)">取消訂單</button>
@@ -78,55 +74,95 @@
           </div>
         </div>
 
+
         <div class="coupontext" v-if="currentTab == 'tab2'">
-          <div class="couponticket">
-            <img src="../assets/img/banner_Lock.png" class="couponbg">
-            <div class="coupont">
-              <h3>COUPON</h3>
-              <h4>150元</h4>
-              <h4>未使用</h4>
-              <!-- <h4>已使用</h4> -->
+          <div v-for="coupon in coupons" :key="coupon.id" class="couponticket">
+            <div class="couponimg">
+              <img src="../assets/img/game_coupon.png" class="couponbg">
             </div>
+              <h3 class="rotate-text">${{ coupon.DISCOUNT }}</h3>  
           </div>
+
         </div>
 
-        <div class="editmember" v-if="currentTab == 'tab3'">
-          <h3>會員資料修改</h3>
-          <ul>
-            <li>
-              <h4>帳號：</h4>
-            </li>
-            <li>
-              <h4>a123456789@yahoo.com.tw</h4>
-            </li>
-            <li>
-              <h4>生日：</h4>
-            </li>
-            <li>
-              <h4>1987-08-07</h4>
-            </li>
-            <li>
-              <h4>修改密碼：</h4>
-            </li>
-            <li><input type="text" class="editphone" value="********"></li>
-            <li>
-              <h4>請再次輸入密碼：</h4>
-            </li>
-            <li><input type="text" class="editphone" value="********"></li>
-            <li>
-              <h4>修改姓名：</h4>
-            </li>
-            <li><input type="text" class="editphone" value="李小王"></li>
-            <li>
-              <h4>電話：</h4>
-            </li>
-            <li><input type="text" class="editphone" value="0912123123" maxlength="10" pattern="^09\d{8}$"></li>
-          </ul>
-          <div>
-            <button class="btn btnedit">儲存變更</button>
-            <button class="btn btnedit">取消</button>
-          </div>
 
+        <div class="editmember" v-if="currentTab == 'tab3'">
+          <div class="memberdata" v-if="!isEditing">
+            <h3>會員資料</h3>
+            <div class="memberdatacard">
+              <div class="memberdatacardleft">
+                <h3>會員卡</h3>
+                <img src="../assets/img/adventurerbear.jpg" alt="" class="member-photo">
+                <h4>{{ user.name }}</h4>
+              </div>
+              <div class="memberdatacardright">
+              <h3>會員卡</h3>
+              <ul>
+                <li>
+                  <h4>帳號：{{ user.email }}</h4>
+                </li>
+                <li>
+                  <h4>密碼：{{ user.password }}</h4>
+                </li>
+                <li>
+                  <h4>電話：{{ user.phone }}</h4>
+                </li>
+              </ul>
+            </div>  
+            </div>
+            <div class="btnlocation"><button class="btn btnedit" @click="isEditing = true">資料變更</button></div>
+          </div>
+          <div class="editmemberdata" v-else>
+            <h3>會員資料修改</h3>
+            <div class="memberdatacard">
+              <div class="memberdatacardleft">
+                <h3>會員卡</h3>
+                <img src="../assets/img/adventurerbear.jpg" alt="" class="member-photo">
+                <h4>{{ editedUser.name }}</h4>
+              </div>
+              <div class="memberdatacardright">
+                <h3>會員卡</h3>
+                <ul>
+                  <li>
+                    <h4>帳號：{{ user.email }}</h4>
+                  </li>              
+                  <li>
+                    <h4>密碼：{{  editedUser.password }}</h4>
+                  </li>
+                  <li>
+                    <h4>電話：{{ editedUser.phone }}</h4>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="btnlocation">
+              <button class="btn btnedit" @click="saveChanges">儲存變更</button>
+              <button class="btn btnedit" @click="isEditing = false">取消</button>
+              <ul>
+                <li>
+                    <div class="flexinput">
+                      <h4>修改密碼：</h4><input type="text" class="editphone" v-model="editedUser.password"  placeholder="請輸入新密碼">
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flexinput">
+                      <h4>請再次輸入密碼：</h4><input type="text" class="editphone" v-model="editedUser.passwordConfirm" placeholder="請再次輸入新密碼">
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flexinput">
+                      <h4>修改姓名：</h4><input type="text" class="editphone" v-model="editedUser.name" placeholder="請輸入姓名">
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flexinput">
+                      <h4>電話：</h4><input type="text" class="editphone" v-model="editedUser.phone" maxlength="10"
+                        pattern="^09\d{8}$" placeholder="請輸入電話">
+                    </div>
+                  </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -140,9 +176,11 @@ import '../assets/js/vue.global';
 import '../assets/css/style.css';
 import TopNavbar from '../components/TopNavbar.vue';
 import Footerbar from '../components/Footerbar.vue';
+import StarRating from '../components/StarRating.vue';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import LoginPopup from '../components/login.vue';
+import ScrollToTop from '../components/ScollToTop.vue';
+
 
 export default {
   props: ["tasks"],
@@ -150,7 +188,14 @@ export default {
   components: {
     TopNavbar,
     Footerbar,
-    LoginPopup,
+    StarRating,
+    ScrollToTop,
+  },
+  created() {
+    const tab = this.$route.query.tab;
+    if (tab) {
+      this.currentTab = tab; // 或其他初始化邏輯
+    }
   },
   beforeRouteLeave(to, from, next) {
     // Close SweetAlert when leaving the route
@@ -162,16 +207,32 @@ export default {
       //引入 all_data
       all_data: all_data,
       currentTab: "tab1",
+      isEditing: false,
       tabs: [
-        { id: "tab1", name: "訂單檢視" },
-        { id: "tab2", name: "優惠券" },
-        { id: "tab3", name: "會員資料修改" }
+        {
+          id: "tab1",
+          name: "訂單檢視"
+        },
+        {
+          id: "tab2",
+          name: "優惠券"
+        },
+        {
+          id: "tab3",
+          name: "會員資料"
+        }
       ],
       tasks: [],
-      brainIndex: 0,
-      scareIndex: 0,
-      recommendationIndex: 0,
-      memberId: null,
+      user: {},
+      editedUser: {
+        password: '',
+        passwordConfirm: '',
+        name: '',
+        phone: ''
+      },
+      memberId: null, // 定義 memberId
+      coupons: [], // 定義 coupons
+      showStarRating: false,
       orders: [],
       error: null,
       posters: [
@@ -217,8 +278,10 @@ export default {
     // 從 localStorage 獲取會員資料
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
+      this.user = user;
       this.memberId = user.id; // 動態設置 memberId
       this.fetchOrders();
+      this.editedUser = { ...user, passwordConfirm: user.password };
     } else {
       Swal.fire({
         title: '請登入或註冊',
@@ -229,9 +292,9 @@ export default {
         this.$router.push('/index/'); // 重定向到登入頁面
       });
     }
-
     console.log('Tickets on mount:', this.posters);
     console.log('Orders on mount:', this.orders);
+    this.fetchCoupons(); // 獲取優惠券
 
   },
   watch: {
@@ -254,8 +317,8 @@ export default {
           memberId: this.memberId
         };
         console.log('params: ', params)
-        // const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/Order.php', { params });
-         const response = await axios.get('http://localhost/appleTeam/public/php/api/Order.php', { params });
+        const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/order.php', { params });
+        // const response = await axios.get('http://localhost/sweethome/meme/public/php/api/Order.php', { params });
         console.log(import.meta.env.VITE_API_BASE);
         console.log('response.data: ', response.data);
         this.orders = response.data;
@@ -279,8 +342,8 @@ export default {
 
       if (result.isConfirmed) {
         try {
-          // const response = await axios.post(import.meta.env.VITE_API_BASE +'/api/OrderCancel.php', {
-             const response = await axios.post('http://localhost/appleTeam/public/php/api/OrderCancel.php', {
+          const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/ordercancel.php', {
+            // const response = await axios.post('http://localhost/sweethome/meme/public/php/api/OrderCancel.php', {
             orderId: order.ORDER_ID,
             status: 3
           });
@@ -452,76 +515,92 @@ export default {
         position: 'center',
       })
     },
+    taskStar(e, i, star) {
+      this.tasks[i].star = star;
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
+    },
+    saveChanges() {
+     // 初始化錯誤訊息陣列
+      const errorMessages = [];
+
+      // 密碼驗證：至少6個字符，包含字母和數字
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+      if (!passwordRegex.test(this.editedUser.password)) {
+        errorMessages.push('密碼至少需要6個字符，並且包含字母和數字');
+      }
+
+      // 確認密碼是否相同
+      if (this.editedUser.password !== this.editedUser.passwordConfirm) {
+        errorMessages.push('密碼和確認密碼不匹配');
+      }
+
+      // 電話號碼驗證：以09開頭的10位數字
+      const phoneRegex = /^09\d{8}$/;
+      if (!phoneRegex.test(this.editedUser.phone)) {
+        errorMessages.push('電話號碼必須是以09開頭的10位數字');
+      }
+
+      // 如果有錯誤訊息，顯示所有錯誤
+      if (errorMessages.length > 0) {
+        Swal.fire('錯誤', errorMessages.join('<br>'), 'error');
+        return;
+      }
+      
+      // 更新用戶資料
+      this.user.name = this.editedUser.name;
+      this.user.phone = this.editedUser.phone;
+      this.user.password = this.editedUser.password; // 直接使用明文密碼
+      this.user.passwordConfirm = this.editedUser.password;
+      // 更新 localStorage
+      localStorage.setItem('user', JSON.stringify(this.user));
+
+      // 發送請求到後端
+      this.updateUserData(this.user);
+      this.isEditing = false; // 儲存後退出編輯模式
+    },
+    updateUserData(user) {
+      const payload = {
+        id: user.id, // 假設有用戶ID
+        email: user.email,
+        name: user.name,
+        phone: user.phone,
+        password: user.password, // 直接傳送明文密碼
+        passwordConfirm : user.password
+      };
+      axios.post(import.meta.env.VITE_API_BASE + '/api/editmemberdata.php', payload)
+        // axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)
+        .then(response => {
+          Swal.fire('成功', '資料已更新', 'success');
+        })
+        .catch(error => {
+          console.error('更新用戶資料失敗:', error);
+          Swal.fire('失敗', '更新失敗', 'error');
+        });
+    },
+    fetchCoupons() {
+      axios.get(import.meta.env.VITE_API_BASE + `/api/membercoupon.php?member_id=${this.memberId}`)
+        // axios.get(`http://localhost/sweethome/meme/public/php/api/membercoupon.php?member_id=${this.memberId}`)
+        .then(response => {
+          if (response.data.error) {
+            console.error(response.data.error);
+          } else {
+            // Handle the coupons data (e.g., store it in a data property)
+            this.coupons = response.data;
+            console.log('獲取的優惠券:', this.coupons);
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching coupons:', error);
+        });
+    },
     orderquestion(order) {
-      Swal.fire({
-        title: "問卷調查",
-        html:
-          `
-        <div class="star_block">
-            <span>燒腦指數</span>
-            <span class="star" :class="{'-on': task.star >=  1}" @click="$emit('taskStar',$event , index, 1)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  2}" @click="$emit('taskStar',$event , index, 2)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  3}" @click="$emit('taskStar',$event , index, 3)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  4}" @click="$emit('taskStar',$event , index, 4)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  5}" @click="$emit('taskStar',$event , index, 5)"><i class="fas fa-star"></i></span>
-        </div>
-        <div class="star_block">
-            <span>驚嚇指數</span>
-            <span class="star" :class="{'-on': task.star >=  1}" @click="$emit('taskStar',$event , index, 1)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  2}" @click="$emit('taskStar',$event , index, 2)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  3}" @click="$emit('taskStar',$event , index, 3)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  4}" @click="$emit('taskStar',$event , index, 4)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  5}" @click="$emit('taskStar',$event , index, 5)"><i class="fas fa-star"></i></span>
-        </div>
-        <div class="star_block">
-            <span>推薦指數</span>
-            <span class="star" :class="{'-on': task.star >=  1}" @click="$emit('taskStar',$event , index, 1)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  2}" @click="$emit('taskStar',$event , index, 2)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  3}" @click="$emit('taskStar',$event , index, 3)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  4}" @click="$emit('taskStar',$event , index, 4)"><i class="fas fa-star"></i></span>
-            <span class="star" :class="{'-on': task.star >=  5}" @click="$emit('taskStar',$event , index, 5)"><i class="fas fa-star"></i></span>
-        </div>
-        `,
-        confirmButtonColor: "#FCD15B",
-        confirmButtonText: "<span>送出</span>",
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        color: "#100E24",
-        preConfirm: () => {
-          this.saveData();
-        }
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "完成問卷",
-            text: "您已完成問券，歡迎再次光臨",
-            icon: "success",
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            confirmButtonColor: "#FCD15B",
-            confirmButtonText: "<span>OK</span>",
-            color: "#100E24",
-          });
-        }
-      });
-    },
-    generateHtml() {
-    }
-    ,
-    setBrainIndex(index) {
-      this.brainIndex = index;
-    },
-    setScareIndex(index) {
-      this.scareIndex = index;
-    },
-    setRecommendationIndex(index) {
-      this.recommendationIndex = index;
-    },
-    saveData() {
-      // 保存數據的 Vue 方法
-      console.log('Data saved');
+      this.selectedOrderId = order.ORDER_ID;
+      this.showStarRating = true; // 顯示彈出窗口
     },
   },
 
 };
+
+
+
 </script>

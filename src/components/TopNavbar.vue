@@ -18,10 +18,16 @@ export default {
       isLoggedIn: false,
       visible_active: false,
       showPopup: false,
-      showThemes: false, // 控制台北館主題的顯示
+      // showThemes: false, // 控制台北館主題的顯示
+      showTaipeiThemes: false, // 控制台北館主題的顯示
+      showTaichungThemes: false, // 控制台中館主題的顯示
     };
   },
   methods: {
+    handleScroll() {
+      console.log('滾動事件觸發');
+      console.log('visible_active:', this.visible_active);
+    },
     showMenuBar() {
       if (window.innerWidth <= 700) {
         this.visible_active = !this.visible_active;
@@ -81,26 +87,47 @@ export default {
       }, 100); // 延遲顯示 alert，確保頁面已跳轉
     },
     toggleThemes() {
-      this.showThemes = !this.showThemes;
+      // this.showThemes = !this.showThemes;
+
+      // if (window.innerWidth <= 720) {
+      //     this.showThemes = !this.showThemes;
+      // }else if (window.innerWidth > 720) {
+      //     this.showThemes = false;
+      // }
+
+      if (window.innerWidth <= 500) {
+        // this.showThemes = !this.showThemes;
+        this.showTaipeiThemes = !this.showTaipeiThemes;
+        this.showTaichungThemes = !this.showTaichungThemes;
+      }
+    },
+    toggleTaipeiThemes() {
+      if (window.innerWidth <= 500) {
+        this.showTaipeiThemes = true;
+        this.showTaichungThemes = false;
+      }
+    },
+    toggleTaichungThemes() {
+      if (window.innerWidth <= 500) {
+        this.showTaipeiThemes = false;
+        this.showTaichungThemes = true;
+      }
     },
   },
-  // watch: {
-  //   showPopup(newVal) {
-  //     if (newVal) {
-  //       this.closeMenu(); // 當 showPopup 為 true 時關閉 header 選單
-  //     }
-  //   }
-  // },
   created() {
     this.checkLoginStatus();
     this.handleResize();
   },
   mounted() {
     window.addEventListener('resize', this.handleResize);
+    window.addEventListener('scroll', this.handleScroll);
+    console.log('mounted: visible_active:', this.visible_active);
 
     // 檢查螢幕寬度
     if (window.innerWidth > 700) {
-      this.showThemes = true;
+      // this.showThemes = true;
+      this.showTaipeiThemes = true;
+      this.showTaichungThemes = true;
     }
   },
   beforeDestroy() {
@@ -135,21 +162,35 @@ export default {
       <router-link to="/Branch/">
         <li>分館介紹</li>
       </router-link>
-      <li class="themeArea" @click="toggleAllThemes">主題專區
+      <li class="themeArea">主題專區
         <ul>
-          <li @click="toggleThemes">台北館
-            <ul v-if="showThemes">
-              <router-link to="/Theme/1" class="dropDown" @click="closeMenu"><li>成都醫院</li></router-link>
-              <router-link to="/Theme/2" class="dropDown" @click="closeMenu"><li>時光迷宮</li></router-link>
-              <router-link to="/Theme/3" class="dropDown" @click="closeMenu"><li>末日庇護所</li></router-link>
-              <router-link to="/Theme/4" class="dropDown" @click="closeMenu"><li>代碼深淵</li></router-link>
+          <li @click="toggleTaipeiThemes">台北館
+            <ul  v-if="showTaipeiThemes">
+              <router-link to="/Theme/1" class="dropDown" @click="closeMenu">
+                <li>成都醫院</li>
+              </router-link>
+              <router-link to="/Theme/2" class="dropDown" @click="closeMenu">
+                <li>時光迷宮</li>
+              </router-link>
+              <router-link to="/Theme/3" class="dropDown" @click="closeMenu">
+                <li>末日庇護所</li>
+              </router-link>
+              <router-link to="/Theme/4" class="dropDown" @click="closeMenu">
+                <li>代碼深淵</li>
+              </router-link>
             </ul>
           </li>
-          <li @click="toggleThemes">台中館
-            <ul v-if="showThemes">
-              <router-link to="/Theme/5" class="dropDown" @click="closeMenu"><li>逃離武石監</li></router-link>
-              <router-link to="/Theme/6" class="dropDown" @click="closeMenu"><li>恐怖密室</li></router-link>
-              <router-link to="/Theme/7" class="dropDown" @click="closeMenu"><li>逃出虛空</li></router-link>
+          <li @click="toggleTaichungThemes">台中館
+            <ul v-if="showTaichungThemes">
+              <router-link to="/Theme/5" class="dropDown" @click="closeMenu">
+                <li>逃離武石監</li>
+              </router-link>
+              <router-link to="/Theme/6" class="dropDown" @click="closeMenu">
+                <li>恐怖密室</li>
+              </router-link>
+              <router-link to="/Theme/7" class="dropDown" @click="closeMenu">
+                <li>逃出虛空</li>
+              </router-link>
             </ul>
           </li>
         </ul>
@@ -171,4 +212,4 @@ export default {
       <li><router-link to="/Theme_test/">測</router-link></li>
       <li><router-link to="/pay/">結帳</router-link></li>
       <li><router-link to="/dead1A2Bgame/">1A2B</router-link></li> -->
-<!-- <li><router-link to="/minigameL/">華容道</router-link></li> -->
+<!-- <li><router-link to="/pointcard/">集點卡</router-link></li> -->

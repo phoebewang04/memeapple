@@ -50,6 +50,14 @@ export default {
   created() {
     document.title = this.$route.meta.title || '主題頁';
     this.checkLoginStatus(); // 檢查登入狀態
+  },
+
+  //網頁10分鐘後會重新清除localstorage的全部紀錄
+  mounted (){
+    setTimeout(() => {
+        localStorage.clear();
+        console.log("LocalStorage 已被自動清空");
+    }, 480000); 
   }
 };
 </script>
