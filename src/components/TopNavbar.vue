@@ -18,7 +18,9 @@ export default {
       isLoggedIn: false,
       visible_active: false,
       showPopup: false,
-      showThemes: false, // 控制台北館主題的顯示
+      // showThemes: false, // 控制台北館主題的顯示
+      showTaipeiThemes: false, // 控制台北館主題的顯示
+      showTaichungThemes: false, // 控制台中館主題的顯示
     };
   },
   methods: {
@@ -85,7 +87,31 @@ export default {
       }, 100); // 延遲顯示 alert，確保頁面已跳轉
     },
     toggleThemes() {
-      this.showThemes = !this.showThemes;
+      // this.showThemes = !this.showThemes;
+
+      // if (window.innerWidth <= 720) {
+      //     this.showThemes = !this.showThemes;
+      // }else if (window.innerWidth > 720) {
+      //     this.showThemes = false;
+      // }
+
+      if (window.innerWidth <= 500) {
+        // this.showThemes = !this.showThemes;
+        this.showTaipeiThemes = !this.showTaipeiThemes;
+        this.showTaichungThemes = !this.showTaichungThemes;
+      }
+    },
+    toggleTaipeiThemes() {
+      if (window.innerWidth <= 500) {
+        this.showTaipeiThemes = true;
+        this.showTaichungThemes = false;
+      }
+    },
+    toggleTaichungThemes() {
+      if (window.innerWidth <= 500) {
+        this.showTaipeiThemes = false;
+        this.showTaichungThemes = true;
+      }
     },
   },
   created() {
@@ -99,7 +125,9 @@ export default {
 
     // 檢查螢幕寬度
     if (window.innerWidth > 700) {
-      this.showThemes = true;
+      // this.showThemes = true;
+      this.showTaipeiThemes = true;
+      this.showTaichungThemes = true;
     }
   },
   beforeDestroy() {
@@ -134,10 +162,10 @@ export default {
       <router-link to="/Branch/">
         <li>分館介紹</li>
       </router-link>
-      <li class="themeArea" @click="toggleAllThemes">主題專區
+      <li class="themeArea">主題專區
         <ul>
-          <li @click="toggleThemes">台北館
-            <ul v-if="showThemes">
+          <li @click="toggleTaipeiThemes">台北館
+            <ul  v-if="showTaipeiThemes">
               <router-link to="/Theme/1" class="dropDown" @click="closeMenu">
                 <li>成都醫院</li>
               </router-link>
@@ -152,8 +180,8 @@ export default {
               </router-link>
             </ul>
           </li>
-          <li @click="toggleThemes">台中館
-            <ul v-if="showThemes">
+          <li @click="toggleTaichungThemes">台中館
+            <ul v-if="showTaichungThemes">
               <router-link to="/Theme/5" class="dropDown" @click="closeMenu">
                 <li>逃離武石監</li>
               </router-link>

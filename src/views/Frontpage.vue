@@ -10,6 +10,7 @@ const frontpageLogo = ref(null);
 const frontpageBtnR = ref(null);
 const frontpageBtnL = ref(null);
 const frontpageSlogran = ref(null);
+const TibameDeclare = ref(null);
 
 onMounted(() => {
   // 當組件掛載時觸發動畫
@@ -32,7 +33,6 @@ function triggerAnimations() {
       frontpageLogo.value.classList.add('show');
     }
   }, 500);
-  // 延遲 500 毫秒後顯示
 
   setTimeout(function () {
     if (frontpageBtnR.value) {
@@ -45,13 +45,18 @@ function triggerAnimations() {
     document.querySelector('.frontpage-btnL').classList.add('show');
   }, 800);
 
-
   setTimeout(function () {
     if (frontpageBtnL.value) {
       frontpageBtnL.value.classList.add('show');
     }
   }, 1000);
-  // 延遲 1000 毫秒後顯示
+
+  setTimeout(function(){
+    if(TibameDeclare.value){
+      TibameDeclare.value.classList.add('show');
+    }
+  },1000);
+
 };
 
 </script>
@@ -92,6 +97,9 @@ function triggerAnimations() {
           </section>
         </router-link>
       </section>
+      <p class="Tibame-declare" ref="TibameDeclare">本網站為緯育TibaMe【第93期】前端工程師專業技術養成班學員作品,僅供學習、展示之用途。<br>若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。<br>若有侵權疑慮，您可以私訊［緯育TibaMe］，後續會由專人協助處理
+      </p>
+      
     </section>
   </main>
 </template>
