@@ -268,7 +268,7 @@ ul#menuBar ul ul {
 }
 @media (max-width: 430px) {
   ul#menuBar ul ul {
-    top: 121px;
+    top: 120px;
     right: 0px;
   }
 }
@@ -4786,7 +4786,7 @@ ul#menuBar li:hover > ul {
 }
 
 .memberinfrom .login {
-  width: 240px;
+  width: 250px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -4798,9 +4798,9 @@ ul#menuBar li:hover > ul {
   }
 }
 
-.memberinfrom .login a {
-  text-decoration: none;
+.memberinfrom .login .orderpopup {
   color: #FEDA77;
+  cursor: pointer;
 }
 
 .memberinfrom h3 {
@@ -5021,6 +5021,11 @@ ul#menuBar li:hover > ul {
 .order_right .button01 {
   width: 300px;
   margin: 0 auto;
+}
+
+.order_right .button01 p {
+  font-size: 17px;
+  color: #B00000;
 }
 
 .order_right .next_btn {

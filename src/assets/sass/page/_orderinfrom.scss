@@ -218,7 +218,7 @@
 }
 
 .memberinfrom .login {
-    width: 240px;
+    width: 250px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -229,10 +229,9 @@
     }
 }
 
-.memberinfrom .login a {
-    text-decoration: none;
-    color: map-get($colors , yellow )
-    
+.memberinfrom .login .orderpopup {
+    color: map-get($colors , yellow );
+    cursor: pointer;  
 }
 
 .memberinfrom h3 {
@@ -452,6 +451,11 @@
 .order_right  .button01 {
     width: 300px;
     margin: 0 auto;
+}
+
+.order_right  .button01 p {
+    font-size: 17px;
+    color: #B00000;
 }
 
 .order_right  .next_btn{
