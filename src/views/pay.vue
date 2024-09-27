@@ -114,7 +114,7 @@
                                 <p>折扣 (現場折抵)</p>
                             </div>
                             <div>
-                                <p> - NT {{ discountPrice }} 元</p>
+                                <p>  NT {{ discountPrice }} 元</p>
                             </div>
                         </div>
 
@@ -291,12 +291,18 @@ export default {
             });
 
             console.log('Sending data:', dataToSend);
-             axios.get(import.meta.env.VITE_API_BASE + '/api/pay.php', dataToSend)
+
+            axios.post(import.meta.env.VITE_API_BASE + '/api/pay.php', dataToSend)
                 // axios.post('http://localhost/appleTeam/public/php/api/pay.php', dataToSend)
                     .then(response => {
                         if (response.data.status === 'success') {
-                            // 清空localStorage
-                            // localStorage.removeItem('orderData');
+
+                            // 要清除的項目列表
+                            // const itemsToRemove = ['discountPrice', 'selectedDate', 'selectedTimeSlot', 'orderData', 'peopleAmount'];
+                            // itemsToRemove.forEach(item => {
+                            //     localStorage.removeItem(item);
+                            // });
+
                             // 跳轉到訂單確認頁面
                             this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay/Membermanage`});
                         } else {

@@ -4,6 +4,7 @@
 
     <TopNavbar />
     <ScrollToTop />
+    <orderinformlogin v-if="showLoginPopup" @close="closePopup" @loginSuccess="handleLoginSuccess" />
 
     <div id="order_wrapper">
 
@@ -48,8 +49,7 @@
                 <div class="memberinfrom">
                     <div class="login">
                         <h3>聯絡人資料</h3>
-                        <p v-if="!isLoggedIn">已經是會員？請 <RouterLink to="/Login">登入</RouterLink>
-                        </p>
+                        <p v-if="!isLoggedIn">已經是會員？請</p><p v-if="!isLoggedIn" @click="showLoginPopup = true" class="orderpopup">登入</p> 
                     </div>
 
                     <div class="mi_dt">
@@ -161,10 +161,10 @@
 
                         <div class="price">
                             <div>
-                                <p>折扣 (現場折抵)</p>
+                                <p>折扣（現場折抵）</p>
                             </div>
                             <div>
-                                <p>- NT {{ discountPrice }} 元</p>
+                                <p> NT {{ discountPrice }} 元</p>
                             </div>
                         </div>
 
@@ -180,9 +180,10 @@
 
                    
                         <div class="button01">
-                            <button class="btn next_btn" :disabled="!dataValid" :class="{active: dataValid}" @click="submitData" >下一步</button>
+                            <button class="btn next_btn" :disabled="!dataValid" :class="{active: dataValid}" @click="submitData" v-if="!orderstatus">下一步</button>
+                             <p v-if="orderstatus"> 此帳號已被停權，有任何疑問請洽客服</p>
                         </div>
-                    
+                       
 
                 </div>
 
@@ -208,12 +209,14 @@ import { RouterLink } from 'vue-router';
 import ScrollToTop from '../components/ScollToTop.vue';
 import axios from 'axios';
 import orderAlert from 'sweetalert2';
+import orderinformlogin from '../components/login.vue'
 
 export default {
     components: {
         TopNavbar,
         Footerbar,
         ScrollToTop,
+        orderinformlogin,
     },
     data () {
         return {
@@ -243,7 +246,10 @@ export default {
             selectedDate: null,
 
             isLoggedIn: false,
+            orderstatus: 0,
             coupons: [],
+            showLoginPopup: false,
+
         }
     },
     computed: {
@@ -278,10 +284,23 @@ export default {
             this.orderPhone = memberData.phone;
             this.isLoggedIn = true;
             this.getCoupons(memberData.id);
+            this.orderstatus = memberData.status;
         };
+   
     },
 
     methods :{
+
+        closePopup() {
+        this.showLoginPopup = false;
+        },
+        handleLoginSuccess() {
+        this.showLoginPopup = false;
+        if (this.targetRoute) {
+            // 登入後自動導航到之前的目標路由
+            this.$router.push(this.targetRoute);
+        }
+        },
         saveToLocalStorage() {
         const orderData = {
             // storeId: this.$route.params.storeId,
@@ -292,6 +311,7 @@ export default {
             
         };
         localStorage.setItem('orderData', JSON.stringify(orderData));
+        
         },
         // 查詢優惠券
         getCoupons(memberId) {
@@ -303,8 +323,11 @@ export default {
 
                         // 找尋折扣最大的優惠券
                         if (this.coupons.length > 0) {
+                            // const maxDiscountCoupon = this.coupons.reduce((max, coupon) => {
+                            //     return coupon.DISCOUNT > max.DISCOUNT ? coupon : max;
+                            // }, this.coupons[0]);
                             const maxDiscountCoupon = this.coupons.reduce((max, coupon) => {
-                                return coupon.DISCOUNT > max.DISCOUNT ? coupon : max;
+                                return Number(coupon.DISCOUNT) > Number(max.DISCOUNT) ? coupon : max;
                             }, this.coupons[0]);
                             this.orderDiscount = maxDiscountCoupon.ID;
                             this.discountPrice = maxDiscountCoupon.DISCOUNT;
@@ -396,6 +419,7 @@ export default {
         goToNextPage (){
             localStorage.setItem ('orderDiscount', this.orderDiscount);
             localStorage.setItem('discountPrice', this.discountPrice);
+            
 
             this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay` });
 
@@ -476,12 +500,15 @@ export default {
                 console.log('提交的註冊數據：', payload);
 
                 // 發送 POST 請求到後端進行註冊
-                const response = await axios.get(import.meta.env.VITE_API_BASE + '/api/register.php', payload);
+                const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/register.php', payload);
                 // const response = await axios.post('http://localhost/appleTeam/public/php/api/register.php', payload);
 
                     if (response.data.status === "success") {
                         // 註冊成功，跳轉到下一頁
                         this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay` });
+             
+                        this.autoLogin(this.orderEmail, this.orderPassword);
+                        
                     } else {
                         alert("發生錯誤：" + response.data.message); // 顯示錯誤消息
                     }
@@ -495,6 +522,34 @@ export default {
                     alert("發生錯誤，請稍後再試。");
                 }
         },
+        //註冊即登入
+        async autoLogin(username, password) {
+            try {
+                const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/login.php', {
+                    username: this.orderEmail,
+                    password: this.orderPassword
+                });
+
+                if (response.data.status === "success") {
+              
+                        // 儲存登入的用戶資料
+                        const user = response.data.user;
+                        localStorage.setItem('user', JSON.stringify(user));
+
+                        // 發出登入事件
+                        this.$emit('login', user);
+
+                        // 進行其他登入後的操作
+                        console.log("自動登入成功:", response.data.user);
+                        this.closePopup();
+                   
+                } else {
+                    alert("自動登入失敗：" + response.data.message);
+                }
+            } catch (error) {
+                console.error("自動登入失敗：", error);
+            }
+        }
     },
     mounted (){
         const themeId = this.$route.params.id;
@@ -519,7 +574,6 @@ export default {
             this.peopleAmount = parsedData.peopleAmount;
           
         }
-
         
         },
 

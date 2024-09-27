@@ -126,7 +126,7 @@ p {
 .top img {
   width: 100px;
   height: 70px;
-  padding-left: 80px;
+  padding-left: 40px;
   display: block;
 }
 @media (max-width: 700px) {
@@ -267,7 +267,7 @@ ul#menuBar ul ul {
 }
 @media (max-width: 430px) {
   ul#menuBar ul ul {
-    top: 121px;
+    top: 120px;
     right: 0px;
   }
 }
@@ -4785,7 +4785,7 @@ ul#menuBar li:hover > ul {
 }
 
 .memberinfrom .login {
-  width: 240px;
+  width: 250px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -4797,9 +4797,9 @@ ul#menuBar li:hover > ul {
   }
 }
 
-.memberinfrom .login a {
-  text-decoration: none;
+.memberinfrom .login .orderpopup {
   color: #FEDA77;
+  cursor: pointer;
 }
 
 .memberinfrom h3 {
@@ -5020,6 +5020,11 @@ ul#menuBar li:hover > ul {
 .order_right .button01 {
   width: 300px;
   margin: 0 auto;
+}
+
+.order_right .button01 p {
+  font-size: 17px;
+  color: #B00000;
 }
 
 .order_right .next_btn {
@@ -6313,6 +6318,10 @@ ul#menuBar li:hover > ul {
   place-items: center;
   margin-top: 80px;
 }
+.envelope_container h3 {
+  color: #FEDA77;
+  animation: updown 0.8s linear infinite;
+}
 .envelope_container .envelope_wrapper {
   height: 120px;
   background: #d8d7e5;
@@ -7429,83 +7438,93 @@ ul#menuBar li:hover > ul {
   }
 }
 
-.editmember h3 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-@media (max-width: 500px) {
-  .editmember h3 {
-    font-size: 14px;
-  }
-}
-.editmember li {
-  margin-left: 3%;
-  margin-bottom: 20px;
-}
-.editmember .memberdatacard {
-  display: flex;
+.editmember .member_card_container {
   margin: 0 auto;
   max-width: 600px;
   min-height: 300px;
   border-radius: 8px;
-  border: 1px solid white;
   background-color: #221F3C;
   margin-bottom: 20px;
 }
-.editmember .memberdatacard h3 {
+.editmember .member_card_container p {
+  background-color: #35395b;
+  border-radius: 8px 8px 0 0;
   text-align: center;
+  font-size: 16px;
 }
-@media (max-width: 600px) {
-  .editmember .memberdatacard {
-    flex-direction: column;
-    width: 80%;
-  }
+.editmember .member_card_data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
 }
-.editmember .memberdatacardleft {
-  flex: 0 0 200px;
-  margin-right: 20px;
+.editmember .head_sticker {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 60%;
 }
-.editmember .memberdatacardleft h3 {
-  display: none;
-}
-.editmember .memberdatacardleft h4 {
-  text-align: center;
-  font-size: 28px;
-}
-@media (max-width: 600px) {
-  .editmember .memberdatacardleft {
-    margin: 0;
-  }
-  .editmember .memberdatacardleft h3 {
-    display: block;
-  }
-}
-.editmember .memberdatacardleft h4 {
-  margin-bottom: 20px;
-}
-.editmember .member-photo {
-  width: 80%;
+.editmember .head_sticker .member_photo {
+  width: 60%;
+  margin-left: -30px;
   height: auto;
   border-radius: 50%;
   border: 2px solid #FCD15B;
-  margin: 10% 5%;
 }
 @media (max-width: 600px) {
-  .editmember .member-photo {
+  .editmember .head_sticker .member_photo {
     margin: 5% 10%;
   }
 }
-.editmember .memberdatacardright {
-  flex-grow: 1;
+.editmember .data_right {
+  width: 80%;
 }
-.editmember .memberdatacardright h3 {
-  text-align: left;
-  margin-left: 5%;
+.editmember .data_right ul {
+  margin-left: -30px;
+}
+.editmember .data_right li {
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.editmember .data_right .card_suspension {
+  color: #ff4545;
 }
 @media (max-width: 600px) {
-  .editmember .memberdatacardright h3 {
+  .editmember .data_right h3 {
     display: none;
   }
+}
+.editmember .btnedit,
+.editmember .btn_collect {
+  margin-right: 5%;
+  margin-bottom: 5%;
+  width: 150px;
+  font-size: 18px;
+  padding: 4px 10px;
+  font-weight: bold;
+  text-align: center;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #100E24;
+  background-color: #FCD15B;
+}
+.editmember .btnedit:hover,
+.editmember .btn_collect:hover {
+  background-color: #FEDA77;
+}
+.editmember .member_card_collect {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(2, 100px);
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 26px;
+}
+.editmember .member_card_collect .card_collect {
+  background-color: #35395b;
+  padding: 48px;
 }
 .editmember .btnlocation {
   text-align: center;
@@ -7516,6 +7535,11 @@ ul#menuBar li:hover > ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 24px;
+}
+.editmember .btnlocation ul span {
+  font-size: 20px;
+  margin-bottom: 24px;
 }
 .editmember .btnlocation li {
   text-align: center;
@@ -7527,31 +7551,10 @@ ul#menuBar li:hover > ul {
     width: 300px;
   }
 }
-.editmember .btnedit {
-  margin-right: 5%;
-  margin-bottom: 5%;
-  width: 150px;
-}
-.editmember .btnedit:hover {
-  background-color: #FEDA77;
-  color: #292929;
-}
-@media (max-width: 820px) {
-  .editmember .btnedit {
-    width: 100px;
-    font-size: 14px;
-  }
-}
 .editmember .editphone {
   padding-left: 10px;
   outline: none;
   font-size: 20px;
-}
-@media (max-width: 500px) {
-  .editmember .editphone {
-    font-size: 14px;
-    padding: 0;
-  }
 }
 .editmember .flexinput {
   display: flex;
@@ -7568,6 +7571,7 @@ ul#menuBar li:hover > ul {
   outline: none;
   border: none;
   width: 100%;
+  font-size: 18px;
   max-width: 300px;
   border-radius: 8px;
   padding: 10px 12px;
@@ -7581,10 +7585,49 @@ ul#menuBar li:hover > ul {
   }
   .editmember .flexinput h4 {
     margin-bottom: 10px;
-    text-align: center;
+    text-align: left;
   }
 }
 
+@media (max-width: 640px) {
+  .editmember .member_card_container {
+    max-width: 300px;
+  }
+  .editmember .member_card_data {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .editmember .data_right ul {
+    margin: 0 auto;
+    display: inline-block;
+  }
+  .editmember .data_right li {
+    margin-top: 20px;
+  }
+  .editmember .flexinput {
+    align-items: flex-start;
+  }
+  .editmember .flexinput h4 {
+    font-size: 18px;
+  }
+  .editmember .member_card_collect {
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(3, 100px);
+    padding-bottom: 26px;
+  }
+}
+@media (max-width: 500px) {
+  .editmember .data_right span {
+    font-size: 16px;
+  }
+  .editmember .btnedit,
+  .editmember .btn_collect,
+  .editmember .btnlocation ul span,
+  .editmember .flexinput h4 {
+    font-size: 16px;
+  }
+}
 .escaperoom_container {
   position: relative;
   overflow: hidden;
@@ -8746,18 +8789,19 @@ ul#menuBar li:hover > ul {
 }
 
 .error_page {
-  margin: 20px auto;
+  margin: 40px auto;
   padding: 20px 40px;
   border-top: 10px solid #FF5555;
   background-color: #181818;
   width: 70%;
   border-radius: 10px;
 }
-.error_page .close_page {
+.error_page .close_page_container {
+  text-align: right;
+}
+.error_page .close_page_container span {
   font-size: 30px;
-  position: absolute;
-  top: 4%;
-  right: 12.8%;
+  line-height: 1px;
   cursor: pointer;
 }
 

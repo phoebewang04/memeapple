@@ -2,6 +2,8 @@
     import '../assets/css/style.css'
     import axios from 'axios';
 
+    import Swal from 'sweetalert2';
+
     export default {
         methods: {
             logoutAndRedirect() {
@@ -12,8 +14,17 @@
                 .then (response => {
                     if (response.data.success) {
                         sessionStorage.removeItem('user');
-                        alert('您已登出，將回到前後台分流頁');
-                        this.$router.push('/');
+                        // alert('您已登出，將回到前後台分流頁');
+                        // this.$router.push('/');
+
+                        Swal.fire({
+                            title: '您已登出，將回到前後台分流頁',
+                            confirmButtonColor: '#FCD15B',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            this.$router.push('/');
+                        });
+
                     } else {
                         console.log(response.data.message || '沒有回傳資料');
                         alert(response.data.message || '登出失敗');

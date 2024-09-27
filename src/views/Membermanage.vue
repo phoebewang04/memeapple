@@ -53,7 +53,7 @@
                     <!-- 問卷填寫按鈕 -->
                     <button v-if="order.ORDER_STATUS === '已使用'" class="questionwrite"
                       @click="orderquestion(order)">問卷填寫</button>
-                     
+
                     <!-- 取消訂單按鈕 -->
                     <button v-else-if="order.ORDER_STATUS === '已預訂'" class="cancelorder"
                       @click="ordercancel(order)">取消訂單</button>
@@ -87,34 +87,64 @@
 
 
         <div class="editmember" v-if="currentTab == 'tab3'">
-          <div class="memberdata" v-if="!isEditing">
-            <h3>會員資料</h3>
-            <div class="memberdatacard">
-              <div class="memberdatacardleft">
-                <h3>會員卡</h3>
-                <img src="../assets/img/adventurerbear.jpg" alt="" class="member-photo">
-                <h4>{{ user.name }}</h4>
+
+          <!-- 卡片正面：會員資料 -->
+          <div class="member_card_container">
+
+            <!-- <p>Meme Studio會員卡</p> -->
+            <p>Meme Studio集點卡</p>
+
+            <div class="member_card_data" v-if="!showCollectCard">
+
+
+              <div class="head_sticker">
+                <img src="../assets/img/adventurerbear.jpg" alt="" class="member_photo">
               </div>
-              <div class="memberdatacardright">
-              <h3>會員卡</h3>
-              <ul>
-                <li>
-                  <h4>帳號：{{ user.email }}</h4>
-                </li>
-                <li>
-                  <h4>密碼：{{ user.password }}</h4>
-                </li>
-                <li>
-                  <h4>電話：{{ user.phone }}</h4>
-                </li>
-              </ul>
-            </div>  
+
+
+              <div class="data_right">
+                <ul>
+                  <li>
+                    <span>姓名：{{ user.name }}</span>
+                  </li>
+                  <li>
+                    <span>帳號：{{ user.email }}</span>
+                  </li>
+                  <li>
+                    <span>電話：{{ user.phone }}</span>
+                  </li>
+                  <li>
+                    <span>註冊日期：{{ user.regidate }}</span>
+                  </li>
+                  <li>
+                    <span>會員狀態：
+                      <span v-if="user.status === 0">正常</span>
+                      <span v-else-if="user.status === 1" class="card_suspension">您已被停權，請洽客服人員，謝謝！</span>
+                    </span>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="btnlocation"><button class="btn btnedit" @click="isEditing = true">資料變更</button></div>
+
+            <!-- 卡片背面：集點卡 -->
+            <div class="member_card_collect" v-if="showCollectCard">
+              <div v-for="(card, index) in cards" :key="index" class="card_collect">
+              </div>
+            </div>
+
           </div>
+
+
+          <div class="memberdata" v-if="!isEditing">
+            <div class="btnlocation">
+              <button class="btnedit" @click="membershipCard">資料變更</button>
+              <button class="btn_collect" @click="overturn">{{ showCollectCard ? '會員卡' : '成就之鑰' }}</button>
+            </div>
+          </div>
+
           <div class="editmemberdata" v-else>
-            <h3>會員資料修改</h3>
-            <div class="memberdatacard">
+
+            <!-- <div class="memberdatacard">
               <div class="memberdatacardleft">
                 <h3>會員卡</h3>
                 <img src="../assets/img/adventurerbear.jpg" alt="" class="member-photo">
@@ -125,41 +155,44 @@
                 <ul>
                   <li>
                     <h4>帳號：{{ user.email }}</h4>
-                  </li>              
+                  </li>
                   <li>
-                    <h4>密碼：{{  editedUser.password }}</h4>
+                    <h4>密碼：{{ editedUser.password }}</h4>
                   </li>
                   <li>
                     <h4>電話：{{ editedUser.phone }}</h4>
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> -->
             <div class="btnlocation">
               <button class="btn btnedit" @click="saveChanges">儲存變更</button>
               <button class="btn btnedit" @click="isEditing = false">取消</button>
               <ul>
+                <span>會員資料修改</span>
                 <li>
-                    <div class="flexinput">
-                      <h4>修改密碼：</h4><input type="text" class="editphone" v-model="editedUser.password"  placeholder="請輸入新密碼">
-                    </div>
-                  </li>
-                  <li>
-                    <div class="flexinput">
-                      <h4>請再次輸入密碼：</h4><input type="text" class="editphone" v-model="editedUser.passwordConfirm" placeholder="請再次輸入新密碼">
-                    </div>
-                  </li>
-                  <li>
-                    <div class="flexinput">
-                      <h4>修改姓名：</h4><input type="text" class="editphone" v-model="editedUser.name" placeholder="請輸入姓名">
-                    </div>
-                  </li>
-                  <li>
-                    <div class="flexinput">
-                      <h4>電話：</h4><input type="text" class="editphone" v-model="editedUser.phone" maxlength="10"
-                        pattern="^09\d{8}$" placeholder="請輸入電話">
-                    </div>
-                  </li>
+                  <div class="flexinput">
+                    <h4>修改密碼：</h4><input type="text" class="editphone" v-model="editedUser.password"
+                      placeholder="請輸入新密碼">
+                  </div>
+                </li>
+                <li>
+                  <div class="flexinput">
+                    <h4>請再次輸入密碼：</h4><input type="text" class="editphone" v-model="editedUser.passwordConfirm"
+                      placeholder="請再次輸入新密碼">
+                  </div>
+                </li>
+                <li>
+                  <div class="flexinput">
+                    <h4>修改姓名：</h4><input type="text" class="editphone" v-model="editedUser.name" placeholder="請輸入姓名">
+                  </div>
+                </li>
+                <li>
+                  <div class="flexinput">
+                    <h4>電話：</h4><input type="text" class="editphone" v-model="editedUser.phone" maxlength="10"
+                      pattern="^09\d{8}$" placeholder="請輸入電話">
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -246,6 +279,9 @@ export default {
       ],
       filterStatus: 'all' // 新增狀態變量
       ,
+      cards: Array(8).fill({}) // 生成 8 個卡片
+      ,
+      showCollectCard: false, // 用來控制集點卡顯示與隱藏
     };
   },
   computed: {
@@ -520,7 +556,7 @@ export default {
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
     saveChanges() {
-     // 初始化錯誤訊息陣列
+      // 初始化錯誤訊息陣列
       const errorMessages = [];
 
       // 密碼驗證：至少6個字符，包含字母和數字
@@ -545,7 +581,7 @@ export default {
         Swal.fire('錯誤', errorMessages.join('<br>'), 'error');
         return;
       }
-      
+
       // 更新用戶資料
       this.user.name = this.editedUser.name;
       this.user.phone = this.editedUser.phone;
@@ -565,7 +601,7 @@ export default {
         name: user.name,
         phone: user.phone,
         password: user.password, // 直接傳送明文密碼
-        passwordConfirm : user.password
+        passwordConfirm: user.password
       };
       axios.post(import.meta.env.VITE_API_BASE + '/api/editmemberdata.php', payload)
         // axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)
@@ -597,10 +633,13 @@ export default {
       this.selectedOrderId = order.ORDER_ID;
       this.showStarRating = true; // 顯示彈出窗口
     },
+    overturn() {
+    this.showCollectCard = !this.showCollectCard; // 切換顯示狀態
   },
-
+  membershipCard(){
+    this.isEditing = true;
+    this.showCollectCard =false;
+  }
+  },
 };
-
-
-
 </script>

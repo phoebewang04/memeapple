@@ -499,6 +499,7 @@ export default {
          console.log('當天的日期已存入 localStorage:', today);
         this.queryDatabaseByDate(this.selectedDate);
 
+        // localStorage.removeItem(discountPrice);
 
 
 
