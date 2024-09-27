@@ -1,25 +1,24 @@
 @include google-font('Creepster');
-@include google-font('Dela Gothic One');
 
-.wrappermmange{
+.wrappermmange {
     display: flex;
     min-height: 600px;
 }
 
 
-.mmangeleft{
+.mmangeleft {
     display: flex;
     flex-direction: column;
     width: 20%;
     margin: 50px 0 80px;
 
-    .active{
+    .active {
         color: map-get($colors, gold);
     }
-    
-    @include pad(){
-    display: none;
-    width: 0;    
+
+    @include pad() {
+        display: none;
+        width: 0;
     }
 }
 
@@ -38,6 +37,7 @@
 
 .mmangeright {
     width: 80%;
+    height: 100%;
     margin: 60px 0 80px;
 
     @include pad() {
@@ -46,22 +46,25 @@
 
     .mangerightitems {
         display: none;
-        .active{
+
+        .active {
             color: map-get($colors, gold);
         }
-        @include pad(){
+
+        @include pad() {
             display: flex;
             margin: 0 auto 20px;
 
             button {
-                font-size: 1.2rem;
+                font-size:24px;
                 display: block;
             }
         }
 
-        @include rwd(500px) {
+        @include rwd(430px) {
             button {
-                font-size: 0.8rem;
+                font-size:20px;
+                padding: 10px 0;
             }
         }
     }
@@ -86,11 +89,14 @@
 
     h3 {
         margin-bottom: 20px;
-        ;
+        
     }
 
     @include pad() {
         width: 100%;
+        h3{
+            margin-left: 20px;
+        }
     }
 }
 
@@ -214,7 +220,7 @@
             }
 
             @include rwd(1280px) {
-               font-size: 18px;
+                font-size: 18px;
             }
 
             @include rwd(520px) {
@@ -273,10 +279,14 @@
 
 .ordertext_right {
     width: 25%;
-    border: 1px solid map-get($colors, white);
-    border-radius: 8px;
     height: 100%;
     margin: 0 20px;
+
+    ul{
+        border: 1px solid map-get($colors, white);
+        border-radius: 8px;
+        width: 80%;
+    }
 
     .btn_ordera {
         color: map-get($colors, white);
@@ -284,6 +294,7 @@
         font-size: map-get($fontsize , h4);
         width: 100%;
         padding: 10px 12px;
+        
 
         @include rwd(1280px) {
             padding: 10px 4px;
@@ -316,229 +327,327 @@
 
 //優惠券
 .coupontext {
+
     // display: none;
     .couponticket{
-        display: flex;
-        flex-wrap: wrap;
+        position: relative;
         margin:10px 20px;       
         max-width: 800px;
-        // width: 100%;
+        
         max-height: 260px;
         border-radius: 8px;
-        // -webkit-mask: radial-gradient(circle at 30px 30px, transparent 30px, red 0) 85px -30px ,
-        // -webkit-mask:            radial-gradient(circle at 25px 8px, transparent 3px, red 0) 575px -25px / 100% 10%;
-        // -webkit-mask-composite: source-in;
+        
+        font-family:'Creepster';
+        color: map-get($colors,gold);
+            .couponbg{
+                
+                max-width: 800px;
+                max-height: 260px;
+                border-radius: 8px;
+                width: 100%;
+                height: 100%;
+                border-radius: 8px;
+            }
+            .rotate-text{  
+                position: absolute;
+                top: 37%;
+                right: 32%;              
+                font-size: 60px;
+                line-height: 1;
+                margin: 0;
+                transform: rotate(6deg); 
+                transform-origin: center; 
+                @include rwd(750px) {
+                    font-size: 45px;
+                    top:38%;
+                    right:32%
+                }
+                @include rwd(600px) {
+                    font-size: 35px;
+                    top:39%;
+                    right:33%
+                }
+                @include rwd(450px) {
+                    font-size: 28px;
+                    top:39%;
+                    right:33%
+                }
+                @include rwd(400px) {
+                    font-size: 24px;
+                    top:38%;
+                    right:32%
+                }
+            }
         }
-    .couponimg{
-        max-width: 600px;
-        max-height: 260px;
-        border-radius: 8px;
-
-        .couponbg{
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-        }
-    }
-    .coupondata{
-        // display: none;
-        border-radius: 8px;
-        background: map-get($colors, couponblue);
-        max-width: 200px;
-        width: 100%;
-        max-height: 260px;
-    
-        text-align: center;
-        position: relative;
-        font-family:'Creepster' ;
-    
-        .couponposition{
-            // display: flex;
-            height: 100%;
-            text-align: center;
-        }
-        h3{
-            color: map-get($colors,gold);
-            font-size: 64px;
-            line-height: 1.5;
-            margin-top: 50px;
-        }
-        h4{
-            color: map-get($colors, white);
-            font-family: 'Dela Gothic One';
-            font-size:40px;
-            margin-top: 50px;
-        }
-    }
 }
 
 //會員資料管理
 .editmember {
-    
-    h3 {
-        margin-bottom: 20px;
-        text-align: center;
-        @include rwd(500px) {
-            font-size: map-get($fontsize, p1);
-        }
-    }
 
-    li {
-        margin-left: 3%;
-        margin-bottom: 20px;
-    }
-    
-    .memberdatacard{
-        display: flex;
+    .member_card_container {
         margin: 0 auto;
+        // max-width: 80%;
         max-width: 600px;
         min-height: 300px;
         border-radius: 8px;
-        border: 1px solid white;
-        background-color:  map-get($colors , midnight);
+        background-color: map-get($colors , midnight);
         margin-bottom: 20px;
-            h3{
-                text-align: center;
-            }
-            @include rwd(600px) {
-                flex-direction: column;
-                width: 80%;
-            }
-            
-    }    
 
-    .memberdatacardleft {
-        flex: 0 0 200px; 
-        margin-right: 20px;
-            h3{
+        p {
+            background-color: map-get($colors , grayblue);
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            font-size: 16px;
+        }
+
+    }
+
+    .member_card_data {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    //頭貼
+    .head_sticker {
+
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 60%;
+
+
+        .member_photo {
+            // display: none;
+            width: 60%;
+            margin-left: -30px;
+            height: auto;
+            border-radius: 50%;
+            border: 2px solid map-get($colors, gold);
+
+            @include rwd(600px) {
+                margin: 5% 10%;
+
+            }
+        }
+
+    }
+
+    .data_right {
+        width: 80%;
+
+        ul {
+            // border: 1px solid whitesmoke;
+            margin-left: -30px;
+        }
+
+        //會員資料
+        li {
+            // display: none;
+            line-height: 1.2;
+            margin-bottom: 20px;
+
+        }
+
+        .card_suspension {
+            color: #ff4545;
+        }
+
+        @include rwd(600px) {
+            h3 {
                 display: none;
             }
-            h4{
-                text-align: center;
-                font-size: map-get($fontsize, h2 );
-            }
-            @include rwd(600px) {
-               margin: 0;
-                
-               h3{
-                display: block;
-               }
-            }
-            h4{
-                margin-bottom: 20px;
-            }
-
-      }
-      
-      .member-photo {
-        width: 80%;
-        height: auto;
-        border-radius: 50%; 
-        border: 2px solid map-get($colors, gold); 
-        margin: 10% 5%;
-        @include rwd(600px) {
-           margin: 5% 10%;
-           
-         }
-      }
-
-      .memberdatacardright {
-        flex-grow: 1; 
-        h3{
-            text-align: left;
-            margin-left: 5%;
         }
-        @include rwd(600px) {
-            h3{
-             display: none;
-            }
-         }
-        
-      }
 
-      
-      .btnlocation{
-            text-align: center;  
-            margin-top: 15px;  
-            ul {
-                padding: 0;
-                display: flex; // 將 ul 設為 flex 容器
-                flex-direction: column; // 垂直排列
-                align-items: center; // 置中對齊
-            }
-            li{
-                text-align: center;
-                align-items: center;
-                width: 80vh;
-                @include rwd(600px) {
-                    width: 300px
-                }
-            }        
+    }
+
+    .btnedit,
+    .btn_collect {
+        margin-right: 5%;
+        margin-bottom: 5%;
+        width: 150px;
+        font-size: 18px;
+        padding: 4px 10px;
+        font-weight: bold;
+        text-align: center;
+        border: 0;
+        border-radius: 8px;
+
+        cursor: pointer;
+        color: map-get($colors , darkblue);
+        background-color: map-get($colors , gold);
+
+        &:hover {
+            background-color: map-get($colors , yellow);
+
         }
-        
-        .btnedit{
-            margin-right: 5%;
-            margin-bottom: 5%;
-            width: 150px;
-            &:hover {
-                background-color: map-get($colors, yellow);
-                color: map-get($colors, black);
-            }
-            
-            @include pad() {
-                width: 100px;
-                font-size: map-get($fontsize, p1);
-            }
+    }
+
+
+    //集點卡
+    .member_card_collect {
+        display: grid;
+        grid-template-columns: repeat(4, 100px);
+        grid-template-rows: repeat(2, 100px);
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 26px;
+
+        .card_collect {
+            background-color: map-get($colors , grayblue);
+            padding: 48px;
         }
-        
-      
-  
-      
-        .editphone {
-            padding-left: 10px;
-            outline: none;
-            font-size: map-get($fontsize, h4 );
-            @include rwd(500px){
-                font-size: map-get($fontsize, p1 );
-                padding: 0;
+    }
+
+
+
+    .btnlocation {
+        text-align: center;
+        margin-top: 15px;
+
+        ul {
+            padding: 0;
+            display: flex; // 將 ul 設為 flex 容器
+            flex-direction: column; // 垂直排列
+            align-items: center; // 置中對齊
+            gap: 24px;
+
+            span {
+                font-size: 20px;
+                margin-bottom: 24px;
             }
         }
 
-        
-
-        .flexinput{
-            display: flex;
+        li {
+            text-align: center;
             align-items: center;
-            h4{
-                flex-shrink: 0;
-                width: 200px;
+            width: 80vh;
+
+            @include rwd(600px) {
+                width: 300px
+            }
+        }
+    }
+
+
+    .editphone {
+        padding-left: 10px;
+        outline: none;
+        font-size: map-get($fontsize, h4);
+
+
+    }
+
+
+
+    .flexinput {
+        display: flex;
+        align-items: center;
+
+        h4 {
+            flex-shrink: 0;
+            width: 200px;
+            text-align: left;
+        }
+
+        input {
+            background-color: map-get($colors , grayblue);
+            color: map-get($colors , lightyellow);
+            outline: none;
+            border: none;
+            width: 100%;
+            font-size: 18px;
+            max-width: 300px;
+            border-radius: 8px;
+            padding: 10px 12px;
+            flex-grow: 1;
+            box-sizing: border-box;
+        }
+
+        @include rwd(600px) {
+            flex-direction: column;
+            width: 300px;
+
+            h4 {
+                margin-bottom: 10px;
                 text-align: left;
             }
 
-            input{
-                background-color: map-get($colors , grayblue);
-                color: map-get($colors , lightyellow);
-                outline: none;
-                border: none;
-                width: 100%;
-                max-width: 300px;
-                border-radius: 8px;
-                padding: 10px 12px;
-                flex-grow: 1;
-                box-sizing: border-box;
-            }
-            @include rwd(600px) {
-                flex-direction: column;
-                width: 300px;
-                h4{
-                    margin-bottom: 10px;
-                    text-align: center;
-                }
-                input{
+            input {}
+        }
+    }
 
-                }
-              }
+
+}
+
+@include rwd(640px) {
+    .editmember {
+        .member_card_container {
+
+            max-width: 300px;
         }
 
-        
+        .member_card_data {
+            flex-direction: column;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .data_right {
+
+            ul {
+                // border: 1px solid salmon;
+                margin: 0 auto;
+                display: inline-block;
+
+
+            }
+
+            li {
+                // text-align: left;
+                margin-top: 20px;
+            }
+
+        }
+
+        .flexinput {
+            align-items: flex-start;
+
+            h4 {
+                font-size: 18px;
+            }
+        }
+
+        .member_card_collect {
+            grid-template-columns: repeat(2, 100px);
+            grid-template-rows: repeat(3, 100px);
+            padding-bottom: 26px;
+        }
+
+    }
+
+}
+
+@include rwd(500px) {
+.editmember{
+
+    .data_right {
+        span {
+            font-size: 16px;
+        }
+
+    }
+    .btnedit,
+    .btn_collect,
+    .btnlocation ul span,
+    .flexinput h4{
+
+        font-size: 16px;
+    }
+
+
+}
+
 }

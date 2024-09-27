@@ -28,8 +28,8 @@
                 :data-aos-delay="imgIndex * 1" ref="bloodImage">
         </section>
 
-        <!-- -----主題文字介紹＋指數 start----- -->
-        <section class="overview">
+        <!-- -----主題文字介紹＋指數 (all_data) start----- -->
+        <!-- <section class="overview">
 
             <p class="overview_text">{{ all_data[$route.params.id].overviewText }}</p>
 
@@ -39,6 +39,23 @@
                     <div :class="['progress_bar', all_data[$route.params.id].themeClass]" ref="progressBars">
                         <div :class="['progress', all_data[$route.params.id].themeClass]"
                             :style="{ width: isVisible ? bar.per + '%' : '0%' }">{{ bar.per }}%</div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- -----主題文字介紹＋指數 end----- -->
+
+        <!-- 主題文字介紹＋指數 (php) start -->
+        <section class="overview">
+
+            <p class="overview_text">{{ all_data[$route.params.id].overviewText }}</p>
+
+            <div :class="['theme_number', all_data[$route.params.id].themeClass]">
+                <div v-for="(bar, index) in bars" :key="index">
+                    <span>{{ bar.title }}</span>
+                    <div :class="['progress_bar', all_data[$route.params.id].themeClass]">
+                        <div :class="['progress', all_data[$route.params.id].themeClass]"
+                        :style="{ width: bar.per + '%' }">{{ bar.per }}%</div>
                     </div>
                 </div>
             </div>
@@ -123,10 +140,15 @@
                     <ul class="theme_carousel">
                         <li v-for="(card, index) in all_data[$route.params.id].otherTheme" :key="index"
                             :class="['theme_card', all_data[$route.params.id].themeClass]">
-                            <router-link :to="{ path: `/Theme/${card.id}` }">
+                            <router-link v-if="card.id !== 8" :to="{ path: `/Theme/${card.id}` }">
                                 <img :src="card.src" :alt="card.title">
                                 <h4>{{ card.title }}</h4>
                             </router-link>
+
+                            <div v-else>
+                                <img :src="card.src" :alt="card.title">
+                                <h4>{{ card.title }}</h4>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -154,9 +176,10 @@ import themeAlart from 'sweetalert2';
 import themeAOS from 'aos';
 import 'aos/dist/aos.css';
 
+import axios from 'axios';
+
 // import all_data from 'xxx.js'
 export default {
-    components: { TopNavbar, Footerbar, themeAlart, themeAOS, ScrollToTop },
     data() {
         // console.log(this.$route.query);
         // console.log(this.$route.query.id);
@@ -170,21 +193,57 @@ export default {
 
             // progress_bar
             isVisible: false,
+
+            // 問卷統計
+            bars:[
+                {title: '燒腦指數', per: 80},
+                {title: '驚嚇指數', per: 80},
+                {title: '推薦指數', per: 80},
+            ]
+        }
+    },
+    components: { TopNavbar, Footerbar, themeAlart, themeAOS, ScrollToTop },
+    watch: {
+        '$route.params.id'() {
+            this.resetProgressBar(); // 當路由參數變更（切換主題）時，重置進度條
+            this.$nextTick(() => {
+                this.setupObserver(); // 確保 DOM 完全更新後，重新初始化 observer
+            });
         }
     },
     mounted() {
+        this.setupObserver();
         themeAOS.init();
         //輪播
         this.cardWidth = this.$refs.theme_wrapper.querySelector('.theme_card').offsetWidth;
         // console.log(this.cardWidth);
 
-        this.setupObserver();
+        // this.setupObserver();
+        this.fetchBarData();
 
     },
     updated() {
         themeAOS.refresh();
     },
     methods: {
+        // 問卷統計
+        fetchBarData() {
+            console.log('search function called');
+            const id = this.$route.params.id;
+            axios.get(import.meta.env.VITE_API_BASE + `/api/themerating.php?id=${id}`)
+            // axios.get(`http://localhost/memeapple/public/php/api/themerating.php?id=${id}`)
+                .then(response => {
+                    const data = response.data;
+                    this.bars = [
+                        { title: '燒腦指數', per: data.DIFFICULT_AVG },
+                        { title: '驚嚇指數', per: data.SCARY_AVG },
+                        { title: '推薦指數', per: data.RECOMMAND_AVG }
+                    ];
+                })
+                .catch(error => {
+                    console.error('Error fetching bar data:', error);
+                });
+        },
         //價錢popup
         showAlert() {
             themeAlart.fire({
@@ -213,18 +272,27 @@ export default {
             wrapper.scrollLeft += scrollAmount;
         },
         //進度條指數
+        resetProgressBar() {
+            // 將 isVisible 設為 false，這樣進度條會重置到 0%
+            this.isVisible = false;
+        },
         setupObserver() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        this.isVisible = true;
-                    } else {
-                        this.isVisible = false;
+                        this.isVisible = true; // 當進度條進入視窗範圍時，設置 isVisible 為 true
                     }
                 });
             });
 
-            this.$refs.progressBars.forEach((progressBar) => {
+            // 確保進度條元素存在，並監測它們
+            const progressBars = this.$refs.progressBars ? Array.from(this.$refs.progressBars) : [];
+            if (progressBars.length === 0) {
+                console.warn('未找到任何進度條元素');
+                return;
+            }
+
+            progressBars.forEach(progressBar => {
                 observer.observe(progressBar);
             });
         }

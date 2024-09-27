@@ -212,4 +212,4 @@ export default {
       <li><router-link to="/Theme_test/">測</router-link></li>
       <li><router-link to="/pay/">結帳</router-link></li>
       <li><router-link to="/dead1A2Bgame/">1A2B</router-link></li> -->
-<!-- <li><router-link to="/minigameL/">華容道</router-link></li> -->
+<!-- <li><router-link to="/pointcard/">集點卡</router-link></li> -->
