@@ -127,7 +127,7 @@ p {
 .top img {
   width: 100px;
   height: 70px;
-  padding-left: 80px;
+  padding-left: 40px;
   display: block;
 }
 @media (max-width: 700px) {
@@ -6319,6 +6319,10 @@ ul#menuBar li:hover > ul {
   place-items: center;
   margin-top: 80px;
 }
+.envelope_container h3 {
+  color: #FEDA77;
+  animation: updown 0.8s linear infinite;
+}
 .envelope_container .envelope_wrapper {
   height: 120px;
   background: #d8d7e5;
@@ -7429,49 +7433,59 @@ ul#menuBar li:hover > ul {
   margin-left: 3%;
   margin-bottom: 20px;
 }
-.editmember .memberdatacard {
-  display: flex;
+.editmember .member_card_container {
   margin: 0 auto;
   max-width: 600px;
   min-height: 300px;
   border-radius: 8px;
-  border: 1px solid white;
   background-color: #221F3C;
   margin-bottom: 20px;
 }
-.editmember .memberdatacard h3 {
-  text-align: center;
-}
 @media (max-width: 600px) {
-  .editmember .memberdatacard {
+  .editmember .member_card_container {
     flex-direction: column;
     width: 80%;
   }
 }
-.editmember .memberdatacardleft {
-  flex: 0 0 200px;
-  margin-right: 20px;
+.editmember .member_card_container p {
+  background-color: #35395b;
+  border-radius: 8px 8px 0 0;
+  text-align: center;
+  font-size: 16px;
 }
-.editmember .memberdatacardleft h3 {
+.editmember .member_card_data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.editmember .data_left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid wheat;
+  width: 50%;
+}
+.editmember .data_left h3 {
   display: none;
 }
-.editmember .memberdatacardleft h4 {
+.editmember .data_left h4 {
   text-align: center;
   font-size: 28px;
 }
 @media (max-width: 600px) {
-  .editmember .memberdatacardleft {
+  .editmember .data_left {
     margin: 0;
   }
-  .editmember .memberdatacardleft h3 {
+  .editmember .data_left h3 {
     display: block;
   }
 }
-.editmember .memberdatacardleft h4 {
+.editmember .data_left h4 {
   margin-bottom: 20px;
 }
 .editmember .member-photo {
-  width: 80%;
+  width: 60%;
   height: auto;
   border-radius: 50%;
   border: 2px solid #FCD15B;
@@ -7482,15 +7496,15 @@ ul#menuBar li:hover > ul {
     margin: 5% 10%;
   }
 }
-.editmember .memberdatacardright {
-  flex-grow: 1;
+.editmember .data_right {
+  width: 80%;
 }
-.editmember .memberdatacardright h3 {
+.editmember .data_right h3 {
   text-align: left;
   margin-left: 5%;
 }
 @media (max-width: 600px) {
-  .editmember .memberdatacardright h3 {
+  .editmember .data_right h3 {
     display: none;
   }
 }
@@ -8733,18 +8747,19 @@ ul#menuBar li:hover > ul {
 }
 
 .error_page {
-  margin: 20px auto;
+  margin: 40px auto;
   padding: 20px 40px;
   border-top: 10px solid #FF5555;
   background-color: #181818;
   width: 70%;
   border-radius: 10px;
 }
-.error_page .close_page {
+.error_page .close_page_container {
+  text-align: right;
+}
+.error_page .close_page_container span {
   font-size: 30px;
-  position: absolute;
-  top: 4%;
-  right: 12.8%;
+  line-height: 1px;
   cursor: pointer;
 }
 
