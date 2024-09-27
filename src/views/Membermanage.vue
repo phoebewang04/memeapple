@@ -111,16 +111,16 @@
                 <div class="data_right">
                   <ul>
                     <li>
-                      <h4>帳號：{{ user.email }}</h4>
+                      <span>會員狀態：{{ user.status }}</span>
                     </li>
                     <li>
-                      <h4>密碼：{{ user.password }}</h4>
+                      <span>帳號：{{ user.email }}</span>
                     </li>
                     <li>
-                      <h4>電話：{{ user.phone }}</h4>
+                      <span>電話：{{ user.phone }}</span>
                     </li>
                     <li>
-                      <h4>註冊日期：{{ user.regidate }}</h4>
+                      <span>註冊日期：{{ user.regidate }}</span>
                     </li>
                   </ul>
 
