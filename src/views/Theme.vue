@@ -47,19 +47,18 @@
 
         <!-- 主題文字介紹＋指數 (php) start -->
         <section class="overview">
-
             <p class="overview_text">{{ all_data[$route.params.id].overviewText }}</p>
-
             <div :class="['theme_number', all_data[$route.params.id].themeClass]">
-                <div v-for="(bar, index) in bars" :key="index">
+                <div v-for="(bar, index) in bars" :key="index" ref="progressBars">
                     <span>{{ bar.title }}</span>
                     <div :class="['progress_bar', all_data[$route.params.id].themeClass]">
-                        <div :class="['progress', all_data[$route.params.id].themeClass]"
-                        :style="{ width: bar.per + '%' }">{{ bar.per }}%</div>
+                        <div :class="['progress', all_data[$route.params.id].themeClass, { 'isVisible': isVisible }]"
+                            :style="{ width: isVisible ? bar.per + '%' : '0%' }">{{ bar.per }}%</div>
                     </div>
                 </div>
             </div>
         </section>
+
         <!-- -----主題文字介紹＋指數 end----- -->
 
         <!-- -----遊戲資訊 start----- -->
@@ -209,6 +208,7 @@ export default {
             this.$nextTick(() => {
                 this.setupObserver(); // 確保 DOM 完全更新後，重新初始化 observer
             });
+            this.fetchBarData();
         }
     },
     mounted() {
@@ -221,9 +221,6 @@ export default {
         // this.setupObserver();
         this.fetchBarData();
     },
-    watch: {
-        '$route.params.id': 'fetchBarData'
-    },
     updated() {
         themeAOS.refresh();
     },
@@ -232,8 +229,8 @@ export default {
         fetchBarData() {
             console.log('search function called');
             const id = this.$route.params.id;
-            axios.get(import.meta.env.VITE_API_BASE + `/api/themerating.php?id=${id}`)
-            // axios.get(`http://localhost/memeapple/public/php/api/themerating.php?id=${id}`)
+            // axios.get(import.meta.env.VITE_API_BASE + `/api/themerating.php?id=${id}`)
+            axios.get(`http://localhost/memeapple/public/php/api/themerating.php?id=${id}`)
                 .then(response => {
                     const data = response.data;
                     this.bars = [
@@ -241,6 +238,9 @@ export default {
                         { title: '驚嚇指數', per: data.SCARY_AVG },
                         { title: '推薦指數', per: data.RECOMMAND_AVG }
                     ];
+                    this.$nextTick(() => {
+                        this.setupObserver();
+                    })
                 })
                 .catch(error => {
                     console.error('Error fetching bar data:', error);
@@ -275,19 +275,17 @@ export default {
         },
         //進度條指數
         resetProgressBar() {
-            // 將 isVisible 設為 false，這樣進度條會重置到 0%
             this.isVisible = false;
         },
         setupObserver() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        this.isVisible = true; // 當進度條進入視窗範圍時，設置 isVisible 為 true
+                        this.isVisible = true;
                     }
                 });
             });
 
-            // 確保進度條元素存在，並監測它們
             const progressBars = this.$refs.progressBars ? Array.from(this.$refs.progressBars) : [];
             if (progressBars.length === 0) {
                 console.warn('未找到任何進度條元素');
@@ -300,5 +298,15 @@ export default {
         }
 
     },
+    beforeRouteUpdate(to, from, next) {
+    if (to.params.id !== from.params.id) {
+        next(); // 切換到新的 ID
+        setTimeout(() => {
+            window.location.reload(); // 重新整理頁面
+        }, 0);
+    } else {
+        next();
+    }
+}
 };
 </script>
