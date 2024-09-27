@@ -75,7 +75,7 @@ const routes = [
   { path: '/Theme/:id/preorder/orderinform/pay', component: Pay },
   { path: '/Theme/:id/preorder/orderinform/pay/Membermanage', component:Membermanage},
   { path: '/StarRating/', name: 'StarRating',meta:{title:'問卷調查'}, component: () => import('../components/StarRating.vue') },
- 
+  { path: '/pointcard/', name: 'pointcard',meta:{title:'問卷調查'}, component: () => import('../views/PointsCard.vue') },
 ];
 
 

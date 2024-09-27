@@ -80,13 +80,7 @@
             <div class="couponimg">
               <img src="../assets/img/game_coupon.png" class="couponbg">
             </div>
-            <div class="coupondata">
-              <div class="couponposition">
-                <!-- <h3>COUPON</h3> -->
-                <h3 class="rotate-text">${{ coupon.DISCOUNT }}</h3>
-                <h4 class="rotate-text">折價券</h4>
-              </div>
-            </div>
+              <h3 class="rotate-text">${{ coupon.DISCOUNT }}</h3>  
           </div>
 
         </div>

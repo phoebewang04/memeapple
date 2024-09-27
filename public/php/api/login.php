@@ -13,7 +13,7 @@ $pass = $data['password'] ?? null;
 if ($email && $pass) {
     try {
         // 使用 PDO 進行查詢
-        $sql = "SELECT * FROM MEMBER WHERE EMAIL = ?";
+        $sql = "SELECT * FROM memberdetails WHERE EMAIL = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(1, $email);
         $stmt->execute();
@@ -30,6 +30,8 @@ if ($email && $pass) {
                         "phone" => $user_data['PHONE'],
                         "status" => $user_data['STATUS'],
                         "password" => $user_data['PASSWORD'],
+                        "regidate" => $user_data['REGI_DATE'],
+                        "ordercounts" => $user_data['ORDER_COUNTS'],
                     ]]);
             } else {
                 echo json_encode(["status" => "error", "message" => "密碼錯誤"]);
