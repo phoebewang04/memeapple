@@ -28,8 +28,8 @@
                 :data-aos-delay="imgIndex * 1" ref="bloodImage">
         </section>
 
-        <!-- -----主題文字介紹＋指數 start----- -->
-        <section class="overview">
+        <!-- -----主題文字介紹＋指數 (all_data) start----- -->
+        <!-- <section class="overview">
 
             <p class="overview_text">{{ all_data[$route.params.id].overviewText }}</p>
 
@@ -39,6 +39,23 @@
                     <div :class="['progress_bar', all_data[$route.params.id].themeClass]" ref="progressBars">
                         <div :class="['progress', all_data[$route.params.id].themeClass]"
                             :style="{ width: isVisible ? bar.per + '%' : '0%' }">{{ bar.per }}%</div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- -----主題文字介紹＋指數 end----- -->
+
+        <!-- 主題文字介紹＋指數 (php) start -->
+        <section class="overview">
+
+            <p class="overview_text">{{ all_data[$route.params.id].overviewText }}</p>
+
+            <div :class="['theme_number', all_data[$route.params.id].themeClass]">
+                <div v-for="(bar, index) in bars" :key="index">
+                    <span>{{ bar.title }}</span>
+                    <div :class="['progress_bar', all_data[$route.params.id].themeClass]">
+                        <div :class="['progress', all_data[$route.params.id].themeClass]"
+                        :style="{ width: bar.per + '%' }">{{ bar.per }}%</div>
                     </div>
                 </div>
             </div>
@@ -159,6 +176,8 @@ import themeAlart from 'sweetalert2';
 import themeAOS from 'aos';
 import 'aos/dist/aos.css';
 
+import axios from 'axios';
+
 // import all_data from 'xxx.js'
 export default {
     data() {
@@ -174,6 +193,13 @@ export default {
 
             // progress_bar
             isVisible: false,
+
+            // 問卷統計
+            bars:[
+                {title: '燒腦指數', per: 80},
+                {title: '驚嚇指數', per: 80},
+                {title: '推薦指數', per: 80},
+            ]
         }
     },
     components: { TopNavbar, Footerbar, themeAlart, themeAOS, ScrollToTop },
@@ -191,11 +217,33 @@ export default {
         //輪播
         this.cardWidth = this.$refs.theme_wrapper.querySelector('.theme_card').offsetWidth;
         // console.log(this.cardWidth);
+
+        // this.setupObserver();
+        this.fetchBarData();
+
     },
     updated() {
         themeAOS.refresh();
     },
     methods: {
+        // 問卷統計
+        fetchBarData() {
+            console.log('search function called');
+            const id = this.$route.params.id;
+            axios.get(import.meta.env.VITE_API_BASE + `/api/themerating.php?id=${id}`)
+            // axios.get(`http://localhost/memeapple/public/php/api/themerating.php?id=${id}`)
+                .then(response => {
+                    const data = response.data;
+                    this.bars = [
+                        { title: '燒腦指數', per: data.DIFFICULT_AVG },
+                        { title: '驚嚇指數', per: data.SCARY_AVG },
+                        { title: '推薦指數', per: data.RECOMMAND_AVG }
+                    ];
+                })
+                .catch(error => {
+                    console.error('Error fetching bar data:', error);
+                });
+        },
         //價錢popup
         showAlert() {
             themeAlart.fire({
