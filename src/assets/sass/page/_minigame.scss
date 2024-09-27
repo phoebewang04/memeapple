@@ -116,6 +116,10 @@
     place-items: center;
     margin-top: 80px;
 
+    h3{
+        color: map-get($colors, yellow );
+        animation: updown 0.8s linear infinite
+    }
 
     .envelope_wrapper {
         height: 120px;

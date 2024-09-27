@@ -95,11 +95,11 @@ export default {
 
       //手機版本landing page圖片
       codeImg: [
-                new URL('@/assets/img/Index-pic04.png', import.meta.url).href,
-                new URL('@/assets/img/Index-pic05.png', import.meta.url).href
-            ],
-            currentCodeIndex: 0,
-            intervalId: null
+        new URL('@/assets/img/Index-pic04.png', import.meta.url).href,
+        new URL('@/assets/img/Index-pic05.png', import.meta.url).href
+      ],
+      currentCodeIndex: 0,
+      intervalId: null
     };
 
   },
@@ -184,10 +184,10 @@ export default {
 
     //手機 landing page
     startSlideshow() {
-            this.intervalId = setInterval(() => {
-                this.currentCodeIndex = (this.currentCodeIndex + 1) % this.codeImg.length;
-            }, 500);
-        }
+      this.intervalId = setInterval(() => {
+        this.currentCodeIndex = (this.currentCodeIndex + 1) % this.codeImg.length;
+      }, 500);
+    }
   },
   mounted() {
 
@@ -321,7 +321,9 @@ export default {
 
         <div class="error_page">
 
-          <span class="close_page" @click="closeLandingPage">&times;</span>
+          <div class="close_page_container">
+            <span @click="closeLandingPage">&times;</span>
+          </div>
 
           <div class="error_information">
             <p><span>[plugin: vite:vue] </span>
@@ -372,11 +374,13 @@ export default {
       <!-- 手機版本 -->
       <section class="slideshow_container" @click.stop>
 
-        <span class="close_mbpage" @click="closeLandingPage">&times;</span>
+        <div class="close_mbbtn_container">
+          <span class="close_mbpage" @click="closeLandingPage">&times;</span>
+        </div>
 
         <div class="error_mb_text">
-            <p>限時主題 ｘ 代碼深淵</p>
-            <p>徵求「debug高手」一起除錯！</p>
+          <p>限時主題 ｘ 代碼深淵</p>
+          <p>徵求「debug高手」一起除錯！</p>
         </div>
 
         <section class="slideshow">
@@ -461,7 +465,7 @@ export default {
               <div class="News-swiper-button-prev">
                 <li @click="prevSlide"><i class="fa-solid fa-caret-left"></i></li>
               </div>
-              
+
               <li class="index-news-li" v-for="(newsItem, index) in visibleAnnouncements" :key="index">
                 <router-link :to="{ name: 'Announcement', params: { id: newsItem.ID } }">
                   <img :src="getImageUrl(newsItem.IMG)" :alt="newsItem.TOPIC">

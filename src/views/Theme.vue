@@ -140,10 +140,15 @@
                     <ul class="theme_carousel">
                         <li v-for="(card, index) in all_data[$route.params.id].otherTheme" :key="index"
                             :class="['theme_card', all_data[$route.params.id].themeClass]">
-                            <router-link :to="{ path: `/Theme/${card.id}` }">
+                            <router-link v-if="card.id !== 8" :to="{ path: `/Theme/${card.id}` }">
                                 <img :src="card.src" :alt="card.title">
                                 <h4>{{ card.title }}</h4>
                             </router-link>
+
+                            <div v-else>
+                                <img :src="card.src" :alt="card.title">
+                                <h4>{{ card.title }}</h4>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -175,7 +180,6 @@ import axios from 'axios';
 
 // import all_data from 'xxx.js'
 export default {
-    components: { TopNavbar, Footerbar, themeAlart, themeAOS, ScrollToTop },
     data() {
         // console.log(this.$route.query);
         // console.log(this.$route.query.id);
@@ -198,7 +202,17 @@ export default {
             ]
         }
     },
+    components: { TopNavbar, Footerbar, themeAlart, themeAOS, ScrollToTop },
+    watch: {
+        '$route.params.id'() {
+            this.resetProgressBar(); // 當路由參數變更（切換主題）時，重置進度條
+            this.$nextTick(() => {
+                this.setupObserver(); // 確保 DOM 完全更新後，重新初始化 observer
+            });
+        }
+    },
     mounted() {
+        this.setupObserver();
         themeAOS.init();
         //輪播
         this.cardWidth = this.$refs.theme_wrapper.querySelector('.theme_card').offsetWidth;
@@ -260,18 +274,27 @@ export default {
             wrapper.scrollLeft += scrollAmount;
         },
         //進度條指數
+        resetProgressBar() {
+            // 將 isVisible 設為 false，這樣進度條會重置到 0%
+            this.isVisible = false;
+        },
         setupObserver() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        this.isVisible = true;
-                    } else {
-                        this.isVisible = false;
+                        this.isVisible = true; // 當進度條進入視窗範圍時，設置 isVisible 為 true
                     }
                 });
             });
 
-            this.$refs.progressBars.forEach((progressBar) => {
+            // 確保進度條元素存在，並監測它們
+            const progressBars = this.$refs.progressBars ? Array.from(this.$refs.progressBars) : [];
+            if (progressBars.length === 0) {
+                console.warn('未找到任何進度條元素');
+                return;
+            }
+
+            progressBars.forEach(progressBar => {
                 observer.observe(progressBar);
             });
         }
