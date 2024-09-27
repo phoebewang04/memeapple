@@ -206,7 +206,9 @@ export default {
 
         // this.setupObserver();
         this.fetchBarData();
-
+    },
+    watch: {
+        '$route.params.id': 'fetchBarData'
     },
     updated() {
         themeAOS.refresh();
