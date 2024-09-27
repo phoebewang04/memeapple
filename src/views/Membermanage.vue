@@ -128,7 +128,11 @@
 
             <!-- 卡片背面：集點卡 -->
             <div class="member_card_collect" v-if="showCollectCard">
-              <div v-for="(card, index) in cards" :key="index" class="card_collect">
+              <!-- <div v-for="(card, index) in cards" :key="index" class="card_collect" :class="{ filled: index <= user.ordercounts }" >
+                <img v-if="index <= user.ordercounts" src="../assets/img/stamp.png" alt="已蓋章" class="stamp-image" />
+              </div> -->
+              <div v-for="index in 8" :key="index" class="card_collect" :class="{ filled: index <= user.ordercounts }">
+                <img v-if="index <= user.ordercounts" src="../assets/img/stamp.png" alt="已蓋章" class="stamp-image" />
               </div>
             </div>
 
