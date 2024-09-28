@@ -583,11 +583,41 @@ export default {
                 if (memberDetailsResponse.data.status === "success") {
                     // 更新 localStorage
                     localStorage.setItem('user', JSON.stringify(memberDetailsResponse.data.user));
+
+                    // 直接發放優惠券
+                    if (this.user.ordercounts == 0) {
+                        try {
+                             // 固定發放300元優惠券
+
+                            let form_data = new FormData();
+                            form_data.append("member_id", memberDetailsResponse.data.user.id);
+                            form_data.append("discount", 300);
+
+                            const couponResponse = await axios.post(import.meta.env.VITE_API_BASE + '/api/coupon.php', form_data, {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data'
+                                }
+                            });
+
+                            Swal.fire({
+                                    title: "恭喜您！集點卡已滿",
+                                    text: "您獲得300元優惠券！",
+                                    icon: "success",
+                                    confirmButtonColor: "#FCD15B",
+                                    confirmButtonText: "<span>OK</span>",
+                                }).then(() => {
+                                        location.reload(); // 重新整理頁面
+                              });
+                        } catch (error) {
+                            console.error("發放優惠券時出錯:", error);
+                        }
+                    } else {
+                                // 若無需發放優惠券，更新資料成功後重新整理頁面
+                                location.reload();
+                            }
                   } else {
                     console.error('獲取會員詳細資料失敗', memberDetailsResponse.data.message);
                 }
-
-
               } else {
                 throw new Error('核銷失敗');
               }
