@@ -50,7 +50,7 @@ class Member {
 
     // 更新狀態API
     public function updateStatus($id, $status) {
-        $sql = "UPDATE memberdetails SET STATUS = ? WHERE ID = ?";
+        $sql = "UPDATE MEMBER SET STATUS = ? WHERE ID = ?";
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$status, $id]);
