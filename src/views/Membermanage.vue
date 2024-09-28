@@ -80,7 +80,7 @@
             <div class="couponimg">
               <img src="../assets/img/game_coupon.png" class="couponbg">
             </div>
-              <h3 class="rotate-text">${{ coupon.DISCOUNT }}</h3>  
+            <h3 class="rotate-text">${{ coupon.DISCOUNT }}</h3>
           </div>
 
         </div>
@@ -89,49 +89,53 @@
         <div class="editmember" v-if="currentTab == 'tab3'">
 
           <!-- 卡片正面：會員資料 -->
-          <div class="member_card_container">
+          <div class="member_card_container" ref="cardContainer">
 
-            <!-- <p>Meme Studio會員卡</p> -->
-            <p>Meme Studio集點卡</p>
+            <p ref="cardTitle">{{ showCollectCard ? 'Meme Studio集點卡' : 'Meme Studio會員卡' }}</p>
 
             <div class="member_card_data" v-if="!showCollectCard">
 
 
               <div class="head_sticker">
-                <img src="../assets/img/adventurerbear.jpg" alt="" class="member_photo">
+                <img ref="headSticker" src="../assets/img/customized_adventurer.png" alt="" class="member_photo">
               </div>
 
 
               <div class="data_right">
-                <ul>
+                <ul ref="cardText">
                   <li>
-                    <span>姓名：{{ isEditing ? editedUser.name : user.name }}</span>
+                    <span>挑戰者：{{ isEditing ? editedUser.name : user.name }}</span>
                   </li>
                   <li>
                     <span>帳號：{{ user.email }}</span>
                   </li>
                   <li>
-                    <span>電話：{{  isEditing ? editedUser.phone : user.phone }}</span>
+                    <span>電話：{{ isEditing ? editedUser.phone : user.phone }}</span>
                   </li>
                   <li>
                     <span>註冊日期：{{ user.regidate }}</span>
                   </li>
                   <li>
                     <span>會員狀態：
-                      <span v-if="user.status === 0">正常</span>
-                      <span v-else-if="user.status === 1" class="card_suspension">您已被停權，請洽客服人員，謝謝！</span>
+                      <span v-if="user.status == 0">正常</span>
+                      <span v-else-if="user.status == 1" class="card_suspension">您已被停權，請洽客服人員，謝謝！</span>
                     </span>
+                  </li>
+                  <li class="accessories">
+                    <img ref="accessoriesImg" src="../assets/img/accessories_adventurer.png" alt="">
                   </li>
                 </ul>
               </div>
+
+
             </div>
 
             <!-- 卡片背面：集點卡 -->
-            <div class="member_card_collect" v-if="showCollectCard">
+            <div class="member_card_collect" v-show="showCollectCard">
               <!-- <div v-for="(card, index) in cards" :key="index" class="card_collect" :class="{ filled: index <= user.ordercounts }" >
                 <img v-if="index <= user.ordercounts" src="../assets/img/stamp.png" alt="已蓋章" class="stamp-image" />
               </div> -->
-              <div v-for="index in 8" :key="index" class="card_collect" :class="{ filled: index <= user.ordercounts }">
+              <div v-for="index in 8" :key="index" class="card_collect" :class="{ filled: index <= user.ordercounts }" :style="{ backgroundColor: collectColor }">
                 <img v-if="index <= user.ordercounts" src="../assets/img/stamp.png" alt="已蓋章" class="stamp-image" />
               </div>
             </div>
@@ -148,31 +152,13 @@
 
           <div class="editmemberdata" v-else>
 
-            <!-- <div class="memberdatacard">
-              <div class="memberdatacardleft">
-                <h3>會員卡</h3>
-                <img src="../assets/img/adventurerbear.jpg" alt="" class="member-photo">
-                <h4>{{ editedUser.name }}</h4>
-              </div>
-              <div class="memberdatacardright">
-                <h3>會員卡</h3>
-                <ul>
-                  <li>
-                    <h4>帳號：{{ user.email }}</h4>
-                  </li>
-                  <li>
-                    <h4>密碼：{{ editedUser.password }}</h4>
-                  </li>
-                  <li>
-                    <h4>電話：{{ editedUser.phone }}</h4>
-                  </li>
-                </ul>
-              </div>
-            </div> -->
             <div class="btnlocation">
               <button class="btn btnedit" @click="saveChanges">儲存變更</button>
               <button class="btn btnedit" @click="cancelEdit">取消</button>
-              <ul>
+            </div>
+
+            <div class="data_style">
+              <ul class="custom_data">
                 <span>會員資料修改</span>
                 <li>
                   <div class="flexinput">
@@ -198,8 +184,30 @@
                   </div>
                 </li>
               </ul>
+
+              <div class="custom_sticker">
+                <span>樣式修改</span>
+
+                <div class="custom_profession">
+                  <p @click="custerProfession('detective')">偵探</p>
+                  <p @click="custerProfession('police')">警察</p>
+                  <p @click="custerProfession('adventurer')">冒險家</p>
+                  <p @click="custerProfession('astronaut')">太空人</p>
+                </div>
+
+                <div class="custom_color">
+                  <p @click="customColor('blue')"></p>
+                  <p @click="customColor('gray')"></p>
+                  <p @click="customColor('green')"></p>
+                  <p @click="customColor('pink')"></p>
+                </div>
+
+              </div>
+
+
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -265,7 +273,9 @@ export default {
         password: '',
         passwordConfirm: '',
         name: '',
-        phone: ''
+        phone: '',
+        profession:'',
+        color:''
       },
       memberId: null, // 定義 memberId
       coupons: [], // 定義 coupons
@@ -286,6 +296,7 @@ export default {
       cards: Array(8).fill({}) // 生成 8 個卡片
       ,
       showCollectCard: false, // 用來控制集點卡顯示與隱藏
+      collectColor: '#35395b', // 初始值
     };
   },
   computed: {
@@ -555,85 +566,85 @@ export default {
         },
         position: 'center',
       }).then(async (result) => {
-          if (result.isConfirmed) {
-            try {
-              // 更新訂單狀態為1
-              order.ORDER_STATUS = 1; // 本地更新狀態
+        if (result.isConfirmed) {
+          try {
+            // 更新訂單狀態為1
+            order.ORDER_STATUS = 1; // 本地更新狀態
 
-              // 發送請求到後端更新狀態
-              const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/ordercancel.php', {
-                orderId: order.ORDER_ID,
-                status: 1
-              });
-              if (response.data.success) {              
-                Swal.fire({
-                  title: "核銷成功",
-                  text: "您的訂單已成功核銷。",
-                  icon: "success",
-                  confirmButtonColor: "#FCD15B",
-                  color: "#100E24",
-                  confirmButtonText: "<span>OK</span>",
-                });
-                order.ORDER_STATUS = '已使用';
-
-                const memberDetailsResponse = await axios.post(import.meta.env.VITE_API_BASE + '/api/dataupdate.php', 
-                { memberId: this.user.id }); // 使用memberId 作為查詢參數
-                console.log(memberDetailsResponse.data);
-
-                if (memberDetailsResponse.data.status === "success") {
-                    // 更新 localStorage
-                    localStorage.setItem('user', JSON.stringify(memberDetailsResponse.data.user));
-
-                    // 直接發放優惠券
-                    if (this.user.ordercounts == 0) {
-                        try {
-                             // 固定發放300元優惠券
-
-                            let form_data = new FormData();
-                            form_data.append("member_id", memberDetailsResponse.data.user.id);
-                            form_data.append("discount", 300);
-
-                            const couponResponse = await axios.post(import.meta.env.VITE_API_BASE + '/api/coupon.php', form_data, {
-                                headers: {
-                                    'Content-Type': 'multipart/form-data'
-                                }
-                            });
-
-                            Swal.fire({
-                                    title: "恭喜您！集點卡已滿",
-                                    text: "您獲得300元優惠券！",
-                                    icon: "success",
-                                    confirmButtonColor: "#FCD15B",
-                                    confirmButtonText: "<span>OK</span>",
-                                }).then(() => {
-                                        location.reload(); // 重新整理頁面
-                              });
-                        } catch (error) {
-                            console.error("發放優惠券時出錯:", error);
-                        }
-                    } else {
-                                // 若無需發放優惠券，更新資料成功後重新整理頁面
-                                location.reload();
-                            }
-                  } else {
-                    console.error('獲取會員詳細資料失敗', memberDetailsResponse.data.message);
-                }
-              } else {
-                throw new Error('核銷失敗');
-              }
-            } catch (error) {
-              console.error(error);
+            // 發送請求到後端更新狀態
+            const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/ordercancel.php', {
+              orderId: order.ORDER_ID,
+              status: 1
+            });
+            if (response.data.success) {
               Swal.fire({
-                title: "錯誤",
-                text: "核銷過程中發生錯誤，請稍後再試。",
-                icon: "error",
+                title: "核銷成功",
+                text: "您的訂單已成功核銷。",
+                icon: "success",
                 confirmButtonColor: "#FCD15B",
                 color: "#100E24",
                 confirmButtonText: "<span>OK</span>",
               });
+              order.ORDER_STATUS = '已使用';
+
+              const memberDetailsResponse = await axios.post(import.meta.env.VITE_API_BASE + '/api/dataupdate.php',
+                { memberId: this.user.id }); // 使用memberId 作為查詢參數
+              console.log(memberDetailsResponse.data);
+
+              if (memberDetailsResponse.data.status === "success") {
+                // 更新 localStorage
+                localStorage.setItem('user', JSON.stringify(memberDetailsResponse.data.user));
+
+                // 直接發放優惠券
+                if (this.user.ordercounts == 0) {
+                  try {
+                    // 固定發放300元優惠券
+
+                    let form_data = new FormData();
+                    form_data.append("member_id", memberDetailsResponse.data.user.id);
+                    form_data.append("discount", 300);
+
+                    const couponResponse = await axios.post(import.meta.env.VITE_API_BASE + '/api/coupon.php', form_data, {
+                      headers: {
+                        'Content-Type': 'multipart/form-data'
+                      }
+                    });
+
+                    Swal.fire({
+                      title: "恭喜您！集點卡已滿",
+                      text: "您獲得300元優惠券！",
+                      icon: "success",
+                      confirmButtonColor: "#FCD15B",
+                      confirmButtonText: "<span>OK</span>",
+                    }).then(() => {
+                      location.reload(); // 重新整理頁面
+                    });
+                  } catch (error) {
+                    console.error("發放優惠券時出錯:", error);
+                  }
+                } else {
+                  // 若無需發放優惠券，更新資料成功後重新整理頁面
+                  location.reload();
+                }
+              } else {
+                console.error('獲取會員詳細資料失敗', memberDetailsResponse.data.message);
+              }
+            } else {
+              throw new Error('核銷失敗');
             }
+          } catch (error) {
+            console.error(error);
+            Swal.fire({
+              title: "錯誤",
+              text: "核銷過程中發生錯誤，請稍後再試。",
+              icon: "error",
+              confirmButtonColor: "#FCD15B",
+              color: "#100E24",
+              confirmButtonText: "<span>OK</span>",
+            });
           }
-        });
+        }
+      });
     },
     taskStar(e, i, star) {
       this.tasks[i].star = star;
@@ -671,6 +682,8 @@ export default {
       this.user.phone = this.editedUser.phone;
       this.user.password = this.editedUser.password; // 直接使用明文密碼
       this.user.passwordConfirm = this.editedUser.password;
+      this.user.profession = this.editedUser.profession;
+      this.user.color = this.editedUser.color;
       // 更新 localStorage
       localStorage.setItem('user', JSON.stringify(this.user));
 
@@ -685,7 +698,9 @@ export default {
         name: user.name,
         phone: user.phone,
         password: user.password, // 直接傳送明文密碼
-        passwordConfirm: user.password
+        passwordConfirm: user.password,
+        profession:user.profession,
+        color:user.color
       };
       axios.post(import.meta.env.VITE_API_BASE + '/api/editmemberdata.php', payload)
         // axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)
@@ -718,16 +733,68 @@ export default {
       this.showStarRating = true; // 顯示彈出窗口
     },
     overturn() {
-    this.showCollectCard = !this.showCollectCard; // 切換顯示狀態
+      this.showCollectCard = !this.showCollectCard; // 切換顯示狀態
+    },
+    membershipCard() {
+      this.isEditing = true;
+      this.showCollectCard = false;
+    },
+    cancelEdit() {
+      this.editedUser = { ...this.user }; // 重置 editedUser 為 user 的值
+      this.isEditing = false;
+    },
+    custerProfession(profession) {
+    if (profession === 'detective') {
+      // 偵探
+      this.$refs.accessoriesImg.src = new URL("@/assets/img/accessories_detective.png", import.meta.url).href;
+      this.$refs.headSticker.src = new URL("@/assets/img/customized_detective.png", import.meta.url).href;
+    } else if (profession === 'police') {
+      // 警察
+      this.$refs.accessoriesImg.src = new URL("@/assets/img/accessories_police.png", import.meta.url).href;
+      this.$refs.headSticker.src = new URL("@/assets/img/customized_police.png", import.meta.url).href;
+    } else if (profession === 'adventurer') {
+      // 冒險家
+      this.$refs.accessoriesImg.src = new URL("@/assets/img/accessories_adventurer.png", import.meta.url).href;
+      this.$refs.headSticker.src = new URL("@/assets/img/customized_adventurer.png", import.meta.url).href;
+    } else if (profession === 'astronaut') {
+      // 太空人
+      this.$refs.accessoriesImg.src = new URL("@/assets/img/accessories_astronaut.png", import.meta.url).href;
+      this.$refs.headSticker.src = new URL("@/assets/img/customized_astronaut.png", import.meta.url).href;
+    }
   },
-  membershipCard(){
-    this.isEditing = true;
-    this.showCollectCard =false;
-  },
-  cancelEdit() {
-    this.editedUser = { ...this.user }; // 重置 editedUser 為 user 的值
-    this.isEditing = false;
-  },
+  customColor(color) {
+    if (color === 'blue') {
+      this.$refs.cardContainer.style.backgroundColor = '#221F3C';
+      this.$refs.cardTitle.style.backgroundColor = '#35395b';
+      this.$refs.cardText.style.color = '#FFFFFF'; 
+      this.$refs.headSticker.style.backgroundColor = '#35395b'; 
+      this.collectColor='#35395b'
+
+    } else if (color === 'gray') {
+      this.$refs.cardContainer.style.backgroundColor = '#D9D9D9';
+      this.$refs.cardTitle.style.backgroundColor = '#737373';
+      this.$refs.cardText.style.color = '#737373';
+      this.$refs.headSticker.style.backgroundColor = '#ececec'; 
+      this.collectColor='#ececec'
+
+    } else if (color === 'green') {
+      this.$refs.cardContainer.style.backgroundColor = '#F1EAD5';
+      this.$refs.cardTitle.style.backgroundColor = '#918F6A';
+      this.$refs.cardText.style.color = '#918F6A';
+      this.$refs.headSticker.style.backgroundColor = '#fff7e1';
+      this.collectColor='#fff7e1'
+
+
+    } else if (color === 'pink') {
+      this.$refs.cardContainer.style.backgroundColor = '#F1DBD5';
+      this.$refs.cardTitle.style.backgroundColor = '#BF5D5D';
+      this.$refs.cardText.style.color = '#BF5D5D';
+      this.$refs.headSticker.style.backgroundColor = '#fae9e9'; 
+      this.collectColor='#fae9e9'
+
+
+    }
+  }
   },
 };
 </script>
