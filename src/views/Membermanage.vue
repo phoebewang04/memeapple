@@ -105,13 +105,13 @@
               <div class="data_right">
                 <ul>
                   <li>
-                    <span>姓名：{{ user.name }}</span>
+                    <span>姓名：{{ isEditing ? editedUser.name : user.name }}</span>
                   </li>
                   <li>
                     <span>帳號：{{ user.email }}</span>
                   </li>
                   <li>
-                    <span>電話：{{ user.phone }}</span>
+                    <span>電話：{{  isEditing ? editedUser.phone : user.phone }}</span>
                   </li>
                   <li>
                     <span>註冊日期：{{ user.regidate }}</span>
@@ -171,7 +171,7 @@
             </div> -->
             <div class="btnlocation">
               <button class="btn btnedit" @click="saveChanges">儲存變更</button>
-              <button class="btn btnedit" @click="isEditing = false">取消</button>
+              <button class="btn btnedit" @click="cancelEdit">取消</button>
               <ul>
                 <span>會員資料修改</span>
                 <li>
@@ -538,7 +538,8 @@ export default {
                         </section>
                       </main>
                 `,
-        showConfirmButton: false,
+        showConfirmButton: true,
+        confirmButtonText: '核銷',
         showCloseButton: true,
         color: '#FFFFFF',
         width: 'auto',
@@ -553,7 +554,56 @@ export default {
 
         },
         position: 'center',
-      })
+      }).then(async (result) => {
+          if (result.isConfirmed) {
+            try {
+              // 更新訂單狀態為1
+              order.ORDER_STATUS = 1; // 本地更新狀態
+
+              // 發送請求到後端更新狀態
+              const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/ordercancel.php', {
+                orderId: order.ORDER_ID,
+                status: 1
+              });
+              if (response.data.success) {              
+                Swal.fire({
+                  title: "核銷成功",
+                  text: "您的訂單已成功核銷。",
+                  icon: "success",
+                  confirmButtonColor: "#FCD15B",
+                  color: "#100E24",
+                  confirmButtonText: "<span>OK</span>",
+                });
+                order.ORDER_STATUS = '已使用';
+
+                const memberDetailsResponse = await axios.post(import.meta.env.VITE_API_BASE + '/api/dataupdate.php', 
+                { memberId: this.user.id }); // 使用memberId 作為查詢參數
+                console.log(memberDetailsResponse.data);
+
+                if (memberDetailsResponse.data.status === "success") {
+                    // 更新 localStorage
+                    localStorage.setItem('user', JSON.stringify(memberDetailsResponse.data.user));
+                  } else {
+                    console.error('獲取會員詳細資料失敗', memberDetailsResponse.data.message);
+                }
+
+
+              } else {
+                throw new Error('核銷失敗');
+              }
+            } catch (error) {
+              console.error(error);
+              Swal.fire({
+                title: "錯誤",
+                text: "核銷過程中發生錯誤，請稍後再試。",
+                icon: "error",
+                confirmButtonColor: "#FCD15B",
+                color: "#100E24",
+                confirmButtonText: "<span>OK</span>",
+              });
+            }
+          }
+        });
     },
     taskStar(e, i, star) {
       this.tasks[i].star = star;
@@ -643,7 +693,11 @@ export default {
   membershipCard(){
     this.isEditing = true;
     this.showCollectCard =false;
-  }
+  },
+  cancelEdit() {
+    this.editedUser = { ...this.user }; // 重置 editedUser 為 user 的值
+    this.isEditing = false;
+  },
   },
 };
 </script>
