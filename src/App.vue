@@ -54,12 +54,12 @@ export default {
 
   //網頁某些狀態後會重新清除localstorage的全部紀錄
   mounted (){
-    setTimeout(() => {
-        // localStorage.clear();
-        localStorage.removeItem(orderData); //訂單的基本資訊
-        localStorage.removeItem(discountPrice); //會員優惠卷折扣數
-        console.log("LocalStorage 該項目已被自動清空");
-    }, 300000); //5分鐘後清除
+    // setTimeout(() => {
+    //     // localStorage.clear();
+    //     localStorage.removeItem(orderData); //訂單的基本資訊
+    //     localStorage.removeItem(discountPrice); //會員優惠卷折扣數
+    //     console.log("LocalStorage 該項目已被自動清空");
+    // }, 300000); //5分鐘後清除
 
       // 當頁面重開之後會去檢查sessionStorage是否存在 如果是第一次載入網頁會先清除第一次紀錄確保有無異漏之前的數據
     if (!sessionStorage.getItem('hasVisited')) {

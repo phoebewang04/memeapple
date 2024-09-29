@@ -15,7 +15,7 @@
             </RouterLink>
         </div>
 
-     <!-- ----------------------順序時間圖---------------------- -->
+      <!-- ----------------------順序時間圖---------------------- -->
 
         <div class="order_process">
             <div class="order_number">
@@ -118,6 +118,8 @@
                         </label>
                     </div>
 
+                    <button class="btn next_btn" :disabled="orderstatus === 1 || !dataValid"  :class="{active: orderstatus !== 1 && dataValid}" @click="submitData" >下一步</button>
+
                 </div>
             </div>
 
@@ -192,7 +194,7 @@
 
         </div>
 
-        </div>
+    </div>
 
 
     <Footerbar />

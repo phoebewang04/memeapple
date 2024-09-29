@@ -229,8 +229,8 @@ export default {
         fetchBarData() {
             console.log('search function called');
             const id = this.$route.params.id;
-            // axios.get(import.meta.env.VITE_API_BASE + `/api/themerating.php?id=${id}`)
-            axios.get(`http://localhost/memeapple/public/php/api/themerating.php?id=${id}`)
+            axios.get(import.meta.env.VITE_API_BASE + `/api/themerating.php?id=${id}`)
+            // axios.get(`http://localhost/memeapple/public/php/api/themerating.php?id=${id}`)
                 .then(response => {
                     const data = response.data;
                     this.bars = [
