@@ -49,7 +49,7 @@
                   <!-- 訂金詳細資訊 -->
                   <div class="order_cardstate">
                     <p>訂金</p>
-                    <p>TWD 2000元</p>
+                    <p>TWD 2,000元</p>
                     <!-- 問卷填寫按鈕 -->
                     <button v-if="order.ORDER_STATUS === '已使用'" class="questionwrite"
                       @click="orderquestion(order)">問卷填寫</button>
@@ -118,7 +118,7 @@
                   <li>
                     <span>會員狀態：
                       <span v-if="user.status == 0">正常</span>
-                      <span v-else-if="user.status == 1" class="card_suspension">帳號停權，請洽客服！</span>
+                      <span v-else-if="user.status == 1" class="card_suspension">停權，請洽客服！</span>
                     </span>
                   </li>
                   <li class="accessories">
@@ -197,7 +197,7 @@
                   <p @click="custerProfession('detective')"
                     :class="{ customactive: editedUser.profession === 'detective' }">偵探</p>
                   <p @click="custerProfession('police')" :class="{ customactive: editedUser.profession === 'police' }">
-                    警察</p>
+                    警長</p>
                   <p @click="custerProfession('adventurer')"
                     :class="{ customactive: editedUser.profession === 'adventurer' }">冒險家</p>
                   <p @click="custerProfession('astronaut')"
@@ -222,7 +222,7 @@
         <div class="collect_rules">
 
           <p>{{ showCollectCard
-            ?'每當你遊玩一場密室遊戲，成就之鑰便可獲得1點榮耀積分。當累積至8點時，神秘的優惠券將向你敞開，為你下一次的挑戰提供助力。探索的腳步不停，秘境的謎題等著你解開，來謎因工作室，集點成就不凡旅程！':''
+            ?'每次破解密室，即可獲得1點榮耀積分，累積至8點時，神秘優惠券將為你揭開序幕，幫助你迎接全新挑戰！':''
             }}</p>
         </div>
       </div>
@@ -582,6 +582,7 @@ export default {
                 `,
         showConfirmButton: true,
         confirmButtonText: '核銷',
+        confirmButtonColor: '#870801',
         showCloseButton: true,
         color: '#FFFFFF',
         width: 'auto',
