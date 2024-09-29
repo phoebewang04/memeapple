@@ -281,6 +281,11 @@ export default {
 
 
             };
+
+            if (this.orderDiscount) {
+                dataToSend.couponId = this.orderDiscount;
+            }
+            
             console.log('提交的數據：', {
                 themeId: orderData.themeId,
                 orderDate: orderData.selectedDate,  
