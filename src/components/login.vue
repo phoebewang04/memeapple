@@ -293,7 +293,14 @@ export default {
                 });
 
                 if (response.data.status === "success") {
-                    alert("註冊成功");
+                    Swal.fire({
+                        title: '註冊成功',
+                        text: '請重新登入',
+                        icon: 'success',
+                        confirmButtonColor: '#FCD15B',
+                        confirmButtonText: 'OK'
+                    })
+                    // alert("註冊成功，請重新登入");
                     // 可以在這裡進行重定向或其他操作
 
 

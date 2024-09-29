@@ -78,9 +78,10 @@
         <div class="coupontext" v-if="currentTab == 'tab2'">
           <div v-for="coupon in coupons" :key="coupon.id" class="couponticket">
             <div class="couponimg">
-              <img src="../assets/img/game_coupon.png" class="couponbg">
+              <img v-if="coupon.DISCOUNT !== 300" src="../assets/img/game_coupon.png" class="couponbg">
+              <img  v-if="coupon.DISCOUNT == 300" src="../assets/img/integral_coupon.png" class="couponbg">
             </div>
-            <h3 class="rotate-text">${{ coupon.DISCOUNT }}</h3>
+            <h3 class="rotate-text" v-if="coupon.DISCOUNT !== 300">${{ coupon.DISCOUNT }}</h3>
           </div>
 
         </div>
@@ -863,7 +864,12 @@ export default {
           backgroundColor: '#fae9e9'
         };
       }
-    }
+    },
+    couponImage() {
+    return this.coupon.DISCOUNT === 300
+      ? new URL('@/assets/img/integral_coupon.png', import.meta.url).href
+      : new URL('@/assets/img/game_coupon.png', import.meta.url).href;
+     },
   },
 };
 </script>
