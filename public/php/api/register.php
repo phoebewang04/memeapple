@@ -42,7 +42,7 @@ if (count($result) > 0) {
     echo json_encode(["status" => "error", "message" => implode(", ", $messages)]);
     exit;
 } else {
-    $sql = "INSERT INTO MEMBER(EMAIL, PASSWORD, NAME, PHONE, REGI_DATE, STATUS) VALUES (?, ?, ?, ?, CURDATE(),0)";
+    $sql = "INSERT INTO MEMBER(EMAIL, PASSWORD, NAME, PHONE, REGI_DATE, STATUS, PROFESSION_IMG, CARD_COLOR) VALUES (?, ?, ?, ?, CURDATE(),0,detective,blue)";
     $stmt = $pdo->prepare($sql);
 
     if ($stmt->execute([$email, $pass, $name, $phone])) { // 直接使用 execute
