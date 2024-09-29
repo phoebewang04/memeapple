@@ -22,8 +22,18 @@
                             <li><i class="fa-solid fa-envelope"></i><input type="text" class="account"
                                     placeholder="請輸入帳號" v-model="username"></li>
                             <!-- <li><i class="fa-solid fa-lock"></i><h4>密碼</h4></li> -->
-                            <li><i class="fa-solid fa-lock"></i><input type="password" class="PWD" placeholder="請輸入密碼"
-                                    v-model="password"></li>
+                            <li>
+                                <i class="fa-solid fa-lock"></i>
+
+                                <div class="pwd_eye">
+                                    <input :type="showPassword ? 'text' : 'password'" class="PWD" placeholder="請輸入密碼"
+                                        v-model="password">
+                                        <i :class="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
+                                        @click="togglePwd" class="eye-icon"></i>
+                                </div>
+
+
+                            </li>
                             <li><button type="submit" class="btn btnlogin">登入</button></li>
                         </ol>
                         <div class="checkforget">
@@ -55,7 +65,7 @@
 
                 <div class="mainLogin mainJoin" v-if="currentlogin === 'join'">
                     <form @submit.prevent="submitRegister">
-                        <span class="close" @click="closePopup">&times;</span>
+                        <span class="member_close" @click="closePopup">&times;</span>
                         <ol id="mainJoin">
                             <li><span>會員註冊</span></li>
                             <!-- <li>
@@ -129,6 +139,7 @@ export default {
             showPopup: true,
             username: '',
             password: '',
+            showPassword: false,
             registerEmail: '',
             registerPassword: '',
             registerPasswordConfirm: '',
@@ -188,7 +199,7 @@ export default {
         async submitLogin() {
             try {
                 const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/login.php', {
-                // const response = await axios.post('http://localhost/appleyy/public/php/api/login.php', {
+                    // const response = await axios.post('http://localhost/appleyy/public/php/api/login.php', {
                     username: this.username,
                     password: this.password
                 });
@@ -273,8 +284,8 @@ export default {
 
             // 如果所有檢查都通過，則進行註冊請求
             try {
-                const response = await axios.post(import.meta.env.VITE_API_BASE +'/api/register.php', {
-                // const response = await axios.post('http://localhost/appleyy/public/php/api/register.php', {
+                const response = await axios.post(import.meta.env.VITE_API_BASE + '/api/register.php', {
+                    // const response = await axios.post('http://localhost/appleyy/public/php/api/register.php', {
                     email: this.registerEmail,
                     password: this.registerPassword,
                     name: this.registerName,
@@ -282,7 +293,14 @@ export default {
                 });
 
                 if (response.data.status === "success") {
-                    alert("註冊成功");
+                    Swal.fire({
+                        title: '註冊成功',
+                        text: '請重新登入',
+                        icon: 'success',
+                        confirmButtonColor: '#FCD15B',
+                        confirmButtonText: 'OK'
+                    })
+                    // alert("註冊成功，請重新登入");
                     // 可以在這裡進行重定向或其他操作
 
 
@@ -316,7 +334,10 @@ export default {
             // 進行登出後的操作，例如重定向
             this.username = ''; // 清空帳號資訊
             this.password = ''; // 清空密碼（如需要）
-        }
+        },
+        togglePwd() {
+        this.showPassword = !this.showPassword;
+        } 
     },
 }
 </script>
