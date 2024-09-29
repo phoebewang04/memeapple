@@ -27,7 +27,6 @@
     color: map-get($colors, white);
     background-color: map-get($colors, darkblue);
     width: 100%;
-    font-size: map-get($fontsize , h4);
 
     &:hover {
         color: map-get($colors, gold);

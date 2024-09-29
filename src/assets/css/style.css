@@ -7116,7 +7116,7 @@ ul#menuBar li:hover > ul {
 
 .wrappermmange {
   display: flex;
-  min-height: 600px;
+  min-height: calc(100vh - 164px);
 }
 
 .mmangeleft {
@@ -7140,7 +7140,6 @@ ul#menuBar li:hover > ul {
   color: white;
   background-color: #100E24;
   width: 100%;
-  font-size: 20px;
 }
 .btn_mange:hover {
   color: #FCD15B;
