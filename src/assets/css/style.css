@@ -146,7 +146,8 @@ p {
 @supports (-webkit-touch-callout: none) {
   /* 這個塊僅針對 iOS 設備 */
   .top img {
-    margin-left: -30px !important; /* 確保 margin 被重設 */
+    margin-left: -30px !important;
+    /* 確保 margin 被重設 */
   }
 }
 .top .fa {
@@ -198,6 +199,29 @@ p {
 }
 .top li:hover {
   color: #FCD15B;
+}
+.top li span {
+  display: inline-block;
+  font-weight: 500;
+  position: relative;
+}
+.top li span::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  left: 0;
+  top: 80%;
+  background-color: #FCD15B;
+  transition: width 0.3s ease;
+}
+.top li span:hover {
+  color: #FEDA77;
+}
+.top li span:hover::after {
+  width: 100%;
+  background: #FEDA77;
 }
 
 .top a {
@@ -277,6 +301,12 @@ ul#menuBar ul ul {
   top: 0px;
   right: 140px;
 }
+@media (max-width: 800px) {
+  ul#menuBar ul ul {
+    top: 107px;
+    right: 0px;
+  }
+}
 @media (max-width: 430px) {
   ul#menuBar ul ul {
     top: 100px;
@@ -301,7 +331,8 @@ ul#menuBar li:hover > ul {
 @supports (-webkit-touch-callout: none) {
   /* 這個塊僅針對 iOS 設備 */
   .top img {
-    margin-left: -30px !important; /* 確保 margin 被重設 */
+    margin-left: -30px !important;
+    /* 確保 margin 被重設 */
   }
 }
 .bottom {
@@ -1960,6 +1991,10 @@ ul#menuBar li:hover > ul {
   width: 80%;
   height: auto;
   display: block;
+  transition: transform 0.3s ease-in-out; /* 添加過渡效果 */
+}
+.brandstory-img img:hover {
+  transform: scale(1.02);
 }
 
 .brandstory-text {
