@@ -19,7 +19,7 @@ $memberId = $data['memberId'] ?? '';
 $couponId = $data['couponId'] ?? '';
 $total = $data['total'] ?? 0; 
 // $orderStatus = 2; 
-$couponId = $data['couponId'] ?? '';
+
 
 
 
