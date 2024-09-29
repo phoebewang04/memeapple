@@ -322,28 +322,23 @@ export default {
         },
         // 查詢優惠券
         getCoupons(memberId) {
-             axios.get(import.meta.env.VITE_API_BASE + `/api/membercoupon.php?member_id=${memberId}`)
-            //  axios.get(`http://localhost/appleTeam/public/php/api/membercoupon.php?member_id=${memberId}`)
+            axios.get(import.meta.env.VITE_API_BASE + `/api/membercoupon.php?member_id=${memberId}`)
                 .then(response => {
                     if (Array.isArray(response.data)) {
                         this.coupons = response.data;
 
-                        // 找尋折扣最大的優惠券
                         if (this.coupons.length > 0) {
-                            // const maxDiscountCoupon = this.coupons.reduce((max, coupon) => {
-                            //     return coupon.DISCOUNT > max.DISCOUNT ? coupon : max;
-                            // }, this.coupons[0]);
                             const maxDiscountCoupon = this.coupons.reduce((max, coupon) => {
                                 return Number(coupon.DISCOUNT) > Number(max.DISCOUNT) ? coupon : max;
                             }, this.coupons[0]);
                             this.orderDiscount = maxDiscountCoupon.ID;
                             this.discountPrice = maxDiscountCoupon.DISCOUNT;
 
-                            //把優惠卷的值存入localstorage裡 再由下一頁帶入值
                             this.$nextTick(() => {
-                            localStorage.setItem('discountPrice', this.discountPrice);
-                            console.log('Stored Discount Price:', localStorage.getItem('discountPrice'));
-                    });
+                                localStorage.setItem('orderDiscount', this.orderDiscount);
+                                localStorage.setItem('discountPrice', this.discountPrice);
+                                console.log('Stored Discount Price:', localStorage.getItem('discountPrice'));
+                            });
                         }
                     } else {
                         console.error('Invalid response data:', response.data);
@@ -400,25 +395,24 @@ export default {
                 this.comfirmError = '';
             }
         },
-        selectDiscount (){
-            // 小郭version
+        selectDiscount() {
             const selectedCoupon = this.coupons.find(coupon => coupon.ID === this.orderDiscount);
             if (selectedCoupon) {
                 this.discountPrice = selectedCoupon.DISCOUNT;
             } else {
                 this.discountPrice = '0';
             }
-            
-        },
-        
-        goToNextPage (){
-            localStorage.setItem ('orderDiscount', this.orderDiscount);
+            // 更新 localStorage 中的優惠券資料
+            localStorage.setItem('orderDiscount', this.orderDiscount);
             localStorage.setItem('discountPrice', this.discountPrice);
-            
+        },
+
+        
+        goToNextPage() {
+            localStorage.setItem('orderDiscount', this.orderDiscount);
+            localStorage.setItem('discountPrice', this.discountPrice);
 
             this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay` });
-
-      
         },
         checkValid (){
 
