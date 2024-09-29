@@ -27,8 +27,8 @@ $requestMethod = $_SERVER['REQUEST_METHOD'];
 
 // Database connection
 
-//    $db = new Database('127.0.0.1', 'MemeStudio', 'root', 'password');
-   $db = new Database('127.0.0.1', 'tibamefe_tid102g1', 'tibamefe_since2021', 'vwRBSb.j&K#E');
+    $db = new Database('127.0.0.1', 'MemeStudio', 'root', 'password');
+//    $db = new Database('127.0.0.1', 'tibamefe_tid102g1', 'tibamefe_since2021', 'vwRBSb.j&K#E');
 
 $pdo = $db->getConnection();
 
