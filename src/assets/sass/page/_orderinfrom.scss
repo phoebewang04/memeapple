@@ -4,6 +4,7 @@
 #order_wrapper {
     width: 1200px;
     margin: 0 auto;
+    min-height: calc(100vh - 164px);
 
     @include rwd(820px){
         width: 780px;
@@ -12,6 +13,7 @@
 
     @include rwd(430px){
         width: 400px;
+        
     }
 }
 
@@ -325,9 +327,29 @@
     padding: 10px;
     line-height: 1.6;
 
+
     @include rwd(430px){
         margin-bottom: 195px;
         margin-top: 10px;
+    }
+}
+
+.confrim .next_btn {
+    width: 300px;
+    height: 35px;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: lightgray;
+    font-size: map-get($fontsize , p1 );
+    line-height: 1.2;
+
+    display: none;
+
+    @include rwd(430px){
+      display: block;
+      position: relative;
+      bottom: -90px;
+      left: 35px;
     }
 }
 
@@ -427,7 +449,7 @@
     }
 
     @include rwd(430px){
-        margin-bottom: 890px;
+        margin-bottom: 1170px;
     }
 }
 
@@ -451,6 +473,12 @@
 .order_right  .button01 {
     width: 300px;
     margin: 0 auto;
+
+
+
+     @include rwd(430px){
+        display: none;
+     }
 }
 
 .order_right  .button01 p {

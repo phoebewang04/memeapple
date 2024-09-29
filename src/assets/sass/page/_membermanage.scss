@@ -27,6 +27,7 @@
     color: map-get($colors, white);
     background-color: map-get($colors, darkblue);
     width: 100%;
+    font-size: 20px;
 
     &:hover {
         color: map-get($colors, gold);
@@ -55,14 +56,14 @@
             margin: 0 auto 20px;
 
             button {
-                font-size: 24px;
+                font-size: 20px;
                 display: block;
             }
         }
 
         @include rwd(430px) {
             button {
-                font-size: 20px;
+                font-size: 18px;
                 padding: 10px 0;
             }
         }
@@ -298,7 +299,7 @@
 
         @include rwd(1280px) {
             padding: 10px 4px;
-            font-size: 16px;
+            font-size: 20px;
         }
 
         &:hover {
@@ -314,7 +315,7 @@
 
         @include rwd(1280px) {
             padding: 10px 4px;
-            font-size: 16px;
+            font-size: 20px;
         }
     }
 
@@ -363,20 +364,29 @@
 
             @include rwd(750px) {
                 font-size: 45px;
-                top: 38%;
-                right: 32%
+                top: 40%;
+                right: 33%;
+            }
+
+            @include rwd(650px) {
+                font-size: 40px;
+                top: 39%;
+                right: 32%;
             }
 
             @include rwd(600px) {
                 font-size: 35px;
                 top: 39%;
-                right: 33%
+                right: 32%
+            }
+
+            @include rwd(500px) {
+                font-size: 30px;
             }
 
             @include rwd(450px) {
                 font-size: 28px;
-                top: 39%;
-                right: 33%
+                top: 38%;
             }
 
             @include rwd(400px) {
@@ -707,14 +717,14 @@
 
 }
 
-.collect_rules{
-    width: 80%;
+.collect_rules {
+    width: 60%;
     margin: 0 auto;
 
-    p{
-        color: map-get($colors , gold );
-        
-        text-align: center;
+    p {
+        color: map-get($colors , gold);
+
+        text-align: justify;
         font-size: 18px;
     }
 
@@ -753,10 +763,9 @@
             .accessories {
 
                 img {
-                    width: 30%;
-                    right: -8%;
-                    bottom: 22%;
-                    position: absolute;
+                    width: 28%;
+                    right: -11%;
+                    bottom: 6%;
                 }
 
             }
@@ -806,13 +815,13 @@
 
     }
 
-    .collect_rules{
-        
-        p{
+    .collect_rules {
+
+        p {
 
             font-size: 16px;
         }
-    
+
     }
 
 }

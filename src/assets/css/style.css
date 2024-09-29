@@ -138,11 +138,17 @@ p {
 }
 @media (max-width: 430px) {
   .top img {
-    padding: 0;
+    padding: 0px;
     margin-left: 10%;
   }
 }
 
+@supports (-webkit-touch-callout: none) {
+  /* 這個塊僅針對 iOS 設備 */
+  .top img {
+    margin-left: -30px !important; /* 確保 margin 被重設 */
+  }
+}
 .top .fa {
   margin-left: auto;
   display: none;
@@ -226,6 +232,12 @@ ul#menuBar ul {
   min-width: 160px;
   text-align: center;
 }
+@media (max-width: 700px) {
+  ul#menuBar ul {
+    top: 300px;
+    right: 0px;
+  }
+}
 @media (max-width: 430px) {
   ul#menuBar ul {
     top: 300px;
@@ -267,7 +279,7 @@ ul#menuBar ul ul {
 }
 @media (max-width: 430px) {
   ul#menuBar ul ul {
-    top: 120px;
+    top: 100px;
     right: 0px;
   }
 }
@@ -286,6 +298,12 @@ ul#menuBar li:hover > ul {
   cursor: pointer;
 }
 
+@supports (-webkit-touch-callout: none) {
+  /* 這個塊僅針對 iOS 設備 */
+  .top img {
+    margin-left: -30px !important; /* 確保 margin 被重設 */
+  }
+}
 .bottom {
   background-color: #262B3F;
   width: 100%;
@@ -1092,6 +1110,25 @@ ul#menuBar li:hover > ul {
   cursor: pointer;
 }
 
+.pwd_eye {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.pwd_eye input {
+  width: 100%;
+  padding-right: 30px;
+}
+.pwd_eye .eye-icon {
+  position: absolute;
+  right: 2px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.pwd_eye .eye-icon:hover {
+  color: #FCD15B;
+}
+
 .join_login {
   margin: 80px auto;
   width: 280px;
@@ -1121,7 +1158,9 @@ ul#menuBar li:hover > ul {
 .mainLogin .fa-lock,
 .mainLogin .fa-circle-check,
 .mainLogin .fa-user,
-.mainLogin .fa-phone {
+.mainLogin .fa-phone,
+.mainLogin .fa-eye,
+.mainLogin .fa-eye-slash {
   width: 8%;
 }
 
@@ -1144,7 +1183,7 @@ ul#menuBar li:hover > ul {
   border: none;
   width: 200px;
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 10px 9px;
   background-color: #35395b;
   color: #FFE8BB;
   outline: none;
@@ -1310,7 +1349,7 @@ ul#menuBar li:hover > ul {
 }
 .register_now p,
 .join_now p {
-  font-size: 12px;
+  font-size: 13px;
 }
 .register_now span,
 .join_now span {
@@ -1366,7 +1405,7 @@ ul#menuBar li:hover > ul {
   height: 14px;
 }
 .checkservers p {
-  font-size: 12px;
+  font-size: 13px;
 }
 .checkservers a {
   color: #FEDA77;
@@ -1432,7 +1471,7 @@ ul#menuBar li:hover > ul {
   cursor: pointer;
 }
 .join_now p {
-  font-size: 12px;
+  font-size: 13px;
 }
 .join_now span {
   display: inline-block;
@@ -1912,7 +1951,7 @@ ul#menuBar li:hover > ul {
   justify-content: center;
   margin-right: 40px;
 }
-@media (max-width: 854px) {
+@media (max-width: 920px) {
   .brandstory-img {
     display: none;
   }
@@ -1924,7 +1963,7 @@ ul#menuBar li:hover > ul {
 }
 
 .brandstory-text {
-  width: 50%;
+  width: 60%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1975,7 +2014,7 @@ ul#menuBar li:hover > ul {
   font-weight: bold;
   margin: 8px 0;
 }
-@media (max-width: 430px) {
+@media (max-width: 500px) {
   .brandstory-text h3 {
     font-size: 24px;
   }
@@ -4573,6 +4612,7 @@ ul#menuBar li:hover > ul {
 #order_wrapper {
   width: 1200px;
   margin: 0 auto;
+  min-height: calc(100vh - 164px);
 }
 @media (max-width: 820px) {
   #order_wrapper {
@@ -4900,6 +4940,25 @@ ul#menuBar li:hover > ul {
   }
 }
 
+.confrim .next_btn {
+  width: 300px;
+  height: 35px;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: lightgray;
+  font-size: 14px;
+  line-height: 1.2;
+  display: none;
+}
+@media (max-width: 430px) {
+  .confrim .next_btn {
+    display: block;
+    position: relative;
+    bottom: -90px;
+    left: 35px;
+  }
+}
+
 .confrim h3 {
   font-size: 20px;
   margin-bottom: 10px;
@@ -4995,7 +5054,7 @@ ul#menuBar li:hover > ul {
 }
 @media (max-width: 430px) {
   .order_right .amount {
-    margin-bottom: 890px;
+    margin-bottom: 1170px;
   }
 }
 
@@ -5020,6 +5079,11 @@ ul#menuBar li:hover > ul {
 .order_right .button01 {
   width: 300px;
   margin: 0 auto;
+}
+@media (max-width: 430px) {
+  .order_right .button01 {
+    display: none;
+  }
 }
 
 .order_right .button01 p {
@@ -7141,6 +7205,7 @@ ul#menuBar li:hover > ul {
   color: white;
   background-color: #100E24;
   width: 100%;
+  font-size: 20px;
 }
 .btn_mange:hover {
   color: #FCD15B;
@@ -7168,13 +7233,13 @@ ul#menuBar li:hover > ul {
     margin: 0 auto 20px;
   }
   .mmangeright .mangerightitems button {
-    font-size: 24px;
+    font-size: 20px;
     display: block;
   }
 }
 @media (max-width: 430px) {
   .mmangeright .mangerightitems button {
-    font-size: 20px;
+    font-size: 18px;
     padding: 10px 0;
   }
 }
@@ -7380,7 +7445,7 @@ ul#menuBar li:hover > ul {
 @media (max-width: 1280px) {
   .ordertext_right .btn_ordera {
     padding: 10px 4px;
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 .ordertext_right .btn_ordera:hover {
@@ -7395,7 +7460,7 @@ ul#menuBar li:hover > ul {
 @media (max-width: 1280px) {
   .ordertext_right h3 {
     padding: 10px 4px;
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 @media (max-width: 820px) {
@@ -7435,7 +7500,14 @@ ul#menuBar li:hover > ul {
 @media (max-width: 750px) {
   .coupontext .couponticket .rotate-text {
     font-size: 45px;
-    top: 38%;
+    top: 40%;
+    right: 33%;
+  }
+}
+@media (max-width: 650px) {
+  .coupontext .couponticket .rotate-text {
+    font-size: 40px;
+    top: 39%;
     right: 32%;
   }
 }
@@ -7443,14 +7515,18 @@ ul#menuBar li:hover > ul {
   .coupontext .couponticket .rotate-text {
     font-size: 35px;
     top: 39%;
-    right: 33%;
+    right: 32%;
+  }
+}
+@media (max-width: 500px) {
+  .coupontext .couponticket .rotate-text {
+    font-size: 30px;
   }
 }
 @media (max-width: 450px) {
   .coupontext .couponticket .rotate-text {
     font-size: 28px;
-    top: 39%;
-    right: 33%;
+    top: 38%;
   }
 }
 @media (max-width: 400px) {
@@ -7688,12 +7764,12 @@ ul#menuBar li:hover > ul {
 }
 
 .collect_rules {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
 }
 .collect_rules p {
   color: #FCD15B;
-  text-align: center;
+  text-align: justify;
   font-size: 18px;
 }
 
@@ -7713,10 +7789,9 @@ ul#menuBar li:hover > ul {
     margin-top: 20px;
   }
   .editmember .data_right .accessories img {
-    width: 30%;
-    right: -8%;
-    bottom: 22%;
-    position: absolute;
+    width: 28%;
+    right: -11%;
+    bottom: 6%;
   }
   .editmember .flexinput {
     align-items: flex-start;
@@ -9118,7 +9193,7 @@ ul#menuBar li:hover > ul {
   border-radius: 4px;
   width: 70%;
   padding: 10px 30px;
-  margin: 6px auto;
+  margin: 70px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
