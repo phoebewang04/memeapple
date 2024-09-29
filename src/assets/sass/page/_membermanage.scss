@@ -339,7 +339,7 @@
         border-radius: 8px;
 
         font-family: 'Creepster';
-        color: map-get($colors, gold);
+        color: map-get($colors, yellow);
 
         .couponbg {
 
@@ -353,13 +353,14 @@
 
         .rotate-text {
             position: absolute;
-            top: 37%;
+            top: 38%;
             right: 32%;
-            font-size: 60px;
+            font-size: 56px;
             line-height: 1;
             margin: 0;
             transform: rotate(6deg);
             transform-origin: center;
+            letter-spacing: 2px;
 
             @include rwd(750px) {
                 font-size: 45px;
@@ -397,11 +398,11 @@
         max-width: 600px;
         min-height: 300px;
         border-radius: 8px;
-        background-color: map-get($colors , midnight);
+        // background-color: map-get($colors , midnight);
         margin-bottom: 20px;
 
         p {
-            background-color: map-get($colors , grayblue);
+            // background-color: map-get($colors , grayblue);
             border-radius: 8px 8px 0 0;
             text-align: center;
             font-size: 16px;
@@ -427,10 +428,11 @@
         .member_photo {
             // display: none;
             width: 180px;
-            margin-top: -16px;
+            margin-top: -6%;
+            margin-left: -16%;
             height: auto;
             border-radius: 50%;
-            background-color: map-get($colors,grayblue );
+            // background-color: map-get($colors,grayblue );
 
             @include rwd(640px) {
                 margin: 5% 10%;
@@ -446,7 +448,7 @@
         ul {
             position: relative;
             // border: 1px solid whitesmoke;
-            margin-left: -30px;
+            margin-left: -50px;
         }
 
         //會員資料
@@ -459,8 +461,8 @@
         .accessories {
 
             img {
-                width: 28%;
-                right: 5%;
+                width: 25%;
+                right: 2%;
                 bottom: -20%;
                 position: absolute;
             }
@@ -540,7 +542,7 @@
     .data_style {
 
         display: flex;
-        border: 1px solid red;
+        // border: 1px solid red;
         width: 80%;
         // gap: 20px;
 
@@ -548,7 +550,7 @@
 
         .custom_data {
             width: 80%;
-            border: 1px solid sandybrown;
+            // border: 1px solid sandybrown;
             padding: 0;
             display: flex;
             flex-direction: column;
@@ -563,7 +565,7 @@
 
         .custom_sticker {
             width: 40%;
-            border: 1px solid violet;
+            // border: 1px solid violet;
             padding: 0;
             display: flex;
             flex-direction: column;
@@ -584,19 +586,19 @@
             }
 
 
-            .custom_profession{
+            .custom_profession {
 
-                p{
+                p {
                     width: 60px;
                     font-size: 16px;
                     border-radius: 8px;
                     text-align: center;
-                    background-color:map-get($colors , grayblue);
+                    background-color: map-get($colors , grayblue);
 
 
-                    &:hover{
-                        background-color:map-get($colors ,gold);
-                        color:map-get($colors , darkblue) ;
+                    &:hover {
+                        background-color: map-get($colors , gold);
+                        color: map-get($colors , darkblue);
                         font-weight: 500;
                     }
 
@@ -609,23 +611,36 @@
                     width: 40px;
                     height: 40px;
 
-                    &:hover{
+                    &:hover {
                         outline: 2px solid white;
                     }
                 }
 
                 & p:nth-child(1) {
-                    background-color:map-get($colors , grayblue);
+                    background-color: map-get($colors , grayblue);
                 }
+
                 & p:nth-child(2) {
-                    background-color:map-get($colors , gray);
+                    background-color: map-get($colors , gray);
                 }
+
                 & p:nth-child(3) {
                     background-color: #918F6A;
                 }
+
                 & p:nth-child(4) {
                     background-color: #BF5D5D;
                 }
+            }
+
+            .custom_profession p.customactive {
+                color: map-get($colors, darkblue);
+                font-weight: bold;
+                background-color: map-get($colors, gold);
+            }
+
+            .custom_color p.customactive {
+                outline: 2px solid white;
             }
         }
 
@@ -639,6 +654,9 @@
             }
         }
     }
+
+
+
 
     .editphone {
         padding-left: 10px;
@@ -690,11 +708,25 @@
 
 }
 
+.collect_rules{
+    width: 80%;
+    margin: 0 auto;
+
+    p{
+        color: map-get($colors , gold );
+        
+        text-align: center;
+        font-size: 18px;
+    }
+
+}
+
+
 @include rwd(640px) {
     .editmember {
         .member_card_container {
 
-            max-width: 300px;
+            max-width: 320px;
 
         }
 
@@ -722,9 +754,9 @@
             .accessories {
 
                 img {
-                    width: 20%;
-                    right: -10%;
-                    bottom: 5%;
+                    width: 30%;
+                    right: -8%;
+                    bottom: 22%;
                     position: absolute;
                 }
 
@@ -744,6 +776,11 @@
             grid-template-columns: repeat(2, 100px);
             grid-template-rows: repeat(4, 100px);
             padding-bottom: 26px;
+        }
+
+        .btnedit,
+        .btn_collect {
+            width: 120px
         }
 
     }
@@ -766,6 +803,37 @@
         .flexinput h4 {
 
             font-size: 16px;
+        }
+
+    }
+
+    .collect_rules{
+        
+        p{
+
+            font-size: 16px;
+        }
+    
+    }
+
+}
+
+@include rwd(1140px) {
+    .editmember {
+
+        .data_style {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+
+            .custom_data {
+                order: 2;
+            }
+
+            .custom_sticker {
+                order: 1;
+            }
         }
 
 

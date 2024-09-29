@@ -89,20 +89,20 @@
         <div class="editmember" v-if="currentTab == 'tab3'">
 
           <!-- 卡片正面：會員資料 -->
-          <div class="member_card_container" ref="cardContainer">
+          <div class="member_card_container" :style="cardContainerStyle">
 
-            <p ref="cardTitle">{{ showCollectCard ? 'Meme Studio集點卡' : 'Meme Studio會員卡' }}</p>
+            <p :style="cardTitleStyle">{{ showCollectCard ? 'Meme Studio積分卡' : 'Meme Studio會員卡' }}</p>
 
             <div class="member_card_data" v-if="!showCollectCard">
 
 
               <div class="head_sticker">
-                <img ref="headSticker" src="../assets/img/customized_adventurer.png" alt="" class="member_photo">
+                <img :src="headSticker" alt="Head Sticker Image" class="member_photo" :style="headStickerStyle">
               </div>
 
 
               <div class="data_right">
-                <ul ref="cardText">
+                <ul :style="cardTextStyle">
                   <li>
                     <span>挑戰者：{{ isEditing ? editedUser.name : user.name }}</span>
                   </li>
@@ -118,11 +118,11 @@
                   <li>
                     <span>會員狀態：
                       <span v-if="user.status == 0">正常</span>
-                      <span v-else-if="user.status == 1" class="card_suspension">您已被停權，請洽客服人員，謝謝！</span>
+                      <span v-else-if="user.status == 1" class="card_suspension">帳號停權，請洽客服！</span>
                     </span>
                   </li>
                   <li class="accessories">
-                    <img ref="accessoriesImg" src="../assets/img/accessories_adventurer.png" alt="">
+                    <img :src="accessoriesImg" alt="accessory image">
                   </li>
                 </ul>
               </div>
@@ -130,12 +130,15 @@
 
             </div>
 
+
             <!-- 卡片背面：集點卡 -->
+
             <div class="member_card_collect" v-show="showCollectCard">
               <!-- <div v-for="(card, index) in cards" :key="index" class="card_collect" :class="{ filled: index <= user.ordercounts }" >
                 <img v-if="index <= user.ordercounts" src="../assets/img/stamp.png" alt="已蓋章" class="stamp-image" />
               </div> -->
-              <div v-for="index in 8" :key="index" class="card_collect" :class="{ filled: index <= user.ordercounts }" :style="{ backgroundColor: collectColor }">
+              <div v-for="index in 8" :key="index" class="card_collect" :class="{ filled: index <= user.ordercounts }"
+                :style="{ backgroundColor: collectColor }">
                 <img v-if="index <= user.ordercounts" src="../assets/img/stamp.png" alt="已蓋章" class="stamp-image" />
               </div>
             </div>
@@ -151,6 +154,8 @@
           </div>
 
           <div class="editmemberdata" v-else>
+
+
 
             <div class="btnlocation">
               <button class="btn btnedit" @click="saveChanges">儲存變更</button>
@@ -189,17 +194,21 @@
                 <span>樣式修改</span>
 
                 <div class="custom_profession">
-                  <p @click="custerProfession('detective')">偵探</p>
-                  <p @click="custerProfession('police')">警察</p>
-                  <p @click="custerProfession('adventurer')">冒險家</p>
-                  <p @click="custerProfession('astronaut')">太空人</p>
+                  <p @click="custerProfession('detective')"
+                    :class="{ customactive: editedUser.profession === 'detective' }">偵探</p>
+                  <p @click="custerProfession('police')" :class="{ customactive: editedUser.profession === 'police' }">
+                    警察</p>
+                  <p @click="custerProfession('adventurer')"
+                    :class="{ customactive: editedUser.profession === 'adventurer' }">冒險家</p>
+                  <p @click="custerProfession('astronaut')"
+                    :class="{ customactive: editedUser.profession === 'astronaut' }">太空人</p>
                 </div>
 
                 <div class="custom_color">
-                  <p @click="customColor('blue')"></p>
-                  <p @click="customColor('gray')"></p>
-                  <p @click="customColor('green')"></p>
-                  <p @click="customColor('pink')"></p>
+                  <p @click="customColor('blue')" :class="{ customactive: editedUser.color === 'blue' }"></p>
+                  <p @click="customColor('gray')" :class="{ customactive: editedUser.color === 'gray' }"></p>
+                  <p @click="customColor('green')" :class="{ customactive: editedUser.color === 'green' }"></p>
+                  <p @click="customColor('pink')" :class="{ customactive: editedUser.color === 'pink' }"></p>
                 </div>
 
               </div>
@@ -208,6 +217,13 @@
             </div>
           </div>
 
+        </div>
+
+        <div class="collect_rules">
+
+          <p>{{ showCollectCard
+            ?'每當你遊玩一場密室遊戲，成就之鑰便可獲得1點榮耀積分。當累積至8點時，神秘的優惠券將向你敞開，為你下一次的挑戰提供助力。探索的腳步不停，秘境的謎題等著你解開，來謎因工作室，集點成就不凡旅程！':''
+            }}</p>
         </div>
       </div>
     </div>
@@ -274,8 +290,8 @@ export default {
         passwordConfirm: '',
         name: '',
         phone: '',
-        profession:'',
-        color:''
+        profession: '',
+        color: ''
       },
       memberId: null, // 定義 memberId
       coupons: [], // 定義 coupons
@@ -296,7 +312,14 @@ export default {
       cards: Array(8).fill({}) // 生成 8 個卡片
       ,
       showCollectCard: false, // 用來控制集點卡顯示與隱藏
-      collectColor: '#35395b', // 初始值
+      headSticker: '',
+      accessoriesImg: '',
+
+      collectColor: '#35395b', // 集點卡顏色
+      cardContainerStyle: { backgroundColor: '#221F3C' }, // 預設卡片容器顏色
+      cardTitleStyle: { backgroundColor: '#35395b' }, // 預設卡片標題顏色
+      cardTextStyle: { color: '#FFFFFF' }, // 預設卡片文字顏色
+      headStickerStyle: { backgroundColor: '#35395b' }, // 預設頭像背景顏色
     };
   },
   computed: {
@@ -333,6 +356,14 @@ export default {
       this.memberId = user.id; // 動態設置 memberId
       this.fetchOrders();
       this.editedUser = { ...user, passwordConfirm: user.password };
+
+      this.$nextTick(() => {
+        // 確保 DOM 元素已渲染完畢後再操作
+        this.custerProfession(user.profession);
+        this.customColor(user.color);
+      });
+
+
     } else {
       Swal.fire({
         title: '請登入或註冊',
@@ -699,8 +730,8 @@ export default {
         phone: user.phone,
         password: user.password, // 直接傳送明文密碼
         passwordConfirm: user.password,
-        profession:user.profession,
-        color:user.color
+        profession: user.profession,
+        color: user.color
       };
       axios.post(import.meta.env.VITE_API_BASE + '/api/editmemberdata.php', payload)
         // axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)
@@ -741,60 +772,97 @@ export default {
     },
     cancelEdit() {
       this.editedUser = { ...this.user }; // 重置 editedUser 為 user 的值
+
+      // 恢復職業圖片
+      this.custerProfession(this.user.profession);
+
+      // 恢復顏色樣式
+      this.customColor(this.user.color);
+
       this.isEditing = false;
     },
     custerProfession(profession) {
-    if (profession === 'detective') {
-      // 偵探
-      this.$refs.accessoriesImg.src = new URL("@/assets/img/accessories_detective.png", import.meta.url).href;
-      this.$refs.headSticker.src = new URL("@/assets/img/customized_detective.png", import.meta.url).href;
-    } else if (profession === 'police') {
-      // 警察
-      this.$refs.accessoriesImg.src = new URL("@/assets/img/accessories_police.png", import.meta.url).href;
-      this.$refs.headSticker.src = new URL("@/assets/img/customized_police.png", import.meta.url).href;
-    } else if (profession === 'adventurer') {
-      // 冒險家
-      this.$refs.accessoriesImg.src = new URL("@/assets/img/accessories_adventurer.png", import.meta.url).href;
-      this.$refs.headSticker.src = new URL("@/assets/img/customized_adventurer.png", import.meta.url).href;
-    } else if (profession === 'astronaut') {
-      // 太空人
-      this.$refs.accessoriesImg.src = new URL("@/assets/img/accessories_astronaut.png", import.meta.url).href;
-      this.$refs.headSticker.src = new URL("@/assets/img/customized_astronaut.png", import.meta.url).href;
+      this.editedUser.profession = profession;
+      if (profession === 'detective') {
+        // 偵探
+        this.headSticker = new URL("@/assets/img/customized_detective.png", import.meta.url).href;
+        this.accessoriesImg = new URL("@/assets/img/accessories_detective.png", import.meta.url).href;
+      } else if (profession === 'police') {
+        // 警察
+        this.headSticker = new URL("@/assets/img/customized_police.png", import.meta.url).href;
+        this.accessoriesImg = new URL("@/assets/img/accessories_police.png", import.meta.url).href;
+      } else if (profession === 'adventurer') {
+        // 冒險家
+        this.headSticker = new URL("@/assets/img/customized_adventurer.png", import.meta.url).href;
+        this.accessoriesImg = new URL("@/assets/img/accessories_adventurer.png", import.meta.url).href;
+      } else if (profession === 'astronaut') {
+        // 太空人
+        this.headSticker = new URL("@/assets/img/customized_astronaut.png", import.meta.url).href;
+        this.accessoriesImg = new URL("@/assets/img/accessories_astronaut.png", import.meta.url).href;
+      }
+    },
+    customColor(color) {
+      this.editedUser.color = color;
+
+      // 根據 color 動態設置樣式
+      if (color === 'blue') {
+        this.collectColor = '#35395b';  // 集點卡顏色
+        this.cardContainerStyle = {
+          backgroundColor: '#221F3C'
+        };
+        this.cardTitleStyle = {
+          backgroundColor: '#35395b'
+        };
+        this.cardTextStyle = {
+          color: '#FFFFFF'
+        };
+        this.headStickerStyle = {
+          backgroundColor: '#35395b'
+        };
+      } else if (color === 'gray') {
+        this.collectColor = '#ececec';
+        this.cardContainerStyle = {
+          backgroundColor: '#D9D9D9'
+        };
+        this.cardTitleStyle = {
+          backgroundColor: '#737373'
+        };
+        this.cardTextStyle = {
+          color: '#737373'
+        };
+        this.headStickerStyle = {
+          backgroundColor: '#ececec'
+        };
+      } else if (color === 'green') {
+        this.collectColor = '#fff7e1';
+        this.cardContainerStyle = {
+          backgroundColor: '#F1EAD5'
+        };
+        this.cardTitleStyle = {
+          backgroundColor: '#918F6A'
+        };
+        this.cardTextStyle = {
+          color: '#918F6A'
+        };
+        this.headStickerStyle = {
+          backgroundColor: '#fff7e1'
+        };
+      } else if (color === 'pink') {
+        this.collectColor = '#fae9e9';
+        this.cardContainerStyle = {
+          backgroundColor: '#F1DBD5'
+        };
+        this.cardTitleStyle = {
+          backgroundColor: '#BF5D5D'
+        };
+        this.cardTextStyle = {
+          color: '#BF5D5D'
+        };
+        this.headStickerStyle = {
+          backgroundColor: '#fae9e9'
+        };
+      }
     }
-  },
-  customColor(color) {
-    if (color === 'blue') {
-      this.$refs.cardContainer.style.backgroundColor = '#221F3C';
-      this.$refs.cardTitle.style.backgroundColor = '#35395b';
-      this.$refs.cardText.style.color = '#FFFFFF'; 
-      this.$refs.headSticker.style.backgroundColor = '#35395b'; 
-      this.collectColor='#35395b'
-
-    } else if (color === 'gray') {
-      this.$refs.cardContainer.style.backgroundColor = '#D9D9D9';
-      this.$refs.cardTitle.style.backgroundColor = '#737373';
-      this.$refs.cardText.style.color = '#737373';
-      this.$refs.headSticker.style.backgroundColor = '#ececec'; 
-      this.collectColor='#ececec'
-
-    } else if (color === 'green') {
-      this.$refs.cardContainer.style.backgroundColor = '#F1EAD5';
-      this.$refs.cardTitle.style.backgroundColor = '#918F6A';
-      this.$refs.cardText.style.color = '#918F6A';
-      this.$refs.headSticker.style.backgroundColor = '#fff7e1';
-      this.collectColor='#fff7e1'
-
-
-    } else if (color === 'pink') {
-      this.$refs.cardContainer.style.backgroundColor = '#F1DBD5';
-      this.$refs.cardTitle.style.backgroundColor = '#BF5D5D';
-      this.$refs.cardText.style.color = '#BF5D5D';
-      this.$refs.headSticker.style.backgroundColor = '#fae9e9'; 
-      this.collectColor='#fae9e9'
-
-
-    }
-  }
   },
 };
 </script>
