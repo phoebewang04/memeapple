@@ -4894,7 +4894,7 @@ ul#menuBar li:hover > ul {
 }
 @media (max-width: 430px) {
   .confrim {
-    margin-bottom: 170px;
+    margin-bottom: 195px;
     margin-top: 10px;
   }
 }
@@ -4994,7 +4994,7 @@ ul#menuBar li:hover > ul {
 }
 @media (max-width: 430px) {
   .order_right .amount {
-    margin-bottom: 1150px;
+    margin-bottom: 890px;
   }
 }
 
