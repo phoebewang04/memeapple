@@ -276,7 +276,7 @@ export default {
                 memberId:  userData.id,
                 storeId: storeId,
                 orderStatus:2,
-                couponId: userData.id,
+                // couponId: userData.id,
 
 
 
