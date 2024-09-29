@@ -238,6 +238,7 @@ ul#menuBar ul li {
   cursor: pointer;
   color: white;
   font-size: 18px;
+  line-height: 54px;
 }
 ul#menuBar ul li:hover {
   background-color: #FCD15B;
@@ -4894,7 +4895,7 @@ ul#menuBar li:hover > ul {
 }
 @media (max-width: 430px) {
   .confrim {
-    margin-bottom: 170px;
+    margin-bottom: 195px;
     margin-top: 10px;
   }
 }
@@ -4994,7 +4995,7 @@ ul#menuBar li:hover > ul {
 }
 @media (max-width: 430px) {
   .order_right .amount {
-    margin-bottom: 1150px;
+    margin-bottom: 890px;
   }
 }
 
@@ -7116,7 +7117,7 @@ ul#menuBar li:hover > ul {
 
 .wrappermmange {
   display: flex;
-  min-height: 600px;
+  min-height: calc(100vh - 164px);
 }
 
 .mmangeleft {
@@ -7140,7 +7141,6 @@ ul#menuBar li:hover > ul {
   color: white;
   background-color: #100E24;
   width: 100%;
-  font-size: 20px;
 }
 .btn_mange:hover {
   color: #FCD15B;
@@ -7411,7 +7411,7 @@ ul#menuBar li:hover > ul {
   max-height: 260px;
   border-radius: 8px;
   font-family: "Creepster";
-  color: #FCD15B;
+  color: #FEDA77;
 }
 .coupontext .couponticket .couponbg {
   max-width: 800px;
@@ -7423,13 +7423,14 @@ ul#menuBar li:hover > ul {
 }
 .coupontext .couponticket .rotate-text {
   position: absolute;
-  top: 37%;
+  top: 38%;
   right: 32%;
-  font-size: 60px;
+  font-size: 56px;
   line-height: 1;
   margin: 0;
   transform: rotate(6deg);
   transform-origin: center;
+  letter-spacing: 2px;
 }
 @media (max-width: 750px) {
   .coupontext .couponticket .rotate-text {
@@ -7465,11 +7466,9 @@ ul#menuBar li:hover > ul {
   max-width: 600px;
   min-height: 300px;
   border-radius: 8px;
-  background-color: #221F3C;
   margin-bottom: 20px;
 }
 .editmember .member_card_container p {
-  background-color: #35395b;
   border-radius: 8px 8px 0 0;
   text-align: center;
   font-size: 16px;
@@ -7483,17 +7482,16 @@ ul#menuBar li:hover > ul {
 .editmember .head_sticker {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  width: 60%;
+  width: 80%;
 }
 .editmember .head_sticker .member_photo {
-  width: 60%;
-  margin-left: -30px;
+  width: 180px;
+  margin-top: -6%;
+  margin-left: -16%;
   height: auto;
   border-radius: 50%;
-  border: 2px solid #FCD15B;
 }
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .editmember .head_sticker .member_photo {
     margin: 5% 10%;
   }
@@ -7502,11 +7500,18 @@ ul#menuBar li:hover > ul {
   width: 80%;
 }
 .editmember .data_right ul {
-  margin-left: -30px;
+  position: relative;
+  margin-left: -50px;
 }
 .editmember .data_right li {
   line-height: 1.2;
   margin-bottom: 20px;
+}
+.editmember .data_right .accessories img {
+  width: 25%;
+  right: 2%;
+  bottom: -20%;
+  position: absolute;
 }
 .editmember .data_right .card_suspension {
   color: #ff4545;
@@ -7518,8 +7523,6 @@ ul#menuBar li:hover > ul {
 }
 .editmember .btnedit,
 .editmember .btn_collect {
-  margin-right: 5%;
-  margin-bottom: 5%;
   width: 150px;
   font-size: 18px;
   padding: 4px 10px;
@@ -7550,31 +7553,99 @@ ul#menuBar li:hover > ul {
   height: 100%;
 }
 .editmember .member_card_collect .stamp-image {
-  width: 105px; /* 調整圖片大小 */
+  width: 105px;
+  /* 調整圖片大小 */
   height: 105px;
 }
 .editmember .btnlocation {
-  text-align: center;
-  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  margin: 30px 0;
 }
-.editmember .btnlocation ul {
+.editmember .data_style {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+.editmember .data_style .custom_data {
+  width: 80%;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
 }
-.editmember .btnlocation ul span {
+.editmember .data_style .custom_data span {
   font-size: 20px;
   margin-bottom: 24px;
 }
-.editmember .btnlocation li {
+.editmember .data_style .custom_sticker {
+  width: 40%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.editmember .data_style .custom_sticker span {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+.editmember .data_style .custom_sticker .custom_profession,
+.editmember .data_style .custom_sticker .custom_color {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+.editmember .data_style .custom_sticker .custom_profession p {
+  width: 60px;
+  font-size: 16px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #35395b;
+}
+.editmember .data_style .custom_sticker .custom_profession p:hover {
+  background-color: #FCD15B;
+  color: #100E24;
+  font-weight: 500;
+}
+.editmember .data_style .custom_sticker .custom_color p {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+.editmember .data_style .custom_sticker .custom_color p:hover {
+  outline: 2px solid white;
+}
+.editmember .data_style .custom_sticker .custom_color p:nth-child(1) {
+  background-color: #35395b;
+}
+.editmember .data_style .custom_sticker .custom_color p:nth-child(2) {
+  background-color: #8F9191;
+}
+.editmember .data_style .custom_sticker .custom_color p:nth-child(3) {
+  background-color: #918F6A;
+}
+.editmember .data_style .custom_sticker .custom_color p:nth-child(4) {
+  background-color: #BF5D5D;
+}
+.editmember .data_style .custom_sticker .custom_profession p.customactive {
+  color: #100E24;
+  font-weight: bold;
+  background-color: #FCD15B;
+}
+.editmember .data_style .custom_sticker .custom_color p.customactive {
+  outline: 2px solid white;
+}
+.editmember .data_style li {
   text-align: center;
   align-items: center;
   width: 80vh;
 }
 @media (max-width: 600px) {
-  .editmember .btnlocation li {
+  .editmember .data_style li {
     width: 300px;
   }
 }
@@ -7616,13 +7687,22 @@ ul#menuBar li:hover > ul {
   }
 }
 
+.collect_rules {
+  width: 80%;
+  margin: 0 auto;
+}
+.collect_rules p {
+  color: #FCD15B;
+  text-align: center;
+  font-size: 18px;
+}
+
 @media (max-width: 640px) {
   .editmember .member_card_container {
-    max-width: 300px;
+    max-width: 320px;
   }
   .editmember .member_card_data {
     flex-direction: column;
-    text-align: center;
     margin-top: 10px;
   }
   .editmember .data_right ul {
@@ -7632,6 +7712,12 @@ ul#menuBar li:hover > ul {
   .editmember .data_right li {
     margin-top: 20px;
   }
+  .editmember .data_right .accessories img {
+    width: 30%;
+    right: -8%;
+    bottom: 22%;
+    position: absolute;
+  }
   .editmember .flexinput {
     align-items: flex-start;
   }
@@ -7640,8 +7726,12 @@ ul#menuBar li:hover > ul {
   }
   .editmember .member_card_collect {
     grid-template-columns: repeat(2, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-rows: repeat(4, 100px);
     padding-bottom: 26px;
+  }
+  .editmember .btnedit,
+  .editmember .btn_collect {
+    width: 120px;
   }
 }
 @media (max-width: 500px) {
@@ -7653,6 +7743,23 @@ ul#menuBar li:hover > ul {
   .editmember .btnlocation ul span,
   .editmember .flexinput h4 {
     font-size: 16px;
+  }
+  .collect_rules p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1140px) {
+  .editmember .data_style {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+  }
+  .editmember .data_style .custom_data {
+    order: 2;
+  }
+  .editmember .data_style .custom_sticker {
+    order: 1;
   }
 }
 .escaperoom_container {

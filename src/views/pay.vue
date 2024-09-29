@@ -297,12 +297,6 @@ export default {
                     .then(response => {
                         if (response.data.status === 'success') {
 
-                            // 要清除的項目列表
-                            // const itemsToRemove = ['discountPrice', 'selectedDate', 'selectedTimeSlot', 'orderData', 'peopleAmount'];
-                            // itemsToRemove.forEach(item => {
-                            //     localStorage.removeItem(item);
-                            // });
-
                             // 跳轉到訂單確認頁面
                             this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay/Membermanage`});
                         } else {

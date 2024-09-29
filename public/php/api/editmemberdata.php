@@ -11,10 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $data['name'];
     $phone = $data['phone'];
     $password = $data['password'];
+    $profession = $data['profession'];
+    $color = $data['color'];
+
+
     file_put_contents('php://stderr', print_r($data, TRUE)); // 輸出接收到的資料
 
     // 構建 SQL 更新語句
-    $sql = "UPDATE MEMBER SET EMAIL=?, NAME=?, PHONE=?, PASSWORD=? WHERE ID=?";
+    $sql = "UPDATE MEMBER SET EMAIL=?, NAME=?, PHONE=?, PASSWORD=? , PROFESSION_IMG=? , CARD_COLOR=? WHERE ID=?";
     
 
     try {
@@ -22,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare($sql);
         
         // 執行語句
-        $stmt->execute([$email, $name, $phone, $password, $userId]);
+        $stmt->execute([$email, $name, $phone, $password, $profession, $color ,$userId ]);
 
         // 如果更新成功，返回成功的響應
         echo json_encode(['status' => 'success', 'message' => '資料已更新']);

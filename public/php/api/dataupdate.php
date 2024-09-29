@@ -30,6 +30,8 @@ if (isset($data['memberId'])) {
                     "password" => $user_data['PASSWORD'],
                     "regidate" => $user_data['REGI_DATE'],
                     "ordercounts" => $user_data['ORDER_COUNTS'],
+                    "profession" => $user_data['PROFESSION'],
+                    "color" => $user_data['COLOR'],
                 ]
             ]);
         } else {

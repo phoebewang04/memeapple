@@ -180,8 +180,9 @@
 
                    
                         <div class="button01">
-                            <button class="btn next_btn" :disabled="!dataValid" :class="{active: dataValid}" @click="submitData" v-if="!orderstatus">下一步</button>
-                             <p v-if="orderstatus"> 此帳號已被停權，有任何疑問請洽客服</p>
+                            <button class="btn next_btn" :disabled="orderstatus === 1 || !dataValid"  :class="{active: orderstatus !== 1 && dataValid}" @click="submitData">下一步</button>
+                            <!-- <button class="btn next_btn" :disabled="!dataValid" :class="{active: dataValid}" @click="submitData" v-if="orderstatus === 0">下一步</button> -->
+                             <p v-if="orderstatus === 1">此帳號已被停權，有任何疑問請洽客服</p>
                         </div>
                        
 
@@ -246,7 +247,7 @@ export default {
             selectedDate: null,
 
             isLoggedIn: false,
-            orderstatus: 0,
+            orderstatus: null,
             coupons: [],
             showLoginPopup: false,
 
@@ -262,6 +263,7 @@ export default {
                 this.orderEmail && !this.emailError &&
                 this.orderPhone && !this.phoneError &&
                 this.orderCheck1 && this.orderCheck2
+                
             );
             } else {
                 // 當用戶未登入，還需要驗證密碼和確認密碼
@@ -284,8 +286,13 @@ export default {
             this.orderPhone = memberData.phone;
             this.isLoggedIn = true;
             this.getCoupons(memberData.id);
-            this.orderstatus = memberData.status;
+
         };
+        //去判斷localstorage的status是不是0而去判斷是否停權
+        if (memberData && memberData.status !== undefined) {
+            // 確保 status 是數字類型
+            this.orderstatus = Number(memberData.status);
+        }
    
     },
 
@@ -394,18 +401,6 @@ export default {
             }
         },
         selectDiscount (){
-            // 原本小汪的
-            // let discountPrice;
-            // if (this.orderDiscount === 'discountA'){
-            //     this.discountPrice = '-50';
-            // }else if (this.orderDiscount === 'discountB'){
-            //     this.discountPrice = '-100';
-            // }else if (this.orderDiscount === 'discountC'){
-            //     this.discountPrice = '-150';
-            // }else {
-            //     this.discountPrice = '0';
-            // }
-
             // 小郭version
             const selectedCoupon = this.coupons.find(coupon => coupon.ID === this.orderDiscount);
             if (selectedCoupon) {
@@ -435,6 +430,7 @@ export default {
                 this.validPhone();
                 // this.validPassword();
                 this.validComfirm();
+                
 
                 if (!this.isLoggedIn) {
                 // 如果不是會員，還需要驗證密碼和確認密碼
@@ -456,6 +452,7 @@ export default {
             });
         },
         handleEnter() {
+            console.log('Data Valid:', this.dataValid);
             if (this.dataValid) {
                 this.submitData(); // 表單有效時，提交數據
             } else {
