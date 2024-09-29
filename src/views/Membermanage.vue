@@ -142,6 +142,7 @@
                 :style="{ backgroundColor: collectColor }">
                 <img v-if="index <= user.ordercounts" src="../assets/img/stamp.png" alt="已蓋章" class="stamp-image" />
               </div>
+
             </div>
 
           </div>
@@ -151,6 +152,13 @@
             <div class="btnlocation">
               <button class="btnedit" @click="membershipCard">資料變更</button>
               <button class="btn_collect" @click="overturn">{{ showCollectCard ? '會員卡' : '成就之鑰' }}</button>
+            </div>
+
+            <div class="collect_rules">
+
+              <p>{{ showCollectCard
+              ?'每次破解密室，即可獲得1點榮耀積分，累積至8點時，神秘優惠券將為你揭開序幕，幫助你迎接全新挑戰！':''
+              }}</p>
             </div>
           </div>
 
@@ -220,12 +228,7 @@
 
         </div>
 
-        <div class="collect_rules">
-
-          <p>{{ showCollectCard
-            ?'每次破解密室，即可獲得1點榮耀積分，累積至8點時，神秘優惠券將為你揭開序幕，幫助你迎接全新挑戰！':''
-            }}</p>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -610,6 +613,7 @@ export default {
               status: 1
             });
             if (response.data.success) {
+              order.ORDER_STATUS = '已使用';
               Swal.fire({
                 title: "核銷成功",
                 text: "您的訂單已成功核銷。",
@@ -618,7 +622,6 @@ export default {
                 color: "#100E24",
                 confirmButtonText: "<span>OK</span>",
               });
-              order.ORDER_STATUS = '已使用';
 
               const memberDetailsResponse = await axios.post(import.meta.env.VITE_API_BASE + '/api/dataupdate.php',
                 { memberId: this.user.id }); // 使用memberId 作為查詢參數
@@ -627,6 +630,8 @@ export default {
               if (memberDetailsResponse.data.status === "success") {
                 // 更新 localStorage
                 localStorage.setItem('user', JSON.stringify(memberDetailsResponse.data.user));
+                this.user = JSON.parse(localStorage.getItem('user'))
+                
 
                 // 直接發放優惠券
                 if (this.user.ordercounts == 0) {
