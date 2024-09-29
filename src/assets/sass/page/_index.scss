@@ -297,7 +297,7 @@
     justify-content: center;
     margin-right: 40px;
 
-    @include rwd(854px) {
+    @include rwd(920px) {
         display: none;
     }
 
@@ -309,7 +309,7 @@
 }
 
 .brandstory-text {
-    width: 50%;
+    width: 60%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -359,9 +359,10 @@
         font-weight: bold;
         margin: 8px 0;
 
-        @include phone {
+        @include rwd(500px) {
             font-size: 24px;
         }
+
     }
 
     .while-lineforhome {
