@@ -18,6 +18,7 @@ $attendance = $data['attendance'] ?? '';
 $memberId = $data['memberId'] ?? '';
 $total = $data['total'] ?? 0; 
 // $orderStatus = 2; 
+$couponId = $data['couponId'] ?? '';
 
 
 
@@ -53,9 +54,11 @@ try {
      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // 插入資料到資料庫
-    $sql = "INSERT INTO ORDERS (STORE_ID, THEME_ID, ORDER_DATE, ORDER_TIME, ATTENDANCE, MEMBER_ID, ORDER_STATUS, TOTAL) 
-            VALUES (:store_id,:theme_id, :order_date, :order_time, :attendance, :member_id, 2, :total);";
-    
+    $sql = "INSERT INTO ORDERS (STORE_ID, THEME_ID, ORDER_DATE, ORDER_TIME, ATTENDANCE, MEMBER_ID, ORDER_STATUS, TOTAL" . 
+            (!empty($couponId) ? ", COUPON_ID" : "") . ") 
+        VALUES (:store_id, :theme_id, :order_date, :order_time, :attendance, :member_id, 2, :total" . 
+            (!empty($couponId) ? ", :coupon_id" : "") . ");";
+
     $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':store_id', $storeId);
@@ -65,7 +68,10 @@ try {
     $stmt->bindParam(':attendance', $attendance);
     $stmt->bindParam(':member_id', $memberId);
     $stmt->bindParam(':total', $total);
-    
+
+    if (!empty($couponId)) {
+        $stmt->bindParam(':coupon_id', $couponId);
+    };
 
     // 執行 SQL 語句
     $stmt->execute();

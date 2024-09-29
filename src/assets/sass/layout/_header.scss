@@ -132,10 +132,15 @@ ul#menuBar ul {
     min-width: 160px;
     text-align: center;
 
+    @include rwd(700px) {
+        top: 300px;
+        right: 0px;
+    }
+
+
     @include rwd(430px) {
         top: 300px;
         right: 0px;
-
     }
 }
 
@@ -176,7 +181,7 @@ ul#menuBar ul ul {
     right: 140px;
 
     @include rwd(430px) {
-        top: 120px;
+        top: 100px;
         right: 0px;
     }
 }
@@ -193,4 +198,11 @@ ul#menuBar li:hover>ul {
 .themeArea{
     display: block;
     cursor: pointer;
+}
+
+@supports (-webkit-touch-callout: none) {
+    /* 這個塊僅針對 iOS 設備 */
+    .top img {
+        margin-left: -30px !important; /* 確保 margin 被重設 */
+    }
 }

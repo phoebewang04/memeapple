@@ -232,6 +232,12 @@ ul#menuBar ul {
   min-width: 160px;
   text-align: center;
 }
+@media (max-width: 700px) {
+  ul#menuBar ul {
+    top: 300px;
+    right: 0px;
+  }
+}
 @media (max-width: 430px) {
   ul#menuBar ul {
     top: 300px;
@@ -273,7 +279,7 @@ ul#menuBar ul ul {
 }
 @media (max-width: 430px) {
   ul#menuBar ul ul {
-    top: 120px;
+    top: 100px;
     right: 0px;
   }
 }
@@ -292,6 +298,12 @@ ul#menuBar li:hover > ul {
   cursor: pointer;
 }
 
+@supports (-webkit-touch-callout: none) {
+  /* 這個塊僅針對 iOS 設備 */
+  .top img {
+    margin-left: -30px !important; /* 確保 margin 被重設 */
+  }
+}
 .bottom {
   background-color: #262B3F;
   width: 100%;
@@ -1939,7 +1951,7 @@ ul#menuBar li:hover > ul {
   justify-content: center;
   margin-right: 40px;
 }
-@media (max-width: 854px) {
+@media (max-width: 920px) {
   .brandstory-img {
     display: none;
   }
@@ -1951,7 +1963,7 @@ ul#menuBar li:hover > ul {
 }
 
 .brandstory-text {
-  width: 50%;
+  width: 60%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -2002,7 +2014,7 @@ ul#menuBar li:hover > ul {
   font-weight: bold;
   margin: 8px 0;
 }
-@media (max-width: 430px) {
+@media (max-width: 500px) {
   .brandstory-text h3 {
     font-size: 24px;
   }

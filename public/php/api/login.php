@@ -22,7 +22,7 @@ if ($email && $pass) {
             $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
             // 確保資料庫中的密碼欄位名稱正確
-            if ($pass === $user_data['PASSWORD']) {
+            if ($pass == $user_data['PASSWORD']) {
                 echo json_encode(["status" => "success", "message" => "登入成功",  "user" => [
                         "id" => $user_data['ID'],
                         "name" => $user_data['NAME'],

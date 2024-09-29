@@ -25,8 +25,8 @@ export default {
   },
   methods: {
     handleScroll() {
-      console.log('滾動事件觸發');
-      console.log('visible_active:', this.visible_active);
+      // console.log('滾動事件觸發');
+      // console.log('visible_active:', this.visible_active);
     },
     showMenuBar() {
       if (window.innerWidth <= 700) {

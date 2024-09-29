@@ -276,9 +276,12 @@ export default {
                 memberId:  userData.id,
                 storeId: storeId,
                 orderStatus:2,
-
-
             };
+
+            if (this.orderDiscount) {
+                dataToSend.couponId = this.orderDiscount;
+            }
+            
             console.log('提交的數據：', {
                 themeId: orderData.themeId,
                 orderDate: orderData.selectedDate,  
@@ -286,8 +289,7 @@ export default {
                 attendance: orderData.peopleAmount,
                 memberId:  userData.id,
                 storeId: storeId, 
-                orderStatus:2,
-                
+                orderStatus:2,   
             });
 
             console.log('Sending data:', dataToSend);
