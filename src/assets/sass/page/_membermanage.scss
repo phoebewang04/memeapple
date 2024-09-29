@@ -245,6 +245,9 @@
             &:nth-of-type(2) {
                 color: map-get($colors, priceorange);
                 font-size: 16px;
+                @include rwd(400px) {
+                    font-size: map-get($fontsize, p1);
+                }
             }
 
             @include rwd(520px) {

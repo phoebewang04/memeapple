@@ -276,7 +276,7 @@ export default {
                 memberId:  userData.id,
                 storeId: storeId,
                 orderStatus:2,
-                couponId: userData.id,
+                // couponId: userData.id,
 
 
 
@@ -304,6 +304,9 @@ export default {
                 // axios.post('http://localhost/appleTeam/public/php/api/pay.php', dataToSend)
                     .then(response => {
                         if (response.data.status === 'success') {
+                            // 清除loaclStage優惠券資料
+                            localStorage.removeItem('discountPrice');
+                            localStorage.removeItem('orderDiscount');
 
                             // 跳轉到訂單確認頁面
                             this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay/Membermanage`});
