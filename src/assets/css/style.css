@@ -7553,6 +7553,7 @@ ul#menuBar li:hover > ul {
   min-height: 300px;
   border-radius: 8px;
   margin-bottom: 20px;
+  position: relative;
 }
 .editmember .member_card_container p {
   border-radius: 8px 8px 0 0;
@@ -7586,7 +7587,6 @@ ul#menuBar li:hover > ul {
   width: 80%;
 }
 .editmember .data_right ul {
-  position: relative;
   margin-left: -50px;
 }
 .editmember .data_right li {
@@ -7594,9 +7594,9 @@ ul#menuBar li:hover > ul {
   margin-bottom: 20px;
 }
 .editmember .data_right .accessories img {
-  width: 25%;
+  width: 16%;
   right: 2%;
-  bottom: -20%;
+  bottom: 3%;
   position: absolute;
 }
 .editmember .data_right .card_suspension {
@@ -7799,9 +7799,9 @@ ul#menuBar li:hover > ul {
     margin-top: 20px;
   }
   .editmember .data_right .accessories img {
-    width: 28%;
-    right: -11%;
-    bottom: 6%;
+    width: 24%;
+    right: 2%;
+    bottom: 2%;
   }
   .editmember .flexinput {
     align-items: flex-start;
