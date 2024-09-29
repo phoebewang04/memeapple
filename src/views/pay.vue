@@ -304,7 +304,7 @@ export default {
                 // axios.post('http://localhost/appleTeam/public/php/api/pay.php', dataToSend)
                     .then(response => {
                         if (response.data.status === 'success') {
-
+                            localStorage.removeItem(discountPrice);
                             // 跳轉到訂單確認頁面
                             this.$router.push({ path: `/Theme/${this.$route.params.id}/preorder/orderinform/pay/Membermanage`});
                         } else {
