@@ -326,7 +326,7 @@
     line-height: 1.6;
 
     @include rwd(430px){
-        margin-bottom: 170px;
+        margin-bottom: 195px;
         margin-top: 10px;
     }
 }
@@ -427,7 +427,7 @@
     }
 
     @include rwd(430px){
-        margin-bottom: 1150px;
+        margin-bottom: 890px;
     }
 }
 
@@ -456,6 +456,8 @@
 .order_right  .button01 p {
     font-size: 17px;
     color: #B00000;
+
+ 
 }
 
 .order_right  .next_btn{
