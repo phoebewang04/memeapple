@@ -8770,6 +8770,10 @@ ul#menuBar li:hover > ul {
   top: 0;
 }
 
+.card_phone_bg {
+  display: none;
+}
+
 .card_container {
   position: relative;
 }
@@ -8844,6 +8848,8 @@ ul#menuBar li:hover > ul {
 .card_game_info #time_remaining {
   color: #FEDA77;
   padding: 12px;
+  display: flex;
+  align-items: center;
 }
 
 .card_monument {
@@ -8971,6 +8977,25 @@ ul#menuBar li:hover > ul {
   }
 }
 @media (max-width: 430px) {
+  .card_start img:nth-of-type(1) {
+    display: none;
+  }
+  .card_start .card_phone_bg {
+    display: block;
+  }
+  .card_start_icon img:nth-of-type(1) {
+    display: none;
+  }
+  .card_start_icon img:nth-of-type(2) {
+    width: 30%;
+    top: 35%;
+    left: 36%;
+  }
+  .card_start_icon img:nth-of-type(3) {
+    width: 30%;
+    top: 48%;
+    left: 36%;
+  }
   .card_game_info {
     margin-bottom: 10px;
   }
@@ -8985,6 +9010,9 @@ ul#menuBar li:hover > ul {
     width: 105px;
     height: 29px;
     line-height: 29px;
+  }
+  .card_game_info #time_remaining {
+    padding: 2px;
   }
   .card_monument {
     width: 72px;
