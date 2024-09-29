@@ -56,8 +56,8 @@ export default {
   mounted (){
     setTimeout(() => {
         // localStorage.clear();
-        localStorage.removeItem(orderData); //訂單的基本資訊
-        localStorage.removeItem(discountPrice); //會員優惠卷折扣數
+        localStorage.removeItem('orderData'); //訂單的基本資訊
+        localStorage.removeItem('discountPrice'); //會員優惠卷折扣數
         console.log("LocalStorage 該項目已被自動清空");
     }, 300000); //5分鐘後清除
 
