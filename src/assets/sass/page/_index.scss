@@ -31,7 +31,7 @@
 .homepage-text {
     margin-top: 147px;
     margin-left: 120px;
-
+   
     @include rwd(1280px) {
         margin-top: 40px;
         margin-left: 40px;
@@ -55,6 +55,8 @@
         font-size: 80px;
         font-weight: bold;
         color: map-get($colors, usered);
+        text-shadow: 1px 1px 0 #000000, 2px 2px 0 #ffffff; 
+
 
         @include pad {
             font-size: 45px;
@@ -72,6 +74,10 @@
     border-color: map-get($colors, gold);
     /* 改變外框線顏色 */
     animation: glowHow 1.5s infinite;
+
+    &:hover {
+        background-color: map-get($colors, underyellow);
+    }
 
     @include rwd(1440px) {
         margin-right: 80px;
@@ -103,6 +109,10 @@
 .introM-btn {
     display: none;
     animation: glowHow 1.5s infinite;
+
+    &:hover {
+        background-color: map-get($colors, underyellow);
+    }
     
     @include rwd(700px) {
         display: block;

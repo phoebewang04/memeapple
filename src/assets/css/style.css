@@ -7,6 +7,10 @@ body {
   background-color: #100E24;
   color: white;
 }
+body ::selection {
+  color: #100E24;
+  background-color: #FEDA77;
+}
 
 a {
   text-decoration: none;
@@ -954,6 +958,9 @@ ul#menuBar li:hover > ul {
   color: #FEDA77;
   display: none;
 }
+.theme_arrow i:hover {
+  color: #E98714;
+}
 .theme_arrow .theme_wrapper {
   display: flex;
   overflow: hidden;
@@ -1733,6 +1740,7 @@ ul#menuBar li:hover > ul {
   font-size: 80px;
   font-weight: bold;
   color: #C70000;
+  text-shadow: 1px 1px 0 #000000, 2px 2px 0 #ffffff;
 }
 @media (max-width: 820px) {
   .homepage-text h1 {
@@ -1751,6 +1759,9 @@ ul#menuBar li:hover > ul {
   border-color: #FCD15B;
   /* 改變外框線顏色 */
   animation: glowHow 1.5s infinite;
+}
+.intro-btn:hover {
+  background-color: #FFC700;
 }
 @media (max-width: 1440px) {
   .intro-btn {
@@ -1782,6 +1793,9 @@ ul#menuBar li:hover > ul {
 .introM-btn {
   display: none;
   animation: glowHow 1.5s infinite;
+}
+.introM-btn:hover {
+  background-color: #FFC700;
 }
 @media (max-width: 700px) {
   .introM-btn {
@@ -3730,7 +3744,7 @@ ul#menuBar li:hover > ul {
 }
 
 .theme li {
-  width: 258px;
+  width: 50%;
   margin: 0 10px;
   transition: transform 0.3s ease;
 }
@@ -4989,7 +5003,21 @@ ul#menuBar li:hover > ul {
   .confrim .next_btn {
     display: block;
     position: relative;
-    bottom: -90px;
+    bottom: -137px;
+    left: 35px;
+  }
+}
+
+.confrim .confirm_p {
+  display: none;
+  font-size: 17px;
+  color: #B00000;
+}
+@media (max-width: 430px) {
+  .confrim .confirm_p {
+    display: block;
+    position: relative;
+    bottom: -140px;
     left: 35px;
   }
 }

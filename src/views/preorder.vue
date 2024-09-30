@@ -344,6 +344,10 @@ export default {
                 color:'white',
                 confirmButtonText: '確認',
                 confirmButtonColor:'#FEDA77',
+                backdrop: false,
+                willOpen: () => {
+                    document.body.style.paddingRight = '0';
+                }
                 });
                 // alert("無法選擇今天之前的日期");
                 return;
@@ -484,6 +488,10 @@ export default {
             background: '#100E24', // 可自定義背景顏色
             color:'white',
             confirmButtonColor:'#FEDA77',
+            backdrop: false,
+                willOpen: () => {
+                    document.body.style.paddingRight = '0';
+                }
             });
         }, 1500);
 
