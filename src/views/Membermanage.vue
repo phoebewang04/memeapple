@@ -81,7 +81,7 @@
               <img  v-if="coupon.DISCOUNT == 300" src="../assets/img/integral_coupon.png" class="couponbg">
               <img v-else src="../assets/img/game_coupon.png" class="couponbg">
             </div>
-            <h3 class="rotate-text" :class="{ rotatetexthidden: coupon.DISCOUNT === 300 }">${{ coupon.DISCOUNT }}</h3>
+            <h3 class="rotate-text" :class="{ rotatetexthidden: coupon.DISCOUNT == 300 }">${{ coupon.DISCOUNT }}</h3>
           </div>
 
         </div>
