@@ -165,10 +165,11 @@ ul#menuBar ul {
     top: 70px;
     min-width: 160px;
     text-align: center;
+    flex-direction: column;
    
 
     @include rwd(700px) {
-        top: 200.2px;
+        top: 230px;
         right: 0px;
     }
 
@@ -226,13 +227,13 @@ ul#menuBar ul ul {
 }
 
 ul#menuBar ul {
-    display: none;
-}
-
-ul#menuBar li:hover>ul {
-    /* 滑鼠滑入展開次選單*/
     display: block;
 }
+
+// ul#menuBar li:hover>ul {
+//     /* 滑鼠滑入展開次選單*/
+//     display: block;
+// }
 
 .themeArea {
     display: block;

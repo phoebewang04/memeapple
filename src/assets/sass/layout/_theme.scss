@@ -536,7 +536,8 @@
     }
 
     &.Lock {
-        background: C8D1E0;
+        background: #C8D1E0;
+        color: map-get($colors , rgb(0, 0, 0));
     }
 
     &.room {

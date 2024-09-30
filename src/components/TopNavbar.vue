@@ -21,6 +21,7 @@ export default {
       // showThemes: false, // 控制台北館主題的顯示
       showTaipeiThemes: false, // 控制台北館主題的顯示
       showTaichungThemes: false, // 控制台中館主題的顯示
+      showALLThemes:false,
     };
   },
   methods: {
@@ -88,30 +89,41 @@ export default {
     },
     toggleThemes() {
       // this.showThemes = !this.showThemes;
+      // this.showTaipeiThemes = false;
+      // this.showTaichungThemes = false;
 
-      // if (window.innerWidth <= 720) {
-      //     this.showThemes = !this.showThemes;
-      // }else if (window.innerWidth > 720) {
-      //     this.showThemes = false;
-      // }
-
-      if (window.innerWidth <= 500) {
-        // this.showThemes = !this.showThemes;
-        this.showTaipeiThemes = !this.showTaipeiThemes;
-        this.showTaichungThemes = !this.showTaichungThemes;
-      }
-    },
-    toggleTaipeiThemes() {
-      if (window.innerWidth <= 500) {
-        this.showTaipeiThemes = true;
-        this.showTaichungThemes = false;
-      }
-    },
-    toggleTaichungThemes() {
-      if (window.innerWidth <= 500) {
+      if (this.showThemes) {
+        this.showALLThemes = true;
+        this.showThemes = false;
         this.showTaipeiThemes = false;
-        this.showTaichungThemes = true;
+        this.showTaichungThemes = false;
+      } else {
+        this.showThemes = true;
+        this.showALLThemes = false;
       }
+
+      // this.showTaipeiThemes = !this.showTaipeiThemes;
+      // this.showTaichungThemes = !this.showTaichungThemes;
+    },
+    toggleTaipeiThemes(event) {
+      event.stopPropagation();
+      this.showTaipeiThemes = !this.showTaipeiThemes;
+      this.showTaichungThemes = false;
+
+      // if (window.innerWidth <= 500) {
+      //   this.showTaipeiThemes = true;
+      //   this.showTaichungThemes = false;
+      // }
+    },
+    toggleTaichungThemes(event) {
+      event.stopPropagation();
+      this.showTaichungThemes = !this.showTaichungThemes;
+      this.showTaipeiThemes = false;
+
+      // if (window.innerWidth <= 500) {
+      //   this.showTaipeiThemes = false;
+      //   this.showTaichungThemes = true;
+      // }
     },
   },
   created() {
@@ -128,6 +140,9 @@ export default {
       // this.showThemes = true;
       this.showTaipeiThemes = true;
       this.showTaichungThemes = true;
+    } else {
+      this.showTaipeiThemes = false;
+      this.showTaichungThemes = false;
     }
   },
   beforeDestroy() {
@@ -162,10 +177,10 @@ export default {
       <router-link to="/Branch/">
         <li><span>分館介紹</span></li>
       </router-link>
-      <li class="themeArea">主題專區
-        <ul>
+      <li class="themeArea" @click="toggleThemes">主題專區
+        <ul v-if="showALLThemes">
           <li @click="toggleTaipeiThemes">台北館
-            <ul  v-if="showTaipeiThemes" id="ThemeUL" >
+            <ul v-if="showTaipeiThemes" id="ThemeUL">
               <router-link to="/Theme/1" class="dropDown" @click="closeMenu">
                 <li>成都醫院</li>
               </router-link>
@@ -198,18 +213,3 @@ export default {
     </ul>
   </header>
 </template>
-
-<!--
-      <li><router-link to="/">前後台分流頁</router-link></li> 
-      <li><router-link to="/Announcement/">最新消息</router-link></li>
-      <li><router-link to="/Popupcard/">彈跳甲魚</router-link></li>
-      <li><router-link to="/Theme_Time/">快樂地城</router-link></li>
-      <li><router-link to="/Theme_Lock/">武石監</router-link></li>
-     <li><router-link to="/ThemeAlien/">逃出虛空</router-link></li>
-      <li><router-link to="/preorder/">預定資料</router-link></li>
-      <li><router-link to="/orderinform/">資料確認</router-link></li>
-      <li><router-link to="/Theme/">主題介紹</router-link></li>
-      <li><router-link to="/Theme_test/">測</router-link></li>
-      <li><router-link to="/pay/">結帳</router-link></li>
-      <li><router-link to="/dead1A2Bgame/">1A2B</router-link></li> -->
-<!-- <li><router-link to="/pointcard/">集點卡</router-link></li> -->

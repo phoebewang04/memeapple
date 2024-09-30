@@ -259,10 +259,11 @@ ul#menuBar ul {
   top: 70px;
   min-width: 160px;
   text-align: center;
+  flex-direction: column;
 }
 @media (max-width: 700px) {
   ul#menuBar ul {
-    top: 200.2px;
+    top: 230px;
     right: 0px;
   }
 }
@@ -319,11 +320,6 @@ ul#menuBar ul ul {
 }
 
 ul#menuBar ul {
-  display: none;
-}
-
-ul#menuBar li:hover > ul {
-  /* 滑鼠滑入展開次選單*/
   display: block;
 }
 
@@ -936,7 +932,8 @@ ul#menuBar li:hover > ul {
   background-image: url("../img/noticebg_dead.png");
 }
 .notice_text.Lock {
-  background: C8D1E0;
+  background: #C8D1E0;
+  color: #292929;
 }
 .notice_text.room {
   color: white;
