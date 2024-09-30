@@ -328,7 +328,7 @@
     &.hospital,
     &.Lock {
         p {
-            color: #C8D1E0;
+            color: map-get($colors, lightyellow);
         }
     }
 
@@ -536,7 +536,7 @@
     }
 
     &.Lock {
-        background: #FFE8BB;
+        background: C8D1E0;
     }
 
     &.room {
