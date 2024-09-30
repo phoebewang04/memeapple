@@ -6,6 +6,10 @@
     justify-content: center;
     height: 100%;
 
+    @include rwd(1280px) {
+        padding: 240px 0;
+    }
+
     @include phone {
         padding: 80px 0;
     }

@@ -305,6 +305,11 @@
         width: 80%;
         height: auto;
         display: block;
+        transition: transform 0.3s ease-in-out; /* 添加過渡效果 */
+
+        &:hover{
+            transform: scale(1.02);
+        }
     }
 }
 

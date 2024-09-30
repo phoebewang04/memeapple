@@ -13,6 +13,11 @@
     top: 0;
 }
 
+.card_phone_bg {
+    display: none;
+
+}
+
 .card_container {
     position: relative;
 }
@@ -113,7 +118,9 @@
 
     #time_remaining {
         color: map-get($colors, yellow);
-        padding: 12px;
+        padding:12px;
+        display: flex;
+        align-items: center;
     }
 
 }
@@ -218,7 +225,7 @@
 }
 
 .card_match {
-    animation: rotate_card 0.6s  ease-in-out;
+    animation: rotate_card 0.6s ease-in-out;
 }
 
 .card_back {
@@ -277,13 +284,51 @@
             line-height: 32px;
         }
     }
-    .card_monument{
+
+    .card_monument {
         width: 87px;
         height: 126px;
     }
 }
 
 @include phone() {
+
+    .card_start {
+
+        & img:nth-of-type(1) {
+
+            display: none;
+        }
+
+        .card_phone_bg {
+            display: block;
+        }
+    }
+
+    .card_start_icon img {
+        &:nth-of-type(1) {
+            display: none;
+        }
+    
+        &:nth-of-type(2) {
+            width: 30%;
+            top: 35%;
+            left: 36%;
+        }
+    
+        &:nth-of-type(3) {
+            width: 30%;
+            top: 48%;
+            left: 36%;
+        }
+    }
+
+    .card_start_icon {
+        & img:nth-of-type(1) {
+
+            
+        }
+    }
 
     .card_game_info {
         margin-bottom: 10px;
@@ -304,9 +349,13 @@
             height: 29px;
             line-height: 29px;
         }
+
+        #time_remaining {
+            padding:2px;
+        }
     }
 
-    .card_monument{
+    .card_monument {
         width: 72px;
         height: 105px;
     }

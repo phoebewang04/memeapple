@@ -144,23 +144,23 @@ export default {
     <ul id="menuBar" :class="{ visible: visible_active }">
       <div v-if="isLoggedIn">
         <a @click="logout">
-          <li>登出<!-- 只顯示登出按鈕 --></li>
+          <li><span>登出<!-- 只顯示登出按鈕 --></span></li>
         </a>
       </div>
       <div v-else>
         <a @click="showPopup = true">
-          <li>會員登入</li>
+          <li><span>會員登入</span></li>
         </a>
       </div>
 
       <router-link to="/Membermanage/">
-        <li>會員專區</li>
+        <li><span>會員專區</span></li>
       </router-link>
       <router-link to="/Minigame/">
-        <li>線上體驗</li>
+        <li><span>線上體驗</span></li>
       </router-link>
       <router-link to="/Branch/">
-        <li>分館介紹</li>
+        <li><span>分館介紹</span></li>
       </router-link>
       <li class="themeArea">主題專區
         <ul>

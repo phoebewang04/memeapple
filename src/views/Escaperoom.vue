@@ -172,7 +172,9 @@
     <div ref="scene6" class="scene esc_end">
 
       <div class="esc_end room">
-        <video ref="endVideo" src="../assets/img/esc_end.mp4" playsinline autoplay muted></video>
+        <video ref="endVideo" src="../assets/img/esc_end.mp4" playsinline autoplay muted preload="auto" controls></video>
+
+        <!-- <video ref="endVideo" src="../assets/img/esc_end.mp4" playsinline autoplay muted></video> -->
       </div>
     </div>
 

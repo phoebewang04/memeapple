@@ -78,8 +78,8 @@
         <div class="coupontext" v-if="currentTab == 'tab2'">
           <div v-for="coupon in coupons" :key="coupon.id" class="couponticket">
             <div class="couponimg">
-              <img v-if="coupon.DISCOUNT !== 300" src="../assets/img/game_coupon.png" class="couponbg">
               <img  v-if="coupon.DISCOUNT == 300" src="../assets/img/integral_coupon.png" class="couponbg">
+              <img v-else src="../assets/img/game_coupon.png" class="couponbg">
             </div>
             <h3 class="rotate-text" v-if="coupon.DISCOUNT !== 300">${{ coupon.DISCOUNT }}</h3>
           </div>
@@ -767,8 +767,30 @@ export default {
         });
     },
     orderquestion(order) {
+
+      // 儲存訂單資料
+        localStorage.setItem('selectedOrder', JSON.stringify(order));
+
+      // 調用 starrating API 獲取評分資料
+      axios.get(`${import.meta.env.VITE_API_BASE}/api/starrating.php?orderId=${order.ORDER_ID}`)
+        .then(response => {
+          console.log('API 返回的數據:', response.data); // 新增這行
+          // 假設 API 返回的資料包含評分資料
+          const initialTasks = response.data.tasks || [
+            { label: '燒腦指數', star: 0 },
+            { label: '驚嚇指數', star: 0 },
+            { label: '推薦指數', star: 0 },
+          ];
+          // 將初始評分資料儲存到 localStorage
+          localStorage.setItem('tasks', JSON.stringify(initialTasks));
+
+
       this.selectedOrderId = order.ORDER_ID;
       this.showStarRating = true; // 顯示彈出窗口
+      })
+      .catch(error => {
+        console.error('無法獲取評分資料', error);
+      });
     },
     overturn() {
       this.showCollectCard = !this.showCollectCard; // 切換顯示狀態
