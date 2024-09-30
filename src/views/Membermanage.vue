@@ -78,8 +78,8 @@
         <div class="coupontext" v-if="currentTab == 'tab2'">
           <div v-for="coupon in coupons" :key="coupon.id" class="couponticket">
             <div class="couponimg">
-              <img v-if="coupon.DISCOUNT !== 300" src="../assets/img/game_coupon.png" class="couponbg">
               <img  v-if="coupon.DISCOUNT == 300" src="../assets/img/integral_coupon.png" class="couponbg">
+              <img v-else src="../assets/img/game_coupon.png" class="couponbg">
             </div>
             <h3 class="rotate-text" v-if="coupon.DISCOUNT !== 300">${{ coupon.DISCOUNT }}</h3>
           </div>

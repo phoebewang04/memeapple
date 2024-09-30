@@ -4,6 +4,7 @@
         <div v-if="!isGameStarted" class="card_scene active card_start_container" ref="card_scene0">
             <div class="card_start">
                 <img src="../assets/img/card_bg.png" alt="card_bg">
+                <img src="../assets/img/card_phone_bg.png" alt="card_bg" class="card_phone_bg">
             </div>
 
             <div class="card_start_icon">
@@ -274,7 +275,7 @@ export default {
             cardAlert.fire({
                 imageUrl: new URL("@/assets/img/card_icon_candle.png", import.meta.url).href,
                 imageWidth: 120,
-                html: '80秒的記憶翻牌遊戲，在時間內完成即可獲得秘寶！<br>若使用手機請轉為橫向，以獲得最佳遊戲體驗！',
+                html: '80秒的記憶翻牌遊戲<br>在時間內完成即可獲得秘寶！',
                 background: '#2b2b40',
                 color: 'white',
                 showConfirmButton: false,

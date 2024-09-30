@@ -14,6 +14,7 @@ try {
     $difficult = $data['difficult'];
     $scary = $data['scary'];
     $recommand = $data['recommand'];
+    
 
     // 準備 SQL 語句，檢查該訂單是否已經填寫問卷
     $stmt = $pdo->prepare("SELECT SURVEY_ID FROM ORDERS WHERE ID = :id");
