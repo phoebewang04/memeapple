@@ -103,6 +103,7 @@
         font-weight: bold;
         text-align: center;
         margin-bottom: 40px;
+        color: map-get($colors, gold );
 
         @include rwd(1100px) {
             margin-top: 20px;

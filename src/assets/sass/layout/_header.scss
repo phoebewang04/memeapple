@@ -77,7 +77,8 @@
         background-color: map-get($colors, lightblue);
         font-size: 20px;
         // line-height: 100px;
-        line-height: 60px;
+        // line-height: 60px;
+        line-height: 46px;
         z-index: 5;
     }
 }
@@ -164,15 +165,15 @@ ul#menuBar ul {
     top: 70px;
     min-width: 160px;
     text-align: center;
+   
 
     @include rwd(700px) {
-        top: 300px;
+        top: 200.2px;
         right: 0px;
     }
 
-
     @include rwd(430px) {
-        top: 300px;
+        top: 230px;
         right: 0px;
     }
 }

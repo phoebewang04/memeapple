@@ -165,7 +165,7 @@ export default {
       <li class="themeArea">主題專區
         <ul>
           <li @click="toggleTaipeiThemes">台北館
-            <ul  v-if="showTaipeiThemes">
+            <ul  v-if="showTaipeiThemes" id="ThemeUL" >
               <router-link to="/Theme/1" class="dropDown" @click="closeMenu">
                 <li>成都醫院</li>
               </router-link>
@@ -181,7 +181,7 @@ export default {
             </ul>
           </li>
           <li @click="toggleTaichungThemes">台中館
-            <ul v-if="showTaichungThemes">
+            <ul v-if="showTaichungThemes" id="ThemeUL">
               <router-link to="/Theme/5" class="dropDown" @click="closeMenu">
                 <li>逃離武石監</li>
               </router-link>
