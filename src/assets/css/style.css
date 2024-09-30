@@ -8672,6 +8672,12 @@ ul#menuBar li:hover > ul {
   .esc_start_btn button i {
     margin-right: 4px;
   }
+  .esc_restaurant_icon svg {
+    width: 120px;
+    height: 120px;
+    filter: blur(10px);
+    top: 0%;
+  }
 }
 @media (max-width: 400px) {
   .esc_start_btn {

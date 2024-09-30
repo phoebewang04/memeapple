@@ -1080,18 +1080,29 @@ export default {
     return {
       showLoginPopup: false, // 控制是否顯示登入 popup
       targetRoute: '', // 記錄想要導航的路由
+      ghostText: null,
+      tlGhost: null,
+      requsetId: null,
+      lenis: null
     };
   },
   name: "CemeterySection",
   mounted() {
+    const self = this
     console.log(this.$router);
     // 其他初始化動畫和滾動邏輯
     const ghostText = new SplitType(".split_text");
     gsap.registerPlugin(ScrollTrigger);
 
+    const mql = window.matchMedia("(min-width: 821px)");
+
+    // alert(mql)
+
+
     const tlGhost = gsap.timeline();
     tlGhost.from(".cemetery_text .char", {
-      filter: "blur(20px)",
+      filter: mql.matches ? "blur(20px)" : null,
+      opacity: mql.matches ? null : 0,
       stagger: 0.07,
       scrollTrigger: {
         trigger: ".cemetery_text",
@@ -1101,12 +1112,14 @@ export default {
       }
     });
 
-    const lenis = new Lenis();
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+
+
+   if(mql.matches){
+    this.lenis = new Lenis();
+    this.start()
+   }
+  
+
 
     const envelope = document.querySelector(".envelope_wrapper");
     envelope.addEventListener("click", () => {
@@ -1117,10 +1130,31 @@ export default {
   },
 
   beforeUnmount() {
+    this.stop()
+    if(this.lenis){
+      this.lenis.destroy()
+    }
     window.removeEventListener("scroll", this.handleScroll);
   },
 
   methods: {
+    loop(time) {
+      this.requsetId = null
+      this.lenis.raf(time);
+      this.start()
+
+    },
+    start() {
+      if (!this.requsetId) {
+        this.requsetId = requestAnimationFrame(this.loop);
+      }
+    },
+    stop() {
+      if (this.requsetId) {
+        window.cancelAnimationFrame(this.requsetId);
+        this.requsetId = null
+      }
+    },
     handleScroll() {
       let value = window.scrollY;
       this.$refs.cemeteryText.style.marginTop = `${value * 0.6}px`;

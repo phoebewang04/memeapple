@@ -950,7 +950,7 @@
         }
     }
 
-    .esc_start_btn{
+    .esc_start_btn {
         top: 52%;
 
     }
@@ -975,7 +975,7 @@
         height: 45px;
     }
 
-    .esc_start_btn{
+    .esc_start_btn {
         top: 55%;
     }
 }
@@ -993,7 +993,7 @@
         height: 40px;
     }
 
-    .esc_start_btn{
+    .esc_start_btn {
         top: 60%;
         gap: 20px;
     }
@@ -1018,12 +1018,20 @@
         margin-right: 4px;
 
     }
+
+    .esc_restaurant_icon svg{
+        width: 120px;
+        height: 120px;
+        filter: blur(10px);
+        top: 0%;
+    }
 }
 
 @include rwd(400px) {
 
-    .esc_start_btn{
+    .esc_start_btn {
         top: 65%;
         gap: 10px;
     }
 }
+
