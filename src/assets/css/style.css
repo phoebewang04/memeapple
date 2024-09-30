@@ -3695,7 +3695,7 @@ ul#menuBar li:hover > ul {
 }
 
 .theme li {
-  width: 258px;
+  width: 50%;
   margin: 0 10px;
   transition: transform 0.3s ease;
 }
@@ -4954,7 +4954,21 @@ ul#menuBar li:hover > ul {
   .confrim .next_btn {
     display: block;
     position: relative;
-    bottom: -90px;
+    bottom: -137px;
+    left: 35px;
+  }
+}
+
+.confrim .confirm_p {
+  display: none;
+  font-size: 17px;
+  color: #B00000;
+}
+@media (max-width: 430px) {
+  .confrim .confirm_p {
+    display: block;
+    position: relative;
+    bottom: -140px;
     left: 35px;
   }
 }

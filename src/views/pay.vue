@@ -56,7 +56,7 @@
                             <p>信用卡有效月年</p>
                             <div class="cardmonth">
                                 <input type="text"  v-model="payMonth" @input="validTime" @keyup.enter="submitData" placeholder="月份" maxlength="2">
-                                <input type="text" v-model="payYear" @input="validTime" @keyup.enter="submitData" placeholder="年份" maxlength="4">
+                                <input type="text" v-model="payYear" @input="validTime" @keyup.enter="submitData" placeholder="年份（四位數）" maxlength="4">
                                 <p v-if="timeError" style="color: #DC2F2F;" class="redError">{{ timeError }}</p>
                             </div>
                         </div>
@@ -163,7 +163,7 @@ export default {
 
     data (){
         return {
-            discountPrice : '',
+            discountPrice : '0',
             orderDiscount : '',
             payCard : '',
             payMonth:'',
