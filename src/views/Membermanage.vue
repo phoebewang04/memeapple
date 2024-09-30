@@ -621,6 +621,7 @@ export default {
                 confirmButtonColor: "#FCD15B",
                 color: "#100E24",
                 confirmButtonText: "<span>OK</span>",
+                showConfirmButton: false,
               });
 
               const memberDetailsResponse = await axios.post(import.meta.env.VITE_API_BASE + '/api/dataupdate.php',
@@ -654,6 +655,7 @@ export default {
                       icon: "success",
                       confirmButtonColor: "#FCD15B",
                       confirmButtonText: "<span>OK</span>",
+                      showConfirmButton: false,
                     }).then(() => {
                       location.reload(); // 重新整理頁面
                     });
