@@ -432,7 +432,7 @@ export const all_data = {
             },
             {
                 title: '修個Bug，一夜變禿',
-                content: '程式一旦失控，你的頭髮可能也難逃一劫\n望也許只是開始',
+                content: '程式一旦失控，你的頭髮可能也難逃一劫\n絕望也許只是開始',
                 backgroundImage: new URL("@/assets/img/mb_code_2.png", import.meta.url).href,
                 // 'animation': 'hand',    
             },
