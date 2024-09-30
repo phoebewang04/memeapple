@@ -298,6 +298,10 @@
     padding: 8px;
     cursor: pointer;
 
+    &:hover {
+        color: map-get($colors , priceorange);
+    }
+
     @include rwd(430px){
         display: none;
     }
@@ -308,6 +312,10 @@
     font-size: 48px;
     padding: 8px;
     cursor: pointer;
+
+    &:hover {
+        color: map-get($colors , priceorange);
+    }
 
     @include rwd(430px){
         display: none;

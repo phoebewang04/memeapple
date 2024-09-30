@@ -81,7 +81,7 @@
               <img  v-if="coupon.DISCOUNT == 300" src="../assets/img/integral_coupon.png" class="couponbg">
               <img v-else src="../assets/img/game_coupon.png" class="couponbg">
             </div>
-            <h3 class="rotate-text" v-if="coupon.DISCOUNT !== 300">${{ coupon.DISCOUNT }}</h3>
+            <h3 class="rotate-text" :class="{ rotatetexthidden: coupon.DISCOUNT === 300 }">${{ coupon.DISCOUNT }}</h3>
           </div>
 
         </div>
@@ -621,6 +621,7 @@ export default {
                 confirmButtonColor: "#FCD15B",
                 color: "#100E24",
                 confirmButtonText: "<span>OK</span>",
+                showConfirmButton: false,
               });
 
               const memberDetailsResponse = await axios.post(import.meta.env.VITE_API_BASE + '/api/dataupdate.php',
@@ -654,6 +655,7 @@ export default {
                       icon: "success",
                       confirmButtonColor: "#FCD15B",
                       confirmButtonText: "<span>OK</span>",
+                      // showConfirmButton: false,
                     }).then(() => {
                       location.reload(); // 重新整理頁面
                     });
@@ -743,7 +745,11 @@ export default {
       axios.post(import.meta.env.VITE_API_BASE + '/api/editmemberdata.php', payload)
         // axios.post('http://localhost/sweethome/meme/public/php/api/editmemberdata.php', payload)
         .then(response => {
-          Swal.fire('成功', '資料已更新', 'success');
+          Swal.fire({
+          icon: "success",
+          text: '資料已更新',
+          confirmButtonColor: '#FCD15B',
+          confirmButtonText: 'OK'});
         })
         .catch(error => {
           console.error('更新用戶資料失敗:', error);

@@ -54,27 +54,27 @@ export default {
 
   //網頁某些狀態後會重新清除localstorage的全部紀錄
   mounted (){
-    //  setTimeout(() => {
-    //      // localStorage.clear();
-    //     // localStorage.removeItem(orderData); //訂單的基本資訊
-    //      localStorage.removeItem(discountPrice); //會員優惠卷折扣數
-    //   console.log("LocalStorage 該項目已被自動清空");
-    //  }, 180000); //3分鐘後清除
+     setTimeout(() => {
+         // localStorage.clear();
+        // localStorage.removeItem(orderData); //訂單的基本資訊
+         localStorage.removeItem(discountPrice); //會員優惠卷折扣數
+      console.log("LocalStorage 該項目已被自動清空");
+     }, 180000); //3分鐘後清除
 
-    //   // 當頁面重開之後會去檢查sessionStorage是否存在 如果是第一次載入網頁會先清除第一次紀錄確保有無異漏之前的數據
-    // if (!sessionStorage.getItem('hasVisited')) {
-    //     localStorage.clear();  // 清除 localStorage
-    //     console.log("LocalStorage has been cleared on first visit after reopening.");
+      // 當頁面重開之後會去檢查sessionStorage是否存在 如果是第一次載入網頁會先清除第一次紀錄確保有無異漏之前的數據
+    if (!sessionStorage.getItem('hasVisited')) {
+        localStorage.clear();  // 清除 localStorage
+        console.log("LocalStorage has been cleared on first visit after reopening.");
 
-    //     // 記錄 sessionStorage，標記這次會話已經進入
-    //     sessionStorage.setItem('hasVisited', 'true');
-    // }
+        // 記錄 sessionStorage，標記這次會話已經進入
+        sessionStorage.setItem('hasVisited', 'true');
+    }
 
-    // //不管如何半小時後全部清除一次 保障用戶個資安全
-    // setTimeout(() => {
-    //      localStorage.clear();
-    //     console.log("LocalStorage 該項目已被自動清空");
-    // }, 3600000 ); 
+    //不管如何半小時後全部清除一次 保障用戶個資安全
+    setTimeout(() => {
+         localStorage.clear();
+        console.log("LocalStorage 該項目已被自動清空");
+    }, 3600000 ); 
 
 
   }

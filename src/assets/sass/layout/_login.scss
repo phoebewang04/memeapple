@@ -108,18 +108,19 @@
         color: map-get($colors , lightyellow);
         outline: none;
 
+        
         &::placeholder {
             color: white;
             transition: all 0.2s ease;
             opacity: .8;
         }
-
+        
         &:focus::placeholder {
             color: transparent;
         }
-
+        
     }
-
+    
     span {
         margin: 20px 0;
     }
@@ -133,6 +134,9 @@
     }
 }
 
+.mainLogin li input, textarea {
+    font-size: initial;
+}
 
 #onlogin {
     width: 14px;
