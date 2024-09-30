@@ -43,18 +43,32 @@ export default {
         { label: '驚嚇指數', star: 0 },
         { label: '推薦指數', star: 0 },
       ],
-      
     };
   },
   computed: {
-  filteredOrders() {
+    filteredOrders() {
     return this.orders.filter(order => order.MEMBER_ID === this.memberId);
+    },
+    localOrderId() {
+      return this.orderId; // 直接返回 orderId
     }
   },
   mounted() {
+    // const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    // if (storedTasks) {
+    //   this.tasks = storedTasks;
+    // }
+    // 從 localStorage 撈取評分資料
     const storedTasks = JSON.parse(localStorage.getItem("tasks"));
     if (storedTasks) {
-      this.tasks = storedTasks;
+      this.tasks = storedTasks; // 如果有則填充評分資料
+    }
+    
+    // 從 localStorage 撈取訂單資料（如果需要）
+    const storedOrder = JSON.parse(localStorage.getItem("selectedOrder"));
+    if (storedOrder) {
+      this.localOrderId = storedOrder.ORDER_ID;// 如果需要使用訂單資料
+      // this.orderId = storedOrder.ORDER_ID; // 可選：根據需求使用訂單資料
     }
   },
   methods: {
@@ -63,6 +77,8 @@ export default {
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
     closePopup() {
+      localStorage.removeItem("tasks"); // 清除評分
+      localStorage.removeItem("selectedOrder"); // 清除訂單資料
       this.$emit('close'); // 通知父組件關閉
     },
     showAlertA() {
@@ -82,6 +98,7 @@ export default {
     submitRatings() {
 
         const paload = {
+          // orderId: this.localOrderId, // 使用 computed property
           orderId: this.orderId, // 將 orderId 加入 paload
           difficult: this.tasks[0].star, 
           scary: this.tasks[1].star,     
@@ -92,6 +109,9 @@ export default {
         // axios.post('http://localhost/sweethome/meme/public/php/api/starrating.php', paload)
           .then(response => {
             console.log('送出成功', response.data);
+            // 清除 localStorage 中的資料
+            localStorage.removeItem("tasks"); // 清除評分
+            localStorage.removeItem("selectedOrder"); // 清除訂單資料
             this.closePopup(); // 送出後關閉 popup
           })
           .catch(error => {

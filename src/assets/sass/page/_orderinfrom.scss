@@ -348,7 +348,20 @@
     @include rwd(430px){
       display: block;
       position: relative;
-      bottom: -90px;
+      bottom: -137px;
+      left: 35px;
+    }
+}
+
+.confrim .confirm_p {
+    display: none;
+    font-size: 17px;
+    color: #B00000;
+
+    @include rwd(430px){
+      display: block;
+      position: relative;
+      bottom: -140px;
       left: 35px;
     }
 }

@@ -140,7 +140,7 @@
                         <swiper-slide><router-link to="/Theme/5"><li><img src="../assets/img/poster_Lock.jpg" alt=""><h3>逃離武石監</h3></li></router-link></swiper-slide>
                         <swiper-slide><router-link to="/Theme/6"><li><img src="../assets/img/poster_room.png" alt=""><h3>恐怖密室</h3></li></router-link></swiper-slide>
                         <swiper-slide><router-link to="/Theme/7"><li><img src="../assets/img/poster_alien.png" alt=""><h3>逃出虛空</h3></li></router-link></swiper-slide>
-                        <swiper-slide><li><img src="../assets/img/postercomingbranch.jpg" alt=""><h3>coming soon</h3></li></swiper-slide>
+                        <swiper-slide><RouterLink><li><img src="../assets/img/postercomingbranch.jpg" alt=""><h3>coming soon</h3></li></RouterLink></swiper-slide>
                     </swiper>
 
                 </div>
@@ -198,6 +198,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
+import { RouterLink } from 'vue-router';
 
 
     export default {
@@ -217,7 +218,7 @@ import { Pagination } from 'swiper/modules';
                 currentBranch: 'taipei',
                 activeButton: 'taipei',
                 currentStartIndex: 0,
-                items: [
+                 items: [
                     { name: "成都醫院", img: new URL("@/assets/img/poster_hospital.png", import.meta.url).href, title: "成都醫院" },
                     { name: "時光迷宮", img: new URL("@/assets/img/poster_time.png", import.meta.url).href, title: "時光迷宮" },
                     { name: "末日庇護所", img: new URL("@/assets/img/poster_dead.jpg", import.meta.url).href, title: "末日庇護所" },
@@ -226,13 +227,14 @@ import { Pagination } from 'swiper/modules';
                     { name: "恐怖密室", img: new URL("@/assets/img/poster_room.png", import.meta.url).href, title: "恐怖密室"},
                     { name: "逃出虛空", img: new URL("@/assets/img/poster_alien.png", import.meta.url).href, title: "逃出虛空"},
                     { name: "coming soon", img: new URL("@/assets/img/postercomingbranch.jpg", import.meta.url).href, title: "coming soon"}
-                ],
+                 ],
                 itemsPerPage: 3
             };
         },
         computed: {
-            maxIndex () {
-                return Math.floor(this.items.length / this.itemPerPage);
+            maxIndex() {
+            // 確保每個館別根據顯示的主題數量計算最大頁數
+            return Math.ceil(this.currentItems.length / this.itemsPerPage);
             }
         },
         methods : {
@@ -240,6 +242,7 @@ import { Pagination } from 'swiper/modules';
             showItem(index){
                 const baseIndex = this.currentBranch === 'taipei' ? 0 : 4;
                 const startIndex = baseIndex + this.currentStartIndex;
+            
                 const endIndex = startIndex + this.itemsPerPage;
 
                 return index >= startIndex && index < endIndex;
@@ -263,12 +266,14 @@ import { Pagination } from 'swiper/modules';
             },
 
             rightPage (){
-                 const maxIndex = this.currentBranch === 'taipei' ? 1 : 1;
+                  const maxIndex = this.currentBranch === 'taipei' ? 1 : 1;
                 if (this.currentStartIndex < maxIndex) {
                     this.currentStartIndex++;
                 }
-            }
-        }
+            },
+        },
+  
+    
     };
 
 </script>
@@ -277,6 +282,7 @@ import { Pagination } from 'swiper/modules';
 
 <style scoped>
 
+    
 
     /* -------------------------------RWD的swiper-------------------------------------------- */
 
