@@ -7,6 +7,10 @@ body {
   background-color: #100E24;
   color: white;
 }
+body ::selection {
+  color: #100E24;
+  background-color: #FEDA77;
+}
 
 a {
   text-decoration: none;
@@ -922,6 +926,9 @@ ul#menuBar li:hover > ul {
   font-size: 48px;
   color: #FEDA77;
   display: none;
+}
+.theme_arrow i:hover {
+  color: #E98714;
 }
 .theme_arrow .theme_wrapper {
   display: flex;

@@ -1,5 +1,6 @@
 
 @include google-font('Noto Sans TC');
+// @include google-font('Noto Serif TC');
 $fontsize: (
     "h1": 54px,
     "h2": 28px,
@@ -18,6 +19,7 @@ $lineheight: (
 
 html,
 body {
+    // font-family: Noto Serif TC;
     font-family: Noto Sans TC;
 }
 

@@ -568,6 +568,10 @@
         font-size: 48px;
         color: map-get($colors, yellow);
         display: none;
+
+        &:hover{
+            color: map-get($colors, priceorange);
+        }
     }
 
     .theme_wrapper {

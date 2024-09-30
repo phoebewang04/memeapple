@@ -280,7 +280,11 @@ export default {
                 color: 'white',
                 showConfirmButton: false,
                 showCloseButton: true,
-                focusConfirm: false
+                focusConfirm: false,
+                backdrop: false,
+            willOpen: () => {
+                document.body.style.paddingRight = '0';
+              }
             });
         }
     },

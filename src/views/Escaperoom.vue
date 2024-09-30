@@ -172,7 +172,8 @@
     <div ref="scene6" class="scene esc_end">
 
       <div class="esc_end room">
-        <video ref="endVideo" src="../assets/img/esc_end.mp4" playsinline autoplay muted preload="auto" controls></video>
+        <video ref="endVideo" src="../assets/img/esc_end.mp4" playsinline autoplay muted preload="auto"
+          controls></video>
 
         <!-- <video ref="endVideo" src="../assets/img/esc_end.mp4" playsinline autoplay muted></video> -->
       </div>
@@ -338,10 +339,14 @@ export default {
     //------------轉場------------
     noviceTeach() {
       secAlert.fire({
-        title: "新手教學",
+        // title: "新手教學",
         imageUrl: this.clueImages[10],
         html: '一進入密室後，右上角的＋號背包會一直陪伴著你！<br><br><li>場景資訊：快速了解每個關卡的環境。</li><br><li>密室提示：遇到瓶頸時，點擊燈泡獲取提示</li><br><li>好想回家：點擊此按鈕返回遊戲選單頁<br>（勇者無法回頭，但我不會攔你！）</li><br>建議使用電腦操作，並開啟全螢幕畫面（F11）及聲音。<br>若使用手機請轉向，以獲得最佳遊戲體驗！',
         confirmButtonColor: "#82a7af",
+        backdrop: false,
+        willOpen: () => {
+          document.body.style.paddingRight = '0';
+        }
       });
     },
     nextScene() {
@@ -419,6 +424,10 @@ export default {
         showConfirmButton: false,
         showCloseButton: true,
         CloseButtonColor: "#221F3C",
+        backdrop: false,
+        willOpen: () => {
+          document.body.style.paddingRight = '0';
+        },
         showClass: {
           popup: `
           animate__animated
@@ -466,6 +475,10 @@ export default {
         showConfirmButton: false,
         showCloseButton: true,
         CloseButtonColor: "#221F3C",
+        backdrop: false,
+        willOpen: () => {
+          document.body.style.paddingRight = '0';
+        },
         showClass: {
           popup: `
           animate__animated
@@ -500,8 +513,8 @@ export default {
         html: '發現了線索！',
         showCloseButton: true,
         CloseButtonColor: "#221F3C",
-        // html: this.clueHint[index],
         showConfirmButton: false,
+
       });
     },
     //------------輸入密碼、正確、錯誤------------
@@ -540,7 +553,11 @@ export default {
         icon: 'success',
         title: '密碼正確！',
         showConfirmButton: false,
-        timer: 1000
+        timer: 1000,
+        backdrop: false,
+            willOpen: () => {
+                document.body.style.paddingRight = '0';
+              }
       });
     },
     //------------辦公室 & 餐廳鎖頭密碼------------
@@ -616,7 +633,7 @@ export default {
 
         if (result.status === 'exists') {
           // 已有優惠券
-          this.showCouponAlert("逃脫成功，但你已經擁有寶藏了喔！", '/minigame/');
+          this.showCouponAlert("逃脫成功，預約成都醫院繼續調查！", '/Theme/1/');
           // console.log('成功領取優惠券', result.message);
 
         } else if (result.status === 'not_found') {
@@ -641,7 +658,7 @@ export default {
         form_data.append("discount", discount);
 
         const response = await axios.post(import.meta.env.VITE_API_BASE + "/api/coupon.php", form_data, {
-        // const response = await axios.post("http://localhost/appleyy/public/php/api/coupon.php", form_data, {
+          // const response = await axios.post("http://localhost/appleyy/public/php/api/coupon.php", form_data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
