@@ -81,7 +81,7 @@
               <img  v-if="coupon.DISCOUNT == 300" src="../assets/img/integral_coupon.png" class="couponbg">
               <img v-else src="../assets/img/game_coupon.png" class="couponbg">
             </div>
-            <h3 class="rotate-text" :class="{ rotatetexthidden: coupon.DISCOUNT === 300 }">${{ coupon.DISCOUNT }}</h3>
+            <h3 class="rotate-text" :class="{ rotatetexthidden: coupon.DISCOUNT == 300 }">${{ coupon.DISCOUNT }}</h3>
           </div>
 
         </div>
@@ -782,7 +782,7 @@ export default {
         .then(response => {
           console.log('API 返回的數據:', response.data); // 新增這行
           // 假設 API 返回的資料包含評分資料
-          const initialTasks = response.data.tasks || [
+          const initialTasks = response.data.tasks.length > 0 ? response.data.tasks : [
             { label: '燒腦指數', star: 0 },
             { label: '驚嚇指數', star: 0 },
             { label: '推薦指數', star: 0 },
