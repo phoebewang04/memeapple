@@ -1244,6 +1244,10 @@ ul#menuBar li:hover > ul {
   /* 或者設置為無背景色 */
 }
 
+.mainLogin li input, textarea {
+  font-size: initial;
+}
+
 #onlogin {
   width: 14px;
   height: 14px;
@@ -1430,6 +1434,10 @@ ul#menuBar li:hover > ul {
 
 .mainJoin ol {
   padding: 2px;
+}
+
+.mainJoin li input, textarea {
+  font-size: initial;
 }
 
 .checkservers {
@@ -3781,6 +3789,9 @@ ul#menuBar li:hover > ul {
   padding: 8px;
   cursor: pointer;
 }
+.theme .leftarrow:hover {
+  color: #E98714;
+}
 @media (max-width: 430px) {
   .theme .leftarrow {
     display: none;
@@ -3792,6 +3803,9 @@ ul#menuBar li:hover > ul {
   font-size: 48px;
   padding: 8px;
   cursor: pointer;
+}
+.theme ul .rightarrow:hover {
+  color: #E98714;
 }
 @media (max-width: 430px) {
   .theme ul .rightarrow {
@@ -7558,6 +7572,9 @@ ul#menuBar li:hover > ul {
   width: 100%;
   height: 100%;
   border-radius: 8px;
+}
+.coupontext .couponticket .rotatetexthidden {
+  display: none;
 }
 .coupontext .couponticket .rotate-text {
   position: absolute;

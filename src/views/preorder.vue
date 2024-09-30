@@ -471,7 +471,11 @@ export default {
             
         }
     },
-
+    beforeRouteLeave(to, from, next) {
+    // Close SweetAlert when leaving the route
+    preorderAlert.close();
+    next();
+     },
     mounted (){
         
         setTimeout(() => {
