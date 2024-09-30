@@ -119,6 +119,7 @@
                     </div>
 
                     <button class="btn next_btn" :disabled="orderstatus === 1 || !dataValid"  :class="{active: orderstatus !== 1 && dataValid}" @click="submitData" >下一步</button>
+                    <p v-if="orderstatus === 1" class="confirm_p">此帳號已被停權，有任何疑問請洽客服</p>
 
                 </div>
             </div>

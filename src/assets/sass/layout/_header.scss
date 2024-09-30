@@ -36,9 +36,11 @@
 }
 
 @supports (-webkit-touch-callout: none) {
+
     /* 這個塊僅針對 iOS 設備 */
     .top img {
-        margin-left: -30px !important; /* 確保 margin 被重設 */
+        margin-left: -30px !important;
+        /* 確保 margin 被重設 */
     }
 }
 
@@ -90,6 +92,37 @@
 
     &:hover {
         color: map-get($colors, gold);
+    }
+
+    span {
+        display: inline-block;
+        font-weight: 500;
+        position: relative;
+
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            left: 0;
+            top: 80%;
+            background-color: map-get($colors , gold);
+            transition: width 0.3s ease;
+        }
+
+
+        &:hover {
+
+            color: map-get($colors , yellow);
+
+            &::after {
+                width: 100%;
+                background: map-get($colors , yellow);
+            }
+
+        }
     }
 }
 
@@ -180,6 +213,11 @@ ul#menuBar ul ul {
     top: 0px;
     right: 140px;
 
+    @include rwd(800px) {
+        top: 107px;
+        right: 0px;
+    }
+
     @include rwd(430px) {
         top: 100px;
         right: 0px;
@@ -195,14 +233,16 @@ ul#menuBar li:hover>ul {
     display: block;
 }
 
-.themeArea{
+.themeArea {
     display: block;
     cursor: pointer;
 }
 
 @supports (-webkit-touch-callout: none) {
+
     /* 這個塊僅針對 iOS 設備 */
     .top img {
-        margin-left: -30px !important; /* 確保 margin 被重設 */
+        margin-left: -30px !important;
+        /* 確保 margin 被重設 */
     }
 }
