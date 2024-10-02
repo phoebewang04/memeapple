@@ -164,7 +164,7 @@ export default {
       ref="HambergerAwasome"></font-awesome-icon>
     <ul id="menuBar" :class="{ visible: visible_active }">
       <div class="memberstate" v-if="isLoggedIn">
-        <label>HELLO，{{ user.name }}</label>
+        <label class="mamberName">HELLO，{{ user.name }}</label>
         <a @click="logout">
           <li><span>登出<!-- 只顯示登出按鈕 --></span></li>
         </a>
@@ -175,17 +175,17 @@ export default {
         </a>
       </div>
 
-      <router-link to="/Membermanage/">
+      <router-link to="/Membermanage/" active-class="active-link">
         <li><span>會員專區</span></li>
       </router-link>
-      <router-link to="/Minigame/">
+      <router-link to="/Minigame/" active-class="active-link">
         <li><span>線上體驗</span></li>
       </router-link>
-      <router-link to="/Branch/">
+      <router-link to="/Branch/" active-class="active-link">
         <li><span>分館介紹</span></li>
       </router-link>
       <li class="themeArea" @click="toggleThemes" ref="themeMenu">
-        <a @click.stop="toggleThemes">主題專區</a>
+        <a @click.stop="toggleThemes" active-class="active-link">主題專區</a>
         <ul v-if="showALLThemes">
           <li @click="toggleTaipeiThemes">台北館
             <ul v-if="showTaipeiThemes" id="ThemeUL">

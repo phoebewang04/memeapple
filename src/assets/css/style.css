@@ -354,6 +354,14 @@ ul#menuBar ul {
   }
 }
 
+.mamberName {
+  font-size: 14px;
+}
+
+.active-link span {
+  color: #FEDA77; /* 設置文字顏色為黃色 */
+}
+
 .bottom {
   background-color: #262B3F;
   width: 100%;

@@ -264,3 +264,12 @@ ul#menuBar ul {
         display: block;
     }
 }
+
+.mamberName{
+    font-size: 14px;
+}
+
+.active-link span {
+    color: map-get($colors, yellow ); /* 設置文字顏色為黃色 */
+
+}
