@@ -335,6 +335,24 @@ ul#menuBar ul {
     /* 確保 margin 被重設 */
   }
 }
+.memberstate {
+  display: flex;
+}
+.memberstate label {
+  margin-right: 20px;
+}
+@media (max-width: 820px) {
+  .memberstate label {
+    display: none;
+    margin-left: 0;
+  }
+}
+@media (max-width: 820px) {
+  .memberstate {
+    display: block;
+  }
+}
+
 .bottom {
   background-color: #262B3F;
   width: 100%;
@@ -1661,6 +1679,10 @@ ul#menuBar ul {
   font-weight: bold;
   margin: 0 0 15px;
   font-size: 20px;
+}
+.rating p {
+  color: red;
+  font-size: 14px;
 }
 .rating .star_block {
   display: flex;

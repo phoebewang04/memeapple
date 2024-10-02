@@ -157,7 +157,8 @@ export default {
     <router-link to="/index/"><img src="../assets/img/memelogo.svg" alt=""></router-link>
     <font-awesome-icon class="fa HambergerAwasome" icon="bars" @click="showMenuBar"></font-awesome-icon>
     <ul id="menuBar" :class="{ visible: visible_active }">
-      <div v-if="isLoggedIn">
+      <div class="memberstate" v-if="isLoggedIn">
+        <label>HELLO，{{user.name}}</label>
         <a @click="logout">
           <li><span>登出<!-- 只顯示登出按鈕 --></span></li>
         </a>

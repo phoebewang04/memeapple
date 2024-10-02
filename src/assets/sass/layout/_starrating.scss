@@ -45,7 +45,10 @@
         margin: 0 0 15px;
         font-size: 20px;
     }   
-
+    p{
+      color: red;
+      font-size: map-get($fontsize, p1 );
+    }
     .star_block {
         display: flex;
         align-items: center;
@@ -60,7 +63,7 @@
             cursor: pointer;
             display: inline-block;
             transition: color 0.2s;
-          
+            
             &.-on {
                 color:#FCD15B;
             }

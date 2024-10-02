@@ -74,14 +74,24 @@
                                     placeholder="請輸入信箱" v-model="registerEmail" required>
                                 <span class="error">{{ registerErrors.email }}</span>
                             </li>
-                            <li><i class="fa-solid fa-lock"></i><input type="text" class="joinPWD" placeholder="請輸入密碼"
-                                    v-model="registerPassword">
-                                <span class="error">{{ registerErrors.password }}</span>
+                            <li><i class="fa-solid fa-lock"></i>
+                                <div class="pwd_eye">
+                                    <input :type="showPassword ? 'text' : 'password'" class="joinPWD" placeholder="請輸入密碼"
+                                        v-model="registerPassword">
+                                    <span class="error">{{ registerErrors.password }}</span>
+                                    <i :class="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
+                                        @click="togglePwd" class="eye-icon"></i>
+                                </div>
                             </li>
                             <!-- <li><input type="text" class="joinPWD" placeholder="請輸入密碼" v-model="registerPassword"></li> -->
-                            <li><i class="fa-solid fa-circle-check"></i><input type="text" class="joinPWD"
+                            <li><i class="fa-solid fa-circle-check"></i>
+                                <div class="pwd_eye">
+                                <input :type="showPassword ? 'text' : 'password'" class="joinPWD"
                                     placeholder="請再次輸入密碼" v-model="registerPasswordConfirm">
                                 <span class="error">{{ registerErrors.passwordConfirm }}</span>
+                                <i :class="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
+                                        @click="togglePwd" class="eye-icon"></i>
+                                </div>
                             </li>
                             <!-- <li><input type="text" class="joinPWD" placeholder="請再次輸入密碼"
                                     v-model="registerPasswordConfirm"></li> -->
@@ -166,6 +176,8 @@ export default {
             // this.currentStartIndex = 0;
         },
         joinbtn() {
+            this.username = '';
+            this.password = '';
             this.currentlogin = 'join';
             this.activeButton = 'join';
             // this.currentStartIndex = 0;

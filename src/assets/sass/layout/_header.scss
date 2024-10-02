@@ -249,3 +249,17 @@ ul#menuBar ul {
         /* 確保 margin 被重設 */
     }
 }
+
+.memberstate{
+    display: flex;
+    label{
+        margin-right: 20px;
+        @include pad() {
+          display: none;
+          margin-left: 0;
+        }
+    }
+    @include pad() {
+        display: block;
+    }
+}

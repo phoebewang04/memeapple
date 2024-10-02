@@ -4,6 +4,7 @@
       <div class="rating">
         <span class="close" @click="closePopup">&times;</span>
         <h3>問卷調查</h3>
+        <p>選取後星星將被點亮，評分為1到5星</p>
         <div v-for="(task, index) in tasks" :key="index" class="star_block">
           <span>{{ task.label }}</span>
           <span
