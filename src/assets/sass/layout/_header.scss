@@ -186,6 +186,7 @@ ul#menuBar ul li {
     color: white;
     font-size: 18px;
     line-height: 54px;
+    margin-right: 0;
 
     &:hover {
         background-color: map-get($colors, gold);
@@ -214,7 +215,7 @@ ul#menuBar ul ul {
     z-index: 200;
     position: absolute;
     top: 0px;
-    right: 140px;
+    right: 160px;
 
     @include rwd(800px) {
         top: 107px;

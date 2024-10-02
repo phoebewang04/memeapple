@@ -18,10 +18,10 @@ export default {
       isLoggedIn: false,
       visible_active: false,
       showPopup: false,
-      // showThemes: false, // 控制台北館主題的顯示
+      showThemes: false, // 控制台北館主題的顯示
       showTaipeiThemes: false, // 控制台北館主題的顯示
       showTaichungThemes: false, // 控制台中館主題的顯示
-      showALLThemes:false,
+      showALLThemes: true,
     };
   },
   methods: {
@@ -30,12 +30,18 @@ export default {
       // console.log('visible_active:', this.visible_active);
     },
     showMenuBar() {
-      if (window.innerWidth <= 700) {
-        this.visible_active = !this.visible_active;
-      }
-      if (this.showPopup) {
-        this.visible_active = false;
-      }
+      this.visible_active = !this.visible_active; // 不使用寬度條件，直接切換狀態
+      console.log(this.visible_active)
+      console.log('showMenuBar triggered');
+      console.log(window.innerWidth);
+      // this.visible_active = true;
+      console.log(this.visible_active); // 檢查是否變為 true
+      // if (window.innerWidth <= 700) {
+      //   this.visible_active = !this.visible_active;
+      // }
+      // if (this.showPopup) {
+      //   this.visible_active = false;
+      // }
     },
     handleResize() {
       if (window.innerWidth > 700) {
@@ -44,8 +50,23 @@ export default {
         this.visible_active = false;
       }
     },
+    handleClickOutside(event) {    // 用於檢查點擊是否在選單外
+      // 判斷點擊是否在主題專區選單內
+      const menu = this.$refs.themeMenu; // 使用ref指向主題專區選單的容器
+      const hamburger = this.$refs.HambergerAwasome; // 使用 ref 獲取漢堡菜單圖標
+      // if (menu && !menu.contains(event.target) && !hamburger.contains(event.target)) {
+      //   this.closeMenu();
+      // }
+      // 確保 hamburger 存在並且正確引用根元素
+      if (menu && !menu.contains(event.target) && hamburger && !hamburger.$el.contains(event.target)) {
+        this.closeMenu();
+      }
+    },
     closeMenu() {
       this.visible_active = false;
+      this.showALLThemes = false;
+      this.showTaipeiThemes = false;
+      this.showTaichungThemes = false;
     },
     handleLogin(user) {
       this.isLoggedIn = true;
@@ -88,42 +109,20 @@ export default {
       }, 100); // 延遲顯示 alert，確保頁面已跳轉
     },
     toggleThemes() {
-      // this.showThemes = !this.showThemes;
-      // this.showTaipeiThemes = false;
-      // this.showTaichungThemes = false;
-
-      if (this.showThemes) {
-        this.showALLThemes = true;
-        this.showThemes = false;
-        this.showTaipeiThemes = false;
-        this.showTaichungThemes = false;
-      } else {
-        this.showThemes = true;
-        this.showALLThemes = false;
-      }
-
-      // this.showTaipeiThemes = !this.showTaipeiThemes;
-      // this.showTaichungThemes = !this.showTaichungThemes;
+      this.showALLThemes = !this.showALLThemes;
+      this.showTaipeiThemes = false;
+      this.showTaichungThemes = false;
     },
     toggleTaipeiThemes(event) {
       event.stopPropagation();
       this.showTaipeiThemes = !this.showTaipeiThemes;
       this.showTaichungThemes = false;
-
-      // if (window.innerWidth <= 500) {
-      //   this.showTaipeiThemes = true;
-      //   this.showTaichungThemes = false;
-      // }
     },
     toggleTaichungThemes(event) {
       event.stopPropagation();
       this.showTaichungThemes = !this.showTaichungThemes;
       this.showTaipeiThemes = false;
 
-      // if (window.innerWidth <= 500) {
-      //   this.showTaipeiThemes = false;
-      //   this.showTaichungThemes = true;
-      // }
     },
   },
   created() {
@@ -131,9 +130,12 @@ export default {
     this.handleResize();
   },
   mounted() {
+    this.showALLThemes = false;
+    console.log(this.$refs); // 檢查 refs 是否正確
     window.addEventListener('resize', this.handleResize);
     window.addEventListener('scroll', this.handleScroll);
-    console.log('mounted: visible_active:', this.visible_active);
+    window.addEventListener('click', this.handleClickOutside);
+    // console.log('mounted: visible_active:', this.visible_active);
 
     // 檢查螢幕寬度
     if (window.innerWidth > 700) {
@@ -147,18 +149,22 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('click', this.handleClickOutside);
+    window.removeEventListener('scroll', this.handleScroll);
   },
 };
 </script>
 
 <template>
   <LoginRegisterPopup v-if="showPopup" @close="showPopup = false" @login="handleLogin" />
+
   <header class="top">
     <router-link to="/index/"><img src="../assets/img/memelogo.svg" alt=""></router-link>
-    <font-awesome-icon class="fa HambergerAwasome" icon="bars" @click="showMenuBar"></font-awesome-icon>
+    <font-awesome-icon class="fa HambergerAwasome" icon="bars" @click.stop="showMenuBar"
+      ref="HambergerAwasome"></font-awesome-icon>
     <ul id="menuBar" :class="{ visible: visible_active }">
       <div class="memberstate" v-if="isLoggedIn">
-        <label>HELLO，{{user.name}}</label>
+        <label>HELLO，{{ user.name }}</label>
         <a @click="logout">
           <li><span>登出<!-- 只顯示登出按鈕 --></span></li>
         </a>
@@ -178,7 +184,8 @@ export default {
       <router-link to="/Branch/">
         <li><span>分館介紹</span></li>
       </router-link>
-      <li class="themeArea" @click="toggleThemes">主題專區
+      <li class="themeArea" @click="toggleThemes" ref="themeMenu">
+        <a @click.stop="toggleThemes">主題專區</a>
         <ul v-if="showALLThemes">
           <li @click="toggleTaipeiThemes">台北館
             <ul v-if="showTaipeiThemes" id="ThemeUL">

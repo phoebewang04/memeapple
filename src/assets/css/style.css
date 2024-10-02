@@ -280,6 +280,7 @@ ul#menuBar ul li {
   color: white;
   font-size: 18px;
   line-height: 54px;
+  margin-right: 0;
 }
 ul#menuBar ul li:hover {
   background-color: #FCD15B;
@@ -304,7 +305,7 @@ ul#menuBar ul ul {
   z-index: 200;
   position: absolute;
   top: 0px;
-  right: 140px;
+  right: 160px;
 }
 @media (max-width: 800px) {
   ul#menuBar ul ul {
